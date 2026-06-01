@@ -1,0 +1,15 @@
+{
+  "name": "tfe4146-halvlederkomponenter",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^6",
+    "study-companion": "github:MartinSA04/StudyCompanion#v1.4.0"
+  },
+  "packageManager": "pnpm@10.33.0"
+}
