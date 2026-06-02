@@ -26,3 +26,6 @@ features:
   search: true
   flashcards: false
   theme: true
+
+analytics:
+  goatcounter: "https://halvledermartinsundal.goatcounter.com/count"
