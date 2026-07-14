@@ -12,8 +12,8 @@ importers:
         specifier: ^6
         version: 6.4.2(rollup@4.61.0)(yaml@2.9.0)
       study-companion:
-        specifier: github:MartinSA04/StudyCompanion#v2.0.0
-        version: https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/976ad199a63533ae4dafa5345a4d35516d19f0c5(astro@6.4.2(rollup@4.61.0)(yaml@2.9.0))
+        specifier: github:MartinSA04/StudyCompanion#v3.0.0
+        version: https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/38cff3b99cf7a15246e8f37b0b571da599c785df(astro@6.4.2(rollup@4.61.0)(yaml@2.9.0))
 
 packages:
 
@@ -1438,9 +1438,9 @@ packages:
   stringify-entities@4.0.4:
     resolution: {integrity: sha512-IwfBptatlO+QCJUo19AqvrPNqlVMpW9YEL2LIVY+Rpv2qsjCGxaDLNRgeGsQWJhfItebuJhsGSLjaBbNSQ+ieg==}
 
-  study-companion@https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/976ad199a63533ae4dafa5345a4d35516d19f0c5:
-    resolution: {tarball: https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/976ad199a63533ae4dafa5345a4d35516d19f0c5}
-    version: 2.0.0
+  study-companion@https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/38cff3b99cf7a15246e8f37b0b571da599c785df:
+    resolution: {tarball: https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/38cff3b99cf7a15246e8f37b0b571da599c785df}
+    version: 3.0.0
     peerDependencies:
       astro: ^6
 
@@ -3583,7 +3583,7 @@ snapshots:
       character-entities-html4: 2.1.0
       character-entities-legacy: 3.0.0
 
-  study-companion@https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/976ad199a63533ae4dafa5345a4d35516d19f0c5(astro@6.4.2(rollup@4.61.0)(yaml@2.9.0)):
+  study-companion@https://codeload.github.com/MartinSA04/StudyCompanion/tar.gz/38cff3b99cf7a15246e8f37b0b571da599c785df(astro@6.4.2(rollup@4.61.0)(yaml@2.9.0)):
     dependencies:
       '@astrojs/mdx': 5.0.6(astro@6.4.2(rollup@4.61.0)(yaml@2.9.0))
       astro: 6.4.2(rollup@4.61.0)(yaml@2.9.0)
@@ -3593,6 +3593,8 @@ snapshots:
       remark-math: 6.0.0
       yaml: 2.9.0
       zod: 4.4.3
+    optionalDependencies:
+      sharp: 0.34.5
     transitivePeerDependencies:
       - supports-color
 
