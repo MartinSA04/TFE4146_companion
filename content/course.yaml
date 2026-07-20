@@ -18,7 +18,11 @@ accent: "#9a5d12"
 accentDark: "#e0a653"
 
 exam:
-  format: Skriftlig skoleeksamen, 4 timer
+  # Ordinær eksamen (Studentweb) — digital i Inspera.
+  date: 2026-11-21
+  time: "09:00"
+  durationMinutes: 240
+  format: Skriftlig skoleeksamen
   aids: "Kode C: bestemt, enkel kalkulator og spesifiserte trykte/håndskrevne hjelpemidler tillatt"
 
 features:
