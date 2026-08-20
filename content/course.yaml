@@ -4,7 +4,10 @@
 schemaVersion: 4
 
 code: TFE4146
-title: Halvlederkomponenter
+# Soft hyphen (U+00AD): wraps as "Halvleder-" / "komponenter" when the title has
+# to break on a phone. Display-only — the framework strips it from the tab
+# title, social cards, JSON-LD and the app manifest. See AUTHORING.md §6.
+title: "Halvleder\xADkomponenter"
 subtitle: Interaktiv pensumguide
 term: H2026
 language: nb
