@@ -21,6 +21,14 @@ brief: the mental model, the per-archetype section shapes, the widget decision
 guide (including course-owned `<Simulation>` canvas sims and sim-driven
 `<CodeBlock>` stepping), the conventions (KaTeX/YAML escaping, explicit
 numbering, external references), and the **per-section definition-of-done**.
+**Then read `WRITING.md`** (also top level, framework repo). It is the ruleset for
+the prose itself and is equally binding: check the course page for the level and
+prerequisites and write for exactly that reader, one lecture week is **one module
+of 1300–2000 words**, one concept keeps one word, no coined metaphors or
+aphorisms, no forward references to week or module numbers, and a course-owned
+simulation uses the framework's own classes and design tokens rather than chrome
+you invent. Both files live in the framework, never copied here, so they stay in
+lockstep with the pinned tag.
 
 ## Workflow
 

@@ -1,4 +1,4 @@
-# TFE4146 Halvlederkomponenter — interaktiv pensumguide.
+# TFE4146 Halvlederkomponenter, interaktiv pensumguide.
 # Innholdet er under arbeid; metadataene under er hentet fra NTNUs emneside.
 
 schemaVersion: 4
@@ -11,7 +11,7 @@ language: nb
 
 courseUrl: "https://www.ntnu.no/studier/emner/TFE4146"
 
-# Kurs-huben (oversikten over alle emnesidene) — gir "Alle emner"-lenken øverst i sidemenyen.
+# Kurs-huben (oversikten over alle emnesidene) gir "Alle emner"-lenken øverst i sidemenyen.
 hubUrl: "https://kurs.martinsundal.no"
 institution: NTNU
 repoUrl: "https://github.com/MartinSA04/TFE4146_companion"
@@ -21,12 +21,111 @@ accent: "#9a5d12"
 accentDark: "#e0a653"
 
 exam:
-  # Ordinær eksamen (Studentweb) — digital i Inspera.
+  # Ordinær eksamen (Studentweb), digital i Inspera.
   date: 2026-11-21
   time: "09:00"
   durationMinutes: 240
   format: Skriftlig skoleeksamen
   aids: "Kode C: bestemt, enkel kalkulator og spesifiserte trykte/håndskrevne hjelpemidler tillatt"
+
+# Formelsamlingen. Merk: ingen formel er merket `memorize`. Hva som havner på
+# det utdelte formelarket er ikke kjent før nær eksamen, og guiden skal ikke
+# påstå noe om det. Sett `memorize: true` per formel når arket foreligger.
+formulas:
+  - id: bloch-funksjon
+    section: E–k-diagrammet
+    tex: "\\psi_k(x) = U(k_x, x)\\, e^{jk_x x}"
+    label: "Bloch-funksjonen består av to faktorer. $e^{jk_x x}$ er en planbølge, og $U(k_x, x)$ er en funksjon som gjentar seg med gitterets periode, $U(k_x, x + a) = U(k_x, x)$. Elektronet i krystallen er ikke fritt, og beskrives likevel av én bølgevektor $k$."
+  - id: gruppehastighet
+    section: E–k-diagrammet
+    tex: "v = \\dfrac{1}{\\hbar}\\dfrac{dE}{dk}"
+    label: "Bærerens hastighet er gruppehastigheten til bølgepakken, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er $v = 0$ selv om $\\hbar k \\neq 0$."
+  - id: krystallmomentum
+    section: Effektiv masse
+    tex: "F_\\text{ytre} = \\dfrac{d(\\hbar k)}{dt}"
+    label: "Akselerasjonsteoremet. Bare den <em>ytre</em> kraften står på høyresiden, for gitterkreftene ligger allerede inne i formen på $E(k)$. Derfor er $\\hbar k$ <b>krystallmomentum</b> og ikke elektronets ekte bevegelsesmengde."
+  - id: effektiv-masse
+    section: Effektiv masse
+    tex: "m^* = \\dfrac{\\hbar^2}{d^2E/dk^2}"
+    label: "Effektiv masse fra <b>krumningen</b> til båndet. Med $m^*$ i Newtons lov holder $F = ma$ med bare den ytre kraften, siden gitterkreftene er pakket inn i tallet. Skarp krumning gir liten $m^*$, flatt bånd gir stor. Negativ krumning på valensbåndtoppen er grunnen til at vi regner med hull der."
+  - id: parabolsk-band
+    section: Effektiv masse
+    tex: "E = E_c + \\dfrac{\\hbar^2 k^2}{2m^*}"
+    label: "Parabolsk tilnærming nær et båndminimum. Så lenge båndet er parabolsk er $m^*$ <em>konstant</em>; høyere opp i båndet holder ikke tilnærmingen."
+  - id: fullt-band-strom
+    section: Elektroner og hull
+    tex: "J = (-q)\\sum_{i=1}^{N} v_i = 0 \\quad\\Longrightarrow\\quad J = (-q)\\sum_{i=1}^{N} v_i - (-q)v_j = +q\\,v_j"
+    label: "Et fullt bånd gir null strøm. Fjerner du elektron $j$, blir summen $+qv_j$, altså <em>nøyaktig</em> strømmen fra én positiv ladning med det manglende elektronets hastighet. Det er hullets opprinnelse."
+  - id: generasjon-rekombinasjon
+    section: Intrinsisk materiale
+    tex: "r_i = a_r n_0 p_0 = g_i"
+    label: "Likevekt er <em>dynamisk</em>: rekombinasjonsraten $r_i$ er proporsjonal med produktet $n_0p_0$, fordi et elektron og et hull må møtes, og den balanserer generasjonsraten $g_i$. Siden $g_i$ bare avhenger av temperaturen, er produktet låst: $n_0p_0 = n_i^2$."
+  - id: hydrogenlik-donor
+    section: Doping
+    tex: "E_d = 13{,}6\\ \\text{eV}\\cdot\\dfrac{m_n^*/m_0}{\\varepsilon_r^2}, \\qquad a^* = a_0\\,\\dfrac{\\varepsilon_r}{m_n^*/m_0}"
+    label: "Hydrogenatomets egne resultater med to bytter: lettere elektron ($m_n^*$) og skjermet Coulomb-kraft ($\\varepsilon_r$). Med $a_0 = 0{,}529$ Å gir det $25$ meV og $24$ Å for Si. Anslaget ligger konsekvent under det målte, fordi elektronet nær kjernen verken ser full $\\varepsilon_r$ eller én isotrop masse."
+
+glossary:
+  - term: Valensbånd
+    section: Fra binding til bånd
+    definition: "Det øverste båndet som er fullt av elektroner ved 0 K. Toppen betegnes $E_v$. I Si rommer det $4N$ tilstander, akkurat nok til de $4N$ valenselektronene."
+  - term: Ledningsbånd
+    section: Fra binding til bånd
+    definition: "Det nederste tomme båndet ved 0 K, med bunnen $E_c$. Elektroner som eksiteres hit har mange ledige tilstander rundt seg og kan derfor bidra til strøm."
+  - term: Bloch-funksjon
+    section: E–k-diagrammet
+    definition: "Bølgefunksjonen til et elektron i et periodisk gitter: en planbølge multiplisert med en funksjon som har gitterets periodisitet. Den er grunnlaget for å beskrive elektronet ved én bølgevektor $k$."
+  - term: E-k-diagram
+    section: E–k-diagrammet
+    definition: "Plott av elektronets totale energi mot bølgevektoren $k$, for én krystallretning. Stigningstallet gir hastigheten, krumningen gir effektiv masse, og formen avgjør om halvlederen er direkte eller indirekte."
+  - term: Gruppehastighet
+    section: E–k-diagrammet
+    definition: "Farten til bølgepakken bæreren består av, $v = \\frac{1}{\\hbar}\\frac{dE}{dk}$, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er den null, uansett hvor stor $k$ er."
+  - term: Direkte halvleder
+    section: E–k-diagrammet
+    definition: "Ledningsbåndminimet og valensbåndmaksimet ligger ved <b>samme</b> $k$, som i GaAs ($E_g = 1{,}43$ eV). Et elektron kan falle rett ned og gi fra seg $E_g$ som et foton, og derfor brukes slike materialer i lysdioder og lasere."
+  - term: Indirekte halvleder
+    section: E–k-diagrammet
+    definition: "Ledningsbåndminimet ligger ved en <b>annen</b> $k$ enn valensbåndmaksimet, som i Si. Overgangen krever en momentumendring i tillegg til energiendringen, og går gjerne via en defekttilstand med energien avgitt som varme."
+  - term: Fonon
+    section: E–k-diagrammet
+    definition: "Et kvantum av gittervibrasjon. Det bærer momentum på Brillouinsonens skala og svært lite energi, og er derfor partneren en indirekte halvleder må låne momentum av. Fotonet betaler energien, fononet momentumet."
+  - term: Krystallmomentum
+    section: Effektiv masse
+    definition: "Størrelsen $\\hbar k$. Den oppfører seg som bevegelsesmengde overfor <em>ytre</em> krefter, og er likevel ikke elektronets virkelige bevegelsesmengde, siden gitterkreftene er utelatt."
+  - term: Effektiv masse
+    section: Effektiv masse
+    definition: "Massen $m^*$ som lar oss bruke Newtons lov på en bærer i et gitter uten å regne på gitterkreftene: de er allerede pakket inn i tallet. Den finnes fra krumningen til $E(k)$, og er derfor ulik i ulike materialer selv om elektronets <em>ekte</em> masse er den samme."
+  - term: Hull
+    section: Elektroner og hull
+    definition: "En tom tilstand i valensbåndet, regnet som én bærer med <b>positiv</b> ladning og <b>positiv</b> masse. Strømmen bæres av de gjenværende elektronene, og hullregnskapet gir samme svar med ett ledd i stedet for $10^{23}$."
+  - term: Elektron-hull-par
+    section: Intrinsisk materiale
+    definition: "Et ledningsbåndelektron og hullet det etterlot seg i valensbåndet, laget i samme eksitasjon (EHP). Termisk eller optisk energi $\\ge E_g$ kreves for å lage ett."
+  - term: Intrinsisk halvleder
+    section: Intrinsisk materiale
+    definition: "En perfekt krystall uten dopanter eller gitterfeil, der de eneste bærerne er termisk genererte par. Da er $n = p = n_i$."
+  - term: Ekstrinsisk halvleder
+    section: Doping
+    definition: "En halvleder der dopanter gjør likevektskonsentrasjonene $n_0$ og $p_0$ forskjellige fra $n_i$. Nesten alle komponenter er bygd av ekstrinsisk materiale."
+  - term: Donor
+    section: Doping
+    definition: "En urenhet fra gruppe V (P, As, Sb) i Si eller Ge, med ett valenselektron til overs. Den legger et fylt nivå $E_d$ like under $E_c$ og står igjen som et fast positivt ion når elektronet er avgitt. Ved romtemperatur er praktisk talt alle ionisert i Si."
+  - term: Akseptor
+    section: Doping
+    definition: "En urenhet fra gruppe III (B, Al, Ga, In) i Si eller Ge, med ett valenselektron for lite. Den legger et tomt nivå $E_a$ like over $E_v$, tar imot et valensbåndelektron og etterlater et hull."
+  - term: n-type materiale
+    section: Doping
+    definition: "Halvleder dopet med donorer, der $n_0 \\gg (n_i, p_0)$. Elektroner er majoritetsbærere, hull er minoritetsbærere."
+  - term: p-type materiale
+    section: Doping
+    definition: "Halvleder dopet med akseptorer, der $p_0 \\gg (n_i, n_0)$. Hull er majoritetsbærere, elektroner er minoritetsbærere."
+  - term: Majoritetsbærere
+    section: Doping
+    definition: "Bærertypen som dominerer etter doping, altså elektroner i n-type og hull i p-type. Dopingen kan endre antallet med mange tierpotenser."
+  - term: Minoritetsbærere
+    section: Doping
+    definition: "Den fåtallige bærertypen, altså hull i n-type og elektroner i p-type. De er få, og de styrer likevel oppførselen til pn-overganger og bipolare transistorer."
 
 features:
   progress: true
