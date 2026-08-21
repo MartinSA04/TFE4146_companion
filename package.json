@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "astro": "^6",
-    "study-companion": "github:MartinSA04/StudyCompanion#v4.4.1"
+    "study-companion": "github:MartinSA04/StudyCompanion#v4.4.2"
   },
   "packageManager": "pnpm@10.33.0"
 }
