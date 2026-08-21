@@ -71,10 +71,10 @@ formulas:
 glossary:
   - term: Valensbånd
     section: Fra binding til bånd
-    definition: "Det øverste båndet som er fullt av elektroner ved 0 K. Toppen betegnes $E_v$. I Si rommer det $4N$ tilstander, akkurat nok til de $4N$ valenselektronene."
+    definition: "(<em>valence band</em>) Det øverste båndet som er fullt av elektroner ved 0 K. Toppen betegnes $E_v$. I Si rommer det $4N$ tilstander, akkurat nok til de $4N$ valenselektronene."
   - term: Ledningsbånd
     section: Fra binding til bånd
-    definition: "Det nederste tomme båndet ved 0 K, med bunnen $E_c$. Elektroner som eksiteres hit har mange ledige tilstander rundt seg og kan derfor bidra til strøm."
+    definition: "(<em>conduction band</em>) Det nederste tomme båndet ved 0 K, med bunnen $E_c$. Elektroner som eksiteres hit har mange ledige tilstander rundt seg og kan derfor bidra til strøm."
   - term: Bloch-funksjon
     section: E–k-diagrammet
     definition: "Bølgefunksjonen til et elektron i et periodisk gitter: en planbølge multiplisert med en funksjon som har gitterets periodisitet. Den er grunnlaget for å beskrive elektronet ved én bølgevektor $k$."
@@ -83,34 +83,34 @@ glossary:
     definition: "Plott av elektronets totale energi mot bølgevektoren $k$, for én krystallretning. Stigningstallet gir hastigheten, krumningen gir effektiv masse, og formen avgjør om halvlederen er direkte eller indirekte."
   - term: Gruppehastighet
     section: E–k-diagrammet
-    definition: "Farten til bølgepakken bæreren består av, $v = \\frac{1}{\\hbar}\\frac{dE}{dk}$, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er den null, uansett hvor stor $k$ er."
+    definition: "(<em>group velocity</em>) Farten til bølgepakken bæreren består av, $v = \\frac{1}{\\hbar}\\frac{dE}{dk}$, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er den null, uansett hvor stor $k$ er."
   - term: Direkte halvleder
     section: E–k-diagrammet
-    definition: "Ledningsbåndminimet og valensbåndmaksimet ligger ved <b>samme</b> $k$, som i GaAs ($E_g = 1{,}43$ eV). Et elektron kan falle rett ned og gi fra seg $E_g$ som et foton, og derfor brukes slike materialer i lysdioder og lasere."
+    definition: "(<em>direct semiconductor</em>) Ledningsbåndminimet og valensbåndmaksimet ligger ved <b>samme</b> $k$, som i GaAs ($E_g = 1{,}43$ eV). Et elektron kan falle rett ned og gi fra seg $E_g$ som et foton, og derfor brukes slike materialer i lysdioder og lasere."
   - term: Indirekte halvleder
     section: E–k-diagrammet
-    definition: "Ledningsbåndminimet ligger ved en <b>annen</b> $k$ enn valensbåndmaksimet, som i Si. Overgangen krever en momentumendring i tillegg til energiendringen, og går gjerne via en defekttilstand med energien avgitt som varme."
+    definition: "(<em>indirect semiconductor</em>) Ledningsbåndminimet ligger ved en <b>annen</b> $k$ enn valensbåndmaksimet, som i Si. Overgangen krever en momentumendring i tillegg til energiendringen, og går gjerne via en defekttilstand med energien avgitt som varme."
   - term: Fonon
     section: E–k-diagrammet
-    definition: "Et kvantum av gittervibrasjon. Det bærer momentum på Brillouinsonens skala og svært lite energi, og er derfor partneren en indirekte halvleder må låne momentum av. Fotonet betaler energien, fononet momentumet."
+    definition: "(<em>phonon</em>) Et kvantum av gittervibrasjon. Det bærer momentum på Brillouinsonens skala og svært lite energi, og er derfor partneren en indirekte halvleder må låne momentum av. Fotonet betaler energien, fononet momentumet."
   - term: Krystallmomentum
     section: Effektiv masse
-    definition: "Størrelsen $\\hbar k$. Den oppfører seg som bevegelsesmengde overfor <em>ytre</em> krefter, og er likevel ikke elektronets virkelige bevegelsesmengde, siden gitterkreftene er utelatt."
+    definition: "(<em>crystal momentum</em>) Størrelsen $\\hbar k$. Den oppfører seg som bevegelsesmengde overfor <em>ytre</em> krefter, og er likevel ikke elektronets virkelige bevegelsesmengde, siden gitterkreftene er utelatt."
   - term: Effektiv masse
     section: Effektiv masse
-    definition: "Massen $m^*$ som lar oss bruke Newtons lov på en bærer i et gitter uten å regne på gitterkreftene: de er allerede pakket inn i tallet. Den finnes fra krumningen til $E(k)$, og er derfor ulik i ulike materialer selv om elektronets <em>ekte</em> masse er den samme."
+    definition: "(<em>effective mass</em>) Massen $m^*$ som lar oss bruke Newtons lov på en bærer i et gitter uten å regne på gitterkreftene: de er allerede pakket inn i tallet. Den finnes fra krumningen til $E(k)$, og er derfor ulik i ulike materialer selv om elektronets <em>ekte</em> masse er den samme."
   - term: Hull
     section: Elektroner og hull
-    definition: "En tom tilstand i valensbåndet, regnet som én bærer med <b>positiv</b> ladning og <b>positiv</b> masse. Strømmen bæres av de gjenværende elektronene, og hullregnskapet gir samme svar med ett ledd i stedet for $10^{23}$."
+    definition: "(<em>hole</em>) En tom tilstand i valensbåndet, regnet som én bærer med <b>positiv</b> ladning og <b>positiv</b> masse. Strømmen bæres av de gjenværende elektronene, og hullregnskapet gir samme svar med ett ledd i stedet for $10^{23}$."
   - term: Elektron-hull-par
     section: Intrinsisk materiale
-    definition: "Et ledningsbåndelektron og hullet det etterlot seg i valensbåndet, laget i samme eksitasjon (EHP). Termisk eller optisk energi $\\ge E_g$ kreves for å lage ett."
+    definition: "(<em>electron-hole pair</em>) Et ledningsbåndelektron og hullet det etterlot seg i valensbåndet, laget i samme eksitasjon (EHP). Termisk eller optisk energi $\\ge E_g$ kreves for å lage ett."
   - term: Intrinsisk halvleder
     section: Intrinsisk materiale
-    definition: "En perfekt krystall uten dopanter eller gitterfeil, der de eneste bærerne er termisk genererte par. Da er $n = p = n_i$."
+    definition: "(<em>intrinsic semiconductor</em>) En perfekt krystall uten dopanter eller gitterfeil, der de eneste bærerne er termisk genererte par. Da er $n = p = n_i$."
   - term: Ekstrinsisk halvleder
     section: Doping
-    definition: "En halvleder der dopanter gjør likevektskonsentrasjonene $n_0$ og $p_0$ forskjellige fra $n_i$. Nesten alle komponenter er bygd av ekstrinsisk materiale."
+    definition: "(<em>extrinsic semiconductor</em>) En halvleder der dopanter gjør likevektskonsentrasjonene $n_0$ og $p_0$ forskjellige fra $n_i$. Nesten alle komponenter er bygd av ekstrinsisk materiale."
   - term: Donor
     section: Doping
     definition: "En urenhet fra gruppe V (P, As, Sb) i Si eller Ge, med ett valenselektron til overs. Den legger et fylt nivå $E_d$ like under $E_c$ og står igjen som et fast positivt ion når elektronet er avgitt. Ved romtemperatur er praktisk talt alle ionisert i Si."
@@ -125,10 +125,10 @@ glossary:
     definition: "Halvleder dopet med akseptorer, der $p_0 \\gg (n_i, n_0)$. Hull er majoritetsbærere, elektroner er minoritetsbærere."
   - term: Majoritetsbærere
     section: Doping
-    definition: "Bærertypen som dominerer etter doping, altså elektroner i n-type og hull i p-type. Dopingen kan endre antallet med mange tierpotenser."
+    definition: "(<em>majority carriers</em>) Bærertypen som dominerer etter doping, altså elektroner i n-type og hull i p-type. Dopingen kan endre antallet med mange tierpotenser."
   - term: Minoritetsbærere
     section: Doping
-    definition: "Den fåtallige bærertypen, altså hull i n-type og elektroner i p-type. De er få, og de styrer likevel oppførselen til pn-overganger og bipolare transistorer."
+    definition: "(<em>minority carriers</em>) Den fåtallige bærertypen, altså hull i n-type og elektroner i p-type. De er få, og de styrer likevel oppførselen til pn-overganger og bipolare transistorer."
 
 features:
   progress: true

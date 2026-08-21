@@ -19,7 +19,7 @@ updated: 2026-08-20
 
 </LearningGoals>
 
-### Fra binding til bånd
+## Fra binding til bånd
 
 Et isolert atom har skarpe energinivåer. Et fast stoff har bånd. Forskjellen
 kommer av hvor mange nivåer som ligger inntil hverandre. To atomorbitaler som
@@ -61,7 +61,7 @@ Grunnstoffene i gruppe IV viser det samme. Gitteravstanden vokser fra 3,56 Å i
 diamant til 6,45 Å i grått tinn, og gapet krymper i takt, fra rundt 5 eV til
 0,08 eV.
 
-### Metall, halvleder og isolator
+## Metall, halvleder og isolator
 
 For å akselereres av et felt må et elektron flytte seg til en tilstand det ikke
 allerede er i. I et fullt bånd er hver eneste tilstand opptatt, og Pauli sperrer
@@ -86,11 +86,11 @@ tilstander ligger blandet.
   src={"/sims/baandfylling.js"}
   host={"dom"}
   title={"Båndfylling"}
-  caption={"Fylte tilstander er farget, ledige er blanke ringer, og hull er røde. Dra temperaturen opp og se hvor brutalt utslaget av gapstørrelsen er. Antall tegnede par er ikke i skala: Si ved romtemperatur har ett par per fem tusen milliarder atomer."}
+  caption={"Fylte tilstander er farget, ledige er blanke ringer, og hull er røde. Dra temperaturen opp og se hvor mye gapstørrelsen har å si. Antall tegnede par er ikke i skala: Si ved romtemperatur har ett par per fem tusen milliarder atomer."}
   height={360}
 />
 
-### $E$–$k$-diagrammet
+## $E$–$k$-diagrammet
 
 Formen på båndene får man ved å regne på ett elektron i et perfekt periodisk
 gitter. Løsningen er <FormulaRef id="bloch-funksjon" />, en
@@ -115,7 +115,7 @@ materialet kan lyse.
   src={"/sims/ek-diagram.js"}
   host={"dom"}
   title={"E–k-diagram"}
-  caption={"Skyv ledningsbåndminimet ut i k, så deler den korteste overgangen seg i et vannrett Δk-steg og et loddrett fall. Den andre slideren endrer krumningen, og utlesningen regner effektiv masse rett ut av det du ser."}
+  caption={"Skyv ledningsbåndminimet ut i $k$, så deler den korteste overgangen seg i et vannrett $\\Delta k$-steg og et loddrett fall. Endrer du krumningen, regner utlesningen effektiv masse rett ut av det du ser."}
   height={400}
 />
 
@@ -130,11 +130,11 @@ momentumet mens fotonet leverer energien. To partnere i samme øyeblikk er
 sjelden, den radiative raten faller flere tierpotenser, og energien havner som
 regel som varme. Derfor bygges lysdioder og lasere i direkte III–V-materialer.
 
-### Effektiv masse
+## Effektiv masse
 
 Et elektron i en krystall kjenner gitterpotensialet og det ytre feltet samtidig,
 og å løse $F_\text{indre} + F_\text{ytre}$ for hver komponent er håpløst. Den
-jobben gjøres én gang: vi løser det periodiske problemet, pakker svaret i $E(k)$,
+jobben gjøres én gang. Vi løser det periodiske problemet, pakker svaret i $E(k)$,
 og leser massen ut av formen.
 
 Utledningen er fire linjer. Deriver gruppehastigheten med hensyn på tid, der
@@ -177,7 +177,7 @@ du dytter mot høyre, akselererer mot venstre. Negativ ladning og negativ masse
 gir en akselerasjon langs feltet, nøyaktig som positiv ladning og positiv masse
 ville gitt.
 
-### Elektroner og hull
+## Elektroner og hull
 
 <Derivation title="Hvorfor det manglende elektronet oppfører seg som en positiv ladning">
 
@@ -220,7 +220,7 @@ Hullenergien øker nedover i båndskjemaet, så hull samler seg på toppen av
 valensbåndet og elektroner på bunnen av ledningsbåndet. Begge søker laveste
 energi, hver sin vei på tegningen.
 
-### Intrinsisk materiale
+## Intrinsisk materiale
 
 En perfekt krystall uten dopanter og gitterfeil er en
 <Term name="Intrinsisk halvleder">intrinsisk halvleder</Term>. De eneste bærerne
@@ -239,7 +239,7 @@ krever at et elektron og et hull møtes, så raten går som produktet $n_0p_0$:
 <FormulaRef id="generasjon-rekombinasjon" />. Generasjonen settes av temperaturen
 alene, så produktet er låst til $n_i^2$.
 
-### Doping
+## Doping
 
 Vi kan bestemme hvilken bærertype som dominerer ved å tilsette urenheter med
 vilje. Slikt materiale kalles
@@ -327,7 +327,7 @@ Den dominerende typen kalles
 <Term name="Minoritetsbærere">minoritetsbærere</Term>. De $10^{5}$ hullene betyr
 ingenting for hvor godt materialet leder, men de styrer hva en pn-overgang gjør.
 
-### Sjekk deg selv
+## Sjekk deg selv
 
 <Quiz
   question={"Hvorfor fører et fullt valensbånd ingen strøm?"}
@@ -356,7 +356,7 @@ ingenting for hvor godt materialet leder, men de styrer hva en pn-overgang gjør
 <KeyTakeaways>
 
 - $N$ atomer splitter hvert nivå i $N$ nivåer. Bredden settes av gitteravstanden, antallet av $N$. De $4N$ valenselektronene i Si fyller valensbåndet nøyaktig ved 0 K.
-- Strøm krever **ledige tilstander**, ikke bare bærere. Metall, halvleder og isolator skilles av fylling og av hvor stort $E_g$ er.
+- Strøm krever ledige tilstander. Bærere alene holder ikke, og metall, halvleder og isolator skilles av fylling og av hvor stort $E_g$ er.
 - I $E$–$k$-diagrammet er stigningstallet farten og krumningen massen, og om ekstremalpunktene ligger ved samme $k$ avgjør om materialet kan lyse.
 - $m^* = \hbar^2/(d^2E/dk^2)$ faller ut av gruppehastigheten og akselerasjonsteoremet på fire linjer. Krumningen avgjør hvor mye fart bæreren får av en gitt kraft.
 - Et hull er en tom tilstand regnet som positiv ladning med positiv masse, og det følger av $J = +qv_j$. I ett bånd teller du elektroner eller hull, aldri begge.
