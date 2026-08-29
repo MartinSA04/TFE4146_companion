@@ -5,9 +5,9 @@
  * båndskjema. Høyre panel er bærerstripene: f·N over E_c (elektroner) og
  * (1−f)·N under E_v (hull), med N(E) ∝ √(avstand fra kanten) og elektron-
  * profilen vektet med N_c/N_v-forholdet. Flatene normeres til den største av
- * de to — n0 og p0 spenner mange tierpotenser, så tegningen bærer formen og
- * utlesningen bærer tallene (jf. Streetman fig. 3–15/3–16, som overdriver
- * halene av samme grunn).
+ * de to — n0 og p0 spenner mange tierpotenser, så tegningen bærer formen
+ * (jf. Streetman fig. 3–15/3–16, som overdriver halene av samme grunn), og
+ * utlesningen nøyer seg med å navngi regimet.
  *
  * Tall for Si: E_g = 1,11 eV, N_c = 2,9·10¹⁹ og N_v = 1,0·10¹⁹ cm⁻³ ved
  * 300 K (Streetman & Banerjee §3.3 + appendiks III), skalert med T^{3/2}.
@@ -74,8 +74,6 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
 
   const kT = () => KB * temp;
   const f = (E) => 1 / (1 + Math.exp((E - ef) / kT()));
-  const nc = () => NC300 * Math.pow(temp / 300, 1.5);
-  const nv = () => NV300 * Math.pow(temp / 300, 1.5);
   /** E_i for gjeldende temperatur: midt i gapet pluss N_c/N_v-forskyvningen. */
   const ei = () => EG / 2 + (kT() / 2) * Math.log(NV300 / NC300);
 
@@ -194,33 +192,22 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       `<path d="${dosPath(0, -1)}" fill="none" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="3 3"/>` +
       `<path d="${profile(eSamp)}" style="fill:var(--accent)" fill-opacity="0.55" stroke="var(--accent)" stroke-width="1.5"/>` +
       `<path d="${profile(hSamp)}" style="fill:var(--red)" fill-opacity="0.45" stroke="var(--red)" stroke-width="1.5"/>` +
-      tag(nX + 6, yc + 14, "ingen tilstander i gapet") +
-      tag(nX + pw / 2, h - 4, "f·N og (1−f)·N, normert, ikke i skala", "middle") +
+      tag(nX + pw / 2, (yc + yv) / 2 + 4, "ingen tilstander", "middle") +
+      tag(nX + pw / 2, h - 4, "f·N og (1−f)·N", "middle") +
       `</svg>`;
 
     readout.innerHTML = describe();
   }
 
   function describe() {
-    const dEc = EG - ef;
     const dEi = ef - ei();
-    const n0 = nc() * Math.exp(-dEc / kT());
-    const p0 = nv() * Math.exp(-ef / kT());
-    const pow = (x) => `10<sup>${NB(Math.log10(x), 1)}</sup>`;
     const type =
       Math.abs(dEi) < 0.02
         ? "praktisk talt intrinsisk"
         : dEi > 0
           ? "n-type"
           : "p-type";
-    const near =
-      Math.min(dEc, ef) < 3 * kT()
-        ? " Så nær kanten svikter Boltzmann-tilnærmingen, så tallene er overslag."
-        : "";
-    return (
-      `E<sub>F</sub> ligger ${NB(Math.abs(dEi), 2)} eV ${dEi >= 0 ? "over" : "under"} E<sub>i</sub>: <b>${type}</b>. ` +
-      `Ved ${temp} K gir det n<sub>0</sub> ≈ ${pow(n0)} og p<sub>0</sub> ≈ ${pow(p0)} cm<sup>−3</sup>.${near}`
-    );
+    return `E<sub>F</sub> ligger ${NB(Math.abs(dEi), 2)} eV ${dEi >= 0 ? "over" : "under"} E<sub>i</sub>: <b>${type}</b>.`;
   }
 
   sync();

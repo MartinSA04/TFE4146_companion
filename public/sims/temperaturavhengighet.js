@@ -12,6 +12,9 @@
  *  - Totalen syr områdene sammen via nøytralitet + massevirkningsloven:
  *    n₀ = n_eff/2 + √((n_eff/2)² + n_i²).
  *
+ * Grafen bærer alt selv: sonene er navngitt, platåets temperaturspenn står
+ * under sonenavnet, og 300 K er merket på aksen. Ingen utlesning.
+ *
  * Kontrakt: default-eksporter init(api), api = { stage, controls, getSize, onResize, signal }.
  */
 
@@ -50,10 +53,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     { signal },
   );
 
-  const readout = document.createElement("div");
-  readout.className = "sim-readout";
-
-  controls.append(label, readout);
+  controls.append(label);
 
   const ni = (T) =>
     NI300 *
@@ -146,13 +146,18 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
         `<path d="M ${P(padL)} ${P(y)} H ${P(padL + pw)}" stroke="var(--border)" stroke-width="${l === YMIN ? 1 : 0.5}"/>` +
         tag(padL - 4, y + 4, `10<tspan dy='-4' font-size='9'>${l}</tspan>`, "end");
     }
-    // Temperatur øverst: eksponentene lever på 1/T-aksen, tallene vi tenker i er T.
-    for (const T of [500, 300, 200, 100, 50]) {
+    // Temperatur øverst: eksponentene lever på 1/T-aksen, tallene vi tenker i
+    // er T. Få merker og enheten bare på det siste, så de ikke kolliderer på
+    // smale skjermer; 300 K har sitt eget merke nederst.
+    const tTicks = [500, 200, 100, 50];
+    for (const T of tTicks) {
       const invT = 1000 / T;
       if (invT < XMIN || invT > XMAX) continue;
+      const x = xOf(invT);
+      const last = T === tTicks[tTicks.length - 1];
       grid +=
-        `<path d="M ${P(xOf(invT))} ${P(padT)} v 4" stroke="var(--border-strong)" stroke-width="1"/>` +
-        tag(xOf(invT), padT - 6, `${T} K`, "middle");
+        `<path d="M ${P(x)} ${P(padT)} v 4" stroke="var(--border-strong)" stroke-width="1"/>` +
+        tag(x, padT - 6, last ? `${T} K` : String(T), last && x > padL + pw - 16 ? "end" : "middle");
     }
 
     // Områdegrensene.
@@ -164,10 +169,13 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       x > padL && x < padL + pw
         ? `<path d="M ${P(x)} ${P(padT)} V ${P(padT + ph)}" stroke="var(--border-strong)" stroke-width="1" stroke-dasharray="4 4"/>`
         : "";
-    const zone = (x1, x2, text) => {
+    const zone = (x1, x2, text, sub) => {
       const a = Math.max(padL, Math.min(x1, x2));
       const b = Math.min(padL + pw, Math.max(x1, x2));
-      return b - a > 58 ? tag((a + b) / 2, padT + 14, text, "middle") : "";
+      if (b - a <= 58) return "";
+      let t = tag((a + b) / 2, padT + 14, text, "middle");
+      if (sub && b - a > 70) t += tag((a + b) / 2, padT + 27, sub, "middle");
+      return t;
     };
 
     stage.innerHTML =
@@ -175,25 +183,26 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       grid +
       `<path d="M ${P(padL)} ${P(padT)} V ${P(padT + ph)}" stroke="var(--border-strong)" stroke-width="1"/>` +
       `<path d="M ${P(padL)} ${P(padT + ph)} H ${P(padL + pw)}" stroke="var(--border-strong)" stroke-width="1"/>` +
-      tag(padL + pw / 2, h - 6, "1000/T (K⁻¹), temperaturen øker mot venstre", "middle") +
+      tag(padL + pw / 2, h - 6, "1000/T (K⁻¹), varmere mot venstre", "middle") +
       `<text x="12" y="${P(padT + ph / 2)}" text-anchor="middle" transform="rotate(-90 12 ${P(padT + ph / 2)})" style="fill:var(--muted);font-family:var(--font-mono);font-size:11px">n₀ (cm⁻³)</text>` +
       sep(xIon) +
       sep(xInt) +
       zone(xInt, padL, "Intrinsisk") +
-      zone(xIon, xInt, "Ekstrinsisk") +
+      zone(
+        xIon,
+        xInt,
+        "Ekstrinsisk",
+        `≈${Math.round(tIon / 10) * 10}–${Math.round(tInt / 10) * 10} K`,
+      ) +
       zone(padL + pw, xIon, "Ionisering") +
       // n_i(T) stiplet, n₀ i aksentfargen.
       `<path d="${curve(ni, false)}" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="5 4"/>` +
       `<path d="${curve((T) => n0(T, Nd))}" fill="none" stroke="var(--accent)" stroke-width="2.5"/>` +
       tag(xOf(2.6), yOf(Math.log10(ni(1000 / 2.6))) - 6, "n<tspan dy='3' font-size='9'>i</tspan><tspan dy='-3'>(T)</tspan>") +
-      // 300 K-merke nederst.
+      // 300 K-merke nederst, med navn: det er der tallene i teksten gjelder.
       `<path d="M ${P(xOf(1000 / 300))} ${P(padT + ph)} v -6" stroke="var(--accent)" stroke-width="2"/>` +
+      tag(xOf(1000 / 300) - 4, padT + ph - 10, "300 K", "end", "var(--accent)") +
       `</svg>`;
-
-    readout.innerHTML =
-      `Med N<sub>d</sub> = 10<sup>${exp}</sup> cm<sup>−3</sup> er donorene ionisert fra omtrent <b>${Math.round(tIon / 5) * 5} K</b>, ` +
-      `og n<sub>i</sub> når dopingnivået ved omtrent <b>${Math.round(tInt / 5) * 5} K</b>. ` +
-      `Mellom de to er n₀ = N<sub>d</sub>, uavhengig av temperatur. Komponenter dopes slik at hele driftsområdet ligger her.`;
   }
 
   sync();
