@@ -5,7 +5,7 @@ summary: "Hvordan Fermi-Dirac-fordelingen og tilstandstettheten gir n0 og p0, hv
 importance: core
 tag: "Uke 35 · Streetman §3.3"
 part: "Del 1: Energibånd og ladningsbærere"
-updated: 2026-08-29
+updated: 2026-08-31
 ---
 
 <LearningGoals>
@@ -86,7 +86,7 @@ fordelingene.
   height={420}
 />
 
-Selve integralet slipper du å regne. Resultatet kan skrives som om hele båndet
+Resultatet av integralet kan skrives som om hele båndet
 var <Term name="Effektiv tilstandstetthet">$N_c$ tilstander lagt på selve
 kanten</Term>, $n_0 = N_c f(E_c)$, med $N_c$ gitt av
 <FormulaRef id="effektiv-tilstandstetthet" />. Ligger $E_F$ noen $kT$ under
@@ -95,6 +95,25 @@ eksponensial. Det er
 <Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>, og med den:
 
 $$n_0 = N_c\, e^{-(E_c - E_F)/kT}, \qquad p_0 = N_v\, e^{-(E_F - E_v)/kT}$$
+
+<Derivation title="Hvordan integralet blir til Boltzmann-uttrykket">
+
+Nær kanten er tilstandstettheten $N(E) = C\sqrt{E - E_c}$, og med
+Boltzmann-tilnærmingen er $f(E) = e^{-(E - E_F)/kT}$. Sett inn begge:
+
+$$n_0 = C \int_{E_c}^{\infty} \sqrt{E - E_c}\; e^{-(E - E_F)/kT}\, dE$$
+
+Trekk den faste faktoren $e^{-(E_c - E_F)/kT}$ ut av integralet, og bytt
+variabel til $x = (E - E_c)/kT$:
+
+$$n_0 = C\,(kT)^{3/2}\, e^{-(E_c - E_F)/kT} \int_{0}^{\infty} \sqrt{x}\, e^{-x}\, dx$$
+
+Integralet er et rent tall, $\sqrt{\pi}/2$. Alt foran eksponensialen er
+materialkonstanter og $T^{3/2}$, og det er $N_c$: sett inn
+$C = 4\pi(2m_n^*)^{3/2}/h^3$, og <FormulaRef id="effektiv-tilstandstetthet" />
+kommer ut. Hullregningen er identisk, med $1 - f$ og $\sqrt{E_v - E}$.
+
+</Derivation>
 
 Begge står i <FormulaRef id="likevektskonsentrasjoner">Formelsamlingen</FormulaRef>.
 Avstanden fra $E_F$ til båndkanten står i eksponenten, og
@@ -134,8 +153,11 @@ båndkant. Bytter du referanse, blir konsentrasjonene
 <FormulaRef id="ni-formene">$n_0 = n_i e^{(E_F - E_i)/kT}$ og
 $p_0 = n_i e^{(E_i - E_F)/kT}$</FormulaRef>: $n_0$ er $n_i$ når $E_F$ står på
 $E_i$, og vokser eksponentielt når nivået trekker mot ledningsbåndet. $E_i$
-ligger nær midten av gapet, men ikke nøyaktig: $N_c \neq N_v$ skyver det, i Si
-omtrent 13 meV under midten ved romtemperatur.
+ligger nær midten av gapet, men ikke nøyaktig. Sett $n_0 = p_0$ i
+Boltzmann-uttrykkene, og nivået faller ut: $E_i$ ligger
+$\tfrac{1}{2}kT\ln(N_c/N_v) = \tfrac{3}{4}kT\ln(m_n^*/m_p^*)$ under midten,
+altså midt i gapet bare når $N_c = N_v$. For Si gir massene omtrent 13 meV ved
+romtemperatur.
 
 <Example title="hvor havner Fermi-nivået når du doper?">
 

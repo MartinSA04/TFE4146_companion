@@ -110,6 +110,9 @@ glossary:
   - term: Bloch-funksjon
     section: E–k-diagrammet
     definition: "Bølgefunksjonen til et elektron i et periodisk gitter: en planbølge multiplisert med en funksjon som har gitterets periodisitet. Den er grunnlaget for å beskrive elektronet ved én bølgevektor $k$."
+  - term: Kronig-Penney-modellen
+    section: E–k-diagrammet
+    definition: "(<em>Kronig–Penney model</em>) Den enkleste modellen som gir bånd og gap: et 1D-gitter regnet som en uendelig, periodisk rekke rektangulære barrierer. Kontinuitet i $\\psi$ og $d\\psi/dx$ pluss Bloch-kravet knytter $E$ til $k$ i én ligning, og energiintervallene uten løsning er båndgapene."
   - term: E-k-diagram
     section: E–k-diagrammet
     definition: "Plott av elektronets totale energi mot bølgevektoren $k$, for én krystallretning. Stigningstallet gir hastigheten, krumningen gir effektiv masse, og formen avgjør om halvlederen er direkte eller indirekte."

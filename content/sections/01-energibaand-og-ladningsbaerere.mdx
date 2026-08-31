@@ -5,7 +5,7 @@ summary: "Hvorfor atomære energinivåer blir til bånd, hva båndgapet skiller,
 importance: core
 tag: "Uke 34 · Streetman §3.1–3.2"
 part: "Del 1: Energibånd og ladningsbærere"
-updated: 2026-08-20
+updated: 2026-08-31
 ---
 
 <LearningGoals>
@@ -13,6 +13,7 @@ updated: 2026-08-20
 - Forklare hvordan bånd oppstår når $N$ atomer nærmer seg hverandre, og hvor <Term name="Valensbånd">valens-</Term> og <Term name="Ledningsbånd">ledningsbåndet</Term> i Si kommer fra.
 - Begrunne hvorfor et fullt bånd ikke fører strøm, og skille metall, halvleder og isolator.
 - Lese et <Term name="E-k-diagram">$E$–$k$-diagram</Term> og avgjøre om en halvleder er <Term name="Direkte halvleder">direkte</Term> eller <Term name="Indirekte halvleder">indirekte</Term>.
+- Skissere <Term name="Kronig-Penney-modellen">Kronig–Penney-modellen</Term> og forklare hvordan bånd og gap følger av den.
 - Utlede <Term name="Effektiv masse">effektiv masse</Term> fra krumningen, og si hva $m^*$ erstatter.
 - Forklare hvorfor tomme tilstander i valensbåndet regnes som <Term name="Hull">hull</Term>.
 - Skille intrinsisk fra ekstrinsisk materiale, og si hva en <Term name="Donor">donor</Term> og en <Term name="Akseptor">akseptor</Term> gjør med båndbildet.
@@ -105,6 +106,19 @@ krefter og heter derfor
 <Term name="Krystallmomentum">krystallmomentum</Term>, men gitterkreftene er
 utelatt, så den er ikke elektronets virkelige bevegelsesmengde.
 
+Den enkleste regningen som faktisk viser båndene, er
+<Term name="Kronig-Penney-modellen">Kronig–Penney-modellen</Term>: gitterets
+potensial erstattes av en uendelig, periodisk rekke like, rektangulære
+barrierer. Innenfor hver brønn og hver barriere er potensialet konstant, så
+Schrödingerligningen har de kjente løsningene derfra, svingende der $E$ ligger
+over potensialet og eksponentielt dempet der det ligger under. Kravene som
+binder delene sammen, er at $\psi$ og $d\psi/dx$ er kontinuerlige på hver
+kant, og at helheten er en Bloch-funksjon, altså gjentar seg med faktoren
+$e^{ikd}$ per periode $d$. Kravene lar seg bare oppfylle når $E$ og $k$ passer
+sammen i én ligning: velg $k$, løs den for $E$, og tegn punktene, så har du
+$E(k)$-diagrammet. Noen energiintervaller mangler løsning uansett $k$, og det
+er båndgapene.
+
 Du leser tre ting ut av diagrammet. Stigningstallet er farten,
 <FormulaRef id="gruppehastighet" />, altså
 <Term name="Gruppehastighet">gruppehastigheten</Term> til bølgepakken. Krumningen
@@ -119,9 +133,11 @@ materialet kan lyse.
   height={400}
 />
 
-I GaAs ligger begge ekstremalpunktene ved $k = 0$, så et elektron kan falle rett
-ned og gi fra seg $E_g = 1{,}43$ eV som et foton. Materialet er en
-<Term name="Direkte halvleder">direkte halvleder</Term>. I Si ligger
+I GaAs ligger begge ekstremalpunktene ved $k = 0$, i dalen som kalles $\Gamma$,
+så et elektron kan falle rett ned og gi fra seg $E_g = 1{,}43$ eV som et foton.
+Materialet er en <Term name="Direkte halvleder">direkte halvleder</Term>.
+Ledningsbåndet har også daler ved høyere energi lenger ut i $k$, kalt $L$ og
+$X$; de er slakkere krummet, så elektronene der er tyngre. I Si ligger
 ledningsbåndminimet omtrent 85 % av veien ut mot sonegrensen, og halvlederen er
 <Term name="Indirekte halvleder">indirekte</Term>: overgangen krever en
 momentumendring i tillegg. Et foton med gapenergien har et bølgetall rundt tusen
