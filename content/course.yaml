@@ -69,15 +69,15 @@ formulas:
     label: "Hydrogenatomets egne resultater med to bytter: lettere elektron ($m_n^*$) og skjermet Coulomb-kraft ($\\varepsilon_r$). Med $a_0 = 0{,}529$ Å gir det $25$ meV og $24$ Å for Si. Anslaget ligger konsekvent under det målte, fordi elektronet nær kjernen verken ser full $\\varepsilon_r$ eller én isotrop masse."
   - id: fermi-dirac
     section: Fermi–Dirac-fordelingen
-    tex: "f(E) = \\dfrac{1}{1 + e^{(E - E_F)/kT}}"
-    label: "Sannsynligheten for at en tillatt tilstand ved energi $E$ er okkupert ved termisk likevekt. $f(E_F) = \\tfrac{1}{2}$, og fordelingen er symmetrisk om nivået: $f(E_F + \\Delta E) = 1 - f(E_F - \\Delta E)$. Ved 300 K er $kT = 0{,}0259$ eV."
+    tex: "f(E) = \\dfrac{1}{1 + e^{(E - E_F)/k_BT}}"
+    label: "Sannsynligheten for at en tillatt tilstand ved energi $E$ er okkupert ved termisk likevekt. $f(E_F) = \\tfrac{1}{2}$, og fordelingen er symmetrisk om nivået: $f(E_F + \\Delta E) = 1 - f(E_F - \\Delta E)$. Ved 300 K er $k_BT = 0{,}0259$ eV."
   - id: likevektskonsentrasjoner
     section: Fra fordeling til konsentrasjon
-    tex: "n_0 = N_c\\, e^{-(E_c - E_F)/kT}, \\qquad p_0 = N_v\\, e^{-(E_F - E_v)/kT}"
-    label: "Likevektskonsentrasjonene når $E_F$ ligger noen $kT$ fra båndkantene (Boltzmann-tilnærmingen). Avstanden fra $E_F$ til kanten står i eksponenten: 60 meV per tierpotens ved romtemperatur."
+    tex: "n_0 = N_c\\, e^{-(E_c - E_F)/k_BT}, \\qquad p_0 = N_v\\, e^{-(E_F - E_v)/k_BT}"
+    label: "Likevektskonsentrasjonene når $E_F$ ligger noen $k_BT$ fra båndkantene (Boltzmann-tilnærmingen). Avstanden fra $E_F$ til kanten står i eksponenten: 60 meV per tierpotens ved romtemperatur."
   - id: effektiv-tilstandstetthet
     section: Fra fordeling til konsentrasjon
-    tex: "N_c = 2\\left(\\dfrac{2\\pi m_n^* kT}{h^2}\\right)^{3/2}"
+    tex: "N_c = 2\\left(\\dfrac{2\\pi m_n^* k_BT}{h^2}\\right)^{3/2}"
     label: "Effektiv tilstandstetthet: hele ledningsbåndet regnet som $N_c$ tilstander lagt på $E_c$, slik at $n_0 = N_c f(E_c)$. For Si ved 300 K er $N_c \\approx 2{,}9 \\times 10^{19}$ cm⁻³ og $N_v \\approx 1{,}0 \\times 10^{19}$ cm⁻³; begge vokser som $T^{3/2}$."
   - id: massevirkningsloven
     section: Massevirkningsloven
@@ -85,11 +85,11 @@ formulas:
     label: "Ved termisk likevekt er produktet låst av materialet og temperaturen, uansett doping: dobler dopingen $n_0$, halveres $p_0$. Samme innhold som ratebalansen $r_i = a_r n_0 p_0 = g_i$, siden generasjonen bare avhenger av temperaturen."
   - id: intrinsisk-konsentrasjon
     section: Massevirkningsloven
-    tex: "n_i = \\sqrt{N_c N_v}\\; e^{-E_g/2kT}"
+    tex: "n_i = \\sqrt{N_c N_v}\\; e^{-E_g/2k_BT}"
     label: "Intrinsisk konsentrasjon, med <b>halve</b> gapet i eksponenten fordi $E_F$ ligger nær midten av det. For Si ved 300 K er $n_i = 1{,}5 \\times 10^{10}$ cm⁻³. Eksponenten dominerer temperaturavhengigheten; $T^{3/2}$-faktorene fra $N_c$ og $N_v$ synes knapt ved siden av."
   - id: ni-formene
     section: Massevirkningsloven
-    tex: "n_0 = n_i\\, e^{(E_F - E_i)/kT}, \\qquad p_0 = n_i\\, e^{(E_i - E_F)/kT}"
+    tex: "n_0 = n_i\\, e^{(E_F - E_i)/k_BT}, \\qquad p_0 = n_i\\, e^{(E_i - E_F)/k_BT}"
     label: "Likevektskonsentrasjonene målt fra det intrinsiske nivået $E_i$. Står $E_F$ på $E_i$, er $n_0 = p_0 = n_i$, og avstanden $E_F - E_i$ forteller direkte hvor sterkt dopet materialet er."
   - id: dos-masse
     section: Effektiv masse for tilstandstetthet
@@ -166,7 +166,7 @@ glossary:
     definition: "(<em>minority carriers</em>) Den fåtallige bærertypen, altså hull i n-type og elektroner i p-type. De er få, og de styrer likevel oppførselen til pn-overganger og bipolare transistorer."
   - term: Fermi-Dirac-fordelingen
     section: Fermi–Dirac-fordelingen
-    definition: "(<em>Fermi–Dirac distribution</em>) $f(E) = [1 + e^{(E - E_F)/kT}]^{-1}$, sannsynligheten for at en tillatt tilstand er okkupert ved termisk likevekt. Følger av at elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Ved 0 K er den en firkant: alt under $E_F$ fullt, alt over tomt."
+    definition: "(<em>Fermi–Dirac distribution</em>) $f(E) = [1 + e^{(E - E_F)/k_BT}]^{-1}$, sannsynligheten for at en tillatt tilstand er okkupert ved termisk likevekt. Følger av at elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Ved 0 K er den en firkant: alt under $E_F$ fullt, alt over tomt."
   - term: Fermi-nivå
     section: Fermi–Dirac-fordelingen
     definition: "(<em>Fermi level</em>) Energien $E_F$ der sannsynligheten for okkupasjon er nøyaktig $\\tfrac{1}{2}$. Fordelingen er symmetrisk om nivået, og plasseringen i gapet bærer hele bærerbildet: nær midten i intrinsisk materiale, nær $E_c$ i n-type og nær $E_v$ i p-type."
@@ -178,7 +178,7 @@ glossary:
     definition: "(<em>effective density of states</em>) $N_c$ og $N_v$: alle båndets fordelte tilstander representert som ett tall lagt på båndkanten, slik at $n_0 = N_c f(E_c)$. Av størrelsesorden $10^{19}$ cm⁻³ for Si ved 300 K, temperaturavhengig som $T^{3/2}$."
   - term: Boltzmann-tilnærmingen
     section: Fra fordeling til konsentrasjon
-    definition: "(<em>Boltzmann approximation</em>) $f(E) \\approx e^{-(E - E_F)/kT}$ når $E - E_F$ er flere $kT$. Gjelder for vanlig doping, der $E_F$ holder seg unna båndkantene; svikter når dopingen presser $E_F$ helt inntil en kant."
+    definition: "(<em>Boltzmann approximation</em>) $f(E) \\approx e^{-(E - E_F)/k_BT}$ når $E - E_F$ er flere $k_BT$. Gjelder for vanlig doping, der $E_F$ holder seg unna båndkantene; svikter når dopingen presser $E_F$ helt inntil en kant."
   - term: Massevirkningsloven
     section: Massevirkningsloven
     definition: "(<em>mass action law</em>) $n_0 p_0 = n_i^2$ ved termisk likevekt, uansett doping. Doper du inn flere elektroner, forsvinner hull i samme faktor, og produktet står stille."

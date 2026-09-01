@@ -230,7 +230,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
           ? "Få, men ikke null — og antallet dobles for hver lille økning i temperatur. Det er denne følsomheten som gjør halvledere styrbare."
           : "Mange par: den termiske energien begynner å bli sammenlignbar med gapet.";
 
-    return `Ved <b>${temp} K</b> er <i>kT</i> = ${kT} meV, og <i>e</i><sup>−E<sub>g</sub>/2kT</sup> ≈ 10<sup>${exp}</sup>. ${tail}`;
+    return `Ved <b>${temp} K</b> er <i>k</i><sub>B</sub><i>T</i> = ${kT} meV, og <i>e</i><sup>−E<sub>g</sub>/2k<sub>B</sub>T</sup> ≈ 10<sup>${exp}</sup>. ${tail}`;
   }
 
   sync();

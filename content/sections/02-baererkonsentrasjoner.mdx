@@ -30,11 +30,11 @@ Elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Fordelingen
 som følger av de tre kravene, er
 <Term name="Fermi-Dirac-fordelingen">Fermi–Dirac-fordelingen</Term>:
 
-$$f(E) = \frac{1}{1 + e^{(E - E_F)/kT}}$$
+$$f(E) = \frac{1}{1 + e^{(E - E_F)/k_BT}}$$
 
 $f(E)$ er sannsynligheten for at en tillatt tilstand med energi $E$ er okkupert
-ved termisk likevekt, og $k$ er Boltzmanns konstant,
-$8{,}62 \times 10^{-5}$ eV/K. Ved romtemperatur er $kT = 0{,}0259$ eV. Den ene
+ved termisk likevekt, og $k_B$ er Boltzmanns konstant,
+$8{,}62 \times 10^{-5}$ eV/K. Ved romtemperatur er $k_BT = 0{,}0259$ eV. Den ene
 frie størrelsen i fordelingen er $E_F$.
 
 <Statement kind="definition" name="Fermi-nivået">
@@ -47,7 +47,7 @@ $\Delta E$ under, $f(E_F + \Delta E) = 1 - f(E_F - \Delta E)$.
 </Statement>
 
 Ved 0 K er fordelingen en firkant: hver tilstand under $E_F$ er fylt, hver
-tilstand over er tom. Varmer du materialet opp, mykner kanten over noen $kT$,
+tilstand over er tom. Varmer du materialet opp, mykner kanten over noen $k_BT$,
 og fordelingen får en hale av fylte tilstander over $E_F$ og en tilsvarende
 hale av tomme under. Mer enn noen tideler av en eV strekker halene seg aldri
 ved vanlige temperaturer.
@@ -66,7 +66,7 @@ $$n_0 = \int_{E_c}^{\infty} f(E)\,N(E)\,dE$$
 Her er <Term name="Tilstandstetthet">tilstandstettheten</Term> $N(E)$ antall
 tilstander per volum og energienhet. Nær båndkanten vokser den som
 $\sqrt{E - E_c}$, fra null på selve kanten, mens $f$ faller eksponentielt.
-Produktet $fN$ er derfor null på kanten, topper seg noen $kT$ over og dør ut
+Produktet $fN$ er derfor null på kanten, topper seg noen $k_BT$ over og dør ut
 derfra: elektronene ligger i en tynn stripe like over $E_c$. Hullene ligger
 tilsvarende i en stripe like under $E_v$, med $1 - f$ som sannsynlighet og
 $\sqrt{E_v - E}$ som tetthet.
@@ -89,24 +89,24 @@ fordelingene.
 Resultatet av integralet kan skrives som om hele båndet
 var <Term name="Effektiv tilstandstetthet">$N_c$ tilstander lagt på selve
 kanten</Term>, $n_0 = N_c f(E_c)$, med $N_c$ gitt av
-<FormulaRef id="effektiv-tilstandstetthet" />. Ligger $E_F$ noen $kT$ under
+<FormulaRef id="effektiv-tilstandstetthet" />. Ligger $E_F$ noen $k_BT$ under
 $E_c$, er eneren i nevneren til $f$ ubetydelig, og sannsynligheten blir en ren
 eksponensial. Det er
 <Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>, og med den:
 
-$$n_0 = N_c\, e^{-(E_c - E_F)/kT}, \qquad p_0 = N_v\, e^{-(E_F - E_v)/kT}$$
+$$n_0 = N_c\, e^{-(E_c - E_F)/k_BT}, \qquad p_0 = N_v\, e^{-(E_F - E_v)/k_BT}$$
 
 <Derivation title="Hvordan integralet blir til Boltzmann-uttrykket">
 
 Nær kanten er tilstandstettheten $N(E) = C\sqrt{E - E_c}$, og med
-Boltzmann-tilnærmingen er $f(E) = e^{-(E - E_F)/kT}$. Sett inn begge:
+Boltzmann-tilnærmingen er $f(E) = e^{-(E - E_F)/k_BT}$. Sett inn begge:
 
-$$n_0 = C \int_{E_c}^{\infty} \sqrt{E - E_c}\; e^{-(E - E_F)/kT}\, dE$$
+$$n_0 = C \int_{E_c}^{\infty} \sqrt{E - E_c}\; e^{-(E - E_F)/k_BT}\, dE$$
 
-Trekk den faste faktoren $e^{-(E_c - E_F)/kT}$ ut av integralet, og bytt
-variabel til $x = (E - E_c)/kT$:
+Trekk den faste faktoren $e^{-(E_c - E_F)/k_BT}$ ut av integralet, og bytt
+variabel til $x = (E - E_c)/k_BT$:
 
-$$n_0 = C\,(kT)^{3/2}\, e^{-(E_c - E_F)/kT} \int_{0}^{\infty} \sqrt{x}\, e^{-x}\, dx$$
+$$n_0 = C\,(k_BT)^{3/2}\, e^{-(E_c - E_F)/k_BT} \int_{0}^{\infty} \sqrt{x}\, e^{-x}\, dx$$
 
 Integralet er et rent tall, $\sqrt{\pi}/2$. Alt foran eksponensialen er
 materialkonstanter og $T^{3/2}$, og det er $N_c$: sett inn
@@ -117,7 +117,7 @@ kommer ut. Hullregningen er identisk, med $1 - f$ og $\sqrt{E_v - E}$.
 
 Begge står i <FormulaRef id="likevektskonsentrasjoner">Formelsamlingen</FormulaRef>.
 Avstanden fra $E_F$ til båndkanten står i eksponenten, og
-$kT \ln 10 \approx 60$ meV ved romtemperatur: hver 60 meV $E_F$ flyttes nærmere
+$k_BT \ln 10 \approx 60$ meV ved romtemperatur: hver 60 meV $E_F$ flyttes nærmere
 $E_c$, tidobles $n_0$.
 
 For Si ved 300 K er $N_c \approx 2{,}9 \times 10^{19}$ cm⁻³ og
@@ -130,11 +130,11 @@ gjør at små endringer i $f$ gir store endringer i bærertall.
 
 Gang de to konsentrasjonene sammen, og $E_F$ faller bort:
 
-$$n_0 p_0 = N_c N_v\, e^{-E_g/kT}$$
+$$n_0 p_0 = N_c N_v\, e^{-E_g/k_BT}$$
 
 Produktet avhenger av materialet og temperaturen, ikke av dopingen. I
 intrinsisk materiale er $n_0 = p_0 = n_i$, så
-<FormulaRef id="intrinsisk-konsentrasjon">$n_i = \sqrt{N_cN_v}\,e^{-E_g/2kT}$</FormulaRef>,
+<FormulaRef id="intrinsisk-konsentrasjon">$n_i = \sqrt{N_cN_v}\,e^{-E_g/2k_BT}$</FormulaRef>,
 med halve gapet i eksponenten. For Si ved 300 K er
 $n_i = 1{,}5 \times 10^{10}$ cm⁻³.
 
@@ -150,12 +150,12 @@ generasjonen avhenger bare av temperaturen, så produktet er låst.
 Ofte er det lettere å måle $E_F$ fra
 <Term name="Intrinsisk nivå">det intrinsiske nivået</Term> $E_i$ enn fra en
 båndkant. Bytter du referanse, blir konsentrasjonene
-<FormulaRef id="ni-formene">$n_0 = n_i e^{(E_F - E_i)/kT}$ og
-$p_0 = n_i e^{(E_i - E_F)/kT}$</FormulaRef>: $n_0$ er $n_i$ når $E_F$ står på
+<FormulaRef id="ni-formene">$n_0 = n_i e^{(E_F - E_i)/k_BT}$ og
+$p_0 = n_i e^{(E_i - E_F)/k_BT}$</FormulaRef>: $n_0$ er $n_i$ når $E_F$ står på
 $E_i$, og vokser eksponentielt når nivået trekker mot ledningsbåndet. $E_i$
 ligger nær midten av gapet, men ikke nøyaktig. Sett $n_0 = p_0$ i
 Boltzmann-uttrykkene, og nivået faller ut: $E_i$ ligger
-$\tfrac{1}{2}kT\ln(N_c/N_v) = \tfrac{3}{4}kT\ln(m_n^*/m_p^*)$ under midten,
+$\tfrac{1}{2}k_BT\ln(N_c/N_v) = \tfrac{3}{4}k_BT\ln(m_n^*/m_p^*)$ under midten,
 altså midt i gapet bare når $N_c = N_v$. For Si gir massene omtrent 13 meV ved
 romtemperatur.
 
@@ -168,9 +168,9 @@ Finn $p_0$, og plasser $E_F$ i forhold til $E_i$.
 
 - Donorene dominerer: $n_0 \approx N_d = 10^{17}$ cm⁻³.
 - Massevirkningsloven gir minoriteten: $p_0 = n_i^2/n_0 = (1{,}5 \times 10^{10})^2/10^{17} = 2{,}25 \times 10^{3}$ cm⁻³.
-- Snu $n_0 = n_i e^{(E_F - E_i)/kT}$: $E_F - E_i = kT \ln(n_0/n_i) = 0{,}0259\ \text{eV} \cdot \ln(6{,}7 \times 10^{6}) = 0{,}41$ eV.
+- Snu $n_0 = n_i e^{(E_F - E_i)/k_BT}$: $E_F - E_i = k_BT \ln(n_0/n_i) = 0{,}0259\ \text{eV} \cdot \ln(6{,}7 \times 10^{6}) = 0{,}41$ eV.
 
-<Answer>$p_0 = 2{,}25 \times 10^{3}$ cm⁻³, fjorten tierpotenser under majoriteten, og $E_F$ ligger $0{,}41$ eV over $E_i$, omtrent $0{,}16$ eV under $E_c$. Det er fortsatt seks $kT$ fra kanten, så Boltzmann-tilnærmingen holder.</Answer>
+<Answer>$p_0 = 2{,}25 \times 10^{3}$ cm⁻³, fjorten tierpotenser under majoriteten, og $E_F$ ligger $0{,}41$ eV over $E_i$, omtrent $0{,}16$ eV under $E_c$. Det er fortsatt seks $k_BT$ fra kanten, så Boltzmann-tilnærmingen holder.</Answer>
 
 </Solution>
 
@@ -217,7 +217,7 @@ $0{,}26\,m_0$.
 ## Temperaturavhengigheten
 
 Temperaturen står to steder i $n_i$: som $T^{3/2}$ i $N_c$ og $N_v$, og i
-eksponenten $e^{-E_g/2kT}$. Eksponenten dominerer så grundig at $\ln n_i$ mot
+eksponenten $e^{-E_g/2k_BT}$. Eksponenten dominerer så grundig at $\ln n_i$ mot
 $1/T$ er praktisk talt en rett linje med stigningstall $-E_g/2k$. Slike kurver
 plottes mot $1000/T$, så temperaturen øker mot venstre. Gapet bestemmer
 nivåene: ved 300 K er $n_i$ lik $2{,}5 \times 10^{13}$ cm⁻³ i Ge,
@@ -289,10 +289,10 @@ $n_0$, $p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
 
 <KeyTakeaways>
 
-- $f(E) = [1 + e^{(E - E_F)/kT}]^{-1}$ er sannsynligheten for at en tilstand er okkupert. $f(E_F) = \tfrac{1}{2}$, fordelingen er symmetrisk om nivået, og ved 300 K er $kT = 0{,}0259$ eV.
-- Bærerne ligger i tynne striper ved båndkantene: $N(E)$ vokser fra null, $f$ faller eksponentielt, og produktet topper seg noen $kT$ fra kanten.
-- Med Boltzmann-tilnærmingen er $n_0 = N_c e^{-(E_c - E_F)/kT}$ og $p_0 = N_v e^{-(E_F - E_v)/kT}$. 60 meV i $E_F$-avstand er en tierpotens ved romtemperatur.
-- $n_0 p_0 = n_i^2$ uansett doping, og $n_i = \sqrt{N_c N_v}\,e^{-E_g/2kT}$, som er $1{,}5 \times 10^{10}$ cm⁻³ for Si ved 300 K.
+- $f(E) = [1 + e^{(E - E_F)/k_BT}]^{-1}$ er sannsynligheten for at en tilstand er okkupert. $f(E_F) = \tfrac{1}{2}$, fordelingen er symmetrisk om nivået, og ved 300 K er $k_BT = 0{,}0259$ eV.
+- Bærerne ligger i tynne striper ved båndkantene: $N(E)$ vokser fra null, $f$ faller eksponentielt, og produktet topper seg noen $k_BT$ fra kanten.
+- Med Boltzmann-tilnærmingen er $n_0 = N_c e^{-(E_c - E_F)/k_BT}$ og $p_0 = N_v e^{-(E_F - E_v)/k_BT}$. 60 meV i $E_F$-avstand er en tierpotens ved romtemperatur.
+- $n_0 p_0 = n_i^2$ uansett doping, og $n_i = \sqrt{N_c N_v}\,e^{-E_g/2k_BT}$, som er $1{,}5 \times 10^{10}$ cm⁻³ for Si ved 300 K.
 - Massen i $N_c$ teller tilstander: seks daler og geometrisk middel gir $m_n^* = 1{,}1\,m_0$ i Si. Til transport veies de samme krumningene annerledes.
 - $n_0(T)$ har tre områder: ionisering, ekstrinsisk platå på $N_d$ og intrinsisk der $n_i$ tar igjen dopingen. Komponenter dopes så platået dekker driftsområdet.
 - Ladningsnøytralitet $p_0 + N_d^+ = n_0 + N_a^-$ og massevirkningsloven bestemmer alt; kompensasjon gir netto $N_d - N_a$.
