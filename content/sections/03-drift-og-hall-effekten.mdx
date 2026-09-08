@@ -1,0 +1,252 @@
+---
+order: 3
+title: "Drift og Hall-effekten"
+summary: "Hvordan kollisjoner og effektiv masse gir mobilitet og ledningsevne, hvorfor mobiliteten faller med temperatur og doping, hva en Hall-måling forteller om bærertype, konsentrasjon og mobilitet, og hvorfor Fermi-nivået er flatt i likevekt."
+importance: core
+tag: "Uke 36 · Streetman §3.4–3.5"
+part: "Del 1: Energibånd og ladningsbærere"
+updated: 2026-09-08
+---
+
+<LearningGoals>
+
+- Utlede <Term name="Mobilitet">mobilitet</Term> fra kollisjoner, og regne ledningsevne og resistans fra $n$, $p$, $\mu_n$ og $\mu_p$.
+- Forklare hvordan <Term name="Gitterspredning">gitterspredning</Term> og <Term name="Urenhetsspredning">urenhetsspredning</Term> styrer mobiliteten.
+- Hente bærertype, konsentrasjon og mobilitet ut av en <Term name="Hall-effekten">Hall-måling</Term>.
+- Begrunne at Fermi-nivået er flatt i likevekt.
+
+</LearningGoals>
+
+## Drift
+
+Bærerne står aldri stille. Ved romtemperatur farer et elektron omkring med
+rundt $10^7$ cm/s og skifter retning hver gang det spres mot en
+gittervibrasjon, en urenhet eller en defekt. Retningene er tilfeldige, så
+gruppen av elektroner har ingen netto bevegelse, og strømmen er null.
+
+Et elektrisk felt $\mathcal{E}_x$ legger en liten, felles komponent oppå den
+tilfeldige bevegelsen, og kollisjonene bremser den. I stasjonær tilstand
+balanserer de to.
+
+<Derivation title="Fra kollisjoner til mobilitet">
+
+La $\tau$ være <Term name="Midlere kollisjonstid">midlere tid mellom
+kollisjoner</Term>. Sannsynligheten for at et gitt elektron kolliderer i
+løpet av $dt$ er $dt/\tau$, og en kollisjon nullstiller i gjennomsnitt den
+bevegelsesmengden elektronet hadde fått av feltet. For $n$ elektroner per
+volum med samlet bevegelsesmengde $p_x$ er tapet derfor $p_x/\tau$ per tid,
+mens feltet tilfører $-nq\mathcal{E}_x$:
+
+$$
+-\frac{p_x}{\tau} - nq\,\mathcal{E}_x = 0
+$$
+
+Del på $n$ for å få bevegelsesmengden per elektron, og på $m_n^*$ for å få
+hastigheten:
+
+$$
+\langle v_x\rangle = -\frac{q\tau}{m_n^*}\,\mathcal{E}_x
+$$
+
+Faktoren foran feltet er <FormulaRef id="drifthastighet">mobiliteten</FormulaRef>,
+$\mu_n = q\tau/m_n^*$.
+
+</Derivation>
+
+<Statement kind="definition" name="Mobilitet">
+
+Drifthastigheten per felt, $\mu_n = q\tau/m_n^*$, med enhet cm²/V·s.
+Elektroner driver mot feltet og hull med feltet, og begge mobilitetene
+defineres positive.
+
+</Statement>
+
+Strømtettheten er ladning ganger antall ganger hastighet, og med begge
+bærertypene:
+
+$$
+J_x = q\,(n\mu_n + p\mu_p)\,\mathcal{E}_x = \sigma\,\mathcal{E}_x
+$$
+
+Det er Ohms lov med ledningsevnen $\sigma$ skrevet ut, og resistiviteten er
+$\rho = 1/\sigma$. Begge bærertypene gir strøm langs feltet: hullene beveger
+seg med feltet, elektronene mot, og fortegnet på ladningen snur bidraget. En
+stav med lengde $L$ og tverrsnitt $wt$ får resistansen $R = \rho L/wt$, som
+står i <FormulaRef id="ledningsevne">Formelsamlingen</FormulaRef>. Siden
+$p_0 = n_i^2/n_0$, har $\sigma$ som funksjon av dopingen et minimum, og det
+ligger litt på p-siden av intrinsisk, fordi hullene har den laveste
+mobiliteten.
+
+For Si er $\mu_n = 1350$ og $\mu_p = 480$ cm²/V·s ved 300 K i rent
+materiale. Ved 100 V/cm driver elektronene med $1{,}35 \times 10^5$ cm/s,
+omtrent én prosent av den termiske farten, og $\tau = \mu_n m_n^*/q$ er rundt
+$0{,}2$ ps.
+
+Massen i $\mu_n$ er ikke tellemassen fra $N_c$. Til transport teller det hvor
+lett bæreren akselererer, og for de seks dalene i Si blir det et harmonisk
+middel av krumningsmassene, <FormulaRef id="konduktivitetsmasse" />, som gir
+$0{,}26\,m_0$. Lett masse gir høy mobilitet: i GaAs er $m_n^* = 0{,}067\,m_0$
+og $\mu_n = 8500$ cm²/V·s.
+
+### Spredning, temperatur og doping
+
+To mekanismer sprer bærerne. <Term name="Gitterspredning">Gitterspredning</Term>
+er kollisjoner med gittervibrasjoner, og den øker med temperaturen, omtrent
+som $T^{-3/2}$ i mobiliteten. <Term name="Urenhetsspredning">Urenhetsspredning</Term>
+er avbøyning i Coulomb-feltet fra ioniserte dopanter, og den er sterkest når
+bærerne beveger seg sakte, så den gir en mobilitet som vokser omtrent som
+$T^{3/2}$. Sannsynlighetene for kollisjon legges sammen, så mobilitetene
+legges sammen invers, og den minste dominerer:
+
+$$
+\frac{1}{\mu} = \frac{1}{\mu_\text{gitter}} + \frac{1}{\mu_\text{urenhet}}
+$$
+
+Regelen står i <FormulaRef id="matthiessen">Formelsamlingen</FormulaRef>.
+
+Ved romtemperatur er rent Si gitterbegrenset. Doper du inn $10^{17}$ donorer
+per cm³, faller $\mu_n$ fra 1350 til 700 cm²/V·s, så ledningsevnen vokser
+langsommere enn dopingen.
+
+<Simulation
+  src={"/sims/mobilitet.js"}
+  host={"dom"}
+  title={"Mobiliteten mot temperaturen"}
+  caption={"Velg dopingen. Gitterspredning begrenser mobiliteten på den varme siden, urenhetsspredning på den kalde, og toppen ligger der de to er like sterke. Mer doping trekker toppen ned og mot høyere temperatur. Boka tegner de samme kurvene på logaritmiske akser, der hver mekanisme blir en rett linje."}
+  height={380}
+/>
+
+Ohms lov gjelder så lenge drifthastigheten er liten mot den termiske. Over
+omtrent $10^3$ V/cm bøyer $v_d$ av, og i Si flater den ut ved
+<Term name="Metningshastighet">$v_s \approx 10^7$ cm/s</Term>: energien
+feltet tilfører går til gitteret i stedet for til mer fart, og strømmen blir
+nesten uavhengig av feltet.
+
+## Hall-effekten
+
+Legg et magnetfelt $\mathcal{B}_z$ på tvers av en p-type stav med strøm langs
+$x$. Kraften på et hull er $q(\mathcal{E} + v \times \mathcal{B})$, med
+$y$-komponent $q(\mathcal{E}_y - v_x\mathcal{B}_z)$. Hullene bøyes av mot
+$-y$ til ladningen på kanten har bygd opp et felt
+$\mathcal{E}_y = v_x\mathcal{B}_z$ som opphever avbøyningen. Med
+$v_x = J_x/qp_0$:
+
+$$
+\mathcal{E}_y = \frac{J_x\mathcal{B}_z}{qp_0} = R_H\,J_x\mathcal{B}_z,
+\qquad R_H = \frac{1}{qp_0}
+$$
+
+<Term name="Hall-koeffisient">Hall-koeffisienten</Term> $R_H$ måles som
+$V_{AB}/w$ delt på $J_x\mathcal{B}_z$, og gir konsentrasjonen direkte. For
+elektroner bytter $q$ fortegn, så Hall-spenningen er negativ i n-type, og
+fortegnet er den vanlige måten å bestemme bærertypen på. Måler du i tillegg
+resistansen, får du $\rho$, og siden $\sigma = q\mu_p p_0$, er
+$\mu_p = R_H/\rho$.
+Ligger kontaktene A og B litt forskjøvet langs staven, inneholder $V_{AB}$
+også et resistivt spenningsfall; snu $\mathcal{B}$, så bytter bare
+Hall-delen fortegn, og halve differansen er Hall-spenningen. Halve summen er
+spenningsfallet over forskyvningen, og med $R = \rho L/wt$ for den lengden
+gir det resistiviteten uten en egen resistansmåling.
+
+<Example title="hva forteller Hall-målingen?">
+
+En stav med $w = 0{,}1$ mm, $t = 10$ µm og $L = 5$ mm står i
+$\mathcal{B}_z = 1$ T. Med $I_x = 1$ mA måles $V_{AB} = -2$ mV på tvers og
+$V_{CD} = 100$ mV langs staven. Finn type, konsentrasjon og mobilitet for
+majoritetsbærerne.
+
+<Solution>
+
+Negativ $V_{AB}$ betyr at bærerne er elektroner: n-type. Med
+$\mathcal{E}_y = V_{AB}/w$ og $J_x = I_x/wt$ faller bredden bort, og i
+SI-enheter:
+
+$$
+\begin{aligned}
+n_0 &= \frac{I_x\mathcal{B}_z}{qt\,|V_{AB}|} \\
+&= \frac{10^{-3} \cdot 1}{1{,}6 \cdot 10^{-19} \cdot 10^{-5} \cdot 2 \cdot 10^{-3}} \\
+&= 3{,}1 \cdot 10^{23}\ \text{m}^{-3} \\
+&= 3{,}1 \cdot 10^{17}\ \text{cm}^{-3}
+\end{aligned}
+$$
+
+Resistansen er $V_{CD}/I_x = 100$ Ω, så
+
+$$
+\begin{aligned}
+\rho &= R\,\frac{wt}{L} \\
+&= 100\ \Omega \cdot \frac{0{,}01\ \text{cm} \cdot 10^{-3}\ \text{cm}}{0{,}5\ \text{cm}} \\
+&= 2 \cdot 10^{-3}\ \Omega\cdot\text{cm}
+\end{aligned}
+$$
+
+og mobiliteten følger av $\sigma = q\mu_n n_0$, der
+$q n_0 = 1{,}6 \cdot 10^{-19} \cdot 3{,}1 \cdot 10^{17} = 0{,}05$ C/cm³:
+
+$$
+\begin{aligned}
+\mu_n &= \frac{1}{q n_0 \rho} \\
+&= \frac{1}{0{,}05 \cdot 2 \cdot 10^{-3}} \\
+&= 10^{4}\ \text{cm}^2/\text{V·s}
+\end{aligned}
+$$
+
+<Answer>n-type med $n_0 = 3{,}1 \times 10^{17}$ cm⁻³ og $\mu_n = 10^4$ cm²/V·s.</Answer>
+
+</Solution>
+
+</Example>
+
+## Fermi-nivået ved likevekt
+
+Sett to materialer i kontakt slik at elektroner kan gå mellom dem. En
+overgang ved energien $E$ krever et elektron i 1 og en ledig tilstand i 2
+ved samme energi, så raten fra 1 til 2 er proporsjonal med fylte tilstander
+i 1 ganger tomme i 2, $N_1 f_1 \cdot N_2(1 - f_2)$, og raten motsatt vei er
+$N_2 f_2 \cdot N_1(1 - f_1)$. I likevekt går det verken netto ladning eller
+netto energi mellom dem, så ratene må være like ved hver energi for seg. Gang
+ut, og alt annet enn $f_1 = f_2$ faller bort. Fordelingene er like ved alle
+energier bare når $E_{F1} = E_{F2}$.
+
+<Statement kind="principle" name="Fermi-nivået er flatt i likevekt">
+
+Gjennom materialer i kontakt ved termisk likevekt er $E_F$ konstant,
+<FormulaRef id="fermi-flat" />. Det gjelder ulikt dopede områder i samme
+krystall like mye som en metallkontakt på en halvleder.
+
+</Statement>
+
+## Sjekk deg selv
+
+<Quiz
+  question={"Du dobler donortettheten i n-type Si fra $10^{16}$ til $2 \\times 10^{16}$ cm⁻³ ved 300 K. Hva skjer med ledningsevnen?"}
+  options={[
+    "Den dobles nøyaktig",
+    "Den øker, men mindre enn til det dobbelte",
+    "Den er uendret, siden $n_0 p_0 = n_i^2$",
+    "Den halveres"
+  ]}
+  answer={1}
+  explanation={"$\\sigma = q n_0 \\mu_n$, og $n_0$ dobles. Flere ioniserte donorer gir mer urenhetsspredning, så $\\mu_n$ faller litt, og produktet vokser mindre enn til det dobbelte. Massevirkningsloven styrer $p_0$, som ikke betyr noe for $\\sigma$ her."}
+/>
+
+<Quiz
+  question={"I en Hall-måling leser du $V_{AB} = +4{,}4$ mV, og når du snur magnetfeltet, $-3{,}6$ mV. Hva er Hall-spenningen?"}
+  options={[
+    "4,4 mV",
+    "4,0 mV",
+    "0,4 mV",
+    "8,0 mV"
+  ]}
+  answer={1}
+  explanation={"Bare Hall-delen bytter fortegn når $\\mathcal{B}$ snus, mens et resistivt spenningsfall fra forskjøvne kontakter står fast. Halve differansen, $(4{,}4 + 3{,}6)/2 = 4{,}0$ mV, er Hall-spenningen, og halve summen, $0{,}4$ mV, er forskyvningen."}
+/>
+
+<KeyTakeaways>
+
+- Kollisjoner hver $\tau$ balanserer feltet: $\mu = q\tau/m^*$ og $J = q(n\mu_n + p\mu_p)\mathcal{E} = \sigma\mathcal{E}$, med det harmoniske middelet $0{,}26\,m_0$ som masse i Si.
+- Gitterspredning gir $\mu \sim T^{-3/2}$, urenhetsspredning $\mu \sim T^{3/2}$, og den minste mobiliteten dominerer. $10^{17}$ donorer per cm³ halverer $\mu_n$ i Si. Over $10^3$ V/cm metter $v_d$ ved $10^7$ cm/s.
+- Hall-spenningen gir $R_H = 1/qp_0$ med fortegn etter bærertypen, og $\mu = R_H/\rho$.
+- $E_F$ er flat gjennom alt som er i likevekt med hverandre.
+
+</KeyTakeaways>

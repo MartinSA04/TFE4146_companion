@@ -1,0 +1,250 @@
+---
+order: 4
+title: "Overskuddsbærere og diffusjon"
+summary: "Hvordan overskuddsbærere rekombinerer med en levetid, hvorfor kvasi-Fermi-nivåene splitter seg under lys, hvordan en gradient gir diffusjonsstrøm, hva Einstein-relasjonen knytter sammen, og hvordan drift, diffusjon og rekombinasjon samles i kontinuitetsligningen."
+importance: core
+tag: "Uke 36 · Streetman §4.1–4.4.3"
+part: "Del 1: Energibånd og ladningsbærere"
+updated: 2026-09-08
+---
+
+<LearningGoals>
+
+- Sette opp rekombinasjonen av <Term name="Overskuddsbærere">overskuddsbærere</Term> og regne med <Term name="Levetid">levetid</Term> ved lav injeksjon.
+- Bruke <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåer</Term> for $n$ og $p$ utenfor likevekt.
+- Skrive ned drift- og <Term name="Diffusjon">diffusjonsstrømmen</Term> for begge bærertyper, og bruke <Term name="Einstein-relasjonen">Einstein-relasjonen</Term>.
+- Stille opp <Term name="Kontinuitetsligningen">kontinuitetsligningen</Term> og si hva hvert ledd betyr.
+
+</LearningGoals>
+
+## Overskuddsbærere
+
+Nesten alle komponenter virker ved at det finnes flere bærere enn likevekten
+gir. Lys med $h\nu \ge E_g$ absorberes og lager par, med intensiteten fallende
+som $e^{-\alpha x}$ innover i materialet. Bærere kan også sprøytes inn over en
+kontakt. Uansett kilde skriver vi $n = n_0 + \delta n$ og $p = p_0 + \delta p$,
+og siden parene lages og forsvinner parvis, er $\delta n = \delta p$.
+
+I mørket balanserer generasjonen $g(T) = a_r n_i^2$ rekombinasjonen
+$a_r n_0 p_0$. Med overskudd rekombinerer det raskere enn det genereres:
+
+$$
+\begin{aligned}
+\frac{d\,\delta n}{dt} &= a_r n_i^2 - a_r(n_0 + \delta n)(p_0 + \delta p) \\
+&= -a_r\left[(n_0 + p_0)\,\delta n + \delta n^2\right]
+\end{aligned}
+$$
+
+Ved <Term name="Lav injeksjon">lav injeksjon</Term> er $\delta n$ liten mot
+majoritetskonsentrasjonen, så $\delta n^2$ kan strykes, og i p-type materiale
+er $n_0$ ubetydelig ved siden av $p_0$. Det som står igjen, er en lineær
+ligning med eksponentiell løsning:
+
+$$
+\delta n(t) = \Delta n\, e^{-a_r p_0 t} = \Delta n\, e^{-t/\tau_n}
+$$
+
+med $\tau_n = 1/a_r p_0$.
+
+$\tau_n$ er <Term name="Levetid">levetiden</Term> til minoritetsbærerne;
+den generelle formen $1/a_r(n_0 + p_0)$ står i
+<FormulaRef id="levetid">Formelsamlingen</FormulaRef>. Majoriteten faller med
+samme rate, siden bærerne forsvinner parvis, men for den er $\delta p$ en
+liten korreksjon på $p_0$.
+
+I Si og Ge er direkte rekombinasjon sjelden. Nesten all rekombinasjon går via
+<Term name="Rekombinasjonssenter">rekombinasjonssentre</Term>, urenheter og
+defekter med et nivå $E_r$ inne i gapet. Et senter under $E_F$ er fylt, og
+fanger først et hull og deretter et elektron; energien går til gitteret som
+varme i to steg. Slipper senteret den første bæreren tilbake til båndet før
+den andre kommer, er det en <Term name="Felle">felle</Term>. Nivåer nær
+midten av gapet, som gull i Si med 0,54 eV, holder på det de fanger, så de
+er effektive rekombinasjonssentre. Levetiden i Si settes derfor av renheten.
+
+### Kvasi-Fermi-nivåer
+
+Med jevnt lys på prøven legges den optiske generasjonen $g_\text{op}$ til den
+termiske, og konsentrasjonene stiller seg inn der rekombinasjonen tar unna
+begge. Ved lav injeksjon gir samme regning som over at overskuddet er
+generasjonsraten ganger levetiden,
+<FormulaRef id="stasjonaert-overskudd">$\delta n = \delta p = g_\text{op}\tau_n$</FormulaRef>.
+Nå er $np \ne n_i^2$, og $E_F$ har ingen mening. Vi beholder formen på
+likevektsuttrykkene ved å gi hver bærertype sitt eget nivå:
+
+$$
+n = n_i\, e^{(F_n - E_i)/k_BT}, \qquad p = n_i\, e^{(E_i - F_p)/k_BT}
+$$
+
+$F_n$ og $F_p$ er <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåene</Term>.
+I likevekt faller de sammen med $E_F$, og avstanden $F_n - F_p$ måler hvor
+langt materialet er fra likevekt. Et gitt overskudd flytter minoritetsnivået
+langt og majoritetsnivået nesten ikke, siden overskuddet er mange tierpotenser
+for minoriteten og en brøkdel for majoriteten.
+
+<Example title="hvor havner kvasi-Fermi-nivåene i belyst Si?">
+
+En Si-prøve med $n_0 = 10^{14}$ cm⁻³ og $\tau_n = \tau_p = 2$ µs belyses så
+det lages $10^{19}$ par per cm³ og sekund. Finn $n$, $p$ og de to nivåene
+ved 300 K.
+
+<Solution>
+
+- Overskuddet: $\delta n = \delta p = g_\text{op}\tau_n$, altså $10^{19} \cdot 2 \times 10^{-6} = 2 \times 10^{13}$ cm⁻³.
+- Majoriteten: $n = 1{,}2 \times 10^{14}$ cm⁻³, 20 % over $n_0$.
+- Minoriteten: $p_0 = n_i^2/n_0 = 2{,}25 \times 10^{6}$ cm⁻³ i mørket, mot $p = 2 \times 10^{13}$ cm⁻³ i lyset.
+- $F_n - E_i = k_BT\ln(n/n_i)$, altså $0{,}0259 \cdot \ln(8 \times 10^{3}) = 0{,}233$ eV.
+- $E_i - F_p = k_BT\ln(p/n_i)$, altså $0{,}0259 \cdot \ln(1{,}3 \times 10^{3}) = 0{,}186$ eV.
+
+<Answer>$F_n$ ligger $0{,}233$ eV over $E_i$, bare 5 meV over likevektsnivået $E_F$ på $0{,}228$ eV. $F_p$ ligger $0{,}186$ eV under $E_i$, mens $E_F$ lå over. Hullene har økt sju tierpotenser, elektronene 20 %, og $F_n - F_p = 0{,}42$ eV.</Answer>
+
+</Solution>
+
+</Example>
+
+<Simulation
+  src={"/sims/kvasi-fermi.js"}
+  host={"dom"}
+  title={"Kvasi-Fermi-nivåene i belyst n-type Si"}
+  caption={"Velg doping og lysstyrke. Til venstre står båndskjemaet med $E_F$ i mørket og $F_n$ og $F_p$ i lyset, og klammen er splittingen $F_n - F_p$. Til høyre står $n$ og $p$ som stolper på logaritmisk skala, med likevektsverdiene $n_0$ og $p_0$ merket. Majoritetsnivået rører seg knapt, minoritetsnivået flytter seg mange $k_BT$."}
+  height={400}
+/>
+
+## Diffusjon
+
+Der konsentrasjonen varierer, gir den tilfeldige bevegelsen alene en netto
+strøm av bærere fra høy til lav konsentrasjon. Del $x$-aksen i biter på én
+midlere fri veilengde $l$. Av bærerne i biten til venstre for $x_0$ krysser
+halvparten mot høyre i løpet av $\tau$, og av bærerne til høyre krysser
+halvparten mot venstre. Nettofluksen er $\tfrac{l}{2\tau}(n_1 - n_2)$, og med
+$n_1 - n_2 = -l\,dn/dx$:
+
+$$
+\phi_n = -D_n\frac{dn}{dx}, \qquad D_n = \frac{l^2}{2\tau}
+$$
+
+$D_n$ er <Term name="Diffusjonskoeffisient">diffusjonskoeffisienten</Term>,
+med enhet cm²/s. Hull diffunderer på samme måte med $D_p$. Elektroner og hull
+i samme gradient beveger seg samme vei, men ladningene har motsatt fortegn,
+så <FormulaRef id="diffusjonsstrom">diffusjonsstrømmene</FormulaRef> går
+hver sin vei:
+
+$$
+J_n^\text{diff} = +qD_n\frac{dn}{dx}, \qquad J_p^\text{diff} = -qD_p\frac{dp}{dx}
+$$
+
+Med felt og gradient samtidig har hver strøm et driftledd og et
+diffusjonsledd:
+
+$$
+\begin{aligned}
+J_n &= q\mu_n n\,\mathcal{E} + qD_n\frac{dn}{dx} \\
+J_p &= q\mu_p p\,\mathcal{E} - qD_p\frac{dp}{dx}
+\end{aligned}
+$$
+
+Driftleddet er proporsjonalt med konsentrasjonen, så minoritetsbærerne
+bidrar lite til drift. Diffusjonsleddet er proporsjonalt med gradienten, og
+den kan være stor selv om konsentrasjonen er liten. Minoritetsstrømmen i en
+komponent er derfor nesten alltid diffusjon.
+
+Et felt vises i båndskjemaet som skrå bånd. Elektronets potensielle energi
+øker langs feltet, så $E_c$, $E_v$ og $E_i$ stiger i feltretningen, og
+stigningen er feltet: <FormulaRef id="felt-baandskjema" />. Elektroner driver
+nedover i skjemaet, hull oppover, og $\mathcal{E}$ peker oppoverbakke.
+
+### Einstein-relasjonen
+
+I likevekt er strømmen null, og likevel kan konsentrasjonen variere med $x$,
+for eksempel i en krystall med dopinggradient. Da må diffusjonen balanseres
+av drift i et <Term name="Innebygd felt">innebygd felt</Term>, og kravet
+knytter $D$ til $\mu$.
+
+<Derivation title="Hvorfor D og μ ikke er uavhengige">
+
+Sett $J_p = 0$: $\mu_p p\,\mathcal{E} = D_p\,dp/dx$. Skriv $p$ med
+$E_i$-formen, $p = n_i e^{(E_i - E_F)/k_BT}$, og deriver:
+
+$$
+\frac{dp}{dx} = \frac{p}{k_BT}\left(\frac{dE_i}{dx} - \frac{dE_F}{dx}\right)
+= \frac{p}{k_BT}\,q\mathcal{E}
+$$
+
+Her er $dE_F/dx = 0$ fordi <FormulaRef id="fermi-flat">Fermi-nivået er flatt i likevekt</FormulaRef>, og
+$dE_i/dx = q\mathcal{E}$ fra båndskjemaet. Sett inn, og $p\,\mathcal{E}$
+forkortes:
+
+$$
+\frac{D_p}{\mu_p} = \frac{k_BT}{q}
+$$
+
+Samme regning for elektroner gir samme forhold.
+
+</Derivation>
+
+<FormulaRef id="einstein">Einstein-relasjonen</FormulaRef> sier at
+$D/\mu = k_BT/q = 0{,}0259$ V ved romtemperatur, uansett bærertype og
+materiale. For Si gir det $D_n = 35$ og $D_p = 12{,}5$ cm²/s, og måler du den
+ene, har du den andre.
+
+## Kontinuitetsligningen
+
+Ta en skive med tykkelse $\Delta x$ og areal $A$. Hullkonsentrasjonen i den
+øker når det strømmer inn flere hull enn det strømmer ut, og minker ved
+rekombinasjon. Strømtetthet delt på $q$ er partikkelfluks, så i grensen
+$\Delta x \to 0$:
+
+$$
+\frac{\partial\,\delta p}{\partial t}
+= -\frac{1}{q}\frac{\partial J_p}{\partial x} - \frac{\delta p}{\tau_p}
+$$
+
+For elektroner bytter det første leddet fortegn, siden ladningen er negativ.
+Det er <FormulaRef id="kontinuitet">kontinuitetsligningen</FormulaRef>: det
+som strømmer inn og ikke ut igjen, er enten lagret eller rekombinert.
+
+Er strømmen ren diffusjon, setter vi inn $J_n^\text{diff}$ og får
+<FormulaRef id="diffusjonsligning">diffusjonsligningen</FormulaRef>:
+
+$$
+\frac{\partial\,\delta n}{\partial t}
+= D_n\frac{\partial^2\,\delta n}{\partial x^2} - \frac{\delta n}{\tau_n}
+$$
+
+Krumningen i profilen jevner den ut, og levetiden tømmer den. En puls av
+overskuddsbærere brer seg derfor utover og forsvinner samtidig, og hvor
+langt den rekker, avgjøres av $D$ og $\tau$ sammen.
+
+## Sjekk deg selv
+
+<Quiz
+  question={"n-type Si belyses jevnt med lav injeksjon. Hvilket av kvasi-Fermi-nivåene flytter seg mest fra $E_F$?"}
+  options={[
+    "$F_n$, fordi elektronene er majoritet",
+    "$F_p$, fordi hullene er minoritet",
+    "Begge flytter seg like mye, siden $\\delta n = \\delta p$",
+    "Ingen av dem, siden lyset ikke endrer $n_i$"
+  ]}
+  answer={1}
+  explanation={"Overskuddet er det samme for begge, men det er en brøkdel av $n_0$ og mange tierpotenser av $p_0$. Nivåene står i eksponenten, så $F_p$ flytter seg $k_BT\\ln(p/p_0)$, som kan være flere tideler av en eV, mens $F_n$ flytter seg noen meV."}
+/>
+
+<Quiz
+  question={"Både $n$ og $p$ faller mot høyre, og det er ikke noe felt. Hvilken retning har partikkelstrømmene og de elektriske strømmene?"}
+  options={[
+    "Begge går mot høyre, og begge strømmene peker mot høyre",
+    "Begge går mot høyre, elektronstrømmen peker mot venstre og hullstrømmen mot høyre",
+    "Elektronene går mot venstre og hullene mot høyre, begge strømmene peker mot høyre",
+    "Begge går mot høyre, og strømmene opphever hverandre nøyaktig"
+  ]}
+  answer={1}
+  explanation={"Diffusjon går fra høy til lav konsentrasjon for begge bærertypene. Strømmen er fluks ganger ladning, og ladningene har motsatt fortegn, så $J_n^\\text{diff} = +qD_n\\,dn/dx$ peker mot venstre mens $J_p^\\text{diff} = -qD_p\\,dp/dx$ peker mot høyre. De opphever hverandre bare hvis $D_n\\,dn/dx = D_p\\,dp/dx$."}
+/>
+
+<KeyTakeaways>
+
+- Overskuddsbærere rekombinerer med levetiden $\tau_n = 1/a_r p_0$ ved lav injeksjon, i Si via dype nivåer i gapet. Jevnt lys gir $\delta n = g_\text{op}\tau_n$.
+- Utenfor likevekt er $np \ne n_i^2$, og $n = n_i e^{(F_n - E_i)/k_BT}$, $p = n_i e^{(E_i - F_p)/k_BT}$. $F_n - F_p$ måler avstanden fra likevekt, og minoritetsnivået flytter seg mest.
+- $J_n = q\mu_n n\mathcal{E} + qD_n\,dn/dx$ og $J_p = q\mu_p p\mathcal{E} - qD_p\,dp/dx$; minoritetsstrøm er diffusjon, og $D/\mu = k_BT/q = 0{,}0259$ V.
+- Kontinuitetsligningen: inn minus ut er lagret eller rekombinert. Med ren diffusjon blir den diffusjonsligningen.
+
+</KeyTakeaways>

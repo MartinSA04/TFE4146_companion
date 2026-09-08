@@ -99,6 +99,66 @@ formulas:
     section: Kompensasjon og ladningsnøytralitet
     tex: "p_0 + N_d^+ = n_0 + N_a^-"
     label: "Ladningsnøytralitet: summen av positiv ladning (hull og ioniserte donorer) er lik summen av negativ (elektroner og ioniserte akseptorer). Sammen med $n_0 p_0 = n_i^2$ bestemmer kravet $n_0$, $p_0$ og $E_F$ entydig."
+  - id: drifthastighet
+    section: Drift
+    tex: "\\langle v_x\\rangle = -\\dfrac{q\\tau}{m_n^*}\\,\\mathcal{E}_x, \\qquad \\mu_n = \\dfrac{q\\tau}{m_n^*}"
+    label: "Drifthastigheten følger av at feltets kraft balanseres av kollisjoner hver $\\tau$ i gjennomsnitt. Mobiliteten $\\mu_n$ er drifthastigheten per felt, i cm²/V·s, og er positiv for begge bærertypene. For Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s i rent materiale."
+  - id: ledningsevne
+    section: Drift
+    tex: "J = q\\,(n\\mu_n + p\\mu_p)\\,\\mathcal{E} = \\sigma\\,\\mathcal{E}, \\qquad \\rho = \\dfrac{1}{\\sigma}, \\qquad R = \\rho\\,\\dfrac{L}{wt}"
+    label: "Ohms lov med ledningsevnen skrevet ut i bærerkonsentrasjoner og mobiliteter. Begge bærertypene gir strøm <em>langs</em> feltet, siden hullene beveger seg med feltet og elektronene mot. Resistiviteten $\\rho$ er i Ω·cm, og staven med lengde $L$ og tverrsnitt $wt$ får resistansen $R$."
+  - id: konduktivitetsmasse
+    section: Drift
+    tex: "\\dfrac{1}{m_n^*} = \\dfrac{1}{3}\\left(\\dfrac{1}{m_l} + \\dfrac{2}{m_t}\\right)"
+    label: "Effektiv masse for ledningsevne i Si: massen står i nevneren i $\\mu_n$, så de tre retningene i en dal midles harmonisk. Med $m_l = 0{,}98\\,m_0$ og $m_t = 0{,}19\\,m_0$ gir det $0{,}26\\,m_0$, mot $1{,}1\\,m_0$ for telling av tilstander. I GaAs er dalen kuleformet, og begge massene er $0{,}067\\,m_0$."
+  - id: matthiessen
+    section: Spredning, temperatur og doping
+    tex: "\\dfrac{1}{\\mu} = \\dfrac{1}{\\mu_\\text{gitter}} + \\dfrac{1}{\\mu_\\text{urenhet}}, \\qquad \\mu_\\text{gitter} \\sim T^{-3/2}, \\quad \\mu_\\text{urenhet} \\sim T^{3/2}"
+    label: "Kollisjonssannsynlighetene legges sammen, så mobilitetene legges sammen invers, og den minste dominerer. Gitterspredning vokser med temperaturen, urenhetsspredning er sterkest for langsomme bærere i kaldt materiale. $10^{17}$ donorer per cm³ senker $\\mu_n$ i Si fra 1350 til 700 cm²/V·s ved 300 K."
+  - id: hall-koeffisient
+    section: Hall-effekten
+    tex: "\\mathcal{E}_y = v_x\\mathcal{B}_z = R_H\\,J_x\\mathcal{B}_z, \\qquad R_H = \\dfrac{1}{qp_0}, \\qquad \\mu_p = \\dfrac{R_H}{\\rho}"
+    label: "Hall-feltet bygges opp til det opphever den magnetiske avbøyningen. Hall-koeffisienten gir konsentrasjonen direkte, fortegnet på Hall-spenningen gir bærertypen (negativt for elektroner), og sammen med resistiviteten gir den mobiliteten."
+  - id: fermi-flat
+    section: Fermi-nivået ved likevekt
+    tex: "\\dfrac{dE_F}{dx} = 0"
+    label: "Fermi-nivået er konstant gjennom materialer i kontakt ved termisk likevekt. Raten $N_1 f_1 \\cdot N_2(1 - f_2)$ fra 1 til 2 må være lik raten motsatt vei ved hver energi, og det krever $f_1 = f_2$, altså $E_{F1} = E_{F2}$."
+  - id: levetid
+    section: Overskuddsbærere
+    tex: "\\delta n(t) = \\Delta n\\, e^{-t/\\tau_n}, \\qquad \\tau_n = \\dfrac{1}{a_r(n_0 + p_0)} \\approx \\dfrac{1}{a_r p_0}"
+    label: "Overskuddet dør ut eksponentielt med levetiden til minoritetsbærerne, her elektroner i p-type materiale. Gjelder ved lav injeksjon, der $\\delta n^2$-leddet i rekombinasjonen $a_r np$ kan strykes. Majoriteten faller med samme rate, siden bærerne forsvinner parvis."
+  - id: stasjonaert-overskudd
+    section: Kvasi-Fermi-nivåer
+    tex: "\\delta n = \\delta p = g_\\text{op}\\,\\tau_n"
+    label: "Stasjonært overskudd under jevn belysning: den optiske generasjonsraten ganger levetiden. Da er $np \\neq n_i^2$, og likevektens $E_F$ må byttes ut med to nivåer."
+  - id: kvasi-fermi-nivaaer
+    section: Kvasi-Fermi-nivåer
+    tex: "n = n_i\\, e^{(F_n - E_i)/k_BT}, \\qquad p = n_i\\, e^{(E_i - F_p)/k_BT}"
+    label: "Definisjonen av kvasi-Fermi-nivåene $F_n$ og $F_p$: samme form som likevektsuttrykkene, med hvert sitt nivå. I likevekt er $F_n = F_p = E_F$; avstanden $F_n - F_p$ måler hvor langt materialet er fra likevekt. Minoritetsnivået flytter seg mest."
+  - id: diffusjonsstrom
+    section: Diffusjon
+    tex: "J_n^\\text{diff} = +qD_n\\dfrac{dn}{dx}, \\qquad J_p^\\text{diff} = -qD_p\\dfrac{dp}{dx}"
+    label: "Diffusjonsstrømmene, fra partikkelfluksen $\\phi = -D\\,dn/dx$ ganger ladningen. Elektroner og hull i samme gradient beveger seg samme vei, men strømmene går motsatt, siden ladningene har ulikt fortegn. $D$ har enhet cm²/s; for Si er $D_n = 35$ og $D_p = 12{,}5$."
+  - id: driftdiffusjonsstrom
+    section: Diffusjon
+    tex: "\\begin{aligned} J_n &= q\\mu_n n\\,\\mathcal{E} + qD_n\\dfrac{dn}{dx} \\\\ J_p &= q\\mu_p p\\,\\mathcal{E} - qD_p\\dfrac{dp}{dx} \\end{aligned}"
+    label: "Hele strømmen for hver bærertype: et driftledd proporsjonalt med konsentrasjonen og et diffusjonsledd proporsjonalt med gradienten. Minoritetsbærerne bidrar lite til drift, men gradienten kan være stor, så minoritetsstrøm er nesten alltid diffusjon. $J = J_n + J_p$."
+  - id: felt-baandskjema
+    section: Diffusjon
+    tex: "\\mathcal{E}(x) = \\dfrac{1}{q}\\dfrac{dE_i}{dx}"
+    label: "Et felt tegnes som skrå bånd. Elektronets potensielle energi øker langs feltet, så båndene stiger i feltretningen, og stigningen er feltet. Elektroner driver nedover i skjemaet, hull oppover, og $\\mathcal{E}$ peker oppoverbakke."
+  - id: einstein
+    section: Einstein-relasjonen
+    tex: "\\dfrac{D}{\\mu} = \\dfrac{k_BT}{q}"
+    label: "Einstein-relasjonen, fra kravet om null strøm i likevekt med $dE_F/dx = 0$. Forholdet er $0{,}0259$ V ved romtemperatur, uansett bærertype og materiale, så måler du den ene av $D$ og $\\mu$, har du den andre."
+  - id: kontinuitet
+    section: Kontinuitetsligningen
+    tex: "\\dfrac{\\partial\\,\\delta p}{\\partial t} = -\\dfrac{1}{q}\\dfrac{\\partial J_p}{\\partial x} - \\dfrac{\\delta p}{\\tau_p}, \\qquad \\dfrac{\\partial\\,\\delta n}{\\partial t} = +\\dfrac{1}{q}\\dfrac{\\partial J_n}{\\partial x} - \\dfrac{\\delta n}{\\tau_n}"
+    label: "Kontinuitetsligningen: konsentrasjonen i en skive øker med nettoinnstrømmen av partikler og minker med rekombinasjonen. Fortegnet på strømleddet følger ladningen."
+  - id: diffusjonsligning
+    section: Kontinuitetsligningen
+    tex: "\\dfrac{\\partial\\,\\delta n}{\\partial t} = D_n\\dfrac{\\partial^2\\,\\delta n}{\\partial x^2} - \\dfrac{\\delta n}{\\tau_n}"
+    label: "Diffusjonsligningen: kontinuitetsligningen med ren diffusjonsstrøm satt inn. Krumningen i profilen jevner den ut, levetiden tømmer den. Tilsvarende for hull med $D_p$ og $\\tau_p$."
 
 glossary:
   - term: Valensbånd
@@ -191,6 +251,60 @@ glossary:
   - term: Ladningsnøytralitet
     section: Kompensasjon og ladningsnøytralitet
     definition: "(<em>space charge neutrality</em>) Kravet $p_0 + N_d^+ = n_0 + N_a^-$: krystallen er nøytral, så positiv og negativ ladning balanserer. $E_F$ stiller seg dit kravet og massevirkningsloven er oppfylt samtidig."
+  - term: Mobilitet
+    section: Drift
+    definition: "(<em>mobility</em>) Drifthastigheten en bærer får per felt, $\\mu = q\\tau/m^*$, i cm²/V·s. Lett effektiv masse og lang tid mellom kollisjoner gir høy mobilitet; for Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s i rent materiale."
+  - term: Midlere kollisjonstid
+    section: Drift
+    definition: "(<em>mean free time</em>) $\\tau$, gjennomsnittstiden mellom to spredninger for en bærer. Sannsynligheten for kollisjon i løpet av $dt$ er $dt/\\tau$, så antallet uspredte bærere faller som $e^{-t/\\tau}$. I Si ved romtemperatur er den rundt $0{,}2$ ps."
+  - term: Gitterspredning
+    section: Spredning, temperatur og doping
+    definition: "(<em>lattice scattering</em>) Spredning mot gittervibrasjoner, altså fononer. Den øker med temperaturen og gir en mobilitet som faller omtrent som $T^{-3/2}$; i rent Si er det den som begrenser mobiliteten ved romtemperatur."
+  - term: Urenhetsspredning
+    section: Spredning, temperatur og doping
+    definition: "(<em>impurity scattering</em>) Avbøyning i Coulomb-feltet fra ioniserte dopanter. Langsomme bærere bøyes mest, så mekanismen dominerer ved lav temperatur og høy doping, med en mobilitet som vokser omtrent som $T^{3/2}$."
+  - term: Metningshastighet
+    section: Spredning, temperatur og doping
+    definition: "(<em>saturation velocity</em>) Den øvre grensen for drifthastigheten ved høye felt, i Si omtrent $10^7$ cm/s. Over rundt $10^3$ V/cm holder ikke $v_d = \\mu\\mathcal{E}$ lenger; energien feltet tilfører går til gitteret, og strømmen blir nesten uavhengig av feltet."
+  - term: Hall-effekten
+    section: Hall-effekten
+    definition: "(<em>Hall effect</em>) Et magnetfelt på tvers av strømmen bøyer bærerne av mot den ene kanten til et tverrfelt $\\mathcal{E}_y = v_x\\mathcal{B}_z$ opphever avbøyningen. Spenningen på tvers, Hall-spenningen, gir bærertype, konsentrasjon og, sammen med resistansen, mobilitet."
+  - term: Hall-koeffisient
+    section: Hall-effekten
+    definition: "(<em>Hall coefficient</em>) $R_H = \\mathcal{E}_y/J_x\\mathcal{B}_z = 1/qp_0$ for hull. Negativ for elektroner, siden $q$ bytter fortegn. Forholdet $R_H/\\rho$ er mobiliteten."
+  - term: Overskuddsbærere
+    section: Overskuddsbærere
+    definition: "(<em>excess carriers</em>) Bærere ut over likevektskonsentrasjonene, $\\delta n = n - n_0$ og $\\delta p = p - p_0$, laget av lys med $h\\nu \\ge E_g$ eller sprøytet inn over en kontakt. De lages og rekombinerer parvis, så $\\delta n = \\delta p$ uten fangst."
+  - term: Lav injeksjon
+    section: Overskuddsbærere
+    definition: "(<em>low-level injection</em>) Overskuddet er lite mot majoritetskonsentrasjonen, $\\delta n \\ll p_0$ i p-type. Da kan $\\delta n^2$-leddet i rekombinasjonen strykes, og overskuddet dør ut eksponentielt med én levetid."
+  - term: Levetid
+    section: Overskuddsbærere
+    definition: "(<em>minority carrier lifetime</em>) $\\tau_n = 1/a_r p_0$ i p-type materiale: tiden det tar før overskuddet er falt til $1/e$. Kalles levetiden til minoritetsbærerne, siden regningen er gjort for dem, men majoriteten faller med samme rate."
+  - term: Rekombinasjonssenter
+    section: Overskuddsbærere
+    definition: "(<em>recombination center</em>) En urenhet eller defekt med et nivå $E_r$ i gapet som fanger først den ene bærertypen og så den andre, og gir energien til gitteret som varme. Dominerer rekombinasjonen i indirekte materialer som Si og Ge; dype nivåer som gull i Si er de mest effektive."
+  - term: Felle
+    section: Overskuddsbærere
+    definition: "(<em>trap</em>) Et senter som slipper den fangede bæreren tilbake til båndet før den andre bærertypen kommer. Grunne nivåer virker oftest som feller, dype nivåer oftest som rekombinasjonssentre."
+  - term: Kvasi-Fermi-nivå
+    section: Kvasi-Fermi-nivåer
+    definition: "(<em>quasi-Fermi level</em>, IMREF) Hver bærertype sitt eget nivå utenfor likevekt, definert ved $n = n_i e^{(F_n - E_i)/k_BT}$ og $p = n_i e^{(E_i - F_p)/k_BT}$. I likevekt er $F_n = F_p = E_F$; splittingen $F_n - F_p$ måler avstanden fra likevekt, og minoritetsnivået flytter seg mest."
+  - term: Diffusjon
+    section: Diffusjon
+    definition: "(<em>diffusion</em>) Netto bevegelse fra høy til lav konsentrasjon som følger av tilfeldig termisk bevegelse alene. Partikkelfluksen er $\\phi_n = -D_n\\,dn/dx$, og diffusjonsstrømmen er fluksen ganger ladningen, så elektron- og hullstrømmene går hver sin vei i samme gradient."
+  - term: Diffusjonskoeffisient
+    section: Diffusjon
+    definition: "(<em>diffusion coefficient</em>) $D = l^2/2\\tau$ i den enkle modellen, i cm²/s. Knyttet til mobiliteten ved Einstein-relasjonen $D/\\mu = k_BT/q$; for Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s."
+  - term: Innebygd felt
+    section: Einstein-relasjonen
+    definition: "(<em>built-in field</em>) Feltet som må finnes i likevekt der konsentrasjonen varierer, for eksempel i en dopinggradient: det driver bærerne tilbake akkurat like fort som de diffunderer, så nettostrømmen er null og $E_F$ er flat."
+  - term: Einstein-relasjonen
+    section: Einstein-relasjonen
+    definition: "(<em>Einstein relation</em>) $D/\\mu = k_BT/q$, som følger av null strøm og flatt $E_F$ i likevekt. Forholdet er $0{,}0259$ V ved romtemperatur for begge bærertypene i alle materialer."
+  - term: Kontinuitetsligningen
+    section: Kontinuitetsligningen
+    definition: "(<em>continuity equation</em>) $\\partial\\,\\delta p/\\partial t = -(1/q)\\,\\partial J_p/\\partial x - \\delta p/\\tau_p$: overskuddet i en skive vokser med nettoinnstrømmen og faller med rekombinasjonen. Med ren diffusjonsstrøm blir den diffusjonsligningen."
 
 features:
   progress: true
