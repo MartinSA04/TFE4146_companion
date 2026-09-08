@@ -148,6 +148,14 @@ Hall-delen fortegn, og halve differansen er Hall-spenningen. Halve summen er
 spenningsfallet over forskyvningen, og med $R = \rho L/wt$ for den lengden
 gir det resistiviteten uten en egen resistansmåling.
 
+<Simulation
+  src={"/sims/hall-effekt.js"}
+  host={"dom"}
+  title={"Hall-måling på en stav"}
+  caption={"Staven sett ovenfra, med strømmen langs $x$. Bytt bærertype eller feltretning, og bærerne bøyes mot én kant til ladningen der har bygd opp Hall-feltet som retter dem opp igjen. Begge typene bøyes mot samme kant, men ladningen som samler seg har bærerens fortegn, og det gir $V_{AB}$ fortegn. Den bleke viseren er avlesningen med feltet snudd. Forskyv kontakt B langs strømmen, og begge avlesningene flytter seg like mye samme vei: midtpunktet er spenningsfallet over forskyvningen, og halve avstanden er Hall-spenningen. Prøven er 500 µm bred og 20 µm tykk med $2 \\times 10^{17}$ bærere per cm³, 3 mA og 1 T; forskyvningen er overdrevet i tegningen."}
+  height={256}
+/>
+
 <Example title="hva forteller Hall-målingen?">
 
 En stav med $w = 0{,}1$ mm, $t = 10$ µm og $L = 5$ mm står i
@@ -157,20 +165,33 @@ majoritetsbærerne.
 
 <Solution>
 
-Negativ $V_{AB}$ betyr at bærerne er elektroner: n-type. Med
-$\mathcal{E}_y = V_{AB}/w$ og $J_x = I_x/wt$ faller bredden bort, og i
-SI-enheter:
+Negativ $V_{AB}$ betyr at bærerne er elektroner: n-type.
+
+Hall-feltet er $\mathcal{E}_y = R_H J_x\mathcal{B}_z$, og for elektroner er
+$R_H = -1/qn_0$, så $|\mathcal{E}_y| = J_x\mathcal{B}_z/qn_0$. Målingen gir
+ikke felt og strømtetthet, men spenning og strøm: feltet på tvers er
+$|\mathcal{E}_y| = |V_{AB}|/w$ over bredden, og strømtettheten er
+$J_x = I_x/wt$ gjennom tverrsnittet. Sett inn og løs for $n_0$:
 
 $$
 \begin{aligned}
-n_0 &= \frac{I_x\mathcal{B}_z}{qt\,|V_{AB}|} \\
-&= \frac{10^{-3} \cdot 1}{1{,}6 \cdot 10^{-19} \cdot 10^{-5} \cdot 2 \cdot 10^{-3}} \\
+\frac{|V_{AB}|}{w} &= \frac{I_x\mathcal{B}_z}{qn_0\,wt} \\
+n_0 &= \frac{I_x\mathcal{B}_z}{qt\,|V_{AB}|}
+\end{aligned}
+$$
+
+Bredden faller bort, så bare tykkelsen må være kjent. I SI-enheter:
+
+$$
+\begin{aligned}
+n_0 &= \frac{10^{-3} \cdot 1}{1{,}6 \cdot 10^{-19} \cdot 10^{-5} \cdot 2 \cdot 10^{-3}} \\
 &= 3{,}1 \cdot 10^{23}\ \text{m}^{-3} \\
 &= 3{,}1 \cdot 10^{17}\ \text{cm}^{-3}
 \end{aligned}
 $$
 
-Resistansen er $V_{CD}/I_x = 100$ Ω, så
+Spenningen langs staven gir resistansen over lengden $L$:
+$R = V_{CD}/I_x = 100$ Ω. Resistansen til en stav er $R = \rho L/wt$, så
 
 $$
 \begin{aligned}
@@ -180,8 +201,9 @@ $$
 \end{aligned}
 $$
 
-og mobiliteten følger av $\sigma = q\mu_n n_0$, der
-$q n_0 = 1{,}6 \cdot 10^{-19} \cdot 3{,}1 \cdot 10^{17} = 0{,}05$ C/cm³:
+Med bare elektroner er ledningsevnen $\sigma = q\mu_n n_0$, og
+$\sigma = 1/\rho$, så $\mu_n = 1/qn_0\rho$, som er det samme som
+$|R_H|/\rho$. Med $qn_0 = 1{,}6 \cdot 10^{-19} \cdot 3{,}1 \cdot 10^{17} = 0{,}05$ C/cm³:
 
 $$
 \begin{aligned}
