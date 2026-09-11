@@ -5,13 +5,15 @@
  *
  * Øverst står staven sett ovenfra med bærerne som prikker i drift: hull med
  * strømmen, elektroner mot. Magnetfeltet er tegnet som boka gjør det, prikker
- * for ut av planet og kryss for inn i planet. Én kantladning q (fra −1 til +1,
- * ladningen på nederste kant i enheter av likevektsverdien) bærer hele
- * bildet: den slakker mot likevekt med tidskonstant TAU, prikkene bøyes med
- * farten VY·(b − c·q) på tvers, kantene lyser opp med |q|, og Hall-delen av
- * V_AB er q·V_H. Bytt felt eller bærertype, og overgangen spiller seg av.
- * Prikker som når kanten går inn i kantladningen og dukker opp igjen inne i
- * staven, så tettheten står fast.
+ * for ut av planet og kryss for inn i planet. Én forskyvning s (fra −1 til +1,
+ * hvor tett bærerne står mot nederste kant) bærer hele bildet: den slakker
+ * mot feltet b med tidskonstant TAU, hver prikk har et fast lodd u og står på
+ * kvantilen til tettheten e^(KAPPA·s·y), så prikkene glir på tvers mens s
+ * endrer seg og går rett fram når den står. Ladningen på nederste kant er
+ * q = c·s med bærerfortegnet c: kantene lyser opp med |q|, og Hall-delen av
+ * V_AB er q·V_H. Slå feltet av og på eller snu det, og overgangen spiller seg
+ * av; bytt bærertype, og bærerne blir stående på samme kant mens ladningen
+ * der bytter fortegn.
  *
  * Nederst står voltmeteret som en skala med null i midten. Viseren glir til
  * V_AB; en blek viser står der avlesningen havner med feltet snudd, og
@@ -43,7 +45,7 @@ const RANGE = 10e-3; // V, halve skalabredden
 const TAU = 1.0; // s, kantladningens oppbyggingstid
 const NEEDLE_TAU = 0.2; // s, viserens treghet
 const VX = 70; // px/s, driftfart i tegningen
-const VY = 55; // px/s, avbøyning før Hall-feltet er bygd opp
+const KAPPA = 3; // tettheten ved kanten bærerne samles på er e^KAPPA ganger den andre
 const R = 3.2; // px, bærerprikkens radius
 const GRID = 36; // px, mellom feltsymbolene
 
@@ -60,7 +62,8 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   const vTarget = () => qInf() * VH + vOff();
   const vFlipped = () => -qInf() * VH + vOff();
 
-  let q = qInf(); // ladningen på nederste kant, −1…+1
+  let s = bz; // hvor tett bærerne står mot nederste kant, −1…+1
+  const qNow = () => csign() * s; // ladningen på nederste kant, −1…+1
   let vShown = vTarget(); // V, der viseren står
   let gShown = vFlipped(); // V, der den bleke viseren står
 
@@ -146,7 +149,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   }
 
   function snap() {
-    q = qInf();
+    s = bz;
     vShown = vTarget();
     gShown = vFlipped();
   }
@@ -160,7 +163,12 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   const g = {}; // layoutet, fylles av layout()
   let particles = [];
 
-  const spawnY = () => R + 6 + Math.random() * (g.barH - 2 * R - 12);
+  /** Prikken med lodd u (0…1) står her på tvers: jevnt ved s = 0, tett mot nederste kant ved s = +1. */
+  const yOf = (u) => {
+    const a = KAPPA * s;
+    const f = Math.abs(a) < 1e-3 ? u : Math.log1p(u * Math.expm1(a)) / a;
+    return R + 6 + f * (g.barH - 2 * R - 12);
+  };
   const xB = () => g.xA + (d / D_MAX) * 0.16 * g.L;
 
   function layout() {
@@ -182,12 +190,9 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     // Like mange prikker per flate, så telefonen ikke ser tom ut og bredskjermen ikke full.
     const n = clamp(Math.round((g.L * g.barH) / 1500), 24, 60);
     if (particles.length !== n) {
-      particles = Array.from({ length: n }, () => ({ x: Math.random() * g.L, y: spawnY() }));
+      particles = Array.from({ length: n }, () => ({ x: Math.random() * g.L, u: Math.random() }));
     } else {
-      for (const p of particles) {
-        p.x = clamp(p.x, 0, g.L);
-        p.y = clamp(p.y, R, g.barH - R);
-      }
+      for (const p of particles) p.x = clamp(p.x, 0, g.L);
     }
   }
 
@@ -304,6 +309,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
 
     // Kantladningen: fortegnet på nederste kant følger q, øverste kant er motsatt.
     let bar = "";
+    const q = qNow();
     const a = Math.abs(q);
     if (a > 0.03) {
       const edges = [
@@ -324,7 +330,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     // Bærerne.
     const color = carrier === "p" ? red : blue;
     let dots = "";
-    for (const p of particles) dots += `<circle cx="${P(bx0 + p.x)}" cy="${P(by0 + p.y)}" r="${R}"/>`;
+    for (const p of particles) dots += `<circle cx="${P(bx0 + p.x)}" cy="${P(by0 + yOf(p.u))}" r="${R}"/>`;
     bar += `<g style="fill:${color}" fill-opacity="0.9">${dots}</g>`;
     dynBar.innerHTML = bar;
 
@@ -349,25 +355,18 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
 
   // ── bevegelse ─────────────────────────────────────────────────────────────
   function step(dt) {
-    const c = csign();
-    q += (qInf() - q) * (1 - Math.exp(-dt / TAU));
-    // Magnetkraften bøyer mot nederste kant når feltet peker ut; kantladningen dytter tilbake.
-    const vy = VY * (bz - c * q);
-    const vx = VX * c;
-    const { L, barH } = g;
+    // Magnetkraften skyver bærerne mot nederste kant når feltet peker ut, til
+    // ladningen der holder igjen: s slakker mot bz, og prikkene følger tettheten.
+    s += (bz - s) * (1 - Math.exp(-dt / TAU));
+    const vx = VX * csign();
+    const { L } = g;
     for (const p of particles) {
       p.x += vx * dt;
-      p.y += vy * dt;
       if (p.x > L) p.x -= L;
       else if (p.x < 0) p.x += L;
-      if (p.y < R || p.y > barH - R) {
-        // Går inn i kantladningen; en ny prikk tar plassen inne i staven.
-        p.x = Math.random() * L;
-        p.y = spawnY();
-      }
     }
     const k = 1 - Math.exp(-dt / NEEDLE_TAU);
-    vShown += (q * VH + vOff() - vShown) * k;
+    vShown += (qNow() * VH + vOff() - vShown) * k;
     gShown += (vFlipped() - gShown) * k;
   }
 
