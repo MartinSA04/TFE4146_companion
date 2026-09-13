@@ -1,11 +1,11 @@
 ---
 order: 4
 title: "Overskuddsbærere og diffusjon"
-summary: "Hvordan overskuddsbærere rekombinerer med en levetid, hvorfor kvasi-Fermi-nivåene splitter seg under lys, hvordan en gradient gir diffusjonsstrøm, hva Einstein-relasjonen knytter sammen, og hvordan drift, diffusjon og rekombinasjon samles i kontinuitetsligningen."
+summary: "Hvordan overskuddsbærere rekombinerer med en levetid, hvorfor kvasi-Fermi-nivåene splitter seg under lys, hvordan en gradient gir diffusjonsstrøm, hva Einstein-relasjonen knytter sammen, hvordan drift, diffusjon og rekombinasjon samles i kontinuitetsligningen, hvor langt injiserte bærere kommer før de rekombinerer, og hvordan Haynes–Shockley-eksperimentet måler mobilitet og diffusjonskoeffisient."
 importance: core
-tag: "Uke 36 · Streetman §4.1–4.4.3"
+tag: "Uke 36–37 · Streetman §4.1–4.4.5"
 part: "Del 1: Energibånd og ladningsbærere"
-updated: 2026-09-08
+updated: 2026-09-13
 ---
 
 <LearningGoals>
@@ -14,6 +14,7 @@ updated: 2026-09-08
 - Bruke <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåer</Term> for $n$ og $p$ utenfor likevekt.
 - Skrive ned drift- og <Term name="Diffusjon">diffusjonsstrømmen</Term> for begge bærertyper, og bruke <Term name="Einstein-relasjonen">Einstein-relasjonen</Term>.
 - Stille opp <Term name="Kontinuitetsligningen">kontinuitetsligningen</Term> og si hva hvert ledd betyr.
+- Løse den for stasjonær injeksjon, og bruke <Term name="Diffusjonslengde">diffusjonslengden</Term> til å finne profil, strøm og lagret ladning.
 
 </LearningGoals>
 
@@ -214,6 +215,153 @@ Krumningen i profilen jevner den ut, og levetiden tømmer den. En puls av
 overskuddsbærere brer seg derfor utover og forsvinner samtidig, og hvor
 langt den rekker, avgjøres av $D$ og $\tau$ sammen.
 
+## Stasjonær injeksjon og diffusjonslengde
+
+I mange komponenter holdes overskuddet konstant i tid, for eksempel av en
+kontakt som sprøyter hull inn i enden av en n-type stav. Da er tidsleddet i
+diffusjonsligningen null, og det som står igjen er
+
+$$
+\frac{d^2\,\delta p}{dx^2} = \frac{\delta p}{D_p\tau_p} = \frac{\delta p}{L_p^2}
+$$
+
+med <Term name="Diffusjonslengde">diffusjonslengden</Term>
+$L_p = \sqrt{D_p\tau_p}$. Løsningen er en sum av $e^{x/L_p}$ og
+$e^{-x/L_p}$. I en lang stav må overskuddet dø ut langt fra kontakten, så
+den voksende delen faller bort, og med $\delta p(0) = \Delta p$ ved
+kontakten står det igjen
+
+$$
+\delta p(x) = \Delta p\, e^{-x/L_p}
+$$
+
+$L_p$ er avstanden der overskuddet har falt til $1/e$, og også
+gjennomsnittsavstanden et hull diffunderer før det rekombinerer. For Si med
+$D_p = 12{,}5$ cm²/s og $\tau_p = 1$ µs er $L_p = 35$ µm, altså langt mer
+enn tykkelsen på de fleste komponenter.
+
+<Derivation title="Hvorfor diffusjonslengden er gjennomsnittsavstanden">
+
+Sannsynligheten for at et hull injisert ved $x = 0$ når fram til $x$ uten å
+rekombinere, er $\delta p(x)/\Delta p = e^{-x/L_p}$. Sannsynligheten for at
+det så rekombinerer i det neste intervallet $dx$ er andelen av profilen som
+forsvinner der:
+
+$$
+\begin{aligned}
+\frac{\delta p(x) - \delta p(x + dx)}{\delta p(x)}
+&= -\frac{1}{\delta p}\frac{d\,\delta p}{dx}\,dx \\
+&= \frac{dx}{L_p}
+\end{aligned}
+$$
+
+Produktet $e^{-x/L_p}\,dx/L_p$ er sannsynlighetsfordelingen for hvor hullet
+rekombinerer, og middelverdien er
+
+$$
+\langle x\rangle = \int_0^\infty x\,\frac{e^{-x/L_p}}{L_p}\,dx = L_p
+$$
+
+</Derivation>
+
+Diffusjonsstrømmen følger rett fra profilen, siden $p_0$ er konstant og
+bare overskuddet har gradient:
+
+$$
+J_p(x) = -qD_p\frac{d\,\delta p}{dx} = q\frac{D_p}{L_p}\,\delta p(x)
+$$
+
+Strømmen i hvert punkt er proporsjonal med overskuddet der, og ved kontakten
+er den $qD_p\Delta p/L_p$. Ladningen som er lagret i staven, er arealet
+under profilen, <FormulaRef id="injeksjonsstrom">$Q_p = qA\,\Delta p\,L_p$</FormulaRef>.
+Begge uttrykkene kommer igjen i pn-overgangen, der spenningen sprøyter
+minoritetsbærere inn på hver side.
+
+<Example title="hvor langt kommer de injiserte hullene?">
+
+Hull sprøytes inn i enden av en lang n-type Si-stav med $N_d = 10^{16}$
+cm⁻³, slik at $\delta p(0) = \Delta p = 10^{14}$ cm⁻³ holdes konstant. Bruk
+$D_p = 12{,}5$ cm²/s og $\tau_p = 1$ µs. Finn diffusjonslengden,
+overskuddet 50 µm inne i staven, og strømtettheten ved kontakten.
+
+<Solution>
+
+- Lav injeksjon: $\Delta p = 10^{14} \ll n_0 = 10^{16}$ cm⁻³, så uttrykkene over gjelder.
+- Diffusjonslengden:
+
+$$
+\begin{aligned}
+L_p &= \sqrt{D_p\tau_p} = \sqrt{12{,}5 \cdot 10^{-6}}\ \text{cm} \\
+&= 3{,}54 \times 10^{-3}\ \text{cm} = 35\ \text{µm}
+\end{aligned}
+$$
+
+- Overskuddet ved 50 µm:
+
+$$
+\delta p = 10^{14}\, e^{-50/35} = 2{,}4 \times 10^{13}\ \text{cm}^{-3}
+$$
+
+- Strømtettheten ved kontakten:
+
+$$
+\begin{aligned}
+\frac{D_p}{L_p} &= \frac{12{,}5}{3{,}54 \times 10^{-3}}\ \frac{\text{cm}}{\text{s}} \\
+&= 3{,}5 \times 10^{3}\ \text{cm/s} \\
+q\frac{D_p}{L_p} &= 1{,}6 \times 10^{-19} \cdot 3{,}5 \times 10^{3} \\
+&= 5{,}6 \times 10^{-16}\ \text{C\,cm/s} \\
+J_p(0) &= q\frac{D_p}{L_p}\,\Delta p \\
+&= 5{,}6 \times 10^{-16} \cdot 10^{14} \\
+&= 5{,}6 \times 10^{-2}\ \text{A/cm}^2
+\end{aligned}
+$$
+
+<Answer>
+
+$L_p = 35$ µm, $\delta p(50\ \text{µm}) = 2{,}4 \times 10^{13}$ cm⁻³ og
+$J_p(0) = 56$ mA/cm².
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+### Haynes–Shockley-eksperimentet
+
+Drift og diffusjon av minoritetsbærere kan måles direkte. En lysblink lager
+en puls av hull ved $x = 0$ i en n-type stav med et felt $\mathcal{E}$
+langs staven. Pulsen driver med feltet, brer seg ut ved diffusjon og
+passerer en detektor ved $x = L$ etter drifttiden $t_d$. Drifttiden gir
+mobiliteten:
+
+$$
+v_d = \frac{L}{t_d}, \qquad \mu_p = \frac{v_d}{\mathcal{E}}
+$$
+
+Hall-målingen gir mobiliteten til majoriteten; dette er måten å måle
+minoritetens på.
+
+Bredden på pulsen gir $D_p$. Uten felt og uten rekombinasjon løses
+diffusjonsligningen av en gaussisk puls,
+
+$$
+\delta p(x,t) = \frac{\Delta P}{2\sqrt{\pi D_p t}}\, e^{-x^2/4D_p t}
+$$
+
+der $\Delta P$ er antall hull per areal i pulsen ved $t = 0$. Toppen
+synker og bredden vokser med tiden. Ved $t_d$ er pulsen falt til $1/e$ av
+toppen i $x = \pm\Delta x/2$, og det gir
+
+$$
+D_p = \frac{(\Delta x)^2}{16\,t_d}
+$$
+
+Oscilloskopet viser pulsen i tid, så bredden $\Delta t$ regnes om med
+driftfarten: $\Delta x = v_d\,\Delta t$. Feltet flytter hele pulsen med
+$v_d t$ uten å endre formen, og rekombinasjonen krymper den med faktoren
+$e^{-t/\tau_p}$.
+
 ## Sjekk deg selv
 
 <Quiz
@@ -246,5 +394,6 @@ langt den rekker, avgjøres av $D$ og $\tau$ sammen.
 - Utenfor likevekt er $np \ne n_i^2$, og $n = n_i e^{(F_n - E_i)/k_BT}$, $p = n_i e^{(E_i - F_p)/k_BT}$. $F_n - F_p$ måler avstanden fra likevekt, og minoritetsnivået flytter seg mest.
 - $J_n = q\mu_n n\mathcal{E} + qD_n\,dn/dx$ og $J_p = q\mu_p p\mathcal{E} - qD_p\,dp/dx$; minoritetsstrøm er diffusjon, og $D/\mu = k_BT/q = 0{,}0259$ V.
 - Kontinuitetsligningen: inn minus ut er lagret eller rekombinert. Med ren diffusjon blir den diffusjonsligningen.
+- Stasjonær injeksjon gir $\delta p(x) = \Delta p\,e^{-x/L_p}$ med $L_p = \sqrt{D_p\tau_p}$, strømmen $J_p = qD_p\,\delta p/L_p$ og ladningen $Q_p = qA\,\Delta p\,L_p$. Haynes–Shockley gir $\mu_p$ fra drifttiden og $D_p$ fra pulsbredden.
 
 </KeyTakeaways>

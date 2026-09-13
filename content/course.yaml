@@ -160,6 +160,51 @@ formulas:
     tex: "\\dfrac{\\partial\\,\\delta n}{\\partial t} = D_n\\dfrac{\\partial^2\\,\\delta n}{\\partial x^2} - \\dfrac{\\delta n}{\\tau_n}"
     label: "Diffusjonsligningen: kontinuitetsligningen med ren diffusjonsstrøm satt inn. Krumningen i profilen jevner den ut, levetiden tømmer den. Tilsvarende for hull med $D_p$ og $\\tau_p$."
 
+  - id: diffusjonslengde
+    section: Stasjonær injeksjon og diffusjonslengde
+    tex: "\\delta p(x) = \\Delta p\\, e^{-x/L_p}, \\qquad L_p = \\sqrt{D_p\\tau_p}"
+    label: "Stasjonær injeksjon i en lang stav: overskuddet faller eksponentielt med diffusjonslengden $L_p$, som er avstanden der det har falt til $1/e$ og gjennomsnittsavstanden et hull diffunderer før det rekombinerer. For Si med $D_p = 12{,}5$ cm²/s og $\\tau_p = 1$ µs er $L_p = 35$ µm."
+  - id: injeksjonsstrom
+    section: Stasjonær injeksjon og diffusjonslengde
+    tex: "\\begin{aligned} J_p(x) &= q\\dfrac{D_p}{L_p}\\,\\delta p(x) \\\\ Q_p &= qA\\,\\Delta p\\,L_p \\end{aligned}"
+    label: "Diffusjonsstrømmen fra en eksponentiell profil er proporsjonal med overskuddet i hvert punkt, og ladningen som er lagret i staven, er arealet under profilen. Begge brukes på minoritetsbærerne som sprøytes inn over en pn-overgang."
+  - id: haynes-shockley
+    section: Haynes–Shockley-eksperimentet
+    tex: "\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"
+    label: "Haynes–Shockley: en hullpuls driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet måler bredden i tid, $\\Delta t$, og driftfarten regner den om."
+  - id: kontaktpotensial
+    section: Kontaktpotensialet
+    tex: "\\begin{aligned} V_0 &= \\dfrac{k_BT}{q}\\ln\\dfrac{p_p}{p_n} \\\\ &= \\dfrac{k_BT}{q}\\ln\\dfrac{N_aN_d}{n_i^2} \\end{aligned}"
+    label: "Kontaktpotensialet over romladningssonen i likevekt, fra kravet om null hullstrøm og Einstein-relasjonen. Det vokser bare logaritmisk med dopingen: mellom 0,6 og 0,9 V for Si ved 300 K. Det er en likevektsstørrelse og driver ingen strøm; et voltmeter over dioden viser null."
+  - id: boltzmann-overgang
+    section: Kontaktpotensialet
+    tex: "\\dfrac{p_p}{p_n} = \\dfrac{n_n}{n_p} = e^{qV_0/k_BT}"
+    label: "Forholdet mellom konsentrasjonene på de to sidene av overgangen, samme ligning som $V_0$ snudd om. Den andre likheten følger av $p_pn_p = p_nn_n = n_i^2$. Det er denne formen som brukes når strømmen gjennom overgangen skal regnes ut."
+  - id: baandforskyvning
+    section: Båndskjemaet
+    tex: "\\begin{aligned} qV_0 &= E_{vp} - E_{vn} \\\\ &= (E_{ip} - E_F) \\\\ &\\quad + (E_F - E_{in}) \\end{aligned}"
+    label: "Båndene på p-siden ligger $qV_0$ over båndene på n-siden, fordi Fermi-nivået er flatt i likevekt. Tegn hver side for seg med sitt $E_F$, skyv dem loddrett til nivåene faller sammen, og les $qV_0$ som summen av avstandene fra $E_i$ til $E_F$ på de to sidene."
+  - id: ladningsbalanse
+    section: Romladningen
+    tex: "qA\\,x_{p0}N_a = qA\\,x_{n0}N_d"
+    label: "Ladningen i romladningssonen er like stor på begge sider, siden feltlinjene starter på ionene på n-siden og ender på ionene på p-siden. Den lett dopede siden må avdekke en tykkere skive for samme ladning, så sonen ligger mest der."
+  - id: poisson
+    section: Romladningen
+    tex: "\\begin{aligned} \\dfrac{d\\mathcal{E}}{dx} &= \\dfrac{q}{\\varepsilon}\\,(p - n + N_d^+ - N_a^-) \\\\ &\\approx \\pm\\dfrac{q}{\\varepsilon}N_{d,a} \\end{aligned}"
+    label: "Poissons ligning i utarmingstilnærmingen: inne i sonen er bærerne strøket, og ladningen er $+qN_d$ for $0 < x < x_{n0}$ og $-qN_a$ for $-x_{p0} < x < 0$. Feltet blir en trekant som er null ved begge kantene og negativ i hele sonen, siden det peker fra n mot p."
+  - id: maksfelt
+    section: Romladningen
+    tex: "\\begin{aligned} \\mathcal{E}_0 &= -\\dfrac{q}{\\varepsilon}N_d\\,x_{n0} = -\\dfrac{q}{\\varepsilon}N_a\\,x_{p0} \\\\ V_0 &= -\\tfrac{1}{2}\\mathcal{E}_0 W \\end{aligned}"
+    label: "Det største feltet står ved skillet $x = 0$, der alle feltlinjene passerer, og kontaktpotensialet er arealet av felttrekanten. Med $V_0 = 0{,}8$ V og $W = 0{,}46$ µm er $\\mathcal{E}_0 = -3{,}5 \\times 10^4$ V/cm."
+  - id: sonebredde
+    section: Romladningen
+    tex: "\\begin{aligned} W^2 &= \\dfrac{2\\varepsilon(V_0 - V)}{q}\\Big(\\tfrac{1}{N_a} + \\tfrac{1}{N_d}\\Big) \\\\ x_{p0} &= \\dfrac{W}{1 + N_a/N_d} \\\\ x_{n0} &= \\dfrac{W}{1 + N_d/N_a} \\end{aligned}"
+    label: "Bredden på romladningssonen, fra felttrekanten og ladningsbalansen. Den lettest dopede siden setter bredden, og den vokser som roten av spenningen over sonen: $V_0$ i likevekt, $V_0 - V$ med forspenning, så sonen krymper i lederetningen og vokser i sperreretningen. For Si er den typisk noen tideler av en mikrometer."
+  - id: diodeligning
+    section: Forspenning
+    tex: "\\begin{aligned} I &= I_0\\left(e^{qV/k_BT} - 1\\right) \\\\ I_0 &= |I_\\text{gen}| \\end{aligned}"
+    label: "Strømmen gjennom overgangen, positiv fra p til n. Diffusjonsstrømmen over barrieren er likevektsverdien ganger $e^{qV/k_BT}$; generasjonsstrømmen av minoritetsbærere er uavhengig av $V$, og de to er like store i likevekt. I lederetningen vokser strømmen eksponentielt, i sperreretningen er den $-I_0$, metningsstrømmen, uansett spenning."
+
 glossary:
   - term: Valensbånd
     section: Fra binding til bånd
@@ -305,6 +350,37 @@ glossary:
   - term: Kontinuitetsligningen
     section: Kontinuitetsligningen
     definition: "(<em>continuity equation</em>) $\\partial\\,\\delta p/\\partial t = -(1/q)\\,\\partial J_p/\\partial x - \\delta p/\\tau_p$: overskuddet i en skive vokser med nettoinnstrømmen og faller med rekombinasjonen. Med ren diffusjonsstrøm blir den diffusjonsligningen."
+
+  - term: Diffusjonslengde
+    section: Stasjonær injeksjon og diffusjonslengde
+    definition: "(<em>diffusion length</em>) $L_p = \\sqrt{D_p\\tau_p}$, avstanden der et stasjonært injisert overskudd har falt til $1/e$, og gjennomsnittsavstanden en minoritetsbærer diffunderer før den rekombinerer. For Si er $L_p$ typisk noen titalls mikrometer, langt mer enn tykkelsen på en komponent."
+  - term: Haynes–Shockley-eksperimentet
+    section: Haynes–Shockley-eksperimentet
+    definition: "(<em>Haynes–Shockley experiment</em>) En lyspuls lager minoritetsbærere i en stav med felt langs; pulsen driver til en detektor og brer seg ut underveis. Drifttiden gir minoritetsmobiliteten, bredden på pulsen gir diffusjonskoeffisienten. Hall-målingen gir bare majoritetens mobilitet."
+  - term: pn-overgang
+    section: Den abrupte overgangen
+    definition: "(<em>p-n junction</em>) Skillet mellom et p-dopet og et n-dopet område i samme krystall, lagd ved implantasjon eller diffusjon gjennom et vindu i oksidet. Grunnenheten i dioder, transistorer, solceller og lysdioder."
+  - term: Abrupt overgang
+    section: Den abrupte overgangen
+    definition: "(<em>step junction</em>) Modellen med jevn $N_a$ på den ene siden, jevn $N_d$ på den andre og et skarpt skille ved $x = 0$. Beskriver epitaksielle overganger godt; diffunderte og implanterte overganger er gradvise, og det gir korreksjoner."
+  - term: Romladningssone
+    section: "Likevekt: kontaktpotensialet"
+    definition: "(<em>space charge region</em>, <em>transition region</em>, <em>depletion region</em>) Sonen $W = x_{p0} + x_{n0}$ rundt skillet der bærerne er borte og de faste ionene står igjen som romladning. Feltet og hele potensialforskjellen ligger her; utenfor er materialet nøytralt."
+  - term: Kontaktpotensial
+    section: "Likevekt: kontaktpotensialet"
+    definition: "(<em>contact potential</em>, <em>built-in potential</em>) $V_0 = (k_BT/q)\\ln(N_aN_d/n_i^2)$, potensialforskjellen over romladningssonen i likevekt. Barrieren de diffunderende bærerne må over. Det er en likevektsstørrelse: den driver ingen strøm, og et voltmeter over dioden viser null."
+  - term: Utarmingstilnærmingen
+    section: Romladningen
+    definition: "(<em>depletion approximation</em>) Sonen regnes som helt tømt for bærere, så ladningen der er bare ionene, $+qN_d$ og $-qN_a$, og materialet utenfor regnes som nøytralt. Gjør Poissons ligning til to konstanter og feltet til en trekant."
+  - term: Forspenning
+    section: Forspenning
+    definition: "(<em>bias</em>) En spenning $V$ over dioden, regnet positiv med p-siden positiv. Den faller over romladningssonen og gjør barrieren $V_0 - V$. Lederetning (<em>forward bias</em>): $V > 0$, lavere barriere, smalere sone, stor strøm. Sperreretning (<em>reverse bias</em>): $V < 0$, høyere barriere, bredere sone, bare metningsstrømmen."
+  - term: Generasjonsstrøm
+    section: Forspenning
+    definition: "(<em>generation current</em>) Driftstrømmen av minoritetsbærere som feies ned barrieren. Den er satt av hvor mange som når sonen per sekund, altså av den termiske generasjonen innenfor en diffusjonslengde, og er derfor uavhengig av spenningen. Lys nær sonen øker den."
+  - term: Metningsstrøm
+    section: Forspenning
+    definition: "(<em>reverse saturation current</em>) $I_0$, strømmen i sperreretningen: generasjonsstrømmen alene, siden barrieren har stoppet diffusjonen. Den er liten og nesten uavhengig av sperrespenningen, og er samme $I_0$ som står foran $e^{qV/k_BT}$ i lederetningen."
 
 features:
   progress: true
