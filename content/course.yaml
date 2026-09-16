@@ -390,3 +390,71 @@ features:
 
 analytics:
   goatcounter: "https://halvledermartinsundal.goatcounter.com/count"
+
+symbols:
+  # ── Energier og bånd ──
+  - { tex: "E", meaning: "Energi, oftest elektronets totale energi", unit: "eV", section: "Energier og bånd", id: e, note: "Ikke det elektriske feltet $\\mathcal{E}$." }
+  - { tex: "E_c,\\ E_v", meaning: "Bunnen av ledningsbåndet og toppen av valensbåndet", unit: "eV", section: "Energier og bånd", term: "Ledningsbånd" }
+  - { tex: "E_g", meaning: "Båndgapet, $E_c - E_v$", unit: "eV", section: "Energier og bånd", note: "$1{,}12$ eV for Si og $1{,}43$ eV for GaAs ved 300 K." }
+  - { tex: "E_F", meaning: "Fermi-nivået", unit: "eV", section: "Energier og bånd", term: "Fermi-nivå", formula: fermi-dirac, id: ef }
+  - { tex: "E_i", meaning: "Det intrinsiske nivået, $E_F$ i udopet materiale", unit: "eV", section: "Energier og bånd", term: "Intrinsisk nivå", formula: ni-formene }
+  - { tex: "E_d,\\ E_a", meaning: "Donor- og akseptornivået", unit: "eV", section: "Energier og bånd", term: "Donor", formula: hydrogenlik-donor }
+  - { tex: "F_n,\\ F_p", meaning: "Kvasi-Fermi-nivåene for elektroner og hull", unit: "eV", section: "Energier og bånd", term: "Kvasi-Fermi-nivå", formula: kvasi-fermi-nivaaer, note: "Skrives også $E_{Fn}$ og $E_{Fp}$. I likevekt er begge lik $E_F$." }
+  - { tex: "k", meaning: "Bølgevektoren til elektronet i krystallen", unit: "cm⁻¹", section: "Energier og bånd", term: "E-k-diagram", note: "Ikke Boltzmanns konstant, som skrives $k_B$." }
+  - { tex: "\\hbar k", meaning: "Krystallmomentum", unit: "eV·s/cm", section: "Energier og bånd", term: "Krystallmomentum", formula: krystallmomentum }
+  - { tex: "\\psi", meaning: "Bølgefunksjonen til elektronet", section: "Energier og bånd", term: "Bloch-funksjon", formula: bloch-funksjon }
+  - { tex: "m^*", meaning: "Effektiv masse, fra krumningen til $E(k)$", unit: "kg", section: "Energier og bånd", term: "Effektiv masse", formula: effektiv-masse, note: "Oppgis som brøkdel av $m_0$: $m_n^*$ for elektroner, $m_p^*$ for hull." }
+  - { tex: "m_l,\\ m_t", meaning: "Langsgående og tverrgående effektiv masse i én dal i Si", unit: "kg", section: "Energier og bånd", formula: dos-masse, note: "$0{,}98\\,m_0$ og $0{,}19\\,m_0$." }
+  # ── Bærere og konsentrasjoner ──
+  - { tex: "n,\\ p", meaning: "Konsentrasjonen av elektroner i ledningsbåndet og hull i valensbåndet", unit: "cm⁻³", section: "Bærere og konsentrasjoner", id: n }
+  - { tex: "n_0,\\ p_0", meaning: "Likevektskonsentrasjonene", unit: "cm⁻³", section: "Bærere og konsentrasjoner", formula: likevektskonsentrasjoner }
+  - { tex: "n_i", meaning: "Intrinsisk bærerkonsentrasjon", unit: "cm⁻³", section: "Bærere og konsentrasjoner", term: "Intrinsisk halvleder", formula: intrinsisk-konsentrasjon, id: ni, note: "$1{,}5 \\times 10^{10}$ cm⁻³ for Si ved 300 K." }
+  - { tex: "n_n,\\ p_n", meaning: "Elektron- og hullkonsentrasjonen på n-siden av en pn-overgang", unit: "cm⁻³", section: "Bærere og konsentrasjoner", note: "Tilsvarende $n_p$ og $p_p$ på p-siden. Indeksen sier hvilken side, bokstaven hvilken bærer." }
+  - { tex: "N_c,\\ N_v", meaning: "Effektiv tilstandstetthet i lednings- og valensbåndet", unit: "cm⁻³", section: "Bærere og konsentrasjoner", term: "Effektiv tilstandstetthet", formula: effektiv-tilstandstetthet, id: nc, note: "$2{,}9 \\times 10^{19}$ og $1{,}0 \\times 10^{19}$ cm⁻³ for Si ved 300 K." }
+  - { tex: "N_d,\\ N_a", meaning: "Konsentrasjonen av donorer og akseptorer", unit: "cm⁻³", section: "Bærere og konsentrasjoner", term: "Akseptor" }
+  - { tex: "N_d^+,\\ N_a^-", meaning: "Konsentrasjonen av <em>ioniserte</em> donorer og akseptorer", unit: "cm⁻³", section: "Bærere og konsentrasjoner", formula: ladningsnoytralitet, note: "Lik $N_d$ og $N_a$ ved romtemperatur i Si." }
+  - { tex: "f(E)", meaning: "Fermi–Dirac-fordelingen, sannsynligheten for at en tilstand er okkupert", section: "Bærere og konsentrasjoner", term: "Fermi-Dirac-fordelingen", formula: fermi-dirac }
+  - { tex: "N(E)", meaning: "Tilstandstettheten, antall tilstander per volum og energi", unit: "cm⁻³·eV⁻¹", section: "Bærere og konsentrasjoner", term: "Tilstandstetthet" }
+  # ── Transport ──
+  - { tex: "\\mathcal{E}", meaning: "Elektrisk felt", unit: "V/cm", section: "Transport", term: "Innebygd felt", formula: felt-baandskjema, id: e-felt, note: "Ikke energien $E$. Positiv retning er den et hull driver i." }
+  - { tex: "\\mathcal{B}", meaning: "Magnetisk flukstetthet, i Hall-effekten", unit: "Wb/cm²", section: "Transport", term: "Hall-effekten", formula: hall-koeffisient, note: "$1$ Wb/cm² $= 10^4$ T. Hører sammen med $v$ i cm/s og $\\mathcal{E}$ i V/cm." }
+  - { tex: "\\mathcal{V}", meaning: "Elektrostatisk potensial", unit: "V", section: "Transport", formula: poisson, id: potensial, note: "Ikke spenningen $V$ over komponenten. $\\mathcal{E} = -d\\mathcal{V}/dx$." }
+  - { tex: "\\langle v_x\\rangle", meaning: "Drifthastigheten", unit: "cm/s", section: "Transport", formula: drifthastighet }
+  - { tex: "v_s", meaning: "Metningshastigheten ved sterkt felt", unit: "cm/s", section: "Transport", term: "Metningshastighet", note: "Omtrent $10^7$ cm/s i Si." }
+  - { tex: "\\mu_n,\\ \\mu_p", meaning: "Mobiliteten til elektroner og hull, drifthastighet per felt", unit: "cm²/V·s", section: "Transport", term: "Mobilitet", formula: drifthastighet, id: mu, note: "$1350$ og $480$ cm²/V·s i rent Si ved 300 K. Alltid positiv." }
+  - { tex: "\\tau", meaning: "Midlere tid mellom kollisjoner", unit: "s", section: "Transport", term: "Midlere kollisjonstid", formula: drifthastighet, id: tau, note: "Ikke levetiden $\\tau_n$, $\\tau_p$, som er tiden før rekombinasjon." }
+  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", formula: diffusjonsstrom }
+  - { tex: "\\sigma", meaning: "Ledningsevne", unit: "(Ω·cm)⁻¹", section: "Transport", formula: ledningsevne }
+  - { tex: "\\rho", meaning: "Resistivitet, $1/\\sigma$", unit: "Ω·cm", section: "Transport", formula: ledningsevne, note: "Ikke romladningstettheten i Poissons ligning, som skrives ut som $q(p - n + N_d^+ - N_a^-)$." }
+  - { tex: "R", meaning: "Resistansen til en stav, $\\rho L/wt$", unit: "Ω", section: "Transport", formula: ledningsevne, note: "$L$ er lengden langs strømmen, $w$ bredden og $t$ tykkelsen." }
+  - { tex: "J", meaning: "Strømtetthet, $J_n + J_p$", unit: "A/cm²", section: "Transport", formula: driftdiffusjonsstrom, note: "$J_n$ og $J_p$ er bidragene fra hver bærertype; hver har et drift- og et diffusjonsledd." }
+  - { tex: "I", meaning: "Strøm, $J$ ganger tverrsnittet", unit: "A", section: "Transport", formula: diodeligning }
+  - { tex: "R_H", meaning: "Hall-koeffisienten", unit: "cm³/C", section: "Transport", term: "Hall-koeffisient", formula: hall-koeffisient, note: "Negativ for elektroner, positiv for hull." }
+  - { tex: "D_n,\\ D_p", meaning: "Diffusjonskoeffisienten til elektroner og hull", unit: "cm²/s", section: "Transport", term: "Diffusjonskoeffisient", formula: einstein, id: d, note: "$35$ og $12{,}5$ cm²/s i Si ved 300 K." }
+  - { tex: "\\phi", meaning: "Partikkelfluks, antall bærere per areal og tid", unit: "cm⁻²·s⁻¹", section: "Transport", formula: diffusjonsstrom, note: "Strømtettheten er fluksen ganger ladningen." }
+  # ── Overskuddsbærere ──
+  - { tex: "\\delta n,\\ \\delta p", meaning: "Overskuddet av bærere ut over likevekt, $n - n_0$ og $p - p_0$", unit: "cm⁻³", section: "Overskuddsbærere", term: "Overskuddsbærere", formula: levetid, id: delta-n, note: "Liten delta: overskuddet som funksjon av tid eller sted." }
+  - { tex: "\\Delta n,\\ \\Delta p", meaning: "Startverdien av overskuddet, ved $t = 0$ eller $x = 0$", unit: "cm⁻³", section: "Overskuddsbærere", formula: diffusjonsligning, note: "Stor delta: en konstant, ikke en funksjon." }
+  - { tex: "\\tau_n,\\ \\tau_p", meaning: "Levetiden til minoritetsbærere før rekombinasjon", unit: "s", section: "Overskuddsbærere", term: "Levetid", formula: levetid, id: tau-np, note: "$\\tau_n$ gjelder elektroner i p-type, $\\tau_p$ hull i n-type." }
+  - { tex: "g_\\text{op}", meaning: "Optisk generasjonsrate", unit: "cm⁻³·s⁻¹", section: "Overskuddsbærere", formula: stasjonaert-overskudd }
+  - { tex: "g_i,\\ r_i", meaning: "Termisk generasjons- og rekombinasjonsrate i likevekt", unit: "cm⁻³·s⁻¹", section: "Overskuddsbærere", formula: generasjon-rekombinasjon }
+  - { tex: "a_r", meaning: "Rekombinasjonskoeffisienten, $r = a_r np$", unit: "cm³/s", section: "Overskuddsbærere", formula: generasjon-rekombinasjon }
+  - { tex: "L_n,\\ L_p", meaning: "Diffusjonslengden, $\\sqrt{D\\tau}$", unit: "cm", section: "Overskuddsbærere", term: "Diffusjonslengde", formula: diffusjonslengde, id: lp, note: "Så langt et overskudd rekker før det har rekombinert til $1/e$." }
+  - { tex: "\\alpha", meaning: "Absorpsjonskoeffisienten for lys, intensiteten faller som $e^{-\\alpha x}$", unit: "cm⁻¹", section: "Overskuddsbærere" }
+  - { tex: "h\\nu", meaning: "Fotonenergien", unit: "eV", section: "Overskuddsbærere", term: "Elektron-hull-par", note: "Må være minst $E_g$ for å lage et par." }
+  # ── pn-overgangen ──
+  - { tex: "W", meaning: "Bredden av romladningssonen, $x_{p0} + x_{n0}$", unit: "cm", section: "pn-overgangen", term: "Romladningssone", formula: sonebredde, id: w }
+  - { tex: "x_{n0},\\ x_{p0}", meaning: "Hvor langt sonen strekker seg inn i n- og p-siden", unit: "cm", section: "pn-overgangen", formula: ladningsbalanse, note: "Lengst inn på den svakest dopede siden." }
+  - { tex: "V_0", meaning: "Kontaktpotensialet over sonen i likevekt", unit: "V", section: "pn-overgangen", term: "Kontaktpotensial", formula: kontaktpotensial, id: v0 }
+  - { tex: "V", meaning: "Påtrykt spenning over overgangen", unit: "V", section: "pn-overgangen", term: "Forspenning", formula: diodeligning, id: v, note: "Positiv i lederetningen (p-siden høyest). Sperrespenningen skrives $V = -V_r$." }
+  - { tex: "\\mathcal{E}_0", meaning: "Det største feltet i sonen, ved skillet $x = 0$", unit: "V/cm", section: "pn-overgangen", formula: maksfelt }
+  - { tex: "\\varepsilon", meaning: "Permittiviteten til halvlederen, $\\varepsilon_r\\varepsilon_0$", unit: "F/cm", section: "pn-overgangen", formula: poisson, note: "$\\varepsilon_r = 11{,}8$ for Si." }
+  - { tex: "I_0", meaning: "Metningsstrømmen i sperreretningen", unit: "A", section: "pn-overgangen", term: "Metningsstrøm", formula: diodeligning, id: i0 }
+  # ── Konstanter ──
+  - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
+  - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
+  - { tex: "k_BT", meaning: "Termisk energi", unit: "eV", section: "Konstanter", formula: fermi-dirac, id: kbt, note: "$0{,}0259$ eV ved 300 K; $k_BT/q = 0{,}0259$ V." }
+  - { tex: "\\hbar", meaning: "Redusert Plancks konstant, $h/2\\pi$", unit: "eV·s", section: "Konstanter", note: "$6{,}58 \\times 10^{-16}$ eV·s; $h = 4{,}14 \\times 10^{-15}$ eV·s." }
+  - { tex: "\\varepsilon_0", meaning: "Permittiviteten i vakuum", unit: "F/cm", section: "Konstanter", note: "$8{,}85 \\times 10^{-14}$ F/cm." }
+  - { tex: "m_0", meaning: "Elektronets hvilemasse", unit: "kg", section: "Konstanter", note: "$9{,}11 \\times 10^{-31}$ kg. Effektive masser oppgis som brøkdeler av den." }
+  - { tex: "a_0", meaning: "Bohr-radien", unit: "Å", section: "Konstanter", formula: hydrogenlik-donor, note: "$0{,}529$ Å." }
