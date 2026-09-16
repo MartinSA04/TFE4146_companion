@@ -362,6 +362,14 @@ driftfarten: $\Delta x = v_d\,\Delta t$. Feltet flytter hele pulsen med
 $v_d t$ uten å endre formen, og rekombinasjonen krymper den med faktoren
 $e^{-t/\tau_p}$.
 
+<Simulation
+  src={"/sims/haynes-shockley.js"}
+  host={"dom"}
+  title={"Haynes–Shockley: drifttid og pulsbredde"}
+  caption={"Dra i feltet, avstanden og levetiden. Øverst er staven: den blasse blå sjøen er elektronene i n-type Si, og de røde prikkene er hullpulsen lampen lager ved $x = 0$. Pulsen drifter mot høyre med $v_d = \\mu_p\\mathcal{E}$, brer seg ut ved diffusjon — klammen $\\Delta x$ spenner $1/e$-bredden — og tynnes ut med $e^{-t/\\tau_p}$. Nederst sveiper oscilloskopet på samme klokke, så bulen dukker opp i det pulsen passerer detektoren ved $x = L$. De to klammene er målingen: $t_d$ fra blinket til toppen gir $\\mu_p = L/t_d\\mathcal{E}$, og $\\Delta t$ mellom $1/e$-punktene gir $D_p = (v_d\\,\\Delta t)^2/16t_d$. Tidsaksen og den loddrette skalaen står fast, så hver bryter leses av som bevegelse mot en stillestående ramme: feltet flytter bulen til venstre og gjør den smalere, avstanden flytter den til høyre og gjør den bredere, og levetiden senker toppen uten å flytte eller bre den ut. Tettheten av prikker er ikke i skala med noen konsentrasjon."}
+  height={360}
+/>
+
 ## Sjekk deg selv
 
 <Quiz
