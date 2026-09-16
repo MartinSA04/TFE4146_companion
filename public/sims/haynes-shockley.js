@@ -1,39 +1,44 @@
 /**
  * Haynes–Shockley-eksperimentet, for TFE4146 modul 04.
  * Én idé: drifttiden gir minoritetens mobilitet, og pulsbredden gir
- * diffusjonskoeffisienten. De to målingene står under hverandre, og de to
- * panelene speiler hverandre: det som er en avstand i staven, er en tid på
- * skopet. Δx i staven måles som Δt på kurven, og L under staven måles som
- * t_d under tidsaksen.
+ * diffusjonskoeffisienten. De to panelene står under hverandre og speiler
+ * hverandre, så en avstand i staven er en tid på skopet. Δx over prikkene
+ * måles som Δt på kurven, og L under staven måles som t_d under tidsaksen.
  *
  * Øverst står riggen. En n-type stav med felt langs, ⊕ til venstre og ⊖ til
- * høyre, så feltet og hullene går mot høyre. Lampen over x = 0 blinker og
- * lager en puls av hull, tegnet som røde prikker mot den blasse blå sjøen av
- * elektroner som alltid er der — hullene er minoriteten, og det er dem
- * eksperimentet måler. Prikkene drifter med v_d = µ_p·ℰ og brer seg ut ved
- * diffusjon: hver prikk har et fast normalfordelt lodd g og står i
- * x = v_d·t + (s/√2)·g, der s² = 4D_p·t + w₀² er pulsens 1/e-halvbredde med
- * startbredden w₀ = 0,025 cm fra lysflekken. Klammen over prikkene spenner
- * ±s og er Δx, så den både flytter seg og vokser. Hver prikk har også et fast
- * lodd u og forsvinner når e^(−t/τ_p) faller under det, så skyen tynnes ut
- * eksponentielt. Detektoren står ved x = L, med klammen L under staven og en
- * ledning ned i skopet. Staven er lengre enn den største L, så pulsen fortsatt
- * er å se i staven når sveipet er ferdig og bildet blir stående.
+ * høyre, så feltet og hullene går mot høyre. Lampen over x = 0 sender en
+ * lyskjegle ned på staven og blinker, og blinket lager en puls av hull,
+ * tegnet som røde prikker mot de blå elektronene som alltid er der. Hullene
+ * er minoriteten, og det er dem eksperimentet måler. Prikkene drifter med
+ * v_d = µ_p·ℰ og brer seg ut ved diffusjon: hver prikk har et fast
+ * normalfordelt lodd g og står i x = v_d·t + (s/√2)·g, der s² = 4D_p·t + w₀²
+ * er pulsens 1/e-halvbredde med startbredden w₀ = 0,025 cm fra lysflekken.
+ * Klammen over prikkene spenner ±s og er Δx, så den både flytter seg og
+ * vokser. Hver prikk har også et fast lodd u og forsvinner når e^(−t/τ_p)
+ * faller under det, så skyen tynnes ut eksponentielt. Detektoren står ved
+ * x = L, med klammen L under staven og en ledning ned i skopet.
  *
- * Nederst står oscilloskopet på samme klokke som staven: strålen sveiper fra
- * venstre mot høyre mens pulsen drifter, og bulen dukker opp i det øyeblikket
- * prikkene passerer detektoren. Kurven er δp(L, t) regnet ut av det samme
- * uttrykket som prikkene følger, og den ferdige kurven blir stående til neste
- * blink. To klammer er selve målingen: t_d fra blinket til toppen, tegnet
- * under tidsaksen der L står under staven, og Δt mellom de to punktene der
- * kurven har falt til 1/e av toppen, tegnet på kurven i den høyden. Den
- * stiplede linjen viser 1/e-høyden. Klammene tegnes først når strålen har
- * passert dem, så bildet bygges opp som en måling.
+ * Nederst står oscilloskopet på samme tid som staven: strålen sveiper fra
+ * venstre mot høyre mens pulsen drifter, og kurven stiger i det prikkene
+ * passerer detektoren. Kurven er δp(L, t) regnet ut av det samme uttrykket
+ * som prikkene følger, og den ferdige kurven blir stående til neste blink.
+ * To klammer er selve målingen: t_d fra blinket til toppen, tegnet under
+ * tidsaksen der L står under staven, og Δt mellom de to punktene der kurven
+ * har falt til 1/e av toppen, tegnet på kurven i den høyden. Den stiplede
+ * linjen viser 1/e-høyden. Klammene tegnes først når strålen har passert
+ * dem, så bildet bygges opp som en måling.
  *
- * Tidsaksen og den loddrette skalaen står fast, så alle tre bryterne leses av
- * som bevegelse mot en stillestående ramme: feltet flytter bulen til venstre
- * og gjør den smalere, avstanden flytter den til høyre og gjør den bredere,
- * og levetiden senker toppen uten å flytte eller bre den ut.
+ * Sveipet varer til pulsen er ferdig OG prikkene har nådd kontakten i den
+ * andre enden, så pulsen alltid kjører turen sin helt ut og aldri stopper
+ * midt i staven. Står simuleringen stille (pause eller prefers-reduced-
+ * motion), fryses den i stedet ved tStill, sent nok til at kurven er tilbake på
+ * nullinja og begge klammene står der, men tidlig nok til at prikkene fortsatt
+ * er inne i staven.
+ *
+ * Tidsaksen og den loddrette skalaen står fast, så hver bryter leses av som
+ * bevegelse mot en ramme som ikke flytter seg: feltet flytter pulsen mot
+ * venstre og gjør den smalere, avstanden flytter den mot høyre og gjør den
+ * bredere, og levetiden senker toppen uten å flytte den eller bre den ut.
  *
  * Tallene er ekte silisium: µ_p = 480 cm²/Vs og D_p = µ_p·k_BT/q = 12,4 cm²/s.
  * Bryternes områder er valgt så begge klammene er lesbare på en telefon i hele
@@ -46,8 +51,9 @@ const KT = 0.0259; // V
 const MU_P = 480; // cm²/Vs, hull i Si
 const D_P = MU_P * KT; // cm²/s ≈ 12,4
 const W0 = 0.025; // cm, lysflekkens bredde = pulsens startbredde
-const BAR_CM = 1.9; // cm, staven fra lysflekken til enden
-const T_MAX = 700e-6; // s, hele tidsaksen på skopet
+const BAR_X0 = -0.18; // cm, staven stikker litt ut til venstre for lysflekken
+const BAR_X1 = 1.9; // cm, kontakten i den andre enden
+const T_MAX = 800e-6; // s, hele tidsaksen på skopet
 
 const E_MIN = 5;
 const E_MAX = 10; // V/cm
@@ -56,12 +62,12 @@ const L_MAX = 1.3; // cm
 const TAUS = [400e-6, 1200e-6, 4000e-6]; // s
 const TAU_LABEL = ["400 µs", "1,2 ms", "4 ms"];
 
-const SWEEP_SECS = 3.6; // s veggklokke for hele tidsaksen
-const HOLD_SECS = 1.2; // s med ferdig kurve før neste blink
-const FLASH_SECS = 0.35; // s lampen lyser
+const SWEEP_SECS = 4.0; // s veggklokke for hele tidsaksen
+const HOLD_SECS = 0.9; // s med ferdig kurve og tom stav før neste blink
+const FLASH_SECS = 0.4; // s lampen lyser
 const N_DOTS = 80;
 const R = 3; // px, hullprikkens radius
-const NS = 320; // punkter i kurven
+const NS = 340; // punkter i kurven
 
 /** Den sterkeste toppen bryterne kan gi, så den loddrette skalaen står fast. */
 const TRACE_REF = (() => {
@@ -100,6 +106,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   let tLo = 0;
   let tHi = 0;
   let tEnd = T_MAX;
+  let tStill = T_MAX;
 
   function buildTrace() {
     for (let i = 0; i <= NS; i++) trace[i] = sig((i / NS) * T_MAX);
@@ -117,7 +124,12 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     };
     tLo = cross(-1);
     tHi = cross(+1);
-    tEnd = Math.min(T_MAX, tHi + 2.2 * (tHi - tLo));
+    // Sveipet varer til pulsen er ferdig og prikkene har nådd kontakten, så
+    // pulsen alltid kjører turen sin helt ut.
+    tEnd = Math.min(T_MAX, Math.max(tHi + 2.2 * (tHi - tLo), BAR_X1 / vd()));
+    // Står bildet stille, fryses det rett etter at pulsen har passert
+    // detektoren, mens prikkene fortsatt er inne i staven.
+    tStill = Math.min(tEnd, (0.92 * BAR_X1) / vd(), tHi + 1.8 * (tHi - tLo));
   }
 
   // ── kontroller ────────────────────────────────────────────────────────────
@@ -207,7 +219,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     buildTrace();
     if (playing) restart();
     else {
-      t = tEnd;
+      t = tStill;
       hold = HOLD_SECS;
       flash = 0;
     }
@@ -245,7 +257,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     g.L = g.bx1 - g.bx0;
 
     // Staven, med en egen bane øverst til Δx-klammen og en nederst til feltet.
-    g.by0 = 32;
+    g.by0 = 42;
     g.barH = 88;
     g.by1 = g.by0 + g.barH;
     g.mid = g.by0 + 44;
@@ -264,7 +276,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     if (dots.length !== N_DOTS) makeDots();
   }
 
-  const xOf = (cm) => g.bx0 + (cm / BAR_CM) * g.L;
+  const xOf = (cm) => g.bx0 + ((cm - BAR_X0) / (BAR_X1 - BAR_X0)) * g.L;
   const tX = (s) => g.bx0 + (s / T_MAX) * g.L;
   const tY = (y) => g.sby - (y / TRACE_REF) * 0.88 * g.sigH;
 
@@ -307,6 +319,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const s = sigma(t);
     const alive = Math.exp(-t / tau());
     const xc = vd() * t; // pulsens midtpunkt, cm
+    const x0 = xOf(0);
     const xL = xOf(len);
 
     let svg =
@@ -327,7 +340,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
 
     let inBar = "";
 
-    // Elektronsjøen: alltid der, aldri i veien.
+    // Elektronene, alltid der og aldri i veien.
     let sea = "";
     for (const d of dots) sea += `<circle cx="${P(bx0 + d.ex * L)}" cy="${P(dy0 + d.ey * (dy1 - dy0))}" r="2.2"/>`;
     inBar += `<g style="fill:${blue}" fill-opacity="0.2">${sea}</g>`;
@@ -342,32 +355,31 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     for (const d of dots) {
       const a = clamp((alive - d.u) / 0.05, 0, 1);
       if (a <= 0) continue;
-      const x = xOf(xc + (s / Math.SQRT2) * d.g);
-      holes += `<circle cx="${P(x)}" cy="${P(dy0 + d.hy * (dy1 - dy0))}" r="${R}" fill-opacity="${P(0.9 * a)}"/>`;
+      holes += `<circle cx="${P(xOf(xc + (s / Math.SQRT2) * d.g))}" cy="${P(dy0 + d.hy * (dy1 - dy0))}" r="${R}" fill-opacity="${P(0.9 * a)}"/>`;
     }
     inBar += `<g style="fill:${red}">${holes}</g>`;
 
     // Δx: pulsens 1/e-bredde, den flytter seg og vokser.
-    if (xc < BAR_CM && alive > 0.02) {
-      const a = xOf(Math.max(xc - s, 0));
-      const b = xOf(Math.min(xc + s, BAR_CM));
+    if (xc < BAR_X1 && alive > 0.02) {
+      const a = xOf(Math.max(xc - s, BAR_X0));
+      const b = xOf(Math.min(xc + s, BAR_X1));
       if (b - a > 16) inBar += brace(a, b, wy, "Δx");
     }
     svg += `<g clip-path="url(#hs-bar)">${inBar}</g>`;
 
-    // Lampen over x = 0.
-    const lit = flash > 0;
-    const lc = lit ? "var(--accent)" : "var(--muted)";
-    const ly0 = by0 - 17;
-    let rays = "";
-    for (let i = 0; i < 8; i++) {
-      const a = (i / 8) * Math.PI * 2 + 0.4;
-      const r1 = lit ? 13 : 10;
-      rays += `M ${P(bx0 + 8 * Math.cos(a))} ${P(ly0 + 8 * Math.sin(a))} L ${P(bx0 + r1 * Math.cos(a))} ${P(ly0 + r1 * Math.sin(a))} `;
-    }
+    // Lampen over x = 0, med lyskjegla ned på staven. Kjegla er der hele tiden
+    // så det syns hvor lyset treffer, og den flammer opp når blinket går.
+    const f = flash > 0 ? flash / FLASH_SECS : 0;
+    const lc = f > 0 ? "var(--accent)" : "var(--muted)";
+    const hy = by0 - 18;
     svg +=
-      `<circle cx="${P(bx0)}" cy="${P(ly0)}" r="5" fill="${lc}" fill-opacity="${lit ? 1 : 0.45}"/>` +
-      `<path d="${rays}" stroke="${lc}" stroke-width="1.2" stroke-opacity="${lit ? 1 : 0.45}" fill="none"/>`;
+      `<path d="M ${P(x0 - 5)} ${P(hy)} L ${P(x0 + 5)} ${P(hy)} L ${P(x0 + 10)} ${P(by0)} L ${P(x0 - 10)} ${P(by0)} Z" fill="var(--accent)" fill-opacity="${P(0.16 + 0.55 * f)}"/>` +
+      `<path d="M ${P(x0 - 9)} ${P(hy - 8)} h 18 a 2 2 0 0 1 2 2 v 4 a 2 2 0 0 1 -2 2 h -18 a 2 2 0 0 1 -2 -2 v -4 a 2 2 0 0 1 2 -2 Z" fill="var(--border-strong)"/>`;
+    if (f > 0) {
+      let rays = "";
+      for (const dx of [-14, 0, 14]) rays += `M ${P(x0 + dx * 0.8)} ${P(hy - 11)} L ${P(x0 + dx)} ${P(hy - 17)} `;
+      svg += `<path d="${rays}" stroke="${lc}" stroke-width="1.5" stroke-linecap="round" stroke-opacity="${P(f)}" fill="none"/>`;
+    }
 
     // Detektoren ved x = L, med ledningen ned i skopet.
     svg +=
@@ -375,20 +387,20 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       `<path d="M ${P(xL)} ${P(by1 + 5)} V ${P(sfy0)}" stroke="var(--border-strong)" stroke-width="1.5" fill="none"/>`;
 
     // L fra lysflekken til detektoren, slik t_d står under tidsaksen.
-    svg += brace(bx0, xL, ly, "L", false);
+    svg += brace(x0, xL, ly, "L", false);
 
     // ── oscilloskopet ───────────────────────────────────────────────────────
     svg += `<rect x="${P(bx0 - 8)}" y="${P(sfy0)}" width="${P(L + 16)}" height="${P(sfy1 - sfy0)}" rx="3" fill="var(--card-nested)" stroke="var(--border-strong)" stroke-width="1.5"/>`;
 
     let ticks = "";
-    for (let i = 0; i <= 7; i++) {
-      const x = bx0 + (i / 7) * L;
+    for (let i = 0; i <= 8; i++) {
+      const x = bx0 + (i / 8) * L;
       ticks += `M ${P(x)} ${P(sby)} V ${P(sby + (i % 2 === 0 ? 6 : 3))} `;
     }
     svg +=
       `<path d="M ${P(bx0)} ${P(sby)} H ${P(bx1)}" stroke="var(--border-strong)" stroke-width="1.5"/>` +
       `<path d="${ticks}" stroke="var(--border-strong)" stroke-width="1"/>`;
-    for (let i = 0; i <= 3; i++) svg += tag(bx0 + (i / 3.5) * L, sby + 17, String(i * 200), "middle");
+    for (let i = 0; i <= 3; i++) svg += tag(bx0 + (i / 4) * L, sby + 17, String(i * 200), "middle");
     svg += tag(bx1, sby + 17, "µs", "end") + tag(bx0 + 2, sty + 2, "δp", "start");
 
     // Kurven, tegnet så langt strålen har kommet.
@@ -483,7 +495,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   layout();
   buildTrace();
   if (playing) restart();
-  else t = tEnd;
+  else t = tStill;
   render();
   onResize(() => {
     layout();
