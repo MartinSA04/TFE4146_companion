@@ -204,6 +204,34 @@ formulas:
     section: Forspenning
     tex: "\\begin{aligned} I &= I_0\\left(e^{qV/k_BT} - 1\\right) \\\\ I_0 &= |I_\\text{gen}| \\end{aligned}"
     label: "Strømmen gjennom overgangen, positiv fra p til n. Diffusjonsstrømmen over barrieren er likevektsverdien ganger $e^{qV/k_BT}$; generasjonsstrømmen av minoritetsbærere er uavhengig av $V$, og de to er like store i likevekt. I lederetningen vokser strømmen eksponentielt, i sperreretningen er den $-I_0$, metningsstrømmen, uansett spenning."
+  - id: injeksjon-kant
+    section: Injeksjon av minoritetsbærere
+    tex: "\\begin{aligned} \\Delta p_n &= p_n\\left(e^{qV/k_BT} - 1\\right) \\\\ \\Delta n_p &= n_p\\left(e^{qV/k_BT} - 1\\right) \\end{aligned}"
+    label: "Overskuddet av minoritetsbærere ved kantene av romladningssonen, fra $p(x_{n0})/p_n = e^{qV/k_BT}$ ved lav injeksjon. Vokser eksponentielt i lederetningen; i sperreretningen med $V_r \\gg k_BT/q$ er $\\Delta p_n \\approx -p_n$ og $\\Delta n_p \\approx -n_p$, så kantene er tømt for minoritetsbærere."
+  - id: minoritetsprofiler
+    section: Injeksjon av minoritetsbærere
+    tex: "\\begin{aligned} \\delta p(x_n) &= \\Delta p_n\\, e^{-x_n/L_p} \\\\ \\delta n(x_p) &= \\Delta n_p\\, e^{-x_p/L_n} \\end{aligned}"
+    label: "Profilene av injiserte minoritetsbærere i lange nøytrale områder, med $x_n$ målt fra $x_{n0}$ innover i n-siden og $x_p$ fra $-x_{p0}$ innover i p-siden. Samme løsning som for injeksjon i enden av en stav, med overskuddet ved kanten satt av spenningen."
+  - id: kvasi-fermi-sone
+    section: Injeksjon av minoritetsbærere
+    tex: "pn = n_i^2\\, e^{(F_n - F_p)/k_BT} = n_i^2\\, e^{qV/k_BT}"
+    label: "Inne i romladningssonen ligger kvasi-Fermi-nivåene $qV$ fra hverandre. Utenfor er det minoritetsnivået som flytter seg, lineært med avstanden, til det møter $E_F$ etter mange diffusjonslengder. I sperreretningen er $pn \\approx 0$ i sonen."
+  - id: metningsstrom-i0
+    section: Diodeligningen
+    tex: "I_0 = qA\\left(\\dfrac{D_p}{L_p}\\,p_n + \\dfrac{D_n}{L_n}\\,n_p\\right)"
+    label: "Metningsstrømmen i $I = I_0(e^{qV/k_BT} - 1)$: diffusjonsstrømmene ved de to sonekantene lagt sammen, uten rekombinasjon i sonen. Med $p_n = n_i^2/N_d$ og $n_p = n_i^2/N_a$ er det den lett dopede siden som teller; i en p⁺n-overgang er strømmen nesten bare hull injisert i n-siden."
+  - id: ladningskontroll
+    section: Ladningskontroll
+    tex: "\\begin{aligned} Q_p &= qA\\,L_p\\,\\Delta p_n \\\\ I_p(x_n = 0) &= \\dfrac{Q_p}{\\tau_p} = qA\\dfrac{D_p}{L_p}\\,\\Delta p_n \\end{aligned}"
+    label: "Ladningen som er lagret i minoritetsprofilen, er arealet under den, og strømmen inn må fylle den på hvert $\\tau_p$ sekund. Samme svar som fra gradienten, siden $L_p/\\tau_p = D_p/L_p$. Tilsvarende $Q_n = qA\\,L_n\\,\\Delta n_p$ på p-siden."
+  - id: majoritetsstrom
+    section: Strømkomponentene langs dioden
+    tex: "\\begin{aligned} I_p(x_n) &= qA\\dfrac{D_p}{L_p}\\,\\delta p(x_n) \\\\ I_n(x_n) &= I - I_p(x_n) \\end{aligned}"
+    label: "Den samlede strømmen er den samme i hvert tverrsnitt. Minoritetsstrømmen er proporsjonal med overskuddet og dør ut som $e^{-x_n/L_p}$ fra sonen, så majoritetsbærerne tar over: elektronene på n-siden erstatter dem som rekombinerer med de injiserte hullene, og leverer dem som injiseres inn i p-siden."
+  - id: skredmultiplikasjon
+    section: Skredgjennombrudd
+    tex: "\\begin{aligned} M &= \\dfrac{n_\\text{ut}}{n_\\text{in}} = \\dfrac{1}{1 - P} \\\\ &= 1 + P + P^2 + \\cdots \\\\ M &= \\dfrac{1}{1 - (V/V_\\text{br})^n} \\end{aligned}"
+    label: "Multiplikasjonen i skredgjennombrudd, med $P$ som sannsynligheten for en ioniserende kollisjon per tur gjennom sonen. Den nederste er den målte formen nær gjennombrudd, med $n$ mellom 3 og 6 etter materialet. $V_\\text{br}$ vokser med båndgapet og faller med dopingen på den lett dopede siden."
 
 glossary:
   - term: Valensbånd
@@ -381,6 +409,39 @@ glossary:
   - term: Metningsstrøm
     section: Forspenning
     definition: "(<em>reverse saturation current</em>) $I_0$, strømmen i sperreretningen: generasjonsstrømmen alene, siden barrieren har stoppet diffusjonen. Den er liten og nesten uavhengig av sperrespenningen, og er samme $I_0$ som står foran $e^{qV/k_BT}$ i lederetningen."
+  - term: Injeksjon
+    section: Injeksjon av minoritetsbærere
+    definition: "(<em>minority carrier injection</em>) Spenningen i lederetningen holder et overskudd av minoritetsbærere ved hver sonekant, $\\Delta p_n = p_n(e^{qV/k_BT} - 1)$ på n-siden og tilsvarende for elektroner på p-siden. Overskuddet diffunderer innover og rekombinerer, og diffusjonsstrømmen fra profilen er diodestrømmen."
+  - term: Diodeligningen
+    section: Diodeligningen
+    definition: "(<em>diode equation</em>) $I = I_0(e^{qV/k_BT} - 1)$ med $I_0 = qA(D_pp_n/L_p + D_nn_p/L_n)$: summen av diffusjonsstrømmene ved de to sonekantene, uten rekombinasjon i sonen. Gjelder for begge fortegn av $V$; i sperreretningen er $I = -I_0$."
+  - term: Ensidig overgang
+    section: Diodeligningen
+    definition: "(<em>p⁺n junction</em>, <em>one-sided junction</em>) En overgang der den ene siden er mye sterkere dopet enn den andre, skrevet p⁺n eller pn⁺. Den lett dopede siden tar nesten hele injeksjonen, holder nesten hele den lagrede ladningen og nesten hele romladningssonen, og setter gjennombruddsspenningen."
+  - term: Ladningskontroll
+    section: Ladningskontroll
+    definition: "(<em>charge control approximation</em>) Strømmen inn i et område er ladningen som er lagret i minoritetsprofilen der, delt på levetiden: $I_p(0) = Q_p/\\tau_p$ med $Q_p = qAL_p\\Delta p_n$. Gir det samme som gradienten ved kanten, ofte raskere."
+  - term: Ekstraksjon
+    section: "Sperreretning: ekstraksjon"
+    definition: "(<em>minority carrier extraction</em>) Motstykket til injeksjon: i sperreretningen feies minoritetsbærerne som når sonekanten, over, og ingen kommer tilbake, så konsentrasjonen ved kantene går mot null og profilen er tømt en diffusjonslengde ut. Metningsstrømmen mates av termisk generasjon i det volumet."
+  - term: Gjennombrudd
+    section: Gjennombrudd
+    definition: "(<em>reverse breakdown</em>) Ved sperrespenningen $V_\\text{br}$ vokser sperrestrømmen bratt, og strømmen kan bli stor med nesten ingen økning i spenningen. Ikke ødeleggende i seg selv når kretsen begrenser strømmen; det er varmen som ødelegger. To mekanismer: Zener-effekten og skred."
+  - term: Zener-gjennombrudd
+    section: Zener-effekten
+    definition: "(<em>Zener effect</em>) Gjennombrudd ved tunnelering i en tynn, sterkt dopet sone: sperrespenningen legger ledningsbåndet på n-siden overfor valensbåndet på p-siden, og elektroner tunnelerer gjennom barrieren med bredde $d$. Krever felt på omtrent $10^6$ V/cm og skjer under noen få volt."
+  - term: Skredgjennombrudd
+    section: Skredgjennombrudd
+    definition: "(<em>avalanche breakdown</em>) Gjennombrudd i en bred, lett dopet sone: bærere som får nok energi i feltet, slår løs nye par ved støtionisasjon, og de nye kan slå løs flere. Multiplikasjonen er $M = 1/(1 - P)$. Fra noen volt til tusener; $V_\\text{br}$ vokser med båndgapet og faller med dopingen."
+  - term: Støtionisasjon
+    section: Skredgjennombrudd
+    definition: "(<em>impact ionization</em>) En bærer med nok kinetisk energi slår løs et elektron-hull-par i en kollisjon med gitteret. Mekanismen bak skredgjennombrudd."
+  - term: Likeretter
+    section: Likerettere og gjennombruddsdioder
+    definition: "(<em>rectifier</em>) En diode brukt til å slippe strøm bare én vei, så bare de positive halvperiodene av en vekselspenning kommer gjennom. Regnes som kortslutning i lederetningen og brudd i sperreretningen, eventuelt med et spenningsfall på omtrent $V_0$ og en seriemotstand i tillegg. God likeretter: liten $I_0$, stor $V_\\text{br}$, liten seriemotstand."
+  - term: Gjennombruddsdiode
+    section: Likerettere og gjennombruddsdioder
+    definition: "(<em>breakdown diode</em>, <em>Zener diode</em>) En diode dopet for en bestemt $V_\\text{br}$, fra under én volt til flere hundre, brukt i gjennombrudd som spenningsregulator eller referanse. Kalles Zener-diode selv om mekanismen som regel er skred."
 
 features:
   progress: true
@@ -450,6 +511,14 @@ symbols:
   - { tex: "\\mathcal{E}_0", meaning: "Det største feltet i sonen, ved skillet $x = 0$", unit: "V/cm", section: "pn-overgangen", formula: maksfelt }
   - { tex: "\\varepsilon", meaning: "Permittiviteten til halvlederen, $\\varepsilon_r\\varepsilon_0$", unit: "F/cm", section: "pn-overgangen", formula: poisson, note: "$\\varepsilon_r = 11{,}8$ for Si." }
   - { tex: "I_0", meaning: "Metningsstrømmen i sperreretningen", unit: "A", section: "pn-overgangen", term: "Metningsstrøm", formula: diodeligning, id: i0 }
+  - { tex: "x_n,\\ x_p", meaning: "Avstanden fra sonekanten innover i n- og p-siden", unit: "cm", section: "pn-overgangen", formula: minoritetsprofiler, note: "Måles fra $x_{n0}$ og $-x_{p0}$, ikke fra skillet $x = 0$." }
+  - { tex: "\\Delta p_n,\\ \\Delta n_p", meaning: "Overskuddet av minoritetsbærere ved sonekantene", unit: "cm⁻³", section: "pn-overgangen", term: "Injeksjon", formula: injeksjon-kant, note: "Negativt i sperreretningen, ned til $-p_n$ og $-n_p$." }
+  - { tex: "Q_p,\\ Q_n", meaning: "Ladningen som er lagret i minoritetsprofilen på n- og p-siden", unit: "C", section: "pn-overgangen", term: "Ladningskontroll", formula: ladningskontroll }
+  - { tex: "A", meaning: "Tverrsnittet av overgangen", unit: "cm²", section: "pn-overgangen", formula: metningsstrom-i0 }
+  - { tex: "V_\\text{br}", meaning: "Gjennombruddsspenningen", unit: "V", section: "pn-overgangen", term: "Gjennombrudd", formula: skredmultiplikasjon, id: vbr }
+  - { tex: "M", meaning: "Multiplikasjonen i skred, bærere ut per bærer inn", section: "pn-overgangen", term: "Skredgjennombrudd", formula: skredmultiplikasjon }
+  - { tex: "P", meaning: "Sannsynligheten for en ioniserende kollisjon på én tur gjennom sonen", section: "pn-overgangen", term: "Støtionisasjon", formula: skredmultiplikasjon }
+  - { tex: "d", meaning: "Tunnelavstanden mellom båndene i Zener-effekten", unit: "cm", section: "pn-overgangen", term: "Zener-gjennombrudd" }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
