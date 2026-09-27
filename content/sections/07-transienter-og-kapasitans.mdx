@@ -1,0 +1,465 @@
+---
+order: 7
+title: "Transienter, kapasitans og avvik fra den enkle teorien"
+summary: "Hvorfor den lagrede ladningen gjør at spenningen over en pn-overgang ikke kan hoppe, hvor lenge sperrestrømmen varer når dioden slås om, hvilke to kapasitanser overgangen har og hvordan båndgapet, høy injeksjon, rekombinasjon i sonen og seriemotstand skiller den virkelige dioden fra diodeligningen."
+importance: core
+tag: "Uke 39 · Streetman §5.5–5.6"
+part: "Del 2: pn-overgangen"
+updated: 2026-09-27
+---
+
+<LearningGoals>
+
+- Skrive strømmen i en transient som rekombinasjon pluss endring i lagret ladning, og løse den for en diode der strømmen slås av.
+- Forklare hvorfor sperrestrømmen er stor og settes av kretsen i <Term name="Lagringstid">lagringstiden</Term>, og regne ut $t_{sd}$ eller levetiden fra den andre.
+- Utlede <Term name="Overgangskapasitans">overgangskapasitansen</Term> $C_j$ fra ladningen i romladningssonen, og skille den fra <Term name="Diffusjonskapasitans">diffusjonskapasitansen</Term>.
+- Forklare hvorfor strømmen i lederetningen først blir stor nær $E_g/q$ for sterkt dopede overganger, og hva <Term name="Idealitetsfaktor">idealitetsfaktoren</Term> sier om hvor strømmen kommer fra.
+
+</LearningGoals>
+
+## Lagret ladning og tid
+
+I lederetningen ligger det en lagret ladning $Q_p$ av hull på n-siden av en
+p⁺n-overgang. Endrer strømmen seg, må ladningen bygges opp eller tømmes, og
+det tar tid. Integrer <FormulaRef id="kontinuitet">kontinuitetsligningen</FormulaRef>
+for hull over hele n-siden, fra sonekanten til kontakten, og gang med $qA$.
+Strømleddet blir strømmen inn ved kanten, siden hullstrømmen er null langt
+inne:
+
+$$
+\frac{dQ_p}{dt} = I_p(x_n = 0) - \frac{Q_p}{\tau_p}
+$$
+
+I en p⁺n-overgang er hullstrømmen ved kanten nesten hele strømmen $i(t)$, så
+
+$$
+i(t) = \frac{Q_p(t)}{\tau_p} + \frac{dQ_p(t)}{dt}
+$$
+
+Strømmen skal både erstatte hullene som rekombinerer, og bygge opp eller
+tømme ladningen. I stasjonær tilstand er $dQ_p/dt = 0$, og det som står igjen,
+er <Term name="Ladningskontroll">ladningskontroll</Term>.
+
+Spenningen $v$ over overgangen er bundet til overskuddet ved kanten,
+$\Delta p_n = p_n(e^{qv/k_BT} - 1)$. Overskuddet er en del av den lagrede
+ladningen og kan ikke forsvinne på et øyeblikk, så spenningen kan ikke
+hoppe. Liten $v$ og $i$ brukes for størrelser som endrer seg med tiden.
+
+### Når strømmen slås av
+
+Strømmen $I$ slås av ved $t = 0$. Da er $i = 0$ og $Q_p(0) = I\tau_p$, så
+
+$$
+Q_p(t) = I\tau_p\,e^{-t/\tau_p}
+$$
+
+Ladningen dør ut med levetiden, og så lenge den er der, ligger det en
+spenning over overgangen. Profilen beholder ikke formen $e^{-x_n/L_p}$
+underveis. Strømmen inn ved kanten er null, så gradienten der er null, og
+profilen flater ut nærmest sonen. Den
+<Term name="Kvasistasjonær tilnærming">kvasistasjonære tilnærmingen</Term>
+ser bort fra dette og regner profilen som eksponentiell i hvert øyeblikk,
+med $Q_p(t) = qAL_p\,\Delta p_n(t)$. Satt inn i uttrykket for $\Delta p_n$
+gir det spenningen:
+
+$$
+v(t) = \frac{k_BT}{q}\ln\left(\frac{I\tau_p}{qAL_pp_n}\,e^{-t/\tau_p} + 1\right)
+$$
+
+Spenningen er logaritmen av ladningen. Når ladningen faller med en faktor
+$e$, faller spenningen bare $k_BT/q$, så en diode som ledet ved 0,70 V,
+ligger fortsatt på 0,67 V én levetid etter at strømmen ble slått av.
+
+## Lagringstid
+
+En p⁺n-diode står i serie med en motstand $R$ og en kilde som slås om fra
+$+E$ til $-E$. I lederetningen er spenningen over overgangen liten mot $E$,
+så strømmen er $I_f \approx E/R$. Rett etter omslaget ved $t = 0$ har
+overgangen fortsatt den lille positive spenningen, fordi den lagrede
+ladningen ikke er borte. Nesten hele $-E$ ligger da over motstanden, og det
+går en sperrestrøm $I_r \approx E/R$, like stor som strømmen i lederetningen
+og mange størrelsesordener større enn $I_0$.
+
+Sperrestrømmen er de lagrede hullene som går tilbake over sonen. Gradienten
+ved kanten har snudd sammen med strømmen, og overskuddet ved kanten tømmes
+både av sperrestrømmen og av rekombinasjonen. Så lenge $\Delta p_n > 0$, er
+$v$ positiv og liten, og strømmen holder seg på $-I_r$. Når $\Delta p_n$ når
+null, begynner overgangen å ta opp spenningen. Sperrestrømmen avtar mens
+resten av ladningen hentes ut, og til slutt går bare $-I_0$. Tiden fram til
+$\Delta p_n = 0$ er <Term name="Lagringstid">lagringstiden</Term> $t_{sd}$.
+Den eksakte løsningen av diffusjonsligningen gir
+
+$$
+t_{sd} = \tau_p\left[\operatorname{erf}^{-1}\!\left(\frac{I_f}{I_f + I_r}\right)\right]^2
+$$
+
+der erf er feilfunksjonen, som slås opp i en tabell. Med $I_r = I_f$ er
+$\operatorname{erf}^{-1}(1/2) = 0{,}477$ og $t_{sd} = 0{,}23\,\tau_p$.
+
+<Derivation title="Lagringstiden i den kvasistasjonære tilnærmingen">
+
+Løs $i = Q_p/\tau_p + dQ_p/dt$ med $i = -I_r$ for $t > 0$ og
+$Q_p(0) = I_f\tau_p$. Løsningen går mot $-I_r\tau_p$, og avviket fra den dør
+ut med $\tau_p$:
+
+$$
+Q_p(t) = -I_r\tau_p \allowbreak + (I_f + I_r)\,\tau_p\,e^{-t/\tau_p}
+$$
+
+Med $Q_p = qAL_p\,\Delta p_n$ er $\Delta p_n = 0$ når $Q_p = 0$:
+
+$$
+t_{sd} = \tau_p\ln\left(1 + \frac{I_f}{I_r}\right)
+$$
+
+Med $I_r = I_f$ er det $0{,}69\,\tau_p$, tre ganger den eksakte verdien.
+
+</Derivation>
+
+Uttrykket for $Q_p(t)$ er eksakt, siden det bare er ladningsbalansen. Det er
+koblingen $Q_p = qAL_p\,\Delta p_n$ som ikke holder. Sperrestrømmen henter
+hullene ved kanten, så området nærmest sonen tømmes først. Med $I_r = I_f$ er
+$Q_p(t_{sd}) = \tau_p(-I_f + 2I_fe^{-0{,}23}) = 0{,}59\,I_f\tau_p$, så tre
+femdeler av ladningen ligger ennå lenger inne når $\Delta p_n$ når null.
+
+<Simulation
+  src={"/sims/lagringstid.js"}
+  host={"dom"}
+  title={"Lagringstiden i en p⁺n-diode"}
+  caption={"Kilden slås om fra lederetning til sperreretning ved $t = 0$, og tilbake igjen. Øverst er hullene på n-siden. Etter omslaget går de lagrede hullene tilbake over sonen, og det er de som er sperrestrømmen. I midten er profilen $\\delta p(x_n)$, med profilen fra lederetningen stiplet. Nederst er strømmen $i$ og spenningen $v$ over overgangen. Strømmen holder seg på $-I_r$ til overskuddet ved kanten er null ved $t_{sd}$, og først da blir $v$ negativ, mens resten av ladningen hentes ut. Større $I_r$ gir kortere lagringstid. Den positive delen av spenningsaksen er forstørret."}
+  height={440}
+/>
+
+Lagringstiden er proporsjonal med $\tau_p$, så en måling av $t_{sd}$ i en
+krets som denne gir levetiden. Det er en vanlig måte å måle levetider på.
+
+<Example title="levetiden fra lagringstiden">
+
+En p⁺n-diode i Si leder $I_f = 5$ mA. Kilden slås om, og sperrestrømmen er
+$I_r = 10$ mA til overgangen begynner å ta opp spenningen. Et oscilloskop
+viser $t_{sd} = 0{,}10$ µs. Finn levetiden $\tau_p$ på n-siden, og
+sammenlign med svaret fra den kvasistasjonære tilnærmingen. Bruk
+$\operatorname{erf}^{-1}(1/3) = 0{,}305$.
+
+<Solution>
+
+- Argumentet til den inverse feilfunksjonen:
+
+$$
+\frac{I_f}{I_f + I_r} = \frac{5}{5 + 10} = \frac{1}{3}
+$$
+
+- Den eksakte formelen løst for $\tau_p$:
+
+$$
+\tau_p = \frac{t_{sd}}{\left[\operatorname{erf}^{-1}(1/3)\right]^2} \allowbreak = \frac{0{,}10\ \text{µs}}{0{,}305^2} \allowbreak = 1{,}1\ \text{µs}
+$$
+
+- Den kvasistasjonære formelen løst for $\tau_p$:
+
+$$
+\tau_p = \frac{t_{sd}}{\ln(1 + I_f/I_r)} \allowbreak = \frac{0{,}10\ \text{µs}}{\ln 1{,}5} \allowbreak = 0{,}25\ \text{µs}
+$$
+
+<Answer>
+
+$\tau_p = 1{,}1$ µs. Den kvasistasjonære formelen gir $0{,}25$ µs, over fire
+ganger for lite, fordi den gir for lang lagringstid for en gitt levetid.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+### Svitsjedioder
+
+En <Term name="Svitsjediode">svitsjediode</Term> skal slå raskt om, så den må
+ha kort levetid, lagre lite ladning eller begge deler. Gull i Si er et
+effektivt <Term name="Rekombinasjonssenter">rekombinasjonssenter</Term>, og
+levetiden er omtrent omvendt proporsjonal med gullkonsentrasjonen. En diode
+med $\tau_p = 1$ µs og $t_{sd} = 0{,}1$ µs, omtrent som i eksempelet, får
+$\tau_p = 0{,}1$ µs og $t_{sd} = 10$ ns med $10^{14}$ gullatomer per cm³. Mer
+gull hjelper bare til en grense, fordi gullnivåene i romladningssonen også
+genererer bærere og øker sperrestrømmen.
+
+I en <Term name="Kort diode">kort diode</Term> er den lett dopede siden
+kortere enn en diffusjonslengde. De fleste injiserte hullene diffunderer da
+helt fram til kontakten, profilen blir en rett linje fra $\Delta p_n$ til
+null, og lite ladning blir liggende.
+
+## Kapasitans
+
+To ladninger i overgangen endrer seg med spenningen, og hver gir en
+kapasitans. Ionene i romladningssonen gir
+<Term name="Overgangskapasitans">overgangskapasitansen</Term> $C_j$, som
+dominerer i sperreretningen. Den lagrede ladningen av minoritetsbærere gir
+<Term name="Diffusjonskapasitans">diffusjonskapasitansen</Term> $C_s$, som
+dominerer i lederetningen. Ingen av ladningene er proporsjonal med
+spenningen, så kapasitansen er den deriverte, $C = |dQ/dV|$.
+
+### Overgangskapasitansen
+
+Ladningen på hver side av sonen er ionene som er avdekket,
+$|Q| = qAx_{n0}N_d$. Med $x_{n0} = WN_a/(N_a + N_d)$ og
+<FormulaRef id="sonebredde">sonebredden</FormulaRef> med spenning er
+
+$$
+|Q| = qA\frac{N_dN_a}{N_d + N_a}\,W \allowbreak = A\left[2q\varepsilon(V_0 - V)\frac{N_dN_a}{N_d + N_a}\right]^{1/2}
+$$
+
+Det er barrieren $V_0 - V$ som endrer ladningen, så deriver med hensyn på
+den:
+
+$$
+C_j = \left|\frac{dQ}{d(V_0 - V)}\right| \allowbreak = \frac{A}{2}\left[\frac{2q\varepsilon}{V_0 - V}\,\frac{N_dN_a}{N_d + N_a}\right]^{1/2} \allowbreak = \frac{\varepsilon A}{W}
+$$
+
+Det er formelen for en platekondensator. De nøytrale områdene er platene,
+sonen er dielektrikumet, og avstanden $W$ avhenger av spenningen.
+Sperrespenning gjør sonen bredere og kapasitansen mindre. I en p⁺n-overgang
+ligger sonen nesten bare på n-siden, og
+
+$$
+C_j = \frac{A}{2}\left[\frac{2q\varepsilon N_d}{V_0 - V}\right]^{1/2}
+$$
+
+Måler du $C_j$ ved en sperrespenning som er stor mot $V_0$, og kjenner
+arealet, har du dopingen på den lett dopede siden.
+
+<Example title="overgangskapasitansen i en Si-diode">
+
+En abrupt Si-overgang har $A = 10^{-4}$ cm², $N_a = 10^{17}$ cm⁻³ og
+$N_d = 10^{15}$ cm⁻³, og $V_0 = 0{,}695$ V ved 300 K. Finn $C_j$ ved
+$-4$ V og ved $0$ V.
+
+<Solution>
+
+- Permittiviteten og dopingleddet:
+
+$$
+\varepsilon = 11{,}8 \cdot 8{,}85 \times 10^{-14} \allowbreak = 1{,}044 \times 10^{-12}\ \text{F/cm}
+$$
+
+$$
+\frac{1}{N_a} + \frac{1}{N_d} = 1{,}01 \times 10^{-15}\ \text{cm}^3
+$$
+
+- Sonebredden ved $-4$ V fra <FormulaRef id="sonebredde">formelen</FormulaRef>, der barrieren er $V_0 - V = 4{,}695$ V:
+
+$$
+\frac{2\varepsilon(V_0 - V)}{q} \allowbreak = \frac{2 \cdot 1{,}044 \cdot 4{,}695}{1{,}6} \times 10^{7} \allowbreak = 6{,}13 \times 10^{7}\ \text{cm}^{-1}
+$$
+
+Ganget med $1/N_a + 1/N_d = 1{,}01 \times 10^{-15}$ cm³ gir det
+$W^2 = 6{,}19 \times 10^{-8}$ cm², så $W = 2{,}49$ µm.
+
+- Kapasitansen:
+
+$$
+C_j = \frac{\varepsilon A}{W} \allowbreak = \frac{1{,}044 \times 10^{-12} \cdot 10^{-4}}{2{,}49 \times 10^{-4}} \allowbreak = 4{,}19 \times 10^{-13}\ \text{F}
+$$
+
+- Ved $0$ V er barrieren $0{,}695$ V. $W$ går som roten av barrieren, så
+
+$$
+W = 2{,}49\ \text{µm} \cdot \sqrt{\frac{0{,}695}{4{,}695}} \allowbreak = 0{,}958\ \text{µm}
+$$
+
+og $C_j = \varepsilon A/W = 1{,}09 \times 10^{-12}$ F.
+
+<Answer>
+
+$C_j = 0{,}42$ pF ved $-4$ V og $1{,}09$ pF ved $0$ V. Fire volt
+sperrespenning gjør sonen 2,6 ganger bredere og kapasitansen 2,6 ganger
+mindre.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+En diode som brukes for den spenningsstyrte kapasitansen, er en
+<Term name="Varaktor">varaktor</Term>, for eksempel i avstemmingen i en
+radiomottaker. I en abrupt overgang er $C_j \propto V_r^{-1/2}$ når
+$V_r \gg V_0$, og dopingprofilen setter eksponenten. En
+<Term name="Gradvis overgang">gradvis overgang</Term> med lineær nettodoping
+gir $V_r^{-1/3}$. En hyperabrupt overgang, der dopingen på n-siden faller bort
+fra skillet, kan gi $V_r^{-2}$, og da vokser resonansfrekvensen i en LC-krets,
+som er proporsjonal med $1/\sqrt{C_j}$, lineært med $V_r$.
+
+### Diffusjonskapasitansen
+
+I lederetningen vokser den lagrede ladningen eksponentielt med spenningen,
+og $C_s = dQ_p/dV$ blir den store kapasitansen. Bare ladningen som kan
+hentes ut igjen gjennom kontaktene når spenningen senkes, teller. I en kort
+diode med lengden $c$ på n-siden er profilen en rett linje, så
+$Q_p = qAc\,\Delta p_n/2$, og to tredjedeler av den kan hentes ut:
+
+$$
+C_s = \frac{dQ_p}{dV} = \frac{1}{3}\frac{q^2}{k_BT}\,Acp_n\,e^{qV/k_BT}
+$$
+
+med et tilsvarende bidrag fra elektronene på p-siden. I en lang diode gir den
+samme analysen ingen diffusjonskapasitans. De fleste Si-dioder oppfører seg
+som korte, mens laserdioder av direkte halvledere med kort levetid ofte er
+lange.
+
+En liten endring i spenningen rundt et arbeidspunkt endrer strømmen med
+$G_s = dI/dV$. For en lang diode i lederetningen gir diodeligningen
+
+$$
+G_s = \frac{dI}{dV} = \frac{q}{k_BT}\,I
+$$
+
+så ved 1 mA er $1/G_s = 0{,}0259\ \text{V}/10^{-3}\ \text{A} = 26$ Ω.
+
+## Avvik fra den enkle teorien
+
+Diodeligningen bygger på lav injeksjon, ingen rekombinasjon eller
+generasjon i sonen, hele spenningen over sonen og en abrupt overgang. Hver
+av antagelsene svikter et sted, og den virkelige karakteristikken får flere
+områder.
+
+### Båndgapet og høy injeksjon
+
+Skriv diodeligningen for en p⁺n-overgang i lederetningen med
+$p_n = N_v\,e^{-(E_F - E_{vn})/k_BT}$, der $E_F - E_{vn}$ er avstanden fra
+Fermi-nivået ned til valensbåndet på n-siden:
+
+$$
+I = qA\frac{D_p}{L_p}\,N_v\,e^{[qV - (E_F - E_{vn})]/k_BT}
+$$
+
+Strømmen er liten til $qV$ nærmer seg $E_F - E_{vn}$. På p⁺-siden ligger
+Fermi-nivået nær valensbåndet, så denne avstanden er nesten $qV_0$, og er også
+n-siden sterkt dopet, er $qV_0$ nesten $E_g$. Karakteristikken knekker derfor
+like under $E_g/q$. Ved 77 K er båndgapet omtrent 0,7 eV for Ge, 1,1 eV for
+Si, 1,4 eV for GaAs og 1,9 eV for GaAsP, og knekken flytter seg med det.
+Liten $p_n = n_i^2/N_d$ ved lav temperatur og sterk doping holder strømmen
+under knekken enda lavere.
+
+Spenningen over overgangen kan ikke bli større enn $V_0$, for da er
+barrieren borte. Diodeligningen sier ikke det, fordi den bygger på
+<Term name="Lav injeksjon">lav injeksjon</Term>, der overskuddet av
+majoritetsbærere er lite mot $p_p$ og $n_n$. Ved
+<Term name="Høy injeksjon">høy injeksjon</Term> gjelder fortsatt
+<FormulaRef id="kvasi-fermi-sone">$pn = n_i^2e^{qV/k_BT}$</FormulaRef> ved
+sonekanten, men nå med $\Delta p_p = \Delta n_p$ større enn $p_p$ og $n_p$
+ubetydelig:
+
+$$
+(p_p + \Delta p_p)(n_p + \Delta n_p) \allowbreak \approx \Delta n_p^2 \allowbreak = n_i^2\,e^{qV/k_BT}
+$$
+
+så $\Delta n_p = n_i\,e^{qV/2k_BT}$, og strømmen vokser som
+$e^{qV/2k_BT}$.
+
+### Rekombinasjon og generasjon i sonen
+
+I lederetningen er sonen full av bærere på vei over, og er den ikke smal mot
+diffusjonslengdene, rekombinerer en del av dem der. Strømmen fra
+rekombinasjon i sonen er proporsjonal med $n_i$ og vokser omtrent som
+$e^{qV/2k_BT}$. Diffusjonsstrømmen fra de nøytrale områdene er proporsjonal
+med $p_n$ og $n_p$, altså med $n_i^2$, og vokser som $e^{qV/k_BT}$. Forholdet
+
+$$
+\frac{I_\text{diffusjon}}{I_\text{rekombinasjon}} \propto \frac{n_i^2\,e^{qV/k_BT}}{n_i\,e^{qV/2k_BT}} \allowbreak = n_i\,e^{qV/2k_BT}
+$$
+
+er lite ved stort båndgap, lav temperatur og lav spenning. I Si er strømmen
+ved lave spenninger rekombinasjon i sonen, mens en Ge-diode følger
+diodeligningen. Begge tilfellene dekkes av
+
+$$
+I = I_0'\left(e^{qV/nk_BT} - 1\right)
+$$
+
+der <Term name="Idealitetsfaktor">idealitetsfaktoren</Term> $n$, som ikke er
+elektronkonsentrasjonen, går fra omtrent 2 ved lav spenning til 1 der
+diffusjonen tar over.
+
+I sperreretningen er sonen nesten tom for bærere, så rekombinasjonssentrene
+der fanger nesten ingenting, men de sender fortsatt ut bærere. Et senter med
+nivået $E_r$ sender et elektron opp i ledningsbåndet, og et elektron fra
+valensbåndet eksiteres opp til det tomme nivået og etterlater et hull. Feltet
+feier bærerne ut før de kan fanges igjen, så det blir en netto generasjon.
+Nivåer nær midten av gapet er mest effektive, siden ingen av stegene krever
+mer enn halve båndgapet. Denne generasjonen betyr mest ved stort båndgap, så
+den er viktigere i Si enn i Ge. Den vokser med volumet av sonen, altså med
+$W$, og sperrestrømmen vokser derfor omtrent som $\sqrt{V_r}$, mens den
+ideelle holder seg på $I_0$.
+
+### Seriemotstand og gradvise overganger
+
+Diodeligningen antar at hele spenningen $V_a$ over komponenten ligger over
+sonen. De nøytrale områdene har motstandene $R_p$ og $R_n$, og ved store
+strømmer tar de en del av spenningen:
+
+$$
+V = V_a - I\,(R_p + R_n)
+$$
+
+Overgangen får mindre spenning, injeksjonen blir mindre, og strømmen vokser
+saktere enn eksponentielt. Motstandene avhenger selv av strømmen, siden de
+injiserte bærerne øker ledningsevnen i de nøytrale områdene. I en godt
+konstruert diode er dopingen og geometrien valgt så dette bare merkes over
+det vanlige arbeidsområdet.
+
+Med strømmen på logaritmisk akse får lederetningen fire områder:
+
+<Table
+  columns={["Strøm", "$n$", "Årsak"]}
+  rows={[
+    ["Lav", "2", "Rekombinasjon i sonen"],
+    ["Middels", "1", "Diffusjon, diodeligningen"],
+    ["Høy", "2", "Høy injeksjon"],
+    ["Høyest", "–", "Seriemotstand"]
+  ]}
+  caption={"Områdene i lederetningen for en typisk Si-diode, fra lav til høy strøm. I sperreretningen vokser strømmen med spenningen på grunn av generasjonen i sonen, til dioden bryter gjennom."}
+/>
+
+En overgang lagd ved diffusjon eller implantasjon er ofte gradvis. Kan
+nettodopingen regnes som lineær i $x$ gjennom sonen, vokser romladningen
+lineært, feltet blir en parabel i stedet for en trekant, og uttrykkene for
+$V_0$ og $C_j$ endres, som i $C_j \propto V_r^{-1/3}$ over.
+<Term name="Utarmingstilnærmingen">Utarmingstilnærmingen</Term> er også
+mindre nøyaktig, fordi kantene av sonen ikke er skarpe når dopingen endrer
+seg sakte. Konklusjonene om injeksjon, rekombinasjon og generasjon holder
+likevel kvalitativt.
+
+## Sjekk deg selv
+
+<Quiz
+  question={"En p⁺n-diode slås om fra lederetning til sperreretning gjennom en motstand. Hva setter sperrestrømmen i lagringstiden?"}
+  options={[
+    "Metningsstrømmen $I_0$",
+    "Kilden og motstanden, $I_r \\approx E/R$",
+    "Levetiden $\\tau_p$ alene",
+    "Overgangskapasitansen $C_j$"
+  ]}
+  answer={1}
+  explanation={"Så lenge det er et overskudd ved sonekanten, er spenningen over overgangen positiv og liten, så nesten hele $-E$ ligger over motstanden. Strømmen er $-E/R$, mange størrelsesordener større enn $I_0$, til overskuddet ved kanten er null."}
+/>
+
+<Quiz
+  question={"Sperrespenningen over en abrupt p⁺n-diode firedobles, og er hele tiden stor mot $V_0$. Hva skjer med $C_j$?"}
+  options={[
+    "Den halveres",
+    "Den blir en firedel",
+    "Den er uendret",
+    "Den dobles"
+  ]}
+  answer={0}
+  explanation={"$W$ vokser som roten av barrieren, og $C_j = \\varepsilon A/W$, så $C_j \\propto (V_0 + V_r)^{-1/2} \\approx V_r^{-1/2}$. Fire ganger spenningen gir dobbelt så bred sone og halve kapasitansen."}
+/>
+
+<KeyTakeaways>
+
+- Strømmen i en transient er $i = Q_p/\tau_p + dQ_p/dt$. Spenningen over overgangen er bundet til overskuddet ved kanten og kan ikke hoppe; slås strømmen av, faller den omtrent $k_BT/q$ per levetid.
+- Slås dioden om til sperreretning, går sperrestrømmen $-I_r$, satt av kretsen, i lagringstiden $t_{sd} = \tau_p[\operatorname{erf}^{-1}(I_f/(I_f + I_r))]^2$. Den kvasistasjonære $\tau_p\ln(1 + I_f/I_r)$ er for lang, fordi kanten tømmes først. Gull eller en kort diode gir raske svitsjedioder.
+- Overgangskapasitansen $C_j = \varepsilon A/W$ dominerer i sperreretningen og går som $(V_0 - V)^{-1/2}$ i en abrupt overgang; i en p⁺n-overgang gir den $N_d$. Diffusjonskapasitansen fra den lagrede ladningen dominerer i lederetningen.
+- Strømmen i lederetningen blir stor først når $qV$ nærmer seg $qV_0$, nær $E_g$ når begge sidene er sterkt dopet. Rekombinasjon i sonen og høy injeksjon gir $e^{qV/2k_BT}$, altså $n = 2$, og seriemotstand flater ut karakteristikken ved store strømmer. Generasjon i sonen gjør at sperrestrømmen vokser med $W$.
+
+</KeyTakeaways>

@@ -233,6 +233,59 @@ formulas:
     tex: "\\begin{aligned} M &= \\dfrac{n_\\text{ut}}{n_\\text{in}} = \\dfrac{1}{1 - P} \\\\ &= 1 + P + P^2 + \\cdots \\\\ M &= \\dfrac{1}{1 - (V/V_\\text{br})^n} \\end{aligned}"
     label: "Multiplikasjonen i skredgjennombrudd, med $P$ som sannsynligheten for en ioniserende kollisjon per tur gjennom sonen. Den nederste er den målte formen nær gjennombrudd, med $n$ mellom 3 og 6 etter materialet. $V_\\text{br}$ vokser med båndgapet og faller med dopingen på den lett dopede siden."
 
+  - id: ladning-transient
+    section: Lagret ladning og tid
+    tex: "i(t) = \\dfrac{Q_p(t)}{\\tau_p} + \\dfrac{dQ_p(t)}{dt}"
+    label: "Strømmen inn i n-siden av en p⁺n-overgang i en transient: den erstatter hullene som rekombinerer, og bygger opp eller tømmer den lagrede ladningen. Kontinuitetsligningen integrert over n-siden. I stasjonær tilstand står ladningskontroll igjen."
+  - id: strom-slatt-av
+    section: Når strømmen slås av
+    tex: "Q_p(t) = I\\tau_p\\,e^{-t/\\tau_p}"
+    label: "Strømmen $I$ slås av ved $t = 0$, og den lagrede ladningen dør ut med levetiden. Så lenge den er der, ligger det en spenning over overgangen."
+  - id: spenning-slatt-av
+    section: Når strømmen slås av
+    tex: "v(t) = \\tfrac{k_BT}{q}\\ln\\bigl(\\tfrac{I\\tau_p}{qAL_pp_n}e^{-t/\\tau_p} + 1\\bigr)"
+    label: "Spenningen over overgangen etter at strømmen er slått av, fra den kvasistasjonære tilnærmingen $Q_p = qAL_p\\Delta p_n$. Den er logaritmen av ladningen, så den faller bare omtrent $k_BT/q$ per levetid."
+  - id: lagringstid
+    section: Lagringstid
+    tex: "t_{sd} = \\tau_p\\left[\\operatorname{erf}^{-1}\\!\\left(\\dfrac{I_f}{I_f + I_r}\\right)\\right]^2"
+    label: "Lagringstiden etter omslag fra $I_f$ i lederetningen til $-I_r$: så lenge er overskuddet ved sonekanten positivt, spenningen over overgangen liten og sperrestrømmen satt av kretsen. Eksakt løsning av diffusjonsligningen. Med $I_r = I_f$ er $t_{sd} = 0{,}23\\,\\tau_p$. Snudd gir den levetiden fra en måling av $t_{sd}$."
+  - id: lagringstid-kvasistasjonar
+    section: Lagringstid
+    tex: "Q_p(t) = -I_r\\tau_p \\allowbreak + (I_f + I_r)\\,\\tau_p\\,e^{-t/\\tau_p} \\allowbreak\\quad t_{sd} = \\tau_p\\ln\\!\\left(1 + \\dfrac{I_f}{I_r}\\right)"
+    label: "Ladningen etter omslaget er eksakt. Lagringstiden til høyre er den kvasistasjonære tilnærmingen, der $\\Delta p_n = 0$ først når $Q_p = 0$. Den er for lang, tre ganger for lang med $I_r = I_f$, fordi kanten i virkeligheten tømmes mens det ligger ladning lenger inne."
+  - id: overgangskapasitans
+    section: Overgangskapasitansen
+    tex: "C_j = \\dfrac{A}{2}\\left[\\dfrac{2q\\varepsilon}{V_0 - V}\\,\\dfrac{N_dN_a}{N_d + N_a}\\right]^{1/2} \\allowbreak = \\dfrac{\\varepsilon A}{W}"
+    label: "Kapasitansen $C_j = |dQ/d(V_0 - V)|$ fra ionene i romladningssonen. Samme form som en platekondensator med avstanden $W$, men $W$ vokser med sperrespenningen. Dominerer i sperreretningen. Går som $V_r^{-1/2}$ i en abrupt overgang og $V_r^{-1/3}$ i en gradvis med lineær nettodoping."
+  - id: overgangskapasitans-ensidig
+    section: Overgangskapasitansen
+    tex: "C_j = \\dfrac{A}{2}\\left[\\dfrac{2q\\varepsilon N_d}{V_0 - V}\\right]^{1/2}"
+    label: "Overgangskapasitansen i en p⁺n-overgang, der sonen ligger nesten bare på n-siden. Målt ved en sperrespenning som er stor mot $V_0$, og med kjent areal, gir den dopingen $N_d$."
+  - id: diffusjonskapasitans
+    section: Diffusjonskapasitansen
+    tex: "C_s = \\dfrac{1}{3}\\dfrac{q^2}{k_BT}\\,Acp_n\\,e^{qV/k_BT}"
+    label: "Diffusjonskapasitansen fra hullene i en kort diode med n-siden $c$ lang, der to tredjedeler av den lagrede ladningen kan hentes ut igjen; en lang diode har ingen. Dominerer i lederetningen. Elektronene på p-siden gir et tilsvarende bidrag."
+  - id: smasignalkonduktans
+    section: Diffusjonskapasitansen
+    tex: "G_s = \\dfrac{dI}{dV} = \\dfrac{q}{k_BT}\\,I"
+    label: "Småsignalkonduktansen til en lang diode i lederetningen: hvor mye strømmen endrer seg for en liten endring i spenningen rundt arbeidspunktet. Ved 1 mA er $1/G_s = 26$ Ω."
+  - id: strom-bandgap
+    section: Båndgapet og høy injeksjon
+    tex: "I = qA\\dfrac{D_p}{L_p}\\,N_v\\,e^{[qV - (E_F - E_{vn})]/k_BT}"
+    label: "Diodeligningen for en p⁺n-overgang i lederetningen med $p_n$ skrevet ut. Strømmen er liten til $qV$ nærmer seg $E_F - E_{vn} \\approx qV_0$, som er nær $E_g$ når begge sidene er sterkt dopet. Spenningen over overgangen kan ikke bli større enn $V_0$."
+  - id: hoy-injeksjon
+    section: Båndgapet og høy injeksjon
+    tex: "\\Delta n_p = n_i\\,e^{qV/2k_BT} \\allowbreak\\quad I \\propto e^{qV/2k_BT}"
+    label: "Høy injeksjon: overskuddet er større enn majoritetskonsentrasjonen, så $pn = n_i^2e^{qV/k_BT}$ ved sonekanten gir $\\Delta n_p^2 = n_i^2e^{qV/k_BT}$. Strømmen vokser med halve eksponenten."
+  - id: idealitetsfaktor
+    section: Rekombinasjon og generasjon i sonen
+    tex: "I = I_0'\\left(e^{qV/nk_BT} - 1\\right)"
+    label: "Diodeligningen med idealitetsfaktoren $n$, som ikke er elektronkonsentrasjonen. Diffusjon fra de nøytrale områdene går som $n_i^2e^{qV/k_BT}$ og gir $n = 1$; rekombinasjon i sonen går som $n_ie^{qV/2k_BT}$ og gir $n \\approx 2$. I Si går $n$ fra omtrent 2 ved lav spenning til 1."
+  - id: seriemotstand
+    section: Seriemotstand og gradvise overganger
+    tex: "V = V_a - I\\,(R_p + R_n)"
+    label: "Spenningen over overgangen når de nøytrale områdene tar sin del av spenningen $V_a$ over komponenten. Merkes ved store strømmer, der strømmen vokser saktere enn eksponentielt. Motstandene synker når de injiserte bærerne øker ledningsevnen."
+
 glossary:
   - term: Valensbånd
     section: Fra binding til bånd
@@ -443,6 +496,37 @@ glossary:
     section: Likerettere og gjennombruddsdioder
     definition: "(<em>breakdown diode</em>, <em>Zener diode</em>) En diode dopet for en bestemt $V_\\text{br}$, fra under én volt til flere hundre, brukt i gjennombrudd som spenningsregulator eller referanse. Kalles Zener-diode selv om mekanismen som regel er skred."
 
+  - term: Kvasistasjonær tilnærming
+    section: Når strømmen slås av
+    definition: "(<em>quasi-steady state approximation</em>) Antagelsen at profilen av lagrede minoritetsbærere er eksponentiell i hvert øyeblikk av en transient, så $Q_p = qAL_p\\Delta p_n$ hele tiden. Gir spenningen fra ladningen, men grovt, siden profilen endrer form nær sonekanten. Lagringstiden blir for lang."
+  - term: Lagringstid
+    section: Lagringstid
+    definition: "(<em>storage delay time</em>) $t_{sd}$, tiden etter omslag fra lederetning til sperreretning der overskuddet ved sonekanten fortsatt er positivt. Så lenge er spenningen over overgangen liten og positiv, og sperrestrømmen settes av kretsen. Proporsjonal med levetiden, og en vanlig måte å måle den på."
+  - term: Svitsjediode
+    section: Svitsjedioder
+    definition: "(<em>switching diode</em>) En diode laget for å slå raskt mellom lederetning og sperreretning. Kort levetid, for eksempel med gull i Si, eller lite lagret ladning i en kort diode gir kort lagringstid."
+  - term: Kort diode
+    section: Svitsjedioder
+    definition: "(<em>short diode</em>, <em>narrow base diode</em>) En diode der den lett dopede siden er kortere enn diffusjonslengden, så de fleste injiserte bærerne når kontakten før de rekombinerer. Profilen er en rett linje, og lite ladning lagres. I en lang diode er siden mange diffusjonslengder."
+  - term: Overgangskapasitans
+    section: Overgangskapasitansen
+    definition: "(<em>junction capacitance</em>, <em>depletion capacitance</em>) $C_j = \\varepsilon A/W$, kapasitansen fra ionene i romladningssonen. Avtar med sperrespenningen fordi sonen blir bredere, og dominerer i sperreretningen."
+  - term: Varaktor
+    section: Overgangskapasitansen
+    definition: "(<em>varactor</em>) En diode som brukes i sperreretning for den spenningsstyrte overgangskapasitansen, for eksempel til avstemming. $C_j \\propto V_r^{-1/2}$ i en abrupt overgang; dopingprofilen setter eksponenten."
+  - term: Gradvis overgang
+    section: Seriemotstand og gradvise overganger
+    definition: "(<em>graded junction</em>) En overgang der dopingen går gradvis fra p til n, som etter diffusjon eller implantasjon. Med lineær nettodoping gjennom sonen blir feltet en parabel og $C_j \\propto V_r^{-1/3}$."
+  - term: Diffusjonskapasitans
+    section: Diffusjonskapasitansen
+    definition: "(<em>charge storage capacitance</em>, <em>diffusion capacitance</em>) $C_s = dQ_p/dV$, kapasitansen fra den lagrede ladningen av minoritetsbærere, regnet med bare den delen som kan hentes ut igjen gjennom kontaktene. Vokser eksponentielt med spenningen og dominerer i lederetningen."
+  - term: Høy injeksjon
+    section: Båndgapet og høy injeksjon
+    definition: "(<em>high-level injection</em>) Overskuddet av bærere er like stort som eller større enn majoritetskonsentrasjonen. Da vokser strømmen som $e^{qV/2k_BT}$, og spenningen over overgangen kan ikke bli større enn $V_0$."
+  - term: Idealitetsfaktor
+    section: Rekombinasjon og generasjon i sonen
+    definition: "(<em>ideality factor</em>) $n$ i $I = I_0'(e^{qV/nk_BT} - 1)$. $n = 1$ når strømmen er diffusjon fra de nøytrale områdene, $n \\approx 2$ når den er rekombinasjon i sonen eller høy injeksjon."
+
 features:
   progress: true
   search: true
@@ -454,7 +538,7 @@ analytics:
 
 symbols:
   # ── Energier og bånd ──
-  - { tex: "E", meaning: "Energi, oftest elektronets totale energi", unit: "eV", section: "Energier og bånd", id: e, note: "Ikke det elektriske feltet $\\mathcal{E}$." }
+  - { tex: "E", meaning: "Energi, oftest elektronets totale energi", unit: "eV", section: "Energier og bånd", id: e, note: "Ikke det elektriske feltet $\\mathcal{E}$. I en krets med en diode er $E$ kildespenningen." }
   - { tex: "E_c,\\ E_v", meaning: "Bunnen av ledningsbåndet og toppen av valensbåndet", unit: "eV", section: "Energier og bånd", term: "Ledningsbånd" }
   - { tex: "E_g", meaning: "Båndgapet, $E_c - E_v$", unit: "eV", section: "Energier og bånd", note: "$1{,}12$ eV for Si og $1{,}43$ eV for GaAs ved 300 K." }
   - { tex: "E_F", meaning: "Fermi-nivået", unit: "eV", section: "Energier og bånd", term: "Fermi-nivå", formula: fermi-dirac, id: ef }
@@ -519,6 +603,16 @@ symbols:
   - { tex: "M", meaning: "Multiplikasjonen i skred, bærere ut per bærer inn", section: "pn-overgangen", term: "Skredgjennombrudd", formula: skredmultiplikasjon }
   - { tex: "P", meaning: "Sannsynligheten for en ioniserende kollisjon på én tur gjennom sonen", section: "pn-overgangen", term: "Støtionisasjon", formula: skredmultiplikasjon }
   - { tex: "d", meaning: "Tunnelavstanden mellom båndene i Zener-effekten", unit: "cm", section: "pn-overgangen", term: "Zener-gjennombrudd" }
+  - { tex: "i(t),\\ v(t)", meaning: "Strømmen gjennom og spenningen over overgangen under en transient", section: "pn-overgangen", formula: ladning-transient, note: "Små bokstaver for størrelser som endrer seg med tiden." }
+  - { tex: "I_f,\\ I_r", meaning: "Strømmen i lederetningen før omslaget og sperrestrømmen etter", unit: "A", section: "pn-overgangen", formula: lagringstid }
+  - { tex: "t_{sd}", meaning: "Lagringstiden", unit: "s", section: "pn-overgangen", term: "Lagringstid", formula: lagringstid, id: tsd }
+  - { tex: "C_j", meaning: "Overgangskapasitansen, fra ionene i romladningssonen", unit: "F", section: "pn-overgangen", term: "Overgangskapasitans", formula: overgangskapasitans, id: cj }
+  - { tex: "C_s", meaning: "Diffusjonskapasitansen, fra den lagrede ladningen", unit: "F", section: "pn-overgangen", term: "Diffusjonskapasitans", formula: diffusjonskapasitans }
+  - { tex: "G_s", meaning: "Småsignalkonduktansen, $dI/dV$", unit: "Ω⁻¹", section: "pn-overgangen", formula: smasignalkonduktans }
+  - { tex: "c", meaning: "Lengden av den lett dopede siden i en kort diode", unit: "cm", section: "pn-overgangen", term: "Kort diode", formula: diffusjonskapasitans }
+  - { tex: "n", meaning: "Idealitetsfaktoren i diodeligningen", section: "pn-overgangen", term: "Idealitetsfaktor", formula: idealitetsfaktor, note: "Ikke elektronkonsentrasjonen $n$. Mellom 1 og 2." }
+  - { tex: "V_a", meaning: "Spenningen over hele komponenten", unit: "V", section: "pn-overgangen", formula: seriemotstand, note: "$V$ er den delen som ligger over overgangen." }
+  - { tex: "R_p,\\ R_n", meaning: "Motstanden i det nøytrale p- og n-området", unit: "Ω", section: "pn-overgangen", formula: seriemotstand }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
