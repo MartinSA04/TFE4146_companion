@@ -6,7 +6,10 @@ git tag in `package.json` and contains **only content**.
 ## Hard rules
 
 - **Author ONLY under `content/`** — `course.yaml`, `flashcards.yaml`, and
-  `sections/*.mdx`. Static assets go in `public/` (figures, sims, PDFs, favicon).
+  `sections/*.mdx` (flat `*.mdx` files directly under `content/sections/` — a
+  nested folder or a `.md` stray fails the build). Static assets go in `public/`
+  (figures, sims, PDFs). The favicon, app icons and share card are auto-generated
+  from the course `accent` — no favicon file is needed.
 - **Do NOT add components, pages, layouts, styles, or toolchain config.** The
   framework injects all of it. There is no `src/pages/` here.
 - **To change the design or add a widget, change the FRAMEWORK repo** and bump
@@ -21,6 +24,7 @@ brief: the mental model, the per-archetype section shapes, the widget decision
 guide (including course-owned `<Simulation>` canvas sims and sim-driven
 `<CodeBlock>` stepping), the conventions (KaTeX/YAML escaping, explicit
 numbering, external references), and the **per-section definition-of-done**.
+
 **Then read `WRITING.md`** (also top level, framework repo). It is the ruleset for
 the prose itself and is equally binding: check the course page for the level and
 prerequisites and write for exactly that reader, one lecture week is **one module
@@ -33,11 +37,14 @@ lockstep with the pinned tag.
 ## Workflow
 
 1. Fill `content/course.yaml` (identity, accent, `courseUrl`, exam, formulas,
-   glossary).
+   glossary). Keep `schemaVersion` at the framework's `SCHEMA_VERSION` (currently
+   **4**). Both `course.yaml` and section frontmatter use a **strict** schema, so
+   a typo'd key fails the build naming the key. Every section needs a `summary`
+   (required since v4) — it is the module's meta description and search snippet.
 2. Outline sections by `order` (and optional `part`), one file per module.
 3. Draft each module against an archetype (see `AUTHORING.md` / the example
    sections in this template). Wire cross-refs: `<Term>`, `<FormulaRef>`,
-   `<Statement>` ids.
+   `<ExamRef>`, `<Statement>` ids.
 4. Verify against the section definition-of-done.
 
 ## Run
@@ -45,10 +52,12 @@ lockstep with the pinned tag.
 ```bash
 pnpm install
 pnpm dev      # preview (search needs build/preview)
-pnpm build    # static output to dist/ — FAILS on any dead <Term>/<FormulaRef>
+pnpm build    # static output to dist/ — FAILS on any dead <Term>/<FormulaRef>/<ExamRef>
 pnpm preview  # preview the build (search works here)
 ```
 
-The build validates every cross-reference: a `<Term name>` / `<FormulaRef id>`
-with no matching `course.yaml` entry, or a duplicate `<Statement>`/formula
-anchor, fails `pnpm build` with a message naming the file and target.
+The build validates every cross-reference: a `<Term name>` / `<FormulaRef id>` /
+`<ExamRef id>` with no matching `course.yaml` entry (or an `<ExamRef>` to a paper
+with no `url`), a `symbols[]` row whose `term` / `formula` matches nothing, or a
+duplicate `<Statement>` / formula / symbol / exam anchor, fails `pnpm build`
+with a message naming the file and target.

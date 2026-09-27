@@ -2,9 +2,7 @@
 #
 # One-time setup:
 #   1. Repo Settings → Pages → Source: "GitHub Actions".
-#   2. Commit a pnpm-lock.yaml (run `pnpm install` once) so the frozen install
-#      below is reproducible.
-#   3. Custom domain (recommended): the framework's links/assets are absolute
+#   2. Custom domain (recommended): the framework's links/assets are absolute
 #      (served at root), so a project-page subpath would break them. Add a
 #      `public/CNAME` file with your domain and set it in Settings → Pages.
 name: Deploy to GitHub Pages
@@ -14,11 +12,6 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 # Allow one concurrent deployment; don't cancel an in-progress production deploy.
 concurrency:
   group: pages
@@ -27,6 +20,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -50,6 +45,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
