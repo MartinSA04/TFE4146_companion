@@ -8,8 +8,8 @@
  *
  * Gaphøyden i tegningen skalerer med E_g, så diamant ser ut som det den er.
  * Antall tegnede par følger log10 av Boltzmann-faktoren e^(-Eg/2kT) — bildet
- * kan umulig være i skala (Si ved 300 K har ett par per 5×10^12 atomer:
- * 5×10^22 atomer/cm³ mot n_i = 10^10 cm⁻³), så
+ * kan umulig være i skala (Si ved 300 K har ett par per 3×10^12 atomer:
+ * 5×10^22 atomer/cm³ mot n_i = 1,5×10^10 cm⁻³), så
  * utlesningen bærer de faktiske tallene og tegningen bærer retningen.
  *
  * Alle båndgap er hentet fra Streetman & Banerjee §3.1: Si ≈ 1,1 eV,

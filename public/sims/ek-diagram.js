@@ -197,7 +197,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     const mass = `Krumningen gir <i>m</i><sub>n</sub><sup>*</sup> = ħ²/(d²E/dk²) = <b>${num(mn, 2)} m₀</b> i ledningsbåndet og ${num(mp, 2)} m₀ i valensbåndet. Skarpere krumning gir lettere bærer.`;
 
     const kind = direct
-      ? "Minimet ligger ved <b>samme k</b> som valensbåndmaksimet: halvlederen er <b>direkte</b>. Elektronet kan falle rett ned og gi fra seg E_g som et foton — slik lysdioder virker."
+      ? "Minimet ligger ved <b>samme k</b> som valensbåndmaksimet: halvlederen er <b>direkte</b>. Elektronet kan falle rett ned og gi fra seg E<sub>g</sub> som et foton — slik lysdioder virker."
       : `Minimet ligger ved k = ${num(kc, 2)} Å⁻¹, altså <b>ikke</b> ved valensbåndmaksimet: halvlederen er <b>indirekte</b>. Overgangen krever en momentumendring i tillegg til energiendringen, går gjerne via en defekttilstand, og energien havner som varme. Dette er Si.`;
 
     return `${mass} ${kind}`;

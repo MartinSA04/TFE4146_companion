@@ -12,7 +12,7 @@
  * Si-markøren ved 5,43 Å står fast på samme grunn.
  *
  * Tall og kilder:
- *  - Si sin gitterkonstant 5,43 Å og gapet 1,12 eV: Streetman & Banerjee §3.1.
+ *  - Si sin gitterkonstant 5,43 Å: Streetman & Banerjee §3.1. Gapet 1,11 eV: App. III.
  *  - Tellingen 8N tilstander / 4N elektroner per N atomer: Streetman §3.1.2
  *    (fritt Si-atom: 3s² 3p², altså 2 + 6 = 8 tilstander og 4 elektroner).
  *  - I den atomære enden er 3s full (2N tilstander, 2N elektroner) og 3p
@@ -28,7 +28,7 @@
  */
 
 const A_SI = 5.431; // Å, Streetman §3.1
-const EG_SI = 1.12; // eV, gapet ved markøren
+const EG_SI = 1.11; // eV, gapet ved markøren
 
 const RMIN = 0.75; // relativ gitteravstand, venstre kant
 const RMAX = 3.0; // relativ gitteravstand, høyre kant (nær frie atomer)
@@ -287,7 +287,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
         : "3s og 3p ligger som to nesten skarpe streker, og atomene merker knapt hverandre.";
 
     const rule =
-      " Bredden settes av overlappen mellom naboene, altså av avstanden. Antallet settes av N. Ved Si-markøren er gapet <b>1,12 eV</b>.";
+      " Bredden settes av overlappen mellom naboene, altså av avstanden. Antallet settes av N. Ved Si-markøren er gapet <b>1,11 eV</b>.";
 
     return site + count(merged) + state + rule;
   }

@@ -49,7 +49,7 @@ const EPS = 11.8 * 8.85e-14; // F/cm
 const Q = 1.6e-19; // C
 
 const DOP = [3e15, 1e16, 3e16]; // cm⁻³, glidebryterens tre stillinger
-const DOP_LABEL = ["3·10^15 cm⁻³", "10^16 cm⁻³", "3·10^16 cm⁻³"];
+const DOP_LABEL = ["3·10¹⁵ cm⁻³", "10¹⁶ cm⁻³", "3·10¹⁶ cm⁻³"];
 const ION_SP = [13, 10, 8]; // px mellom ionekolonner, per stilling
 const DOT_K = [0.7, 1, 1.4]; // prikktetthet relativt 10¹⁶
 const V_MIN = -1;

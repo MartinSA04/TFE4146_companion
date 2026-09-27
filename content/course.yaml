@@ -173,11 +173,11 @@ formulas:
     tex: "\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"
     label: "Haynes–Shockley: en hullpuls driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet måler bredden i tid, $\\Delta t$, og driftfarten regner den om."
   - id: kontaktpotensial
-    section: Kontaktpotensialet
+    section: "Likevekt: kontaktpotensialet"
     tex: "\\begin{aligned} V_0 &= \\dfrac{k_BT}{q}\\ln\\dfrac{p_p}{p_n} \\\\ &= \\dfrac{k_BT}{q}\\ln\\dfrac{N_aN_d}{n_i^2} \\end{aligned}"
     label: "Kontaktpotensialet over romladningssonen i likevekt, fra kravet om null hullstrøm og Einstein-relasjonen. Det vokser bare logaritmisk med dopingen: mellom 0,6 og 0,9 V for Si ved 300 K. Det er en likevektsstørrelse og driver ingen strøm; et voltmeter over dioden viser null."
   - id: boltzmann-overgang
-    section: Kontaktpotensialet
+    section: "Likevekt: kontaktpotensialet"
     tex: "\\dfrac{p_p}{p_n} = \\dfrac{n_n}{n_p} = e^{qV_0/k_BT}"
     label: "Forholdet mellom konsentrasjonene på de to sidene av overgangen, samme ligning som $V_0$ snudd om. Den andre likheten følger av $p_pn_p = p_nn_n = n_i^2$. Det er denne formen som brukes når strømmen gjennom overgangen skal regnes ut."
   - id: baandforskyvning
@@ -434,7 +434,7 @@ glossary:
 
   - term: Diffusjonslengde
     section: Stasjonær injeksjon og diffusjonslengde
-    definition: "(<em>diffusion length</em>) $L_p = \\sqrt{D_p\\tau_p}$, avstanden der et stasjonært injisert overskudd har falt til $1/e$, og gjennomsnittsavstanden en minoritetsbærer diffunderer før den rekombinerer. For Si er $L_p$ typisk noen titalls mikrometer, langt mer enn tykkelsen på en komponent."
+    definition: "(<em>diffusion length</em>) $L_p = \\sqrt{D_p\\tau_p}$, avstanden der et stasjonært injisert overskudd har falt til $1/e$, og gjennomsnittsavstanden en minoritetsbærer diffunderer før den rekombinerer. For Si er $L_p$ typisk noen titalls mikrometer, mange ganger bredden av romladningssonen."
   - term: Haynes–Shockley-eksperimentet
     section: Haynes–Shockley-eksperimentet
     definition: "(<em>Haynes–Shockley experiment</em>) En lyspuls lager minoritetsbærere i en stav med felt langs; pulsen driver til en detektor og brer seg ut underveis. Drifttiden gir minoritetsmobiliteten, bredden på pulsen gir diffusjonskoeffisienten. Hall-målingen gir bare majoritetens mobilitet."
@@ -519,7 +519,7 @@ glossary:
     definition: "(<em>graded junction</em>) En overgang der dopingen går gradvis fra p til n, som etter diffusjon eller implantasjon. Med lineær nettodoping gjennom sonen blir feltet en parabel og $C_j \\propto V_r^{-1/3}$."
   - term: Diffusjonskapasitans
     section: Diffusjonskapasitansen
-    definition: "(<em>charge storage capacitance</em>, <em>diffusion capacitance</em>) $C_s = dQ_p/dV$, kapasitansen fra den lagrede ladningen av minoritetsbærere, regnet med bare den delen som kan hentes ut igjen gjennom kontaktene. Vokser eksponentielt med spenningen og dominerer i lederetningen."
+    definition: "(<em>charge storage capacitance</em>, <em>diffusion capacitance</em>) $C_s$, kapasitansen fra den lagrede ladningen av minoritetsbærere, regnet med bare den delen som kan hentes ut igjen gjennom kontaktene. I en kort diode er den delen to tredjedeler av $Q_p$, så $C_s = \\tfrac{2}{3}\\,dQ_p/dV$. Vokser eksponentielt med spenningen og dominerer i lederetningen."
   - term: Høy injeksjon
     section: Båndgapet og høy injeksjon
     definition: "(<em>high-level injection</em>) Overskuddet av bærere er like stort som eller større enn majoritetskonsentrasjonen. Da vokser strømmen som $e^{qV/2k_BT}$, og spenningen over overgangen kan ikke bli større enn $V_0$."
@@ -540,7 +540,7 @@ symbols:
   # ── Energier og bånd ──
   - { tex: "E", meaning: "Energi, oftest elektronets totale energi", unit: "eV", section: "Energier og bånd", id: e, note: "Ikke det elektriske feltet $\\mathcal{E}$. I en krets med en diode er $E$ kildespenningen." }
   - { tex: "E_c,\\ E_v", meaning: "Bunnen av ledningsbåndet og toppen av valensbåndet", unit: "eV", section: "Energier og bånd", term: "Ledningsbånd" }
-  - { tex: "E_g", meaning: "Båndgapet, $E_c - E_v$", unit: "eV", section: "Energier og bånd", note: "$1{,}12$ eV for Si og $1{,}43$ eV for GaAs ved 300 K." }
+  - { tex: "E_g", meaning: "Båndgapet, $E_c - E_v$", unit: "eV", section: "Energier og bånd", note: "$1{,}11$ eV for Si og $1{,}43$ eV for GaAs ved 300 K." }
   - { tex: "E_F", meaning: "Fermi-nivået", unit: "eV", section: "Energier og bånd", term: "Fermi-nivå", formula: fermi-dirac, id: ef }
   - { tex: "E_i", meaning: "Det intrinsiske nivået, $E_F$ i udopet materiale", unit: "eV", section: "Energier og bånd", term: "Intrinsisk nivå", formula: ni-formene }
   - { tex: "E_d,\\ E_a", meaning: "Donor- og akseptornivået", unit: "eV", section: "Energier og bånd", term: "Donor", formula: hydrogenlik-donor }
@@ -568,7 +568,7 @@ symbols:
   - { tex: "v_s", meaning: "Metningshastigheten ved sterkt felt", unit: "cm/s", section: "Transport", term: "Metningshastighet", note: "Omtrent $10^7$ cm/s i Si." }
   - { tex: "\\mu_n,\\ \\mu_p", meaning: "Mobiliteten til elektroner og hull, drifthastighet per felt", unit: "cm²/V·s", section: "Transport", term: "Mobilitet", formula: drifthastighet, id: mu, note: "$1350$ og $480$ cm²/V·s i rent Si ved 300 K. Alltid positiv." }
   - { tex: "\\tau", meaning: "Midlere tid mellom kollisjoner", unit: "s", section: "Transport", term: "Midlere kollisjonstid", formula: drifthastighet, id: tau, note: "Ikke levetiden $\\tau_n$, $\\tau_p$, som er tiden før rekombinasjon." }
-  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", formula: diffusjonsstrom }
+  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", term: "Diffusjonskoeffisient" }
   - { tex: "\\sigma", meaning: "Ledningsevne", unit: "(Ω·cm)⁻¹", section: "Transport", formula: ledningsevne }
   - { tex: "\\rho", meaning: "Resistivitet, $1/\\sigma$", unit: "Ω·cm", section: "Transport", formula: ledningsevne, note: "Ikke romladningstettheten i Poissons ligning, som skrives ut som $q(p - n + N_d^+ - N_a^-)$." }
   - { tex: "R", meaning: "Resistansen til en stav, $\\rho L/wt$", unit: "Ω", section: "Transport", formula: ledningsevne, note: "$L$ er lengden langs strømmen, $w$ bredden og $t$ tykkelsen." }
