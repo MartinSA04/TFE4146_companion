@@ -30,7 +30,9 @@ Elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Fordelingen
 som følger av de tre kravene, er
 <Term name="Fermi-Dirac-fordelingen">Fermi–Dirac-fordelingen</Term>:
 
-$$f(E) = \frac{1}{1 + e^{(E - E_F)/k_BT}}$$
+$$
+f(E) = \frac{1}{1 + e^{(E - E_F)/k_BT}}
+$$
 
 $f(E)$ er sannsynligheten for at en tillatt tilstand med energi $E$ er okkupert
 ved termisk likevekt, og $k_B$ er Boltzmanns konstant,
@@ -61,7 +63,9 @@ uansett.
 Konsentrasjonen av elektroner i ledningsbåndet er sannsynlighet ganger antall
 plasser, summert over båndet:
 
-$$n_0 = \int_{E_c}^{\infty} f(E)\,N(E)\,dE$$
+$$
+n_0 = \int_{E_c}^{\infty} f(E)\,N(E)\,dE
+$$
 
 Her er <Term name="Tilstandstetthet">tilstandstettheten</Term> $N(E)$ antall
 tilstander per volum og energienhet. Nær båndkanten vokser den som
@@ -94,19 +98,25 @@ $E_c$, er eneren i nevneren til $f$ ubetydelig, og sannsynligheten blir en ren
 eksponensial. Det er
 <Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>, og med den:
 
-$$n_0 = N_c\, e^{-(E_c - E_F)/k_BT}, \qquad p_0 = N_v\, e^{-(E_F - E_v)/k_BT}$$
+$$
+n_0 = N_c\, e^{-(E_c - E_F)/k_BT}, \qquad \allowbreak p_0 = N_v\, e^{-(E_F - E_v)/k_BT}
+$$
 
 <Derivation title="Hvordan integralet blir til Boltzmann-uttrykket">
 
 Nær kanten er tilstandstettheten $N(E) = C\sqrt{E - E_c}$, og med
 Boltzmann-tilnærmingen er $f(E) = e^{-(E - E_F)/k_BT}$. Sett inn begge:
 
-$$n_0 = C \int_{E_c}^{\infty} \sqrt{E - E_c}\; e^{-(E - E_F)/k_BT}\, dE$$
+$$
+n_0 = C \int_{E_c}^{\infty} \sqrt{E - E_c}\; e^{-(E - E_F)/k_BT}\, dE
+$$
 
 Trekk den faste faktoren $e^{-(E_c - E_F)/k_BT}$ ut av integralet, og bytt
 variabel til $x = (E - E_c)/k_BT$:
 
-$$n_0 = C\,(k_BT)^{3/2}\, e^{-(E_c - E_F)/k_BT} \int_{0}^{\infty} \sqrt{x}\, e^{-x}\, dx$$
+$$
+n_0 = C\,(k_BT)^{3/2}\, e^{-(E_c - E_F)/k_BT} \int_{0}^{\infty} \sqrt{x}\, e^{-x}\, dx
+$$
 
 Integralet er et rent tall, $\sqrt{\pi}/2$. Alt foran eksponensialen er
 materialkonstanter og $T^{3/2}$, og det er $N_c$: sett inn
@@ -130,7 +140,9 @@ gjør at små endringer i $f$ gir store endringer i bærertall.
 
 Gang de to konsentrasjonene sammen, og $E_F$ faller bort:
 
-$$n_0 p_0 = N_c N_v\, e^{-E_g/k_BT}$$
+$$
+n_0 p_0 = N_c N_v\, e^{-E_g/k_BT}
+$$
 
 Produktet avhenger av materialet og temperaturen, ikke av dopingen. I
 intrinsisk materiale er $n_0 = p_0 = n_i$, så
@@ -255,7 +267,9 @@ konsentrasjonene tilbake på $n_i$ og $p_i$, i et materiale fullt av dopanter.
 Regnskapet bak er <Term name="Ladningsnøytralitet">ladningsnøytralitet</Term>:
 krystallen er nøytral, så positiv og negativ ladning må balansere,
 
-$$p_0 + N_d^+ = n_0 + N_a^-$$
+$$
+p_0 + N_d^+ = n_0 + N_a^-
+$$
 
 Kravet står som <FormulaRef id="ladningsnoytralitet">én rad i
 Formelsamlingen</FormulaRef>. Sammen med massevirkningsloven bestemmer det

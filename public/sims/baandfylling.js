@@ -230,7 +230,12 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
           ? "Få, men ikke null — og antallet dobles for hver lille økning i temperatur. Det er denne følsomheten som gjør halvledere styrbare."
           : "Mange par: den termiske energien begynner å bli sammenlignbar med gapet.";
 
-    return `Ved <b>${temp} K</b> er <i>k</i><sub>B</sub><i>T</i> = ${kT} meV, og <i>e</i><sup>−E<sub>g</sub>/2k<sub>B</sub>T</sup> ≈ 10<sup>${exp}</sup>. ${tail}`;
+    // Under ~39 K (diamant) og ~11 K (GaAs) underflyter faktoren til 0, og
+    // log10 blir −∞: da står bare «null i praksis»-setningen.
+    const boltz = Number.isFinite(dec)
+      ? `, og <i>e</i><sup>−E<sub>g</sub>/2k<sub>B</sub>T</sup> ≈ 10<sup>${exp}</sup>`
+      : "";
+    return `Ved <b>${temp} K</b> er <i>k</i><sub>B</sub><i>T</i> = ${kT} meV${boltz}. ${tail}`;
   }
 
   sync();
