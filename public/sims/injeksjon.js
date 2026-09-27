@@ -498,7 +498,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   function frame(now) {
     raf = 0;
     if (signal.aborted) return;
-    const dt = Math.min(0.05, (now - last) / 1000 || 0);
+    const dt = Math.max(0, Math.min(0.05, (now - last) / 1000 || 0));
     last = now;
     step(dt);
     render();
