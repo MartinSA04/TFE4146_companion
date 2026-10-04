@@ -30,261 +30,383 @@ exam:
   durationMinutes: 240
   format: Skriftlig skoleeksamen
   aids: "Kode C: bestemt, enkel kalkulator og spesifiserte trykte/håndskrevne hjelpemidler tillatt"
+  # Formelarket ligger bare i Blackboard-rommet, så det er vendret her (AUTHORING §7).
+  formulaSheetUrl: "/formelark.pdf"
 
-# Formelsamlingen. Merk: ingen formel er merket `memorize`. Hva som havner på
-# det utdelte formelarket er ikke kjent før nær eksamen, og guiden skal ikke
-# påstå noe om det. Sett `memorize: true` per formel når arket foreligger.
+# Formelsamlingen. `onSheet` følger det offisielle formelarket til eksamen
+# («Formula sheet for the exam» i Blackboard-rommet, «Formulas TFE-4146», 4 sider,
+# vendret som public/formelark.pdf): true bare når formelen står på arket.
+# `memorize: true` er formler som ikke står på arket, men som trengs til regning
+# på eksamen. Resten (onSheet: false uten memorize) er utledninger og forklaringer
+# som følger av formler på arket. Sjekk flaggene igjen hvis arket endres.
 formulas:
   - id: bloch-funksjon
     section: E–k-diagrammet
+    onSheet: false
     tex: "\\psi_k(x) = U(k_x, x)\\, e^{jk_x x}"
     label: "Bloch-funksjonen består av to faktorer. $e^{jk_x x}$ er en planbølge, og $U(k_x, x)$ er en funksjon som gjentar seg med gitterets periode, $U(k_x, x + a) = U(k_x, x)$. Elektronet i krystallen er ikke fritt, og beskrives likevel av én bølgevektor $k$."
   - id: gruppehastighet
     section: E–k-diagrammet
+    onSheet: false
     tex: "v = \\dfrac{1}{\\hbar}\\dfrac{dE}{dk}"
     label: "Bærerens hastighet er gruppehastigheten til bølgepakken, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er $v = 0$ selv om $\\hbar k \\neq 0$."
   - id: krystallmomentum
     section: Effektiv masse
+    onSheet: false
     tex: "F_\\text{ytre} = \\dfrac{d(\\hbar k)}{dt}"
     label: "Akselerasjonsteoremet. Bare den <em>ytre</em> kraften står på høyresiden, for gitterkreftene ligger allerede inne i formen på $E(k)$. Derfor er $\\hbar k$ <b>krystallmomentum</b> og ikke elektronets ekte bevegelsesmengde."
   - id: effektiv-masse
     section: Effektiv masse
+    onSheet: true
     tex: "m^* = \\dfrac{\\hbar^2}{d^2E/dk^2}"
     label: "Effektiv masse fra <b>krumningen</b> til båndet. Med $m^*$ i Newtons lov holder $F = ma$ med bare den ytre kraften, siden gitterkreftene er pakket inn i tallet. Skarp krumning gir liten $m^*$, flatt bånd gir stor. Negativ krumning på valensbåndtoppen er grunnen til at vi regner med hull der."
   - id: parabolsk-band
     section: Effektiv masse
+    onSheet: true
     tex: "E = E_c + \\dfrac{\\hbar^2 k^2}{2m^*}"
     label: "Parabolsk tilnærming nær et båndminimum. Så lenge båndet er parabolsk er $m^*$ <em>konstant</em>; høyere opp i båndet holder ikke tilnærmingen."
   - id: fullt-band-strom
     section: Elektroner og hull
+    onSheet: false
     tex: "J = (-q)\\sum_{i=1}^{N} v_i = 0 \\quad\\Longrightarrow\\quad J = (-q)\\sum_{i=1}^{N} v_i - (-q)v_j = +q\\,v_j"
     label: "Et fullt bånd gir null strøm. Fjerner du elektron $j$, blir summen $+qv_j$, altså <em>nøyaktig</em> strømmen fra én positiv ladning med det manglende elektronets hastighet. Det er hullets opprinnelse."
   - id: generasjon-rekombinasjon
     section: Intrinsisk materiale
+    onSheet: false
     tex: "r_i = a_r n_0 p_0 = g_i"
     label: "Likevekt er <em>dynamisk</em>: rekombinasjonsraten $r_i$ er proporsjonal med produktet $n_0p_0$, fordi et elektron og et hull må møtes, og den balanserer generasjonsraten $g_i$. Siden $g_i$ bare avhenger av temperaturen, er produktet låst: $n_0p_0 = n_i^2$."
   - id: hydrogenlik-donor
     section: Doping
+    onSheet: false
     tex: "E_d = 13{,}6\\ \\text{eV}\\cdot\\dfrac{m_n^*/m_0}{\\varepsilon_r^2}, \\qquad a^* = a_0\\,\\dfrac{\\varepsilon_r}{m_n^*/m_0}"
     label: "Hydrogenatomets egne resultater med to bytter: lettere elektron ($m_n^*$) og skjermet Coulomb-kraft ($\\varepsilon_r$). Med $a_0 = 0{,}529$ Å gir det $25$ meV og $24$ Å for Si. Anslaget ligger konsekvent under det målte, fordi elektronet nær kjernen verken ser full $\\varepsilon_r$ eller én isotrop masse."
   - id: fermi-dirac
     section: Fermi–Dirac-fordelingen
+    onSheet: true
     tex: "f(E) = \\dfrac{1}{1 + e^{(E - E_F)/k_BT}}"
     label: "Sannsynligheten for at en tillatt tilstand ved energi $E$ er okkupert ved termisk likevekt. $f(E_F) = \\tfrac{1}{2}$, og fordelingen er symmetrisk om nivået: $f(E_F + \\Delta E) = 1 - f(E_F - \\Delta E)$. Ved 300 K er $k_BT = 0{,}0259$ eV."
   - id: likevektskonsentrasjoner
     section: Fra fordeling til konsentrasjon
+    onSheet: true
     tex: "n_0 = N_c\\, e^{-(E_c - E_F)/k_BT}, \\qquad p_0 = N_v\\, e^{-(E_F - E_v)/k_BT}"
     label: "Likevektskonsentrasjonene når $E_F$ ligger noen $k_BT$ fra båndkantene (Boltzmann-tilnærmingen). Avstanden fra $E_F$ til kanten står i eksponenten: 60 meV per tierpotens ved romtemperatur."
   - id: effektiv-tilstandstetthet
     section: Fra fordeling til konsentrasjon
+    onSheet: true
     tex: "N_c = 2\\left(\\dfrac{2\\pi m_n^* k_BT}{h^2}\\right)^{3/2}"
     label: "Effektiv tilstandstetthet: hele ledningsbåndet regnet som $N_c$ tilstander lagt på $E_c$, slik at $n_0 = N_c f(E_c)$. For Si ved 300 K er $N_c \\approx 2{,}9 \\times 10^{19}$ cm⁻³ og $N_v \\approx 1{,}0 \\times 10^{19}$ cm⁻³; begge vokser som $T^{3/2}$."
   - id: massevirkningsloven
     section: Massevirkningsloven
+    onSheet: true
     tex: "n_0 p_0 = n_i^2"
     label: "Ved termisk likevekt er produktet låst av materialet og temperaturen, uansett doping: dobler dopingen $n_0$, halveres $p_0$. Samme innhold som ratebalansen $r_i = a_r n_0 p_0 = g_i$, siden generasjonen bare avhenger av temperaturen."
   - id: intrinsisk-konsentrasjon
     section: Massevirkningsloven
+    onSheet: true
     tex: "n_i = \\sqrt{N_c N_v}\\; e^{-E_g/2k_BT}"
     label: "Intrinsisk konsentrasjon, med <b>halve</b> gapet i eksponenten fordi $E_F$ ligger nær midten av det. For Si ved 300 K er $n_i = 1{,}5 \\times 10^{10}$ cm⁻³. Eksponenten dominerer temperaturavhengigheten; $T^{3/2}$-faktorene fra $N_c$ og $N_v$ synes knapt ved siden av."
   - id: ni-formene
     section: Massevirkningsloven
+    onSheet: true
     tex: "n_0 = n_i\\, e^{(E_F - E_i)/k_BT}, \\qquad p_0 = n_i\\, e^{(E_i - E_F)/k_BT}"
     label: "Likevektskonsentrasjonene målt fra det intrinsiske nivået $E_i$. Står $E_F$ på $E_i$, er $n_0 = p_0 = n_i$, og avstanden $E_F - E_i$ forteller direkte hvor sterkt dopet materialet er."
   - id: dos-masse
     section: Effektiv masse for tilstandstetthet
+    onSheet: false
     tex: "(m_n^*)^{3/2} = 6\\,(m_l\\, m_t^2)^{1/2}"
     label: "Effektiv masse for tilstandstetthet i Si: geometrisk middel av krumningsmassene i én dal, ganget opp med de seks dalene. Med $m_l = 0{,}98\\,m_0$ og $m_t = 0{,}19\\,m_0$ gir det $m_n^* = 1{,}1\\,m_0$, tallet som hører hjemme i $N_c$."
   - id: ladningsnoytralitet
     section: Kompensasjon og ladningsnøytralitet
+    onSheet: false
+    memorize: true
     tex: "p_0 + N_d^+ = n_0 + N_a^-"
     label: "Ladningsnøytralitet: summen av positiv ladning (hull og ioniserte donorer) er lik summen av negativ (elektroner og ioniserte akseptorer). Sammen med $n_0 p_0 = n_i^2$ bestemmer kravet $n_0$, $p_0$ og $E_F$ entydig."
   - id: drifthastighet
     section: Drift
+    onSheet: true
     tex: "\\langle v_x\\rangle = -\\dfrac{q\\tau}{m_n^*}\\,\\mathcal{E}_x, \\qquad \\mu_n = \\dfrac{q\\tau}{m_n^*}"
     label: "Drifthastigheten følger av at feltets kraft balanseres av kollisjoner hver $\\tau$ i gjennomsnitt. Mobiliteten $\\mu_n$ er drifthastigheten per felt, i cm²/V·s, og er positiv for begge bærertypene. For Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s i rent materiale."
   - id: ledningsevne
     section: Drift
+    onSheet: true
     tex: "J = q\\,(n\\mu_n + p\\mu_p)\\,\\mathcal{E} = \\sigma\\,\\mathcal{E}, \\qquad \\rho = \\dfrac{1}{\\sigma}, \\qquad R = \\rho\\,\\dfrac{L}{wt}"
     label: "Ohms lov med ledningsevnen skrevet ut i bærerkonsentrasjoner og mobiliteter. Begge bærertypene gir strøm <em>langs</em> feltet, siden hullene beveger seg med feltet og elektronene mot. Resistiviteten $\\rho$ er i Ω·cm, og staven med lengde $L$ og tverrsnitt $wt$ får resistansen $R$."
   - id: konduktivitetsmasse
     section: Drift
+    onSheet: false
     tex: "\\dfrac{1}{m_n^*} = \\dfrac{1}{3}\\left(\\dfrac{1}{m_l} + \\dfrac{2}{m_t}\\right)"
     label: "Effektiv masse for ledningsevne i Si: massen står i nevneren i $\\mu_n$, så de tre retningene i en dal midles harmonisk. Med $m_l = 0{,}98\\,m_0$ og $m_t = 0{,}19\\,m_0$ gir det $0{,}26\\,m_0$, mot $1{,}1\\,m_0$ for telling av tilstander. I GaAs er dalen kuleformet, og begge massene er $0{,}067\\,m_0$."
   - id: matthiessen
     section: Spredning, temperatur og doping
+    onSheet: false
+    memorize: true
     tex: "\\dfrac{1}{\\mu} = \\dfrac{1}{\\mu_\\text{gitter}} + \\dfrac{1}{\\mu_\\text{urenhet}}, \\qquad \\mu_\\text{gitter} \\sim T^{-3/2}, \\quad \\mu_\\text{urenhet} \\sim T^{3/2}"
     label: "Kollisjonssannsynlighetene legges sammen, så mobilitetene legges sammen invers, og den minste dominerer. Gitterspredning vokser med temperaturen, urenhetsspredning er sterkest for langsomme bærere i kaldt materiale. $10^{17}$ donorer per cm³ senker $\\mu_n$ i Si fra 1350 til 700 cm²/V·s ved 300 K."
   - id: hall-koeffisient
     section: Hall-effekten
+    onSheet: false
+    memorize: true
     tex: "\\mathcal{E}_y = v_x\\mathcal{B}_z = R_H\\,J_x\\mathcal{B}_z, \\qquad R_H = \\dfrac{1}{qp_0}, \\qquad \\mu_p = \\dfrac{R_H}{\\rho}"
     label: "Hall-feltet bygges opp til det opphever den magnetiske avbøyningen. Hall-koeffisienten gir konsentrasjonen direkte, fortegnet på Hall-spenningen gir bærertypen (negativt for elektroner), og sammen med resistiviteten gir den mobiliteten."
   - id: fermi-flat
     section: Fermi-nivået ved likevekt
+    onSheet: false
     tex: "\\dfrac{dE_F}{dx} = 0"
     label: "Fermi-nivået er konstant gjennom materialer i kontakt ved termisk likevekt. Raten $N_1 f_1 \\cdot N_2(1 - f_2)$ fra 1 til 2 må være lik raten motsatt vei ved hver energi, og det krever $f_1 = f_2$, altså $E_{F1} = E_{F2}$."
   - id: levetid
     section: Overskuddsbærere
+    onSheet: false
+    memorize: true
     tex: "\\delta n(t) = \\Delta n\\, e^{-t/\\tau_n}, \\qquad \\tau_n = \\dfrac{1}{a_r(n_0 + p_0)} \\approx \\dfrac{1}{a_r p_0}"
     label: "Overskuddet dør ut eksponentielt med levetiden til minoritetsbærerne, her elektroner i p-type materiale. Gjelder ved lav injeksjon, der $\\delta n^2$-leddet i rekombinasjonen $a_r np$ kan strykes. Majoriteten faller med samme rate, siden bærerne forsvinner parvis."
   - id: stasjonaert-overskudd
     section: Kvasi-Fermi-nivåer
+    onSheet: false
+    memorize: true
     tex: "\\delta n = \\delta p = g_\\text{op}\\,\\tau_n"
     label: "Stasjonært overskudd under jevn belysning: den optiske generasjonsraten ganger levetiden. Da er $np \\neq n_i^2$, og likevektens $E_F$ må byttes ut med to nivåer."
   - id: kvasi-fermi-nivaaer
     section: Kvasi-Fermi-nivåer
+    onSheet: true
     tex: "n = n_i\\, e^{(F_n - E_i)/k_BT}, \\qquad p = n_i\\, e^{(E_i - F_p)/k_BT}"
     label: "Definisjonen av kvasi-Fermi-nivåene $F_n$ og $F_p$: samme form som likevektsuttrykkene, med hvert sitt nivå. I likevekt er $F_n = F_p = E_F$; avstanden $F_n - F_p$ måler hvor langt materialet er fra likevekt. Minoritetsnivået flytter seg mest."
   - id: diffusjonsstrom
     section: Diffusjon
+    onSheet: true
     tex: "J_n^\\text{diff} = +qD_n\\dfrac{dn}{dx}, \\qquad J_p^\\text{diff} = -qD_p\\dfrac{dp}{dx}"
     label: "Diffusjonsstrømmene, fra partikkelfluksen $\\phi = -D\\,dn/dx$ ganger ladningen. Elektroner og hull i samme gradient beveger seg samme vei, men strømmene går motsatt, siden ladningene har ulikt fortegn. $D$ har enhet cm²/s; for Si er $D_n = 35$ og $D_p = 12{,}5$."
   - id: driftdiffusjonsstrom
     section: Diffusjon
+    onSheet: true
     tex: "\\begin{aligned} J_n &= q\\mu_n n\\,\\mathcal{E} + qD_n\\dfrac{dn}{dx} \\\\ J_p &= q\\mu_p p\\,\\mathcal{E} - qD_p\\dfrac{dp}{dx} \\end{aligned}"
     label: "Hele strømmen for hver bærertype: et driftledd proporsjonalt med konsentrasjonen og et diffusjonsledd proporsjonalt med gradienten. Minoritetsbærerne bidrar lite til drift, men gradienten kan være stor, så minoritetsstrøm er nesten alltid diffusjon. $J = J_n + J_p$."
   - id: felt-baandskjema
     section: Diffusjon
+    onSheet: true
     tex: "\\mathcal{E}(x) = \\dfrac{1}{q}\\dfrac{dE_i}{dx}"
     label: "Et felt tegnes som skrå bånd. Elektronets potensielle energi øker langs feltet, så båndene stiger i feltretningen, og stigningen er feltet. Elektroner driver nedover i skjemaet, hull oppover, og $\\mathcal{E}$ peker oppoverbakke."
   - id: einstein
     section: Einstein-relasjonen
+    onSheet: true
     tex: "\\dfrac{D}{\\mu} = \\dfrac{k_BT}{q}"
     label: "Einstein-relasjonen, fra kravet om null strøm i likevekt med $dE_F/dx = 0$. Forholdet er $0{,}0259$ V ved romtemperatur, uansett bærertype og materiale, så måler du den ene av $D$ og $\\mu$, har du den andre."
   - id: kontinuitet
     section: Kontinuitetsligningen
+    onSheet: true
     tex: "\\dfrac{\\partial\\,\\delta p}{\\partial t} = -\\dfrac{1}{q}\\dfrac{\\partial J_p}{\\partial x} - \\dfrac{\\delta p}{\\tau_p}, \\qquad \\dfrac{\\partial\\,\\delta n}{\\partial t} = +\\dfrac{1}{q}\\dfrac{\\partial J_n}{\\partial x} - \\dfrac{\\delta n}{\\tau_n}"
     label: "Kontinuitetsligningen: konsentrasjonen i en skive øker med nettoinnstrømmen av partikler og minker med rekombinasjonen. Fortegnet på strømleddet følger ladningen."
   - id: diffusjonsligning
     section: Kontinuitetsligningen
+    onSheet: false
     tex: "\\dfrac{\\partial\\,\\delta n}{\\partial t} = D_n\\dfrac{\\partial^2\\,\\delta n}{\\partial x^2} - \\dfrac{\\delta n}{\\tau_n}"
     label: "Diffusjonsligningen: kontinuitetsligningen med ren diffusjonsstrøm satt inn. Krumningen i profilen jevner den ut, levetiden tømmer den. Tilsvarende for hull med $D_p$ og $\\tau_p$."
 
   - id: diffusjonslengde
     section: Stasjonær injeksjon og diffusjonslengde
+    onSheet: true
     tex: "\\delta p(x) = \\Delta p\\, e^{-x/L_p}, \\qquad L_p = \\sqrt{D_p\\tau_p}"
     label: "Stasjonær injeksjon i en lang stav: overskuddet faller eksponentielt med diffusjonslengden $L_p$, som er avstanden der det har falt til $1/e$ og gjennomsnittsavstanden et hull diffunderer før det rekombinerer. For Si med $D_p = 12{,}5$ cm²/s og $\\tau_p = 1$ µs er $L_p = 35$ µm."
   - id: injeksjonsstrom
     section: Stasjonær injeksjon og diffusjonslengde
+    onSheet: true
     tex: "\\begin{aligned} J_p(x) &= q\\dfrac{D_p}{L_p}\\,\\delta p(x) \\\\ Q_p &= qA\\,\\Delta p\\,L_p \\end{aligned}"
     label: "Diffusjonsstrømmen fra en eksponentiell profil er proporsjonal med overskuddet i hvert punkt, og ladningen som er lagret i staven, er arealet under profilen. Begge brukes på minoritetsbærerne som sprøytes inn over en pn-overgang."
   - id: haynes-shockley
     section: Haynes–Shockley-eksperimentet
+    onSheet: false
+    memorize: true
     tex: "\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"
     label: "Haynes–Shockley: en hullpuls driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet måler bredden i tid, $\\Delta t$, og driftfarten regner den om."
   - id: kontaktpotensial
     section: "Likevekt: kontaktpotensialet"
+    onSheet: true
     tex: "\\begin{aligned} V_0 &= \\dfrac{k_BT}{q}\\ln\\dfrac{p_p}{p_n} \\\\ &= \\dfrac{k_BT}{q}\\ln\\dfrac{N_aN_d}{n_i^2} \\end{aligned}"
     label: "Kontaktpotensialet over romladningssonen i likevekt, fra kravet om null hullstrøm og Einstein-relasjonen. Det vokser bare logaritmisk med dopingen: mellom 0,6 og 0,9 V for Si ved 300 K. Det er en likevektsstørrelse og driver ingen strøm; et voltmeter over dioden viser null."
   - id: boltzmann-overgang
     section: "Likevekt: kontaktpotensialet"
+    onSheet: true
     tex: "\\dfrac{p_p}{p_n} = \\dfrac{n_n}{n_p} = e^{qV_0/k_BT}"
     label: "Forholdet mellom konsentrasjonene på de to sidene av overgangen, samme ligning som $V_0$ snudd om. Den andre likheten følger av $p_pn_p = p_nn_n = n_i^2$. Det er denne formen som brukes når strømmen gjennom overgangen skal regnes ut."
   - id: baandforskyvning
     section: Båndskjemaet
+    onSheet: false
     tex: "\\begin{aligned} qV_0 &= E_{vp} - E_{vn} \\\\ &= (E_{ip} - E_F) \\\\ &\\quad + (E_F - E_{in}) \\end{aligned}"
     label: "Båndene på p-siden ligger $qV_0$ over båndene på n-siden, fordi Fermi-nivået er flatt i likevekt. Tegn hver side for seg med sitt $E_F$, skyv dem loddrett til nivåene faller sammen, og les $qV_0$ som summen av avstandene fra $E_i$ til $E_F$ på de to sidene."
   - id: ladningsbalanse
     section: Romladningen
+    onSheet: false
+    memorize: true
     tex: "qA\\,x_{p0}N_a = qA\\,x_{n0}N_d"
     label: "Ladningen i romladningssonen er like stor på begge sider, siden feltlinjene starter på ionene på n-siden og ender på ionene på p-siden. Den lett dopede siden må avdekke en tykkere skive for samme ladning, så sonen ligger mest der."
   - id: poisson
     section: Romladningen
+    onSheet: true
     tex: "\\begin{aligned} \\dfrac{d\\mathcal{E}}{dx} &= \\dfrac{q}{\\varepsilon}\\,(p - n + N_d^+ - N_a^-) \\\\ &\\approx \\pm\\dfrac{q}{\\varepsilon}N_{d,a} \\end{aligned}"
     label: "Poissons ligning i utarmingstilnærmingen: inne i sonen er bærerne strøket, og ladningen er $+qN_d$ for $0 < x < x_{n0}$ og $-qN_a$ for $-x_{p0} < x < 0$. Feltet blir en trekant som er null ved begge kantene og negativ i hele sonen, siden det peker fra n mot p."
   - id: maksfelt
     section: Romladningen
+    onSheet: false
+    memorize: true
     tex: "\\begin{aligned} \\mathcal{E}_0 &= -\\dfrac{q}{\\varepsilon}N_d\\,x_{n0} = -\\dfrac{q}{\\varepsilon}N_a\\,x_{p0} \\\\ V_0 &= -\\tfrac{1}{2}\\mathcal{E}_0 W \\end{aligned}"
     label: "Det største feltet står ved skillet $x = 0$, der alle feltlinjene passerer, og kontaktpotensialet er arealet av felttrekanten. Med $V_0 = 0{,}8$ V og $W = 0{,}46$ µm er $\\mathcal{E}_0 = -3{,}5 \\times 10^4$ V/cm."
   - id: sonebredde
     section: Romladningen
+    onSheet: true
     tex: "\\begin{aligned} W^2 &= \\dfrac{2\\varepsilon(V_0 - V)}{q}\\Big(\\tfrac{1}{N_a} + \\tfrac{1}{N_d}\\Big) \\\\ x_{p0} &= \\dfrac{W}{1 + N_a/N_d} \\\\ x_{n0} &= \\dfrac{W}{1 + N_d/N_a} \\end{aligned}"
     label: "Bredden på romladningssonen, fra felttrekanten og ladningsbalansen. Den lettest dopede siden setter bredden, og den vokser som roten av spenningen over sonen: $V_0$ i likevekt, $V_0 - V$ med forspenning, så sonen krymper i lederetningen og vokser i sperreretningen. For Si er den typisk noen tideler av en mikrometer."
   - id: diodeligning
     section: Forspenning
+    onSheet: true
     tex: "\\begin{aligned} I &= I_0\\left(e^{qV/k_BT} - 1\\right) \\\\ I_0 &= |I_\\text{gen}| \\end{aligned}"
     label: "Strømmen gjennom overgangen, positiv fra p til n. Diffusjonsstrømmen over barrieren er likevektsverdien ganger $e^{qV/k_BT}$; generasjonsstrømmen av minoritetsbærere er uavhengig av $V$, og de to er like store i likevekt. I lederetningen vokser strømmen eksponentielt, i sperreretningen er den $-I_0$, metningsstrømmen, uansett spenning."
   - id: injeksjon-kant
     section: Injeksjon av minoritetsbærere
+    onSheet: true
     tex: "\\begin{aligned} \\Delta p_n &= p_n\\left(e^{qV/k_BT} - 1\\right) \\\\ \\Delta n_p &= n_p\\left(e^{qV/k_BT} - 1\\right) \\end{aligned}"
     label: "Overskuddet av minoritetsbærere ved kantene av romladningssonen, fra $p(x_{n0})/p_n = e^{qV/k_BT}$ ved lav injeksjon. Vokser eksponentielt i lederetningen; i sperreretningen med $V_r \\gg k_BT/q$ er $\\Delta p_n \\approx -p_n$ og $\\Delta n_p \\approx -n_p$, så kantene er tømt for minoritetsbærere."
   - id: minoritetsprofiler
     section: Injeksjon av minoritetsbærere
+    onSheet: true
     tex: "\\begin{aligned} \\delta p(x_n) &= \\Delta p_n\\, e^{-x_n/L_p} \\\\ \\delta n(x_p) &= \\Delta n_p\\, e^{-x_p/L_n} \\end{aligned}"
     label: "Profilene av injiserte minoritetsbærere i lange nøytrale områder, med $x_n$ målt fra $x_{n0}$ innover i n-siden og $x_p$ fra $-x_{p0}$ innover i p-siden. Samme løsning som for injeksjon i enden av en stav, med overskuddet ved kanten satt av spenningen."
   - id: kvasi-fermi-sone
     section: Injeksjon av minoritetsbærere
+    onSheet: true
     tex: "pn = n_i^2\\, e^{(F_n - F_p)/k_BT} = n_i^2\\, e^{qV/k_BT}"
     label: "Inne i romladningssonen ligger kvasi-Fermi-nivåene $qV$ fra hverandre. Utenfor er det minoritetsnivået som flytter seg, lineært med avstanden, til det møter $E_F$ etter mange diffusjonslengder. I sperreretningen er $pn \\approx 0$ i sonen."
   - id: metningsstrom-i0
     section: Diodeligningen
+    onSheet: true
     tex: "I_0 = qA\\left(\\dfrac{D_p}{L_p}\\,p_n + \\dfrac{D_n}{L_n}\\,n_p\\right)"
     label: "Metningsstrømmen i $I = I_0(e^{qV/k_BT} - 1)$: diffusjonsstrømmene ved de to sonekantene lagt sammen, uten rekombinasjon i sonen. Med $p_n = n_i^2/N_d$ og $n_p = n_i^2/N_a$ er det den lett dopede siden som teller; i en p⁺n-overgang er strømmen nesten bare hull injisert i n-siden."
   - id: ladningskontroll
     section: Ladningskontroll
+    onSheet: true
     tex: "\\begin{aligned} Q_p &= qA\\,L_p\\,\\Delta p_n \\\\ I_p(x_n = 0) &= \\dfrac{Q_p}{\\tau_p} = qA\\dfrac{D_p}{L_p}\\,\\Delta p_n \\end{aligned}"
     label: "Ladningen som er lagret i minoritetsprofilen, er arealet under den, og strømmen inn må fylle den på hvert $\\tau_p$ sekund. Samme svar som fra gradienten, siden $L_p/\\tau_p = D_p/L_p$. Tilsvarende $Q_n = qA\\,L_n\\,\\Delta n_p$ på p-siden."
   - id: majoritetsstrom
     section: Strømkomponentene langs dioden
+    onSheet: false
     tex: "\\begin{aligned} I_p(x_n) &= qA\\dfrac{D_p}{L_p}\\,\\delta p(x_n) \\\\ I_n(x_n) &= I - I_p(x_n) \\end{aligned}"
     label: "Den samlede strømmen er den samme i hvert tverrsnitt. Minoritetsstrømmen er proporsjonal med overskuddet og dør ut som $e^{-x_n/L_p}$ fra sonen, så majoritetsbærerne tar over: elektronene på n-siden erstatter dem som rekombinerer med de injiserte hullene, og leverer dem som injiseres inn i p-siden."
   - id: skredmultiplikasjon
     section: Skredgjennombrudd
+    onSheet: false
+    memorize: true
     tex: "\\begin{aligned} M &= \\dfrac{n_\\text{ut}}{n_\\text{in}} = \\dfrac{1}{1 - P} \\\\ &= 1 + P + P^2 + \\cdots \\\\ M &= \\dfrac{1}{1 - (V/V_\\text{br})^n} \\end{aligned}"
     label: "Multiplikasjonen i skredgjennombrudd, med $P$ som sannsynligheten for en ioniserende kollisjon per tur gjennom sonen. Den nederste er den målte formen nær gjennombrudd, med $n$ mellom 3 og 6 etter materialet. $V_\\text{br}$ vokser med båndgapet og faller med dopingen på den lett dopede siden."
 
   - id: ladning-transient
     section: Lagret ladning og tid
+    onSheet: true
     tex: "i(t) = \\dfrac{Q_p(t)}{\\tau_p} + \\dfrac{dQ_p(t)}{dt}"
     label: "Strømmen inn i n-siden av en p⁺n-overgang i en transient: den erstatter hullene som rekombinerer, og bygger opp eller tømmer den lagrede ladningen. Kontinuitetsligningen integrert over n-siden. I stasjonær tilstand står ladningskontroll igjen."
   - id: strom-slatt-av
     section: Når strømmen slås av
+    onSheet: false
     tex: "Q_p(t) = I\\tau_p\\,e^{-t/\\tau_p}"
     label: "Strømmen $I$ slås av ved $t = 0$, og den lagrede ladningen dør ut med levetiden. Så lenge den er der, ligger det en spenning over overgangen."
   - id: spenning-slatt-av
     section: Når strømmen slås av
+    onSheet: false
     tex: "v(t) = \\tfrac{k_BT}{q}\\ln\\bigl(\\tfrac{I\\tau_p}{qAL_pp_n}e^{-t/\\tau_p} + 1\\bigr)"
     label: "Spenningen over overgangen etter at strømmen er slått av, fra den kvasistasjonære tilnærmingen $Q_p = qAL_p\\Delta p_n$. Den er logaritmen av ladningen, så den faller bare omtrent $k_BT/q$ per levetid."
   - id: lagringstid
     section: Lagringstid
+    onSheet: false
+    memorize: true
     tex: "t_{sd} = \\tau_p\\left[\\operatorname{erf}^{-1}\\!\\left(\\dfrac{I_f}{I_f + I_r}\\right)\\right]^2"
     label: "Lagringstiden etter omslag fra $I_f$ i lederetningen til $-I_r$: så lenge er overskuddet ved sonekanten positivt, spenningen over overgangen liten og sperrestrømmen satt av kretsen. Eksakt løsning av diffusjonsligningen. Med $I_r = I_f$ er $t_{sd} = 0{,}23\\,\\tau_p$. Snudd gir den levetiden fra en måling av $t_{sd}$."
   - id: lagringstid-kvasistasjonar
     section: Lagringstid
+    onSheet: false
     tex: "Q_p(t) = -I_r\\tau_p \\allowbreak + (I_f + I_r)\\,\\tau_p\\,e^{-t/\\tau_p} \\allowbreak\\quad t_{sd} = \\tau_p\\ln\\!\\left(1 + \\dfrac{I_f}{I_r}\\right)"
     label: "Ladningen etter omslaget er eksakt. Lagringstiden til høyre er den kvasistasjonære tilnærmingen, der $\\Delta p_n = 0$ først når $Q_p = 0$. Den er for lang, tre ganger for lang med $I_r = I_f$, fordi kanten i virkeligheten tømmes mens det ligger ladning lenger inne."
   - id: overgangskapasitans
     section: Overgangskapasitansen
+    onSheet: true
     tex: "C_j = \\dfrac{A}{2}\\left[\\dfrac{2q\\varepsilon}{V_0 - V}\\,\\dfrac{N_dN_a}{N_d + N_a}\\right]^{1/2} \\allowbreak = \\dfrac{\\varepsilon A}{W}"
     label: "Kapasitansen $C_j = |dQ/d(V_0 - V)|$ fra ionene i romladningssonen. Samme form som en platekondensator med avstanden $W$, men $W$ vokser med sperrespenningen. Dominerer i sperreretningen. Går som $V_r^{-1/2}$ i en abrupt overgang og $V_r^{-1/3}$ i en gradvis med lineær nettodoping."
   - id: overgangskapasitans-ensidig
     section: Overgangskapasitansen
+    onSheet: false
     tex: "C_j = \\dfrac{A}{2}\\left[\\dfrac{2q\\varepsilon N_d}{V_0 - V}\\right]^{1/2}"
     label: "Overgangskapasitansen i en p⁺n-overgang, der sonen ligger nesten bare på n-siden. Målt ved en sperrespenning som er stor mot $V_0$, og med kjent areal, gir den dopingen $N_d$."
   - id: diffusjonskapasitans
     section: Diffusjonskapasitansen
+    onSheet: false
     tex: "C_s = \\dfrac{1}{3}\\dfrac{q^2}{k_BT}\\,Acp_n\\,e^{qV/k_BT}"
     label: "Diffusjonskapasitansen fra hullene i en kort diode med n-siden $c$ lang, der to tredjedeler av den lagrede ladningen kan hentes ut igjen; en lang diode har ingen. Dominerer i lederetningen. Elektronene på p-siden gir et tilsvarende bidrag."
   - id: smasignalkonduktans
     section: Diffusjonskapasitansen
+    onSheet: true
     tex: "G_s = \\dfrac{dI}{dV} = \\dfrac{q}{k_BT}\\,I"
     label: "Småsignalkonduktansen til en lang diode i lederetningen: hvor mye strømmen endrer seg for en liten endring i spenningen rundt arbeidspunktet. Ved 1 mA er $1/G_s = 26$ Ω."
   - id: strom-bandgap
     section: Båndgapet og høy injeksjon
+    onSheet: false
     tex: "I = qA\\dfrac{D_p}{L_p}\\,N_v\\,e^{[qV - (E_F - E_{vn})]/k_BT}"
     label: "Diodeligningen for en p⁺n-overgang i lederetningen med $p_n$ skrevet ut. Strømmen er liten til $qV$ nærmer seg $E_F - E_{vn} \\approx qV_0$, som er nær $E_g$ når begge sidene er sterkt dopet. Spenningen over overgangen kan ikke bli større enn $V_0$."
   - id: hoy-injeksjon
     section: Båndgapet og høy injeksjon
+    onSheet: false
     tex: "\\Delta n_p = n_i\\,e^{qV/2k_BT} \\allowbreak\\quad I \\propto e^{qV/2k_BT}"
     label: "Høy injeksjon: overskuddet er større enn majoritetskonsentrasjonen, så $pn = n_i^2e^{qV/k_BT}$ ved sonekanten gir $\\Delta n_p^2 = n_i^2e^{qV/k_BT}$. Strømmen vokser med halve eksponenten."
   - id: idealitetsfaktor
     section: Rekombinasjon og generasjon i sonen
+    onSheet: true
     tex: "I = I_0'\\left(e^{qV/nk_BT} - 1\\right)"
     label: "Diodeligningen med idealitetsfaktoren $n$, som ikke er elektronkonsentrasjonen. Diffusjon fra de nøytrale områdene går som $n_i^2e^{qV/k_BT}$ og gir $n = 1$; rekombinasjon i sonen går som $n_ie^{qV/2k_BT}$ og gir $n \\approx 2$. I Si går $n$ fra omtrent 2 ved lav spenning til 1."
   - id: seriemotstand
     section: Seriemotstand og gradvise overganger
+    onSheet: false
     tex: "V = V_a - I\\,(R_p + R_n)"
     label: "Spenningen over overgangen når de nøytrale områdene tar sin del av spenningen $V_a$ over komponenten. Merkes ved store strømmer, der strømmen vokser saktere enn eksponentielt. Motstandene synker når de injiserte bærerne øker ledningsevnen."
+  - id: gradvis-overgang
+    section: Seriemotstand og gradvise overganger
+    onSheet: false
+    tex: "\\begin{aligned} W &= \\left[\\dfrac{12\\varepsilon(V_0 - V)}{qk}\\right]^{1/3} \\\\ \\mathcal{E}(x) &= \\dfrac{qk}{2\\varepsilon}\\Big(x^2 - \\dfrac{W^2}{4}\\Big) \\end{aligned}"
+    label: "Den lineært gradvise overgangen, med nettodopingen $N_d - N_a = kx$ gjennom sonen og $x$ målt fra skillet. Sonen ligger symmetrisk om skillet, feltet er en parabel med det største feltet $\\mathcal{E}_0 = -qkW^2/8\\varepsilon$ ved skillet, og $C_j = \\varepsilon A/W \\propto (V_0 - V)^{-1/3}$."
+
+  - id: arbeidsfunksjon-halvleder
+    section: Arbeidsfunksjon og elektronaffinitet
+    onSheet: false
+    memorize: true
+    tex: "q\\Phi_s = q\\chi + (E_c - E_F)"
+    label: "Arbeidsfunksjonen til en halvleder, fra Fermi-nivået opp til vakuumnivået. Elektronaffiniteten $q\\chi$ er fast for materialet, $4{,}05$ eV for Si, mens $E_c - E_F$ og dermed $\\Phi_s$ avhenger av dopingen."
+  - id: schottky-barriere
+    section: Schottky-kontakten
+    onSheet: false
+    memorize: true
+    tex: "\\begin{aligned} V_0 &= \\Phi_m - \\Phi_s \\\\ \\Phi_B &= \\Phi_m - \\chi \\end{aligned}"
+    label: "Kontaktpotensialet og barrierehøyden i en Schottky-kontakt på n-type, der $\\Phi_m > \\Phi_s$ og halvlederen tømmes nær grenseflaten. $V_0$ holder elektronene i halvlederen tilbake og blir $V_0 - V$ med spenning; $\\Phi_B$ er barrieren for elektronene i metallet og endres ikke. På p-type kreves $\\Phi_m < \\Phi_s$, og $V_0 = \\Phi_s - \\Phi_m$."
+  - id: schottky-sonebredde
+    section: Schottky-kontakten
+    onSheet: false
+    tex: "W = \\left[\\dfrac{2\\varepsilon(V_0 - V)}{qN_d}\\right]^{1/2}"
+    label: "Bredden av romladningssonen i en Schottky-kontakt på n-type. Sonen ligger bare i halvlederen, som på n-siden av en p⁺n-overgang, og kapasitansen er $C_j = \\varepsilon A/W$."
+  - id: schottky-diode
+    section: Strømmen over barrieren
+    onSheet: false
+    memorize: true
+    tex: "\\begin{aligned} I &= I_0\\left(e^{qV/k_BT} - 1\\right) \\\\ I_0 &\\propto e^{-q\\Phi_B/k_BT} \\end{aligned}"
+    label: "Strømmen gjennom en Schottky-kontakt, positiv fra metallet til halvlederen på n-type. Spenningen endrer barrieren fra halvledersiden, mens strømmen fra metallet over $\\Phi_B$ er den samme uansett spenning og setter $I_0$. Strømmen er majoritetsbærere, så det er ingen lagret ladning og ingen lagringstid."
+  - id: schottky-termionisk
+    section: Strømmen over barrieren
+    onSheet: false
+    tex: "I = ABT^2\\,e^{-q\\Phi_B/k_BT}\\,e^{qV/nk_BT}"
+    label: "Strømmen i lederetningen fra en full behandling, med samme regning som for termionisk emisjon. $B$ er en effektiv Richardson-konstant for overgangen, og $n$ ligger mellom 1 og 2."
+  - id: heteroovergang-sprang
+    section: Heterooverganger
+    onSheet: false
+    memorize: true
+    tex: "\\begin{aligned} \\Delta E_g &= E_{g1} - E_{g2} \\\\ &= \\Delta E_c + \\Delta E_v \\\\ \\Delta E_c &= q(\\chi_2 - \\chi_1) \\end{aligned}"
+    label: "Sprangene i båndkantene ved en heteroovergang, med 1 for materialet med størst båndgap. Den nederste linjen er Andersons affinitetsregel, som gjelder i det ideelle tilfellet; i praksis måles sprangene. For GaAs–AlGaAs er $\\Delta E_c$ omtrent to tredjedeler av $\\Delta E_g$."
+  - id: hetero-spenningsdeling
+    section: Heterooverganger
+    onSheet: false
+    tex: "\\dfrac{V_{01}}{V_{02}} = \\dfrac{\\varepsilon_2N_{d2}}{\\varepsilon_1N_{a1}}"
+    label: "Hvordan kontaktpotensialet $V_0 = V_{01} + V_{02}$ deles i en heteroovergang med p-type på side 1 og n-type på side 2. Fra Poissons ligning med $\\varepsilon_1\\mathcal{E}_1 = \\varepsilon_2\\mathcal{E}_2$ ved grenseflaten. Den lettest dopede siden tar mest av spenningen."
 
 glossary:
   - term: Valensbånd
@@ -516,7 +638,7 @@ glossary:
     definition: "(<em>varactor</em>) En diode som brukes i sperreretning for den spenningsstyrte overgangskapasitansen, for eksempel til avstemming. $C_j \\propto V_r^{-1/2}$ i en abrupt overgang; dopingprofilen setter eksponenten."
   - term: Gradvis overgang
     section: Seriemotstand og gradvise overganger
-    definition: "(<em>graded junction</em>) En overgang der dopingen går gradvis fra p til n, som etter diffusjon eller implantasjon. Med lineær nettodoping gjennom sonen blir feltet en parabel og $C_j \\propto V_r^{-1/3}$."
+    definition: "(<em>graded junction</em>) En overgang der dopingen går gradvis fra p til n, som etter diffusjon eller implantasjon. Med lineær nettodoping $N_d - N_a = kx$ gjennom sonen blir feltet en parabel, $W \\propto (V_0 - V)^{1/3}$ og $C_j \\propto V_r^{-1/3}$."
   - term: Diffusjonskapasitans
     section: Diffusjonskapasitansen
     definition: "(<em>charge storage capacitance</em>, <em>diffusion capacitance</em>) $C_s$, kapasitansen fra den lagrede ladningen av minoritetsbærere, regnet med bare den delen som kan hentes ut igjen gjennom kontaktene. I en kort diode er den delen to tredjedeler av $Q_p$, så $C_s = \\tfrac{2}{3}\\,dQ_p/dV$. Vokser eksponentielt med spenningen og dominerer i lederetningen."
@@ -525,7 +647,38 @@ glossary:
     definition: "(<em>high-level injection</em>) Overskuddet av bærere er like stort som eller større enn majoritetskonsentrasjonen. Da vokser strømmen som $e^{qV/2k_BT}$, og spenningen over overgangen kan ikke bli større enn $V_0$."
   - term: Idealitetsfaktor
     section: Rekombinasjon og generasjon i sonen
-    definition: "(<em>ideality factor</em>) $n$ i $I = I_0'(e^{qV/nk_BT} - 1)$. $n = 1$ når strømmen er diffusjon fra de nøytrale områdene, $n \\approx 2$ når den er rekombinasjon i sonen eller høy injeksjon."
+    definition: "(<em>ideality factor</em>) $n$ i $I = I_0'(e^{qV/nk_BT} - 1)$. $n = 1$ når strømmen er diffusjon fra de nøytrale områdene, $n \\approx 2$ når den er rekombinasjon i sonen eller høy injeksjon. I en Schottky-kontakt ligger $n$ også mellom 1 og 2, av andre grunner."
+
+  - term: Arbeidsfunksjon
+    section: Arbeidsfunksjon og elektronaffinitet
+    definition: "(<em>work function</em>) $q\\Phi$, energien som skal til for å flytte et elektron fra Fermi-nivået og ut i vakuum like utenfor overflaten. Omtrent 4,3 eV for Al og 4,8 eV for Au. For en halvleder avhenger den av dopingen, $q\\Phi_s = q\\chi + (E_c - E_F)$."
+  - term: Elektronaffinitet
+    section: Arbeidsfunksjon og elektronaffinitet
+    definition: "(<em>electron affinity</em>) $q\\chi$, avstanden fra ledningsbåndkanten opp til vakuumnivået. Fast for materialet og uavhengig av dopingen; 4,05 eV for Si."
+  - term: Vakuumnivå
+    section: Arbeidsfunksjon og elektronaffinitet
+    definition: "(<em>vacuum level</em>) $E_\\text{vac}$, energien til et elektron i ro like utenfor materialet. Det lokale vakuumnivået ligger $q\\chi$ over ledningsbåndkanten og bøyer seg med den, så det endrer seg med $qV_0$ over en overgang. Det globale vakuumnivået langt unna er konstant."
+  - term: Schottky-kontakt
+    section: Schottky-kontakten
+    definition: "(<em>Schottky barrier</em>, <em>Schottky diode</em>) En likerettende metall–halvleder-overgang, der halvlederen tømmes for majoritetsbærere nær grenseflaten: $\\Phi_m > \\Phi_s$ på n-type og $\\Phi_m < \\Phi_s$ på p-type. Strømmen er majoritetsbærere, så det lagres ingen minoritetsladning, og dioden slår raskt om."
+  - term: Barrierehøyde
+    section: Schottky-kontakten
+    definition: "(<em>barrier height</em>) $\\Phi_B$, barrieren elektronene i metallet må over for å komme inn i halvlederen, $\\Phi_m - \\chi$ i en ideell kontakt på n-type. Endres ikke av spenningen og setter metningsstrømmen, $I_0 \\propto e^{-q\\Phi_B/k_BT}$. I praksis måles den."
+  - term: Ohmsk kontakt
+    section: Ohmske kontakter
+    definition: "(<em>ohmic contact</em>) En kontakt med lineær strøm–spenning-karakteristikk i begge retninger og liten motstand. Ideelt når majoritetsbærerne samles ved grenseflaten, $\\Phi_m < \\Phi_s$ på n-type. I praksis lages den med et sterkt dopet lag under metallet, så sonen blir tynn nok til at bærerne tunnelerer gjennom."
+  - term: Grenseflatetilstander
+    section: Virkelige Schottky-barrierer
+    definition: "(<em>interface states</em>) Nivåer i gapet ved grenseflaten mellom halvlederen og metallet, fra ufullstendige bindinger og mellomlaget. Er det mange nok, låser de Fermi-nivået på et fast sted, så barrieren nesten ikke avhenger av metallet; på n-type GaAs blir den omtrent 0,8 eV."
+  - term: Heteroovergang
+    section: Heterooverganger
+    definition: "(<em>heterojunction</em>) En overgang mellom to halvledere med ulikt båndgap og samme gitterkonstant, for eksempel AlGaAs og GaAs. Båndkantene gjør sprangene $\\Delta E_c$ og $\\Delta E_v$ ved grenseflaten, så barrieren for elektroner og for hull blir forskjellig. En overgang i én halvleder er en homoovergang."
+  - term: Andersons affinitetsregel
+    section: Heterooverganger
+    definition: "(<em>Anderson affinity rule</em>) $\\Delta E_c = q(\\chi_2 - \\chi_1)$: spranget i ledningsbåndet ved en heteroovergang er forskjellen i elektronaffinitet, og $\\Delta E_v = \\Delta E_g - \\Delta E_c$. Gjelder når vakuumnivået er kontinuerlig over grenseflaten; i praksis måles sprangene."
+  - term: Todimensjonal elektrongass
+    section: Elektroner i brønnen ved grenseflaten
+    definition: "(<em>two-dimensional electron gas</em>) Elektroner fanget i en smal brønn i ledningsbåndet ved en heteroovergang, som ved N⁺-AlGaAs mot lett dopet GaAs. De beveger seg fritt bare langs grenseflaten. Donorene ligger i AlGaAs, så det er lite urenhetsspredning, og mobiliteten blir høy, særlig ved lave temperaturer."
 
 features:
   progress: true
@@ -545,7 +698,7 @@ symbols:
   - { tex: "E_i", meaning: "Det intrinsiske nivået, $E_F$ i udopet materiale", unit: "eV", section: "Energier og bånd", term: "Intrinsisk nivå", formula: ni-formene }
   - { tex: "E_d,\\ E_a", meaning: "Donor- og akseptornivået", unit: "eV", section: "Energier og bånd", term: "Donor", formula: hydrogenlik-donor }
   - { tex: "F_n,\\ F_p", meaning: "Kvasi-Fermi-nivåene for elektroner og hull", unit: "eV", section: "Energier og bånd", term: "Kvasi-Fermi-nivå", formula: kvasi-fermi-nivaaer, note: "Skrives også $E_{Fn}$ og $E_{Fp}$. I likevekt er begge lik $E_F$." }
-  - { tex: "k", meaning: "Bølgevektoren til elektronet i krystallen", unit: "cm⁻¹", section: "Energier og bånd", term: "E-k-diagram", note: "Ikke Boltzmanns konstant, som skrives $k_B$." }
+  - { tex: "k", meaning: "Bølgevektoren til elektronet i krystallen", unit: "cm⁻¹", section: "Energier og bånd", term: "E-k-diagram", note: "Ikke Boltzmanns konstant, som skrives $k_B$, eller dopinggradienten $k$ i en gradvis overgang." }
   - { tex: "\\hbar k", meaning: "Krystallmomentum", unit: "eV·s/cm", section: "Energier og bånd", term: "Krystallmomentum", formula: krystallmomentum }
   - { tex: "\\psi", meaning: "Bølgefunksjonen til elektronet", section: "Energier og bånd", term: "Bloch-funksjon", formula: bloch-funksjon }
   - { tex: "m^*", meaning: "Effektiv masse, fra krumningen til $E(k)$", unit: "kg", section: "Energier og bånd", term: "Effektiv masse", formula: effektiv-masse, note: "Oppgis som brøkdel av $m_0$: $m_n^*$ for elektroner, $m_p^*$ for hull." }
@@ -613,6 +766,16 @@ symbols:
   - { tex: "n", meaning: "Idealitetsfaktoren i diodeligningen", section: "pn-overgangen", term: "Idealitetsfaktor", formula: idealitetsfaktor, note: "Ikke elektronkonsentrasjonen $n$. Mellom 1 og 2." }
   - { tex: "V_a", meaning: "Spenningen over hele komponenten", unit: "V", section: "pn-overgangen", formula: seriemotstand, note: "$V$ er den delen som ligger over overgangen." }
   - { tex: "R_p,\\ R_n", meaning: "Motstanden i det nøytrale p- og n-området", unit: "Ω", section: "pn-overgangen", formula: seriemotstand }
+  - { tex: "k", meaning: "Gradienten i nettodopingen i en lineært gradvis overgang, $N_d - N_a = kx$", unit: "cm⁻⁴", section: "pn-overgangen", term: "Gradvis overgang", formula: gradvis-overgang, id: k-dopinggradient, note: "Ikke bølgevektoren $k$ eller Boltzmanns konstant $k_B$." }
+  # ── Kontakter og heterooverganger ──
+  - { tex: "\\Phi_m,\\ \\Phi_s", meaning: "Arbeidsfunksjonen til metallet og halvlederen, som potensial", unit: "V", section: "Kontakter og heterooverganger", term: "Arbeidsfunksjon", formula: schottky-barriere, id: phi-m, note: "$q\\Phi$ er energien i eV. Ikke partikkelfluksen $\\phi$." }
+  - { tex: "\\chi", meaning: "Elektronaffiniteten, som potensial", unit: "V", section: "Kontakter og heterooverganger", term: "Elektronaffinitet", formula: arbeidsfunksjon-halvleder, note: "$q\\chi = 4{,}05$ eV for Si." }
+  - { tex: "\\Phi_B", meaning: "Barrierehøyden for elektroner fra metallet inn i halvlederen", unit: "V", section: "Kontakter og heterooverganger", term: "Barrierehøyde", formula: schottky-barriere, id: phi-b }
+  - { tex: "E_\\text{vac}", meaning: "Vakuumnivået", unit: "eV", section: "Kontakter og heterooverganger", term: "Vakuumnivå" }
+  - { tex: "E_{Fm},\\ E_{Fs}", meaning: "Fermi-nivået i metallet og i halvlederen", unit: "eV", section: "Kontakter og heterooverganger", note: "Like i likevekt; med spenningen $V$ ligger de $qV$ fra hverandre." }
+  - { tex: "B", meaning: "Konstanten i strømmen over en Schottky-barriere, en effektiv Richardson-konstant", unit: "A/cm²·K²", section: "Kontakter og heterooverganger", formula: schottky-termionisk, note: "Ikke den magnetiske flukstettheten $\\mathcal{B}$." }
+  - { tex: "\\Delta E_c,\\ \\Delta E_v", meaning: "Spranget i ledningsbåndet og valensbåndet ved en heteroovergang", unit: "eV", section: "Kontakter og heterooverganger", term: "Heteroovergang", formula: heteroovergang-sprang, note: "Til sammen $\\Delta E_g = E_{g1} - E_{g2}$." }
+  - { tex: "V_{01},\\ V_{02}", meaning: "Delen av kontaktpotensialet som ligger på side 1 og side 2 av en heteroovergang", unit: "V", section: "Kontakter og heterooverganger", formula: hetero-spenningsdeling }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }

@@ -1,0 +1,425 @@
+---
+order: 8
+title: "Metall–halvleder-overganger og heterooverganger"
+summary: "Når et metall på en halvleder gir en likerettende Schottky-kontakt og når det gir en ohmsk kontakt, hvorfor Schottky-dioden slår raskt om, og hvordan båndene ser ut der to halvledere med ulikt båndgap møtes."
+importance: core
+tag: "Uke 40 · Streetman §5.7–5.8"
+part: "Del 3: Metall–halvleder-overganger"
+updated: 2026-10-04
+---
+
+<LearningGoals>
+
+- Avgjøre fra arbeidsfunksjonene og dopingen om en metall–halvleder-overgang blir en <Term name="Schottky-kontakt">Schottky-kontakt</Term> eller en <Term name="Ohmsk kontakt">ohmsk kontakt</Term>, og tegne båndskjemaet.
+- Regne ut kontaktpotensialet $V_0$, <Term name="Barrierehøyde">barrierehøyden</Term> $\Phi_B$ og sonebredden i en Schottky-kontakt.
+- Forklare hvorfor Schottky-kontakten likeretter, og hvorfor den slår raskere om enn en pn-diode.
+- Skissere båndskjemaet for en <Term name="Heteroovergang">heteroovergang</Term> fra sprangene $\Delta E_c$ og $\Delta E_v$, og forklare hvordan elektronene samles i en brønn ved grenseflaten.
+
+</LearningGoals>
+
+## Arbeidsfunksjon og elektronaffinitet
+
+<Term name="Arbeidsfunksjon">Arbeidsfunksjonen</Term> $q\Phi_m$ til et metall
+er energien som skal til for å flytte et elektron fra Fermi-nivået og ut i
+vakuum like utenfor overflaten. For rene overflater er $\Phi_m$ omtrent 4,3 V
+for Al og 4,8 V for Au. En halvleder har også en arbeidsfunksjon $q\Phi_s$,
+men den avhenger av dopingen, fordi Fermi-nivået flytter seg i gapet. Det som
+ligger fast for materialet, er
+<Term name="Elektronaffinitet">elektronaffiniteten</Term> $q\chi$, avstanden
+fra ledningsbåndkanten opp til <Term name="Vakuumnivå">vakuumnivået</Term>:
+
+$$
+q\Phi_s = q\chi + (E_c - E_F)
+$$
+
+For Si er $q\chi = 4{,}05$ eV.
+
+Når metallet og halvlederen kommer i kontakt, går det elektroner fra
+materialet med høyest Fermi-nivå, altså minst arbeidsfunksjon, over i det
+andre, til Fermi-nivåene ligger likt. Metallet har så mange frie elektroner at
+ladningen der ligger i et tynt lag på overflaten, mens ladningen i halvlederen
+bøyer båndene over en avstand. Tømmes halvlederen for majoritetsbærere nær
+grenseflaten, likeretter kontakten. Samles majoritetsbærerne der, er kontakten
+ohmsk.
+
+## Schottky-kontakten
+
+Legg et metall med $\Phi_m > \Phi_s$ på n-type halvleder. Før kontakt ligger
+Fermi-nivået høyest i halvlederen, så elektroner går over i metallet. Nær
+grenseflaten blir det igjen donorioner uten elektroner, og de danner en
+romladningssone med bredden $W$ og positiv ladning, som balanserer den
+negative ladningen på metalloverflaten. Sonen ligger bare i halvlederen, som
+på n-siden av en p⁺n-overgang, så i
+<FormulaRef id="sonebredde">sonebredden</FormulaRef> står bare $N_d$ igjen:
+
+$$
+W = \left[\frac{2\varepsilon(V_0 - V)}{qN_d}\right]^{1/2}
+$$
+
+Kapasitansen er $C_j = \varepsilon A/W$, som i p⁺n-overgangen.
+
+Kontaktpotensialet $V_0$ er forskjellen i arbeidsfunksjon, og det holder
+elektronene i halvlederen tilbake. Elektronene i metallet har en annen
+barriere, fra Fermi-nivået i metallet opp til ledningsbåndkanten ved
+grenseflaten. Vakuumnivået er kontinuerlig over grenseflaten.
+Ledningsbåndkanten ligger $q\chi$ under det og Fermi-nivået i metallet
+$q\Phi_m$ under det, så barrierehøyden er forskjellen:
+
+$$
+\begin{aligned}
+V_0 &= \Phi_m - \Phi_s \\
+\Phi_B &= \Phi_m - \chi
+\end{aligned}
+$$
+
+På p-type er det motsatt. Der kreves $\Phi_m < \Phi_s$. Elektroner går fra
+metallet inn i halvlederen og fyller akseptorer nær grenseflaten, og sonen blir
+negativt ladet. Barrieren $V_0 = \Phi_s - \Phi_m$ holder hullene i
+valensbåndet tilbake. Båndene bøyer seg ned mot metallet, og det er en barriere
+for hullene, fordi hullenes energi øker nedover i båndskjemaet.
+
+Navnet kommer fra Schottky-effekten, der bildeladningen et elektron lager i
+metallet, senker arbeidsfunksjonen litt når det står et felt på overflaten.
+
+<Example title="gull på n-type Si">
+
+Au med $\Phi_m = 4{,}8$ V legges på n-type Si med $N_d = 10^{16}$ cm⁻³ ved
+300 K. Finn kontaktpotensialet, barrierehøyden og bredden av romladningssonen i
+likevekt, og de to barrierene når kontakten har 0,3 V i lederetningen.
+
+<Solution>
+
+- Fermi-nivået i halvlederen, med $N_c = 2{,}9 \times 10^{19}$ cm⁻³:
+
+$$
+E_c - E_F = k_BT\ln\frac{N_c}{N_d} \allowbreak = 0{,}0259\ \text{eV} \cdot \ln 2900 \allowbreak = 0{,}21\ \text{eV}
+$$
+
+- Arbeidsfunksjonen til halvlederen, kontaktpotensialet og barrierehøyden:
+
+$$
+\begin{aligned}
+q\Phi_s &= 4{,}05 + 0{,}21 = 4{,}26\ \text{eV} \\
+V_0 &= 4{,}8 - 4{,}26 = 0{,}54\ \text{V} \\
+\Phi_B &= 4{,}8 - 4{,}05 = 0{,}75\ \text{V}
+\end{aligned}
+$$
+
+- Sonebredden, med $\varepsilon = 1{,}044 \times 10^{-12}$ F/cm:
+
+$$
+W^2 = \frac{2\varepsilon V_0}{qN_d} \allowbreak = \frac{2{,}088 \times 10^{-12} \cdot 0{,}54}{1{,}6 \times 10^{-19} \cdot 10^{16}} \allowbreak = 7{,}05 \times 10^{-10}\ \text{cm}^2
+$$
+
+så $W = 2{,}7 \times 10^{-5}$ cm, altså 0,27 µm.
+
+- Med $V = 0{,}3$ V er barrieren fra halvledersiden $q(V_0 - V) = 0{,}24$ eV.
+  Barrieren fra metallet er fortsatt $q\Phi_B$.
+
+<Answer>
+
+$V_0 = 0{,}54$ V, $\Phi_B = 0{,}75$ V og $W = 0{,}27$ µm. Med 0,3 V i
+lederetningen må elektronene i halvlederen over 0,24 eV, mens elektronene i
+metallet fortsatt må over 0,75 eV.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+### Strømmen over barrieren
+
+I lederetningen er metallet positivt mot n-type halvleder. Spenningen $V$ senker
+barrieren fra halvledersiden til $q(V_0 - V)$, elektronene i ledningsbåndet
+diffunderer over sonen og inn i metallet, og det går en strøm fra metallet til
+halvlederen. I sperreretningen øker barrieren til $q(V_0 + V_r)$, og nesten
+ingen elektroner kommer over fra halvlederen.
+
+Barrieren $q\Phi_B$ for elektronene i metallet er satt av $\Phi_m$ og $\chi$ og
+endres ikke med spenningen. Strømmen av elektroner fra metallet er derfor den
+samme uansett $V$. I likevekt er den like stor som strømmen fra halvledersiden,
+og i sperreretningen er den alt som er igjen. Diodeligningen får samme form som
+for pn-overgangen,
+
+$$
+\begin{aligned}
+I &= I_0\left(e^{qV/k_BT} - 1\right) \\
+I_0 &\propto e^{-q\Phi_B/k_BT}
+\end{aligned}
+$$
+
+men $I_0$ kan ikke utledes like enkelt. Andelen av elektronene i metallet som
+har energi nok til å komme over $\Phi_B$, er en Boltzmann-faktor, og den setter
+$I_0$. En full behandling gir samme regning som for termionisk emisjon av
+elektroner fra en varm metalloverflate:
+
+$$
+I = ABT^2\,e^{-q\Phi_B/k_BT}\,e^{qV/nk_BT}
+$$
+
+der $B$ er en konstant for overgangen, en effektiv Richardson-konstant, og
+<Term name="Idealitetsfaktor">idealitetsfaktoren</Term> $n$ ligger mellom 1 og
+2, av andre grunner enn i pn-overgangen.
+
+Likheten med p⁺n-overgangen gjelder sonen, ikke strømmen. I en p⁺n-overgang
+er strømmen i lederetningen hull som injiseres i n-siden og lagres der. I
+Schottky-kontakten er det elektronene fra halvlederen som går over i metallet,
+altså majoritetsbærere. Det injiseres ingen minoritetsbærere, så det lagres
+ingen ladning, og det er ingen <Term name="Lagringstid">lagringstid</Term>.
+Ved store strømmer injiseres det noen hull, men i hovedsak er det
+majoritetsbærerne som fører strømmen. En Schottky-diode slår derfor raskere om
+og virker ved høyere frekvenser enn en vanlig pn-diode. Kontakten lages ved å
+legge en metallfilm på en ren halvlederoverflate og mønstre den med
+fotolitografi, og det krever færre maskesteg enn en pn-overgang. Det gjør
+Schottky-dioder nyttige i tette integrerte kretser.
+
+<Simulation
+  src={"/sims/schottky.js"}
+  host={"dom"}
+  title={"Schottky-kontakt eller ohmsk kontakt"}
+  caption={"Metall til venstre og n-type Si til høyre, med ladningen øverst, båndskjemaet i midten og strømmen nederst. Vakuumnivået ligger egentlig mye høyere enn tegnet. Spenningen hever eller senker barrieren $q(V_0 - V)$ fra halvledersiden, mens $q\\Phi_B$ fra metallet ligger fast. I lederetningen går elektronene fra halvlederen over toppen og inn i metallet, og i sperreretningen går bare den lille strømmen fra metallet. Med $\\Phi_m < \\Phi_s$ bøyer båndene seg ned, elektronene samles ved grenseflaten, og strømmen følger spenningen begge veier. Ved store strømmer faller en del av spenningen over halvlederen, og båndene heller der. Den termiske spenningen er gjort større i tegningen, så kneet synes."}
+  height={400}
+/>
+
+## Ohmske kontakter
+
+En komponent trenger også kontakter som ikke likeretter. En ohmsk kontakt har
+en lineær strøm–spenning-karakteristikk i begge retninger og liten motstand.
+Overflaten på en integrert krets har mange p- og n-områder som skal kobles
+sammen, og alle de kontaktene må være ohmske.
+
+En ideell metall–halvleder-overgang er ohmsk når ladningen som gjør
+Fermi-nivåene like, er majoritetsbærere. Med $\Phi_m < \Phi_s$ på n-type går
+elektroner fra metallet inn i halvlederen. Båndene bøyer seg ned mot
+grenseflaten, elektronene samles der, og det blir ingen romladningssone.
+Barrieren mellom metallet og halvlederen er liten, og en liten spenning får
+elektronene over i begge retninger. På p-type gjelder det samme med
+$\Phi_m > \Phi_s$, og da er det hullene som samles.
+
+<Table
+  columns={["", "n-type", "p-type"]}
+  rows={[
+    ["Schottky", "$\\Phi_m > \\Phi_s$", "$\\Phi_m < \\Phi_s$"],
+    ["Ohmsk", "$\\Phi_m < \\Phi_s$", "$\\Phi_m > \\Phi_s$"]
+  ]}
+  caption={"Når en ideell metall–halvleder-overgang likeretter og når den er ohmsk. Den likeretter når halvlederen tømmes for majoritetsbærere nær grenseflaten."}
+/>
+
+I praksis lages ohmske kontakter ved å dope halvlederen sterkt under metallet.
+Er det en barriere ved grenseflaten, blir sonen så tynn at bærerne tunnelerer
+gjennom den. Au med litt Sb kan legeres inn i n-type Si og gir et n⁺-lag i
+overflaten og en god ohmsk kontakt. På p-type trengs et p⁺-lag. For Al på
+p-type Si er metallet selv akseptoren, så laget dannes under en kort
+varmebehandling etter at Al er lagt på.
+
+## Virkelige Schottky-barrierer
+
+En pn-overgang ligger inne i én krystall, men i en Schottky-kontakt slutter
+krystallen. Overflaten har tilstander fra ufullstendige bindinger som kan holde
+ladning, og overgangen mellom halvleder og metall er sjelden skarp. Si har et
+oksidlag på 10–20 Å selv rett etter etsing, så metallet legges på et tynt
+glassaktig mellomlag. Elektronene tunnelerer gjennom laget, men det endrer
+barrieren. Barrierehøydene blir derfor sjelden de ideelle verdiene fra
+arbeidsfunksjonene, og komponenter bygges på målte verdier.
+
+I sammensatte halvledere gir
+<Term name="Grenseflatetilstander">grenseflatetilstander</Term> så mange nivåer
+i gapet at de låser Fermi-nivået ved grenseflaten på et fast sted, uansett
+hvilket metall som brukes. På n-type GaAs ligger nivåene 0,7–0,9 eV under
+$E_c$, så barrieren blir omtrent 0,8 eV nesten uansett metall. På n-type InAs
+er Fermi-nivået låst over $E_c$, og nesten et hvilket som helst metall gir en
+ohmsk kontakt. På Si gir Au og Pt gode Schottky-barrierer. Pt som
+varmebehandles, danner et lag av platinasilisid med en pålitelig barriere,
+$\Phi_B \approx 0{,}85$ V på n-type Si.
+
+## Heterooverganger
+
+En pn-overgang i én halvleder er en homoovergang. En
+<Term name="Heteroovergang">heteroovergang</Term> er en overgang mellom to
+halvledere med ulikt båndgap og samme gitterkonstant. Når gitrene passer
+sammen, kan grenseflaten bli nesten fri for defekter, og en krystall kan vokses
+med mange slike overganger etter hverandre. Slike lag vokses mest i sammensatte
+halvledere, som GaAs og AlGaAs.
+
+Når to halvledere med ulikt båndgap, arbeidsfunksjon og elektronaffinitet
+møtes, gjør båndkantene et sprang ved grenseflaten. Spranget $\Delta E_c$ i
+ledningsbåndet og spranget $\Delta E_v$ i valensbåndet deler forskjellen i
+båndgap mellom seg. Med 1 for materialet med størst gap er
+
+$$
+\begin{aligned}
+\Delta E_g &= E_{g1} - E_{g2} = \Delta E_c + \Delta E_v \\
+\Delta E_c &= q(\chi_2 - \chi_1)
+\end{aligned}
+$$
+
+Den andre linjen er
+<Term name="Andersons affinitetsregel">Andersons affinitetsregel</Term>, som
+gjelder når vakuumnivået er kontinuerlig over grenseflaten. I praksis måles
+sprangene for hvert par av materialer. For GaAs og AlGaAs havner omtrent to
+tredjedeler av forskjellen i det direkte båndgapet i ledningsbåndet og en
+tredjedel i valensbåndet.
+
+Kontaktpotensialet $V_0$ deles mellom de to sidene slik at Fermi-nivåene blir
+like. Delene finnes fra Poissons ligning med to permittiviteter, der den
+elektriske flukstettheten er kontinuerlig ved grenseflaten,
+$\varepsilon_1\mathcal{E}_1 = \varepsilon_2\mathcal{E}_2$. Med p-type på side 1
+og n-type på side 2 gir det
+
+$$
+\frac{V_{01}}{V_{02}} = \frac{\varepsilon_2N_{d2}}{\varepsilon_1N_{a1}}
+$$
+
+så den lettest dopede siden tar mest av spenningen, som i en homoovergang.
+Sprangene gjør at barrieren for elektroner fra n-siden ikke lenger er den samme
+som barrieren for hull fra p-siden. Forskjellen kan brukes til å styre
+forholdet mellom elektroner og hull som injiseres.
+
+Vakuumnivået i et båndskjema er det lokale vakuumnivået, energien et elektron
+har like utenfor halvlederen på det stedet. Det følger ledningsbåndkanten,
+slik at elektronaffiniteten er den samme overalt i materialet selv om båndene
+bøyer seg. Over overgangen endrer det seg med $qV_0$, mens det globale
+vakuumnivået langt unna er konstant.
+
+### Skisse av båndskjemaet
+
+Den nøyaktige båndbøyningen krever Poissons ligning, men med kjente sprang kan
+du skissere båndskjemaet:
+
+<Steps>
+<Step title="Fermi-nivået og båndene langt unna">
+
+Tegn et flatt Fermi-nivå. Legg båndene i hvert materiale langt fra overgangen
+der dopingen setter dem, og la det være plass til sonen i midten.
+
+</Step>
+<Step title="Sprangene ved $x = 0$">
+
+Legg skillet $x = 0$ nær den sterkest dopede siden, og sett av $\Delta E_c$ og
+$\Delta E_v$ der, med riktig båndgap på hver side.
+
+</Step>
+<Step title="Bind båndene sammen">
+
+Trekk ledningsbåndet og valensbåndet fra sprangene ut til de flate delene, med
+samme båndgap hele veien i hvert materiale.
+
+</Step>
+</Steps>
+
+<Example title="AlGaAs mot GaAs">
+
+$\text{Al}_{0{,}3}\text{Ga}_{0{,}7}\text{As}$ har et direkte båndgap på
+1,85 eV, og GaAs har 1,43 eV. Finn sprangene med fordelingen over, og
+skisser båndskjemaet for
+N⁺-AlGaAs mot n-type GaAs og for N⁺-AlGaAs mot p⁺-GaAs. Stor N eller P står
+for materialet med størst båndgap.
+
+<Solution>
+
+- Forskjellen i båndgap er $\Delta E_g = 1{,}85 - 1{,}43 = 0{,}42$ eV, og den
+  deles med to tredjedeler i ledningsbåndet og en tredjedel i valensbåndet:
+
+$$
+\begin{aligned}
+\Delta E_c &= \tfrac{2}{3} \cdot 0{,}42 = 0{,}28\ \text{eV} \\
+\Delta E_v &= \tfrac{1}{3} \cdot 0{,}42 = 0{,}14\ \text{eV}
+\end{aligned}
+$$
+
+- N⁺-AlGaAs mot n-GaAs: Fermi-nivået ligger høyest i AlGaAs, så elektroner
+  går over i GaAs. AlGaAs tømmes nær $x = 0$, og båndene der bøyer seg opp mot
+  grenseflaten. I GaAs samles elektronene, og båndene bøyer seg ned. Ved
+  $x = 0$ faller $E_c$ med 0,28 eV, så ledningsbåndet får en spiss på
+  AlGaAs-siden og en brønn rett ved siden av på GaAs-siden. $E_v$ stiger
+  0,14 eV ved $x = 0$.
+
+- N⁺-AlGaAs mot p⁺-GaAs: Dette er en pn-overgang med sterk doping på begge
+  sider, så sonen ligger omtrent like mye på hver side. Båndene stiger fra
+  AlGaAs til GaAs, og ved $x = 0$ faller $E_c$ med 0,28 eV og $E_v$ stiger med
+  0,14 eV.
+
+<Answer>
+
+$\Delta E_c = 0{,}28$ eV og $\Delta E_v = 0{,}14$ eV. Simuleringen under
+tegner begge båndskjemaene.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+<Simulation
+  src={"/sims/heteroovergang.js"}
+  host={"dom"}
+  title={"Båndene i en heteroovergang"}
+  caption={"N⁺-AlGaAs til venstre og GaAs til høyre, først hver for seg med vakuumnivåene like og så i kontakt. Elektroner går fra materialet med høyest Fermi-nivå til det andre til Fermi-nivåene er like, og båndene bøyer seg. Sprangene $\\Delta E_c$ og $\\Delta E_v$ ved grenseflaten er de samme hele tiden. Mot lett dopet GaAs havner elektronene i en smal brønn i ledningsbåndet. Vakuumnivået ligger egentlig mye høyere enn tegnet."}
+  height={400}
+/>
+
+### Elektroner i brønnen ved grenseflaten
+
+Legg sterkt dopet N⁺-AlGaAs på lett dopet GaAs. Spranget i ledningsbåndet lar
+elektroner fra AlGaAs gå over i GaAs, og der blir de fanget i brønnen ved
+grenseflaten. De samles på GaAs-siden og løfter Fermi-nivået over
+ledningsbåndkanten nær grenseflaten. Brønnen er smal, og elektronene beveger
+seg fritt bare langs grenseflaten, så de danner en
+<Term name="Todimensjonal elektrongass">todimensjonal elektrongass</Term>. Er
+brønnen smal nok, får bevegelsen på tvers diskrete nivåer $E_1, E_2, \dots$,
+som i en kvantebrønn.
+
+Elektronene i brønnen kommer fra donorene i AlGaAs, mens GaAs-laget er lett
+dopet. Det er derfor nesten ingen ioniserte urenheter å spre mot i brønnen, og
+mobiliteten er satt av gitterspredning. Ved lave temperaturer er
+gitterspredningen liten, og mobiliteten kan bli svært høy. Det utnyttes i
+transistorer der strømmen går langs grenseflaten.
+
+## Sjekk deg selv
+
+<Quiz
+  question={"Et metall med $q\\Phi_m = 4{,}3\\ \\text{eV}$ legges på p-type Si med $q\\chi = 4{,}05\\ \\text{eV}$ og $E_g = 1{,}11\\ \\text{eV}$. Dopingen gir $E_F - E_v = 0{,}12\\ \\text{eV}$. Hva slags kontakt blir det?"}
+  options={[
+    "Schottky-kontakt med $qV_0 \\approx 0{,}7$ eV",
+    "Ohmsk kontakt, fordi $\\Phi_m > \\chi$",
+    "Schottky-kontakt med $qV_0 \\approx 0{,}3$ eV",
+    "Ohmsk kontakt, fordi $\\Phi_m < \\Phi_s$"
+  ]}
+  answer={0}
+  explanation={"$q\\Phi_s = q\\chi + E_g - (E_F - E_v) = 4{,}05 + 1{,}11 - 0{,}12 = 5{,}04$ eV. På p-type gir $\\Phi_m < \\Phi_s$ en Schottky-kontakt. Elektroner går fra metallet inn i halvlederen og fyller akseptorer nær grenseflaten, og $qV_0 = 5{,}04 - 4{,}3 = 0{,}74$ eV."}
+/>
+
+<Quiz
+  question={"Hvorfor slår en Schottky-diode raskere om enn en pn-diode?"}
+  options={[
+    "Strømmen er majoritetsbærere, så det lagres ingen minoritetsladning som må hentes ut",
+    "Barrieren $\\Phi_B$ er lavere enn $V_0$ i en pn-overgang",
+    "Romladningssonen er bredere, så kapasitansen er mindre",
+    "Elektronene har kortere levetid i metallet"
+  ]}
+  answer={0}
+  explanation={"I lederetningen går elektroner fra halvlederen over i metallet, der de er en del av elektronene som allerede er der. Det injiseres ingen minoritetsbærere i halvlederen, så det er ingen lagret ladning å hente ut og ingen lagringstid når dioden slås om."}
+/>
+
+<Quiz
+  question={"Hvorfor har elektronene i brønnen ved en N⁺-AlGaAs/GaAs-overgang høy mobilitet?"}
+  options={[
+    "De har mindre effektiv masse enn andre elektroner i GaAs",
+    "Donorene de kom fra, ligger i AlGaAs, så det er lite urenhetsspredning i brønnen",
+    "Feltet ved grenseflaten akselererer dem",
+    "Spranget i ledningsbåndet hindrer gitterspredning"
+  ]}
+  answer={1}
+  explanation={"Elektronene kommer fra donorene i AlGaAs, og GaAs-laget er lett dopet. Det er få ioniserte urenheter å spre mot i brønnen, så mobiliteten er satt av gitterspredning, som blir liten ved lave temperaturer."}
+/>
+
+<KeyTakeaways>
+
+- Ved kontakt flyttes elektroner til Fermi-nivåene er like. På n-type gir $\Phi_m > \Phi_s$ en romladningssone og en Schottky-kontakt med $V_0 = \Phi_m - \Phi_s$ og $\Phi_B = \Phi_m - \chi$. På p-type kreves $\Phi_m < \Phi_s$.
+- Spenningen endrer barrieren $q(V_0 - V)$ fra halvledersiden, men ikke $q\Phi_B$ fra metallet. Derfor er $I = I_0(e^{qV/k_BT} - 1)$ med $I_0 \propto e^{-q\Phi_B/k_BT}$.
+- Strømmen i en Schottky-diode er majoritetsbærere. Det lagres ingen minoritetsladning, og dioden slår raskere om enn en pn-diode.
+- En kontakt er ohmsk når majoritetsbærerne samles ved grenseflaten. I praksis lages den med et sterkt dopet lag som bærerne tunnelerer gjennom. Grenseflatetilstander låser ofte Fermi-nivået, så barrierehøyder måles.
+- I en heteroovergang gjør båndkantene sprangene $\Delta E_c$ og $\Delta E_v$, som til sammen er $\Delta E_g$, og de ligger fast ved $x = 0$ mens båndene bøyer seg. Elektroner som går over i en brønn i GaAs ved N⁺-AlGaAs, danner en todimensjonal elektrongass med høy mobilitet.
+
+</KeyTakeaways>

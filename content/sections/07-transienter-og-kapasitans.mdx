@@ -421,13 +421,70 @@ Med strømmen på logaritmisk akse får lederetningen fire områder:
 />
 
 En overgang lagd ved diffusjon eller implantasjon er ofte gradvis. Kan
-nettodopingen regnes som lineær i $x$ gjennom sonen, vokser romladningen
-lineært, feltet blir en parabel i stedet for en trekant, og uttrykkene for
-$V_0$ og $C_j$ endres, som i $C_j \propto V_r^{-1/3}$ over.
-<Term name="Utarmingstilnærmingen">Utarmingstilnærmingen</Term> er også
-mindre nøyaktig, fordi kantene av sonen ikke er skarpe når dopingen endrer
-seg sakte. Konklusjonene om injeksjon, rekombinasjon og generasjon holder
-likevel kvalitativt.
+nettodopingen regnes som lineær gjennom sonen, $N_d - N_a = kx$ med $x$ målt
+fra skillet, vokser romladningen lineært, og feltet blir en parabel i stedet
+for en trekant. Sonebredden går da som tredjeroten av spenningen:
+
+$$
+W = \left[\frac{12\varepsilon(V_0 - V)}{qk}\right]^{1/3}
+$$
+
+Kapasitansen er fortsatt $C_j = \varepsilon A/W$ og avtar derfor som
+$(V_0 - V)^{-1/3}$ når sperrespenningen øker, som for varaktoren over.
+
+<Derivation title="Den lineært gradvise overgangen">
+
+Med utarmingstilnærmingen er romladningen $\rho(x) = qkx$ i sonen. Ladningen
+på hver side av skillet må være like stor, så sonen ligger symmetrisk fra
+$-W/2$ til $W/2$. <FormulaRef id="poisson">Poissons ligning</FormulaRef> gir
+
+$$
+\frac{d\mathcal{E}}{dx} = \frac{qk}{\varepsilon}\,x
+$$
+
+Feltet er null ved begge sonekantene, så
+
+$$
+\mathcal{E}(x) = \frac{qk}{2\varepsilon}\left(x^2 - \frac{W^2}{4}\right)
+$$
+
+Det største feltet er ved skillet, $\mathcal{E}_0 = -qkW^2/8\varepsilon$.
+
+Båndkanten følger feltet på samme måte som $E_i$, $dE_c/dx = q\mathcal{E}$.
+Integrert fra $-W/2$ gir det en tredjegradskurve:
+
+$$
+E_c(x) = E_c(-W/2) \allowbreak + \frac{q^2k}{2\varepsilon}\left(\frac{x^3}{3} - \frac{W^2x}{4} - \frac{W^3}{12}\right)
+$$
+
+Over hele sonen faller $E_c$ med $q(V_0 - V)$. Sett inn $x = W/2$:
+
+$$
+E_c(W/2) - E_c(-W/2) \allowbreak = -\frac{q^2kW^3}{12\varepsilon} \allowbreak = -q(V_0 - V)
+$$
+
+og løst for $W$ er det formelen over. Ladningen på n-siden er
+
+$$
+Q = qA\int_0^{W/2} kx\,dx = \frac{qAkW^2}{8}
+$$
+
+Med $dW/d(V_0 - V) = W/3(V_0 - V)$ blir
+
+$$
+C_j = \frac{dQ}{d(V_0 - V)} \allowbreak = \frac{qAkW^2}{12(V_0 - V)} \allowbreak = \frac{\varepsilon A}{W}
+$$
+
+der det siste steget bruker $V_0 - V = qkW^3/12\varepsilon$. Måles $x$ fra et
+annet punkt, som i $N_d - N_a = k(x - x_0)$, bytter du $x$ med $x - x_0$
+overalt.
+
+</Derivation>
+
+<Term name="Utarmingstilnærmingen">Utarmingstilnærmingen</Term> er mindre
+nøyaktig her, fordi kantene av sonen ikke er skarpe når dopingen endrer seg
+sakte. Konklusjonene om injeksjon, rekombinasjon og generasjon holder likevel
+kvalitativt.
 
 ## Sjekk deg selv
 
