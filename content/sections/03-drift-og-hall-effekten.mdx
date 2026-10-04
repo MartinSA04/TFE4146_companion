@@ -30,32 +30,32 @@ balanserer de to.
 
 <Derivation title="Fra kollisjoner til mobilitet">
 
-La $\tau$ være <Term name="Midlere kollisjonstid">midlere tid mellom
+La $\bar{t}$ være <Term name="Midlere kollisjonstid">midlere tid mellom
 kollisjoner</Term>. Sannsynligheten for at et gitt elektron kolliderer i
-løpet av $dt$ er $dt/\tau$, og en kollisjon nullstiller i gjennomsnitt den
+løpet av $dt$ er $dt/\bar{t}$, og en kollisjon nullstiller i gjennomsnitt den
 bevegelsesmengden elektronet hadde fått av feltet. For $n$ elektroner per
-volum med samlet bevegelsesmengde $p_x$ er tapet derfor $p_x/\tau$ per tid,
+volum med samlet bevegelsesmengde $p_x$ er tapet derfor $p_x/\bar{t}$ per tid,
 mens feltet tilfører $-nq\mathcal{E}_x$:
 
 $$
--\frac{p_x}{\tau} - nq\,\mathcal{E}_x = 0
+-\frac{p_x}{\bar{t}} - nq\,\mathcal{E}_x = 0
 $$
 
 Del på $n$ for å få bevegelsesmengden per elektron, og på $m_n^*$ for å få
 hastigheten:
 
 $$
-\langle v_x\rangle = -\frac{q\tau}{m_n^*}\,\mathcal{E}_x
+\langle v_x\rangle = -\frac{q\bar{t}}{m_n^*}\,\mathcal{E}_x
 $$
 
-Faktoren foran feltet er <FormulaRef id="drifthastighet">mobiliteten</FormulaRef>,
-$\mu_n = q\tau/m_n^*$.
+Faktoren foran feltet er <FormulaRef id="mobilitet">mobiliteten</FormulaRef>,
+$\mu_n = q\bar{t}/m_n^*$.
 
 </Derivation>
 
 <Statement kind="definition" name="Mobilitet">
 
-Drifthastigheten per felt, $\mu_n = q\tau/m_n^*$, med enhet cm²/V·s.
+Drifthastigheten per felt, $\mu_n = q\bar{t}/m_n^*$, med enhet cm²/V·s.
 Elektroner driver mot feltet og hull med feltet, og begge mobilitetene
 defineres positive.
 
@@ -72,14 +72,14 @@ Det er Ohms lov med ledningsevnen $\sigma$ skrevet ut, og resistiviteten er
 $\rho = 1/\sigma$. Begge bærertypene gir strøm langs feltet: hullene beveger
 seg med feltet, elektronene mot, og fortegnet på ladningen snur bidraget. En
 stav med lengde $L$ og tverrsnitt $wt$ får resistansen $R = \rho L/wt$, som
-står i <FormulaRef id="ledningsevne">Formelsamlingen</FormulaRef>. Siden
+står i <FormulaRef id="resistans">Formelsamlingen</FormulaRef>. Siden
 $p_0 = n_i^2/n_0$, har $\sigma$ som funksjon av dopingen et minimum, og det
 ligger litt på p-siden av intrinsisk, fordi hullene har den laveste
 mobiliteten.
 
 For Si er $\mu_n = 1350$ og $\mu_p = 480$ cm²/V·s ved 300 K i rent
 materiale. Ved 100 V/cm driver elektronene med $1{,}35 \times 10^5$ cm/s,
-omtrent én prosent av den termiske farten, og $\tau = \mu_n m_n^*/q$ er rundt
+omtrent én prosent av den termiske farten, og $\bar{t} = \mu_n m_n^*/q$ er rundt
 $0{,}2$ ps.
 
 Massen i $\mu_n$ er ikke tellemassen fra $N_c$. Til transport teller det hvor
@@ -266,7 +266,7 @@ krystall like mye som en metallkontakt på en halvleder.
 
 <KeyTakeaways>
 
-- Kollisjoner hver $\tau$ balanserer feltet: $\mu = q\tau/m^*$ og $J = q(n\mu_n + p\mu_p)\mathcal{E} = \sigma\mathcal{E}$, med det harmoniske middelet $0{,}26\,m_0$ som masse i Si.
+- Kollisjoner hver $\bar{t}$ balanserer feltet: $\mu = q\bar{t}/m^*$ og $J = q(n\mu_n + p\mu_p)\mathcal{E} = \sigma\mathcal{E}$, med det harmoniske middelet $0{,}26\,m_0$ som masse i Si.
 - Gitterspredning gir $\mu \sim T^{-3/2}$, urenhetsspredning $\mu \sim T^{3/2}$, og den minste mobiliteten dominerer. $10^{17}$ donorer per cm³ halverer $\mu_n$ i Si. Over $10^3$ V/cm bøyer $v_d$ av, og den flater ut ved $10^7$ cm/s.
 - Hall-spenningen gir $R_H = 1/qp_0$ med fortegn etter bærertypen, og $\mu = R_H/\rho$.
 - $E_F$ er flat gjennom alt som er i likevekt med hverandre.
