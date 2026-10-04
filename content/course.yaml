@@ -1,7 +1,7 @@
 # TFE4146 Halvlederkomponenter, interaktiv pensumguide.
 # Innholdet er under arbeid; metadataene under er hentet fra NTNUs emneside.
 
-schemaVersion: 4
+schemaVersion: 5
 
 code: TFE4146
 # Soft hyphen (U+00AD): wraps as "Halvleder-" / "komponenter" when the title has
@@ -36,9 +36,8 @@ exam:
 # Formelsamlingen. `onSheet` følger det offisielle formelarket til eksamen
 # («Formula sheet for the exam» i Blackboard-rommet, «Formulas TFE-4146», 4 sider,
 # vendret som public/formelark.pdf): true bare når formelen står på arket.
-# `memorize: true` er formler som ikke står på arket, men som trengs til regning
-# på eksamen. Resten (onSheet: false uten memorize) er utledninger og forklaringer
-# som følger av formler på arket. Sjekk flaggene igjen hvis arket endres.
+# Formler med `onSheet: false` får merket «Ikke på formelarket». Sjekk flaggene
+# igjen hvis arket endres.
 formulas:
   - id: bloch-funksjon
     section: E–k-diagrammet
@@ -118,7 +117,6 @@ formulas:
   - id: ladningsnoytralitet
     section: Kompensasjon og ladningsnøytralitet
     onSheet: false
-    memorize: true
     tex: "p_0 + N_d^+ = n_0 + N_a^-"
     label: "Ladningsnøytralitet: summen av positiv ladning (hull og ioniserte donorer) er lik summen av negativ (elektroner og ioniserte akseptorer). Sammen med $n_0 p_0 = n_i^2$ bestemmer kravet $n_0$, $p_0$ og $E_F$ entydig."
   - id: drifthastighet
@@ -139,13 +137,11 @@ formulas:
   - id: matthiessen
     section: Spredning, temperatur og doping
     onSheet: false
-    memorize: true
     tex: "\\dfrac{1}{\\mu} = \\dfrac{1}{\\mu_\\text{gitter}} + \\dfrac{1}{\\mu_\\text{urenhet}}, \\qquad \\mu_\\text{gitter} \\sim T^{-3/2}, \\quad \\mu_\\text{urenhet} \\sim T^{3/2}"
     label: "Kollisjonssannsynlighetene legges sammen, så mobilitetene legges sammen invers, og den minste dominerer. Gitterspredning vokser med temperaturen, urenhetsspredning er sterkest for langsomme bærere i kaldt materiale. $10^{17}$ donorer per cm³ senker $\\mu_n$ i Si fra 1350 til 700 cm²/V·s ved 300 K."
   - id: hall-koeffisient
     section: Hall-effekten
     onSheet: false
-    memorize: true
     tex: "\\mathcal{E}_y = v_x\\mathcal{B}_z = R_H\\,J_x\\mathcal{B}_z, \\qquad R_H = \\dfrac{1}{qp_0}, \\qquad \\mu_p = \\dfrac{R_H}{\\rho}"
     label: "Hall-feltet bygges opp til det opphever den magnetiske avbøyningen. Hall-koeffisienten gir konsentrasjonen direkte, fortegnet på Hall-spenningen gir bærertypen (negativt for elektroner), og sammen med resistiviteten gir den mobiliteten."
   - id: fermi-flat
@@ -156,13 +152,11 @@ formulas:
   - id: levetid
     section: Overskuddsbærere
     onSheet: false
-    memorize: true
     tex: "\\delta n(t) = \\Delta n\\, e^{-t/\\tau_n}, \\qquad \\tau_n = \\dfrac{1}{a_r(n_0 + p_0)} \\approx \\dfrac{1}{a_r p_0}"
     label: "Overskuddet dør ut eksponentielt med levetiden til minoritetsbærerne, her elektroner i p-type materiale. Gjelder ved lav injeksjon, der $\\delta n^2$-leddet i rekombinasjonen $a_r np$ kan strykes. Majoriteten faller med samme rate, siden bærerne forsvinner parvis."
   - id: stasjonaert-overskudd
     section: Kvasi-Fermi-nivåer
     onSheet: false
-    memorize: true
     tex: "\\delta n = \\delta p = g_\\text{op}\\,\\tau_n"
     label: "Stasjonært overskudd under jevn belysning: den optiske generasjonsraten ganger levetiden. Da er $np \\neq n_i^2$, og likevektens $E_F$ må byttes ut med to nivåer."
   - id: kvasi-fermi-nivaaer
@@ -214,7 +208,6 @@ formulas:
   - id: haynes-shockley
     section: Haynes–Shockley-eksperimentet
     onSheet: false
-    memorize: true
     tex: "\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"
     label: "Haynes–Shockley: en hullpuls driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet måler bredden i tid, $\\Delta t$, og driftfarten regner den om."
   - id: kontaktpotensial
@@ -235,7 +228,6 @@ formulas:
   - id: ladningsbalanse
     section: Romladningen
     onSheet: false
-    memorize: true
     tex: "qA\\,x_{p0}N_a = qA\\,x_{n0}N_d"
     label: "Ladningen i romladningssonen er like stor på begge sider, siden feltlinjene starter på ionene på n-siden og ender på ionene på p-siden. Den lett dopede siden må avdekke en tykkere skive for samme ladning, så sonen ligger mest der."
   - id: poisson
@@ -246,7 +238,6 @@ formulas:
   - id: maksfelt
     section: Romladningen
     onSheet: false
-    memorize: true
     tex: "\\begin{aligned} \\mathcal{E}_0 &= -\\dfrac{q}{\\varepsilon}N_d\\,x_{n0} = -\\dfrac{q}{\\varepsilon}N_a\\,x_{p0} \\\\ V_0 &= -\\tfrac{1}{2}\\mathcal{E}_0 W \\end{aligned}"
     label: "Det største feltet står ved skillet $x = 0$, der alle feltlinjene passerer, og kontaktpotensialet er arealet av felttrekanten. Med $V_0 = 0{,}8$ V og $W = 0{,}46$ µm er $\\mathcal{E}_0 = -3{,}5 \\times 10^4$ V/cm."
   - id: sonebredde
@@ -292,7 +283,6 @@ formulas:
   - id: skredmultiplikasjon
     section: Skredgjennombrudd
     onSheet: false
-    memorize: true
     tex: "\\begin{aligned} M &= \\dfrac{n_\\text{ut}}{n_\\text{in}} = \\dfrac{1}{1 - P} \\\\ &= 1 + P + P^2 + \\cdots \\\\ M &= \\dfrac{1}{1 - (V/V_\\text{br})^n} \\end{aligned}"
     label: "Multiplikasjonen i skredgjennombrudd, med $P$ som sannsynligheten for en ioniserende kollisjon per tur gjennom sonen. Den nederste er den målte formen nær gjennombrudd, med $n$ mellom 3 og 6 etter materialet. $V_\\text{br}$ vokser med båndgapet og faller med dopingen på den lett dopede siden."
 
@@ -314,7 +304,6 @@ formulas:
   - id: lagringstid
     section: Lagringstid
     onSheet: false
-    memorize: true
     tex: "t_{sd} = \\tau_p\\left[\\operatorname{erf}^{-1}\\!\\left(\\dfrac{I_f}{I_f + I_r}\\right)\\right]^2"
     label: "Lagringstiden etter omslag fra $I_f$ i lederetningen til $-I_r$: så lenge er overskuddet ved sonekanten positivt, spenningen over overgangen liten og sperrestrømmen satt av kretsen. Eksakt løsning av diffusjonsligningen. Med $I_r = I_f$ er $t_{sd} = 0{,}23\\,\\tau_p$. Snudd gir den levetiden fra en måling av $t_{sd}$."
   - id: lagringstid-kvasistasjonar
@@ -371,13 +360,11 @@ formulas:
   - id: arbeidsfunksjon-halvleder
     section: Arbeidsfunksjon og elektronaffinitet
     onSheet: false
-    memorize: true
     tex: "q\\Phi_s = q\\chi + (E_c - E_F)"
     label: "Arbeidsfunksjonen til en halvleder, fra Fermi-nivået opp til vakuumnivået. Elektronaffiniteten $q\\chi$ er fast for materialet, $4{,}05$ eV for Si, mens $E_c - E_F$ og dermed $\\Phi_s$ avhenger av dopingen."
   - id: schottky-barriere
     section: Schottky-kontakten
     onSheet: false
-    memorize: true
     tex: "\\begin{aligned} V_0 &= \\Phi_m - \\Phi_s \\\\ \\Phi_B &= \\Phi_m - \\chi \\end{aligned}"
     label: "Kontaktpotensialet og barrierehøyden i en Schottky-kontakt på n-type, der $\\Phi_m > \\Phi_s$ og halvlederen tømmes nær grenseflaten. $V_0$ holder elektronene i halvlederen tilbake og blir $V_0 - V$ med spenning; $\\Phi_B$ er barrieren for elektronene i metallet og endres ikke. På p-type kreves $\\Phi_m < \\Phi_s$, og $V_0 = \\Phi_s - \\Phi_m$."
   - id: schottky-sonebredde
@@ -388,7 +375,6 @@ formulas:
   - id: schottky-diode
     section: Strømmen over barrieren
     onSheet: false
-    memorize: true
     tex: "\\begin{aligned} I &= I_0\\left(e^{qV/k_BT} - 1\\right) \\\\ I_0 &\\propto e^{-q\\Phi_B/k_BT} \\end{aligned}"
     label: "Strømmen gjennom en Schottky-kontakt, positiv fra metallet til halvlederen på n-type. Spenningen endrer barrieren fra halvledersiden, mens strømmen fra metallet over $\\Phi_B$ er den samme uansett spenning og setter $I_0$. Strømmen er majoritetsbærere, så det er ingen lagret ladning og ingen lagringstid."
   - id: schottky-termionisk
@@ -399,7 +385,6 @@ formulas:
   - id: heteroovergang-sprang
     section: Heterooverganger
     onSheet: false
-    memorize: true
     tex: "\\begin{aligned} \\Delta E_g &= E_{g1} - E_{g2} \\\\ &= \\Delta E_c + \\Delta E_v \\\\ \\Delta E_c &= q(\\chi_2 - \\chi_1) \\end{aligned}"
     label: "Sprangene i båndkantene ved en heteroovergang, med 1 for materialet med størst båndgap. Den nederste linjen er Andersons affinitetsregel, som gjelder i det ideelle tilfellet; i praksis måles sprangene. For GaAs–AlGaAs er $\\Delta E_c$ omtrent to tredjedeler av $\\Delta E_g$."
   - id: hetero-spenningsdeling
