@@ -48,7 +48,7 @@ formulas:
     section: E–k-diagrammet
     onSheet: false
     tex: "v = \\dfrac{1}{\\hbar}\\dfrac{dE}{dk}"
-    label: "Bærerens hastighet er gruppehastigheten til bølgepakken, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er $v = 0$ selv om $\\hbar k \\neq 0$."
+    label: "Bærerens hastighet er gruppehastigheten til bølgepakken, altså stigningstallet i $E(k)$. På bunnen av båndet er $v = 0$ selv om $\\hbar k \\neq 0$."
   - id: planck
     section: E–k-diagrammet
     onSheet: true
@@ -63,12 +63,12 @@ formulas:
     section: Effektiv masse
     onSheet: false
     tex: "F_\\text{ytre} = \\dfrac{d(\\hbar k)}{dt}"
-    label: "Akselerasjonsteoremet. Bare den <em>ytre</em> kraften står på høyresiden, for gitterkreftene ligger allerede inne i formen på $E(k)$. Derfor er $\\hbar k$ <b>krystallmomentum</b> og ikke elektronets ekte bevegelsesmengde."
+    label: "Akselerasjonsteoremet. Bare den <em>ytre</em> kraften står på høyresiden, for gitterkreftene ligger allerede inne i formen på $E(k)$. Derfor er $\\hbar k$ krystallmomentum og ikke elektronets ekte bevegelsesmengde."
   - id: effektiv-masse
     section: Effektiv masse
     onSheet: true
     tex: "m^* = \\dfrac{\\hbar^2}{d^2E/dk^2}"
-    label: "Effektiv masse fra <b>krumningen</b> til båndet. Med $m^*$ i Newtons lov holder $F = ma$ med bare den ytre kraften, siden gitterkreftene er pakket inn i tallet. Skarp krumning gir liten $m^*$, flatt bånd gir stor. Negativ krumning på valensbåndtoppen er grunnen til at vi regner med hull der."
+    label: "Effektiv masse fra krumningen til båndet: tallet $m^*$ som må stå i Newtons lov for at den ytre kraften alene skal gi riktig akselerasjon, siden gitterkreftene allerede ligger i tallet. Skarp krumning gir liten $m^*$, flatt bånd gir stor. På valensbåndtoppen er krumningen negativ, og derfor regner du med hull der."
   - id: parabolsk-band
     section: Effektiv masse
     onSheet: true
@@ -118,12 +118,12 @@ formulas:
     section: Massevirkningsloven
     onSheet: true
     tex: "\\begin{aligned} n_i &= \\sqrt{N_c N_v}\\; e^{-E_g/2k_BT} \\\\ &= 2\\left(\\dfrac{2\\pi k_BT}{h^2}\\right)^{3/2}(m_n^*m_p^*)^{3/4}\\, e^{-E_g/2k_BT} \\end{aligned}"
-    label: "Intrinsisk konsentrasjon, med <b>halve</b> gapet i eksponenten fordi $E_F$ ligger nær midten av det. For Si ved 300 K er $n_i = 1{,}5 \\times 10^{10}$ cm⁻³. Eksponenten dominerer temperaturavhengigheten; $T^{3/2}$-faktorene fra $N_c$ og $N_v$ synes knapt ved siden av."
+    label: "Intrinsisk konsentrasjon, med halve gapet i eksponenten fordi $E_F$ ligger nær midten av det. For Si ved 300 K er $n_i = 1{,}5 \\times 10^{10}$ cm⁻³. Eksponenten dominerer temperaturavhengigheten; $T^{3/2}$-faktorene fra $N_c$ og $N_v$ synes knapt ved siden av."
   - id: ni-formene
     section: Massevirkningsloven
     onSheet: true
     tex: "\\begin{aligned} n_0 &= n_i\\, e^{(E_F - E_i)/k_BT} \\\\ p_0 &= n_i\\, e^{(E_i - E_F)/k_BT} \\end{aligned}"
-    label: "Likevektskonsentrasjonene målt fra det intrinsiske nivået $E_i$. Står $E_F$ på $E_i$, er $n_0 = p_0 = n_i$, og avstanden $E_F - E_i$ forteller direkte hvor sterkt dopet materialet er."
+    label: "Likevektskonsentrasjonene målt fra det intrinsiske nivået $E_i$. Står $E_F$ på $E_i$, er $n_0 = p_0 = n_i$, og fra avstanden $E_F - E_i$ leser du direkte hvor sterkt dopet materialet er."
   - id: intrinsisk-niva
     section: Massevirkningsloven
     onSheet: true
@@ -365,7 +365,7 @@ formulas:
     section: Lagringstid
     onSheet: false
     tex: "Q_p(t) = -I_r\\tau_p \\allowbreak + (I_f + I_r)\\,\\tau_p\\,e^{-t/\\tau_p} \\allowbreak\\quad t_{sd} = \\tau_p\\ln\\!\\left(1 + \\dfrac{I_f}{I_r}\\right)"
-    label: "Ladningen etter omslaget er eksakt. Lagringstiden til høyre er den kvasistasjonære tilnærmingen, der $\\Delta p_n = 0$ først når $Q_p = 0$. Den er for lang, tre ganger for lang med $I_r = I_f$, fordi kanten i virkeligheten tømmes mens det ligger ladning lenger inne."
+    label: "Ladningen etter omslaget er eksakt. Lagringstiden $t_{sd} = \\tau_p\\ln(1 + I_f/I_r)$ er den kvasistasjonære tilnærmingen, der $\\Delta p_n = 0$ først når $Q_p = 0$. Den er for lang, tre ganger for lang med $I_r = I_f$, fordi kanten i virkeligheten tømmes mens det ligger ladning lenger inne."
   - id: kapasitans
     section: Kapasitans
     onSheet: true
@@ -441,7 +441,7 @@ formulas:
     section: Strømmen over barrieren
     onSheet: false
     tex: "I = ABT^2\\,e^{-q\\Phi_B/k_BT}\\,e^{qV/nk_BT}"
-    label: "Strømmen i lederetningen fra en full behandling, med samme regning som for termionisk emisjon. $B$ er en effektiv Richardson-konstant for overgangen, og $n$ ligger mellom 1 og 2."
+    label: "Strømmen i lederetningen regnet fullt ut, på samme måte som termionisk emisjon av elektroner fra en varm metalloverflate. $B$ er en effektiv Richardson-konstant for overgangen, og $n$ ligger mellom 1 og 2."
   - id: heteroovergang-sprang
     section: Heterooverganger
     onSheet: false
@@ -586,16 +586,16 @@ glossary:
     definition: "(<em>Kronig–Penney model</em>) Den enkleste modellen som gir bånd og gap: et 1D-gitter regnet som en uendelig, periodisk rekke rektangulære barrierer. Kontinuitet i $\\psi$ og $d\\psi/dx$ pluss Bloch-kravet knytter $E$ til $k$ i én ligning, og energiintervallene uten løsning er båndgapene."
   - term: E-k-diagram
     section: E–k-diagrammet
-    definition: "Plott av elektronets totale energi mot bølgevektoren $k$, for én krystallretning. Stigningstallet gir hastigheten, krumningen gir effektiv masse, og formen avgjør om halvlederen er direkte eller indirekte."
+    definition: "Plott av elektronets totale energi mot bølgevektoren $k$, for én krystallretning. Stigningstallet gir hastigheten, krumningen gir effektiv masse, og om ekstremalpunktene ligger ved samme $k$, avgjør om halvlederen er direkte eller indirekte."
   - term: Gruppehastighet
     section: E–k-diagrammet
-    definition: "(<em>group velocity</em>) Farten til bølgepakken bæreren består av, $v = \\frac{1}{\\hbar}\\frac{dE}{dk}$, altså <b>stigningstallet</b> i $E(k)$. På bunnen av båndet er den null, uansett hvor stor $k$ er."
+    definition: "(<em>group velocity</em>) Farten til bølgepakken bæreren består av, $v = \\frac{1}{\\hbar}\\frac{dE}{dk}$, altså stigningstallet i $E(k)$. På bunnen av båndet er den null, uansett hvor stor $k$ er."
   - term: Direkte halvleder
     section: E–k-diagrammet
-    definition: "(<em>direct semiconductor</em>) Ledningsbåndminimet og valensbåndmaksimet ligger ved <b>samme</b> $k$, som i GaAs ($E_g = 1{,}43$ eV). Et elektron kan falle rett ned og gi fra seg $E_g$ som et foton, og derfor brukes slike materialer i lysdioder og lasere."
+    definition: "(<em>direct semiconductor</em>) Ledningsbåndminimet og valensbåndmaksimet ligger ved samme $k$, som i GaAs ($E_g = 1{,}43$ eV). Et elektron kan falle rett ned og gi fra seg $E_g$ som et foton, og derfor brukes slike materialer i lysdioder og lasere."
   - term: Indirekte halvleder
     section: E–k-diagrammet
-    definition: "(<em>indirect semiconductor</em>) Ledningsbåndminimet ligger ved en <b>annen</b> $k$ enn valensbåndmaksimet, som i Si. Overgangen krever en momentumendring i tillegg til energiendringen, og går gjerne via en defekttilstand med energien avgitt som varme."
+    definition: "(<em>indirect semiconductor</em>) Ledningsbåndminimet ligger ved en annen $k$ enn valensbåndmaksimet, som i Si. Overgangen krever en momentumendring i tillegg til energiendringen, og går gjerne via en defekttilstand med energien avgitt som varme."
   - term: Fonon
     section: E–k-diagrammet
     definition: "(<em>phonon</em>) Et kvantum av gittervibrasjon. Det bærer momentum på Brillouinsonens skala og svært lite energi, og er derfor partneren en indirekte halvleder må låne momentum av. Fotonet betaler energien, fononet momentumet."
@@ -604,10 +604,10 @@ glossary:
     definition: "(<em>crystal momentum</em>) Størrelsen $\\hbar k$. Den oppfører seg som bevegelsesmengde overfor <em>ytre</em> krefter, og er likevel ikke elektronets virkelige bevegelsesmengde, siden gitterkreftene er utelatt."
   - term: Effektiv masse
     section: Effektiv masse
-    definition: "(<em>effective mass</em>) Massen $m^*$ som lar oss bruke Newtons lov på en bærer i et gitter uten å regne på gitterkreftene: de er allerede pakket inn i tallet. Den finnes fra krumningen til $E(k)$, og er derfor ulik i ulike materialer selv om elektronets <em>ekte</em> masse er den samme."
+    definition: "(<em>effective mass</em>) Tallet $m^*$ som må stå i Newtons lov for at den ytre kraften alene skal gi riktig akselerasjon: gitterkreftene ligger allerede i tallet. Den finnes fra krumningen til $E(k)$, og er derfor ulik i ulike materialer selv om elektronets <em>ekte</em> masse er den samme."
   - term: Hull
     section: Elektroner og hull
-    definition: "(<em>hole</em>) En tom tilstand i valensbåndet, regnet som én bærer med <b>positiv</b> ladning og <b>positiv</b> masse. Strømmen bæres av de gjenværende elektronene, og hullregnskapet gir samme svar med ett ledd i stedet for $10^{23}$."
+    definition: "(<em>hole</em>) En tom tilstand i valensbåndet, regnet som én bærer med positiv ladning og positiv masse. Strømmen bæres av de gjenværende elektronene, og hullregnskapet gir den samme strømmen med ett ledd i stedet for $10^{23}$."
   - term: Elektron-hull-par
     section: Intrinsisk materiale
     definition: "(<em>electron-hole pair</em>) Et ledningsbåndelektron og hullet det etterlot seg i valensbåndet, laget i samme eksitasjon (EHP). Termisk eller optisk energi $\\ge E_g$ kreves for å lage ett."
@@ -788,16 +788,16 @@ glossary:
     section: Lagringstid
     definition: "(<em>storage delay time</em>) $t_{sd}$, tiden etter omslag fra lederetning til sperreretning der overskuddet ved sonekanten fortsatt er positivt. Så lenge er spenningen over overgangen liten og positiv, og sperrestrømmen settes av kretsen. Proporsjonal med levetiden, og en vanlig måte å måle den på."
   - term: Svitsjediode
-    section: Svitsjedioder
+    section: Lagringstid
     definition: "(<em>switching diode</em>) En diode laget for å slå raskt mellom lederetning og sperreretning. Kort levetid, for eksempel med gull i Si, eller lite lagret ladning i en kort diode gir kort lagringstid."
   - term: Kort diode
-    section: Svitsjedioder
+    section: Diffusjonskapasitansen
     definition: "(<em>short diode</em>, <em>narrow base diode</em>) En diode der den lett dopede siden er kortere enn diffusjonslengden, så de fleste injiserte bærerne når kontakten før de rekombinerer. Profilen er en rett linje, og lite ladning lagres. I en lang diode er siden mange diffusjonslengder."
   - term: Overgangskapasitans
     section: Overgangskapasitansen
     definition: "(<em>junction capacitance</em>, <em>depletion capacitance</em>) $C_j = \\varepsilon A/W$, kapasitansen fra ionene i romladningssonen. Avtar med sperrespenningen fordi sonen blir bredere, og dominerer i sperreretningen."
   - term: Varaktor
-    section: Overgangskapasitansen
+    section: Seriemotstand og gradvise overganger
     definition: "(<em>varactor</em>) En diode som brukes i sperreretning for den spenningsstyrte overgangskapasitansen, for eksempel til avstemming. $C_j \\propto V_r^{-1/2}$ i en abrupt overgang; dopingprofilen setter eksponenten."
   - term: Gradvis overgang
     section: Seriemotstand og gradvise overganger

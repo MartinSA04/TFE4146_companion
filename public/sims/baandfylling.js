@@ -8,7 +8,7 @@
  *
  * Gaphøyden i tegningen skalerer med E_g, så diamant ser ut som det den er.
  * Antall tegnede par følger log10 av Boltzmann-faktoren e^(-Eg/2kT) — bildet
- * kan umulig være i skala (Si ved 300 K har ett par per 3×10^12 atomer:
+ * kan umulig være i skala (Si ved 300 K har ett par per 3,3×10^12 atomer:
  * 5×10^22 atomer/cm³ mot n_i = 1,5×10^10 cm⁻³), så
  * utlesningen bærer de faktiske tallene og tegningen bærer retningen.
  *
@@ -171,9 +171,9 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
           (i, row) => (row * COLS + i >= COLS * ROWS - half ? "full" : "tom"),
           "var(--accent)",
         ) +
-        tag(padL + 8, cbY + 15, "Delvis fylt bånd — båndene overlapper");
+        tag(padL + 8, cbY + 15, "Delvis fylt bånd: båndene overlapper");
       caption =
-        "Elektroner og ledige tilstander i samme bånd — leder ved enhver temperatur.";
+        "Elektroner og ledige tilstander i samme bånd. Leder ved enhver temperatur.";
     } else {
       const np = pairs(m.eg);
       // Elektronene fyller fra bunnen av ledningsbåndet, hullene lages på
@@ -197,8 +197,8 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
 
       caption =
         np === 0
-          ? "Ingen par: begge bånd er «rene», og materialet leder ikke."
-          : `${np} elektron–hull-par tegnet — ikke i skala`;
+          ? "Ingen par: det ene båndet er fullt, det andre tomt, og materialet leder ikke."
+          : `${np} elektron–hull-par tegnet, ikke i skala`;
     }
 
     stage.innerHTML =
@@ -214,28 +214,21 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   function describe() {
     const m = current();
     if (m.eg === null)
-      return "Båndene <b>overlapper</b>, så elektroner og ledige tilstander ligger blandet. Et elektron har alltid en ny tilstand å akselereres inn i — metallet leder også ved 0 K, uten et eneste eksitert par.";
+      return "Båndene <b>overlapper</b>, så et elektron alltid har en ledig tilstand å akselereres inn i, og metallet leder også ved 0 K.";
 
     if (temp <= 0)
-      return "Ved <b>0 K</b> er valensbåndet nøyaktig fullt og ledningsbåndet nøyaktig tomt. Ingen av dem fører strøm: det ene mangler ledige tilstander, det andre mangler elektroner. Halvleder og isolator er umulige å skille her.";
+      return "Ved <b>0 K</b> er valensbåndet fullt og ledningsbåndet tomt, så verken halvleder eller isolator leder.";
 
     const f = factor(m.eg);
     const dec = Math.log10(f);
     const kT = (KB * temp * 1000).toFixed(1).replace(".", ",");
     const exp = dec.toFixed(1).replace(".", ",");
-    const tail =
-      dec < -20
-        ? "Det er null i praksis — dette er en <b>isolator</b>, av samme grunn som halvlederen ikke er det: gapet står i eksponenten."
-        : dec < -8
-          ? "Få, men ikke null — og antallet dobles for hver lille økning i temperatur. Det er denne følsomheten som gjør halvledere styrbare."
-          : "Mange par: den termiske energien begynner å bli sammenlignbar med gapet.";
-
     // Under ~39 K (diamant) og ~11 K (GaAs) underflyter faktoren til 0, og
-    // log10 blir −∞: da står bare «null i praksis»-setningen.
+    // log10 blir −∞: da står «null i praksis» i stedet for potensen.
     const boltz = Number.isFinite(dec)
-      ? `, og <i>e</i><sup>−E<sub>g</sub>/2k<sub>B</sub>T</sup> ≈ 10<sup>${exp}</sup>`
-      : "";
-    return `Ved <b>${temp} K</b> er <i>k</i><sub>B</sub><i>T</i> = ${kT} meV${boltz}. ${tail}`;
+      ? `≈ 10<sup>${exp}</sup>`
+      : "er null i praksis";
+    return `Ved <b>${temp} K</b> er <i>k</i><sub>B</sub><i>T</i> = ${kT} meV, og <i>e</i><sup>−E<sub>g</sub>/2k<sub>B</sub>T</sup> ${boltz}.`;
   }
 
   sync();

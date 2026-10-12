@@ -23,7 +23,7 @@ updated: 2026-09-27
 
 Majoritetskonsentrasjonen i dopet materiale er grei: én bærer per ionisert
 dopant. Minoritetskonsentrasjonen og temperaturavhengigheten er ikke like
-synlige, og for å få tak i dem må vi vite hvordan elektronene fordeler seg over
+synlige, og for å finne dem må du vite hvordan elektronene fordeler seg over
 tilstandene som finnes.
 
 Elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Fordelingen
@@ -51,10 +51,10 @@ $\Delta E$ under, $f(E_F + \Delta E) = 1 - f(E_F - \Delta E)$.
 Ved 0 K er fordelingen en firkant: hver tilstand under $E_F$ er fylt, hver
 tilstand over er tom. Varmer du materialet opp, mykner kanten over noen $k_BT$,
 og fordelingen får en hale av fylte tilstander over $E_F$ og en tilsvarende
-hale av tomme under. Mer enn noen tideler av en eV strekker halene seg aldri
-ved vanlige temperaturer.
+hale av tomme under. Halene faller eksponentielt, med en faktor $e$ for hver
+$k_BT$ fra $E_F$.
 
-$f(E)$ sier bare noe om tilstander som finnes. I gapet har fordelingen helt
+$f(E)$ gjelder bare tilstander som finnes. I gapet har fordelingen helt
 vanlige verdier, men ingenting å virke på, så der blir det ingen elektroner
 uansett.
 
@@ -70,8 +70,8 @@ $$
 Her er <Term name="Tilstandstetthet">tilstandstettheten</Term> $N(E)$ antall
 tilstander per volum og energienhet. Nær båndkanten vokser den som
 $\sqrt{E - E_c}$, fra null på selve kanten, mens $f$ faller eksponentielt.
-Produktet $fN$ er derfor null på kanten, topper seg noen $k_BT$ over og dør ut
-derfra: elektronene ligger i en tynn stripe like over $E_c$. Hullene ligger
+Produktet $fN$ er derfor null på kanten, topper seg $k_BT/2$ over den og dør ut
+over noen få $k_BT$: elektronene ligger i en tynn stripe like over $E_c$. Hullene ligger
 tilsvarende i en stripe like under $E_v$, med $1 - f$ som sannsynlighet og
 $\sqrt{E_v - E}$ som tetthet.
 
@@ -90,13 +90,13 @@ fordelingene.
   height={420}
 />
 
-Resultatet av integralet kan skrives som om hele båndet
-var <Term name="Effektiv tilstandstetthet">$N_c$ tilstander lagt på selve
+Ligger $E_F$ noen $k_BT$ under $E_c$, er eneren i nevneren til $f$ ubetydelig i
+hele båndet, og sannsynligheten blir en ren eksponensial. Det er
+<Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>. Med den kan
+integralet skrives som om hele båndet var
+<Term name="Effektiv tilstandstetthet">$N_c$ tilstander lagt på selve
 kanten</Term>, $n_0 = N_c f(E_c)$, med $N_c$ gitt av
-<FormulaRef id="effektiv-tilstandstetthet">$N_c = 2(2\pi m_n^*k_BT/h^2)^{3/2}$</FormulaRef>. Ligger $E_F$ noen $k_BT$ under
-$E_c$, er eneren i nevneren til $f$ ubetydelig, og sannsynligheten blir en ren
-eksponensial. Det er
-<Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>, og med den:
+<FormulaRef id="effektiv-tilstandstetthet">$N_c = 2(2\pi m_n^*k_BT/h^2)^{3/2}$</FormulaRef>:
 
 $$
 n_0 = N_c\, e^{-(E_c - E_F)/k_BT}, \qquad \allowbreak p_0 = N_v\, e^{-(E_F - E_v)/k_BT}
@@ -154,7 +154,7 @@ $n_i = 1{,}5 \times 10^{10}$ cm⁻³.
 <Statement kind="law" name="Massevirkningsloven" id="massevirkning">
 
 Ved termisk likevekt er $n_0 p_0 = n_i^2$ for et gitt materiale ved en gitt
-temperatur, uansett doping. Statistikken sier det samme som
+temperatur, uansett doping. Boltzmann-uttrykkene gir den samme loven som
 <FormulaRef id="generasjon-rekombinasjon">ratebalansen</FormulaRef>:
 generasjonen avhenger bare av temperaturen, så produktet er låst.
 
@@ -162,12 +162,16 @@ generasjonen avhenger bare av temperaturen, så produktet er låst.
 
 Ofte er det lettere å måle $E_F$ fra
 <Term name="Intrinsisk nivå">det intrinsiske nivået</Term> $E_i$ enn fra en
-båndkant. Bytter du referanse, blir konsentrasjonene
+båndkant. Skriv avstanden til kanten som
+$E_c - E_F = (E_c - E_i) - (E_F - E_i)$. Da deler $n_0$ seg i
+$N_c e^{-(E_c - E_i)/k_BT}$ ganget med $e^{(E_F - E_i)/k_BT}$, og den første
+faktoren er $n_i$, fordi $E_F = E_i$ i intrinsisk materiale. $p_0$ deler seg på
+samme måte, og konsentrasjonene blir
 <FormulaRef id="ni-formene">$n_0 = n_i e^{(E_F - E_i)/k_BT}$ og
 $p_0 = n_i e^{(E_i - E_F)/k_BT}$</FormulaRef>: $n_0$ er $n_i$ når $E_F$ står på
 $E_i$, og vokser eksponentielt når nivået trekker mot ledningsbåndet. $E_i$
 ligger nær midten av gapet, men ikke nøyaktig. Sett $n_0 = p_0$ i
-Boltzmann-uttrykkene, og nivået faller ut: $E_i$ ligger
+Boltzmann-uttrykkene og løs for $E_F$, som da er $E_i$: $E_i$ ligger
 $\tfrac{1}{2}k_BT\ln(N_c/N_v) = \tfrac{3}{4}k_BT\ln(m_n^*/m_p^*)$ under midten,
 altså midt i gapet bare når $N_c = N_v$. For Si gir massene omtrent 13 meV ved
 romtemperatur.
@@ -198,10 +202,12 @@ like daler. Flatene med konstant energi rundt hvert minimum er sigarformede
 ellipsoider: krumningen langs sigaren gir $m_l = 0{,}98\,m_0$, krumningen på
 tvers gir $m_t = 0{,}19\,m_0$.
 
-Tellingen av tilstander skal ha med alle seks dalene og begge krumningene. I
-$N_c$ står massen som $(m^*)^{3/2}$, så bidragene må settes sammen i samme
-potens, <FormulaRef id="dos-masse" />: et geometrisk middel av krumningsmassene
-i én dal, ganget med antall daler.
+Tilstandene med energi under $E$ i én dal ligger inne i en ellipsoide i
+$k$-rommet, med halvaksen $\sqrt{2m_lE}/\hbar$ langs sigaren og
+$\sqrt{2m_tE}/\hbar$ i begge retningene på tvers, med $E$ målt fra $E_c$.
+Antallet er proporsjonalt med volumet, altså med $(m_lm_t^2)^{1/2}$, mens en
+kuleformet dal med massen $m^*$ gir $(m^*)^{3/2}$. Seks daler gir seks ganger så
+mange tilstander, så massen i $N_c$ er gitt ved <FormulaRef id="dos-masse" />.
 
 <Example title="hvilken masse skal stå i formelen for Si?">
 
@@ -220,8 +226,8 @@ $m_l = 0{,}98\,m_0$ og $m_t = 0{,}19\,m_0$.
 </Example>
 
 Valensbåndtoppen telles på samme måte. Der møtes to bånd med hver sin
-krumning, lette og tunge hull, og bidragene deres legges sammen; for Si gir
-det $m_p^* \approx 0{,}55\,m_0$.
+krumning, lette og tunge hull, og $(m_p^*)^{3/2}$ er summen av de to
+krumningsmassene, hver i potensen $3/2$. For Si er $m_p^* \approx 0{,}55\,m_0$.
 
 Massen her er til telling. Regner du på hvordan bærerne beveger seg i felt,
 veies de samme krumningene annerledes, og da er tallet for elektroner i Si
@@ -231,7 +237,7 @@ $0{,}26\,m_0$.
 
 Temperaturen står to steder i $n_i$: som $T^{3/2}$ i $N_c$ og $N_v$, og i
 eksponenten $e^{-E_g/2k_BT}$. Eksponenten dominerer så grundig at $\ln n_i$ mot
-$1/T$ er praktisk talt en rett linje med stigningstall $-E_g/2k$. Slike kurver
+$1/T$ er praktisk talt en rett linje med stigningstall $-E_g/2k_B$. Slike kurver
 plottes mot $1000/T$, så temperaturen øker mot venstre. Gapet bestemmer
 nivåene: ved 300 K er $n_i$ lik $2{,}5 \times 10^{13}$ cm⁻³ i Ge,
 $1{,}5 \times 10^{10}$ i Si og $2 \times 10^{6}$ i GaAs.
@@ -252,7 +258,7 @@ temperatur før $n_i$ tar igjen.
   src={"/sims/temperaturavhengighet.js"}
   host={"dom"}
   title={"Bærerkonsentrasjonen mot temperaturen"}
-  caption={"Velg donortetthet. I det tonede feltet til venstre er donorene ennå ikke ionisert; på platået er $n_0 = N_d$; i feltet til høyre har den stiplede $n_i(T)$-kurven tatt igjen dopingen, og materialet er intrinsisk. Boka tegner det samme mot $1000/T$, med den varme siden mot venstre."}
+  caption={"Velg donortetthet. I det tonede feltet til venstre er donorene ennå ikke ionisert; på platået er $n_0 = N_d$; i feltet til høyre har den stiplede $n_i(T)$-kurven tatt igjen dopingen, og materialet er intrinsisk. Boka tegner de samme kurvene mot $1000/T$, med den varme siden mot venstre."}
   height={400}
 />
 
@@ -305,7 +311,7 @@ $n_0$, $p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
 <KeyTakeaways>
 
 - $f(E) = [1 + e^{(E - E_F)/k_BT}]^{-1}$ er sannsynligheten for at en tilstand er okkupert. $f(E_F) = \tfrac{1}{2}$, fordelingen er symmetrisk om nivået, og ved 300 K er $k_BT = 0{,}0259$ eV.
-- Bærerne ligger i tynne striper ved båndkantene: $N(E)$ vokser fra null, $f$ faller eksponentielt, og produktet topper seg noen $k_BT$ fra kanten.
+- Bærerne ligger i tynne striper ved båndkantene: $N(E)$ vokser fra null, $f$ faller eksponentielt, og produktet topper seg $k_BT/2$ fra kanten.
 - Med Boltzmann-tilnærmingen er $n_0 = N_c e^{-(E_c - E_F)/k_BT}$ og $p_0 = N_v e^{-(E_F - E_v)/k_BT}$. 60 meV i $E_F$-avstand er en tierpotens ved romtemperatur.
 - $n_0 p_0 = n_i^2$ uansett doping, og $n_i = \sqrt{N_c N_v}\,e^{-E_g/2k_BT}$, som er $1{,}5 \times 10^{10}$ cm⁻³ for Si ved 300 K.
 - Massen i $N_c$ teller tilstander: seks daler og geometrisk middel gir $m_n^* = 1{,}1\,m_0$ i Si. Til transport veies de samme krumningene annerledes.

@@ -24,8 +24,8 @@ at akseptorer implanteres eller diffunderes inn gjennom et vindu i et
 oksidlag på en n-type skive, slik at et p-område ligger inne i n-materialet,
 og metall legges på begge områdene som kontakter. Regningen blir enkel for
 en <Term name="Abrupt overgang">abrupt overgang</Term>: jevn doping $N_a$ på
-den ene siden, jevn $N_d$ på den andre og et skarpt skille ved $x = 0$. Vi
-regner endimensjonalt med $x$ fra p mot n, og utenfor selve overgangen har
+den ene siden, jevn $N_d$ på den andre og et skarpt skille ved $x = 0$.
+Regn endimensjonalt med $x$ fra p mot n. Utenfor selve overgangen har
 bærerne likevektskonsentrasjonene sine.
 
 ## Likevekt: kontaktpotensialet
@@ -58,9 +58,9 @@ Det er en likevektsstørrelse og driver ingen strøm. Et voltmeter over
 dioden viser null, siden probene lager nye kontaktpotensialer som opphever
 $V_0$.
 
-<Derivation title="V₀ fra kravet om null hullstrøm">
-
-Sett $J_p = 0$ og bruk Einstein-relasjonen $\mu_p/D_p = q/k_BT$:
+Hullstrømmen er drift pluss diffusjon, $J_p = q\mu_p p\,\mathcal{E} - qD_p\,dp/dx$,
+og i likevekt er den null. Del på $qD_p p$ og bruk Einstein-relasjonen
+$\mu_p/D_p = q/k_BT$:
 
 $$
 \begin{aligned}
@@ -84,11 +84,9 @@ $$
 V_0 = \frac{k_BT}{q}\ln\frac{p_p}{p_n} = \frac{k_BT}{q}\ln\frac{N_aN_d}{n_i^2}
 $$
 
-</Derivation>
-
 <FormulaRef id="kontaktpotensial">Kontaktpotensialet</FormulaRef> vokser
 bare logaritmisk med dopingen, så for Si ved 300 K ligger det mellom 0,6
-og 0,9 V for all vanlig doping. Snudd om gir samme ligning forholdet
+og 0,9 V for all vanlig doping. Snudd om gir ligningen for $V_0$ forholdet
 mellom konsentrasjonene på de to sidene:
 
 $$
@@ -175,7 +173,7 @@ over på n-siden.
 
 Inne i sonen feier feltet bort bærere som vandrer inn, så der er det
 nesten ingen frie bærere. I <Term name="Utarmingstilnærmingen">utarmingstilnærmingen</Term>
-regner vi sonen som helt tømt for bærere, så ladningen der er bare ionene,
+regner du sonen som helt tømt for bærere, så ladningen der er bare ionene,
 $+qN_d$ på n-siden og $-qN_a$ på p-siden, og materialet utenfor er
 nøytralt. Sonen strekker seg $x_{p0}$ inn i p og $x_{n0}$ inn i n, med
 $W = x_{p0} + x_{n0}$.
@@ -202,8 +200,8 @@ $$
 
 $\mathcal{E}$ er null ved begge kantene av sonen, faller lineært fra
 $-x_{p0}$ inn mot skillet og stiger lineært tilbake til null ved $x_{n0}$.
-Det er en trekant med spissen $\mathcal{E}_0$ ved $x = 0$, negativ fordi
-feltet peker mot $-x$:
+Grafen til $\mathcal{E}(x)$ er en trekant med spissen $\mathcal{E}_0$ ved
+$x = 0$, negativ fordi feltet peker mot $-x$:
 
 $$
 \mathcal{E}_0 = -\frac{q}{\varepsilon}N_d\,x_{n0} = -\frac{q}{\varepsilon}N_a\,x_{p0}

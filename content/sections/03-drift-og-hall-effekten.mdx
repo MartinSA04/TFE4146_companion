@@ -82,10 +82,12 @@ materiale. Ved 100 V/cm driver elektronene med $1{,}35 \times 10^5$ cm/s,
 omtrent én prosent av den termiske farten, og $\bar{t} = \mu_n m_n^*/q$ er rundt
 $0{,}2$ ps.
 
-Massen i $\mu_n$ er ikke tellemassen fra $N_c$. Til transport teller det hvor
-lett bæreren akselererer, og for de seks dalene i Si blir det et harmonisk
-middel av krumningsmassene, <FormulaRef id="konduktivitetsmasse" />, som gir
-$0{,}26\,m_0$. Lett masse gir høy mobilitet: i GaAs er $m_n^* = 0{,}067\,m_0$
+Massen i $\mu_n$ er ikke tellemassen fra $N_c$. Elektronene fordeler seg
+likt på de seks dalene, og en dal bidrar til strømmen i forhold til $1/m$ i
+feltretningen. Et felt langs en kubeakse ligger langs den lange aksen i to av
+dalene ($m_l$) og på tvers i de fire andre ($m_t$), så $1/m_n^*$ er
+gjennomsnittet $\tfrac16(2/m_l + 4/m_t)$, som er
+<FormulaRef id="konduktivitetsmasse" /> og gir $0{,}26\,m_0$. Lett masse gir høy mobilitet: i GaAs er $m_n^* = 0{,}067\,m_0$
 og $\mu_n = 8500$ cm²/V·s.
 
 ### Spredning, temperatur og doping
@@ -225,10 +227,19 @@ Sett to materialer i kontakt slik at elektroner kan gå mellom dem. En
 overgang ved energien $E$ krever et elektron i 1 og en ledig tilstand i 2
 ved samme energi, så raten fra 1 til 2 er proporsjonal med fylte tilstander
 i 1 ganger tomme i 2, $N_1 f_1 \cdot N_2(1 - f_2)$, og raten motsatt vei er
-$N_2 f_2 \cdot N_1(1 - f_1)$. I likevekt går det verken netto ladning eller
-netto energi mellom dem, så ratene må være like ved hver energi for seg. Gang
-ut, og alt annet enn $f_1 = f_2$ faller bort. Fordelingene er like ved alle
-energier bare når $E_{F1} = E_{F2}$.
+$N_2 f_2 \cdot N_1(1 - f_1)$. I termisk likevekt går overgangene like ofte
+begge veier ved hver energi for seg, så ratene er like:
+
+$$
+N_1 f_1\,N_2(1 - f_2) = N_2 f_2\,N_1(1 - f_1)
+\quad\Rightarrow\quad
+f_1 - f_1 f_2 = f_2 - f_1 f_2
+\quad\Rightarrow\quad
+f_1 = f_2
+$$
+
+Da går det verken netto ladning eller netto energi mellom materialene.
+Fordelingene er like ved alle energier bare når $E_{F1} = E_{F2}$.
 
 <Statement kind="principle" name="Fermi-nivået er flatt i likevekt">
 

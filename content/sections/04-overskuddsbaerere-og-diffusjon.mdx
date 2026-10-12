@@ -23,11 +23,13 @@ updated: 2026-09-27
 Nesten alle komponenter virker ved at det finnes flere bærere enn likevekten
 gir. Lys med $h\nu \ge E_g$ absorberes og lager par, med intensiteten fallende
 som $e^{-\alpha x}$ innover i materialet. Bærere kan også sprøytes inn over en
-kontakt. Uansett kilde skriver vi $n = n_0 + \delta n$ og $p = p_0 + \delta p$,
-og siden parene lages og forsvinner parvis, er $\delta n = \delta p$.
+kontakt. Skriv $n = n_0 + \delta n$ og $p = p_0 + \delta p$. Lyset lager
+bærerne parvis, og de rekombinerer parvis, så $\delta n = \delta p$.
 
 I mørket balanserer generasjonen $g(T) = a_r n_i^2$ rekombinasjonen
-$a_r n_0 p_0$. Med overskudd rekombinerer det raskere enn det genereres:
+$a_r n_0 p_0$. Med overskudd rekombinerer bærerne raskere enn de genereres.
+Sett $\delta p = \delta n$ og gang ut. Leddet $a_r n_0 p_0$ er $a_r n_i^2$ og
+opphever generasjonen, og igjen står:
 
 $$
 \begin{aligned}
@@ -65,12 +67,13 @@ er effektive rekombinasjonssentre. Levetiden i Si settes derfor av renheten.
 ### Kvasi-Fermi-nivåer
 
 Med jevnt lys på prøven legges den optiske generasjonen $g_\text{op}$ til den
-termiske, og konsentrasjonene stiller seg inn der rekombinasjonen tar unna
-begge. Ved lav injeksjon gir samme regning som over at overskuddet er
-generasjonsraten ganger levetiden,
+termiske, og ved lav injeksjon er da
+$d\,\delta n/dt = g_\text{op} - \delta n/\tau_n$. I stasjonær
+tilstand er den deriverte null, så overskuddet er generasjonsraten ganger
+levetiden,
 <FormulaRef id="stasjonaert-overskudd">$\delta n = \delta p = g_\text{op}\tau_n$</FormulaRef>.
-Nå er $np \ne n_i^2$, og $E_F$ har ingen mening. Vi beholder formen på
-likevektsuttrykkene ved å gi hver bærertype sitt eget nivå:
+Nå er $np \ne n_i^2$, og $E_F$ har ingen mening. Behold formen på
+likevektsuttrykkene, men gi hver bærertype sitt eget nivå:
 
 $$
 n = n_i\, e^{(F_n - E_i)/k_BT}, \qquad p = n_i\, e^{(E_i - F_p)/k_BT}
@@ -114,10 +117,12 @@ ved 300 K.
 
 Der konsentrasjonen varierer, gir den tilfeldige bevegelsen alene en netto
 strøm av bærere fra høy til lav konsentrasjon. Del $x$-aksen i biter på én
-midlere fri veilengde $l$. Av bærerne i biten til venstre for $x_0$ krysser
-halvparten mot høyre i løpet av $\bar{t}$, og av bærerne til høyre krysser
-halvparten mot venstre. Nettofluksen er $\tfrac{l}{2\bar{t}}(n_1 - n_2)$, og med
-$n_1 - n_2 = -l\,dn/dx$:
+midlere fri veilengde $l$, og la biten til venstre for $x_0$ ha konsentrasjonen
+$n_1$ og biten til høyre $n_2$. Per areal inneholder biten til venstre $n_1 l$
+bærere, og halvparten av dem krysser mot høyre i løpet av $\bar{t}$. Fra høyre
+krysser $n_2 l/2$ mot venstre. Nettofluksen er da
+$\tfrac{l}{2\bar{t}}(n_1 - n_2)$, og midtpunktene av bitene ligger $l$ fra
+hverandre, så $n_1 - n_2 = -l\,dn/dx$:
 
 $$
 \phi_n = -D_n\frac{dn}{dx}, \qquad D_n = \frac{l^2}{2\bar{t}}
@@ -182,17 +187,26 @@ Samme regning for elektroner gir samme forhold.
 
 </Derivation>
 
-<FormulaRef id="einstein">Einstein-relasjonen</FormulaRef> sier at
+Etter <FormulaRef id="einstein">Einstein-relasjonen</FormulaRef> er
 $D/\mu = k_BT/q = 0{,}0259$ V ved romtemperatur, uansett bærertype og
-materiale. For Si gir det $D_n = 35$ og $D_p = 12{,}5$ cm²/s, og måler du den
+materiale. For Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s, og måler du den
 ene, har du den andre.
 
 ## Kontinuitetsligningen
 
-Ta en skive med tykkelse $\Delta x$ og areal $A$. Hullkonsentrasjonen i den
-øker når det strømmer inn flere hull enn det strømmer ut, og minker ved
-rekombinasjon. Strømtetthet delt på $q$ er partikkelfluks, så i grensen
-$\Delta x \to 0$:
+Ta en skive med tykkelse $\Delta x$ og areal $A$. Antallet hull i skiva endrer seg
+med det som strømmer inn ved $x$, minus det som strømmer ut ved
+$x + \Delta x$, minus det som rekombinerer. Strømtetthet delt på $q$ er
+partikkelfluks, så
+
+$$
+\frac{\partial\,\delta p}{\partial t}\,A\,\Delta x
+= \frac{1}{q}\left[J_p(x) - J_p(x + \Delta x)\right]A
+- \frac{\delta p}{\tau_p}\,A\,\Delta x
+$$
+
+Del på $A\,\Delta x$ og la $\Delta x \to 0$. Da blir hakeparentesen delt på
+$\Delta x$ til $-\partial J_p/\partial x$:
 
 $$
 \frac{\partial\,\delta p}{\partial t}
@@ -203,13 +217,19 @@ For elektroner bytter det første leddet fortegn, siden ladningen er negativ.
 Det er <FormulaRef id="kontinuitet">kontinuitetsligningen</FormulaRef>: det
 som strømmer inn og ikke ut igjen, er enten lagret eller rekombinert.
 
-Er strømmen ren diffusjon, setter vi inn $J_n^\text{diff}$ og får
-<FormulaRef id="diffusjonsligning">diffusjonsligningen</FormulaRef>:
+Er strømmen ren diffusjon, setter du $J_p^\text{diff} = -qD_p\,\partial p/\partial x$
+inn i ligningen over. Konsentrasjonen $p_0$ er lik overalt, så
+$\partial p/\partial x = \partial\,\delta p/\partial x$, og strømleddet blir
+$D_p\,\partial^2\delta p/\partial x^2$:
 
 $$
-\frac{\partial\,\delta n}{\partial t}
-= D_n\frac{\partial^2\,\delta n}{\partial x^2} - \frac{\delta n}{\tau_n}
+\frac{\partial\,\delta p}{\partial t}
+= D_p\frac{\partial^2\,\delta p}{\partial x^2} - \frac{\delta p}{\tau_p}
 $$
+
+Ligningen for elektroner har $D_n$ og $\tau_n$ og står som
+<FormulaRef id="diffusjonsligning">diffusjonsligningen</FormulaRef> i
+Formelsamlingen.
 
 Krumningen i profilen jevner den ut, og levetiden tømmer den. En puls av
 overskuddsbærere brer seg derfor utover og forsvinner samtidig, og hvor
@@ -242,21 +262,17 @@ bredden av romladningssonen i en pn-overgang.
 
 <Derivation title="Hvorfor diffusjonslengden er gjennomsnittsavstanden">
 
-Sannsynligheten for at et hull injisert ved $x = 0$ når fram til $x$ uten å
-rekombinere, er $\delta p(x)/\Delta p = e^{-x/L_p}$. Sannsynligheten for at
-det så rekombinerer i det neste intervallet $dx$ er andelen av profilen som
-forsvinner der:
+Hullene rekombinerer med raten $\delta p(x)/\tau_p$ per volum. I stasjonær
+tilstand rekombinerer alle hullene som sprøytes inn, så andelen som
+rekombinerer mellom $x$ og $x + dx$, er raten der delt på raten i hele staven:
 
 $$
-\begin{aligned}
-\frac{\delta p(x) - \delta p(x + dx)}{\delta p(x)}
-&= -\frac{1}{\delta p}\frac{d\,\delta p}{dx}\,dx \\
-&= \frac{dx}{L_p}
-\end{aligned}
+\frac{\delta p(x)\,dx/\tau_p}{\int_0^\infty \delta p\,dx/\tau_p}
+= \frac{e^{-x/L_p}\,dx}{L_p}
 $$
 
-Produktet $e^{-x/L_p}\,dx/L_p$ er sannsynlighetsfordelingen for hvor hullet
-rekombinerer, og middelverdien er
+Uttrykket er sannsynlighetsfordelingen for hvor et hull rekombinerer, og
+middelverdien er
 
 $$
 \langle x\rangle = \int_0^\infty x\,\frac{e^{-x/L_p}}{L_p}\,dx = L_p
@@ -350,23 +366,25 @@ $$
 $$
 
 der $\Delta P$ er antall hull per areal i pulsen ved $t = 0$. Toppen
-synker og bredden vokser med tiden. Ved $t_d$ er pulsen falt til $1/e$ av
-toppen i $x = \pm\Delta x/2$, og det gir
+synker og bredden vokser med tiden. Feltet flytter hele pulsen med $v_d t$
+uten å endre formen, og rekombinasjonen krymper den med faktoren
+$e^{-t/\tau_p}$, så bredden er den samme som uten felt. Når pulsen passerer
+detektoren ved $t_d$, er den falt til $1/e$ av toppen i $x = \pm\Delta x/2$
+fra midten. Sett $x = \Delta x/2$ og $t = t_d$ i eksponenten og krev at den er
+$-1$:
 
 $$
-D_p = \frac{(\Delta x)^2}{16\,t_d}
+\frac{(\Delta x/2)^2}{4D_pt_d} = 1 \quad\Rightarrow\quad D_p = \frac{(\Delta x)^2}{16\,t_d}
 $$
 
 Oscilloskopet viser pulsen i tid, så bredden $\Delta t$ regnes om med
-driftfarten: $\Delta x = v_d\,\Delta t$. Feltet flytter hele pulsen med
-$v_d t$ uten å endre formen, og rekombinasjonen krymper den med faktoren
-$e^{-t/\tau_p}$.
+driftfarten: $\Delta x = v_d\,\Delta t$.
 
 <Simulation
   src={"/sims/haynes-shockley.js"}
   host={"dom"}
   title={"Hullpulsen fra lysblinket til detektoren"}
-  caption={"Dra i feltet, avstanden og levetiden. Øverst er staven. De blå prikkene er elektronene i n-type Si, de røde er pulsen av hull som lysblinket lager ved $x = 0$. Pulsen drifter mot høyre med $v_d = \\mu_p\\mathcal{E}$. Den brer seg ut ved diffusjon, og klammen $\\Delta x$ spenner $1/e$-bredden. Underveis tynnes den ut med $e^{-t/\\tau_p}$, så prikkene blir færre før den når kontakten i den andre enden. Nederst sveiper oscilloskopet mens pulsen drifter, så kurven stiger i det pulsen når detektoren ved $x = L$. Drifttiden $t_d$ gir $\\mu_p = L/t_d\\mathcal{E}$, og bredden $\\Delta t$ mellom $1/e$-punktene gir $D_p = (v_d\\,\\Delta t)^2/16t_d$. Tidsaksen og den loddrette skalaen står fast. Et sterkere felt flytter pulsen mot venstre på tidsaksen og gjør den smalere. Lengre avstand flytter den mot høyre og gjør den bredere. Kortere levetid senker toppen uten å flytte den eller bre den ut. Tettheten av prikker er ikke i skala med noen konsentrasjon."}
+  caption={"Dra i feltet, avstanden og levetiden. Øverst er staven. De blå prikkene er elektronene i n-type Si, de røde er pulsen av hull som lysblinket lager ved $x = 0$. Pulsen driver mot høyre med $v_d = \\mu_p\\mathcal{E}$. Den brer seg ut ved diffusjon, og klammen $\\Delta x$ spenner $1/e$-bredden. Underveis tynnes den ut med $e^{-t/\\tau_p}$, så prikkene blir færre før den når kontakten i den andre enden. Nederst sveiper oscilloskopet mens pulsen driver, så kurven stiger i det pulsen når detektoren ved $x = L$. Drifttiden $t_d$ gir $\\mu_p = L/t_d\\mathcal{E}$, og bredden $\\Delta t$ mellom $1/e$-punktene gir $D_p = (v_d\\,\\Delta t)^2/16t_d$. Tidsaksen og den loddrette skalaen står fast. Et sterkere felt flytter pulsen mot venstre på tidsaksen og gjør den smalere. Lengre avstand flytter den mot høyre og gjør den bredere. Kortere levetid senker toppen uten å flytte den eller bre den ut. Tettheten av prikker er ikke i skala med noen konsentrasjon."}
   height={372}
 />
 
@@ -381,7 +399,7 @@ $e^{-t/\tau_p}$.
     "Ingen av dem, siden lyset ikke endrer $n_i$"
   ]}
   answer={1}
-  explanation={"Overskuddet er det samme for begge, men det er en brøkdel av $n_0$ og mange tierpotenser av $p_0$. Nivåene står i eksponenten, så $F_p$ flytter seg $k_BT\\ln(p/p_0)$, som kan være flere tideler av en eV, mens $F_n$ flytter seg noen meV."}
+  explanation={"Overskuddet $\\delta n = \\delta p$ er en brøkdel av $n_0$, men mange tierpotenser større enn $p_0$. Nivåene står i eksponenten, så $F_p$ flytter seg $k_BT\\ln(p/p_0)$, som kan være flere tideler av en eV, mens $F_n$ flytter seg noen meV."}
 />
 
 <Quiz

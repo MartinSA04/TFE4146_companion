@@ -271,25 +271,14 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   /** Tellingen, med de tre tallene i <b> slik rammeverket farger dem. */
   function count(merged) {
     const sp3 = hyb(r) >= 0.5;
-    const over = merged ? "ingen gap" : sp3 ? "4N" : "6N";
-    const under = merged ? "ingen gap" : sp3 ? "4N" : "2N";
-    return `Over gapet <b>${over}</b>, under gapet <b>${under}</b>, elektroner <b>4N</b>. `;
+    if (merged) return "Ingen gap, elektroner <b>4N</b>.";
+    const over = sp3 ? "4N" : "6N";
+    const under = sp3 ? "4N" : "2N";
+    return `Over gapet <b>${over}</b>, under gapet <b>${under}</b>, elektroner <b>4N</b>.`;
   }
 
   function describe(merged) {
-    const sp3 = hyb(r) >= 0.5;
-    const site = `Snittet står ved <b>${num(r * A_SI, 2)} Å</b>, altså ${num(r, 2)} ganger silisiums egen avstand. `;
-
-    const state = merged
-      ? "De to gruppene overlapper her, så det finnes ikke noe gap å snakke om."
-      : sp3
-        ? "Manifolden har delt seg i to, elektronene fyller den nedre gruppen nøyaktig, og den øvre står tom: valensbånd og ledningsbånd."
-        : "3s og 3p ligger som to nesten skarpe streker, og atomene merker knapt hverandre.";
-
-    const rule =
-      " Bredden settes av overlappen mellom naboene, altså av avstanden. Antallet settes av N. Ved Si-markøren er gapet <b>1,11 eV</b>.";
-
-    return site + count(merged) + state + rule;
+    return count(merged);
   }
 
   sync();

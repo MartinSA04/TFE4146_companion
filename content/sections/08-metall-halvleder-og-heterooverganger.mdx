@@ -34,6 +34,12 @@ $$
 
 For Si er $q\chi = 4{,}05$ eV.
 
+Vakuumnivået i et båndskjema er det lokale vakuumnivået, energien et elektron
+har like utenfor halvlederen på det stedet. Det følger ledningsbåndkanten,
+slik at elektronaffiniteten er den samme overalt i materialet selv om båndene
+bøyer seg. Over en overgang endrer det seg med $qV_0$, mens det globale
+vakuumnivået langt unna er konstant.
+
 Når metallet og halvlederen kommer i kontakt, går det elektroner fra
 materialet med høyest Fermi-nivå, altså minst arbeidsfunksjon, over i det
 andre, til Fermi-nivåene ligger likt. Metallet har så mange frie elektroner at
@@ -45,21 +51,16 @@ ohmsk.
 ## Schottky-kontakten
 
 Legg et metall med $\Phi_m > \Phi_s$ på n-type halvleder. Før kontakt ligger
-Fermi-nivået høyest i halvlederen, så elektroner går over i metallet. Nær
+Fermi-nivået i halvlederen $q(\Phi_m - \Phi_s)$ over Fermi-nivået i metallet,
+så elektroner går over i metallet. Nær
 grenseflaten blir det igjen donorioner uten elektroner, og de danner en
 romladningssone med bredden $W$ og positiv ladning, som balanserer den
-negative ladningen på metalloverflaten. Sonen ligger bare i halvlederen, som
-på n-siden av en p⁺n-overgang, så i
-<FormulaRef id="sonebredde">sonebredden</FormulaRef> står bare $N_d$ igjen:
+negative ladningen på metalloverflaten.
 
-$$
-W = \left[\frac{2\varepsilon(V_0 - V)}{qN_d}\right]^{1/2}
-$$
-
-Kapasitansen er $C_j = \varepsilon A/W$, som i p⁺n-overgangen.
-
-Kontaktpotensialet $V_0$ er forskjellen i arbeidsfunksjon, og det holder
-elektronene i halvlederen tilbake. Elektronene i metallet har en annen
+I likevekt ligger Fermi-nivåene likt, så båndene langt inne i
+halvlederen har sunket $q(\Phi_m - \Phi_s)$ i forhold til båndkanten ved
+grenseflaten. Denne bøyningen er barrieren for elektronene i halvlederen, og
+kontaktpotensialet $V_0$ er høyden av den. Elektronene i metallet har en annen
 barriere, fra Fermi-nivået i metallet opp til ledningsbåndkanten ved
 grenseflaten. Vakuumnivået er kontinuerlig over grenseflaten.
 Ledningsbåndkanten ligger $q\chi$ under det og Fermi-nivået i metallet
@@ -71,6 +72,16 @@ V_0 &= \Phi_m - \Phi_s \\
 \Phi_B &= \Phi_m - \chi
 \end{aligned}
 $$
+
+Romladningssonen ligger bare i halvlederen, som på n-siden av en
+p⁺n-overgang, så i
+<FormulaRef id="sonebredde">sonebredden</FormulaRef> står bare $N_d$ igjen:
+
+$$
+W = \left[\frac{2\varepsilon(V_0 - V)}{qN_d}\right]^{1/2}
+$$
+
+Kapasitansen er $C_j = \varepsilon A/W$, som i p⁺n-overgangen.
 
 På p-type er det motsatt. Der kreves $\Phi_m < \Phi_s$. Elektroner går fra
 metallet inn i halvlederen og fyller akseptorer nær grenseflaten, og sonen blir
@@ -136,23 +147,21 @@ diffunderer over sonen og inn i metallet, og det går en strøm fra metallet til
 halvlederen. I sperreretningen øker barrieren til $q(V_0 + V_r)$, og nesten
 ingen elektroner kommer over fra halvlederen.
 
-Barrieren $q\Phi_B$ for elektronene i metallet er satt av $\Phi_m$ og $\chi$ og
-endres ikke med spenningen. Strømmen av elektroner fra metallet er derfor den
-samme uansett $V$. I likevekt er den like stor som strømmen fra halvledersiden,
-og i sperreretningen er den alt som er igjen. Diodeligningen får samme form som
-for pn-overgangen,
+Andelen av elektronene i halvlederen som kommer over barrieren $q(V_0 - V)$, er
+en Boltzmann-faktor. Elektronstrømmen fra halvledersiden er derfor
+likevektsverdien ganger $e^{qV/k_BT}$, som i pn-overgangen. Barrieren
+$q\Phi_B$ for elektronene i metallet er satt av $\Phi_m$ og $\chi$ og endres
+ikke med spenningen, så elektronstrømmen fra metallet er en fast $I_0$ med
+$I_0 \propto e^{-q\Phi_B/k_BT}$. I likevekt er de to strømmene like store, og i
+sperreretningen er strømmen fra metallet alt som er igjen. Nettostrømmen er
+derfor
 
 $$
-\begin{aligned}
-I &= I_0\left(e^{qV/k_BT} - 1\right) \\
-I_0 &\propto e^{-q\Phi_B/k_BT}
-\end{aligned}
+I = I_0\left(e^{qV/k_BT} - 1\right)
 $$
 
-men $I_0$ kan ikke utledes like enkelt. Andelen av elektronene i metallet som
-har energi nok til å komme over $\Phi_B$, er en Boltzmann-faktor, og den setter
-$I_0$. En full behandling gir samme regning som for termionisk emisjon av
-elektroner fra en varm metalloverflate:
+Regnet fullt ut, på samme måte som for termionisk emisjon av elektroner fra en
+varm metalloverflate, er strømmen
 
 $$
 I = ABT^2\,e^{-q\Phi_B/k_BT}\,e^{qV/nk_BT}
@@ -245,7 +254,10 @@ halvledere, som GaAs og AlGaAs.
 Når to halvledere med ulikt båndgap, arbeidsfunksjon og elektronaffinitet
 møtes, gjør båndkantene et sprang ved grenseflaten. Spranget $\Delta E_c$ i
 ledningsbåndet og spranget $\Delta E_v$ i valensbåndet deler forskjellen i
-båndgap mellom seg. Med 1 for materialet med størst gap er
+båndgap mellom seg. Kall materialet med størst gap 1. Er vakuumnivået
+kontinuerlig over grenseflaten, ligger ledningsbåndkanten $q\chi_1$ under det
+på side 1 og $q\chi_2$ under det på side 2, så spranget i ledningsbåndet er
+forskjellen i elektronaffinitet:
 
 $$
 \begin{aligned}
@@ -255,32 +267,40 @@ $$
 $$
 
 Den andre linjen er
-<Term name="Andersons affinitetsregel">Andersons affinitetsregel</Term>, som
-gjelder når vakuumnivået er kontinuerlig over grenseflaten. I praksis måles
+<Term name="Andersons affinitetsregel">Andersons affinitetsregel</Term>. I praksis måles
 sprangene for hvert par av materialer. For GaAs og AlGaAs havner omtrent to
 tredjedeler av forskjellen i det direkte båndgapet i ledningsbåndet og en
 tredjedel i valensbåndet.
 
-Kontaktpotensialet $V_0$ deles mellom de to sidene slik at Fermi-nivåene blir
-like. Delene finnes fra Poissons ligning med to permittiviteter, der den
-elektriske flukstettheten er kontinuerlig ved grenseflaten,
-$\varepsilon_1\mathcal{E}_1 = \varepsilon_2\mathcal{E}_2$. Med p-type på side 1
-og n-type på side 2 gir det
+Kontaktpotensialet $V_0 = V_{01} + V_{02}$ gjør Fermi-nivåene like, og
+Poissons ligning avgjør hvordan det deles mellom side 1 og side 2. Med p-type
+på side 1 og n-type på side 2 er
 
 $$
 \frac{V_{01}}{V_{02}} = \frac{\varepsilon_2N_{d2}}{\varepsilon_1N_{a1}}
 $$
 
 så den lettest dopede siden tar mest av spenningen, som i en homoovergang.
+
+<Derivation title="Hvordan $V_0$ deles">
+
+Med utarmingstilnærmingen på begge sider er feltet størst ved grenseflaten.
+Poissons ligning gir der $\varepsilon_1\mathcal{E}_1 = qN_{a1}x_1$ og
+$\varepsilon_2\mathcal{E}_2 = qN_{d2}x_2$, med sonebreddene $x_1$ og $x_2$.
+Flukstettheten er kontinuerlig, $\varepsilon_1\mathcal{E}_1 = \varepsilon_2\mathcal{E}_2$,
+så $N_{a1}x_1 = N_{d2}x_2$. Hver del av $V_0$ er arealet av sin felttrekant,
+$V_{01} = qN_{a1}x_1^2/2\varepsilon_1$ og $V_{02} = qN_{d2}x_2^2/2\varepsilon_2$.
+Del den ene på den andre, og sett inn $x_1/x_2 = N_{d2}/N_{a1}$:
+
+$$
+\frac{V_{01}}{V_{02}} = \frac{\varepsilon_2N_{a1}}{\varepsilon_1N_{d2}}\left(\frac{x_1}{x_2}\right)^2 = \frac{\varepsilon_2N_{a1}}{\varepsilon_1N_{d2}}\left(\frac{N_{d2}}{N_{a1}}\right)^2 = \frac{\varepsilon_2N_{d2}}{\varepsilon_1N_{a1}}
+$$
+
+</Derivation>
+
 Sprangene gjør at barrieren for elektroner fra n-siden ikke lenger er den samme
 som barrieren for hull fra p-siden. Forskjellen kan brukes til å styre
 forholdet mellom elektroner og hull som injiseres.
-
-Vakuumnivået i et båndskjema er det lokale vakuumnivået, energien et elektron
-har like utenfor halvlederen på det stedet. Det følger ledningsbåndkanten,
-slik at elektronaffiniteten er den samme overalt i materialet selv om båndene
-bøyer seg. Over overgangen endrer det seg med $qV_0$, mens det globale
-vakuumnivået langt unna er konstant.
 
 ### Skisse av båndskjemaet
 

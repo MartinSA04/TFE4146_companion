@@ -1,7 +1,7 @@
 ---
 order: 1
 title: "Energibånd og ladningsbærere"
-summary: "Hvorfor atomære energinivåer blir til bånd, hva båndgapet skiller, hvordan krumningen i E(k) gir effektiv masse, og hvordan doping avgjør om elektroner eller hull dominerer."
+summary: "Hvorfor atomære energinivåer blir til bånd, hva båndgapet skiller, hvordan krumningen i E(k) gir effektiv masse og hvordan doping avgjør om elektroner eller hull dominerer."
 importance: core
 tag: "Uke 34 · Streetman §3.1–3.2"
 part: "Del 1: Energibånd og ladningsbærere"
@@ -37,7 +37,7 @@ Si har elektronstrukturen $1s^2 2s^2 2p^6 3s^2 3p^2$, altså 8 ytre tilstander m
 </Sidenote>
 
 I Si smelter $3s$- og $3p$-nivåene sammen til ett bånd med $8N$ tilstander når
-avstanden krymper mot gitterkonstanten, og båndet splittes så i $4N$ tilstander
+avstanden krymper mot gitterkonstanten, og så splittes båndet i $4N$ tilstander
 nede og $4N$ oppe. De $4N$ valenselektronene fyller det nedre båndet nøyaktig.
 Valensbåndet er altså fullt og ledningsbåndet tomt ved 0 K, og det følger av at
 Si har fire valenselektroner per atom.
@@ -78,8 +78,9 @@ det mangler elektroner.
 </Statement>
 
 Si ved 0 K er derfor en isolator. Forskjellen på Si og diamant er et tall,
-$1{,}1$ eV mot rundt 5 eV, og gapet står i eksponenten: termisk energi løfter et
-merkbart antall elektroner over 1 eV og praktisk talt ingen over 5. I metaller er
+$1{,}1$ eV mot rundt 5 eV, og antallet elektroner som termisk energi løfter over
+gapet, faller eksponentielt med gapet: et merkbart antall over 1 eV og praktisk
+talt ingen over 5. I metaller er
 det øverste båndet delvis fylt, eller båndene overlapper, så elektroner og ledige
 tilstander ligger blandet.
 
@@ -87,7 +88,7 @@ tilstander ligger blandet.
   src={"/sims/baandfylling.js"}
   host={"dom"}
   title={"Båndfylling"}
-  caption={"Fylte tilstander er farget, ledige er blanke ringer, og hull er røde. Dra temperaturen opp og se hvor mye gapstørrelsen har å si. Antall tegnede par er ikke i skala: Si ved romtemperatur har ett par per fem tusen milliarder atomer."}
+  caption={"Fylte tilstander er farget, ledige er blanke ringer, og hull er røde. Dra temperaturen opp og se hvor mye gapstørrelsen har å si. Antall tegnede par er ikke i skala: Si ved romtemperatur har ett par per $3{,}3 \\times 10^{12}$ atomer."}
   height={360}
 />
 
@@ -100,7 +101,7 @@ seg med gitterets periode. Energien plottes mot bølgevektoren $k$, én
 krystallretning om gangen, i et
 <Term name="E-k-diagram">$E$–$k$-diagram</Term>.
 
-Her er $ka$ fasen bølgefunksjonen får per gitteravstand, så $k$ er en etikett på
+Her er $ka$ fasen bølgefunksjonen får per gitteravstand $a$, så $k$ er en etikett på
 tilstanden. Størrelsen $\hbar k$ oppfører seg som bevegelsesmengde overfor ytre
 krefter og heter derfor
 <Term name="Krystallmomentum">krystallmomentum</Term>, men gitterkreftene er
@@ -110,11 +111,11 @@ Den enkleste regningen som faktisk viser båndene, er
 <Term name="Kronig-Penney-modellen">Kronig–Penney-modellen</Term>: gitterets
 potensial erstattes av en uendelig, periodisk rekke like, rektangulære
 barrierer. Innenfor hver brønn og hver barriere er potensialet konstant, så
-Schrödingerligningen har de kjente løsningene derfra, svingende der $E$ ligger
+Schrödingerligningen har løsningene du kjenner fra en endelig potensialbrønn, svingende der $E$ ligger
 over potensialet og eksponentielt dempet der det ligger under. Kravene som
 binder delene sammen, er at $\psi$ og $d\psi/dx$ er kontinuerlige på hver
 kant, og at helheten er en Bloch-funksjon, altså gjentar seg med faktoren
-$e^{ikd}$ per periode $d$. Kravene lar seg bare oppfylle når $E$ og $k$ passer
+$e^{ika}$ per periode $a$. Kravene lar seg bare oppfylle når $E$ og $k$ passer
 sammen i én ligning: velg $k$, løs den for $E$, og tegn punktene, så har du
 $E(k)$-diagrammet. Noen energiintervaller mangler løsning uansett $k$, og det
 er båndgapene.
@@ -122,7 +123,7 @@ er båndgapene.
 Du leser tre ting ut av diagrammet. Stigningstallet er farten,
 <FormulaRef id="gruppehastighet" />, altså
 <Term name="Gruppehastighet">gruppehastigheten</Term> til bølgepakken. Krumningen
-er massen. Hvor ekstremalpunktene ligger i forhold til hverandre avgjør om
+gir den effektive massen. Hvor ekstremalpunktene ligger i forhold til hverandre avgjør om
 materialet kan lyse.
 
 <Simulation
@@ -157,19 +158,27 @@ regel som varme. Derfor bygges lysdioder og lasere i direkte III–V-materialer.
 
 ## Effektiv masse
 
-Et elektron i en krystall kjenner gitterpotensialet og det ytre feltet samtidig,
-og å løse $F_\text{indre} + F_\text{ytre}$ for hver komponent er håpløst. Den
-jobben gjøres én gang. Vi løser det periodiske problemet, pakker svaret i $E(k)$,
-og leser massen ut av formen.
+Et elektron i en krystall kjenner både gitterpotensialet og den ytre kraften.
+Du vil skrive akselerasjonen som $F_\text{ytre}/m^*$, med virkningen av gitteret
+tatt inn i $m^*$, og lese $m^*$ ut av formen på $E(k)$.
 
-Utledningen er fire linjer. Deriver gruppehastigheten med hensyn på tid, der
-bare $k$ avhenger av tid:
+For å få akselerasjonen uttrykt ved $F_\text{ytre}$ må du vite hvordan kraften
+endrer $k$. I løpet av $dt$ gjør kraften arbeidet $F_\text{ytre}\,v\,dt$. Gitterpotensialet
+ligger allerede i $E(k)$, så arbeidet er hele endringen i energien, og med
+$v = (1/\hbar)\,dE/dk$ er $dE = \hbar v\,dk$:
+
+$$
+F_\text{ytre}\,v\,dt = \hbar v\,dk \quad\Rightarrow\quad F_\text{ytre} = \hbar\frac{dk}{dt}
+$$
+
+Det er akselerasjonsteoremet <FormulaRef id="krystallmomentum" />. Deriver nå
+gruppehastigheten med hensyn på tid, der bare $k$ avhenger av tid:
 
 $$
 \frac{dv}{dt} = \frac{1}{\hbar}\frac{d^2E}{dk^2}\frac{dk}{dt}
 $$
 
-Sett inn akselerasjonsteoremet <FormulaRef id="krystallmomentum" />:
+Sett inn $dk/dt = F_\text{ytre}/\hbar$:
 
 $$
 \frac{dv}{dt} = \frac{1}{\hbar^2}\frac{d^2E}{dk^2}\,F_\text{ytre}
@@ -192,7 +201,7 @@ Skarp krumning gir en lett bærer, flatt bånd en tung.
 
 Den ekte massen er den samme i Si, Ge og GaAs som i vakuum. $m^*$ er tallet som
 må stå i Newtons lov for at $F_\text{ytre}$ alene skal gi riktig akselerasjon.
-Det er heller ingen form for seighet: seighet kan verken gi $0{,}067\,m_0$, som
+$m^*$ er heller ikke en friksjon fra gitteret: friksjon kan verken gi $0{,}067\,m_0$, som
 GaAs har, eller negativ masse, som valensbåndtoppen har.
 
 </Callout>
@@ -205,12 +214,12 @@ flere effektive masser, og hvilken du skal bruke avhenger av hva du regner på.
 
 På valensbåndtoppen er $d^2E/dk^2$ negativ, altså $m^* < 0$. Et valensbåndelektron
 du dytter mot høyre, akselererer mot venstre. Negativ ladning og negativ masse
-gir en akselerasjon langs feltet, nøyaktig som positiv ladning og positiv masse
-ville gitt.
+gir derfor samme akselerasjon som positiv ladning og positiv masse, og det er
+grunnen til at du regner med hull.
 
 ## Elektroner og hull
 
-<Derivation title="Hvorfor det manglende elektronet oppfører seg som en positiv ladning">
+<Derivation title="Hvorfor hullet har positiv ladning og positiv masse">
 
 Med $N$ elektroner i båndet og $q$ som elementærladningen er strømtettheten
 summen over alle hastighetene:
@@ -231,6 +240,17 @@ elektronets hastighet. Fysisk flytter fortsatt rundt $10^{23}$ valenselektroner
 seg, og $+qv_j$ er summen av bidragene deres skrevet som ett ledd. Begge linjene står som
 <FormulaRef id="fullt-band-strom">én rad i Formelsamlingen</FormulaRef>.
 
+Hullet har dermed hastigheten og akselerasjonen til det manglende elektronet.
+Elektronet øverst i valensbåndet har $m^* < 0$, så med $\mathcal{E}$ for det
+elektriske feltet er akselerasjonen
+
+$$
+a = \frac{(-q)\mathcal{E}}{-|m^*|} = \frac{(+q)\mathcal{E}}{|m^*|}
+$$
+
+Det er akselerasjonen til en bærer med ladning $+q$ og positiv masse $|m^*|$, siden to
+fortegn snur samtidig.
+
 </Derivation>
 
 <Statement kind="definition" name="Hull">
@@ -241,15 +261,11 @@ ledningsbåndet og hull i valensbåndet.
 
 </Statement>
 
-Hullet arver hastigheten til det manglende elektronet, og ladningen $+q$ følger
-av at krystallen er like nøytral før og etter eksitasjonen. Massen blir positiv
-fordi to fortegn snur samtidig,
-$a = (-q)\mathcal{E}/(-|m^*|) = +q\mathcal{E}/|m^*|$, med $\mathcal{E}$ for det
-elektriske feltet.
+Hullet har hastigheten til det manglende elektronet.
 
 I ett og samme bånd fører du enten elektronregnskapet eller hullregnskapet.
 Hullstrømmen er allerede summen over alle båndets elektroner, så å legge
-elektronbidraget oppå er dobbelttelling. Det er en vanlig feil på eksamen.
+elektronbidraget oppå er dobbelttelling.
 
 Hullenergien øker nedover i båndskjemaet, så hull samler seg på toppen av
 valensbåndet og elektroner på bunnen av ledningsbåndet. Begge søker laveste
@@ -265,7 +281,7 @@ lages parvis må de være like mange.
 
 <Formula tex={"n = p = n_i"} caption={"For Si er $n_i = 1{,}5 \\times 10^{10}\\ \\text{cm}^{-3}$ ved romtemperatur, mot en atomtetthet på $5 \\times 10^{22}\\ \\text{cm}^{-3}$."} />
 
-Det er én brutt binding per $3{,}3 \times 10^{12}$ atomer. Rent silisium er nesten en
+Ved romtemperatur er det én brutt binding per $3{,}3 \times 10^{12}$ atomer i Si. Rent silisium er nesten en
 isolator.
 
 Likevekten står ikke stille. Bindinger brytes og elektroner faller tilbake i et
@@ -276,7 +292,7 @@ alene, så produktet er låst til $n_i^2$.
 
 ## Doping
 
-Vi kan bestemme hvilken bærertype som dominerer ved å tilsette urenheter med
+Hvilken bærertype som dominerer, bestemmer du ved å tilsette urenheter med
 vilje. Slikt materiale kalles
 <Term name="Ekstrinsisk halvleder">ekstrinsisk</Term>, og nesten alle komponenter
 er bygd av det.
@@ -311,12 +327,13 @@ grunne, og ved romtemperatur er praktisk talt hver donor i Si ionisert.
 
 Du kan anslå nivået selv. Det femte elektronet er bundet til én
 overskuddsladning inne i en krystall, altså hydrogenatomet med to bytter: fri
-masse blir $m_n^*$, og vakuum blir materialets $\varepsilon_r$. Begge svekker
-bindingen, så
-<FormulaRef id="hydrogenlik-donor">hydrogenets egne resultater</FormulaRef> kan
-skaleres direkte.
+masse blir $m_n^*$, og vakuum blir materialets $\varepsilon_r$. Bindingsenergien
+på $13{,}6$ eV er proporsjonal med $m/\varepsilon^2$, og Bohr-radien $a_0$ med
+$\varepsilon/m$. Byttene gjør derfor energien $(m_n^*/m_0)/\varepsilon_r^2$ ganger
+og radien $\varepsilon_r/(m_n^*/m_0)$ ganger hydrogenets:
+<FormulaRef id="hydrogenlik-donor" />.
 
-<Example title="hvor dypt ligger donornivået, og hvor bredt er det?">
+<Example title="hvor dypt ligger donornivået, og hvor stor er banen?">
 
 Anslå bindingsenergien og banradien for donorelektronet i Si med
 $m_n^*/m_0 = 0{,}26$ og $\varepsilon_r = 11{,}8$. Sammenlign med den målte
@@ -391,16 +408,16 @@ ingenting for hvor godt materialet leder, men de styrer hva en pn-overgang gjør
     "Krumningen sier ingenting om effektiv masse"
   ]}
   answer={1}
-  explanation={"Krumningen står i nevneren i $m^* = \\hbar^2/(d^2E/dk^2)$, så skarp krumning gir liten masse. Direkte eller indirekte handler om <b>hvor</b> minimet ligger i $k$, ikke om formen på det."}
+  explanation={"Krumningen står i nevneren i $m^* = \\hbar^2/(d^2E/dk^2)$, så skarp krumning gir liten masse. Direkte eller indirekte handler om hvor minimet ligger i $k$, ikke om formen på det."}
 />
 
 <KeyTakeaways>
 
 - $N$ atomer splitter hvert nivå i $N$ nivåer. Bredden settes av gitteravstanden, antallet av $N$. De $4N$ valenselektronene i Si fyller valensbåndet nøyaktig ved 0 K.
-- Strøm krever ledige tilstander. Bærere alene holder ikke, og metall, halvleder og isolator skilles av fylling og av hvor stort $E_g$ er.
-- I $E$–$k$-diagrammet er stigningstallet farten og krumningen massen, og om ekstremalpunktene ligger ved samme $k$ avgjør om materialet kan lyse.
-- $m^* = \hbar^2/(d^2E/dk^2)$ faller ut av gruppehastigheten og akselerasjonsteoremet på fire linjer. Krumningen avgjør hvor mye fart bæreren får av en gitt kraft.
-- Et hull er en tom tilstand regnet som positiv ladning med positiv masse, og det følger av $J = +qv_j$. I ett bånd teller du elektroner eller hull, aldri begge.
+- Strøm krever ledige tilstander: et fullt bånd har elektroner, men fører ingen strøm. Metall, halvleder og isolator skilles av fylling og av hvor stort $E_g$ er.
+- I $E$–$k$-diagrammet gir stigningstallet farten og krumningen den effektive massen, og om ekstremalpunktene ligger ved samme $k$, avgjør om materialet kan lyse.
+- $m^* = \hbar^2/(d^2E/dk^2)$ følger av gruppehastigheten og akselerasjonsteoremet. Krumningen avgjør hvor mye fart bæreren får av en gitt kraft.
+- Et hull er en tom tilstand regnet som positiv ladning med positiv masse: ladningen følger av $J = +qv_j$, massen av at ladningen og krumningen skifter fortegn samtidig. I ett bånd teller du elektroner eller hull, aldri begge.
 - Intrinsisk Si har $n = p = n_i = 1{,}5 \times 10^{10}$ cm⁻³ mot $5 \times 10^{22}$ atomer per cm³. Donorer gir n-type og akseptorer p-type, og $10^{15}$ fosforatomer per cm³ presser $p_0$ ned til $2{,}25 \times 10^{5}$ cm⁻³.
 
 </KeyTakeaways>

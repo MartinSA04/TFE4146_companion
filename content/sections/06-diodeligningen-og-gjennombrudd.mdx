@@ -21,9 +21,11 @@ updated: 2026-09-20
 ## Injeksjon av minoritetsbærere
 
 I likevekt er forholdet mellom hullkonsentrasjonene på de to sidene satt av
-barrieren, $p_p/p_n = e^{qV_0/k_BT}$. Med spenning er barrieren $V_0 - V$,
-og samme regning gir forholdet mellom konsentrasjonene ved de to kantene
-av sonen:
+barrieren, $p_p/p_n = e^{qV_0/k_BT}$, ettersom drift og diffusjon av hull
+opphever hverandre i sonen. Med spenning går det en strøm, men den er liten
+mot driften og diffusjonen hver for seg, så de opphever hverandre nesten
+like godt. Barrieren er nå $V_0 - V$, og samme regning gir forholdet mellom
+konsentrasjonene ved de to kantene av sonen:
 
 $$
 \frac{p(-x_{p0})}{p(x_{n0})} = e^{q(V_0 - V)/k_BT}
@@ -89,10 +91,11 @@ I_n(x_p = 0) &= -qA\frac{D_n}{L_n}\,\Delta n_p
 \end{aligned}
 $$
 
-Minustegnet sier bare at elektronstrømmen går mot $x_p$-retningen, altså
-i $+x$, samme vei som hullstrømmen. Regn med at ingenting rekombinerer
-inne i sonen. Da går hvert elektron som forlater p-siden ved $-x_{p0}$, ut
-gjennom $x_{n0}$, så hele strømmen finnes ved $x_{n0}$ som summen av de to:
+Elektronstrømmen er negativ regnet langs $x_p$, så den går i $+x$, samme
+vei som hullstrømmen. Regn med at ingenting rekombinerer inne i sonen. Da
+har hvert elektron som kommer inn i p-siden ved $-x_{p0}$ krysset sonen
+fra $x_{n0}$, så elektronstrømmen er den samme ved begge kantene, og hele
+strømmen finnes ved $x_{n0}$ som summen av de to:
 
 $$
 \begin{aligned}
@@ -215,8 +218,8 @@ I_p(x_n = 0) &= \frac{Q_p}{\tau_p} = qA\frac{L_p}{\tau_p}\,\Delta p_n \\
 \end{aligned}
 $$
 
-siden $L_p^2 = D_p\tau_p$ gir $L_p/\tau_p = D_p/L_p$. Det er samme svar som
-fra gradienten, og <Term name="Ladningskontroll">ladningskontroll</Term> er
+siden $L_p^2 = D_p\tau_p$ gir $L_p/\tau_p = D_p/L_p$. Hullstrømmen blir den
+samme som fra gradienten, og <Term name="Ladningskontroll">ladningskontroll</Term> er
 ofte den raskeste veien til strømmen. I eksempelet over er
 $Q_p = qAL_p\Delta p_n = 9{,}4 \times 10^{-12}$ C ved $+0{,}5$ V, og
 $Q_p/\tau_p = 0{,}94$ µA er hullstrømmen.
@@ -235,8 +238,8 @@ $$
 Elektronene strømmer inn fra n-kontakten for å erstatte dem som
 rekombinerer med de injiserte hullene nær sonen, og for å levere
 elektronene som injiseres videre inn i p-siden. Noen diffusjonslengder
-fra sonen bærer majoritetsbærerne hele strømmen. Det samme gjelder
-speilvendt på p-siden.
+fra sonen bærer majoritetsbærerne hele strømmen. På p-siden dør
+elektronstrømmen ut på samme måte, og hullene tar over.
 
 <Simulation
   src={"/sims/injeksjon.js"}
@@ -294,8 +297,8 @@ termisk innenfor en diffusjonslengde. Generasjonsraten i det volumet er
 $p_n/\tau_p$ per cm³, så hullbidraget er $qA\,p_nL_p/\tau_p$, som er akkurat
 $qA\,D_pp_n/L_p$ i $I_0$.
 
-Kvasi-Fermi-nivåene splitter motsatt vei av lederetningen, $F_n$ mot
-$E_v$ og $F_p$ mot $E_c$, siden det er færre bærere enn i likevekt. $F_p$
+I sperreretningen deler kvasi-Fermi-nivåene seg den andre veien: $F_n$ går
+mot $E_v$ og $F_p$ mot $E_c$, siden det er færre bærere enn i likevekt. $F_p$
 kan gå inn i ledningsbåndet på n-siden. Det betyr bare at
 hullkonsentrasjonen der er enda mindre enn $p_n$, siden $F_p$ måler hull
 og leses mot $E_v$. Inne i sonen er $pn = n_i^2\,e^{-qV_r/k_BT} \approx 0$.
