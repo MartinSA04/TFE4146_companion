@@ -1,4 +1,4 @@
-# TFE4146 Halvlederkomponenter, interaktiv pensumguide.
+# TFE4146 Halvlederkomponenter, interaktivt kompendium.
 # Innholdet er under arbeid; metadataene under er hentet fra NTNUs emneside.
 
 schemaVersion: 5
@@ -8,7 +8,7 @@ code: TFE4146
 # to break on a phone. Display-only — the framework strips it from the tab
 # title, social cards, JSON-LD and the app manifest. See AUTHORING.md §6.
 title: "Halvleder\xADkomponenter"
-subtitle: Interaktiv pensumguide
+subtitle: Interaktivt kompendium
 term: H2026
 language: nb
 
