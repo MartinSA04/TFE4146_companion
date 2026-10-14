@@ -1,7 +1,7 @@
 ---
 order: 9
 title: "Transistorer og JFET-en"
-summary: "Hvordan en transistor forsterker et signal og slår strømmen av og på, og hvordan gatespenningen i en JFET gjør kanalen smalere til den klemmes av ved drain og strømmen metter."
+summary: "Hvordan en transistor forsterker et signal og slår strømmen av og på og hvordan gatespenningen i en JFET gjør kanalen smalere til den klemmes av ved drain og strømmen metter."
 importance: core
 tag: "Uke 41 · Streetman §6.1–6.2.2"
 part: "Del 4: Transistorer"
@@ -10,10 +10,10 @@ updated: 2026-10-14
 
 <LearningGoals>
 
-- Finne arbeidspunktet til en transistor fra lastlinjen, og forklare hvordan transistoren forsterker et signal og slår strømmen av og på.
+- Finne arbeidspunktet til en transistor fra lastlinjen og forklare hvordan transistoren forsterker et signal og slår strømmen av og på.
 - Beskrive en n-kanal-<Term name="JFET">JFET</Term> og hvilke spenninger source, gate og drain skal ha.
-- Forklare hvorfor kanalen er smalest ved drain, og hvorfor strømmen metter når kanalen er <Term name="Avklemming">klemt av</Term>.
-- Regne ut avklemmingsspenningen $V_p$, og skissere $I_D$ mot $V_D$ for flere gatespenninger, med gjennombrudd.
+- Forklare hvorfor kanalen er smalest ved drain og hvorfor strømmen metter når kanalen er <Term name="Avklemming">klemt av</Term>.
+- Regne ut avklemmingsspenningen $V_p$ og skissere $I_D$ mot $V_D$ for flere gatespenninger, med gjennombrudd.
 
 </LearningGoals>
 
@@ -29,8 +29,10 @@ og flater ut over en knekk ved $V_D(\text{sat.})$. Over knekken er
 transistoren i metning, og strømmen $I_D(\text{sat.})$ avhenger nesten bare av
 $V_G$.
 
-Koble drain gjennom en motstand $R_L$ til en spenningskilde $V_{DD}$, og
-source til jord. Kirchhoffs spenningslov rundt kretsen gir
+Hvilken strøm og spenning transistoren får, avhenger av kretsen rundt den. I
+den enkleste kretsen går drain gjennom en motstand $R_L$ til en
+spenningskilde $V_{DD}$, og source ligger på jord. Kirchhoffs spenningslov
+rundt kretsen gir
 
 $$
 V_{DD} = I_DR_L + V_D
@@ -42,7 +44,8 @@ ${V_D = V_{DD}}$ ved ${I_D = 0}$ til ${I_D = V_{DD}/R_L}$ ved ${V_D = 0}$. Linje
 kurven for sin gatespenning og på lastlinjen, så strømmen og spenningen er
 der de to krysser hverandre, i arbeidspunktet.
 
-Legg et lite signal $v_g$ oppå gatespenningen. Små bokstaver står for små
+Som forsterker skal transistoren gjøre et lite signal på gaten om til et større
+signal på drain. Legg signalet $v_g$ oppå gatespenningen. Små bokstaver står for små
 endringer rundt arbeidspunktet, så strømmen blir ${I_D + i_d}$. I metning
 avhenger strømmen bare av gatespenningen, så endringen er proporsjonal med
 signalet:
@@ -186,8 +189,8 @@ Gateovergangen ligger i sperreretning med ${V_x - V_G}$ i punktet $x$. Sonen der
 
 ## Avklemming og metning
 
-Øk $V_D$. Spenningen i kanalen stiger fra 0 ved source til $V_D$ ved drain,
-så sperrespenningen ${V_x - V_G}$ er størst ved drain. Sonene er derfor bredest
+Når $V_D$ øker, stiger spenningen i kanalen fra 0 ved source til $V_D$ ved
+drain, så sperrespenningen ${V_x - V_G}$ er størst ved drain. Sonene er derfor bredest
 og kanalen smalest ved drain. Den smale delen har mer motstand per lengde, og
 spenningen faller mest der. Jo større $V_D$ er, desto smalere blir kanalen nær
 drain, så motstanden i kanalen øker med $V_D$, og strømmen vokser saktere enn
@@ -235,9 +238,9 @@ Kanalen klemmes av ved drain når ${V_D - V_G = V_p}$, med ${V_p = qN_da^2/2\var
 <Example title="avklemmingsspenningen i en Si-JFET">
 
 En n-kanal-JFET i Si har p⁺-gater med ${N_a = 10^{19}\ \text{cm}^{-3}}$ og en kanal med
-${N_d = 10^{16}\ \text{cm}^{-3}}$ og halvhøyden ${a = 1\ \mu\text{m}}$. Finn avklemmingsspenningen,
-drain-spenningen der kanalen klemmes av med ${V_G = 0}$ og med ${V_G = -2\ \text{V}}$, og
-gatespenningen som stenger kanalen. Bruk $n_i = 1{,}5 \times 10^{10}\ \text{cm}^{-3}$ og
+${N_d = 10^{16}\ \text{cm}^{-3}}$ og halvhøyden ${a = 1\ \mu\text{m}}$. Finn avklemmingsspenningen og
+gatespenningen som stenger kanalen, og finn drain-spenningen der kanalen
+klemmes av med ${V_G = 0}$ og med ${V_G = -2\ \text{V}}$. Bruk $n_i = 1{,}5 \times 10^{10}\ \text{cm}^{-3}$ og
 $\varepsilon = 11{,}8\,\varepsilon_0 = 1{,}044 \times 10^{-12}\ \text{F/cm}$.
 
 <Solution>
@@ -350,7 +353,7 @@ Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G +
 />
 
 <Quiz
-  question={"Gateovergangene i en n-kanal-JFET har skredgjennombrudd ved $V_\\text{br} = 25$ V, og $V_p = 5$ V. Ved hvilken drain-spenning bryter JFET-en gjennom med $V_G = -3$ V?"}
+  question={"Gateovergangene i en n-kanal-JFET har skredgjennombrudd ved $V_\\text{br} = 25$ V og avklemmingsspenningen $V_p = 5$ V. Ved hvilken drain-spenning bryter JFET-en gjennom med $V_G = -3$ V?"}
   options={["22 V", "28 V", "25 V", "27 V"]}
   answer={0}
   explanation={"Sperrespenningen er størst ved drain og er $V_D - V_G$ der. Skred starter når den når $V_\\text{br}$, altså ved $V_D = V_\\text{br} + V_G = 25 - 3 = 22$ V. Gaten ligger allerede 3 V under source, så drain trenger 3 V mindre. 28 V har feil fortegn på $V_G$, og 25 V regner som om gaten lå på source. 27 V legger $V_\\text{br}$ til $V_D(\\text{sat.}) = 2$ V, men avklemmingen endrer ikke sperrespenningen ved drain, som er $V_D - V_G$ uansett."}
