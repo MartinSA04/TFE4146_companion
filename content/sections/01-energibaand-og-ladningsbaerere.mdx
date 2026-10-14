@@ -54,13 +54,15 @@ elektrontilstander her, og derfor kalles det også et forbudt bånd.
   src={"/sims/baanddannelse.js"}
   host={"dom"}
   title={"Båndene som funksjon av gitteravstand"}
-  caption={"Dra gitteravstanden og se de to gruppene smelte sammen og splittes igjen. Markøren står ved Si sin egen avstand, 5,43 Å, der gapet er omtrent 1,1 eV. Aksen er avstand, så hvert punkt på den er en ferdig krystall."}
+  caption={"Energinivåene fra $3s$ og $3p$ i Si som funksjon av gitteravstanden, med frie atomer til høyre. Hvert punkt på avstandsaksen er en ferdig krystall, og markøren står ved Si sin egen avstand, 5,43 Å."}
   height={420}
 />
 
-Grunnstoffene i gruppe IV viser det samme. Gitteravstanden vokser fra 3,56 Å i
-diamant til 6,49 Å i grått tinn, og gapet krymper i takt, fra rundt 5 eV til
-0,08 eV.
+Ved kortere avstand er overlappen større, så de bindende og de antibindende
+tilstandene skyves lenger fra hverandre, og gapet vokser. Ved Si sin egen
+avstand, 5,43 Å, er gapet omtrent 1,1 eV. Grunnstoffene i gruppe IV viser
+sammenhengen: gitteravstanden vokser fra 3,56 Å i diamant til 6,49 Å i grått
+tinn, og gapet krymper i takt, fra rundt 5 eV til 0,08 eV.
 
 ## Metall, halvleder og isolator
 
@@ -88,7 +90,7 @@ tilstander ligger blandet.
   src={"/sims/baandfylling.js"}
   host={"dom"}
   title={"Båndfylling"}
-  caption={"Fylte tilstander er farget, ledige er blanke ringer, og hull er røde. Dra temperaturen opp og se hvor mye gapstørrelsen har å si. Antall tegnede par er ikke i skala: Si ved romtemperatur har ett par per $3{,}3 \\times 10^{12}$ atomer."}
+  caption={"Valens- og ledningsbåndet i et metall, Si, GaAs og diamant. Fylte tilstander er farget, ledige er blanke ringer, og hull er røde. Antall tegnede par er ikke i skala: Si ved romtemperatur har ett par per $3{,}3 \\times 10^{12}$ atomer."}
   height={360}
 />
 
@@ -116,9 +118,18 @@ over potensialet og eksponentielt dempet der det ligger under. Kravene som
 binder delene sammen, er at $\psi$ og $d\psi/dx$ er kontinuerlige på hver
 kant, og at helheten er en Bloch-funksjon, altså gjentar seg med faktoren
 $e^{ika}$ per periode $a$. Kravene lar seg bare oppfylle når $E$ og $k$ passer
-sammen i én ligning: velg $k$, løs den for $E$, og tegn punktene, så har du
-$E(k)$-diagrammet. Noen energiintervaller mangler løsning uansett $k$, og det
-er båndgapene.
+sammen i én ligning av formen
+
+$$
+\cos ka = f(E)
+$$
+
+der $f(E)$ er en funksjon av energien som brønnbredden og barrierene bestemmer.
+Velg en energi, regn ut $f(E)$ og løs for $k$, så gir punktene
+$E(k)$-diagrammet. Venstresiden ligger alltid mellom $-1$ og $1$, så en energi
+med $|f(E)| > 1$ har ingen $k$. Disse energiintervallene er båndgapene. Uten
+barrierer er $f(E) = \cos(a\sqrt{2mE}/\hbar)$, som aldri er større enn 1 i
+absoluttverdi, og det frie elektronet får ingen gap.
 
 Du leser tre ting ut av diagrammet. Stigningstallet er farten,
 <FormulaRef id="gruppehastighet" />, altså
@@ -130,7 +141,7 @@ materialet kan lyse.
   src={"/sims/ek-diagram.js"}
   host={"dom"}
   title={"E–k-diagram"}
-  caption={"Skyv ledningsbåndminimet ut i $k$, så deler den korteste overgangen seg i et vannrett $\\Delta k$-steg og et loddrett fall. Endrer du krumningen, regner utlesningen effektiv masse rett ut av det du ser."}
+  caption={"Ledningsbåndet og valensbåndet langs én krystallretning. Pilen er den korteste overgangen fra ledningsbåndminimet til valensbåndtoppen: heltrukket når de ligger ved samme $k$, og stiplet med et vannrett $\\Delta k$-steg for momentumendringen når de ikke gjør det."}
   height={400}
 />
 
@@ -142,10 +153,18 @@ $X$; de er slakkere krummet, så elektronene der er tyngre. I Si ligger
 ledningsbåndminimet omtrent 85 % av veien ut mot sonegrensen, og halvlederen er
 <Term name="Indirekte halvleder">indirekte</Term>: overgangen krever en
 momentumendring i tillegg. Et foton med gapenergien har et bølgetall rundt tusen
-ganger for lite til å betale den, så et <Term name="Fonon">fonon</Term> må levere
+ganger for lite til å dekke den, så et <Term name="Fonon">fonon</Term> må levere
 momentumet mens fotonet leverer energien. To partnere i samme øyeblikk er
 sjelden, den radiative raten faller flere tierpotenser, og energien havner som
 regel som varme. Derfor bygges lysdioder og lasere i direkte III–V-materialer.
+
+<Callout title="Direkte og indirekte gap">
+
+I en direkte halvleder ligger ledningsbåndminimet og valensbåndtoppen ved samme
+$k$, og et elektron kan sende ut gapenergien som et foton. I en indirekte må et
+fonon i tillegg levere momentumet, så energien går som regel til varme.
+
+</Callout>
 
 <Video
   id="https://www.youtube.com/watch?v=AF8d72mA41M"
@@ -171,7 +190,7 @@ $$
 F_\text{ytre}\,v\,dt = \hbar v\,dk \quad\Rightarrow\quad F_\text{ytre} = \hbar\frac{dk}{dt}
 $$
 
-Det er akselerasjonsteoremet <FormulaRef id="krystallmomentum" />. Deriver nå
+Resultatet er akselerasjonsteoremet <FormulaRef id="krystallmomentum" />. Deriver nå
 gruppehastigheten med hensyn på tid, der bare $k$ avhenger av tid:
 
 $$
@@ -191,7 +210,7 @@ $$
 m^* = \frac{\hbar^2}{d^2E/dk^2}
 $$
 
-Det er <FormulaRef id="effektiv-masse">effektiv masse</FormulaRef>, og
+Tallet er den <FormulaRef id="effektiv-masse">effektive massen</FormulaRef>, og
 ingenting ble definert underveis. En konstant kraft flytter bæreren like fort
 gjennom $k$-rommet uansett hvilket materiale den står i. Det som varierer, er
 hvor mye fart bæreren får ut av hvert steg i $k$, og det avgjøres av krumningen.
@@ -208,21 +227,22 @@ GaAs har, eller negativ masse, som valensbåndtoppen har.
 
 Nær et båndminimum er de fleste bånd parabolske, med
 <FormulaRef id="parabolsk-band">$E = \hbar^2k^2/2m^*$</FormulaRef> over båndkanten, og da er $m^*$ konstant. En bærer ved
-romtemperatur holder seg helt nederst i båndet, så tilnærmingen gjelder der
-bærerne faktisk er. For elektroner i Si regnes det med $0{,}26\,m_0$. Silisium har
-flere effektive masser, og hvilken du skal bruke avhenger av hva du regner på.
+romtemperatur ligger innenfor noen få $k_BT$ fra båndkanten, der
+$k_BT = 0{,}0259$ eV er den termiske energien, så tilnærmingen gjelder der
+bærerne faktisk er. I Si avhenger krumningen av retningen, så elektronene har
+flere effektive masser. For bevegelse i et felt bruker du $0{,}26\,m_0$,
+mens tellingen av tilstander i ledningsbåndet bruker en annen middelverdi,
+$1{,}1\,m_0$.
 
 På valensbåndtoppen er $d^2E/dk^2$ negativ, altså $m^* < 0$. Et valensbåndelektron
-du dytter mot høyre, akselererer mot venstre. Negativ ladning og negativ masse
-gir derfor samme akselerasjon som positiv ladning og positiv masse, og det er
-grunnen til at du regner med hull.
+du dytter mot høyre, akselererer mot venstre.
 
 ## Elektroner og hull
 
-<Derivation title="Hvorfor hullet har positiv ladning og positiv masse">
-
-Med $N$ elektroner i båndet og $q$ som elementærladningen er strømtettheten
-summen over alle hastighetene:
+Et valensbånd der ett elektron mangler, fører strøm. Summen over elektronene
+viser hvilken strøm. Med $N$ elektroner i det fulle båndet og $q$ som
+elementærladningen er strømtettheten summen over alle hastighetene, og den er
+null:
 
 $$
 J = (-q)\sum_{i=1}^{N} v_i = 0 \qquad \allowbreak \text{(fullt bånd)}
@@ -235,10 +255,10 @@ $$
 J = (-q)\sum_{i=1}^{N} v_i - (-q)v_j = +q\,v_j
 $$
 
-Det er strømmen fra én positiv ladning som beveger seg med det manglende
-elektronets hastighet. Fysisk flytter fortsatt rundt $10^{23}$ valenselektroner
-seg, og $+qv_j$ er summen av bidragene deres skrevet som ett ledd. Begge linjene står som
-<FormulaRef id="fullt-band-strom">én rad i Formelsamlingen</FormulaRef>.
+Summen er <FormulaRef id="fullt-band-strom">strømmen fra én positiv
+ladning</FormulaRef> som beveger seg med det manglende elektronets hastighet.
+Fysisk flytter fortsatt rundt $10^{23}$ valenselektroner seg, og $+qv_j$ er
+summen av bidragene deres skrevet som ett ledd.
 
 Hullet har dermed hastigheten og akselerasjonen til det manglende elektronet.
 Elektronet øverst i valensbåndet har $m^* < 0$, så med $\mathcal{E}$ for det
@@ -248,10 +268,9 @@ $$
 a = \frac{(-q)\mathcal{E}}{-|m^*|} = \frac{(+q)\mathcal{E}}{|m^*|}
 $$
 
-Det er akselerasjonen til en bærer med ladning $+q$ og positiv masse $|m^*|$, siden to
-fortegn snur samtidig.
-
-</Derivation>
+Uttrykket er akselerasjonen til en bærer med ladning $+q$ og positiv masse
+$|m^*|$, siden ladningen og massen skifter fortegn samtidig. Hullet akselererer
+altså i feltets retning, slik en positiv ladning gjør.
 
 <Statement kind="definition" name="Hull">
 
@@ -261,15 +280,22 @@ ledningsbåndet og hull i valensbåndet.
 
 </Statement>
 
-Hullet har hastigheten til det manglende elektronet.
-
 I ett og samme bånd fører du enten elektronregnskapet eller hullregnskapet.
 Hullstrømmen er allerede summen over alle båndets elektroner, så å legge
 elektronbidraget oppå er dobbelttelling.
 
-Hullenergien øker nedover i båndskjemaet, så hull samler seg på toppen av
-valensbåndet og elektroner på bunnen av ledningsbåndet. Begge søker laveste
-energi, hver sin vei på tegningen.
+Båndskjemaet viser elektronenergi. Å flytte hullet nedover betyr at et elektron
+fra en dypere tilstand flytter opp og fyller den øvre, og dette elektronet må
+få tilført energi. Derfor
+øker hullenergien nedover i båndskjemaet, og hull samler seg på toppen av
+valensbåndet, mens elektroner samler seg på bunnen av ledningsbåndet.
+
+<Callout title="Hullenergi">
+
+Hullenergien øker nedover i båndskjemaet. Hull samler seg derfor på toppen av
+valensbåndet, elektroner på bunnen av ledningsbåndet.
+
+</Callout>
 
 ## Intrinsisk materiale
 
@@ -279,16 +305,35 @@ er par som termisk energi har løftet over gapet, ett
 <Term name="Elektron-hull-par">elektron-hull-par</Term> om gangen, og siden de
 lages parvis må de være like mange.
 
-<Formula tex={"n = p = n_i"} caption={"For Si er $n_i = 1{,}5 \\times 10^{10}\\ \\text{cm}^{-3}$ ved romtemperatur, mot en atomtetthet på $5 \\times 10^{22}\\ \\text{cm}^{-3}$."} />
+<Formula tex={"n = p = n_i"} caption={"Bærerkonsentrasjonene i intrinsisk materiale."} />
 
-Ved romtemperatur er det én brutt binding per $3{,}3 \times 10^{12}$ atomer i Si. Rent silisium er nesten en
-isolator.
+For Si er $n_i = 1{,}5 \times 10^{10}$ cm⁻³ ved romtemperatur, mot
+$5 \times 10^{22}$ atomer per cm³. Forholdet gir én brutt binding per
+$3{,}3 \times 10^{12}$ atomer, og rent silisium er nesten en isolator.
 
 Likevekten står ikke stille. Bindinger brytes og elektroner faller tilbake i et
 hull hele tiden, og ved termisk likevekt er ratene like store. En rekombinasjon
-krever at et elektron og et hull møtes, så raten går som produktet $n_0p_0$:
-<FormulaRef id="generasjon-rekombinasjon" />. Generasjonen settes av temperaturen
-alene, så produktet er låst til $n_i^2$.
+krever at et elektron og et hull møtes, så
+<FormulaRef id="generasjon-rekombinasjon">rekombinasjonsraten</FormulaRef> er
+$r_i = a_r n_0p_0$, der $a_r$ er en materialkonstant. Generasjonsraten $g_i$
+avhenger bare av temperaturen: å bryte en Si–Si-binding krever termisk energi,
+uansett hvor mange frie bærere som finnes. I intrinsisk materiale er
+$n_0 = p_0 = n_i$, så balansen gir $g_i = a_r n_i^2$. Den samme $g_i$ gjelder
+i dopet materiale ved samme temperatur:
+
+$$
+a_r n_0 p_0 = g_i = a_r n_i^2 \quad\Rightarrow\quad n_0p_0 = n_i^2
+$$
+
+Flere elektroner betyr at hvert hull raskere finner en partner, så hullene blir
+færre.
+
+<Callout title="Produktet $n_0p_0$">
+
+Ved termisk likevekt er $n_0p_0 = n_i^2$ uansett doping, fordi generasjonen av
+par bare avhenger av temperaturen.
+
+</Callout>
 
 ## Doping
 
@@ -323,9 +368,12 @@ er bygd av det.
 
 I Si ligger begge nivåene $0{,}03$–$0{,}06$ eV fra nærmeste båndkant, i Ge
 omtrent $0{,}01$ eV, mot et gap på $1{,}1$ eV. Nivåer så tett på kanten kalles
-grunne, og ved romtemperatur er praktisk talt hver donor i Si ionisert.
+grunne. Å løfte elektronet fra et donornivå i Si til ledningsbåndet koster bare
+et par $k_BT$ ved romtemperatur, og ledningsbåndet har langt flere tilstander
+nær kanten enn det finnes donorer å falle tilbake til. Derfor er praktisk talt
+hver donor i Si ionisert ved romtemperatur.
 
-Du kan anslå nivået selv. Det femte elektronet er bundet til én
+Du kan anslå donornivået selv. Donorens femte elektron er bundet til én
 overskuddsladning inne i en krystall, altså hydrogenatomet med to bytter: fri
 masse blir $m_n^*$, og vakuum blir materialets $\varepsilon_r$. Bindingsenergien
 på $13{,}6$ eV er proporsjonal med $m/\varepsilon^2$, og Bohr-radien $a_0$ med
@@ -382,33 +430,34 @@ $$
 
 Den dominerende typen kalles
 <Term name="Majoritetsbærere">majoritetsbærere</Term>, den andre
-<Term name="Minoritetsbærere">minoritetsbærere</Term>. De $2{,}25 \times 10^{5}$ hullene betyr
-ingenting for hvor godt materialet leder, men de styrer hva en pn-overgang gjør.
+<Term name="Minoritetsbærere">minoritetsbærere</Term>. Si med $10^{15}$ fosforatomer
+per cm³ har bare $2{,}25 \times 10^{5}$ hull per cm³. De betyr ingenting for hvor
+godt materialet leder, men de styrer hva en pn-overgang gjør.
 
 ## Sjekk deg selv
 
 <Quiz
-  question={"Hvorfor fører et fullt valensbånd ingen strøm?"}
+  question={"Et grunnstoff har ett valenselektron per atom, og det øverste båndet rommer to elektroner per atom, ett med hver spinnretning. Båndene overlapper ikke. Hva er stoffet ved 0 K?"}
   options={[
-    "Elektronene i valensbåndet er for tungt bundet til å bevege seg",
-    "Det finnes ingen ledige tilstander elektronene kan akselereres inn i",
-    "Elektronene i valensbåndet står stille",
-    "Båndgapet hindrer elektronene i å nå ledningsbåndet"
+    "Et metall, fordi halvparten av tilstandene i båndet er ledige",
+    "En isolator, fordi like mange elektroner går hver vei i båndet",
+    "En halvleder, fordi elektronene må løftes over gapet for å lede",
+    "En isolator, fordi $N$ atomer gir $N$ nivåer og $N$ elektroner fyller dem"
   ]}
-  answer={1}
-  explanation={"Akselerasjon krever en tilstand å flytte seg til, og i et fullt bånd er alle opptatt. Elektronene står slett ikke stille: de beveger seg like mye begge veier, og båndet er fastlåst. Et tomt ledningsbånd er like ledningsudyktig, av motsatt grunn."}
+  answer={0}
+  explanation={"$N$ atomer gir $N$ nivåer, men hvert nivå har plass til to elektroner, så båndet rommer $2N$. Det finnes bare $N$ elektroner, og halvparten av tilstandene er ledige. Et felt kan da flytte elektronene inn i tilstander de ikke allerede er i, og stoffet leder også ved 0 K. Uten felt går like mange elektroner hver vei også her; det som gjør et fullt bånd fastlåst, er at det ikke finnes ledige tilstander å flytte til."}
 />
 
 <Quiz
-  question={"To halvledere har samme båndgap, men A har skarpere krumning i ledningsbåndminimet enn B. Hva følger?"}
+  question={"Nær bunnen av ledningsbåndet er $E = \\hbar^2k^2/2m^*$. For samme $k$ ligger energien over båndkanten dobbelt så høyt i materiale A som i B. Den samme ytre kraften virker på et elektron i hvert. Hvordan er akselerasjonene?"}
   options={[
-    "A har større effektiv masse enn B",
-    "A har mindre effektiv masse enn B",
-    "A er direkte, B er indirekte",
-    "Krumningen sier ingenting om effektiv masse"
+    "A akselererer dobbelt så fort som B",
+    "A akselererer halvparten så fort som B",
+    "Like fort, fordi kraften endrer $k$ like fort i begge",
+    "A akselererer fire ganger så fort som B"
   ]}
-  answer={1}
-  explanation={"Krumningen står i nevneren i $m^* = \\hbar^2/(d^2E/dk^2)$, så skarp krumning gir liten masse. Direkte eller indirekte handler om hvor minimet ligger i $k$, ikke om formen på det."}
+  answer={0}
+  explanation={"Krumningen $d^2E/dk^2$ er dobbelt så stor i A, så $m^* = \\hbar^2/(d^2E/dk^2)$ er halvparten, og akselerasjonen $F_\\text{ytre}/m^*$ dobbelt så stor. Kraften endrer riktignok $k$ like fort i begge, $\\hbar\\,dk/dt = F_\\text{ytre}$, men hvert steg i $k$ gir dobbelt så mye fart i A."}
 />
 
 <KeyTakeaways>

@@ -86,14 +86,17 @@ fordelingene.
   src={"/sims/fermi-fordeling.js"}
   host={"dom"}
   title={"Fordelingen, tilstandene og bærerne"}
-  caption={"Dra i $E_F$ og temperaturen. Venstre panel er $f(E)$ med energiaksen loddrett; høyre panel er bærerstripene $f(E)N(E)$ og $[1-f(E)]N(E)$, normert til den største og ikke i skala. Merket $E_i$ er nivået der stripene blir like store."}
+  caption={"Venstre panel er $f(E)$ med energiaksen loddrett; høyre panel er bærerstripene $f(E)N(E)$ og $[1-f(E)]N(E)$, normert til den største og ikke i skala. Merket $E_i$ er nivået der stripene blir like store."}
   height={420}
 />
 
-Ligger $E_F$ noen $k_BT$ under $E_c$, er eneren i nevneren til $f$ ubetydelig i
-hele båndet, og sannsynligheten blir en ren eksponensial. Det er
-<Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>. Med den kan
-integralet skrives som om hele båndet var
+Ligger $E_F$ mer enn omtrent $3k_BT$ under $E_c$, er eksponentialen i nevneren
+til $f$ større enn $e^3 \approx 20$ i hele båndet. Eneren ved siden av endrer da
+$f$ med under 5 %, og sannsynligheten blir en ren eksponensial. Å regne med den
+rene eksponensialen kalles
+<Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>. For hullene
+er testen at $E_F$ ligger mer enn $3k_BT$ over $E_v$. Med tilnærmingen kan
+integralet for $n_0$ skrives som om hele båndet var
 <Term name="Effektiv tilstandstetthet">$N_c$ tilstander lagt på selve
 kanten</Term>, $n_0 = N_c f(E_c)$, med $N_c$ gitt av
 <FormulaRef id="effektiv-tilstandstetthet">$N_c = 2(2\pi m_n^*k_BT/h^2)^{3/2}$</FormulaRef>:
@@ -126,10 +129,17 @@ kommer ut. Hullregningen er identisk, med $1 - f$ og $\sqrt{E_v - E}$.
 
 </Derivation>
 
-Begge står i <FormulaRef id="likevektskonsentrasjoner">Formelsamlingen</FormulaRef>.
-Avstanden fra $E_F$ til båndkanten står i eksponenten, og
-$k_BT \ln 10 \approx 60$ meV ved romtemperatur: hver 60 meV $E_F$ flyttes nærmere
-$E_c$, tidobles $n_0$.
+Avstanden fra $E_F$ til båndkanten står i eksponenten i
+<FormulaRef id="likevektskonsentrasjoner">likevektskonsentrasjonene</FormulaRef>,
+og $k_BT \ln 10 \approx 60$ meV ved romtemperatur. For hver 60 meV $E_F$ flyttes
+nærmere $E_c$, tidobles altså $n_0$.
+
+<Callout title="Avstand og konsentrasjon">
+
+$n_0$ er bestemt av avstanden fra $E_F$ opp til $E_c$, $p_0$ av avstanden ned
+til $E_v$. Ved romtemperatur endrer hver 60 meV konsentrasjonen med en faktor 10.
+
+</Callout>
 
 For Si ved 300 K er $N_c \approx 2{,}9 \times 10^{19}$ cm⁻³ og
 $N_v \approx 1{,}0 \times 10^{19}$ cm⁻³. Intrinsisk Si har $1{,}5 \times 10^{10}$ bærere per
@@ -139,13 +149,14 @@ gjør at små endringer i $f$ gir store endringer i bærertall.
 
 ## Massevirkningsloven
 
-Gang de to konsentrasjonene sammen, og $E_F$ faller bort:
+Gang Boltzmann-uttrykkene for $n_0$ og $p_0$ sammen, og $E_F$ faller bort:
 
 $$
 n_0 p_0 = N_c N_v\, e^{-E_g/k_BT}
 $$
 
-Produktet avhenger av materialet og temperaturen, ikke av dopingen. I
+Produktet avhenger av materialet og temperaturen, ikke av dopingen, så lenge
+Boltzmann-tilnærmingen holder for begge bærertypene. I
 intrinsisk materiale er $n_0 = p_0 = n_i$, så
 <FormulaRef id="intrinsisk-konsentrasjon">$n_i = \sqrt{N_cN_v}\,e^{-E_g/2k_BT}$</FormulaRef>,
 med halve gapet i eksponenten. For Si ved 300 K er
@@ -154,15 +165,18 @@ $n_i = 1{,}5 \times 10^{10}$ cm⁻³.
 <Statement kind="law" name="Massevirkningsloven" id="massevirkning">
 
 Ved termisk likevekt er $n_0 p_0 = n_i^2$ for et gitt materiale ved en gitt
-temperatur, uansett doping. Boltzmann-uttrykkene gir den samme loven som
+temperatur, uansett doping, så lenge $E_F$ ligger flere $k_BT$ fra begge
+båndkantene. Boltzmann-uttrykkene gir den samme loven som
 <FormulaRef id="generasjon-rekombinasjon">ratebalansen</FormulaRef>:
 generasjonen avhenger bare av temperaturen, så produktet er låst.
 
 </Statement>
 
-Ofte er det lettere å måle $E_F$ fra
-<Term name="Intrinsisk nivå">det intrinsiske nivået</Term> $E_i$ enn fra en
-båndkant. Skriv avstanden til kanten som
+Ofte er det enklere å regne $E_F$ fra
+<Term name="Intrinsisk nivå">det intrinsiske nivået</Term> $E_i$, energien $E_F$
+har i intrinsisk materiale, enn fra en båndkant. Da trenger du bare $n_i$, ikke
+$N_c$, $N_v$ og båndkantene, og fortegnet på $E_F - E_i$ viser direkte om
+materialet er n- eller p-type. Skriv avstanden til kanten som
 $E_c - E_F = (E_c - E_i) - (E_F - E_i)$. Da deler $n_0$ seg i
 $N_c e^{-(E_c - E_i)/k_BT}$ ganget med $e^{(E_F - E_i)/k_BT}$, og den første
 faktoren er $n_i$, fordi $E_F = E_i$ i intrinsisk materiale. $p_0$ deler seg på
@@ -173,8 +187,17 @@ $E_i$, og vokser eksponentielt når nivået trekker mot ledningsbåndet. $E_i$
 ligger nær midten av gapet, men ikke nøyaktig. Sett $n_0 = p_0$ i
 Boltzmann-uttrykkene og løs for $E_F$, som da er $E_i$: $E_i$ ligger
 $\tfrac{1}{2}k_BT\ln(N_c/N_v) = \tfrac{3}{4}k_BT\ln(m_n^*/m_p^*)$ under midten,
-altså midt i gapet bare når $N_c = N_v$. For Si gir massene omtrent 13 meV ved
-romtemperatur.
+altså midt i gapet bare når $N_c = N_v$. Med $N_c > N_v$ har ledningsbåndet
+flere tilstander nær kanten enn valensbåndet, så $E_F$ må stå litt under midten
+for at elektronstripen ikke skal bli større enn hullstripen. For Si gir massene omtrent
+13 meV ved romtemperatur.
+
+<Callout title="$E_F$ målt fra $E_i$">
+
+$n_0 = n_i e^{(E_F - E_i)/k_BT}$ og $p_0 = n_i e^{(E_i - E_F)/k_BT}$. Står
+$E_F$ over $E_i$, er materialet n-type; står $E_F$ under $E_i$, er materialet p-type.
+
+</Callout>
 
 <Example title="hvor havner Fermi-nivået når du doper?">
 
@@ -229,9 +252,17 @@ Valensbåndtoppen telles på samme måte. Der møtes to bånd med hver sin
 krumning, lette og tunge hull, og $(m_p^*)^{3/2}$ er summen av de to
 krumningsmassene, hver i potensen $3/2$. For Si er $m_p^* \approx 0{,}55\,m_0$.
 
-Massen her er til telling. Regner du på hvordan bærerne beveger seg i felt,
-veies de samme krumningene annerledes, og da er tallet for elektroner i Si
-$0{,}26\,m_0$.
+Massen her er til telling. I et felt er det farten som avgjør strømmen, og
+farten en kraft gir, går som $1/m$ i kraftens retning. Der er det derfor $1/m_l$
+og $1/m_t$ som midles over dalene, og tallet for elektroner i Si blir
+$0{,}26\,m_0$, mye nærmere $m_t$ enn $m_l$.
+
+<Callout title="To masser i Si">
+
+Massen i $N_c$ teller tilstander og er $1{,}1\,m_0$ for elektroner i Si. For
+bevegelse i et felt midles $1/m$, og tallet er $0{,}26\,m_0$.
+
+</Callout>
 
 ## Temperaturavhengigheten
 
@@ -244,7 +275,7 @@ $1{,}5 \times 10^{10}$ i Si og $2 \times 10^{6}$ i GaAs.
 
 Dopet materiale følger $n_i$-kurven bare ved de høyeste temperaturene. Ved
 lave temperaturer sitter donorelektronene fortsatt bundet på donorene; oppvarming ioniserer
-dem, og i typisk dopet Si er alle donert til ledningsbåndet rundt 100 K.
+dem, og i typisk dopet Si er praktisk talt alle donorene ionisert rundt 100 K.
 Derfra er $n_0 = N_d$, flatt over et bredt temperaturområde: ioniseringen er
 ferdig, og $n_i$ er ennå mange tierpotenser mindre. Først når $n_i$ vokser seg
 opp mot $N_d$, tar de termiske parene over, og materialet oppfører seg
@@ -254,11 +285,18 @@ Komponenter skal styres av dopingen, så materialet dopes hardt nok til at det
 ekstrinsiske platået dekker hele driftsområdet: jo høyere $N_d$, desto høyere
 temperatur før $n_i$ tar igjen.
 
+<Callout title="Tre temperaturområder">
+
+Ved lave temperaturer er donorene ikke ionisert. På platået er $n_0 = N_d$, og
+når $n_i$ når opp mot $N_d$, blir materialet intrinsisk uansett doping.
+
+</Callout>
+
 <Simulation
   src={"/sims/temperaturavhengighet.js"}
   host={"dom"}
   title={"Bærerkonsentrasjonen mot temperaturen"}
-  caption={"Velg donortetthet. I det tonede feltet til venstre er donorene ennå ikke ionisert; på platået er $n_0 = N_d$; i feltet til høyre har den stiplede $n_i(T)$-kurven tatt igjen dopingen, og materialet er intrinsisk. Boka tegner de samme kurvene mot $1000/T$, med den varme siden mot venstre."}
+  caption={"$n_0$ mot temperaturen for én donortetthet. I det tonede feltet til venstre er donorene ennå ikke ionisert; på platået er $n_0 = N_d$; i feltet til høyre har den stiplede $n_i(T)$-kurven tatt igjen dopingen, og materialet er intrinsisk. Boka tegner de samme kurvene mot $1000/T$, med den varme siden mot venstre."}
   height={400}
 />
 
@@ -267,9 +305,10 @@ temperatur før $n_i$ tar igjen.
 Et materiale kan inneholde begge slags dopanter samtidig. Med $N_d > N_a$ er
 det n-type, og $E_F$ ligger høyt i gapet, så akseptornivåene er fylt.
 Elektronene som fyller dem, er tatt fra ledningsbåndet: hver akseptor
-annullerer én donor, og igjen står $n_0 \approx N_d - N_a$. Det kalles
+annullerer én donor, og igjen står
+$n_0 \approx N_d - N_a$ så lenge $N_d - N_a \gg n_i$. Denne annulleringen kalles
 <Term name="Kompensasjon">kompensasjon</Term>, og med $N_a = N_d$ er
-konsentrasjonene tilbake på $n_i$ og $p_i$, i et materiale fullt av dopanter.
+konsentrasjonene tilbake på $n_0 = p_0 = n_i$, i et materiale fullt av dopanter.
 
 Regnskapet bak er <Term name="Ladningsnøytralitet">ladningsnøytralitet</Term>:
 krystallen er nøytral, så positiv og negativ ladning må balansere,
@@ -278,9 +317,9 @@ $$
 p_0 + N_d^+ = n_0 + N_a^-
 $$
 
-Kravet står som <FormulaRef id="ladningsnoytralitet">én rad i
-Formelsamlingen</FormulaRef>. Sammen med massevirkningsloven bestemmer det
-$n_0$, $p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
+Sammen med massevirkningsloven bestemmer
+<FormulaRef id="ladningsnoytralitet">nøytralitetskravet</FormulaRef> $n_0$,
+$p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
 
 ## Sjekk deg selv
 
@@ -290,22 +329,22 @@ $n_0$, $p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
     "Den dobles",
     "Den er uendret",
     "Den halveres",
-    "Den kvadreres"
+    "Den faller til en fjerdedel"
   ]}
   answer={2}
-  explanation={"Produktet $n_0p_0 = n_i^2$ er låst av materiale og temperatur. Generasjonen av par avhenger bare av temperaturen, så dobbelt så mange elektroner betyr halvparten så mange hull."}
+  explanation={"Produktet $n_0p_0 = n_i^2$ er låst av materiale og temperatur, og $n_0 \\approx N_d$ dobles, så $p_0 = n_i^2/N_d$ halveres. Uendret er fristende fordi hullene ikke kommer fra donorene, men generasjonen av par avhenger bare av temperaturen, og med dobbelt så mange elektroner finner hvert hull en partner dobbelt så fort."}
 />
 
 <Quiz
-  question={"En Si-komponent med $N_d = 10^{15}$ cm⁻³ skal virke ved høy temperatur. Hva bestemmer den øvre temperaturgrensen?"}
+  question={"Ge har $n_i = 2{,}5 \\times 10^{13}$ cm⁻³ ved 300 K. En Ge-prøve er dopet med $N_d = 10^{13}$ cm⁻³, alle ionisert. Hvordan oppfører prøven seg ved 300 K?"}
   options={[
-    "Donorene slutter å være ionisert",
-    "$n_i(T)$ vokser seg opp mot $N_d$, og termisk generasjon tar over",
-    "$N_c$ faller med temperaturen",
-    "Båndgapet lukker seg"
+    "Nær intrinsisk, fordi $n_i$ allerede er større enn $N_d$",
+    "n-type med $n_0 = N_d$, fordi alle donorene er ionisert",
+    "n-type med $p_0 = n_i^2/N_d$, langt under $n_0$",
+    "p-type, fordi $n_i$ er større enn $N_d$"
   ]}
-  answer={1}
-  explanation={"Det ekstrinsiske platået varer så lenge $n_i \\ll N_d$. $n_i$ vokser eksponentielt med temperaturen, og der den når dopingnivået oppfører materialet seg intrinsisk. Hardere doping skyver grensen oppover; ionisering er et lavtemperaturfenomen, og $N_c$ vokser med temperaturen."}
+  answer={0}
+  explanation={"Platået $n_0 = N_d$ krever $n_i \\ll N_d$, og her er $n_i$ 2,5 ganger $N_d$. Nøytralitet og massevirkningsloven gir $n_0 \\approx 3{,}1 \\times 10^{13}$ og $p_0 \\approx 2{,}0 \\times 10^{13}$ cm⁻³, nesten like. Setter du $n_0 = N_d$, gir $p_0 = n_i^2/N_d = 6{,}3 \\times 10^{13}$ cm⁻³ flere hull enn elektroner, og nøytraliteten bryter sammen."}
 />
 
 <KeyTakeaways>
@@ -314,7 +353,7 @@ $n_0$, $p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
 - Bærerne ligger i tynne striper ved båndkantene: $N(E)$ vokser fra null, $f$ faller eksponentielt, og produktet topper seg $k_BT/2$ fra kanten.
 - Med Boltzmann-tilnærmingen er $n_0 = N_c e^{-(E_c - E_F)/k_BT}$ og $p_0 = N_v e^{-(E_F - E_v)/k_BT}$. 60 meV i $E_F$-avstand er en tierpotens ved romtemperatur.
 - $n_0 p_0 = n_i^2$ uansett doping, og $n_i = \sqrt{N_c N_v}\,e^{-E_g/2k_BT}$, som er $1{,}5 \times 10^{10}$ cm⁻³ for Si ved 300 K.
-- Massen i $N_c$ teller tilstander: seks daler og geometrisk middel gir $m_n^* = 1{,}1\,m_0$ i Si. Til transport veies de samme krumningene annerledes.
+- Massen i $N_c$ teller tilstander: seks daler og geometrisk middel gir $m_n^* = 1{,}1\,m_0$ i Si. For bevegelse i et felt midles $1/m$ over dalene, og da er tallet $0{,}26\,m_0$.
 - $n_0(T)$ har tre områder: ionisering, ekstrinsisk platå på $N_d$ og intrinsisk der $n_i$ tar igjen dopingen. Komponenter dopes så platået dekker driftsområdet.
 - Ladningsnøytralitet $p_0 + N_d^+ = n_0 + N_a^-$ og massevirkningsloven bestemmer alt; kompensasjon gir netto $N_d - N_a$.
 

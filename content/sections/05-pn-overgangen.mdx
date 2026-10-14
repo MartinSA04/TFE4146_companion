@@ -38,7 +38,7 @@ akseptorioner $N_a^-$. Ionene sitter fast i gitteret, så det bygger seg
 opp positiv romladning på n-siden og negativ på p-siden, med et felt
 $\mathcal{E}$ fra n mot p. Feltet driver hull tilbake mot p og elektroner
 tilbake mot n, altså mot diffusjonen, og det vokser til de to opphever
-hverandre. Gradienten er der fortsatt, men feltet holder igjen.
+hverandre.
 
 I likevekt går ingen nettostrøm, og det gjelder for hver bærertype for seg:
 
@@ -54,7 +54,9 @@ hverandre parvis. Feltet finnes bare i en sone $W$ rundt skillet,
 <Term name="Romladningssone">romladningssonen</Term>; utenfor er materialet
 nøytralt og feltet null. Over sonen ligger potensialforskjellen
 $V_0 = \mathcal{V}_n - \mathcal{V}_p$, <Term name="Kontaktpotensial">kontaktpotensialet</Term>.
-Det er en likevektsstørrelse og driver ingen strøm. Et voltmeter over
+Et felt peker fra høyt mot lavt potensial, og feltet i sonen peker fra n
+mot p, så n-siden har det høyeste potensialet og $V_0$ er positiv.
+Kontaktpotensialet er en likevektsstørrelse og driver ingen strøm. Et voltmeter over
 dioden viser null, siden probene lager nye kontaktpotensialer som opphever
 $V_0$.
 
@@ -77,15 +79,15 @@ $$
 -\frac{q}{k_BT}\,(\mathcal{V}_n - \mathcal{V}_p) = \ln\frac{p_n}{p_p}
 $$
 
-Med $V_0 = \mathcal{V}_n - \mathcal{V}_p$, $p_p = N_a$ og
-$p_n = n_i^2/N_d$ blir det
+Sett inn $V_0 = \mathcal{V}_n - \mathcal{V}_p$, $p_p = N_a$ og
+$p_n = n_i^2/N_d$:
 
 $$
 V_0 = \frac{k_BT}{q}\ln\frac{p_p}{p_n} = \frac{k_BT}{q}\ln\frac{N_aN_d}{n_i^2}
 $$
 
 <FormulaRef id="kontaktpotensial">Kontaktpotensialet</FormulaRef> vokser
-bare logaritmisk med dopingen, så for Si ved 300 K ligger det mellom 0,6
+bare logaritmisk med dopingen, så for Si ved 300 K ligger $V_0$ mellom 0,6
 og 0,9 V for all vanlig doping. Snudd om gir ligningen for $V_0$ forholdet
 mellom konsentrasjonene på de to sidene:
 
@@ -97,12 +99,19 @@ Den andre likheten følger av $p_pn_p = p_nn_n = n_i^2$. Det er
 <FormulaRef id="boltzmann-overgang">denne formen</FormulaRef> som brukes
 når strømmen gjennom overgangen skal regnes ut.
 
+<Callout title="Kontaktpotensialet">
+I likevekt opphever drift og diffusjon hverandre for hver bærertype, og over sonen ligger $V_0 = (k_BT/q)\ln(N_aN_d/n_i^2)$, mellom 0,6 og 0,9 V i Si, med n-siden på høyest potensial.
+</Callout>
+
 ### Båndskjemaet
 
 <FormulaRef id="fermi-flat">Fermi-nivået er flatt</FormulaRef> gjennom
 hele komponenten i likevekt. På p-siden ligger $E_F$ nær $E_v$, på n-siden
 nær $E_c$, så når nivåene skal ligge på linje, må båndene på p-siden ligge
-høyere enn på n-siden. Forskjellen er nøyaktig $qV_0$:
+høyere enn på n-siden. Potensialet gir samme retning. Båndkanten er
+elektronets potensielle energi, $E_c(x) = \text{konstant} - q\mathcal{V}(x)$,
+så båndene ligger lavest der potensialet er høyest, altså på n-siden.
+Forskjellen er nøyaktig $qV_0$:
 
 $$
 \begin{aligned}
@@ -118,6 +127,10 @@ $E_F$, og så skyve dem loddrett til nivåene faller sammen. Avstandene fra
 $E_i$ til $E_F$ på de to sidene legges sammen:
 <FormulaRef id="baandforskyvning">$qV_0 = (E_{ip} - E_F) + (E_F - E_{in})$</FormulaRef>.
 Inne i sonen bøyer båndene seg jevnt fra det ene nivået til det andre.
+
+<Callout title="Båndskjemaet i likevekt">
+$E_F$ er flat, og båndene på p-siden ligger $qV_0$ over båndene på n-siden, der potensialet er høyest. $qV_0$ er summen av avstandene fra $E_i$ til $E_F$ på de to sidene.
+</Callout>
 
 <Example title="kontaktpotensialet i en Si-diode">
 
@@ -178,6 +191,15 @@ $+qN_d$ på n-siden og $-qN_a$ på p-siden, og materialet utenfor er
 nøytralt. Sonen strekker seg $x_{p0}$ inn i p og $x_{n0}$ inn i n, med
 $W = x_{p0} + x_{n0}$.
 
+Tilnærmingen krever at spenningen over sonen er mange $k_BT/q$. Ligningen
+for null hullstrøm, $dp/p = -(q/k_BT)\,d\mathcal{V}$, integrert fra p-kanten bare fram til et punkt $x$ i
+sonen, gir $p(x) = p_p\,e^{-q[\mathcal{V}(x) - \mathcal{V}_p]/k_BT}$, så
+hullkonsentrasjonen faller med en faktor $e$ for hver $k_BT/q$ potensialet
+stiger, og elektronene faller på samme måte inn fra n-siden. Bærerne finnes
+derfor bare nær kantene, der potensialet har endret seg noen få $k_BT/q$.
+Med $V_0 = 0{,}8$ V er spenningen over sonen omtrent $30\,k_BT/q$, og
+ladningen i sonen er nesten bare ionene.
+
 Feltlinjer starter på positiv ladning og ender på negativ, og feltet skal
 være null utenfor sonen, så ladningen må være like stor på begge sider:
 
@@ -225,9 +247,14 @@ $$
 Den lettest dopede siden setter <FormulaRef id="sonebredde">bredden</FormulaRef>,
 siden det er den største av $1/N_a$ og $1/N_d$ som teller, og bredden vokser
 som roten av spenningen over sonen. Typiske verdier er noen tideler av en
-mikrometer. Siden båndene følger potensialet, og potensialet er integralet
-av et lineært felt, er båndkantene inne i sonen to parabler som møtes
-glatt ved $x = 0$.
+mikrometer. Potensialet er integralet av et lineært felt, så inne i sonen
+er $\mathcal{V}(x)$ to parabler som møtes glatt ved $x = 0$. Båndkantene,
+$E_c(x) = \text{konstant} - q\mathcal{V}(x)$, er de samme parablene snudd
+opp ned, så de faller fra p-siden ned mot n-siden.
+
+<Callout title="Sonebredden">
+Ladningen er like stor på begge sider, $x_{p0}N_a = x_{n0}N_d$, så sonen ligger mest på den lett dopede siden. $W$ vokser som roten av spenningen over sonen og er typisk noen tideler av en mikrometer.
+</Callout>
 
 <Example title="hvor bred er sonen?">
 
@@ -238,6 +265,7 @@ Bruk $\varepsilon = 11{,}8\,\varepsilon_0$ med $\varepsilon_0 = 8{,}85 \times 10
 
 <Solution>
 
+- Utarmingstilnærmingen holder: $V_0/(k_BT/q) = 0{,}796/0{,}0259 \approx 31$.
 - Arealet: $A = \pi(5 \times 10^{-4})^2 = 7{,}85 \times 10^{-7}$ cm², og
   $\varepsilon = 11{,}8 \cdot 8{,}85 \times 10^{-14} = 1{,}04 \times 10^{-12}$ F/cm.
 - Dopingleddet: $1/N_a + 1/N_d = 10^{-18} + 2 \times 10^{-16}$, altså
@@ -299,58 +327,71 @@ $\mathcal{E}_0 = -3{,}5 \times 10^{4}$ V/cm.
 Legg en spenning $V$ over dioden, regnet positiv når p-siden er positiv.
 De nøytrale områdene har liten resistans, så hele spenningen faller over
 romladningssonen. Positiv $V$ løfter potensialet på p-siden og
-senker barrieren fra $V_0$ til $V_0 - V$. Det kalles
+senker barrieren fra $V_0$ til $V_0 - V$, og positiv $V$ kalles
 <Term name="Forspenning">lederetningen</Term>. Negativ $V = -V_r$ senker
-p-siden, barrieren blir $V_0 + V_r$, og det kalles sperreretningen.
+potensialet på p-siden, barrieren blir $V_0 + V_r$, og negativ $V$ kalles
+sperreretningen.
 
-Alt fra likevektsregningen gjelder med $V_0 - V$ i stedet for $V_0$. Feltet
-i sonen er svakere i lederetningen, siden det påtrykte feltet peker mot det
-innebygde, og sterkere i sperreretningen. Et svakere felt trenger færre
-avdekkede ioner, så $W$ krymper i lederetningen og vokser i sperreretningen,
-fortsatt som roten av spenningen over sonen. Båndene er skjøvet
-$q(V_0 - V)$ fra hverandre. Dypt inne i hvert nøytralt område ligger
-Fermi-nivået der det lå i likevekt, målt fra sitt eget bånd, så nivåene på
-de to sidene skiller seg med $qV$: i lederetningen ligger $E_{Fn}$ over
-$E_{Fp}$, i sperreretningen under.
+Sonen har fortsatt bare ionene som ladning, og spenningen over den er nå
+$V_0 - V$, så feltet, $W$, $x_{p0}$ og $x_{n0}$ fra likevektsregningen
+gjelder med $V_0 - V$ i stedet for $V_0$. Utarmingstilnærmingen krever da
+at $V_0 - V$ er mange $k_BT/q$, så den holder ikke når forspenningen nærmer
+seg $V_0$. Feltet i sonen er svakere i lederetningen, siden det påtrykte
+feltet peker fra p mot n, mot det innebygde, og sterkere i sperreretningen.
+Et svakere felt trenger færre avdekkede ioner, så $W$ krymper i
+lederetningen og vokser i sperreretningen, fortsatt som roten av spenningen
+over sonen. Båndene er skjøvet $q(V_0 - V)$ fra hverandre. Dypt inne i
+hvert nøytralt område ligger Fermi-nivået der det lå i likevekt, målt fra
+sitt eget bånd. Det høyere potensialet på p-siden senker båndene der med
+$qV$, så i lederetningen ligger $E_{Fn}$ avstanden $qV$ over $E_{Fp}$, og i
+sperreretningen ligger $E_{Fn}$ under.
 
 ### De fire strømmene
 
-Diffusjonsstrømmen bæres av majoritetsbærere som kommer seg over barrieren:
-elektroner fra n til p og hull fra p til n. Bare halen av
-energifordelingen rekker opp, og andelen som gjør det, går som
-$e^{-q(V_0 - V)/k_BT}$. Senkes barrieren med $V$, vokser diffusjonsstrømmen
-med faktoren $e^{qV/k_BT}$; heves den, dør strømmen ut.
+Diffusjonsstrømmen bæres av majoritetsbærere som kommer seg over barrieren,
+elektroner fra n til p og hull fra p til n. Elektronene har negativ ladning
+og går motsatt vei av hullene, så begge gir elektrisk strøm fra p til n.
+Bare halen av energifordelingen rekker opp, og andelen som gjør det, går
+som $e^{-q(V_0 - V)/k_BT}$, samme faktor som $p_n/p_p$ i likevekt. Senkes
+barrieren med $V$, vokser diffusjonsstrømmen med faktoren $e^{qV/k_BT}$;
+heves den, faller diffusjonsstrømmen mot null.
 
 Driftstrømmen bæres av minoritetsbærere. Et elektron på p-siden som vandrer
-inn i sonen, feies ned barrieren til n-siden uansett hvor høy den er. Denne
-strømmen begrenses derfor av hvor mange minoritetsbærere som når sonen per
-sekund, og det er få, siden de lages ved termisk generasjon av par innenfor
-en diffusjonslengde fra sonen. Derfor kalles den
+inn i sonen, feies ned barrieren til n-siden uansett hvor høy den er, og et
+hull på n-siden feies til p-siden. Begge gir elektrisk strøm fra n til p,
+motsatt av diffusjonsstrømmen. Siden barrierens høyde ikke spiller noen
+rolle, begrenses driftstrømmen av hvor mange minoritetsbærere som når sonen per
+sekund, og de er få, siden de lages ved termisk generasjon av par innenfor
+en diffusjonslengde fra sonen. Derfor kalles driftstrømmen
 <Term name="Generasjonsstrøm">generasjonsstrømmen</Term>, og den er
-uavhengig av spenningen. Lys som lager par nær sonen, øker den, og det er slik en
-fotodiode virker.
+uavhengig av spenningen. Lys som lager par nær sonen, øker
+generasjonsstrømmen, og en fotodiode virker slik.
 
 <Simulation
   src={"/sims/pn-overgang.js"}
   host={"dom"}
   title={"pn-overgangen med og uten spenning"}
-  caption={"Dra i dopingen og spenningen. Øverst er dioden: røde prikker er hull, blå er elektroner, og den tonede sonen er romladningssonen, tom for bærere og fylt med ionene som står igjen, $\\ominus$ på p-siden og $\\oplus$ på n-siden, med feltet som pil. Sonen ligger mest på den lett dopede siden, vokser i sperreretningen og krymper i lederetningen. I midten er båndskjemaet på samme akse, med barrieren $q(V_0 - V)$ som klamme; $E_F$ er flat i likevekt og deler seg med $qV$ når spenningen står på. Nederst er amperemeteret: null i likevekt, praktisk talt null i sperreretningen, og eksponentielt voksende i lederetningen, der bærerne strømmer mot sonen, krysser den og rekombinerer på den andre siden. Enkeltprikkene som krysser i likevekt og sperreretning, er de termiske bidragene, diffusjon over barrieren og minoritetsbærere som feies ned den, like sjeldne hver vei i likevekt. Tegningen bruker en slakere eksponent enn $e^{qV/k_BT}$, og tettheten av prikker og ioner er ikke i skala med dopingen."}
+  caption={"En pn-overgang i tre lag på samme $x$-akse. Øverst er dioden: røde prikker er hull, blå er elektroner, og den tonede sonen er romladningssonen med ionene $\\ominus$ på p-siden og $\\oplus$ på n-siden og feltet som pil; enkeltprikkene som krysser sonen én og én, er diffusjon over barrieren og minoritetsbærere som feies ned den. I midten er båndskjemaet med barrieren $q(V_0 - V)$ som klamme, og nederst er et amperemeter. Tegningen bruker en slakere eksponent enn $e^{qV/k_BT}$, og tettheten av prikker og ioner er ikke i skala med dopingen."}
   height={340}
 />
 
-Nettostrømmen er diffusjonsstrømmen minus generasjonsstrømmen. I likevekt
-er de like store, og med spenning er diffusjonsstrømmen likevektsverdien
-ganger $e^{qV/k_BT}$:
+Nettostrømmen fra p til n er derfor diffusjonsstrømmen minus
+generasjonsstrømmen. I likevekt er de to like store, og med spenning er
+diffusjonsstrømmen likevektsverdien ganger $e^{qV/k_BT}$:
 
 $$
 I = I_0\left(e^{qV/k_BT} - 1\right), \qquad I_0 = |I_\text{gen}|
 $$
 
-I lederetningen vokser strømmen eksponentielt så snart $V$ er noen
-$k_BT/q$. I sperreretningen går eksponenten mot null, og strømmen er
-$-I_0$, den lille <Term name="Metningsstrøm">metningsstrømmen</Term>, uansett
-hvor stor sperrespenningen er. Det er denne asymmetrien som gjør dioden
-til en likeretter.
+$I$ er regnet positiv fra p til n, og $V = 0$ gir $I = 0$. I lederetningen
+vokser strømmen eksponentielt så snart $V$ er noen $k_BT/q$. I
+sperreretningen går eksponenten mot null, og strømmen er $-I_0$, den lille
+<Term name="Metningsstrøm">metningsstrømmen</Term>, uansett hvor stor
+sperrespenningen er. Denne asymmetrien gjør dioden til en likeretter.
+
+<Callout title="Diodeligningen">
+Diffusjonsstrømmen fra p til n vokser som $e^{qV/k_BT}$, mens generasjonsstrømmen fra n til p er uavhengig av $V$. Differansen er $I = I_0(e^{qV/k_BT} - 1)$, og i sperreretningen er strømmen $-I_0$.
+</Callout>
 
 <Compare>
 
@@ -365,7 +406,7 @@ til en likeretter.
 <CompareCol title="Lederetning, $V > 0$">
 
 - Barriere $V_0 - V$, smalere sone, svakere felt.
-- Diffusjonsstrømmen vokser med $e^{qV/k_BT}$; driftstrømmen er som før.
+- Diffusjonsstrømmen vokser med $e^{qV/k_BT}$; generasjonsstrømmen er som før.
 - $I \approx I_0\,e^{qV/k_BT}$ fra p til n.
 
 </CompareCol>
@@ -373,7 +414,7 @@ til en likeretter.
 <CompareCol title="Sperreretning, $V < 0$">
 
 - Barriere $V_0 + V_r$, bredere sone, sterkere felt.
-- Diffusjonsstrømmen er borte; driftstrømmen er som før.
+- Diffusjonsstrømmen er borte; generasjonsstrømmen er som før.
 - $I = -I_0$, uavhengig av $V_r$.
 
 </CompareCol>
@@ -383,34 +424,34 @@ til en likeretter.
 ## Sjekk deg selv
 
 <Quiz
-  question={"En Si-overgang har $N_a = 10^{17}$ cm⁻³ på p-siden og $N_d = 10^{15}$ cm⁻³ på n-siden. Hvor ligger romladningssonen?"}
+  question={"En Si-overgang har $N_a = 10^{17}$ cm⁻³ på p-siden og $N_d = 10^{15}$ cm⁻³ på n-siden. Hvordan fordeler romladningssonen seg?"}
   options={[
-    "Mest på p-siden, der det er flest ioner å avdekke",
-    "Mest på n-siden, omtrent 100 ganger så dypt som på p-siden",
-    "Like dypt på begge sider, siden feltet er det samme",
-    "Det avhenger av spenningen over dioden"
+    "$x_{p0} \\approx 100\\,x_{n0}$, siden p-siden har flest ioner",
+    "$x_{n0} \\approx 100\\,x_{p0}$, siden ladningene er like store",
+    "$x_{n0} \\approx 10\\,x_{p0}$, siden bredden går som en rot",
+    "$x_{n0} = x_{p0}$, siden feltet er kontinuerlig ved skillet"
   ]}
   answer={1}
-  explanation={"Ladningen må være like stor på begge sider, $x_{p0}N_a = x_{n0}N_d$, så $x_{n0}/x_{p0} = N_a/N_d = 100$. Den lett dopede siden må avdekke en tykkere skive for å samle den samme ladningen. Spenningen endrer $W$, men ikke forholdet."}
+  explanation={"Ladningen må være like stor på begge sider, $x_{p0}N_a = x_{n0}N_d$, så $x_{n0}/x_{p0} = N_a/N_d = 100$. Den lett dopede siden må avdekke en tykkere skive for å samle den samme ladningen. Roten står i uttrykket for $W$, mens forholdet mellom de to delene følger av ladningsbalansen alene. Feltet er kontinuerlig ved skillet, og det gir $\\mathcal{E}_0 = -qN_ax_{p0}/\\varepsilon = -qN_dx_{n0}/\\varepsilon$, den samme ladningsbalansen, så ulik doping krever ulik bredde."}
 />
 
 <Quiz
-  question={"Hvorfor er strømmen i sperreretningen så liten, og nesten uavhengig av sperrespenningen?"}
+  question={"Temperaturen i en Si-diode i sperreretning øker fra 300 K til 350 K. Hva skjer med metningsstrømmen $I_0$?"}
   options={[
-    "Feltet i sonen er for svakt til å drive bærere over",
-    "Barrieren stopper diffusjonen, og driftstrømmen er begrenset av hvor mange minoritetsbærere som lages termisk nær sonen",
-    "Sonen blir så bred at bærerne rekombinerer før de kommer over",
-    "Kontaktpotensialet opphever den påtrykte spenningen"
+    "Den vokser kraftig, siden flere par lages termisk nær sonen",
+    "Den er uendret, siden generasjonsstrømmen er uavhengig av $V$",
+    "Den minker, siden mobiliteten faller når gitteret vibrerer mer",
+    "Den vokser svakt, omtrent som $T$, siden $k_BT/q$ øker"
   ]}
-  answer={1}
-  explanation={"Barrieren $V_0 + V_r$ er for høy for majoritetsbærerne, så diffusjonsstrømmen forsvinner. Minoritetsbærerne som når sonen, feies over uansett hvor sterkt feltet er; det som setter strømmen, er hvor mange som kommer per sekund, og det bestemmes av den termiske generasjonen. Derfor er $I = -I_0$ for all sperrespenning."}
+  answer={0}
+  explanation={"$I_0$ er generasjonsstrømmen, satt av hvor mange minoritetsbærere som lages termisk innenfor en diffusjonslengde fra sonen. Generasjonen følger $n_i^2$, og $n_i$ vokser kraftig med temperaturen, så $I_0$ vokser kraftig. At generasjonsstrømmen er uavhengig av spenningen, sier ingenting om temperaturen. Mobiliteten setter ikke strømmen, siden minoritetsbærerne som når sonen, feies over uansett hvor fort de driver. $k_BT/q$ står i eksponenten $e^{qV/k_BT}$, og temperaturen virker på $I_0$ gjennom $n_i^2$, som vokser mye raskere enn $T$."}
 />
 
 <KeyTakeaways>
 
 - Ved skillet diffunderer majoritetsbærerne over, ionene de etterlater seg lager romladning og et felt fra n mot p, og feltet vokser til drift og diffusjon opphever hverandre for hver bærertype. Over sonen ligger $V_0 = (k_BT/q)\ln(N_aN_d/n_i^2)$, og $p_p/p_n = n_n/n_p = e^{qV_0/k_BT}$.
-- Fermi-nivået er flatt i likevekt, så båndene på p-siden ligger $qV_0$ over båndene på n-siden. Tegn hver side for seg, og skyv til $E_F$ faller sammen.
-- I utarmingstilnærmingen er ladningen i sonen bare ionene: $x_{p0}N_a = x_{n0}N_d$, feltet er en trekant med $\mathcal{E}_0 = -qN_dx_{n0}/\varepsilon$, $V_0$ er arealet, og $W = [2\varepsilon V_0/q\,(1/N_a + 1/N_d)]^{1/2}$ ligger mest på den lett dopede siden.
-- Forspenning bytter $V_0$ med $V_0 - V$ overalt. Diffusjonsstrømmen over barrieren går som $e^{qV/k_BT}$, driftstrømmen av termisk genererte minoritetsbærere er uavhengig av $V$, og $I = I_0(e^{qV/k_BT} - 1)$.
+- Fermi-nivået er flatt i likevekt, så båndene på p-siden ligger $qV_0$ over båndene på n-siden. Båndkanten er $\text{konstant} - q\mathcal{V}$, så båndene ligger lavest på n-siden, der potensialet er høyest. Tegn hver side for seg, og skyv til $E_F$ faller sammen.
+- I utarmingstilnærmingen, som krever at spenningen over sonen er mange $k_BT/q$, er ladningen i sonen bare ionene: $x_{p0}N_a = x_{n0}N_d$, feltet er en trekant med $\mathcal{E}_0 = -qN_dx_{n0}/\varepsilon$, $V_0$ er arealet, og $W = [2\varepsilon V_0/q\,(1/N_a + 1/N_d)]^{1/2}$ ligger mest på den lett dopede siden.
+- Forspenning gjør barrieren $V_0 - V$, og feltet og $W$ følger med. Diffusjonsstrømmen fra p til n går som $e^{qV/k_BT}$, generasjonsstrømmen av termisk genererte minoritetsbærere går fra n til p og er uavhengig av $V$, og $I = I_0(e^{qV/k_BT} - 1)$.
 
 </KeyTakeaways>

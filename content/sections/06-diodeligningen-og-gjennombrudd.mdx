@@ -31,17 +31,19 @@ $$
 \frac{p(-x_{p0})}{p(x_{n0})} = e^{q(V_0 - V)/k_BT}
 $$
 
-Ved <Term name="Lav injeksjon">lav injeksjon</Term> endrer
-majoritetskonsentrasjonen seg lite, så $p(-x_{p0}) = p_p$ som før. Del
+Ved <Term name="Lav injeksjon">lav injeksjon</Term> er overskuddet av
+minoritetsbærere lite mot majoritetskonsentrasjonen på samme side.
+Nøytraliteten krever like mange ekstra majoritetsbærere, men de er få mot
+dem som er der fra før, så $p(-x_{p0}) = p_p$ som før. Del
 likevektsforholdet på det nye:
 
 $$
 \frac{p(x_{n0})}{p_n} = e^{qV/k_BT}
 $$
 
-Hullkonsentrasjonen ved kanten av n-siden vokser eksponentielt med
-spenningen i lederetningen og faller under $p_n$ i sperreretningen.
-Overskuddet ved kanten er
+Hullkonsentrasjonen ved kanten av n-siden er $p_n$ ved $V = 0$, vokser
+eksponentielt med spenningen i lederetningen og faller under $p_n$ i
+sperreretningen. Overskuddet ved kanten er
 
 $$
 \begin{aligned}
@@ -50,13 +52,18 @@ $$
 \end{aligned}
 $$
 
-Dette er <Term name="Injeksjon">injeksjon</Term>. Spenningen holder et fast
-overskudd av minoritetsbærere ved hver sonekant, hull på n-siden og
-elektroner på p-siden, og fra kanten diffunderer de innover i det nøytrale
-materialet og rekombinerer, akkurat som hullene som sprøytes inn i enden
-av en stav. Regn avstanden fra kanten, $x_n$ innover i n-siden og $x_p$
-innover i p-siden. Er begge sidene lange mot diffusjonslengden, er
-profilene
+Lav injeksjon krever $\Delta p_n \ll N_d$ og $\Delta n_p \ll N_a$. Forholdet
+$\Delta p_n/N_d = (n_i/N_d)^2\left(e^{qV/k_BT} - 1\right)$ er størst der
+dopingen er lavest, så grensen nås først på den lett dopede siden.
+
+At spenningen holder et fast overskudd av minoritetsbærere ved hver
+sonekant, hull på n-siden og elektroner på p-siden, heter
+<Term name="Injeksjon">injeksjon</Term>. Fra kanten diffunderer
+overskuddet innover i det nøytrale materialet og rekombinerer, akkurat som
+hullene som sprøytes inn i enden av en stav. Regn avstanden fra kanten,
+$x_n$ innover i n-siden og $x_p$ innover i p-siden. Er hver nøytral side
+mange diffusjonslengder lang, dør overskuddet ut før kontakten, og
+profilene er
 
 $$
 \begin{aligned}
@@ -65,24 +72,40 @@ $$
 \end{aligned}
 $$
 
-I båndskjemaet ligger <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåene</Term>
-$F_n$ og $F_p$ avstanden $qV$ fra hverandre inne i sonen, så der er
-$pn = n_i^2\,e^{(F_n - F_p)/k_BT} = n_i^2\,e^{qV/k_BT}$. Utenfor sonen er
-det minoritetsnivået som flytter seg. $F_p$ på n-siden stiger lineært med
-$x_n$ og møter $E_F$ etter mange diffusjonslengder, mens majoritetsnivået
-nesten ikke rører seg.
+En kortere side har kontakten der overskuddet ennå ikke har dødd ut.
+Kontakten holder overskuddet på null, så profilen faller brattere, og
+strømmen fra den siden blir større.
+
+<Callout title="Overskuddet ved sonekantene">
+Spenningen setter overskuddet ved hver sonekant, $\Delta p_n = p_n(e^{qV/k_BT} - 1)$ og $\Delta n_p = n_p(e^{qV/k_BT} - 1)$. I en lang side faller overskuddet som $e^{-x_n/L_p}$ og $e^{-x_p/L_n}$ innover.
+</Callout>
+
+I båndskjemaet gir <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåene</Term>
+$F_n$ og $F_p$ det samme overskuddet ved sonekantene. Begge er flate gjennom sonen,
+fordi drift og diffusjon nesten opphever hverandre der, så de
+ligger $qV$ fra hverandre, like langt som Fermi-nivåene dypt inne på de to
+sidene. Inne i sonen er derfor
+$pn = n_i^2\,e^{(F_n - F_p)/k_BT} = n_i^2\,e^{qV/k_BT}$, og med $n = n_n$ ved
+n-kanten gir produktet $p(x_{n0}) = p_n\,e^{qV/k_BT}$. Utenfor sonen
+flytter minoritetsnivået seg. $F_p$ ligger lavere jo flere hull det er, så
+på n-siden stiger $F_p$ lineært med $x_n$ mens $\ln p$ faller lineært, til
+nivået møter $E_F$ etter mange diffusjonslengder. Majoritetsnivået rører seg
+nesten ikke ved lav injeksjon.
 
 ## Diodeligningen
 
-Hullstrømmen på n-siden er diffusjonsstrømmen fra profilen, og den er
-proporsjonal med overskuddet i hvert punkt:
+Hullene diffunderer fra kanten innover i n-siden, og diffusjonsstrømmen
+deres går samme vei, fra p til n. Hullstrømmen er proporsjonal med
+overskuddet i hvert punkt:
 
 $$
 I_p(x_n) = -qAD_p\frac{d\,\delta p}{dx_n} = qA\frac{D_p}{L_p}\,\delta p(x_n)
 $$
 
 Ved kanten $x_n = 0$ er dette hele hullstrømmen som injiseres i n-siden.
-Tilsvarende for elektronene inn i p-siden:
+Elektronene diffunderer på samme måte innover i p-siden, i retning $+x_p$,
+men ladningen deres er negativ, så elektronstrømmen er negativ regnet langs
+$x_p$:
 
 $$
 \begin{aligned}
@@ -91,8 +114,8 @@ I_n(x_p = 0) &= -qA\frac{D_n}{L_n}\,\Delta n_p
 \end{aligned}
 $$
 
-Elektronstrømmen er negativ regnet langs $x_p$, så den går i $+x$, samme
-vei som hullstrømmen. Regn med at ingenting rekombinerer inne i sonen. Da
+Elektronstrømmen går altså i $+x$, fra p til n, samme vei som
+hullstrømmen. Regn med at ingenting rekombinerer inne i sonen. Da
 har hvert elektron som kommer inn i p-siden ved $-x_{p0}$ krysset sonen
 fra $x_{n0}$, så elektronstrømmen er den samme ved begge kantene, og hele
 strømmen finnes ved $x_{n0}$ som summen av de to:
@@ -104,8 +127,9 @@ I &= qA\left(\frac{D_p}{L_p}p_n + \frac{D_n}{L_n}n_p\right)\left(e^{qV/k_BT} - 1
 \end{aligned}
 $$
 
-Det er <Term name="Diodeligningen">diodeligningen</Term>, nå med
-<FormulaRef id="metningsstrom-i0">metningsstrømmen</FormulaRef> regnet ut.
+Uttrykket er <Term name="Diodeligningen">diodeligningen</Term>, nå med
+<FormulaRef id="metningsstrom-i0">metningsstrømmen</FormulaRef> regnet ut,
+og ved $V = 0$ gir det $I = 0$, som i likevekt.
 Ingenting i utledningen krever $V > 0$: med $V = -V_r$ og $V_r$ noen
 $k_BT/q$ er $I = -I_0$. Strømmen er den samme i hvert tverrsnitt av
 dioden, så $I$ gjelder overalt, selv om fordelingen mellom hull og
@@ -118,15 +142,20 @@ $n_p$ ubetydelig mot $p_n$, så strømmen er nesten bare hull injisert i
 n-siden, og den lagrede ladningen sitter der. Skal hullstrømmen dobles,
 halverer du dopingen på n-siden. Å doble p⁺-dopingen gjør ingenting. En
 overgang implantert i et substrat med $N_d = 10^{14}$ cm⁻³ er p⁺n med god
-margin, og det er den vanlige situasjonen i komponenter.
+margin, og slike overganger er det vanlige i komponenter.
+
+<Callout title="Den lett dopede siden">
+Metningsstrømmen er $I_0 = qA(D_pp_n/L_p + D_nn_p/L_n)$. Siden $p_n = n_i^2/N_d$ og $n_p = n_i^2/N_a$, tar den lett dopede siden nesten hele injeksjonen, og dopingen der setter strømmen.
+</Callout>
 
 <Example title="strømmen i en Si-diode">
 
 En abrupt Si-overgang med $A = 10^{-4}$ cm² har $N_a = 10^{17}$ cm⁻³,
 $\tau_n = 0{,}1$ µs og $\mu_n = 700$ cm²/V·s på p-siden, og
 $N_d = 10^{15}$ cm⁻³, $\tau_p = 10$ µs og $\mu_p = 450$ cm²/V·s på
-n-siden. Mobilitetene er minoritetsbærernes. Finn strømmen ved $+0{,}5$ V
-og ved $-0{,}5$ V ved 300 K.
+n-siden. Mobilitetene er minoritetsbærernes, og begge de nøytrale sidene er
+lange mot diffusjonslengdene. Finn strømmen ved $+0{,}5$ V og ved
+$-0{,}5$ V ved 300 K.
 
 <Solution>
 
@@ -188,6 +217,8 @@ I &= 4{,}37 \times 10^{-15} \cdot 2{,}42 \times 10^{8} \\
 \end{aligned}
 $$
 
+- Lav injeksjon på den lett dopede n-siden: $\Delta p_n = p_n e^{19{,}3} = 2{,}25 \times 10^{5} \cdot 2{,}42 \times 10^{8} = 5{,}4 \times 10^{13}$ cm⁻³, 5 % av $N_d = 10^{15}$ cm⁻³, så regningen holder. Ved $0{,}58$ V ville $\Delta p_n$ nå $N_d$.
+- Lang diode: n-siden må være mange ganger $L_p = 0{,}11$ mm lang.
 - Sperreretning: $e^{-19{,}3}$ er null i praksis, så $I = -I_0 = -4{,}37 \times 10^{-15}$ A.
 - Hullenes andel av strømmen er $2{,}43/2{,}73 = 0{,}89$, injisert i den lett dopede n-siden.
 
@@ -205,8 +236,8 @@ hull.
 
 ### Ladningskontroll
 
-Den samme strømmen kan regnes ut fra ladningen som ligger lagret i
-profilen. Overskuddet av hull på n-siden er arealet under profilen,
+Hullstrømmen inn i n-siden kan også regnes ut fra ladningen som ligger lagret
+i profilen $\delta p(x_n)$. Overskuddet av hull på n-siden er arealet under profilen,
 <FormulaRef id="lagret-ladning">$Q_p = qA\,L_p\,\Delta p_n$</FormulaRef>.
 Hvert hull lever i gjennomsnitt $\tau_p$ før det rekombinerer, så hele
 ladningen må fylles på hvert $\tau_p$ sekund, og strømmen inn er
@@ -226,45 +257,53 @@ $Q_p/\tau_p = 0{,}94$ µA er hullstrømmen.
 
 ## Strømkomponentene langs dioden
 
-Ved sonekantene er strømmen delt i hullstrømmen $I_p(0)$ inn i n-siden og
-elektronstrømmen $I_n(0)$ inn i p-siden. Innover i n-siden dør
-hullstrømmen ut som $e^{-x_n/L_p}$, sammen med overskuddet. Den samlede
-strømmen er den samme overalt, så elektronene må ta over:
+Regn alle strømmene positive fra p til n, samme vei som $I$. Ved
+sonekantene er strømmen delt i hullstrømmen $I_p(0)$, fra hullene som
+injiseres i n-siden, og elektronstrømmen fra elektronene som injiseres i
+p-siden. Innover i n-siden dør hullstrømmen ut som $e^{-x_n/L_p}$, sammen
+med overskuddet. Den samlede strømmen er den samme overalt, så elektronene
+må ta over:
 
 $$
 I_n(x_n) = I - I_p(x_n)
 $$
 
-Elektronene strømmer inn fra n-kontakten for å erstatte dem som
-rekombinerer med de injiserte hullene nær sonen, og for å levere
-elektronene som injiseres videre inn i p-siden. Noen diffusjonslengder
-fra sonen bærer majoritetsbærerne hele strømmen. På p-siden dør
+Elektronene strømmer inn fra n-kontakten mot sonen, motsatt vei av
+strømmen sin, for å erstatte dem som rekombinerer med de injiserte hullene
+nær sonen, og for å levere elektronene som injiseres videre inn i p-siden.
+Noen diffusjonslengder fra sonen bærer majoritetsbærerne hele strømmen. På p-siden dør
 elektronstrømmen ut på samme måte, og hullene tar over.
 
 <Simulation
   src={"/sims/injeksjon.js"}
   host={"dom"}
   title={"Injeksjon og strømkomponentene"}
-  caption={"Dra i spenningen og velg dopingen. Øverst er dioden med bare minoritetsbærerne tegnet: røde hull på n-siden og blå elektroner på p-siden. Hver prikk diffunderer, og forsvinner når den rekombinerer; nye lages jevnt av termisk generasjon. I lederetningen kommer det hele tiden nye over sonen, i sperreretningen feies de som når kanten, over til den andre siden. I midten er profilene $p(x_n)$ og $n(x_p)$ med likevektsverdiene som stiplede linjer; det skraverte arealet er den lagrede ladningen $Q_p$ og $Q_n$, og skalaen følger den høyeste kurven. Nederst er strømmen delt i hullstrøm og elektronstrøm, med fast samlet høyde: båndene viser andelene, ikke hvor stor strømmen er. Pilene går den veien bærerne beveger seg, elektronene mot strømmen sin. Tegningen bruker en slakere eksponent enn $e^{qV/k_BT}$, og sonen er ikke i skala med diffusjonslengdene."}
+  caption={"Øverst er dioden med bare minoritetsbærerne tegnet, røde hull på n-siden og blå elektroner på p-siden. I midten er profilene $p(x_n)$ og $n(x_p)$ med likevektsverdiene stiplet og den lagrede ladningen $Q_p$ og $Q_n$ skravert. Nederst er strømmen delt i hullstrøm og elektronstrøm med fast samlet høyde, så båndene viser andelene, og pilene i dem går den veien bærerne beveger seg. Tegningen bruker en slakere eksponent enn $e^{qV/k_BT}$, og sonen er ikke i skala med diffusjonslengdene."}
   height={360}
 />
 
 Utenfor sonen er minoritetsstrømmen diffusjon, siden bærerne er få, men
 gradienten stor. Majoritetsstrømmen er drift i et lite felt. Det feltet
 er ikke null, så ikke hele spenningen faller over sonen, men
-majoritetsbærerne er så mange at feltet som trengs, er lite, og
-regningen med hele $V$ over sonen holder for det meste.
+majoritetsbærerne er så mange at feltet som trengs, er lite.
+Diodeligningen med hele $V$ over sonen holder så lenge spenningsfallet $\Delta V$ over de
+nøytrale områdene er lite mot $k_BT/q$, siden fallet gjør strømmen
+$e^{q\Delta V/k_BT}$ ganger mindre. Ved store strømmer i lederetningen er
+fallet ikke lenger lite.
+
+<Callout title="Strømmen langs dioden">
+Den samlede strømmen er den samme i hvert tverrsnitt. Nær sonen bærer minoritetsbærerne den ved diffusjon, og noen diffusjonslengder ut bærer majoritetsbærerne hele strømmen ved drift.
+</Callout>
 
 <Derivation title="Elektronstrømmen på n-siden">
 
-Skriv $F = e^{qV/k_BT} - 1$, og sett diodeligningen og hullstrømmen inn
-i $I_n(x_n) = I - I_p(x_n)$:
+Sett diodeligningen og hullstrømmen inn i $I_n(x_n) = I - I_p(x_n)$:
 
 $$
 \begin{aligned}
-I_p(x_n) &= qA\frac{D_p}{L_p}\,p_n\,e^{-x_n/L_p}\,F \\
+I_p(x_n) &= qA\frac{D_p}{L_p}\,p_n\,e^{-x_n/L_p}\left(e^{qV/k_BT} - 1\right) \\
 I_n(x_n) &= qA\left[\frac{D_p}{L_p}\left(1 - e^{-x_n/L_p}\right)p_n\right. \\
-&\qquad\left. + \frac{D_n}{L_n}n_p\right]F
+&\qquad\left. + \frac{D_n}{L_n}n_p\right]\left(e^{qV/k_BT} - 1\right)
 \end{aligned}
 $$
 
@@ -288,27 +327,37 @@ og tilsvarende $\Delta n_p \approx -n_p$. Allerede ved noen tideler av en
 volt er minoritetskonsentrasjonen ved kantene i praksis null. Profilene
 er de samme eksponentialene med negativt fortegn: $p(x_n) = p_n(1 -
 e^{-x_n/L_p})$, tømt for minoritetsbærere en diffusjonslengde ut på hver
-side. Det er <Term name="Ekstraksjon">ekstraksjon</Term>, motstykket til
-injeksjon. Et hull som når kanten, feies ned barrieren og erstattes ikke
-av noen diffusjon motsatt vei, så det oppstår en gradient, og hullene i
-n-siden diffunderer mot sonen. Metningsstrømmen krysser sonen som drift,
-men mates av diffusjon fra begge sider, og hullene som mater den, lages
-termisk innenfor en diffusjonslengde. Generasjonsraten i det volumet er
-$p_n/\tau_p$ per cm³, så hullbidraget er $qA\,p_nL_p/\tau_p$, som er akkurat
-$qA\,D_pp_n/L_p$ i $I_0$.
+side. Tømmingen av kantene heter <Term name="Ekstraksjon">ekstraksjon</Term>,
+motstykket til injeksjon. Et hull som når kanten, feies ned barrieren og
+erstattes ikke av noen diffusjon motsatt vei, så det oppstår en gradient,
+og hullene i n-siden diffunderer mot sonen. Hullene går fra n til p og
+elektronene fra p til n, så begge gir strøm fra n til p, og derfor er
+$I = -I_0$ negativ. Metningsstrømmen krysser sonen som drift, men mates av
+diffusjon fra begge sider, og hullene som mater den, lages termisk
+innenfor en diffusjonslengde. Generasjonen lager $p_n/\tau_p$ hull per cm³
+og sekund, like mange som rekombinerer i likevekt. Der hullene mangler,
+rekombinerer færre, og nettogenerasjonen $(p_n - p)/\tau_p$ integrert over
+profilen gir hullbidraget $qA\,p_nL_p/\tau_p$, akkurat $qA\,D_pp_n/L_p$ i
+$I_0$. Metningsstrømmen er altså
+<Term name="Generasjonsstrøm">generasjonsstrømmen</Term>, regnet ut.
 
-I sperreretningen deler kvasi-Fermi-nivåene seg den andre veien: $F_n$ går
-mot $E_v$ og $F_p$ mot $E_c$, siden det er færre bærere enn i likevekt. $F_p$
-kan gå inn i ledningsbåndet på n-siden. Det betyr bare at
-hullkonsentrasjonen der er enda mindre enn $p_n$, siden $F_p$ måler hull
-og leses mot $E_v$. Inne i sonen er $pn = n_i^2\,e^{-qV_r/k_BT} \approx 0$.
+<Callout title="Metningsstrømmen">
+I sperreretningen er kantene tømt for minoritetsbærere, og $I_0$ er strømmen av bærerne som lages termisk innenfor en diffusjonslengde fra sonen og feies over den.
+</Callout>
+
+I sperreretningen deler kvasi-Fermi-nivåene seg den andre veien, med $F_p$
+over $F_n$, siden det er færre bærere enn i likevekt. På n-siden stiger
+$F_p$ mot $E_c$, og på p-siden synker $F_n$ mot $E_v$. $F_p$ kan gå inn i
+ledningsbåndet på n-siden, og da er hullkonsentrasjonen der bare enda
+mindre, siden $F_p$ måler hull og leses mot $E_v$. Inne i sonen er
+$pn = n_i^2\,e^{-qV_r/k_BT} \approx 0$.
 
 ## Gjennombrudd
 
 Metningsstrømmen holder seg til en kritisk sperrespenning $V_\text{br}$.
 Der vokser sperrestrømmen bratt, og store strømmer går med nesten ingen
-økning i spenningen, så sperrekarakteristikken får en skarp knekk. Det
-er <Term name="Gjennombrudd">gjennombrudd</Term>, og det er ikke
+økning i spenningen, så sperrekarakteristikken får en skarp knekk. Knekken
+er <Term name="Gjennombrudd">gjennombrudd</Term>, og gjennombrudd er ikke
 ødeleggende i seg selv. Med en kilde $E$ og en seriemotstand $R$ er den
 største sperrestrømmen $(E - V_\text{br})/R$, og med $R$ valgt riktig
 arbeider dioden like trygt i gjennombrudd som i lederetningen. Det som
@@ -323,7 +372,8 @@ sperrespenningen krysser båndene allerede ved noen tideler av en volt:
 ledningsbåndet på n-siden ligger da rett overfor valensbåndet på
 p-siden, skilt av en barriere med bredde $d$. Da kan elektroner
 tunnelere fra de fylte tilstandene i valensbåndet på p-siden til de
-tomme i ledningsbåndet på n-siden, og det er en sperrestrøm fra n til p.
+tomme i ledningsbåndet på n-siden. Elektronene går fra p til n, så
+strømmen går fra n til p, i sperreretningen.
 Tunnelering krever mange fylte tilstander overfor mange tomme, skilt av
 en smal barriere, så overgangen må være skarp og dopingen høy. Mer
 sperrespenning gir brattere bånd og mindre $d$, mens $W$ nesten ikke
@@ -336,7 +386,7 @@ bred for tunnelering, og skred tar over.
 
 I en lett dopet overgang er sonen for bred for tunnelering, men feltet
 kan gi en bærer nok kinetisk energi til at den slår løs et
-elektron-hull-par når den kolliderer med gitteret. Det er
+elektron-hull-par når den kolliderer med gitteret. En slik kollisjon heter
 <Term name="Støtionisasjon">støtionisasjon</Term>. Det opprinnelige
 elektronet og det nye feies til n-siden, hullet til p-siden, og hver av
 de nye bærerne kan selv slå løs et par: et skred.
@@ -354,7 +404,8 @@ M &= \frac{n_\text{ut}}{n_\text{in}} = \frac{1}{1 - P}
 \end{aligned}
 $$
 
-Når $P$ nærmer seg 1, vokser multiplikasjonen uten grense, og strømmen
+Med $P = 0$ er $M = 1$, uten multiplikasjon. Når $P$ nærmer seg 1, vokser
+multiplikasjonen uten grense, og strømmen
 settes av kretsen utenfor. $P$ vokser med feltet, altså med
 sperrespenningen, og målt multiplikasjon nær gjennombrudd følger
 
@@ -362,7 +413,8 @@ $$
 M = \frac{1}{1 - (V/V_\text{br})^n}
 $$
 
-med $n$ mellom 3 og 6 etter materialet. $V_\text{br}$ vokser med
+der eksponenten $n$ er et tall mellom 3 og 6, satt av materialet, og ikke
+en konsentrasjon. $V_\text{br}$ vokser med
 båndgapet, siden en ioniserende kollisjon krever mer energi, og faller
 med dopingen på den lett dopede siden, siden feltet i sonen ved en gitt
 spenning vokser med dopingen. For Si faller $V_\text{br}$ fra noen hundre
@@ -418,32 +470,32 @@ er skred.
 ## Sjekk deg selv
 
 <Quiz
-  question={"En p⁺n-diode skal gi dobbelt så stor strøm ved samme spenning. Hva hjelper?"}
+  question={"I en lang p⁺n-diode firedobles levetiden $\\tau_p$ på n-siden, mens dopingen er den samme. Hva skjer med $I_0$?"}
   options={[
-    "Doble akseptordopingen på p⁺-siden",
-    "Halvere donordopingen på n-siden",
-    "Doble donordopingen på n-siden",
-    "Halvere levetiden $\\tau_p$ på n-siden"
+    "$I_0$ halveres",
+    "$I_0$ dobles",
+    "$I_0$ firedobles",
+    "$I_0$ er uendret"
   ]}
-  answer={1}
-  explanation={"Strømmen er nesten bare hull injisert i n-siden, med $I_0 \\approx qA(D_p/L_p)\\,p_n$ og $p_n = n_i^2/N_d$. Halveres $N_d$, dobles $p_n$ og strømmen. $n_p$ er allerede ubetydelig, så p⁺-dopingen spiller ingen rolle, og kortere levetid gir bare $\\sqrt{2}$ ganger mer gjennom $L_p$."}
+  answer={0}
+  explanation={"Strømmen er nesten bare hull, med $I_0 \\approx qA\\,p_nD_p/L_p$ og $L_p = \\sqrt{D_p\\tau_p}$. Firedoblet $\\tau_p$ dobler $L_p$, så profilen er dobbelt så slak, gradienten ved kanten halvparten så stor og $I_0$ halvert. Den lagrede ladningen $Q_p = qAL_p\\Delta p_n$ dobles, men hvert hull lever fire ganger så lenge, så $Q_p/\\tau_p$ halveres også. Dopingen og dermed $p_n$ er den samme, men $I_0$ avhenger også av $L_p$."}
 />
 
 <Quiz
-  question={"En Si-diode bryter gjennom ved 200 V. Hvilken mekanisme, og hvordan er den dopet?"}
+  question={"En Zener-diode i Si har $V_\\text{br} = 200$ V. Hvilken mekanisme bryter den gjennom ved, og hvordan er den dopet?"}
   options={[
     "Zener-effekten; sterkt dopet på begge sider",
     "Skred; lett dopet på minst én side",
-    "Zener-effekten; lett dopet på begge sider",
+    "Zener-effekten; lett dopet på minst én side",
     "Skred; sterkt dopet på begge sider"
   ]}
   answer={1}
-  explanation={"Tunnelering krever en tynn sone, altså sterk doping, og gir gjennombrudd under noen få volt. 200 V er langt over det, så mekanismen er skred, og det er en lett dopet side som gir bred sone og høy $V_\\text{br}$."}
+  explanation={"Tunnelering krever en tynn sone, altså sterk doping på begge sider, og gir gjennombrudd under noen få volt. 200 V er langt over det, så mekanismen er skred, og det er en lett dopet side som gir bred sone og høy $V_\\text{br}$. Navnet Zener-diode brukes om gjennombruddsdioder uansett mekanisme. Sterk doping på begge sider ville gitt en smal sone og lav $V_\\text{br}$."}
 />
 
 <KeyTakeaways>
 
-- Spenningen setter minoritetskonsentrasjonen ved sonekantene, $\Delta p_n = p_n(e^{qV/k_BT} - 1)$ og $\Delta n_p = n_p(e^{qV/k_BT} - 1)$, og overskuddet faller som $e^{-x_n/L_p}$ og $e^{-x_p/L_n}$ innover. Inne i sonen er $F_n - F_p = qV$.
+- Spenningen setter minoritetskonsentrasjonen ved sonekantene, $\Delta p_n = p_n(e^{qV/k_BT} - 1)$ og $\Delta n_p = n_p(e^{qV/k_BT} - 1)$, og i en lang side faller overskuddet som $e^{-x_n/L_p}$ og $e^{-x_p/L_n}$ innover. Inne i sonen er $F_n - F_p = qV$.
 - Diffusjonsstrømmene ved kantene, lagt sammen uten rekombinasjon i sonen, gir $I = I_0(e^{qV/k_BT} - 1)$ med $I_0 = qA(D_pp_n/L_p + D_nn_p/L_n)$. Den lett dopede siden tar nesten hele injeksjonen. Ladningskontroll gir det samme: $I_p(0) = Q_p/\tau_p$ med $Q_p = qAL_p\Delta p_n$.
 - Strømmen er den samme i hvert tverrsnitt, men minoritetsstrømmen dør ut som $e^{-x/L}$ fra sonen, og majoritetsbærerne tar over.
 - I sperreretning er $\Delta p_n \approx -p_n$. Kantene tømmes for minoritetsbærere, og $I_0$ er den termiske generasjonen innenfor en diffusjonslengde fra sonen.

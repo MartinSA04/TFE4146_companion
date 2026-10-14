@@ -39,9 +39,9 @@ $$
 $$
 
 Ved <Term name="Lav injeksjon">lav injeksjon</Term> er $\delta n$ liten mot
-majoritetskonsentrasjonen, så $\delta n^2$ kan strykes, og i p-type materiale
-er $n_0$ ubetydelig ved siden av $p_0$. Det som står igjen, er en lineær
-ligning med eksponentiell løsning:
+majoritetskonsentrasjonen, i p-type $\delta n \ll p_0$, så $\delta n^2$ kan
+strykes, og $n_0$ er ubetydelig ved siden av $p_0$. Det som står igjen, er en
+lineær ligning med eksponentiell løsning:
 
 $$
 \delta n(t) = \Delta n\, e^{-a_r p_0 t} = \Delta n\, e^{-t/\tau_n}
@@ -49,11 +49,11 @@ $$
 
 med $\tau_n = 1/a_r p_0$.
 
-$\tau_n$ er <Term name="Levetid">levetiden</Term> til minoritetsbærerne;
-den generelle formen $1/a_r(n_0 + p_0)$ står i
-<FormulaRef id="levetid">Formelsamlingen</FormulaRef>. Majoriteten faller med
-samme rate, siden bærerne forsvinner parvis, men for den er $\delta p$ en
-liten korreksjon på $p_0$.
+$\tau_n$ er <Term name="Levetid">levetiden</Term> til minoritetsbærerne. Uten
+å stryke $n_0$ er den <FormulaRef id="levetid">$1/a_r(n_0 + p_0)$</FormulaRef>,
+så i n-type materiale er levetiden til hullene $\tau_p = 1/a_r n_0$.
+Majoriteten faller med samme rate, siden bærerne forsvinner parvis, men for
+den er $\delta p$ en liten korreksjon på $p_0$.
 
 I Si og Ge er direkte rekombinasjon sjelden. Nesten all rekombinasjon går via
 <Term name="Rekombinasjonssenter">rekombinasjonssentre</Term>, urenheter og
@@ -61,8 +61,16 @@ defekter med et nivå $E_r$ inne i gapet. Et senter under $E_F$ er fylt, og
 fanger først et hull og deretter et elektron; energien går til gitteret som
 varme i to steg. Slipper senteret den første bæreren tilbake til båndet før
 den andre kommer, er det en <Term name="Felle">felle</Term>. Nivåer nær
-midten av gapet, som gull i Si med 0,54 eV, holder på det de fanger, så de
-er effektive rekombinasjonssentre. Levetiden i Si settes derfor av renheten.
+midten av gapet, som gull i Si med 0,54 eV, ligger langt fra begge båndene og
+holder derfor på det de fanger, så de er effektive rekombinasjonssentre. Ved
+lav injeksjon dør overskuddet i Si fortsatt ut eksponentielt, men levetiden
+settes av sentrene, og dermed av renheten.
+
+<Callout title="Levetid">
+Ved lav injeksjon dør overskuddet ut eksponentielt med levetiden til
+minoritetsbærerne, $\tau_n = 1/a_r p_0$ ved direkte rekombinasjon. I Si
+setter rekombinasjonssentrene levetiden.
+</Callout>
 
 ### Kvasi-Fermi-nivåer
 
@@ -72,8 +80,11 @@ $d\,\delta n/dt = g_\text{op} - \delta n/\tau_n$. I stasjonær
 tilstand er den deriverte null, så overskuddet er generasjonsraten ganger
 levetiden,
 <FormulaRef id="stasjonaert-overskudd">$\delta n = \delta p = g_\text{op}\tau_n$</FormulaRef>.
-Nå er $np \ne n_i^2$, og $E_F$ har ingen mening. Behold formen på
-likevektsuttrykkene, men gi hver bærertype sitt eget nivå:
+Nå er $np > n_i^2$, og ett nivå kan ikke gi begge konsentrasjonene: setter du
+samme $E_F$ inn i likevektsuttrykkene for $n$ og $p$, blir produktet $n_i^2$
+igjen. Behold formen på uttrykkene, men gi hver bærertype sitt eget nivå, så
+du fortsatt kan lese hver konsentrasjon av båndskjemaet som avstanden fra
+$E_i$:
 
 $$
 n = n_i\, e^{(F_n - E_i)/k_BT}, \qquad p = n_i\, e^{(E_i - F_p)/k_BT}
@@ -85,6 +96,11 @@ langt materialet er fra likevekt. Et gitt overskudd flytter minoritetsnivået
 langt og majoritetsnivået nesten ikke, siden overskuddet er mange tierpotenser
 for minoriteten og en brøkdel for majoriteten.
 
+<Callout title="Kvasi-Fermi-nivåer">
+Utenfor likevekt har elektroner og hull hvert sitt nivå, $F_n$ og $F_p$. Et
+overskudd flytter minoritetsnivået langt og majoritetsnivået nesten ikke.
+</Callout>
+
 <Example title="hvor havner kvasi-Fermi-nivåene i belyst Si?">
 
 En Si-prøve med $n_0 = 10^{14}$ cm⁻³ og $\tau_n = \tau_p = 2$ µs belyses så
@@ -94,6 +110,7 @@ ved 300 K.
 <Solution>
 
 - Overskuddet: $\delta n = \delta p = g_\text{op}\tau_n$, altså $10^{19} \cdot 2 \times 10^{-6} = 2 \times 10^{13}$ cm⁻³.
+- Lav injeksjon: $\delta n/n_0 = 0{,}2$, nær grensen for tilnærmingen, så tallene under er overslag.
 - Majoriteten: $n = 1{,}2 \times 10^{14}$ cm⁻³, 20 % over $n_0$.
 - Minoriteten: $p_0 = n_i^2/n_0 = 2{,}25 \times 10^{6}$ cm⁻³ i mørket, mot $p = 2 \times 10^{13}$ cm⁻³ i lyset.
 - $F_n - E_i = k_BT\ln(n/n_i)$, altså $0{,}0259 \cdot \ln(8 \times 10^{3}) = 0{,}233$ eV.
@@ -109,7 +126,7 @@ ved 300 K.
   src={"/sims/kvasi-fermi.js"}
   host={"dom"}
   title={"Kvasi-Fermi-nivåene i belyst n-type Si"}
-  caption={"Velg doping og lysstyrke. Til venstre står båndskjemaet med $E_F$ i mørket og $F_n$ og $F_p$ i lyset, og klammen er splittingen $F_n - F_p$. Til høyre står $n$ og $p$ som stolper på logaritmisk skala, med likevektsverdiene $n_0$ og $p_0$ merket. Majoritetsnivået rører seg knapt, minoritetsnivået flytter seg mange $k_BT$."}
+  caption={"Til venstre står båndskjemaet med $E_F$ i mørket stiplet og $F_n$ og $F_p$ i lyset, og klammen er splittingen $F_n - F_p$. Til høyre står $n$ og $p$ som stolper på logaritmisk skala, med likevektsverdiene $n_0$ og $p_0$ merket."}
   height={400}
 />
 
@@ -138,6 +155,12 @@ $$
 J_n^\text{diff} = +qD_n\frac{dn}{dx}, \qquad J_p^\text{diff} = -qD_p\frac{dp}{dx}
 $$
 
+<Callout title="Diffusjonsstrømmenes retning">
+Elektroner og hull i samme gradient diffunderer samme vei, fra høy mot lav
+konsentrasjon, men den elektriske strømmen fra elektronene går motsatt vei av
+strømmen fra hullene.
+</Callout>
+
 Med felt og gradient samtidig har hver strøm et driftledd og et
 diffusjonsledd:
 
@@ -153,10 +176,13 @@ bidrar lite til drift. Diffusjonsleddet er proporsjonalt med gradienten, og
 den kan være stor selv om konsentrasjonen er liten. Minoritetsstrømmen i en
 komponent er derfor nesten alltid diffusjon.
 
-Et felt vises i båndskjemaet som skrå bånd. Elektronets potensielle energi
-øker langs feltet, så $E_c$, $E_v$ og $E_i$ stiger i feltretningen, og
-stigningen er feltet: <FormulaRef id="felt-baandskjema" />. Elektroner driver
-nedover i skjemaet, hull oppover, og $\mathcal{E}$ peker oppoverbakke.
+Et felt vises i båndskjemaet som skrå bånd. Båndkantene er elektronets
+potensielle energi pluss en konstant, $E_c(x) = \text{konstant} - q\mathcal{V}(x)$,
+så båndene ligger lavest der potensialet $\mathcal{V}$ er høyest. Feltet peker
+fra høyt mot lavt potensial, så $E_c$, $E_v$ og $E_i$ stiger i feltretningen,
+og stigningen er feltet: <FormulaRef id="felt-baandskjema" />. Elektroner
+driver nedover i skjemaet, hull oppover, og $\mathcal{E}$ peker
+oppoverbakke.
 
 ### Einstein-relasjonen
 
@@ -189,8 +215,9 @@ Samme regning for elektroner gir samme forhold.
 
 Etter <FormulaRef id="einstein">Einstein-relasjonen</FormulaRef> er
 $D/\mu = k_BT/q = 0{,}0259$ V ved romtemperatur, uansett bærertype og
-materiale. For Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s, og måler du den
-ene, har du den andre.
+materiale. For Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s, som stemmer med
+mobilitetene: $1350 \cdot 0{,}0259 = 35$ og $480 \cdot 0{,}0259 \approx 12{,}4$.
+Måler du den ene av $D$ og $\mu$, har du den andre.
 
 ## Kontinuitetsligningen
 
@@ -214,11 +241,12 @@ $$
 $$
 
 For elektroner bytter det første leddet fortegn, siden ladningen er negativ.
-Det er <FormulaRef id="kontinuitet">kontinuitetsligningen</FormulaRef>: det
-som strømmer inn og ikke ut igjen, er enten lagret eller rekombinert.
+Ligningen er <FormulaRef id="kontinuitet">kontinuitetsligningen</FormulaRef>:
+det som strømmer inn og ikke ut igjen, er enten lagret eller rekombinert.
 
-Er strømmen ren diffusjon, setter du $J_p^\text{diff} = -qD_p\,\partial p/\partial x$
-inn i ligningen over. Konsentrasjonen $p_0$ er lik overalt, så
+Er strømmen ren diffusjon, som for minoritetsbærere der feltet er lite,
+setter du $J_p^\text{diff} = -qD_p\,\partial p/\partial x$ inn i ligningen
+over. Med jevn doping er $p_0$ lik overalt, så
 $\partial p/\partial x = \partial\,\delta p/\partial x$, og strømleddet blir
 $D_p\,\partial^2\delta p/\partial x^2$:
 
@@ -227,9 +255,8 @@ $$
 = D_p\frac{\partial^2\,\delta p}{\partial x^2} - \frac{\delta p}{\tau_p}
 $$
 
-Ligningen for elektroner har $D_n$ og $\tau_n$ og står som
-<FormulaRef id="diffusjonsligning">diffusjonsligningen</FormulaRef> i
-Formelsamlingen.
+Ligningen er <FormulaRef id="diffusjonsligning">diffusjonsligningen</FormulaRef>,
+og for elektroner har den $D_n$ og $\tau_n$.
 
 Krumningen i profilen jevner den ut, og levetiden tømmer den. En puls av
 overskuddsbærere brer seg derfor utover og forsvinner samtidig, og hvor
@@ -247,7 +274,8 @@ $$
 
 med <Term name="Diffusjonslengde">diffusjonslengden</Term>
 $L_p = \sqrt{D_p\tau_p}$. Løsningen er en sum av $e^{x/L_p}$ og
-$e^{-x/L_p}$. I en lang stav må overskuddet dø ut langt fra kontakten, så
+$e^{-x/L_p}$. I en stav som er lang mot $L_p$, må overskuddet dø ut langt fra
+kontakten, så
 den voksende delen faller bort, og med $\delta p(0) = \Delta p$ ved
 kontakten står det igjen
 
@@ -290,8 +318,12 @@ $$
 Strømmen i hvert punkt er proporsjonal med overskuddet der, og ved kontakten
 er den $qD_p\Delta p/L_p$. Ladningen som er lagret i staven, er arealet
 under profilen, <FormulaRef id="injeksjonsstrom">$Q_p = qA\,\Delta p\,L_p$</FormulaRef>.
-Begge uttrykkene kommer igjen i pn-overgangen, der spenningen sprøyter
-minoritetsbærere inn på hver side.
+
+<Callout title="Diffusjonslengde">
+Et stasjonært injisert overskudd faller som $e^{-x/L_p}$ med
+$L_p = \sqrt{D_p\tau_p}$, og diffusjonsstrømmen i hvert punkt er
+$qD_p\,\delta p/L_p$.
+</Callout>
 
 <Example title="hvor langt kommer de injiserte hullene?">
 
@@ -355,8 +387,8 @@ $$
 v_d = \frac{L}{t_d}, \qquad \mu_p = \frac{v_d}{\mathcal{E}}
 $$
 
-Hall-målingen gir mobiliteten til majoriteten; dette er måten å måle
-minoritetens på.
+Hall-målingen gir mobiliteten til majoriteten, og Haynes–Shockley-eksperimentet
+gir minoritetens.
 
 Bredden på pulsen gir $D_p$. Uten felt og uten rekombinasjon løses
 diffusjonsligningen av en gaussisk puls,
@@ -366,9 +398,10 @@ $$
 $$
 
 der $\Delta P$ er antall hull per areal i pulsen ved $t = 0$. Toppen
-synker og bredden vokser med tiden. Feltet flytter hele pulsen med $v_d t$
-uten å endre formen, og rekombinasjonen krymper den med faktoren
-$e^{-t/\tau_p}$, så bredden er den samme som uten felt. Når pulsen passerer
+synker og bredden vokser med tiden. Feltet flytter hele pulsen med $v_d t$,
+og rekombinasjonen ganger den med $e^{-t/\tau_p}$. Ingen av dem endrer
+formen, så bredden ved tiden $t$ er den samme som uten felt og
+rekombinasjon. Når pulsen passerer
 detektoren ved $t_d$, er den falt til $1/e$ av toppen i $x = \pm\Delta x/2$
 fra midten. Sett $x = \Delta x/2$ og $t = t_d$ i eksponenten og krev at den er
 $-1$:
@@ -380,26 +413,31 @@ $$
 Oscilloskopet viser pulsen i tid, så bredden $\Delta t$ regnes om med
 driftfarten: $\Delta x = v_d\,\Delta t$.
 
+Et sterkere felt gir kortere $t_d$, så pulsen har mindre tid til å bre seg ut
+og kommer tidligere og smalere fram til detektoren. Lengre avstand gir lengre
+$t_d$ og en bredere puls. Kortere levetid senker bare toppen, siden
+rekombinasjonen ikke endrer formen.
+
 <Simulation
   src={"/sims/haynes-shockley.js"}
   host={"dom"}
   title={"Hullpulsen fra lysblinket til detektoren"}
-  caption={"Dra i feltet, avstanden og levetiden. Øverst er staven. De blå prikkene er elektronene i n-type Si, de røde er pulsen av hull som lysblinket lager ved $x = 0$. Pulsen driver mot høyre med $v_d = \\mu_p\\mathcal{E}$. Den brer seg ut ved diffusjon, og klammen $\\Delta x$ spenner $1/e$-bredden. Underveis tynnes den ut med $e^{-t/\\tau_p}$, så prikkene blir færre før den når kontakten i den andre enden. Nederst sveiper oscilloskopet mens pulsen driver, så kurven stiger i det pulsen når detektoren ved $x = L$. Drifttiden $t_d$ gir $\\mu_p = L/t_d\\mathcal{E}$, og bredden $\\Delta t$ mellom $1/e$-punktene gir $D_p = (v_d\\,\\Delta t)^2/16t_d$. Tidsaksen og den loddrette skalaen står fast. Et sterkere felt flytter pulsen mot venstre på tidsaksen og gjør den smalere. Lengre avstand flytter den mot høyre og gjør den bredere. Kortere levetid senker toppen uten å flytte den eller bre den ut. Tettheten av prikker er ikke i skala med noen konsentrasjon."}
+  caption={"Øverst er n-type Si-staven med feltet $\\mathcal{E}$ langs. De blå prikkene er elektronene, de røde er pulsen av hull som lysblinket lager ved $x = 0$, og klammen $\\Delta x$ spenner $1/e$-bredden. Nederst er oscilloskopet ved detektoren i $x = L$, med drifttiden $t_d$ og bredden $\\Delta t$ mellom $1/e$-punktene merket; tidsaksen og den loddrette skalaen står fast, og tettheten av prikker er ikke i skala med noen konsentrasjon."}
   height={372}
 />
 
 ## Sjekk deg selv
 
 <Quiz
-  question={"n-type Si belyses jevnt med lav injeksjon. Hvilket av kvasi-Fermi-nivåene flytter seg mest fra $E_F$?"}
+  question={"p-type Si med $p_0 = 10^{16}$ cm⁻³ belyses ved 300 K, slik at $\\delta n = \\delta p = 10^{13}$ cm⁻³. Omtrent hvor langt flytter kvasi-Fermi-nivåene seg fra $E_F$?"}
   options={[
-    "$F_n$, fordi elektronene er majoritet",
-    "$F_p$, fordi hullene er minoritet",
-    "Begge flytter seg like mye, siden $\\delta n = \\delta p$",
-    "Ingen av dem, siden lyset ikke endrer $n_i$"
+    "$F_n$ 0,52 eV opp og $F_p$ 0,03 meV ned",
+    "$F_p$ 0,52 eV ned og $F_n$ 0,03 meV opp",
+    "$F_n$ 0,17 eV opp og $F_p$ 0,03 meV ned",
+    "$F_n$ og $F_p$ 0,52 eV hver, i hver sin retning"
   ]}
-  answer={1}
-  explanation={"Overskuddet $\\delta n = \\delta p$ er en brøkdel av $n_0$, men mange tierpotenser større enn $p_0$. Nivåene står i eksponenten, så $F_p$ flytter seg $k_BT\\ln(p/p_0)$, som kan være flere tideler av en eV, mens $F_n$ flytter seg noen meV."}
+  answer={0}
+  explanation={"Elektronene er minoritet: $n_0 = n_i^2/p_0 = 2{,}25 \\times 10^{4}$ cm⁻³, så $F_n$ flytter seg $k_BT\\ln(n/n_0) = 0{,}0259 \\cdot \\ln(4{,}4 \\times 10^{8}) = 0{,}52$ eV. Hullene øker bare med en tusendel, så $F_p$ flytter seg $k_BT\\ln(1{,}001) \\approx 0{,}03$ meV. Samme $\\delta n = \\delta p$ gir ikke samme flytting, fordi nivået følger den relative endringen. 0,17 eV er avstanden fra $E_i$ opp til $F_n$, ikke flyttingen fra $E_F$."}
 />
 
 <Quiz

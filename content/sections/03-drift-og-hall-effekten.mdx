@@ -71,20 +71,28 @@ $$
 Det er Ohms lov med ledningsevnen $\sigma$ skrevet ut, og resistiviteten er
 $\rho = 1/\sigma$. Begge bærertypene gir strøm langs feltet: hullene beveger
 seg med feltet, elektronene mot, og fortegnet på ladningen snur bidraget. En
-stav med lengde $L$ og tverrsnitt $wt$ får resistansen $R = \rho L/wt$, som
-står i <FormulaRef id="resistans">Formelsamlingen</FormulaRef>. Siden
-$p_0 = n_i^2/n_0$, har $\sigma$ som funksjon av dopingen et minimum, og det
-ligger litt på p-siden av intrinsisk, fordi hullene har den laveste
-mobiliteten.
+stav med lengde $L$ og tverrsnitt $wt$ får
+<FormulaRef id="resistans">resistansen $R = \rho L/wt$</FormulaRef>.
+
+<Callout title="Ledningsevne">
+Begge bærertypene gir strøm langs feltet, og ledningsevnen er
+$\sigma = q(n\mu_n + p\mu_p)$.
+</Callout>
+
+Siden $p_0 = n_i^2/n_0$, er $\sigma \propto n_0\mu_n + (n_i^2/n_0)\mu_p$, og
+summen er minst der de to leddene er like, $n_0\mu_n = p_0\mu_p$. Hullene har
+den laveste mobiliteten, så minimumet krever $p_0 > n_0$ og ligger litt på
+p-siden av intrinsisk.
 
 For Si er $\mu_n = 1350$ og $\mu_p = 480$ cm²/V·s ved 300 K i rent
 materiale. Ved 100 V/cm driver elektronene med $1{,}35 \times 10^5$ cm/s,
 omtrent én prosent av den termiske farten, og $\bar{t} = \mu_n m_n^*/q$ er rundt
 $0{,}2$ ps.
 
-Massen i $\mu_n$ er ikke tellemassen fra $N_c$. Elektronene fordeler seg
-likt på de seks dalene, og en dal bidrar til strømmen i forhold til $1/m$ i
-feltretningen. Et felt langs en kubeakse ligger langs den lange aksen i to av
+Massen i $\mu_n$ er ikke den effektive massen for telling av tilstander i
+$N_c$. Elektronene fordeler seg likt på de seks dalene, og drifthastigheten
+$q\bar{t}\mathcal{E}/m$ går som $1/m$ i feltretningen, så en dal bidrar til
+strømmen i forhold til $1/m$ der. Et felt langs en kubeakse ligger langs den lange aksen i to av
 dalene ($m_l$) og på tvers i de fire andre ($m_t$), så $1/m_n^*$ er
 gjennomsnittet $\tfrac16(2/m_l + 4/m_t)$, som er
 <FormulaRef id="konduktivitetsmasse" /> og gir $0{,}26\,m_0$. Lett masse gir høy mobilitet: i GaAs er $m_n^* = 0{,}067\,m_0$
@@ -93,28 +101,39 @@ og $\mu_n = 8500$ cm²/V·s.
 ### Spredning, temperatur og doping
 
 To mekanismer sprer bærerne. <Term name="Gitterspredning">Gitterspredning</Term>
-er kollisjoner med gittervibrasjoner, og den øker med temperaturen, omtrent
-som $T^{-3/2}$ i mobiliteten. <Term name="Urenhetsspredning">Urenhetsspredning</Term>
-er avbøyning i Coulomb-feltet fra ioniserte dopanter, og den er sterkest når
-bærerne beveger seg sakte, så den gir en mobilitet som vokser omtrent som
-$T^{3/2}$. Sannsynlighetene for kollisjon legges sammen, så mobilitetene
-legges sammen invers, og den minste dominerer:
+er kollisjoner med gittervibrasjoner. Gitteret vibrerer mer jo varmere det er,
+så denne spredningen øker med temperaturen, og den gir en mobilitet som faller
+omtrent som $T^{-3/2}$. <Term name="Urenhetsspredning">Urenhetsspredning</Term>
+er avbøyning i Coulomb-feltet fra ioniserte dopanter. En langsom bærer er
+lenger nær ionet og bøyes mer av, så denne spredningen er sterkest i kaldt
+materiale, og den gir en mobilitet som vokser omtrent som $T^{3/2}$.
+Sannsynlighetene for kollisjon legges sammen, så
+<FormulaRef id="matthiessen">mobilitetene legges sammen invers</FormulaRef>,
+og den minste dominerer:
 
 $$
 \frac{1}{\mu} = \frac{1}{\mu_\text{gitter}} + \frac{1}{\mu_\text{urenhet}}
 $$
 
-Regelen står i <FormulaRef id="matthiessen">Formelsamlingen</FormulaRef>.
+Mobiliteten har derfor en topp ved temperaturen der de to mekanismene er like
+sterke. Mer doping gjør urenhetsspredningen sterkere, så toppen blir lavere
+og flytter seg mot høyere temperatur.
 
 Ved romtemperatur er rent Si gitterbegrenset. Doper du inn $10^{17}$ donorer
 per cm³, faller $\mu_n$ fra 1350 til 700 cm²/V·s, så ledningsevnen vokser
 langsommere enn dopingen.
 
+<Callout title="Spredning">
+Mobilitetene fra de to mekanismene legges sammen invers, så den minste styrer.
+Gitterspredning dominerer i varmt og rent materiale, urenhetsspredning i kaldt
+og sterkt dopet.
+</Callout>
+
 <Simulation
   src={"/sims/mobilitet.js"}
   host={"dom"}
   title={"Mobiliteten mot temperaturen"}
-  caption={"Velg dopingen. Gitterspredning begrenser mobiliteten på den varme siden, urenhetsspredning på den kalde, og toppen ligger der de to er like sterke. Mer doping trekker toppen ned og mot høyere temperatur. Boka tegner de samme kurvene på logaritmiske akser, der hver mekanisme blir en rett linje."}
+  caption={"Mobiliteten til elektroner i Si mot temperaturen. Den heltrukne kurven er mobiliteten, de stiplede er hver mekanisme alene, sonene er merket med mekanismen som dominerer der, og punktet er verdien ved 300 K. Boka tegner de samme kurvene på logaritmiske akser, der hver mekanisme blir en rett linje."}
   height={380}
 />
 
@@ -130,20 +149,33 @@ Legg et magnetfelt $\mathcal{B}_z$ på tvers av en p-type stav med strøm langs
 $x$. Kraften på et hull er $q(\mathcal{E} + v \times \mathcal{B})$, med
 $y$-komponent $q(\mathcal{E}_y - v_x\mathcal{B}_z)$. Hullene bøyes av mot
 $-y$ til ladningen på kanten har bygd opp et felt
-$\mathcal{E}_y = v_x\mathcal{B}_z$ som opphever avbøyningen. Med
-$v_x = J_x/qp_0$:
+$\mathcal{E}_y = v_x\mathcal{B}_z$ som opphever avbøyningen. Når hullene
+bærer hele strømmen, som i p-type med $p_0 \gg n_0$, er $v_x = J_x/qp_0$:
 
 $$
 \mathcal{E}_y = \frac{J_x\mathcal{B}_z}{qp_0} = R_H\,J_x\mathcal{B}_z,
 \qquad R_H = \frac{1}{qp_0}
 $$
 
-<Term name="Hall-koeffisient">Hall-koeffisienten</Term> $R_H$ måles som
-$V_{AB}/w$ delt på $J_x\mathcal{B}_z$, og gir konsentrasjonen direkte. For
-elektroner bytter $q$ fortegn, så Hall-spenningen er negativ i n-type, og
-fortegnet er den vanlige måten å bestemme bærertypen på. Måler du i tillegg
-resistansen, får du $\rho$, og siden $\sigma = q\mu_p p_0$, er
-$\mu_p = R_H/\rho$.
+Hall-spenningen over bredden er $V_{AB} = \mathcal{E}_y w$, så
+<Term name="Hall-koeffisient">Hall-koeffisienten</Term>
+$R_H = (V_{AB}/w)/J_x\mathcal{B}_z$ kan måles, og den gir konsentrasjonen
+direkte. For en gitt strøm må færre bærere gå fortere, så magnetkraften på
+hver av dem blir større, og Hall-feltet som skal oppheve den, blir også
+større.
+
+Elektronene i den samme strømmen går motsatt vei og har motsatt ladning. Begge
+fortegnene i $q\,v \times \mathcal{B}$ snur, så kraften skyver elektronene mot
+den samme kanten som hullene. Den kanten blir negativ i stedet for positiv, så
+$R_H = -1/qn_0$ og Hall-spenningen er negativ i n-type. Fortegnet er den
+vanlige måten å bestemme bærertypen på. Måler du i tillegg resistansen, får du
+$\rho$, og siden $\sigma = q\mu_p p_0$, er $\mu_p = R_H/\rho$.
+
+<Callout title="Hall-målingen">
+Fortegnet på Hall-spenningen gir bærertypen, $|R_H| = 1/qp_0$ eller
+$1/qn_0$ gir konsentrasjonen, og $|R_H|/\rho$ er mobiliteten.
+</Callout>
+
 Ligger kontaktene A og B litt forskjøvet langs staven, inneholder $V_{AB}$
 også et resistivt spenningsfall; snu $\mathcal{B}$, så bytter bare
 Hall-delen fortegn, og halve differansen er Hall-spenningen. Halve summen er
@@ -154,7 +186,7 @@ gir det resistiviteten uten en egen resistansmåling.
   src={"/sims/hall-effekt.js"}
   host={"dom"}
   title={"Hall-måling på en stav"}
-  caption={"Staven sett ovenfra, med strømmen langs $x$. Slå feltet av og på, eller snu det, og bærerne bøyes mot én kant til ladningen der har bygd opp Hall-feltet som retter dem opp igjen: de går rett fram, men står tettere på den kanten. Begge typene samler seg på samme kant, men ladningen der har bærerens fortegn, og det gir $V_{AB}$ fortegn. Den bleke viseren er avlesningen med feltet snudd. Forskyv kontakt B langs strømmen, og begge avlesningene flytter seg like mye samme vei: midtpunktet er spenningsfallet over forskyvningen, og halve avstanden er Hall-spenningen. Prøven er 500 µm bred og 20 µm tykk med $2 \\times 10^{17}$ bærere per cm³, 3 mA og 1 T; forskyvningen er overdrevet i tegningen."}
+  caption={"Staven sett ovenfra, med strømmen $I$ langs $x$ og magnetfeltet som prikker (ut av planet) eller kryss (inn i planet). Røde prikker er hull, blå er elektroner, og $+$ og $-$ langs kantene er ladningen som bygger Hall-feltet. Skalaen nederst viser $V_{AB}$, den bleke stiplede viseren er avlesningen med feltet snudd, og punktet midt mellom dem er spenningsfallet over forskyvningen av kontakt B. Prøven er 500 µm bred og 20 µm tykk med $2 \\times 10^{17}$ bærere per cm³, 3 mA og 1 T; forskyvningen er overdrevet i tegningen."}
   height={256}
 />
 
@@ -215,6 +247,9 @@ $$
 \end{aligned}
 $$
 
+Mobiliteten er langt over de 700 cm²/V·s Si har allerede ved
+$10^{17}$ cm⁻³, så staven kan ikke være av Si.
+
 <Answer>n-type med $n_0 = 3{,}1 \times 10^{17}$ cm⁻³ og $\mu_n = 10^4$ cm²/V·s.</Answer>
 
 </Solution>
@@ -239,7 +274,8 @@ f_1 = f_2
 $$
 
 Da går det verken netto ladning eller netto energi mellom materialene.
-Fordelingene er like ved alle energier bare når $E_{F1} = E_{F2}$.
+Begge materialene har samme temperatur, så Fermi–Dirac-fordelingene er like
+ved alle energier bare når $E_{F1} = E_{F2}$.
 
 <Statement kind="principle" name="Fermi-nivået er flatt i likevekt">
 
@@ -257,10 +293,10 @@ krystall like mye som en metallkontakt på en halvleder.
     "Den dobles nøyaktig",
     "Den øker, men mindre enn til det dobbelte",
     "Den er uendret, siden $n_0 p_0 = n_i^2$",
-    "Den halveres"
+    "Den minker, fordi urenhetsspredningen øker"
   ]}
   answer={1}
-  explanation={"$\\sigma = q n_0 \\mu_n$, og $n_0$ dobles. Flere ioniserte donorer gir mer urenhetsspredning, så $\\mu_n$ faller litt, og produktet vokser mindre enn til det dobbelte. Massevirkningsloven styrer $p_0$, som ikke betyr noe for $\\sigma$ her."}
+  explanation={"$\\sigma = q n_0 \\mu_n$, og $n_0$ dobles. Flere ioniserte donorer gir mer urenhetsspredning, så $\\mu_n$ faller, men mye mindre enn en faktor 2 ved så lav doping, og produktet vokser mindre enn til det dobbelte. Massevirkningsloven styrer $p_0$, som ikke betyr noe for $\\sigma$ her."}
 />
 
 <Quiz
