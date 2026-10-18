@@ -1,0 +1,439 @@
+---
+order: 10
+title: "Strømmen i JFET-en"
+summary: "Hvordan drain-strømmen i en JFET regnes ut ved å dele kanalen i tynne skiver, hva strømmen i metning og transkonduktansen blir og hvordan kanalen lages for lav avklemmingsspenning og stor transkonduktans."
+importance: core
+tag: "Uke 42 · Streetman §6.2.3"
+part: "Del 4: Transistorer"
+updated: 2026-10-18
+---
+
+<LearningGoals>
+
+- Forklare <Term name="Gradvis kanal">tilnærmingen med gradvis kanal</Term> og når den gjelder.
+- Utlede $I_D(V_D, V_G)$ ved å dele kanalen i tynne skiver og integrere fra source til drain.
+- Regne ut strømmen i metning $I_D(\text{sat.})$ og transkonduktansen $g_m(\text{sat.})$ for en gitt gatespenning.
+- Velge halvhøyde, doping og forholdet $Z/L$ for en JFET med lav avklemmingsspenning og stor transkonduktans.
+
+</LearningGoals>
+
+## Kanalen som en motstand
+
+En n-kanal-JFET med spenningene $V_D$ og $V_G$ fører strømmen $I_D(V_D, V_G)$.
+Strømmen er satt av hvor høy den ledende delen av kanalen er, og høyden endrer
+seg langs kanalen. Kanalen er derfor ikke en stav med fast tverrsnitt, og
+${R = L/\sigma wt}$ kan ikke brukes på hele kanalen. Del den i stedet i tynne
+skiver med tykkelsen $dx$. Innenfor én skive er tverrsnittet fast.
+
+Skiven i punktet $x$ har bredden $Z$ langs gatene, på tvers av strømmen. Den
+leder i halvhøyden $h(x)$ på hver side av midtlinjen, altså i høyden $2h(x)$.
+Den ledende delen er nøytral n-type med ledningsevnen
+${\sigma = q\mu_nN_d}$, og sonene leder nesten ikke. Motstanden i skiven er da
+
+$$
+dR = \frac{dx}{\sigma\,2h(x)\,Z}
+$$
+
+Gjennom gateovergangene i sperreretning går nesten ingen strøm, så hele $I_D$
+går gjennom hver skive, og spenningen over skiven er ${dV_x = I_D\,dR}$. Sett
+inn $dR$, og gang med nevneren:
+
+$$
+2\sigma Z\,h(x)\,dV_x = I_D\,dx
+$$
+
+For å løse ligningen trengs halvhøyden $h(x)$ uttrykt ved spenningen $V_x$.
+
+## Tilnærmingen med gradvis kanal
+
+Halvhøyden er satt av romladningssonen i punktet $x$, og sonen følger av
+Poissons ligning. Bredden $Z$ er mange ganger $a$, så potensialet endrer seg
+nesten ikke langs $z$. Med $x$ langs kanalen og $y$ på tvers av den er
+ligningen da todimensjonal:
+
+$$
+\frac{\partial^2\mathcal{V}}{\partial x^2} + \frac{\partial^2\mathcal{V}}{\partial y^2} = -\frac{\rho}{\varepsilon}
+$$
+
+Potensialet endrer seg med noen volt, $\Delta\mathcal{V}$, både over
+halvhøyden $a$ på tvers og over lengden $L$ langs. Leddene er derfor av
+størrelse $\Delta\mathcal{V}/a^2$ og $\Delta\mathcal{V}/L^2$.
+Typisk er $a$ omtrent 1 µm og $L$ omtrent 10 µm. Med ${L \approx 10a}$ er
+leddet på tvers omtrent 100 ganger større enn leddet langs, og
+
+$$
+\frac{\partial^2\mathcal{V}}{\partial y^2} \approx -\frac{\rho}{\varepsilon}
+$$
+
+i hvert punkt $x$. Den endimensjonale ligningen er den samme som for en plan
+pn-overgang, så sonen i punktet $x$ er like bred som i en plan p⁺n-overgang
+med spenningen der. Å bruke resultatene for den plane overgangen i hver skive
+kalles <Term name="Gradvis kanal">tilnærmingen med gradvis kanal</Term>. Den
+gjelder når kanalen er mye lengre enn den er høy, slik at halvhøyden endrer seg
+langsomt langs kanalen.
+
+<FormulaRef id="jfet-sonebredde">Sonebredden</FormulaRef> i punktet $x$ er da
+
+$$
+W(x) = \left[\frac{2\varepsilon(V_0 + V_x - V_G)}{qN_d}\right]^{1/2}
+$$
+
+Sonen fyller hele halvhøyden, ${W = a}$, når barrieren ${V_0 + V_x - V_G}$
+over overgangen er lik
+<FormulaRef id="avklemmingsspenning">avklemmingsspenningen</FormulaRef>
+${V_p = qN_da^2/2\varepsilon}$. Del $W^2$ på $a^2$. Da er
+${W/a = [(V_0 + V_x - V_G)/V_p]^{1/2}}$, og den ledende halvhøyden er
+
+$$
+h(x) = a - W(x) \allowbreak = a\left[1 - \left(\frac{V_0 + V_x - V_G}{V_p}\right)^{1/2}\right]
+$$
+
+$V_p$ er bare satt av hvordan kanalen er laget. Kontaktpotensialet $V_0$ er
+ikke tatt med i $V_p$, men $V_0$ står i telleren og regnes med.
+
+<Callout title="Gradvis kanal">
+Når kanalen er mye lengre enn den er høy, er sonen i hvert punkt $x$ som i en
+plan p⁺n-overgang med sperrespenningen ${V_x - V_G}$. Den ledende halvhøyden
+er ${h = a - W}$, med ${W/a = [(V_0 + V_x - V_G)/V_p]^{1/2}}$.
+</Callout>
+
+## Strømmen før avklemming
+
+Sett $h(x)$ inn i ligningen for skiven, ${2\sigma Z\,h(x)\,dV_x = I_D\,dx}$:
+
+$$
+2\sigma aZ\left[1 - \left(\frac{V_0 + V_x - V_G}{V_p}\right)^{1/2}\right]dV_x \allowbreak = I_D\,dx
+$$
+
+Venstresiden avhenger bare av $V_x$ og høyresiden bare av $x$, så hver side kan
+integreres for seg. Integrer fra source, der ${x = 0}$ og ${V_x = 0}$, til
+drain, der ${x = L}$ og ${V_x = V_D}$. Høyresiden gir $I_DL$, siden $I_D$ er den
+samme i hver skive. På venstresiden gir kvadratroten potensen $3/2$:
+
+$$
+I_DL = 2\sigma aZ\Big[V_x \allowbreak - \frac23V_p\Big(\frac{V_0 + V_x - V_G}{V_p}\Big)^{3/2}\Big]_0^{V_D}
+$$
+
+Sett inn grensene, og del på $L$. Med ${G_0 = (Z/L)\,2a\sigma}$ er
+
+$$
+I_D = G_0V_p\Big[\frac{V_D}{V_p} \allowbreak - \frac23\Big(\frac{V_0 + V_D - V_G}{V_p}\Big)^{3/2} \allowbreak + \frac23\Big(\frac{V_0 - V_G}{V_p}\Big)^{3/2}\Big]
+$$
+
+der
+
+$$
+G_0 = \frac{Z}{L}\,2aq\mu_nN_d
+$$
+
+er konduktansen til kanalen uten romladningssoner, ledningsevnen ganger
+tverrsnittet $2aZ$ delt på lengden $L$.
+
+Deriver $I_D$ med hensyn på $V_D$ for å se hvordan kurven stiger. Det siste
+leddet avhenger ikke av $V_D$:
+
+$$
+\frac{\partial I_D}{\partial V_D} \allowbreak = G_0\left[1 - \left(\frac{V_0 + V_D - V_G}{V_p}\right)^{1/2}\right] \allowbreak = G_0\frac{h(L)}{a}
+$$
+
+Stigningen er konduktansen satt av halvhøyden ved drain. Ved liten $V_D$ er
+halvhøyden nesten den samme hele veien,
+${h = a[1 - ((V_0 - V_G)/V_p)^{1/2}]}$, og kanalen er en motstand med
+konduktansen $G_0h/a$. Mer negativ $V_G$ gir lavere $h$ og mindre stigning.
+Når $V_D$ øker, blir kanalen smalere ved drain, og stigningen faller. Den er
+null når ${V_0 + V_D - V_G = V_p}$, altså ved
+${V_D(\text{sat.}) = V_G + V_p - V_0}$, der kanalen klemmes av ved drain.
+
+Formelen har altså toppen sin nettopp ved avklemming. For større $V_D$ gir den
+en strøm som avtar, men da er $h(L)$ i formelen negativ, og en negativ
+halvhøyde har ingen mening. Formelen gjelder bare til avklemming.
+
+<Callout title="Strømmen før avklemming">
+Hver skive leder med konduktansen satt av sin halvhøyde, og integralet fra
+source til drain gir $I_D(V_D, V_G)$. Stigningen $G_0h(L)/a$ faller til null
+ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$, der kanalen klemmes av.
+</Callout>
+
+## Strømmen i metning og transkonduktansen
+
+Over $V_D(\text{sat.})$ faller resten av spenningen over den avklemte delen,
+og den åpne kanalen fører den samme strømmen som ved avklemming. Strømmen
+regnes derfor som konstant, lik verdien ved avklemming. Sett
+${V_D = V_G + V_p - V_0}$ inn i formelen for $I_D$. Da er
+${V_0 + V_D - V_G = V_p}$, så det midterste leddet blir $-\tfrac23$, og det
+første leddet blir ${V_D/V_p = 1 - (V_0 - V_G)/V_p}$:
+
+$$
+I_D(\text{sat.}) = G_0V_p\Big[\frac13 - \frac{V_0 - V_G}{V_p} \allowbreak + \frac23\Big(\frac{V_0 - V_G}{V_p}\Big)^{3/2}\Big]
+$$
+
+Strømmen i metning avhenger bare av $V_G$. Ved ${V_G = V_0 - V_p}$ er brøken
+1, og hakeparentesen er ${\tfrac13 - 1 + \tfrac23 = 0}$. Kanalen er da stengt i
+hele lengden, og det går ingen strøm. Strømmen er størst ved ${V_G = 0}$, og er
+$V_0$ liten mot $V_p$, er den nær $G_0V_p/3$. Formelen gjelder for
+${V_0 - V_p \le V_G \le 0}$. Med en mer negativ gate er det ingen åpen kanal,
+og med en positiv gate ligger gateovergangen i lederetningen.
+
+<Term name="Transkonduktans">Transkonduktansen</Term> i metning er endringen i
+$I_D(\text{sat.})$ per volt på gaten, og den gir
+<FormulaRef id="forsterkning">forsterkningen</FormulaRef>
+${v_d = -g_mR_Lv_g}$. Deriver hakeparentesen ledd for ledd med hensyn på $V_G$.
+Det midterste leddet gir $1/V_p$, og det siste gir
+$-(1/V_p)((V_0 - V_G)/V_p)^{1/2}$:
+
+$$
+g_m(\text{sat.}) = \frac{\partial I_D(\text{sat.})}{\partial V_G} \allowbreak = G_0\left[1 - \left(\frac{V_0 - V_G}{V_p}\right)^{1/2}\right]
+$$
+
+Uttrykket er det samme som stigningen ved liten $V_D$ for den samme
+gatespenningen, konduktansen $G_0h(0)/a$ satt av halvhøyden ved source. Du kan
+altså lese $g_m(\text{sat.})$ av stigningen til kurven nær origo.
+Transkonduktansen er størst ved ${V_G = 0}$ og blir aldri større enn $G_0$. Den
+faller til null der kanalen stenges.
+
+Målt strøm i metning følger nesten den enkleste kurven med de samme
+egenskapene: strømmen $I_{DSS}$ i metning ved ${V_G = 0}$ og både strøm og
+stigning lik null der kanalen stenges, slik $g_m(\text{sat.})$ er null der. Den
+kurven er en parabel med bunnen ved ${V_G = V_0 - V_p}$:
+
+$$
+I_D(\text{sat.}) \approx I_{DSS}\left(1 + \frac{V_G}{V_p - V_0}\right)^2
+$$
+
+Parabelen trenger bare de to målte tallene $I_{DSS}$ og gatespenningen som
+stenger kanalen. Et datablad for en JFET oppgir dem som $I_{DSS}$ og
+$V_{GS(\text{off})}$. Transkonduktansen ved ${V_G = 0}$ står der som $|Y_{fs}|$.
+
+Konstant strøm over $V_D(\text{sat.})$ forutsetter at den avklemte delen er
+kort mot $L$. Avklemmingspunktet flytter seg litt inn fra drain når $V_D$ øker,
+så den åpne kanalen blir kortere. $G_0$ er proporsjonal med $1/L$, så strømmen
+øker litt, og i en kort kanal er økningen merkbar. $G_0$ forutsetter også at
+mobiliteten er konstant. Feltet langs kanalen er omtrent $V_D/L$, og i en kort
+kanal kan feltet komme over ${10^3\ \text{V/cm}}$. Der bøyer drifthastigheten av mot
+<Term name="Metningshastighet">metningshastigheten</Term>, og strømmen blir
+mindre enn formelen gir.
+
+<Callout title="Metning">
+$I_D(\text{sat.})$ er formelen for $I_D$ ved ${V_D = V_G + V_p - V_0}$, og den
+avhenger bare av $V_G$. Den er null ved ${V_G = V_0 - V_p}$, og
+${g_m(\text{sat.}) = G_0h(0)/a}$ er den samme konduktansen som stigningen ved
+liten $V_D$.
+</Callout>
+
+<Example title="strømmen i metning i en Si-JFET">
+
+En n-kanal-JFET i Si har p⁺-gater med ${N_a = 10^{19}\ \text{cm}^{-3}}$ og en
+kanal med ${N_d = 10^{16}\ \text{cm}^{-3}}$. Kanalen er ${L = 100\ \mu\text{m}}$
+lang og ${Z = 1\ \text{mm}}$ bred og har halvhøyden ${a = 1\ \mu\text{m}}$.
+Kontaktpotensialet er ${V_0 = 0{,}87\ \text{V}}$, og
+${V_p = qN_da^2/2\varepsilon = 7{,}66\ \text{V}}$. Mobiliteten til elektronene
+ved denne dopingen er ${\mu_n = 1200\ \text{cm}^2/\text{V}\cdot\text{s}}$. Finn $I_D(\text{sat.})$ og
+$g_m(\text{sat.})$ med ${V_G = 0}$ og med ${V_G = -2\ \text{V}}$, og sammenlign
+strømmen ved ${V_G = -2\ \text{V}}$ med parabelen.
+
+<Solution>
+
+- Tilnærmingene: ${L/a = 100}$, så kanalen er gradvis. Med ${V_G = 0}$
+  klemmes kanalen av ved ${V_D = V_p - V_0 = 6{,}79\ \text{V}}$, og feltet langs
+  kanalen er da i snitt 6,79 V over 0,01 cm, omtrent 0,7 kV/cm. Feltet er under
+  ${10^3\ \text{V/cm}}$, så mobiliteten er nesten konstant.
+- Ledningsevnen i kanalen og konduktansen uten soner, med
+  ${a = 10^{-4}\ \text{cm}}$ og ${Z/L = 10}$:
+
+$$
+\begin{aligned}
+\sigma &= q\mu_nN_d \\
+&= 1{,}6 \cdot 10^{-19} \cdot 1200 \cdot 10^{16} \\
+&= 1{,}92\ (\Omega\,\text{cm})^{-1}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+G_0 &= \frac{Z}{L}\,2a\sigma \\
+&= 10 \cdot 2 \cdot 10^{-4} \cdot 1{,}92\ \text{S} \\
+&= 3{,}84\ \text{mS} \\
+G_0V_p &= 3{,}84\ \text{mS} \cdot 7{,}66\ \text{V} \\
+&= 29{,}4\ \text{mA}
+\end{aligned}
+$$
+
+- Med ${V_G = 0}$ er brøken ${(V_0 - V_G)/V_p}$ lik ${0{,}87/7{,}66 = 0{,}114}$, med
+  kvadratroten 0,337. Potensen $3/2$ er ${0{,}114 \cdot 0{,}337 = 0{,}0384}$,
+  og ${1 - 0{,}337 = 0{,}663}$:
+
+$$
+\begin{aligned}
+&\tfrac13 - 0{,}114 + \tfrac23 \cdot 0{,}0384 \\
+&= 0{,}245 \\
+&I_D(\text{sat.}) = 29{,}4\ \text{mA} \cdot 0{,}245 \\
+&= 7{,}2\ \text{mA} \\
+&g_m(\text{sat.}) = 3{,}84\ \text{mS} \cdot 0{,}663 \\
+&= 2{,}5\ \text{mS}
+\end{aligned}
+$$
+
+- Med ${V_G = -2\ \text{V}}$ er brøken ${2{,}87/7{,}66 = 0{,}375}$, med
+  kvadratroten 0,612. Potensen $3/2$ er 0,229, og ${1 - 0{,}612 = 0{,}388}$:
+
+$$
+\begin{aligned}
+&\tfrac13 - 0{,}375 + \tfrac23 \cdot 0{,}229 \\
+&= 0{,}111 \\
+&I_D(\text{sat.}) = 29{,}4\ \text{mA} \cdot 0{,}111 \\
+&= 3{,}3\ \text{mA} \\
+&g_m(\text{sat.}) = 3{,}84\ \text{mS} \cdot 0{,}388 \\
+&= 1{,}5\ \text{mS}
+\end{aligned}
+$$
+
+- Kontroll: strømmen faller 3,9 mA over 2 V, i snitt 2,0 mS, og snittet ligger
+  mellom de to verdiene av $g_m(\text{sat.})$.
+- Parabelen med ${I_{DSS} = 7{,}2\ \text{mA}}$ og
+  ${V_p - V_0 = 6{,}79\ \text{V}}$:
+
+$$
+\begin{aligned}
+&7{,}2\ \text{mA} \cdot \Big(1 - \frac{2}{6{,}79}\Big)^2 \\
+&= 3{,}6\ \text{mA}
+\end{aligned}
+$$
+
+<Answer>
+
+Med ${V_G = 0}$ er ${I_D(\text{sat.}) = 7{,}2\ \text{mA}}$ og
+${g_m(\text{sat.}) = 2{,}5\ \text{mS}}$. Med ${V_G = -2\ \text{V}}$ er de 3,3 mA
+og 1,5 mS. Parabelen gir 3,6 mA ved −2 V, omtrent 10 % mer enn formelen.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+## Lav avklemmingsspenning og stor transkonduktans
+
+En JFET som skal styres med små gatespenninger, trenger lav $V_p$, og en god
+forsterker trenger stor $g_m(\text{sat.})$. De to er satt av de samme
+størrelsene på ulike måter:
+
+$$
+\begin{aligned}
+V_p &= \frac{qa^2N_d}{2\varepsilon} \\
+G_0 &= \frac{Z}{L}\,2aq\mu_nN_d
+\end{aligned}
+$$
+
+$V_p$ er satt av $a^2N_d$ alene. $G_0$ har også faktoren $Z/L$ og
+mobiliteten, og ingen av dem endrer $V_p$. Velg derfor $a$ og $N_d$ slik at
+$V_p$ blir lav nok, og gjør deretter $Z$ stor og $L$ liten, altså $Z/L$ stor,
+til $G_0$ er stor nok.
+
+En lav $V_p$ koster likevel transkonduktans. Ved ${V_G = 0}$ er
+${g_m(\text{sat.}) = G_0[1 - (V_0/V_p)^{1/2}]}$, og $V_0$ endrer seg lite med
+dopingen. Allerede ved ${V_G = 0}$ er sonen fra kontaktpotensialet alene
+${a(V_0/V_p)^{1/2}}$ bred. Når $V_p$ nærmer seg $V_0$, fyller den sonen nesten
+hele halvhøyden, og $g_m(\text{sat.})$ blir en liten del av $G_0$.
+
+<Callout title="Lav avklemmingsspenning">
+$V_p$ er satt av $a^2N_d$, mens $G_0$ også har $Z/L$ og $\mu_n$. Er $V_p$ lav,
+er $V_0$ en stor del av den, så $g_m(\text{sat.})$ blir en mindre del av
+$G_0$, og tapet må tas igjen med større $Z/L$.
+</Callout>
+
+<Example title="lavere avklemmingsspenning">
+
+En n-kanal-JFET i Si har de samme dopingene som over,
+${N_a = 10^{19}\ \text{cm}^{-3}}$ og ${N_d = 10^{16}\ \text{cm}^{-3}}$, så
+${V_0 = 0{,}87\ \text{V}}$. Mobiliteten er også den samme,
+${\mu_n = 1200\ \text{cm}^2/\text{V}\cdot\text{s}}$, men halvhøyden er
+${a = 0{,}5\ \mu\text{m}}$. Finn $V_p$ og gatespenningen som
+stenger kanalen, og finn $Z/L$ som gir ${g_m(\text{sat.}) = 2{,}5\ \text{mS}}$ ved
+${V_G = 0}$, det samme som kanalen med ${a = 1\ \mu\text{m}}$ og ${Z/L = 10}$ gir.
+
+<Solution>
+
+- $V_p$ er proporsjonal med $a^2$, og ${a = 1\ \mu\text{m}}$ gir 7,66 V:
+
+$$
+V_p = \tfrac14 \cdot 7{,}66\ \text{V} = 1{,}92\ \text{V}
+$$
+
+- Kanalen stenges ved ${V_G = V_0 - V_p}$, altså ved
+  ${0{,}87 - 1{,}92 = -1{,}05\ \text{V}}$.
+- Ved ${V_G = 0}$ er $(V_0/V_p)^{1/2}$ lik ${(0{,}87/1{,}92)^{1/2} = 0{,}673}$,
+  så ${g_m(\text{sat.}) = 0{,}327\,G_0}$:
+
+$$
+G_0 = \frac{2{,}5\ \text{mS}}{0{,}327} = 7{,}6\ \text{mS}
+$$
+
+- Ledningsevnen er ${q\mu_nN_d = 1{,}92\ (\Omega\,\text{cm})^{-1}}$ som over, så
+  med ${a = 0{,}5 \cdot 10^{-4}\ \text{cm}}$ er
+
+$$
+\begin{aligned}
+2aq\mu_nN_d &= 10^{-4} \cdot 1{,}92\ \text{S} \\
+&= 0{,}192\ \text{mS} \\
+Z/L &= 7{,}6/0{,}192 = 40
+\end{aligned}
+$$
+
+- Kontroll: $Z/L$ ble fire ganger større. Halve $a$ halverer $G_0$, og
+  ${1 - (V_0/V_p)^{1/2}}$ faller fra 0,66 til 0,33. Sonen fra kontaktpotensialet
+  er ${a(V_0/V_p)^{1/2} = 0{,}34\ \mu\text{m}}$ i begge kanalene, en tredjedel av
+  den høye halvhøyden og to tredjedeler av den lave.
+
+<Answer>
+
+Avklemmingsspenningen er 1,9 V, og kanalen stenges ved −1,05 V. Den samme
+transkonduktansen krever ${Z/L = 40}$, fire ganger så mye som med
+${a = 1\ \mu\text{m}}$.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+## Sjekk deg selv
+
+<Quiz
+  question={"En n-kanal-JFET har ${V_p = 4\\ \\text{V}}$, ${V_0 = 1\\ \\text{V}}$ og ${G_0 = 2\\ \\text{mS}}$. Hvor stor er strømmen i metning ved ${V_G = 0}$?"}
+  options={["1,3 mA", "2,7 mA", "1,2 mA", "8 mA"]}
+  answer={0}
+  explanation={"Med $V_G = 0$ er $(V_0 - V_G)/V_p = 1/4$, og potensen $3/2$ er $1/8$. Hakeparentesen er $1/3 - 1/4 + \\tfrac23 \\cdot \\tfrac18 = 1/6$, så $I_D(\\text{sat.}) = 2\\ \\text{mS} \\cdot 4\\ \\text{V}/6 = 1{,}3$ mA. 2,7 mA er $G_0V_p/3$, som glemmer $V_0$. 1,2 mA setter $V_D = V_p = 4$ V inn i formelen før avklemming, men kanalen klemmes av allerede ved $V_D = V_p - V_0 = 3$ V, og forbi den gir formelen en strøm som avtar. 8 mA er $G_0V_p$ uten hakeparentesen."}
+/>
+
+<Quiz
+  question={"Kurven for ${V_G = -1\\ \\text{V}}$ i en n-kanal-JFET har stigningen 0,8 mS nær ${V_D = 0}$. JFET-en står i metning med ${V_G = -1\\ \\text{V}}$ og ${R_L = 5\\ \\text{k}\\Omega}$, og et signal ${v_g = 10\\ \\text{mV}}$ legges på gaten. Hva blir $v_d$?"}
+  options={[
+    "−40 mV",
+    "+40 mV",
+    "0, fordi stigningen ved drain er null i metning",
+    "Den kan ikke finnes uten $G_0$ og $V_p$"
+  ]}
+  answer={0}
+  explanation={"Stigningen nær origo er $G_0[1 - ((V_0 - V_G)/V_p)^{1/2}]$, og $g_m(\\text{sat.})$ har det samme uttrykket ved den samme gatespenningen. Begge er konduktansen $G_0h(0)/a$ satt av halvhøyden ved source, så $g_m(\\text{sat.}) = 0{,}8$ mS uten at du kjenner $G_0$ eller $V_p$. Da er $v_d = -g_mR_Lv_g = -0{,}8\\ \\text{mS} \\cdot 5\\ \\text{k}\\Omega \\cdot 10\\ \\text{mV} = -40$ mV. +40 mV glemmer at mer strøm gir større fall over $R_L$. Stigningen $G_0h(L)/a$ ved drain er null i metning, men den sier hvordan $I_D$ endrer seg med $V_D$. $g_m(\\text{sat.})$ er endringen med $V_G$, og den er satt av halvhøyden ved source."}
+/>
+
+<Quiz
+  question={"En JFET har ${V_p = 8\\ \\text{V}}$. Du vil ha ${V_p = 2\\ \\text{V}}$ med den samme dopingen og den samme konduktansen $G_0$. Hva må du gjøre med halvhøyden $a$ og forholdet $Z/L$?"}
+  options={[
+    "Halvere $a$ og doble $Z/L$",
+    "Halvere $a$ og beholde $Z/L$",
+    "Dele $a$ på fire og gange $Z/L$ med fire",
+    "Halvere $a$ og gange $Z/L$ med fire"
+  ]}
+  answer={0}
+  explanation={"$V_p = qa^2N_d/2\\varepsilon$ er proporsjonal med $a^2$, så fra 8 V til 2 V må $a$ halveres. $G_0 = (Z/L)\\,2aq\\mu_nN_d$ er proporsjonal med $a$, så halv $a$ halverer $G_0$, og dobbel $Z/L$ henter den tilbake. Å beholde $Z/L$ glemmer at $G_0$ avhenger av $a$. Å dele $a$ på fire regner som om $V_p$ var proporsjonal med $a$. Å gange $Z/L$ med fire tar også med tapet fra $V_0$. I eksempelet over trengte den samme $g_m(\\text{sat.})$ fire ganger så stor $Z/L$, fordi $V_0$ ble en større del av $V_p$. Her er det $G_0$ som skal være den samme."}
+/>
+
+<KeyTakeaways>
+
+- Når kanalen er mye lengre enn den er høy, gir tilnærmingen med gradvis kanal en sone i hvert punkt som i en plan p⁺n-overgang. Den ledende halvhøyden er ${h = a - W}$ med ${W/a = [(V_0 + V_x - V_G)/V_p]^{1/2}}$ og ${V_p = qN_da^2/2\varepsilon}$.
+- Hver skive gir ${2\sigma Zh\,dV_x = I_D\,dx}$. Integrert fra source til drain gir ligningen $I_D(V_D, V_G)$ med ${G_0 = (Z/L)\,2aq\mu_nN_d}$, og stigningen $G_0h(L)/a$ er null ved avklemming, ${V_D(\text{sat.}) = V_G + V_p - V_0}$.
+- $I_D(\text{sat.})$ er $I_D$ ved avklemming og avhenger bare av $V_G$, fra null ved ${V_G = V_0 - V_p}$ til størst ved ${V_G = 0}$. $g_m(\text{sat.})$ er den samme konduktansen $G_0h(0)/a$ som stigningen ved liten $V_D$.
+- $V_p$ er satt av $a^2N_d$, mens $G_0$ også har $Z/L$ og $\mu_n$. Lav $V_p$ og stor $g_m(\text{sat.})$ krever stor $Z/L$, og jo nærmere $V_p$ er $V_0$, desto mindre del av $G_0$ blir $g_m(\text{sat.})$.
+
+</KeyTakeaways>

@@ -7,7 +7,7 @@
  * Øverst står JFET-en sett fra siden: source til venstre, drain til høyre,
  * p⁺-gatene over og under kanalen. Romladningssonene er tonet med de
  * avdekkede donorionene som ⊕-ringer, og bredden i punktet x følger
- * W(x)/a = [(V_0 + V_x − V_G)/(V_p + V_0)]^{1/2}. Elektronene er prikker i
+ * W(x)/a = [(V_0 + V_x − V_G)/V_p]^{1/2}. Elektronene er prikker i
  * den åpne delen. Hver prikk har en fast lodd u langs kanalen og en fast
  * andel t av halvhøyden; x er stedet der det åpne arealet fra source har nådd
  * andelen u + fase, så tettheten er den samme overalt (N_d), og prikkene går
@@ -15,9 +15,9 @@
  * feies elektronene langs midtlinjen gjennom den avklemte delen til drain.
  *
  * Nederst står I_D mot V_D for V_G = 0, −1, −2 og −3 V, kurven for den valgte
- * gatespenningen, den stiplede kurven gjennom knekkene ved V_D(sat.) = V_G + V_p
- * og punktet for spenningene som er valgt. Kurvene er den gradvise kanalen,
- * F(v) = v − ⅔[(V_0 + v − V_G)^{3/2} − (V_0 − V_G)^{3/2}]/(V_p + V_0)^{1/2},
+ * gatespenningen, den stiplede kurven gjennom knekkene ved
+ * V_D(sat.) = V_G + V_p − V_0 og punktet for spenningene som er valgt. Kurvene
+ * er den gradvise kanalen, F(v) = v − ⅔[(V_0 + v − V_G)^{3/2} − (V_0 − V_G)^{3/2}]/V_p^{1/2},
  * holdt konstant over V_D(sat.), pluss et skredledd som vokser bratt når
  * V_D − V_G når V_BR. Strømmen er i enheter av strømmen i metning ved V_G = 0.
  *
@@ -29,8 +29,8 @@
  */
 
 const V0 = 0.9; // V, kontaktpotensialet i gateovergangen
-const VP = 4; // V, avklemmingsspenningen
-const VP0 = VP + V0; // V, qN_d a²/2ε
+const VP = 4.9; // V, avklemmingsspenningen qN_d a²/2ε
+const VG_OFF = V0 - VP; // V, gatespenningen som stenger kanalen
 const VBR = 10; // V, skredgjennombrudd i gateovergangen
 const VD_MAX = 12;
 const VG_MIN = -5;
@@ -44,9 +44,9 @@ const DOT_AREA = 280; // px² per prikk, så tettheten er den samme på alle skj
 let NDOT = 110; // prikker i en helt åpen kanal, settes av layout()
 const TRANSIT = 3.2; // s, tiden en prikk bruker gjennom kanalen i metning ved V_G = 0
 
-const F = (v, vg) => v - (2 / 3) * (Math.max(0, V0 + v - vg) ** 1.5 - Math.max(0, V0 - vg) ** 1.5) / Math.sqrt(VP0);
-const F_SAT0 = F(VP, 0);
-const vsatOf = (vg) => vg + VP;
+const F = (v, vg) => v - (2 / 3) * (Math.max(0, V0 + v - vg) ** 1.5 - Math.max(0, V0 - vg) ** 1.5) / Math.sqrt(VP);
+const F_SAT0 = F(-VG_OFF, 0);
+const vsatOf = (vg) => vg - VG_OFF;
 /** Strømmen gjennom kanalen, i enheter av I_DSS. */
 const ich = (vd, vg) => {
   const vs = vsatOf(vg);
@@ -56,7 +56,7 @@ const ich = (vd, vg) => {
 /** Skredstrømmen fra drain til gaten. */
 const ibr = (vd, vg) => Math.min(4, 0.02 * Math.exp((vd - vg - VBR) / 0.25));
 /** Sonebredden som andel av halvhøyden a. */
-const wFrac = (vx, vg) => Math.min(1, Math.sqrt(Math.max(0, V0 + vx - vg) / VP0));
+const wFrac = (vx, vg) => Math.min(1, Math.sqrt(Math.max(0, V0 + vx - vg) / VP));
 
 export default function init({ stage, controls, getSize, onResize, signal }) {
   let vdT = 5;
@@ -397,7 +397,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     for (const vg of FAMILY) fam += curvePath(vg);
     let locus = "";
     for (let i = 0; i <= 40; i++) {
-      const vg = -VP + (i / 40) * VP;
+      const vg = VG_OFF * (1 - i / 40);
       locus += `${i ? "L" : "M"} ${P(xV(vsatOf(vg)))} ${P(yI(ich(vsatOf(vg), vg)))} `;
     }
     s +=

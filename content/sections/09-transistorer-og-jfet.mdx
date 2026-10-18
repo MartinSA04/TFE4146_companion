@@ -5,7 +5,7 @@ summary: "Hvordan en transistor forsterker et signal og slår strømmen av og p�
 importance: core
 tag: "Uke 41 · Streetman §6.1–6.2.2"
 part: "Del 4: Transistorer"
-updated: 2026-10-14
+updated: 2026-10-18
 ---
 
 <LearningGoals>
@@ -201,28 +201,28 @@ Ved en viss drain-spenning møtes de to sonene ved drain, og kanalen er
 ${W = a}$ i sonebredden, og løs for spenningene:
 
 $$
-a = \left[\frac{2\varepsilon(V_0 + V_D - V_G)}{qN_d}\right]^{1/2} \allowbreak \;\Rightarrow\; V_D - V_G = \frac{qN_da^2}{2\varepsilon} - V_0
+a = \left[\frac{2\varepsilon(V_0 + V_D - V_G)}{qN_d}\right]^{1/2} \allowbreak \;\Rightarrow\; V_0 + V_D - V_G = \frac{qN_da^2}{2\varepsilon}
 $$
 
 Høyresiden avhenger bare av hvordan JFET-en er laget. Den er
 avklemmingsspenningen:
 
 $$
-V_p = \frac{qN_da^2}{2\varepsilon} - V_0
+V_p = \frac{qN_da^2}{2\varepsilon}
 $$
 
-Det første leddet er barrieren ${V_0 - V = qN_dW^2/2\varepsilon}$ over sonen i en
+$V_p$ er barrieren ${V_0 - V = qN_dW^2/2\varepsilon}$ over sonen i en
 <FormulaRef id="ensidig-overgang">ensidig overgang</FormulaRef> med ${W = a}$.
-Kontaktpotensialet står for $V_0$ av barrieren, så sperrespenningen som
-trengs, er $V_p$. Kanalen klemmes av ved drain når ${V_D - V_G = V_p}$, altså ved
-${V_D(\text{sat.}) = V_G + V_p}$. Med ${V_G = 0}$ klemmes kanalen av ved ${V_D = V_p}$.
+Kontaktpotensialet står for $V_0$ av barrieren, så gateovergangen trenger
+sperrespenningen ${V_p - V_0}$ før sonene møtes. Kanalen klemmes av ved drain når ${V_D - V_G = V_p - V_0}$, altså ved
+${V_D(\text{sat.}) = V_G + V_p - V_0}$. Med ${V_G = 0}$ klemmes kanalen av ved ${V_D = V_p - V_0}$.
 $V_p$ vokser med $a^2$ og $N_d$, siden en høyere og sterkere dopet kanal
 krever en større sperrespenning før sonene møtes. Er $V_0$ liten mot
-$qN_da^2/2\varepsilon$, er ${V_p \approx qN_da^2/2\varepsilon}$.
+$V_p$, klemmes kanalen av ved ${V_D - V_G \approx V_p}$.
 
 Økes $V_D$ forbi $V_D(\text{sat.})$, flytter avklemmingspunktet seg et lite
 stykke inn fra drain. Avklemmingspunktet er stedet der sperrespenningen er
-nøyaktig $V_p$, så spenningen der er ${V_G + V_p = V_D(\text{sat.})}$ uansett
+nøyaktig ${V_p - V_0}$, så spenningen der er ${V_G + V_p - V_0 = V_D(\text{sat.})}$ uansett
 hvor stor $V_D$ er. Den åpne kanalen fra source til avklemmingspunktet har
 dermed den samme spenningen over seg og omtrent den samme formen som da den
 ble klemt av, og den fører den samme strømmen. Resten av spenningen,
@@ -232,7 +232,7 @@ til drain, slik minoritetsbærere feies over en overgang i sperreretning.
 Strømmen stopper altså ikke ved avklemming. Den metter på $I_D(\text{sat.})$.
 
 <Callout title="Avklemming">
-Kanalen klemmes av ved drain når ${V_D - V_G = V_p}$, med ${V_p = qN_da^2/2\varepsilon - V_0}$. Spenningen ut over ${V_D(\text{sat.}) = V_G + V_p}$ faller over den avklemte delen, så strømmen metter.
+Kanalen klemmes av ved drain når ${V_D - V_G = V_p - V_0}$, med ${V_p = qN_da^2/2\varepsilon}$. Spenningen ut over ${V_D(\text{sat.}) = V_G + V_p - V_0}$ faller over den avklemte delen, så strømmen metter.
 </Callout>
 
 <Example title="avklemmingsspenningen i en Si-JFET">
@@ -259,8 +259,8 @@ V_0 &= \frac{k_BT}{q}\ln\frac{N_aN_d}{n_i^2} \\
 \end{aligned}
 $$
 
-- Barrieren over en sone som fyller hele halvhøyden, $qN_dW^2/2\varepsilon$
-  med ${W = a = 10^{-4}\ \text{cm}}$:
+- Avklemmingsspenningen er barrieren over en sone som fyller hele halvhøyden,
+  $qN_dW^2/2\varepsilon$ med ${W = a = 10^{-4}\ \text{cm}}$:
 
 $$
 \begin{aligned}
@@ -273,22 +273,25 @@ qN_da^2 &= 1{,}6 \cdot 10^{-3} \cdot 10^{-8} \\
 \end{aligned}
 $$
 
-- Avklemmingsspenningen:
+- Sperrespenningen ved drain når kanalen klemmes av:
 
 $$
-V_p = 7{,}66 - 0{,}87 = 6{,}79\ \text{V}
+\begin{aligned}
+V_p - V_0 &= 7{,}66 - 0{,}87 \\
+&= 6{,}79\ \text{V}
+\end{aligned}
 $$
 
-- Kanalen klemmes av ved ${V_D(\text{sat.}) = V_G + V_p}$, altså 6,79 V med
+- Kanalen klemmes av ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$, altså 6,79 V med
   ${V_G = 0}$ og 4,79 V med ${V_G = -2\ \text{V}}$.
 - Kanalen er stengt i hele lengden når den er klemt av allerede ved
-  ${V_D = 0}$, altså når ${V_G = -V_p}$.
+  ${V_D = 0}$, altså når ${V_G = V_0 - V_p = -6{,}79\ \text{V}}$.
 
 <Answer>
 
-${V_p = 6{,}8\ \text{V}}$. Kanalen klemmes av ved ${V_D = 6{,}8\ \text{V}}$ med ${V_G = 0}$ og ved
+${V_p = 7{,}7\ \text{V}}$. Kanalen klemmes av ved ${V_D = 6{,}8\ \text{V}}$ med ${V_G = 0}$ og ved
 ${V_D = 4{,}8\ \text{V}}$ med ${V_G = -2\ \text{V}}$, og ${V_G = -6{,}8\ \text{V}}$ stenger den. Uten $V_0$
-ville $V_p$ blitt 7,7 V, 13 % for høy.
+ville kanalen blitt klemt av ved 7,7 V med ${V_G = 0}$, 13 % for høyt.
 
 </Answer>
 
@@ -300,10 +303,10 @@ ville $V_p$ blitt 7,7 V, 13 % for høy.
 
 En mer negativ gatespenning gjør sonene bredere langs hele kanalen. Kanalen er
 da smalere allerede ved liten $V_D$, så stigningen er mindre, og den klemmes
-av ved en lavere drain-spenning, ${V_D(\text{sat.}) = V_G + V_p}$. Ved
+av ved en lavere drain-spenning, ${V_D(\text{sat.}) = V_G + V_p - V_0}$. Ved
 avklemming ligger det mindre spenning over den åpne kanalen, og kanalen er
 smalere, så $I_D(\text{sat.})$ blir mindre. Hver gatespenning gir sin kurve,
-og knekkene ligger ved ${V_D(\text{sat.}) = V_G + V_p}$. Ved ${V_G = -V_p}$ er
+og knekkene ligger ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$. Ved ${V_G = V_0 - V_p}$ er
 kanalen klemt av i hele lengden allerede ved ${V_D = 0}$, og det går ingen
 strøm. Transistoren er av.
 
@@ -327,7 +330,7 @@ drain gir elektroner som går til drain og hull som går til gaten, så
 strømmen går inn ved drain og ut gjennom gaten.
 
 <Callout title="Gatestyring">
-Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G + V_p}$ og mindre strøm i metning, og ${V_G = -V_p}$ stenger kanalen. Gateovergangen bryter gjennom ved drain når ${V_D = V_\text{br} + V_G}$.
+Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$ og mindre strøm i metning, og ${V_G = V_0 - V_p}$ stenger kanalen. Gateovergangen bryter gjennom ved drain når ${V_D = V_\text{br} + V_G}$.
 </Callout>
 
 <Simulation
@@ -341,22 +344,22 @@ Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G +
 ## Sjekk deg selv
 
 <Quiz
-  question={"En n-kanal-JFET har $V_p = 4$ V og ligger med $V_G = -1{,}5$ V og $V_D = 3$ V. Hvordan ser kanalen ut?"}
+  question={"En n-kanal-JFET med $V_p = 5$ V og $V_0 = 1$ V ligger med $V_G = -1{,}5$ V og $V_D = 3$ V. Hvordan ser kanalen ut?"}
   options={[
     "Klemt av ved drain, og $I_D$ har nådd strømmen i metning",
-    "Åpen hele veien, fordi $V_D = 3$ V er mindre enn $V_p$",
+    "Åpen hele veien, fordi $V_D - V_G = 4{,}5$ V er mindre enn $V_p$",
     "Åpen hele veien, fordi $V_D + V_G = 1{,}5$ V er mindre enn $V_p$",
     "Klemt av ved drain, så det går ingen strøm fra source til drain"
   ]}
   answer={0}
-  explanation={"Sperrespenningen ved drain er $V_D - V_G = 3 + 1{,}5 = 4{,}5$ V, større enn $V_p = 4$ V, så sonene har møttes ved drain. Kanalen ble klemt av ved $V_D(\\text{sat.}) = V_G + V_p = 2{,}5$ V. Å sammenligne $V_D$ med $V_p$ glemmer at gaten allerede gir sperrespenning, og $V_D + V_G$ har feil fortegn på gatespenningen. Etter avklemming feies elektronene gjennom den avklemte delen, så strømmen går fortsatt og har mettet."}
+  explanation={"Sperrespenningen ved drain er $V_D - V_G = 3 + 1{,}5 = 4{,}5$ V, større enn $V_p - V_0 = 4$ V, så sonene har møttes ved drain. Kanalen ble klemt av ved $V_D(\\text{sat.}) = V_G + V_p - V_0 = 2{,}5$ V. Å sammenligne $V_D - V_G$ med $V_p$ glemmer at kontaktpotensialet allerede står for $V_0$ av barrieren, og $V_D + V_G$ har feil fortegn på gatespenningen. Etter avklemming feies elektronene gjennom den avklemte delen, så strømmen går fortsatt og har mettet."}
 />
 
 <Quiz
-  question={"Gateovergangene i en n-kanal-JFET har skredgjennombrudd ved $V_\\text{br} = 25$ V og avklemmingsspenningen $V_p = 5$ V. Ved hvilken drain-spenning bryter JFET-en gjennom med $V_G = -3$ V?"}
+  question={"Gateovergangene i en n-kanal-JFET har skredgjennombrudd ved $V_\\text{br} = 25$ V, avklemmingsspenningen $V_p = 6$ V og kontaktpotensialet $V_0 = 1$ V. Ved hvilken drain-spenning bryter JFET-en gjennom med $V_G = -3$ V?"}
   options={["22 V", "28 V", "25 V", "27 V"]}
   answer={0}
-  explanation={"Sperrespenningen er størst ved drain og er $V_D - V_G$ der. Skred starter når den når $V_\\text{br}$, altså ved $V_D = V_\\text{br} + V_G = 25 - 3 = 22$ V. Gaten ligger allerede 3 V under source, så drain trenger 3 V mindre. 28 V har feil fortegn på $V_G$, og 25 V regner som om gaten lå på source. 27 V legger $V_\\text{br}$ til $V_D(\\text{sat.}) = 2$ V, men avklemmingen endrer ikke sperrespenningen ved drain, som er $V_D - V_G$ uansett."}
+  explanation={"Sperrespenningen er størst ved drain og er $V_D - V_G$ der. Skred starter når den når $V_\\text{br}$, altså ved $V_D = V_\\text{br} + V_G = 25 - 3 = 22$ V. Gaten ligger allerede 3 V under source, så drain trenger 3 V mindre. 28 V har feil fortegn på $V_G$, og 25 V regner som om gaten lå på source. 27 V legger $V_\\text{br}$ til $V_D(\\text{sat.}) = V_G + V_p - V_0 = 2$ V, men avklemmingen endrer ikke sperrespenningen ved drain, som er $V_D - V_G$ uansett."}
 />
 
 <Quiz
@@ -375,7 +378,7 @@ Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G +
 
 - Arbeidspunktet ligger der kurven for $V_G$ krysser lastlinjen ${V_{DD} = I_DR_L + V_D}$. I metning gir et signal $v_g$ på gaten ${v_d = -g_mR_Lv_g}$ på drain, og som bryter lader transistoren lasten $C_L$ på omtrent $C_LV_{DD}/I_D(\text{sat.})$.
 - I en n-kanal-JFET går strømmen gjennom n-kanalen mellom to p⁺-gater i sperreretning. Sonen i punktet $x$ er $W(x) = [2\varepsilon(V_0 + V_x - V_G)/qN_d]^{1/2}$, og bare halvhøyden ${a - W}$ leder.
-- Sperrespenningen er størst ved drain, så kanalen er smalest der. Den klemmes av når $V_D - V_G = V_p = qN_da^2/2\varepsilon - V_0$. Større $V_D$ faller over den avklemte delen, og strømmen metter.
-- Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G + V_p}$ og mindre strøm i metning. ${V_G = -V_p}$ stenger kanalen, og gateovergangen bryter gjennom ved ${V_D = V_\text{br} + V_G}$.
+- Sperrespenningen er størst ved drain, så kanalen er smalest der. Den klemmes av når ${V_D - V_G = V_p - V_0}$, med ${V_p = qN_da^2/2\varepsilon}$. Større $V_D$ faller over den avklemte delen, og strømmen metter.
+- Mer negativ $V_G$ gir mindre stigning, avklemming ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$ og mindre strøm i metning. ${V_G = V_0 - V_p}$ stenger kanalen, og gateovergangen bryter gjennom ved ${V_D = V_\text{br} + V_G}$.
 
 </KeyTakeaways>
