@@ -32,7 +32,7 @@ this block once per module. Keep it next to the syllabus, not in the course repo
 ### Widgets to use
 
 - [ ] Worked `Example` + `Solution` / `Answer`
-- [ ] Past-exam task: `Example label="Eksamensoppgave"` opened by `ExamRef` (verbatim text; every sub-question solvable from this module — AUTHORING.md §3, WRITING.md §2)
+- [ ] Past-exam task: `Example label="Eksamensoppgave"` opened by `ExamRef` (verbatim text; every sub-question solvable from this module — AUTHORING.md §3, WRITING.md §3)
 - [ ] `Steps` procedure
 - [ ] `Hints` ladder
 - [ ] `Compare` table

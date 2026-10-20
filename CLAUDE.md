@@ -27,12 +27,22 @@ numbering, external references), and the **per-section definition-of-done**.
 
 **Then read `WRITING.md`** (also top level, framework repo). It is the ruleset for
 the prose itself and is equally binding: check the course page for the level and
-prerequisites and write for exactly that reader, one lecture week is **one module
-of 1300–2000 words**, one concept keeps one word, no coined metaphors or
-aphorisms, no forward references to week or module numbers, and a course-owned
-simulation uses the framework's own classes and design tokens rather than chrome
+prerequisites and write for exactly that reader. A module **teaches**: each idea
+starts from something the reader can see (a sim, a figure, a case with numbers)
+and gets its reason in words before its formula, and derivations give rigor,
+usually in dropdowns. A module is **one topic as the course teaches it**, one
+concept keeps one word, there are no coined names, aphorisms or forward
+references to week or module numbers, and a course-owned simulation draws the
+system and uses the framework's own classes and design tokens rather than chrome
 you invent. Both files live in the framework, never copied here, so they stay in
 lockstep with the pinned tag.
+
+## Rewriting a module
+
+A rewrite follows `WRITING.md` §9: from a blank page, never from the current text,
+and shown to the maintainer **side by side** with the current module for critique
+before anything is committed. If this repo has a `REWRITES.md`, it lists which
+modules have been rewritten and which remain.
 
 ## Workflow
 
