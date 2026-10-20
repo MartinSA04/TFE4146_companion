@@ -40,17 +40,17 @@ exam:
 # igjen hvis arket endres.
 formulas:
   - id: bloch-funksjon
-    section: E–k-diagrammet
+    section: Fra bindinger til bånd
     onSheet: false
     tex: "\\psi_k(x) = U(k_x, x)\\, e^{jk_x x}"
     label: "Bloch-funksjonen består av to faktorer. $e^{jk_x x}$ er en planbølge, og $U(k_x, x)$ er en funksjon som gjentar seg med gitterets periode, $U(k_x, x + a) = U(k_x, x)$. Elektronet i krystallen er ikke fritt, og beskrives likevel av én bølgevektor $k$."
   - id: gruppehastighet
-    section: E–k-diagrammet
+    section: Hvorfor et fullt bånd ikke leder
     onSheet: false
     tex: "v = \\dfrac{1}{\\hbar}\\dfrac{dE}{dk}"
     label: "Bærerens hastighet er gruppehastigheten til bølgepakken, altså stigningstallet i $E(k)$. På bunnen av båndet er $v = 0$ selv om $\\hbar k \\neq 0$."
   - id: planck
-    section: E–k-diagrammet
+    section: Lys eller varme
     onSheet: true
     tex: "E = h\\nu = \\hbar\\omega"
     label: "Energien til et foton med frekvens $\\nu$. Et elektron som faller fra ledningsbåndet til valensbåndet i en direkte halvleder, sender ut et foton med $h\\nu \\approx E_g$."
@@ -60,7 +60,7 @@ formulas:
     tex: "p = m^*v = \\hbar k = \\dfrac{h}{\\lambda}"
     label: "Bevegelsesmengden til elektronet, med bølgelengden $\\lambda = 2\\pi/k$ (de Broglie). Med den effektive massen gjelder $m^*v = \\hbar k$ nær bunnen av et parabolsk bånd. $\\hbar k$ er krystallmomentum, som bare den ytre kraften endrer."
   - id: krystallmomentum
-    section: Effektiv masse
+    section: Hvorfor et fullt bånd ikke leder
     onSheet: false
     tex: "F_\\text{ytre} = \\dfrac{d(\\hbar k)}{dt}"
     label: "Akselerasjonsteoremet. Bare den <em>ytre</em> kraften står på høyresiden, for gitterkreftene ligger allerede inne i formen på $E(k)$. Derfor er $\\hbar k$ krystallmomentum og ikke elektronets ekte bevegelsesmengde."
@@ -80,12 +80,12 @@ formulas:
     tex: "E_\\text{tot} = E_\\text{pot} + E_\\text{kin} = E_c + E(k)"
     label: "Elektronets totale energi i ledningsbåndet: båndkanten $E_c$ er den potensielle energien, og $E(k)$ over kanten er den kinetiske. Derfor skråner båndkantene i et felt, mens $E(k)$ beskriver bevegelsen."
   - id: fullt-band-strom
-    section: Elektroner og hull
+    section: Hvorfor et fullt bånd ikke leder
     onSheet: false
     tex: "J = (-q)\\sum_{i=1}^{N} v_i = 0 \\quad\\Longrightarrow\\quad J = (-q)\\sum_{i=1}^{N} v_i - (-q)v_j = +q\\,v_j"
     label: "Et fullt bånd gir null strøm. Fjerner du elektron $j$, blir summen $+qv_j$, altså <em>nøyaktig</em> strømmen fra én positiv ladning med det manglende elektronets hastighet. Derfor regnes den tomme tilstanden som en positiv ladning, et hull."
   - id: generasjon-rekombinasjon
-    section: Intrinsisk materiale
+    section: Elektronene i en silisiumkrystall
     onSheet: false
     tex: "r_i = a_r n_0 p_0 = g_i"
     label: "Likevekt er <em>dynamisk</em>: rekombinasjonsraten $r_i$ er proporsjonal med produktet $n_0p_0$, fordi et elektron og et hull må møtes, og den balanserer generasjonsraten $g_i$. $g_i$ avhenger bare av temperaturen, og i intrinsisk materiale er $g_i = a_rn_i^2$, så produktet er låst: $n_0p_0 = n_i^2$."
@@ -628,46 +628,46 @@ formulas:
 
 glossary:
   - term: Valensbånd
-    section: Fra binding til bånd
+    section: Fra bindinger til bånd
     definition: "(<em>valence band</em>) Det øverste båndet som er fullt av elektroner ved 0 K. Toppen betegnes $E_v$. I Si rommer det $4N$ tilstander, akkurat nok til de $4N$ valenselektronene."
   - term: Ledningsbånd
-    section: Fra binding til bånd
+    section: Fra bindinger til bånd
     definition: "(<em>conduction band</em>) Det nederste tomme båndet ved 0 K, med bunnen $E_c$. Elektroner som eksiteres hit har mange ledige tilstander rundt seg og kan derfor bidra til strøm."
   - term: Bloch-funksjon
-    section: E–k-diagrammet
+    section: Fra bindinger til bånd
     definition: "Bølgefunksjonen til et elektron i et periodisk gitter: en planbølge multiplisert med en funksjon som har gitterets periodisitet. Den er grunnlaget for å beskrive elektronet ved én bølgevektor $k$."
   - term: Kronig-Penney-modellen
-    section: E–k-diagrammet
+    section: Fra bindinger til bånd
     definition: "(<em>Kronig–Penney model</em>) Den enkleste modellen som gir bånd og gap: et 1D-gitter regnet som en uendelig, periodisk rekke rektangulære barrierer. Kontinuitet i $\\psi$ og $d\\psi/dx$ pluss Bloch-kravet gir én ligning $\\cos ka = f(E)$, og energier med $|f(E)| > 1$ har ingen $k$; de intervallene er båndgapene."
   - term: E-k-diagram
-    section: E–k-diagrammet
+    section: Hvorfor et fullt bånd ikke leder
     definition: "Plott av elektronets totale energi mot bølgevektoren $k$, for én krystallretning. Stigningstallet gir hastigheten, krumningen gir effektiv masse, og om ekstremalpunktene ligger ved samme $k$, avgjør om halvlederen er direkte eller indirekte."
   - term: Gruppehastighet
-    section: E–k-diagrammet
+    section: Hvorfor et fullt bånd ikke leder
     definition: "(<em>group velocity</em>) Farten til bølgepakken bæreren består av, $v = \\frac{1}{\\hbar}\\frac{dE}{dk}$, altså stigningstallet i $E(k)$. På bunnen av båndet er den null, uansett hvor stor $k$ er."
   - term: Direkte halvleder
-    section: E–k-diagrammet
+    section: Lys eller varme
     definition: "(<em>direct semiconductor</em>) Ledningsbåndminimet og valensbåndmaksimet ligger ved samme $k$, som i GaAs ($E_g = 1{,}43$ eV). Et elektron kan falle rett ned og gi fra seg $E_g$ som et foton, og derfor brukes slike materialer i lysdioder og lasere."
   - term: Indirekte halvleder
-    section: E–k-diagrammet
+    section: Lys eller varme
     definition: "(<em>indirect semiconductor</em>) Ledningsbåndminimet ligger ved en annen $k$ enn valensbåndmaksimet, som i Si. Overgangen krever en momentumendring i tillegg til energiendringen, og går gjerne via en defekttilstand med energien avgitt som varme."
   - term: Fonon
-    section: E–k-diagrammet
+    section: Lys eller varme
     definition: "(<em>phonon</em>) Et kvantum av gittervibrasjon. Det bærer momentum på Brillouinsonens skala og svært lite energi, og er derfor partneren en indirekte halvleder må låne momentum av. Fotonet leverer energien, fononet momentumet."
   - term: Krystallmomentum
-    section: Effektiv masse
+    section: Hvorfor et fullt bånd ikke leder
     definition: "(<em>crystal momentum</em>) Størrelsen $\\hbar k$. Den oppfører seg som bevegelsesmengde overfor <em>ytre</em> krefter, og er likevel ikke elektronets virkelige bevegelsesmengde, siden gitterkreftene er utelatt."
   - term: Effektiv masse
     section: Effektiv masse
     definition: "(<em>effective mass</em>) Tallet $m^*$ som må stå i Newtons lov for at den ytre kraften alene skal gi riktig akselerasjon: gitterkreftene ligger allerede i tallet. Den finnes fra krumningen til $E(k)$, og er derfor ulik i ulike materialer selv om elektronets <em>ekte</em> masse er den samme."
   - term: Hull
-    section: Elektroner og hull
+    section: Elektronene i en silisiumkrystall
     definition: "(<em>hole</em>) En tom tilstand i valensbåndet, regnet som én bærer med positiv ladning og positiv masse. Strømmen bæres av de gjenværende elektronene, og hullregnskapet gir den samme strømmen med ett ledd i stedet for $10^{23}$."
   - term: Elektron-hull-par
-    section: Intrinsisk materiale
+    section: Elektronene i en silisiumkrystall
     definition: "(<em>electron-hole pair</em>) Et ledningsbåndelektron og hullet det etterlot seg i valensbåndet, laget i samme eksitasjon (EHP). Termisk eller optisk energi $\\ge E_g$ kreves for å lage ett."
   - term: Intrinsisk halvleder
-    section: Intrinsisk materiale
+    section: Elektronene i en silisiumkrystall
     definition: "(<em>intrinsic semiconductor</em>) En perfekt krystall uten dopanter eller gitterfeil, der de eneste bærerne er termisk genererte par. Da er $n = p = n_i$."
   - term: Ekstrinsisk halvleder
     section: Doping
