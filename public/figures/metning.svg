@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 270" width="340" height="270">
+  <!-- Drift velocity of electrons in Si against the field, linear axes: v_d = μℰ/(1 + μℰ/v_s) from the
+       formula sheet with μ = 1350 cm²/V·s and v_s = 10⁷ cm/s (solid). Dashed: μℰ, Ohm's law continued.
+       Dotted: v_s. Transparent background and mid-tone colours, as the other figures. -->
+  <defs><marker id="ax" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#8d98a6"/></marker></defs>
+  <path d="M 62 214 H 326 M 62 214 V 18" fill="none" stroke="#8d98a6" stroke-width="1.2" marker-end="url(#ax)"/>
+  <line x1="62" y1="214" x2="326" y2="214" stroke="#8d98a6" stroke-width="1.2" marker-end="url(#ax)"/>
+  <line x1="62" y1="214" x2="62" y2="219" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="62" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">0</text>
+  <line x1="126" y1="214" x2="126" y2="219" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="126" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">1</text>
+  <line x1="190" y1="214" x2="190" y2="219" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="190" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">2</text>
+  <line x1="254" y1="214" x2="254" y2="219" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="254" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">3</text>
+  <line x1="318" y1="214" x2="318" y2="219" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="318" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="middle">4</text>
+  <text x="324" y="258" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="end">ℰ (10⁴ V/cm)</text>
+  <line x1="57" y1="214" x2="62" y2="214" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="53" y="219" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="end">0</text>
+  <line x1="57" y1="140.4" x2="62" y2="140.4" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="53" y="145.4" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="end">0,5</text>
+  <line x1="57" y1="66.8" x2="62" y2="66.8" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="53" y="71.8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="end">1</text>
+  <text x="58" y="14" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">v<tspan dy="5" font-size="13">d</tspan></text>
+  <text x="80" y="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="start">(10⁷ cm/s)</text>
+  <line x1="62" y1="66.8" x2="318" y2="66.8" stroke="#7c8795" stroke-width="1.2" stroke-dasharray="2 4"/>
+  <text x="318" y="58.8" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="end">v<tspan dy="5" font-size="13">s</tspan></text>
+  <line x1="62" y1="214" x2="121.3" y2="30" stroke="#7c8795" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="129.3" y="44" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="start">μℰ</text>
+  <path d="M 62 214 L 63.6 209.2 L 65.2 204.7 L 66.8 200.5 L 68.4 196.5 L 70 192.7 L 71.6 189.2 L 73.2 185.9 L 74.8 182.7 L 76.4 179.7 L 78 176.9 L 79.6 174.1 L 81.2 171.6 L 82.8 169.1 L 84.4 166.8 L 86 164.5 L 87.6 162.4 L 89.2 160.3 L 90.8 158.4 L 92.4 156.5 L 94 154.7 L 95.6 152.9 L 97.2 151.3 L 98.8 149.7 L 100.4 148.1 L 102 146.6 L 103.6 145.2 L 105.2 143.8 L 106.8 142.5 L 108.4 141.2 L 110 139.9 L 111.6 138.7 L 113.2 137.6 L 114.8 136.4 L 116.4 135.3 L 118 134.3 L 119.6 133.3 L 121.2 132.3 L 122.8 131.3 L 124.4 130.4 L 126 129.4 L 127.6 128.6 L 129.2 127.7 L 130.8 126.9 L 132.4 126 L 134 125.2 L 135.6 124.5 L 137.2 123.7 L 138.8 123 L 140.4 122.3 L 142 121.6 L 143.6 120.9 L 145.2 120.2 L 146.8 119.6 L 148.4 119 L 150 118.3 L 151.6 117.7 L 153.2 117.1 L 154.8 116.6 L 156.4 116 L 158 115.5 L 159.6 114.9 L 161.2 114.4 L 162.8 113.9 L 164.4 113.4 L 166 112.9 L 167.6 112.4 L 169.2 111.9 L 170.8 111.5 L 172.4 111 L 174 110.6 L 175.6 110.1 L 177.2 109.7 L 178.8 109.3 L 180.4 108.9 L 182 108.5 L 183.6 108.1 L 185.2 107.7 L 186.8 107.3 L 188.4 107 L 190 106.6 L 191.6 106.2 L 193.2 105.9 L 194.8 105.5 L 196.4 105.2 L 198 104.8 L 199.6 104.5 L 201.2 104.2 L 202.8 103.9 L 204.4 103.6 L 206 103.3 L 207.6 103 L 209.2 102.7 L 210.8 102.4 L 212.4 102.1 L 214 101.8 L 215.6 101.5 L 217.2 101.2 L 218.8 101 L 220.4 100.7 L 222 100.4 L 223.6 100.2 L 225.2 99.9 L 226.8 99.7 L 228.4 99.4 L 230 99.2 L 231.6 99 L 233.2 98.7 L 234.8 98.5 L 236.4 98.3 L 238 98 L 239.6 97.8 L 241.2 97.6 L 242.8 97.4 L 244.4 97.2 L 246 97 L 247.6 96.7 L 249.2 96.5 L 250.8 96.3 L 252.4 96.1 L 254 95.9 L 255.6 95.8 L 257.2 95.6 L 258.8 95.4 L 260.4 95.2 L 262 95 L 263.6 94.8 L 265.2 94.6 L 266.8 94.5 L 268.4 94.3 L 270 94.1 L 271.6 94 L 273.2 93.8 L 274.8 93.6 L 276.4 93.5 L 278 93.3 L 279.6 93.1 L 281.2 93 L 282.8 92.8 L 284.4 92.7 L 286 92.5 L 287.6 92.4 L 289.2 92.2 L 290.8 92.1 L 292.4 91.9 L 294 91.8 L 295.6 91.6 L 297.2 91.5 L 298.8 91.4 L 300.4 91.2 L 302 91.1 L 303.6 90.9 L 305.2 90.8 L 306.8 90.7 L 308.4 90.6 L 310 90.4 L 311.6 90.3 L 313.2 90.2 L 314.8 90 L 316.4 89.9 L 318 89.8 " fill="none" stroke="#3d7cc4" stroke-width="2.4"/>
+</svg>

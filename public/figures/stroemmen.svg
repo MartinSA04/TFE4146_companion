@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 308" width="340" height="308">
+  <!-- Counting the current through a cross-section (dashed). Electrons (blue dots, top) drift against
+       the field and holes (red rings, bottom) with it. In the time Δt every carrier inside the shaded
+       box crosses the line: the box is μ_nℰΔt to the right of it for electrons and μ_pℰΔt to the left
+       for holes (drawn in the ratio μ_p/μ_n = 480/1350). Both currents point along ℰ.
+       Transparent background and mid-tone colours, as the other figures. -->
+  <defs><marker id="ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f7a88"/></marker><marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d7cc4"/></marker><marker id="red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c14a3e"/></marker></defs>
+  <line x1="128" y1="20" x2="212" y2="20" stroke="#6f7a88" stroke-width="2" marker-end="url(#ink)"/>
+  <text x="118" y="26" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="end">ℰ</text>
+  <text x="18" y="66" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="start">elektroner</text>
+  <rect x="236" y="76" width="80" height="58" fill="#3d7cc4" fill-opacity="0.22"/>
+  <rect x="18" y="76" width="304" height="58" rx="2" fill="none" stroke="#8d98a6" stroke-width="1.2"/>
+  <circle cx="30.8" cy="100.7" r="4.2" fill="#3d7cc4"/>
+  <circle cx="62.8" cy="117.2" r="4.2" fill="#3d7cc4"/>
+  <circle cx="79.9" cy="124.1" r="4.2" fill="#3d7cc4"/>
+  <circle cx="100" cy="118.3" r="4.2" fill="#3d7cc4"/>
+  <circle cx="117.9" cy="97.9" r="4.2" fill="#3d7cc4"/>
+  <circle cx="135.1" cy="96.8" r="4.2" fill="#3d7cc4"/>
+  <circle cx="145.4" cy="101.7" r="4.2" fill="#3d7cc4"/>
+  <circle cx="165.9" cy="113.7" r="4.2" fill="#3d7cc4"/>
+  <circle cx="189.2" cy="97.6" r="4.2" fill="#3d7cc4"/>
+  <circle cx="210.8" cy="114.6" r="4.2" fill="#3d7cc4"/>
+  <circle cx="221.7" cy="91.3" r="4.2" fill="#3d7cc4"/>
+  <circle cx="241.1" cy="90.9" r="4.2" fill="#3d7cc4"/>
+  <circle cx="267.2" cy="109.2" r="4.2" fill="#3d7cc4"/>
+  <circle cx="287.2" cy="117.4" r="4.2" fill="#3d7cc4"/>
+  <circle cx="296.6" cy="115" r="4.2" fill="#3d7cc4"/>
+  <path d="M 236 74 V 70 H 316 V 74" fill="none" stroke="#6f7a88" stroke-width="1.2"/>
+  <text x="276" y="64" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#6f7a88" text-anchor="middle">μ<tspan dy="5" font-size="13">n</tspan><tspan dy="-5">ℰΔt</tspan></text>
+  <line x1="88" y1="152" x2="32" y2="152" stroke="#3d7cc4" stroke-width="2" marker-end="url(#blue)"/>
+  <text x="96" y="157" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="start">driver mot ℰ</text>
+  <text x="248" y="158" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">J<tspan dy="5" font-size="13">n</tspan></text>
+  <line x1="276" y1="152" x2="318" y2="152" stroke="#6f7a88" stroke-width="2" marker-end="url(#ink)"/>
+  <text x="18" y="202" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="start">hull</text>
+  <rect x="206" y="212" width="30" height="58" fill="#c14a3e" fill-opacity="0.22"/>
+  <rect x="18" y="212" width="304" height="58" rx="2" fill="none" stroke="#8d98a6" stroke-width="1.2"/>
+  <circle cx="30.9" cy="251.4" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="53.7" cy="240.6" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="77.7" cy="230.6" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="95.1" cy="255" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="118.4" cy="247.6" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="128.2" cy="236.3" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="152.4" cy="235.1" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="165.8" cy="236.2" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="183.7" cy="250.9" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="203.8" cy="240.3" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="226.7" cy="245.7" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="240.8" cy="231.1" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="259.1" cy="225.5" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="289.2" cy="238.2" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <circle cx="300.6" cy="221.6" r="4.4" fill="none" stroke="#c14a3e" stroke-width="1.7"/>
+  <path d="M 206 210 V 206 H 236 V 210" fill="none" stroke="#6f7a88" stroke-width="1.2"/>
+  <text x="221" y="200" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#6f7a88" text-anchor="middle">μ<tspan dy="5" font-size="13">p</tspan><tspan dy="-5">ℰΔt</tspan></text>
+  <line x1="32" y1="288" x2="88" y2="288" stroke="#c14a3e" stroke-width="2" marker-end="url(#red)"/>
+  <text x="96" y="293" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="start">driver med ℰ</text>
+  <text x="248" y="294" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">J<tspan dy="5" font-size="13">p</tspan></text>
+  <line x1="276" y1="288" x2="318" y2="288" stroke="#6f7a88" stroke-width="2" marker-end="url(#ink)"/>
+  <line x1="236" y1="64" x2="236" y2="282" stroke="#6f7a88" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="230" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="end">flaten</text>
+</svg>

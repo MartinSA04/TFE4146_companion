@@ -207,47 +207,47 @@ formulas:
     section: Drift
     onSheet: true
     tex: "\\mu \\equiv \\dfrac{q\\bar{t}}{m^*}"
-    label: "Mobiliteten, drifthastigheten per felt, fra at feltets kraft balanseres av kollisjoner hver $\\bar{t}$ i gjennomsnitt. Enheten er cm²/V·s, og den er positiv for begge bærertypene. For Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s i rent materiale."
+    label: "Mobiliteten, drifthastigheten per felt. Feltet gir bæreren bevegelsesmengde, og kollisjonene, i snitt én per $\\bar{t}$, tar den bort igjen. Enheten er cm²/V·s, og mobiliteten er positiv for begge bærertypene. I rent Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s."
   - id: drifthastighet
     section: Drift
     onSheet: false
     tex: "\\langle v_x\\rangle = -\\dfrac{q\\bar{t}}{m_n^*}\\,\\mathcal{E}_x = -\\mu_n\\mathcal{E}_x"
     label: "Drifthastigheten til elektronene, mot feltet. Hullene driver med feltet, $\\langle v_x\\rangle = +\\mu_p\\mathcal{E}_x$."
   - id: metningshastighet
-    section: Drift
+    section: Sterke felt
     onSheet: true
     tex: "v_d \\cong \\dfrac{\\mu\\mathcal{E}}{1 + \\mu\\mathcal{E}/v_s} \\begin{cases} = \\mu\\mathcal{E} & \\text{lave felt, ohmsk} \\\\ = v_s & \\text{høye felt, mettet} \\end{cases}"
-    label: "Drifthastigheten over hele feltområdet. Ved lave felt er den proporsjonal med feltet, og Ohms lov gjelder. Over omtrent $10^3$ V/cm bøyer den av og flater ut ved metningshastigheten $v_s \\approx 10^7$ cm/s i Si, fordi energien feltet tilfører går til gitteret."
+    label: "Drifthastigheten over hele feltområdet. Ved lave felt er den proporsjonal med feltet, og Ohms lov gjelder. I Si bøyer den av over omtrent $10^3$ V/cm og flater ut ved metningshastigheten $v_s \\approx 10^7$ cm/s, av samme størrelsesorden som den termiske farten. Raske elektroner spres oftere mot gittersvingningene, så $\\bar{t}$ blir kortere jo sterkere feltet er, og energien feltet tilfører, går til gitteret i stedet for til raskere drift."
   - id: ledningsevne
-    section: Drift
+    section: Strømmen
     onSheet: true
     tex: "\\dfrac{I_x}{A} = J_x = q\\,(n\\mu_n + p\\mu_p)\\,\\mathcal{E}_x = \\sigma\\,\\mathcal{E}_x"
-    label: "Ohms lov med ledningsevnen skrevet ut i bærerkonsentrasjoner og mobiliteter. Begge bærertypene gir strøm <em>langs</em> feltet, siden hullene beveger seg med feltet og elektronene mot."
+    label: "Driftstrømmen, med ledningsevnen skrevet ut i bærerkonsentrasjoner og mobiliteter. Elektronene driver mot feltet og hullene med det, men begge gir strøm <em>langs</em> feltet, siden ladningene har motsatt fortegn."
   - id: resistans
-    section: Drift
+    section: Strømmen
     onSheet: false
-    tex: "\\rho = \\dfrac{1}{\\sigma}, \\qquad R = \\rho\\,\\dfrac{L}{wt}"
-    label: "Resistiviteten $\\rho$ er i Ω·cm, og en stav med lengde $L$ og tverrsnitt $wt$ får resistansen $R$."
+    tex: "\\rho = \\dfrac{1}{\\sigma}, \\qquad R = \\rho\\,\\dfrac{L}{A}"
+    label: "Resistiviteten $\\rho$ er i Ω·cm, og en stav med lengde $L$ og tverrsnitt $A$ har resistansen $R$. For en stav med bredde $w$ og tykkelse $t$ er $A = wt$."
   - id: konduktivitetsmasse
-    section: Drift
+    section: Massen i et felt
     onSheet: false
     tex: "\\dfrac{1}{m_n^*} = \\dfrac{1}{3}\\left(\\dfrac{1}{m_l} + \\dfrac{2}{m_t}\\right)"
-    label: "Effektiv masse for ledningsevne i Si: massen står i nevneren i $\\mu_n$, så de tre retningene i en dal midles harmonisk. Med $m_l = 0{,}98\\,m_0$ og $m_t = 0{,}19\\,m_0$ gir det $0{,}26\\,m_0$, mot $1{,}1\\,m_0$ for telling av tilstander. I GaAs er dalen kuleformet, og begge massene er $0{,}067\\,m_0$."
+    label: "Effektiv masse for ledningsevne i Si. Massen står i nevneren i $\\mu_n$, så de inverse massene langs feltet midles over de seks dalene: to med $m_l$ og fire med $m_t$. Med $m_l = 0{,}98\\,m_0$ og $m_t = 0{,}19\\,m_0$ gir det $0{,}26\\,m_0$, mot $1{,}1\\,m_0$ for telling av tilstander. I GaAs er dalen kuleformet, og begge massene er $0{,}067\\,m_0$."
   - id: matthiessen
-    section: Spredning, temperatur og doping
+    section: Det som sprer bærerne
     onSheet: false
-    tex: "\\dfrac{1}{\\mu} = \\dfrac{1}{\\mu_\\text{gitter}} + \\dfrac{1}{\\mu_\\text{urenhet}}, \\qquad \\mu_\\text{gitter} \\sim T^{-3/2}, \\quad \\mu_\\text{urenhet} \\sim T^{3/2}"
-    label: "Kollisjonssannsynlighetene legges sammen, så mobilitetene legges sammen invers, og den minste dominerer. Gitterspredning vokser med temperaturen, urenhetsspredning er sterkest for langsomme bærere i kaldt materiale. $10^{17}$ donorer per cm³ senker $\\mu_n$ i Si fra 1350 til 700 cm²/V·s ved 300 K."
-  - id: hall-koeffisient
+    tex: "\\dfrac{1}{\\mu} = \\dfrac{1}{\\mu_\\text{gitter}} + \\dfrac{1}{\\mu_\\text{ioner}}, \\qquad \\mu_\\text{gitter} \\sim T^{-3/2}, \\quad \\mu_\\text{ioner} \\sim T^{3/2}"
+    label: "Spredningssannsynlighetene legges sammen, så de inverse mobilitetene legges sammen, og den laveste mobiliteten bestemmer mest. Gittersvingningene sprer mest når krystallen er varm, ionene mest når elektronene er langsomme. $10^{17}$ donorer per cm³ senker $\\mu_n$ i Si fra 1350 til 700 cm²/V·s ved 300 K."
+  - id: hall-konsentrasjon
     section: Hall-effekten
     onSheet: false
-    tex: "\\mathcal{E}_y = v_x\\mathcal{B}_z = R_H\\,J_x\\mathcal{B}_z, \\qquad R_H = \\dfrac{1}{qp_0}, \\qquad \\mu_p = \\dfrac{R_H}{\\rho}"
-    label: "Hall-feltet bygges opp til det opphever den magnetiske avbøyningen. $R_H = 1/qp_0$ gjelder når hullene dominerer. Færre bærere må gå fortere for samme strøm og får større magnetisk kraft, så $R_H$ gir konsentrasjonen. Elektroner samles på samme kant som hull og gjør den negativ, så $R_H = -1/qn_0$ i n-type. Sammen med resistiviteten gir $R_H$ mobiliteten."
+    tex: "p = \\dfrac{I_x\\mathcal{B}_z}{qtV_{AB}}, \\qquad \\mu_p = \\dfrac{1}{qp\\rho}"
+    label: "Hullkonsentrasjonen fra Hall-spenningen $V_{AB}$ over en stav med tykkelse $t$, og mobiliteten fra den og resistiviteten. Magnetfeltet presser bærerne mot den ene kanten til feltet på tvers, $\\mathcal{E}_y = v_x\\mathcal{B}_z$, holder igjen. Færre bærere driver fortere og gir større spenning. For elektroner er $V_{AB}$ negativ, og $n = I_x\\mathcal{B}_z/qt(-V_{AB})$."
   - id: fermi-flat
-    section: Fermi-nivået ved likevekt
+    section: Fermi-nivået i likevekt
     onSheet: false
     tex: "\\dfrac{dE_F}{dx} = 0"
-    label: "Fermi-nivået er konstant gjennom materialer i kontakt ved termisk likevekt. Raten $N_1 f_1 \\cdot N_2(1 - f_2)$ fra 1 til 2 må være lik raten motsatt vei ved hver energi, og det krever $f_1 = f_2$, altså $E_{F1} = E_{F2}$."
+    label: "Fermi-nivået er det samme overalt i materialer i kontakt ved termisk likevekt. Raten $N_1 f_1 \\cdot N_2(1 - f_2)$ fra 1 til 2 må være lik raten tilbake ved hver energi, og det krever $f_1 = f_2$, altså $E_{F1} = E_{F2}$."
   - id: levetid
     section: Overskuddsbærere
     onSheet: false
@@ -781,27 +781,33 @@ glossary:
   - term: Ladningsnøytralitet
     section: Donorer og akseptorer i samme materiale
     definition: "(<em>space charge neutrality</em>) Kravet $p_0 + N_d^+ = n_0 + N_a^-$: krystallen er nøytral, så positiv og negativ ladning balanserer. $E_F$ stiller seg dit kravet og massevirkningsloven er oppfylt samtidig."
+  - term: Drift
+    section: Drift
+    definition: "(<em>drift</em>) Den jevne bevegelsen et elektrisk felt gir bærerne. Feltet gir dem fart mellom kollisjonene, og hver kollisjon gir dem en ny, tilfeldig fart, så de driver med en fast fart $\\mu\\mathcal{E}$, elektronene mot feltet og hullene med det."
+  - term: Termisk fart
+    section: Drift
+    definition: "(<em>thermal velocity</em>) Farten bærerne har fra varmen alene, fra $\\tfrac12 m^*v_\\text{th}^2 = \\tfrac32 k_BT$. For elektroner i Si ved romtemperatur er den omtrent $2 \\times 10^7$ cm/s, langt større enn drifthastigheten i et vanlig felt."
   - term: Mobilitet
     section: Drift
-    definition: "(<em>mobility</em>) Drifthastigheten en bærer får per felt, $\\mu = q\\bar{t}/m^*$, i cm²/V·s. Lett effektiv masse og lang tid mellom kollisjoner gir høy mobilitet; for Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s i rent materiale."
+    definition: "(<em>mobility</em>) Drifthastigheten en bærer får per felt, $\\mu = q\\bar{t}/m^*$, i cm²/V·s. Lett effektiv masse og lang tid mellom kollisjonene gir høy mobilitet; i rent Si ved 300 K er $\\mu_n = 1350$ og $\\mu_p = 480$ cm²/V·s."
   - term: Midlere kollisjonstid
     section: Drift
-    definition: "(<em>mean free time</em>) $\\bar{t}$, gjennomsnittstiden mellom to spredninger for en bærer. Sannsynligheten for kollisjon i løpet av $dt$ er $dt/\\bar{t}$, så antallet uspredte bærere faller som $e^{-t/\\bar{t}}$. I Si ved romtemperatur er den rundt $0{,}2$ ps."
+    definition: "(<em>mean free time</em>) $\\bar{t}$, tiden mellom to kollisjoner for en bærer i snitt. Sannsynligheten for en kollisjon i løpet av $dt$ er $dt/\\bar{t}$, så antallet bærere som ennå ikke har kollidert, faller som $e^{-t/\\bar{t}}$. For elektroner i Si ved romtemperatur er den rundt $0{,}2$ ps."
+  - term: Midlere fri veilengde
+    section: Drift
+    definition: "(<em>mean free path</em>) $l = v_\\text{th}\\bar{t}$, strekningen en bærer går mellom to kollisjoner i snitt. For elektroner i Si ved romtemperatur er den omtrent 45 nm, over 80 gitterkonstanter."
   - term: Gitterspredning
-    section: Spredning, temperatur og doping
-    definition: "(<em>lattice scattering</em>) Spredning mot gittervibrasjoner, altså fononer. Den øker med temperaturen og gir en mobilitet som faller omtrent som $T^{-3/2}$; i rent Si er det den som begrenser mobiliteten ved romtemperatur."
+    section: Det som sprer bærerne
+    definition: "(<em>lattice scattering</em>) Spredning mot gittersvingningene, som også kalles fononer. Svingningene vokser med temperaturen, og mobiliteten fra denne spredningen faller omtrent som $T^{-3/2}$; i rent Si er det den som begrenser mobiliteten ved romtemperatur."
   - term: Urenhetsspredning
-    section: Spredning, temperatur og doping
-    definition: "(<em>impurity scattering</em>) Avbøyning i Coulomb-feltet fra ioniserte dopanter. Langsomme bærere bøyes mest, så mekanismen dominerer ved lav temperatur og høy doping, med en mobilitet som vokser omtrent som $T^{3/2}$."
+    section: Det som sprer bærerne
+    definition: "(<em>impurity scattering</em>) Avbøyning i Coulomb-feltet fra ioniserte dopeatomer, både donorer og akseptorer. Langsomme bærere bøyes mest, så mekanismen dominerer ved lav temperatur og høy doping, med en mobilitet som vokser omtrent som $T^{3/2}$."
   - term: Metningshastighet
-    section: Spredning, temperatur og doping
-    definition: "(<em>saturation velocity</em>) Den øvre grensen for drifthastigheten ved høye felt, i Si omtrent $10^7$ cm/s. Over rundt $10^3$ V/cm holder ikke $v_d = \\mu\\mathcal{E}$ lenger; energien feltet tilfører går til gitteret, og strømmen blir nesten uavhengig av feltet."
+    section: Sterke felt
+    definition: "(<em>saturation velocity</em>) Den øvre grensen for drifthastigheten i sterke felt, i Si omtrent $10^7$ cm/s, av samme størrelsesorden som den termiske farten. Over rundt $10^3$ V/cm vokser drifthastigheten saktere enn $\\mu\\mathcal{E}$: raske elektroner spres oftere mot gittersvingningene, så $\\bar{t}$ blir kortere, og energien feltet tilfører, går til gitteret i stedet for til raskere drift."
   - term: Hall-effekten
     section: Hall-effekten
-    definition: "(<em>Hall effect</em>) Et magnetfelt på tvers av strømmen bøyer bærerne av mot den ene kanten til et tverrfelt $\\mathcal{E}_y = v_x\\mathcal{B}_z$ opphever avbøyningen. Spenningen på tvers, Hall-spenningen, gir bærertype, konsentrasjon og, sammen med resistiviteten, mobilitet."
-  - term: Hall-koeffisient
-    section: Hall-effekten
-    definition: "(<em>Hall coefficient</em>) $R_H = \\mathcal{E}_y/J_x\\mathcal{B}_z = 1/qp_0$ for hull. For elektroner er $R_H = -1/qn_0$: de samles på samme kant som hull og gjør den negativ. Forholdet $R_H/\\rho$ er mobiliteten."
+    definition: "(<em>Hall effect</em>) Et magnetfelt på tvers av strømmen presser bærerne mot den ene kanten, til feltet på tvers, $\\mathcal{E}_y = v_x\\mathcal{B}_z$, holder igjen. Hull og elektroner havner på den samme kanten, så fortegnet på spenningen på tvers, Hall-spenningen, gir bærertypen. Størrelsen gir konsentrasjonen, og sammen med resistiviteten mobiliteten."
   - term: Overskuddsbærere
     section: Overskuddsbærere
     definition: "(<em>excess carriers</em>) Bærere ut over likevektskonsentrasjonene, $\\delta n = n - n_0$ og $\\delta p = p - p_0$, laget av lys med $h\\nu \\ge E_g$ eller sprøytet inn over en kontakt. De lages og rekombinerer parvis, så $\\delta n = \\delta p$ uten fangst."
@@ -1015,19 +1021,20 @@ symbols:
   - { tex: "N(E)", meaning: "Tilstandstettheten, antall tilstander per volum og energi", unit: "cm⁻³·eV⁻¹", section: "Bærere og konsentrasjoner", term: "Tilstandstetthet", formula: tilstandstetthet }
   # ── Transport ──
   - { tex: "\\mathcal{E}", meaning: "Elektrisk felt", unit: "V/cm", section: "Transport", term: "Innebygd felt", formula: felt-baandskjema, id: e-felt, note: "Ikke energien $E$. Positiv retning er den et hull driver i." }
-  - { tex: "\\mathcal{B}", meaning: "Magnetisk flukstetthet, i Hall-effekten", unit: "Wb/cm²", section: "Transport", term: "Hall-effekten", formula: hall-koeffisient, note: "$1$ Wb/cm² $= 10^4$ T. Hører sammen med $v$ i cm/s og $\\mathcal{E}$ i V/cm." }
+  - { tex: "\\mathcal{B}", meaning: "Magnetisk flukstetthet, i Hall-effekten", unit: "Wb/cm²", section: "Transport", term: "Hall-effekten", formula: hall-konsentrasjon, note: "$1$ Wb/cm² $= 10^4$ T. Hører sammen med $v$ i cm/s og $\\mathcal{E}$ i V/cm." }
   - { tex: "\\mathcal{V}", meaning: "Elektrostatisk potensial", unit: "V", section: "Transport", formula: poisson, id: potensial, note: "Ikke spenningen $V$ over komponenten. $\\mathcal{E} = -d\\mathcal{V}/dx$." }
-  - { tex: "\\langle v_x\\rangle", meaning: "Drifthastigheten", unit: "cm/s", section: "Transport", formula: drifthastighet }
+  - { tex: "\\langle v_x\\rangle,\\ v_d", meaning: "Drifthastigheten, snittet over bærerne", unit: "cm/s", section: "Transport", term: "Drift", formula: drifthastighet, note: "Formelarket skriver $v_d$." }
+  - { tex: "v_\\text{th}", meaning: "Den termiske farten, fra varmen alene", unit: "cm/s", section: "Transport", term: "Termisk fart", note: "Omtrent $2 \\times 10^7$ cm/s for elektroner i Si ved 300 K." }
   - { tex: "v_s", meaning: "Metningshastigheten ved sterkt felt", unit: "cm/s", section: "Transport", term: "Metningshastighet", note: "Omtrent $10^7$ cm/s i Si." }
   - { tex: "\\mu_n,\\ \\mu_p", meaning: "Mobiliteten til elektroner og hull, drifthastighet per felt", unit: "cm²/V·s", section: "Transport", term: "Mobilitet", formula: mobilitet, id: mu, note: "$1350$ og $480$ cm²/V·s i rent Si ved 300 K. Alltid positiv." }
   - { tex: "\\bar{t}", meaning: "Midlere tid mellom kollisjoner", unit: "s", section: "Transport", term: "Midlere kollisjonstid", formula: mobilitet, id: tbar, note: "Ikke levetiden $\\tau_n$, $\\tau_p$, som er tiden før rekombinasjon." }
-  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", term: "Diffusjonskoeffisient" }
+  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", term: "Midlere fri veilengde" }
   - { tex: "\\sigma", meaning: "Ledningsevne", unit: "(Ω·cm)⁻¹", section: "Transport", formula: ledningsevne }
   - { tex: "\\rho", meaning: "Resistivitet, $1/\\sigma$", unit: "Ω·cm", section: "Transport", formula: resistans, note: "Ikke romladningstettheten $\\rho(x)$ i Poissons ligning." }
-  - { tex: "R", meaning: "Resistansen til en stav, $\\rho L/wt$", unit: "Ω", section: "Transport", formula: resistans, note: "$L$ er lengden langs strømmen, $w$ bredden og $t$ tykkelsen." }
+  - { tex: "R", meaning: "Resistansen til en stav, $\\rho L/A$", unit: "Ω", section: "Transport", formula: resistans, note: "$L$ er lengden langs strømmen og $A = wt$ tverrsnittet, med bredden $w$ og tykkelsen $t$." }
   - { tex: "J", meaning: "Strømtetthet, $J_n + J_p$", unit: "A/cm²", section: "Transport", formula: driftdiffusjonsstrom, note: "$J_n$ og $J_p$ er bidragene fra hver bærertype; hver har et drift- og et diffusjonsledd." }
   - { tex: "I", meaning: "Strøm, $J$ ganger tverrsnittet", unit: "A", section: "Transport", formula: diodeligning }
-  - { tex: "R_H", meaning: "Hall-koeffisienten", unit: "cm³/C", section: "Transport", term: "Hall-koeffisient", formula: hall-koeffisient, note: "Negativ for elektroner, positiv for hull." }
+  - { tex: "V_{AB},\\ V_H", meaning: "Spenningen mellom kontaktene på tvers av en Hall-stav, og Hall-delen av den", unit: "V", section: "Transport", term: "Hall-effekten", formula: hall-konsentrasjon, note: "Fortegnet gir bærertypen. Med forskjøvne kontakter er $V_H$ halve forskjellen mellom avlesningene med feltet snudd." }
   - { tex: "D_n,\\ D_p", meaning: "Diffusjonskoeffisienten til elektroner og hull", unit: "cm²/s", section: "Transport", term: "Diffusjonskoeffisient", formula: einstein, id: d, note: "$35$ og $12{,}5$ cm²/s i Si ved 300 K." }
   - { tex: "\\phi", meaning: "Partikkelfluks, antall bærere per areal og tid", unit: "cm⁻²·s⁻¹", section: "Transport", formula: diffusjonsstrom, note: "Strømtettheten er fluksen ganger ladningen." }
   # ── Overskuddsbærere ──

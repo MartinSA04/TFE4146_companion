@@ -3,8 +3,8 @@
  * Én idé: Hall-spenningen bytter fortegn med bærertypen og med magnetfeltet,
  * mens et resistivt spenningsfall fra forskjøvne kontakter står fast.
  *
- * Øverst står staven sett ovenfra med bærerne som prikker i drift: hull med
- * strømmen, elektroner mot. Magnetfeltet er tegnet som boka gjør det, prikker
+ * Øverst står staven sett ovenfra med bærerne i drift: hull (røde ringer) med
+ * strømmen, elektroner (blå prikker) mot. Magnetfeltet er tegnet som boka gjør det, prikker
  * for ut av planet og kryss for inn i planet. Én forskyvning s (fra −1 til +1,
  * hvor tett bærerne står mot nederste kant) bærer hele bildet: den slakker
  * mot feltet b med tidskonstant TAU, hver prikk har et fast lodd u og står på
@@ -20,9 +20,13 @@
  * prikken midt mellom dem er spenningsfallet over forskyvningen. Halve
  * avstanden er Hall-spenningen: det er regnestykket fra øvingssettet, tegnet.
  *
+ * Konsentrasjonen kan settes til 4·10¹⁷, 2·10¹⁷ eller 10¹⁷ per cm³: færre bærere
+ * må drive fortere for den samme strømmen, så prikkene blir færre og raskere, og
+ * Hall-spenningen V_H = I B/(q N t) vokser som 1/N.
+ *
  * Tallene er en tenkt prøve, ikke et regnestykke fra boka: 500 µm bred, 20 µm
- * tykk, 2·10¹⁷ bærere per cm³, 3 mA og 1 T. Det gir V_H = I B/(q N t) = 4,7 mV
- * og et lengdefelt E_x = I ρ/(w t) med ρ = 1/(q N μ), μ = 480 (hull) eller
+ * tykk, 3 mA og 1 T. Med 2·10¹⁷ bærere per cm³ gir det V_H = 4,7 mV, og
+ * lengdefeltet er E_x = I ρ/(w t) med ρ = 1/(q N μ), μ = 480 (hull) eller
  * 1350 (elektroner) cm²/V·s. Forskyvningen er overdrevet i tegningen.
  *
  * Kontrakt: default-eksporter init(api), api = { stage, controls, getSize, onResize, signal }.
@@ -35,16 +39,14 @@ const I = 3e-3; // A
 const B = 1; // T
 const W = 500e-6; // m
 const T = 20e-6; // m
-const N = 2e23; // m⁻³
+const N_REF = 2e23; // m⁻³, konsentrasjonen prikkantallet og farten er satt for
 const MU = { p: 0.048, n: 0.135 }; // m²/V·s
-const VH = (I * B) / (Q * N * T); // V
-const EX = (c) => I / (Q * N * MU[c]) / (W * T); // V/m
 
-const D_MAX = 20; // µm
-const RANGE = 10e-3; // V, halve skalabredden
+const D_MAX = 10; // µm
+const RANGE = 15e-3; // V, halve skalabredden
 const TAU = 1.0; // s, kantladningens oppbyggingstid
 const NEEDLE_TAU = 0.2; // s, viserens treghet
-const VX = 70; // px/s, driftfart i tegningen
+const VX = 70; // px/s, driftfart i tegningen ved N_REF
 const KAPPA = 3; // tettheten ved kanten bærerne samles på er e^KAPPA ganger den andre
 const R = 3.2; // px, bærerprikkens radius
 const GRID = 36; // px, mellom feltsymbolene
@@ -53,14 +55,17 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
   let carrier = "p";
   let bz = 1; // +1 ut av planet, 0 ingen, −1 inn i planet
   let d = 0; // µm, forskyvning av kontakt B langs strømmen
+  let N = N_REF; // m⁻³
+  const VH = () => (I * B) / (Q * N * T); // V
+  const EX = (c) => I / (Q * N * MU[c]) / (W * T); // V/m
   // Redusert bevegelse: start i pause og la brukeren spille av selv.
   let playing = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const csign = () => (carrier === "p" ? 1 : -1);
   const qInf = () => csign() * bz; // kantladningen i likevekt
   const vOff = () => EX(carrier) * d * 1e-6; // V, fallet over forskyvningen
-  const vTarget = () => qInf() * VH + vOff();
-  const vFlipped = () => -qInf() * VH + vOff();
+  const vTarget = () => qInf() * VH() + vOff();
+  const vFlipped = () => -qInf() * VH() + vOff();
 
   let s = bz; // hvor tett bærerne står mot nederste kant, −1…+1
   const qNow = () => csign() * s; // ladningen på nederste kant, −1…+1
@@ -92,6 +97,22 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     ],
     onPick: (v) => {
       bz = Number(v);
+      changed();
+    },
+    signal,
+  });
+
+  const concRow = choiceRow({
+    ariaLabel: "Bærerkonsentrasjon",
+    label: "Konsentrasjon",
+    items: [
+      { value: "4e23", label: "4·10¹⁷ cm⁻³" },
+      { value: "2e23", label: "2·10¹⁷ cm⁻³" },
+      { value: "1e23", label: "10¹⁷ cm⁻³" },
+    ],
+    onPick: (v) => {
+      N = Number(v);
+      layout();
       changed();
     },
     signal,
@@ -131,11 +152,12 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     { signal },
   );
 
-  controls.append(carrierRow.el, fieldRow.el, dLabel, playBtn);
+  controls.append(carrierRow.el, fieldRow.el, concRow.el, dLabel, playBtn);
 
   function sync() {
     carrierRow.sync(carrier);
     fieldRow.sync(String(bz));
+    concRow.sync(String(N).replace("+", ""));
     dOut.textContent = d === 0 ? "ingen" : `${d > 0 ? "+" : "−"}${Math.abs(d)} µm`;
   }
 
@@ -188,7 +210,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     g.scale = (g.bx1 - g.zero) / RANGE;
 
     // Like mange prikker per flate, så telefonen ikke ser tom ut og bredskjermen ikke full.
-    const n = clamp(Math.round((g.L * g.barH) / 1500), 24, 60);
+    const n = clamp(Math.round(((g.L * g.barH) / 1500) * (N / N_REF)), 10, 130);
     if (particles.length !== n) {
       particles = Array.from({ length: n }, () => ({ x: Math.random() * g.L, u: Math.random() }));
     } else {
@@ -272,14 +294,14 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     // Skalaen med null i midten.
     let ticks = "";
     let labels = "";
-    for (let mv = -10; mv <= 10; mv++) {
+    for (let mv = -15; mv <= 15; mv++) {
       const x = zero + mv * 1e-3 * scale;
       const major = mv % 5 === 0;
       ticks += `M ${P(x)} ${P(my)} V ${P(my + (major ? 7 : 3))} `;
       if (major) {
         // Enheten står bare på bred skjerm; på telefon ville den kollidert med +5.
-        const text = mv === 10 && L >= 400 ? "+10 mV" : mv > 0 ? `+${mv}` : mv < 0 ? `−${-mv}` : "0";
-        const anchor = mv === -10 ? "start" : mv === 10 ? "end" : "middle";
+        const text = mv === 15 && L >= 400 ? "+15 mV" : mv > 0 ? `+${mv}` : mv < 0 ? `−${-mv}` : "0";
+        const anchor = mv === -15 ? "start" : mv === 15 ? "end" : "middle";
         labels += tag(x, my + 19, text, anchor);
       }
     }
@@ -327,11 +349,13 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       }
     }
 
-    // Bærerne.
-    const color = carrier === "p" ? red : blue;
+    // Bærerne, med kursets merker: hull som røde ringer, elektroner som blå prikker.
     let dots = "";
     for (const p of particles) dots += `<circle cx="${P(bx0 + p.x)}" cy="${P(by0 + yOf(p.u))}" r="${R}"/>`;
-    bar += `<g style="fill:${color}" fill-opacity="0.9">${dots}</g>`;
+    bar +=
+      carrier === "p"
+        ? `<g fill="none" style="stroke:${red}" stroke-width="1.6">${dots}</g>`
+        : `<g style="fill:${blue}" fill-opacity="0.9">${dots}</g>`;
     dynBar.innerHTML = bar;
 
     // Viserne.
@@ -358,7 +382,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
     // Magnetkraften skyver bærerne mot nederste kant når feltet peker ut, til
     // ladningen der holder igjen: s slakker mot bz, og prikkene følger tettheten.
     s += (bz - s) * (1 - Math.exp(-dt / TAU));
-    const vx = VX * csign();
+    const vx = VX * (N_REF / N) * csign();
     const { L } = g;
     for (const p of particles) {
       p.x += vx * dt;
@@ -366,7 +390,7 @@ export default function init({ stage, controls, getSize, onResize, signal }) {
       else if (p.x < 0) p.x += L;
     }
     const k = 1 - Math.exp(-dt / NEEDLE_TAU);
-    vShown += (qNow() * VH + vOff() - vShown) * k;
+    vShown += (qNow() * VH() + vOff() - vShown) * k;
     gShown += (vFlipped() - gShown) * k;
   }
 

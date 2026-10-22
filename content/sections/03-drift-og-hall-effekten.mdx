@@ -1,321 +1,711 @@
 ---
 order: 3
 title: "Drift og Hall-effekten"
-summary: "Hvordan kollisjoner og effektiv masse gir mobilitet og ledningsevne, hvorfor mobiliteten faller med temperatur og doping, hva en Hall-måling forteller om bærertype, konsentrasjon og mobilitet, og hvorfor Fermi-nivået er flatt i likevekt."
+summary: "Hvorfor et elektrisk felt gir bærerne en jevn fart i stedet for å akselerere dem, hvordan mobiliteten og ledningsevnen følger av kollisjonene, hva som sprer bærerne ved høy og lav temperatur, hvorfor farten flater ut i sterke felt, hvordan en Hall-måling gir bærertype, konsentrasjon og mobilitet, og hvorfor Fermi-nivået er flatt i likevekt."
 importance: core
 tag: "Uke 36 · Streetman §3.4–3.5"
 part: "Del 1: Energibånd og ladningsbærere"
-updated: 2026-09-27
+updated: 2026-10-22
 ---
 
 <LearningGoals>
 
-- Utlede <Term name="Mobilitet">mobilitet</Term> fra kollisjoner, og regne ledningsevne og resistans fra $n$, $p$, $\mu_n$ og $\mu_p$.
-- Forklare hvordan <Term name="Gitterspredning">gitterspredning</Term> og <Term name="Urenhetsspredning">urenhetsspredning</Term> styrer mobiliteten.
-- Hente bærertype, konsentrasjon og mobilitet ut av en <Term name="Hall-effekten">Hall-måling</Term>.
+- Forklare hvorfor kollisjonene gir bærerne en jevn drifthastighet i et felt, og regne ut <Term name="Mobilitet">mobiliteten</Term> fra $\bar{t}$ og $m^*$.
+- Regne ut ledningsevne, resistivitet og strøm fra $n$, $p$, $\mu_n$ og $\mu_p$.
+- Forklare hvorfor mobiliteten faller med dopingen og har en topp når temperaturen endres.
+- Forklare hvorfor drifthastigheten flater ut i sterke felt.
+- Finne bærertype, konsentrasjon og mobilitet fra en <Term name="Hall-effekten">Hall-måling</Term>.
 - Begrunne at Fermi-nivået er flatt i likevekt.
 
 </LearningGoals>
 
+En silisiumstav er 1 cm lang, 1 mm bred og 1 mm tykk, og har $10^{15}$ fosforatomer per cm³.
+Med 1 V over staven går det en strøm på 2,2 mA, og dobbelt så stor spenning gir dobbelt så
+stor strøm, som Ohms lov sier. Elektronene i ledningsbåndet farer rundt med omtrent
+${2 \times 10^7}$ cm/s, men strømmen svarer til at de som helhet flytter seg bare 14 m/s langs
+staven. I vakuum ville det samme feltet gitt et elektron stadig større fart. I krystallen
+holder kollisjonene farten nede og konstant, og det er derfor staven er en motstand.
+
 ## Drift
 
-Bærerne står aldri stille. Ved romtemperatur farer et elektron omkring med
-rundt $10^7$ cm/s og skifter retning hver gang det spres mot en
-gittervibrasjon, en urenhet eller en defekt. Retningene er tilfeldige, så
-gruppen av elektroner har ingen netto bevegelse, og strømmen er null.
+Elektronene i ledningsbåndet beveger seg også uten felt. Et elektron har i snitt den
+kinetiske energien $\tfrac32 k_BT$, som et molekyl i en gass, og med massen
+${m_n^* = 0{,}26\,m_0}$ for bevegelse i silisium gir ${\tfrac12 m_n^* v_\text{th}^2 = \tfrac32 k_BT}$
+den <Term name="Termisk fart">termiske farten</Term> ${v_\text{th} \approx 2 \times 10^7}$ cm/s.
+Elektronet kolliderer stadig, får en ny fart i en ny retning og går i sikksakk gjennom
+krystallen. Alle retninger er like sannsynlige, så uten felt kommer elektronene som helhet
+ingen vei.
 
-Et elektrisk felt $\mathcal{E}_x$ legger en liten, felles komponent oppå den
-tilfeldige bevegelsen, og kollisjonene bremser den. I stasjonær tilstand
-balanserer de to.
+Elektronene oppfører seg som en bisverm. Hver bie farer kors og tvers, men svermen står
+stille. Et felt virker som en svak vind, og i den driver hele svermen sakte av sted. Analogien
+stopper ved at biene styrer selv, mens et elektron bare skifter retning når det kolliderer.
 
-<Derivation title="Fra kollisjoner til mobilitet">
+Simuleringen følger ett elektron to ganger gjennom de samme kollisjonene, grått uten felt og
+blått med felt, så det eneste som skiller banene, er feltet.
 
-La $\bar{t}$ være <Term name="Midlere kollisjonstid">midlere tid mellom
-kollisjoner</Term>. Sannsynligheten for at et gitt elektron kolliderer i
-løpet av $dt$ er $dt/\bar{t}$, og en kollisjon nullstiller i gjennomsnitt den
-bevegelsesmengden elektronet hadde fått av feltet. For $n$ elektroner per
-volum med samlet bevegelsesmengde $p_x$ er tapet derfor $p_x/\bar{t}$ per tid,
-mens feltet tilfører $-nq\mathcal{E}_x$:
+<Simulation
+  src="/sims/drift.js"
+  host="dom"
+  title="Ett elektron, med og uten felt"
+  caption="Ett elektron, tegnet to ganger med de samme kollisjonene (×): grått uten felt, blått med feltet $\mathcal{E}$ mot høyre. Under står båndskjemaet for det blå elektronet. Feltet er tusenvis av ganger sterkere enn i staven over, tiden går omtrent $10^{12}$ ganger saktere, og ved øvre og nedre kant speiles banene."
+  height={420}
+/>
+
+Velg «av», og den blå banen ligger oppå den grå. Velg «ℰ». Mellom kollisjonene bøyer den blå
+banen av mot venstre, fordi kraften $-q\mathcal{E}$ på elektronet peker dit. Etter hver
+kollisjon starter de to banene i samme retning igjen. Farten feltet ga, er borte, og bare
+forskyvningen fra flukten, bevegelsen mellom to kollisjoner, er igjen. Avstanden mellom
+prikkene blir derfor aldri mindre, og i snitt vokser den like mye per tid. Med «2ℰ» er
+avstanden dobbelt så stor til hver tid.
+
+Den jevne bevegelsen kalles <Term name="Drift">drift</Term>, og farten er drifthastigheten
+$\langle v_x\rangle$, snittet over elektronene. Feltet gir hvert elektron bevegelsesmengden
+$-q\mathcal{E}_x$ per tid. Kollisjonene skjer i snitt én gang per
+<Term name="Midlere kollisjonstid">midlere kollisjonstid</Term> $\bar{t}$. Hver av dem tar
+bort bevegelsesmengden elektronet hadde langs feltet, i snitt $m_n^*\langle v_x\rangle$, fordi
+farten etter kollisjonen er tilfeldig, så kollisjonene tar $m_n^*\langle v_x\rangle/\bar{t}$ per
+tid. Jo fortere elektronene driver, jo mer tar kollisjonene, og drifthastigheten vokser til de
+to er like store:
 
 $$
--\frac{p_x}{\bar{t}} - nq\,\mathcal{E}_x = 0
+\begin{aligned}
+\frac{m_n^*\langle v_x\rangle}{\bar{t}} &= -q\mathcal{E}_x \\
+\Rightarrow\quad \langle v_x\rangle &= -\frac{q\bar{t}}{m_n^*}\,\mathcal{E}_x
+\end{aligned}
 $$
 
-Del på $n$ for å få bevegelsesmengden per elektron, og på $m_n^*$ for å få
-hastigheten:
+<Derivation title="Drifthastigheten fra kollisjonene">
+
+La $N_0$ elektroner kollidere ved ${t = 0}$, og la $N(t)$ være antallet som ennå ikke har
+kollidert igjen. Er kollisjonene tilfeldige, har hvert elektron den samme sannsynligheten
+$dt/\bar{t}$ for å kollidere i løpet av $dt$, uansett hvor lenge siden forrige kollisjon er:
 
 $$
-\langle v_x\rangle = -\frac{q\bar{t}}{m_n^*}\,\mathcal{E}_x
+\begin{aligned}
+-\frac{dN}{dt} &= \frac{N}{\bar{t}} \\
+\Rightarrow\quad N(t) &= N_0\,e^{-t/\bar{t}}
+\end{aligned}
 $$
 
-Faktoren foran feltet er <FormulaRef id="mobilitet">mobiliteten</FormulaRef>,
-$\mu_n = q\bar{t}/m_n^*$.
+Tiden mellom to kollisjoner er altså $\bar{t}$ i snitt.
+
+La $p_x$ være den samlede bevegelsesmengden til de $n$ elektronene per volum. I løpet av
+$dt$ kolliderer en andel $dt/\bar{t}$ av dem. Etter kollisjonen er farten deres tilfeldig, så
+i snitt mister de bevegelsesmengden de hadde, og ${dp_x = -p_x\,dt/\bar{t}}$. Feltet gir
+samtidig kraften $-nq\mathcal{E}_x$ per volum. Når strømmen er stasjonær, er summen null:
+
+$$
+\begin{aligned}
+-\frac{p_x}{\bar{t}} - nq\mathcal{E}_x &= 0 \\
+\Rightarrow\quad \langle p_x\rangle = \frac{p_x}{n} &= -q\bar{t}\,\mathcal{E}_x
+\end{aligned}
+$$
+
+Del på $m_n^*$, og ${\langle v_x\rangle = -q\bar{t}\,\mathcal{E}_x/m_n^*}$.
 
 </Derivation>
 
-<Statement kind="definition" name="Mobilitet">
+Forholdet mellom drifthastigheten og feltet er <Term name="Mobilitet">mobiliteten</Term>:
 
-Drifthastigheten per felt, $\mu_n = q\bar{t}/m_n^*$, med enhet cm²/V·s.
-Elektroner driver mot feltet og hull med feltet, og begge mobilitetene
-defineres positive.
+<Formula tex={"\\mu_n = \\dfrac{q\\bar{t}}{m_n^*}, \\qquad \\langle v_x\\rangle = -\\mu_n\\mathcal{E}_x"} caption={"Mobiliteten til elektronene og drifthastigheten de får av feltet. Elektronene driver mot feltet."} />
 
-</Statement>
-
-Strømtettheten er ladning ganger antall ganger hastighet, og med begge
-bærertypene:
+Hull har positiv ladning og driver med feltet, ${\langle v_x\rangle = +\mu_p\mathcal{E}_x}$
+med ${\mu_p = q\bar{t}/m_p^*}$. Mobiliteten er positiv for begge bærertypene, i cm²/V·s, og
+lett masse og lang tid mellom kollisjonene gir høy mobilitet. I rent silisium er
+${\mu_n = 1350}$ og ${\mu_p = 480}$ cm²/V·s, og med ${m_n^* = 0{,}26\,m_0}$ er
 
 $$
-J_x = q\,(n\mu_n + p\mu_p)\,\mathcal{E}_x = \sigma\,\mathcal{E}_x
+\begin{aligned}
+\bar{t} &= \frac{\mu_n m_n^*}{q} \\
+&= \frac{0{,}135 \cdot 0{,}26 \cdot 9{,}11 \times 10^{-31}}{1{,}6 \times 10^{-19}}\ \text{s} \\
+&= 0{,}2\ \text{ps}
+\end{aligned}
 $$
 
-Det er Ohms lov med ledningsevnen $\sigma$ skrevet ut, og resistiviteten er
-$\rho = 1/\sigma$. Begge bærertypene gir strøm langs feltet: hullene beveger
-seg med feltet, elektronene mot, og fortegnet på ladningen snur bidraget. En
-stav med lengde $L$ og tverrsnitt $wt$ får
-<FormulaRef id="resistans">resistansen $R = \rho L/wt$</FormulaRef>.
+med $\mu_n$ i m²/V·s. På den tiden kommer et elektron med den termiske farten omtrent 45 nm,
+over 80 gitterkonstanter. Avstanden er den <Term name="Midlere fri veilengde">midlere frie
+veilengden</Term> $l$. I staven fra starten driver elektronene med
+${\mu_n\mathcal{E} = 1350}$ cm/s, omtrent 14 m/s, under en titusendel av den termiske farten.
 
-<Callout title="Ledningsevne">
-Begge bærertypene gir strøm langs feltet, og ledningsevnen er
-$\sigma = q(n\mu_n + p\mu_p)$.
+<Callout title="Drift">
+Hver kollisjon gir bæreren en ny, tilfeldig fart, så farten feltet gir, forsvinner igjen. Bærerne driver derfor med en jevn fart, ${\langle v_x\rangle = \mp\mu\mathcal{E}_x}$ med ${\mu = q\bar{t}/m^*}$, elektronene mot feltet og hullene med det.
 </Callout>
 
-Siden $p_0 = n_i^2/n_0$, er $\sigma \propto n_0\mu_n + (n_i^2/n_0)\mu_p$, og
-summen er minst der de to leddene er like, $n_0\mu_n = p_0\mu_p$. Hullene har
-den laveste mobiliteten, så minimumet krever $p_0 > n_0$ og ligger litt på
-p-siden av intrinsisk.
+I simuleringen viser det nederste panelet de samme fluktene i båndskjemaet. $E_c$ er
+elektronets potensielle energi og stiger mot høyre, fordi feltet peker mot høyre, og sporet er
+den totale energien til det blå elektronet. Under en flukt er den konstant, så sporet går
+vannrett, og når elektronet går mot venstre, synker $E_c$ under det, og den kinetiske energien
+vokser. I hver kollisjon hopper sporet til en ny, tilfeldig høyde over $E_c$, i snitt
+den samme som uten felt. Energien feltet ga, har elektronet gitt til gitteret, og den er
+varmen i en motstand. Med «2ℰ» går sporet ned bakken i trapper.
 
-For Si er $\mu_n = 1350$ og $\mu_p = 480$ cm²/V·s ved 300 K i rent
-materiale. Ved 100 V/cm driver elektronene med $1{,}35 \times 10^5$ cm/s,
-omtrent én prosent av den termiske farten, og $\bar{t} = \mu_n m_n^*/q$ er rundt
-$0{,}2$ ps.
+<Example label="Eksamensoppgave" title="Termisk fart og drifthastighet">
+<ExamRef id="2020-mai" task="I-1" />
 
-Massen i $\mu_n$ er ikke den effektive massen for telling av tilstander i
-$N_c$. Elektronene fordeler seg likt på de seks dalene, og drifthastigheten
-$q\bar{t}\mathcal{E}/m$ går som $1/m$ i feltretningen, så en dal bidrar til
-strømmen i forhold til $1/m$ der. Et felt langs en kubeakse ligger langs den lange aksen i to av
-dalene ($m_l$) og på tvers i de fire andre ($m_t$), så $1/m_n^*$ er
-gjennomsnittet $\tfrac16(2/m_l + 4/m_t)$, som er
-<FormulaRef id="konduktivitetsmasse" /> og gir $0{,}26\,m_0$. Lett masse gir høy mobilitet: i GaAs er $m_n^* = 0{,}067\,m_0$
-og $\mu_n = 8500$ cm²/V·s.
-
-### Spredning, temperatur og doping
-
-To mekanismer sprer bærerne. <Term name="Gitterspredning">Gitterspredning</Term>
-er kollisjoner med gittervibrasjoner. Gitteret vibrerer mer jo varmere det er,
-så denne spredningen øker med temperaturen, og den gir en mobilitet som faller
-omtrent som $T^{-3/2}$. <Term name="Urenhetsspredning">Urenhetsspredning</Term>
-er avbøyning i Coulomb-feltet fra ioniserte dopanter. En langsom bærer er
-lenger nær ionet og bøyes mer av, så denne spredningen er sterkest i kaldt
-materiale, og den gir en mobilitet som vokser omtrent som $T^{3/2}$.
-Sannsynlighetene for kollisjon legges sammen, så
-<FormulaRef id="matthiessen">mobilitetene legges sammen invers</FormulaRef>,
-og den minste dominerer:
-
-$$
-\frac{1}{\mu} = \frac{1}{\mu_\text{gitter}} + \frac{1}{\mu_\text{urenhet}}
-$$
-
-Mobiliteten har derfor en topp ved temperaturen der de to mekanismene er like
-sterke. Mer doping gjør urenhetsspredningen sterkere, så toppen blir lavere
-og flytter seg mot høyere temperatur.
-
-Ved romtemperatur er rent Si gitterbegrenset. Doper du inn $10^{17}$ donorer
-per cm³, faller $\mu_n$ fra 1350 til 700 cm²/V·s, så ledningsevnen vokser
-langsommere enn dopingen.
-
-<Callout title="Spredning">
-Mobilitetene fra de to mekanismene legges sammen invers, så den minste styrer.
-Gitterspredning dominerer i varmt og rent materiale, urenhetsspredning i kaldt
-og sterkt dopet.
-</Callout>
-
-<Simulation
-  src={"/sims/mobilitet.js"}
-  host={"dom"}
-  title={"Mobiliteten mot temperaturen"}
-  caption={"Mobiliteten til elektroner i Si mot temperaturen. Den heltrukne kurven er mobiliteten, de stiplede er hver mekanisme alene, sonene er merket med mekanismen som dominerer der, og punktet er verdien ved 300 K. Boka tegner de samme kurvene på logaritmiske akser, der hver mekanisme blir en rett linje."}
-  height={380}
+<Quiz
+  question={"Consider an electron moving in a semiconductor at room temperature under the influence of a small applied electric field. Which statement is correct?"}
+  options={[
+    "The drift velocity is larger than the thermal velocity",
+    "The thermal velocity is larger than the drift velocity",
+    "The thermal velocity and the drift velocity are approximately equal"
+  ]}
+  answer={1}
+  explanation={"Den termiske farten er omtrent ${2 \\times 10^7}$ cm/s i Si ved romtemperatur, og den har elektronet også uten felt. Drifthastigheten er ${\\mu_n\\mathcal{E}}$, i staven med 1 V/cm bare 1350 cm/s, fordi kollisjonene hele tiden tar bort det feltet gir. Drifthastigheten kommer opp i samme størrelsesorden som den termiske farten først i så sterke felt at den flater ut."}
 />
 
-Ohms lov gjelder så lenge drifthastigheten er liten mot den termiske. Over
-omtrent $10^3$ V/cm bøyer $v_d$ av, og i Si flater den ut ved
-<Term name="Metningshastighet">$v_s \approx 10^7$ cm/s</Term>: energien
-feltet tilfører går til gitteret i stedet for til mer fart, og strømmen blir
-nesten uavhengig av feltet.
+</Example>
 
-## Hall-effekten
+### Massen i et felt
 
-Legg et magnetfelt $\mathcal{B}_z$ på tvers av en p-type stav med strøm langs
-$x$. Kraften på et hull er $q(\mathcal{E} + v \times \mathcal{B})$, med
-$y$-komponent $q(\mathcal{E}_y - v_x\mathcal{B}_z)$. Hullene bøyes av mot
-$-y$ til ladningen på kanten har bygd opp et felt
-$\mathcal{E}_y = v_x\mathcal{B}_z$ som opphever avbøyningen. Når hullene
-bærer hele strømmen, som i p-type med $p_0 \gg n_0$, er $v_x = J_x/qp_0$:
+Ledningsbåndet i silisium har seks avlange daler, med massen ${m_l = 0{,}98\,m_0}$ langs dalen
+og ${m_t = 0{,}19\,m_0}$ på tvers. Med feltet langs $x$ er massen i feltets retning $m_l$ i de
+to dalene langs $k_x$ og $m_t$ i de fire andre, som figur 1 viser.
 
-$$
-\mathcal{E}_y = \frac{J_x\mathcal{B}_z}{qp_0} = R_H\,J_x\mathcal{B}_z,
-\qquad R_H = \frac{1}{qp_0}
-$$
-
-Hall-spenningen over bredden er $V_{AB} = \mathcal{E}_y w$, så
-<Term name="Hall-koeffisient">Hall-koeffisienten</Term>
-$R_H = (V_{AB}/w)/J_x\mathcal{B}_z$ kan måles, og den gir konsentrasjonen
-direkte. For en gitt strøm må færre bærere gå fortere, så magnetkraften på
-hver av dem blir større, og Hall-feltet som skal oppheve den, blir også
-større.
-
-Elektronene i den samme strømmen går motsatt vei og har motsatt ladning. Begge
-fortegnene i $q\,v \times \mathcal{B}$ snur, så kraften skyver elektronene mot
-den samme kanten som hullene. Den kanten blir negativ i stedet for positiv, så
-$R_H = -1/qn_0$ og Hall-spenningen er negativ i n-type. Fortegnet er den
-vanlige måten å bestemme bærertypen på. Måler du i tillegg resistansen, får du
-$\rho$, og siden $\sigma = q\mu_p p_0$, er $\mu_p = R_H/\rho$.
-
-<Callout title="Hall-målingen">
-Fortegnet på Hall-spenningen gir bærertypen, $|R_H| = 1/qp_0$ eller
-$1/qn_0$ gir konsentrasjonen, og $|R_H|/\rho$ er mobiliteten.
-</Callout>
-
-Ligger kontaktene A og B litt forskjøvet langs staven, inneholder $V_{AB}$
-også et resistivt spenningsfall; snu $\mathcal{B}$, så bytter bare
-Hall-delen fortegn, og halve differansen er Hall-spenningen. Halve summen er
-spenningsfallet over forskyvningen, og med $R = \rho L/wt$ for den lengden
-gir det resistiviteten uten en egen resistansmåling.
-
-<Simulation
-  src={"/sims/hall-effekt.js"}
-  host={"dom"}
-  title={"Hall-måling på en stav"}
-  caption={"Staven sett ovenfra, med strømmen $I$ langs $x$ og magnetfeltet som prikker (ut av planet) eller kryss (inn i planet). Røde prikker er hull, blå er elektroner, og $+$ og $-$ langs kantene er ladningen som bygger Hall-feltet. Skalaen nederst viser $V_{AB}$, den bleke stiplede viseren er avlesningen med feltet snudd, og punktet midt mellom dem er spenningsfallet over forskyvningen av kontakt B. Prøven er 500 µm bred og 20 µm tykk med $2 \\times 10^{17}$ bærere per cm³, 3 mA og 1 T; forskyvningen er overdrevet i tegningen."}
-  height={256}
+<Figure
+  src="/figures/daler-felt.svg"
+  alt="De seks dalene i ledningsbåndet til silisium som avlange ellipsoider langs k_x, k_y og k_z, med feltet ℰ langs x over. De to dalene på k_x-aksen er fremhevet og merket m_l langs feltet, dalen på k_y-aksen er merket m_t på tvers. Under står: 2 daler langs feltet, m_l, og 4 daler på tvers, m_t."
+  number={1}
+  width={340}
+  height={330}
+  caption="De seks dalene i ledningsbåndet til Si, med feltet langs $x$. I de to dalene langs $k_x$ er massen i feltets retning $m_l$, i de fire andre $m_t$."
 />
 
-<Example title="hva forteller Hall-målingen?">
+Drifthastigheten i hver dal er $q\bar{t}\mathcal{E}/m$ med massen langs feltet. Elektronene
+fordeler seg likt på dalene, så snittet av drifthastighetene er
 
-En stav med $w = 0{,}1$ mm, $t = 10$ µm og $L = 5$ mm står i
-$\mathcal{B}_z = 1$ T. Med $I_x = 1$ mA måles $V_{AB} = -2$ mV på tvers og
-$V_{CD} = 100$ mV langs staven. Finn type, konsentrasjon og mobilitet for
-majoritetsbærerne.
+$$
+\langle v_x\rangle = -\frac{q\bar{t}\mathcal{E}_x}{6}\left(\frac{2}{m_l} + \frac{4}{m_t}\right)
+$$
+
+som er det én masse $m_n^*$ gir når
+
+<Formula tex={"\\dfrac{1}{m_n^*} = \\dfrac{1}{3}\\left(\\dfrac{1}{m_l} + \\dfrac{2}{m_t}\\right)"} caption={"Effektiv masse for ledningsevne for elektronene i Si, fra de seks dalene."} onSheet={false} />
+
+Med tallene for silisium er
+
+$$
+\frac{1}{m_n^*} = \frac13\left(\frac{1}{0{,}98} + \frac{2}{0{,}19}\right)\frac{1}{m_0} = \frac{3{,}85}{m_0}
+$$
+
+så ${m_n^* = 0{,}26\,m_0}$. Det er de inverse massene som midles, så den lette retningen teller
+mest. Massen i $N_c$, $1{,}1\,m_0$, er en annen middelverdi, fordi den teller tilstander. Massen
+$0{,}26\,m_0$ gir også den termiske farten: med $\tfrac12 k_BT$ per akse i hver dal er
+${\langle v^2\rangle = k_BT(1/m_l + 2/m_t) = 3k_BT/m_n^*}$. I GaAs er det én kuleformet dal,
+med massen $0{,}067\,m_0$.
+
+## Strømmen
+
+Strømtettheten $J$ er ladningen som passerer en flate per areal og tid. I tiden $\Delta t$
+flytter elektronene seg $\mu_n\mathcal{E}\Delta t$ mot venstre, så alle i boksen med den
+lengden til høyre for flaten i figur 2 krysser den. Per areal er det $n\mu_n\mathcal{E}\Delta t$
+elektroner, hvert med ladningen $-q$. En negativ ladning mot venstre gir den samme strømmen som
+en positiv mot høyre, så ${J_n = qn\mu_n\mathcal{E}}$ langs feltet. Hullene driver med feltet
+og har ladningen $+q$, så også ${J_p = qp\mu_p\mathcal{E}}$ peker langs feltet.
+
+<Figure
+  src="/figures/stroemmen.svg"
+  alt="To striper av den samme staven med feltet ℰ mot høyre. Øverst elektroner som blå prikker som driver mot ℰ, med strømpilen J_n mot høyre; under hull som røde ringer som driver med ℰ, med J_p mot høyre. En stiplet loddrett flate går gjennom begge. En boks med lengden μ_nℰΔt til høyre for flaten er skyggelagt i elektronstripen, en kortere med lengden μ_pℰΔt til venstre for den i hullstripen."
+  number={2}
+  width={340}
+  height={308}
+  caption="Elektronene (blå prikker) og hullene (røde ringer) i den samme staven, med feltet $\mathcal{E}$ mot høyre. Boksene er bærerne som krysser flaten i løpet av tiden $\Delta t$."
+/>
+
+Strømmen er summen:
+
+<Formula tex={"\\dfrac{I_x}{A} = J_x = q\\,(n\\mu_n + p\\mu_p)\\,\\mathcal{E}_x \\allowbreak = \\sigma\\,\\mathcal{E}_x"} caption={"Driftstrømmen. Begge bærertypene gir strøm langs feltet."} />
+
+Strømmen er proporsjonal med feltet fordi drifthastigheten er det, så Ohms lov følger av
+kollisjonene, med ledningsevnen ${\sigma = q(n\mu_n + p\mu_p)}$. Resistiviteten er
+${\rho = 1/\sigma}$, og en stav med lengde $L$ og tverrsnitt $A$ har resistansen
+${R = \rho L/A}$.
+
+I staven fra starten er ${n = 10^{15}}$ og ${p = 2{,}25 \times 10^{5}}$ cm⁻³, så hullene
+bidrar ingenting:
+
+$$
+\begin{aligned}
+\sigma &= qn\mu_n = 1{,}6 \times 10^{-19} \cdot 10^{15} \cdot 1350 \\
+&= 0{,}22\ (\Omega\cdot\text{cm})^{-1}
+\end{aligned}
+$$
+
+Da er ${\rho = 4{,}6}$ Ω·cm, og med ${L = 1}$ cm og ${A = 0{,}01}$ cm² er ${R = 460}$ Ω og
+${I = 2{,}2}$ mA. I rent silisium teller begge bærertypene:
+${\sigma = qn_i(\mu_n + \mu_p) = 4{,}4 \times 10^{-6}}$ (Ω·cm)⁻¹, og den samme staven har
+resistansen 23 MΩ.
+
+Rent silisium er likevel ikke det som leder dårligst. Massevirkningsloven holder
+${np = n_i^2}$ fast, og nær det rene materialet gir litt bor ett elektron mindre for hvert hull
+det gir. Elektronene er nesten tre ganger så mobile som hullene, så ledningsevnen synker til
+hullene er mange nok til å ta over, og stiger så igjen.
+
+<Callout title="Driftstrømmen">
+Elektronene driver mot feltet og hullene med det, men begge gir strøm langs feltet: ${J = q(n\mu_n + p\mu_p)\mathcal{E} = \sigma\mathcal{E}}$.
+</Callout>
+
+<Example title="Silisiumet som leder dårligst">
+
+Finn elektronkonsentrasjonen som gir den laveste ledningsevnen i Si ved 300 K, og sammenlign
+ledningsevnen der med ledningsevnen i rent silisium. Bruk ${\mu_n = 1350}$,
+${\mu_p = 480}$ cm²/V·s og ${n_i = 1{,}5 \times 10^{10}}$ cm⁻³, og se bort fra at
+mobilitetene endrer seg med dopingen.
 
 <Solution>
 
-Negativ $V_{AB}$ betyr at bærerne er elektroner: n-type.
+Med ${p_0 = n_i^2/n_0}$ er ledningsevnen en funksjon av $n_0$:
 
-Hall-feltet er $\mathcal{E}_y = R_H J_x\mathcal{B}_z$, og for elektroner er
-$R_H = -1/qn_0$, så $|\mathcal{E}_y| = J_x\mathcal{B}_z/qn_0$. Målingen gir
-ikke felt og strømtetthet, men spenning og strøm: feltet på tvers er
-$|\mathcal{E}_y| = |V_{AB}|/w$ over bredden, og strømtettheten er
-$J_x = I_x/wt$ gjennom tverrsnittet. Sett inn og løs for $n_0$:
+$$
+\sigma(n_0) = q\left(n_0\mu_n + \frac{n_i^2}{n_0}\mu_p\right)
+$$
+
+Minimum er der den deriverte ${d\sigma/dn_0}$ er null:
 
 $$
 \begin{aligned}
-\frac{|V_{AB}|}{w} &= \frac{I_x\mathcal{B}_z}{qn_0\,wt} \\
-n_0 &= \frac{I_x\mathcal{B}_z}{qt\,|V_{AB}|}
+\mu_n - \frac{n_i^2}{n_0^2}\,\mu_p &= 0 \\
+\Rightarrow\quad n_0 &= n_i\sqrt{\frac{\mu_p}{\mu_n}}
 \end{aligned}
 $$
 
-Bredden faller bort, så bare tykkelsen må være kjent. I SI-enheter:
+Med tallene er ${n_0 = 1{,}5 \times 10^{10} \cdot \sqrt{480/1350} = 8{,}9 \times 10^9}$ cm⁻³ og
+${p_0 = n_i^2/n_0 = 2{,}5 \times 10^{10}}$ cm⁻³, altså litt p-type. Satt inn i $\sigma(n_0)$
+blir begge leddene $qn_i\sqrt{\mu_n\mu_p}$, og med ${qn_i = 2{,}4 \times 10^{-9}}$ C/cm³ og
+${\sqrt{1350 \cdot 480} = 805}$ cm²/V·s er
 
 $$
 \begin{aligned}
-n_0 &= \frac{10^{-3} \cdot 1}{1{,}6 \cdot 10^{-19} \cdot 10^{-5} \cdot 2 \cdot 10^{-3}} \\
-&= 3{,}1 \cdot 10^{23}\ \text{m}^{-3} \\
-&= 3{,}1 \cdot 10^{17}\ \text{cm}^{-3}
+\sigma_\text{min} &= 2qn_i\sqrt{\mu_n\mu_p} \\
+&= 2 \cdot 2{,}4 \times 10^{-9} \cdot 805 \\
+&= 3{,}9 \times 10^{-6}\ (\Omega\cdot\text{cm})^{-1}
 \end{aligned}
 $$
 
-Spenningen langs staven gir resistansen over lengden $L$:
-$R = V_{CD}/I_x = 100$ Ω. Resistansen til en stav er $R = \rho L/wt$, så
+I rent silisium er ${\sigma_i = qn_i(\mu_n + \mu_p) = 4{,}4 \times 10^{-6}}$ (Ω·cm)⁻¹.
+
+<Answer>Den laveste ledningsevnen er ${\sigma_\text{min} = 2qn_i\sqrt{\mu_n\mu_p} = 3{,}9 \times 10^{-6}}$ (Ω·cm)⁻¹, ved ${n_0 = 8{,}9 \times 10^9}$ cm⁻³ i litt p-type materiale. Den er 12 % lavere enn i rent silisium.</Answer>
+
+</Solution>
+</Example>
+
+## Det som sprer bærerne
+
+En kollisjon i krystallen er en spredning, der noe sender elektronet i en ny retning. Et
+perfekt periodisk gitter sprer ikke, fordi elektronet i ledningsbåndet er en bølge gjennom hele
+krystallen. Elektronet passerer da også over 80 gitterkonstanter mellom to kollisjoner. Spredningen
+kommer fra det som bryter mønsteret: atomer som svinger ut av plassen sin, og ioniserte
+dopeatomer, som har en ladning silisiumatomet de erstatter, ikke har.
+
+<Simulation
+  src="/sims/spredning.js"
+  host="dom"
+  title="Det som sprer elektronene"
+  caption="Krystallen sett ovenfra, i to dimensjoner: silisiumatomer som svinger (grå), donorioner (⊕) og elektroner (blå, med spor). En ring er en spredning mot gitteret. Under står $\mu_n$ i Si mot temperaturen, med grenene $T^{-3/2}$ fra gitteret og $T^{3/2}$ fra ionene stiplet, tilpasset slik at $\mu_n$ ved 300 K er 1350 cm²/V·s i rent Si og 700 med 10¹⁷ cm⁻³. Ionene står mye tettere enn i virkeligheten, og svingningene er overdrevet."
+  height={440}
+/>
+
+Sett temperaturen til 100 K med 10¹⁷ cm⁻³. Elektronene er langsomme, de som passerer nær et
+ion, svinger kraftig rundt det, og ringene kommer sjelden. Ved 500 K svinger atomene mer,
+ringene kommer ofte, og elektronene farer nesten rett forbi ionene.
+
+Jo varmere krystallen er, jo større utslag har gittersvingningene, som også kalles fononer,
+og jo oftere spres elektronene mot dem. Mobiliteten fra denne
+<Term name="Gitterspredning">gitterspredningen</Term> faller omtrent som $T^{-3/2}$. Et ion
+bøyer av et elektron mer jo lenger elektronet er nær det, så et raskt elektron er forbi før
+det bøyes mye, mens et langsomt blir trukket rundt. Denne
+<Term name="Urenhetsspredning">urenhetsspredningen</Term> er derfor sterkest når krystallen er
+kald, og mobiliteten fra den vokser omtrent som $T^{3/2}$.
+
+<Derivation title="Hvor eksponentene kommer fra">
+
+Gitteret: et atom svinger som en masse i en fjær, og den midlere energien i fjæren,
+$\tfrac12\kappa\langle u^2\rangle$, er $\tfrac12 k_BT$. Kvadratet av utslaget er derfor
+proporsjonalt med $T$. Sannsynligheten for å bli spredt per strekning er proporsjonal med
+kvadratet av utslaget, så den midlere frie veilengden er ${l \propto 1/\langle u^2\rangle \propto 1/T}$.
+Elektronet går med den termiske farten ${v_\text{th} \propto \sqrt{T}}$, så tiden mellom
+spredningene er
+
+$$
+\bar{t}_\text{gitter} = \frac{l}{v_\text{th}} \propto T^{-3/2}
+$$
+
+og mobiliteten $q\bar{t}/m^*$ faller som $T^{-3/2}$.
+
+Ionene: et ion i avstanden $b$ fra banen gir elektronet et dytt på tvers som er kraften,
+${\propto 1/b^2}$, ganger tiden elektronet er nær ionet, ${\propto b/v}$. Avbøyningsvinkelen er
+dyttet delt på bevegelsesmengden $m^*v$, altså ${\propto 1/bv^2}$. Vinkelen blir stor når $b$ er
+mindre enn en avstand ${\propto 1/v^2}$, så arealet rundt hvert ion der elektronet bøyes
+kraftig, er ${\propto 1/v^4}$. Elektronet går gjennom slike arealer med en rate som er arealet
+ganger farten ganger antall ioner per volum, $N_I$:
+
+$$
+\frac{1}{\bar{t}_\text{ioner}} \propto \frac{N_I}{v^3} \propto N_I\,T^{-3/2}
+$$
+
+Mobiliteten fra ionene vokser derfor som $T^{3/2}$, og den faller som $1/N_I$ med dopingen.
+
+</Derivation>
+
+Begge mekanismene virker samtidig, og sannsynlighetene for å bli spredt per tid legges
+sammen, ${1/\bar{t} = 1/\bar{t}_\text{gitter} + 1/\bar{t}_\text{ioner}}$. Mobiliteten er
+proporsjonal med $\bar{t}$, så de inverse mobilitetene legges sammen:
+
+<Formula tex={"\\dfrac{1}{\\mu} = \\dfrac{1}{\\mu_\\text{gitter}} + \\dfrac{1}{\\mu_\\text{ioner}}"} caption={"Mobiliteten når gitterspredning og urenhetsspredning virker samtidig."} onSheet={false} />
+
+Resistiviteten er proporsjonal med $1/\mu$, så resistivitetene fra de to mekanismene legges
+sammen som to motstander i serie, og den laveste mobiliteten bestemmer mest. Grafen i simuleringen følger grenen fra ionene ved lave
+temperaturer og grenen fra gitteret ved høye, med en topp der de to er like store. For
+10¹⁷ cm⁻³ ligger toppen nær romtemperatur, med ${\mu_n = 700}$ cm²/V·s, omtrent halvparten av
+1350 i rent silisium. Med 10¹⁶ cm⁻³ ligger toppen høyere og ved lavere temperatur. Både
+donorer og akseptorer er ioner, så det er summen ${N_d + N_a}$ som sprer.
+
+<Callout title="Gitter og ioner">
+Gittersvingningene sprer mest når krystallen er varm, ionene mest når den er kald. De inverse mobilitetene legges sammen, og mobiliteten får en topp mellom de to.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Spredning som øker med temperaturen">
+<ExamRef id="2018-des-tfe4164" task="I-3" />
+
+<Quiz
+  question={"The electron mobility $\\mu_n$ in a semiconductor is limited by several scattering mechanisms, which result in different temperature dependencies for the mobility. If $\\mu_n \\propto T^{3/2}$ ($T$ - the absolute temperature in K), the mobility is dominated by,"}
+  options={[
+    "lattice (phonon) scattering",
+    "electron-electron scattering",
+    "impurity scattering"
+  ]}
+  answer={2}
+  explanation={"En mobilitet som vokser med temperaturen, kommer fra en spredning som blir svakere når krystallen er varm. Ionene bøyer av langsomme elektroner mest, og elektronene går fortere jo varmere det er, så urenhetsspredningen gir ${\\mu \\propto T^{3/2}}$. Gitterspredningen går motsatt vei og gir ${\\mu \\propto T^{-3/2}}$."}
+/>
+
+</Example>
+
+## Sterke felt
+
+Formelen ${\langle v_x\rangle = -\mu_n\mathcal{E}_x}$ forutsetter at $\bar{t}$ ikke endrer seg
+med feltet. Forutsetningen holder så lenge driften er en liten skjevhet i den termiske
+bevegelsen, som i staven fra starten.
+
+Når $\mu_n\mathcal{E}$ nærmer seg den termiske farten, får elektronene så mye energi mellom
+kollisjonene at de går fortere enn den termiske farten. Raske elektroner går lenger per tid og
+spres oftere mot gittersvingningene, som sprer mest i Si ved romtemperatur. Da blir $\bar{t}$
+kortere jo sterkere feltet er, og drifthastigheten $q\bar{t}\mathcal{E}/m^*$ vokser saktere enn
+feltet. Energien feltet tilfører, går til gitteret i stedet for til raskere drift.
+Drifthastigheten flater ut ved <Term name="Metningshastighet">metningshastigheten</Term>
+${v_s \approx 10^7}$ cm/s i Si, av samme størrelsesorden som den termiske farten. $\mu_n\mathcal{E}$
+når $v_s$ ved ${\mathcal{E} = v_s/\mu_n \approx 7 \times 10^3}$ V/cm. Allerede ved $10^3$ V/cm
+ligger drifthastigheten 12 % under $\mu_n\mathcal{E}$, og figur 3 viser at kurven ligger tydelig
+under den rette linjen lenge før $10^4$ V/cm.
+
+Formelen på formelarket er det samme som å legge de inverse hastighetene sammen, slik de
+inverse mobilitetene legges sammen:
+
+$$
+\frac{1}{v_d} = \frac{1}{\mu\mathcal{E}} + \frac{1}{v_s}
+$$
+
+Ved lave felt er det første leddet størst, og ${v_d = \mu\mathcal{E}}$. Ved høye felt er det
+andre størst, og $v_d$ nærmer seg $v_s$. Formelen er en tilpasning med disse to grensene, ikke
+en utledning. Løst for $v_d$, drifthastigheten uten fortegn, er den
+
+<Formula tex={"v_d \\cong \\dfrac{\\mu\\mathcal{E}}{1 + \\mu\\mathcal{E}/v_s} \\begin{cases} = \\mu\\mathcal{E} & \\text{lave felt, ohmsk} \\\\ = v_s & \\text{høye felt, mettet} \\end{cases}"} caption={"Drifthastigheten over hele feltområdet."} />
+
+<Figure
+  src="/figures/metning.svg"
+  alt="Drifthastigheten v_d i 10^7 cm/s mot feltet ℰ i 10^4 V/cm, fra 0 til 4. En blå kurve stiger bratt fra origo, bøyer av og flater ut mot 0,85 ved 4. En stiplet rett linje merket μℰ går ut av grafen ved ℰ litt under 1. En prikket vannrett linje ved 1 er merket v_s."
+  number={3}
+  width={340}
+  height={270}
+  caption="Drifthastigheten til elektronene i Si mot feltet, fra formelen ${v_d = \mu\mathcal{E}/(1 + \mu\mathcal{E}/v_s)}$ med ${\mu = 1350}$ cm²/V·s og ${v_s = 10^7}$ cm/s. Den stiplede linjen er $\mu\mathcal{E}$."
+/>
+
+Én volt over én mikrometer er $10^4$ V/cm, så i små komponenter metter drifthastigheten.
+
+<Callout title="Metning">
+Drifthastigheten er $\mu\mathcal{E}$ bare så lenge den er liten mot den termiske farten. I Si bøyer den av over omtrent $10^3$ V/cm og flater ut ved ${v_s \approx 10^7}$ cm/s.
+</Callout>
+
+<Example title="Strøm gjennom en kort stav">
+
+En silisiumstav er 1 µm lang, har tverrsnittet 100 µm² og er dopet med $10^{17}$ fosforatomer
+per cm³. Ved denne dopingen er ${\mu_n = 700}$ cm²/V·s. Finn strømmen med 10 V over staven, og
+hvor lang tid et elektron bruker gjennom den.
+
+<Solution>
+
+Feltet er ${\mathcal{E} = 10\ \text{V}/10^{-4}\ \text{cm} = 10^5}$ V/cm. Test om Ohms lov
+holder: ${\mu_n\mathcal{E} = 700 \cdot 10^5 = 7 \times 10^7}$ cm/s, sju ganger $v_s$. Ohms lov
+holder ikke, og formelen for drifthastigheten gir
+
+$$
+\begin{aligned}
+v_d &= \frac{\mu_n\mathcal{E}}{1 + \mu_n\mathcal{E}/v_s} \\
+&= \frac{7 \times 10^7}{1 + 7}\ \text{cm/s} \\
+&= 8{,}8 \times 10^6\ \text{cm/s}
+\end{aligned}
+$$
+
+Strømtettheten er
+
+$$
+\begin{aligned}
+J &= qnv_d \\
+&= 1{,}6 \times 10^{-19} \cdot 10^{17} \cdot 8{,}8 \times 10^6 \\
+&= 1{,}4 \times 10^5\ \text{A/cm}^2
+\end{aligned}
+$$
+
+og med ${A = 100\ \mu\text{m}^2 = 10^{-6}}$ cm² er strømmen
+${I = JA = 1{,}4 \times 10^5 \cdot 10^{-6}\ \text{A} = 0{,}14}$ A. Ohms lov ville gitt 1,1 A, åtte
+ganger for mye. Tiden gjennom staven er
+${t = L/v_d = 10^{-4}\ \text{cm}/(8{,}8 \times 10^6\ \text{cm/s}) = 11}$ ps.
+
+<Answer>Strømmen er omtrent 0,14 A, og et elektron bruker omtrent 11 ps gjennom staven. Elektronene driver nær metningshastigheten, så Ohms lov ville gitt åtte ganger for mye strøm.</Answer>
+
+</Solution>
+</Example>
+
+## Hall-effekten
+
+En resistansmåling gir bare ledningsevnen ${\sigma = q(n\mu_n + p\mu_p)}$. En stav med
+$2{,}8 \times 10^{15}$ boratomer per cm³ har nesten den samme resistiviteten som staven fra
+starten, 4,6 Ω·cm, med nesten tre ganger så mange bærere og nesten tre ganger lavere
+mobilitet. Et magnetfelt på tvers av strømmen skiller de to stavene.
+
+En bærer som driver langs staven, får magnetkraften ${q\vec v \times \vec{\mathcal{B}}}$ for et
+hull og ${-q\vec v \times \vec{\mathcal{B}}}$ for et elektron. La strømmen gå langs $+x$ og
+feltet $\mathcal{B}_z$ peke ut av planet. Hullene driver langs $+x$, og
+${\hat x \times \hat z = -\hat y}$, så kraften på dem peker mot $-y$. Elektronene driver mot
+$-x$ og har motsatt ladning, så de to fortegnene opphever hverandre, og kraften på dem peker
+også mot $-y$.
+
+<Simulation
+  src="/sims/hall-effekt.js"
+  host="dom"
+  title="Hall-effekten"
+  caption="Staven sett ovenfra, med strømmen $I$ mot høyre og magnetfeltet som ⊙ (ut av planet) eller ⊗ (inn i planet). Hull er røde ringer og elektroner blå prikker, og + og − er ladningen langs kantene. Voltmeteret står mellom A og B, og den bleke viseren viser avlesningen med feltet snudd. Prøven er 500 µm bred og 20 µm tykk, med 3 mA og 1 T, og forskyvningen av B er overdrevet."
+  height={300}
+/>
+
+Velg «ingen» og så «ut av planet». Hullene samles mot kanten ved kontakt A, og ladningen på kantene gir et
+felt $\mathcal{E}_y$ på tvers som skyver dem tilbake. Når den elektriske kraften er like stor
+som den magnetiske, går hullene rett fram igjen, med ${V_{AB} > 0}$:
+
+$$
+q\mathcal{E}_y = qv_x\mathcal{B}_z \quad\Rightarrow\quad \mathcal{E}_y = v_x\mathcal{B}_z
+$$
+
+Med ${J_x = qpv_x}$ er ${v_x = J_x/qp}$, så færre bærere må drive fortere for å føre den samme
+strømmen, og får en større magnetkraft. Gå fra 2·10¹⁷ til 10¹⁷ cm⁻³ i simuleringen, og
+$V_{AB}$ blir dobbelt så stor. Med ${V_{AB} = \mathcal{E}_yw}$ over bredden $w$ og
+${J_x = I_x/wt}$ med tykkelsen $t$ er
+
+$$
+\begin{aligned}
+V_{AB} &= \frac{J_x\mathcal{B}_z}{qp}\,w = \frac{I_x\mathcal{B}_z}{qpt} \\
+\Rightarrow\quad p &= \frac{I_x\mathcal{B}_z}{qtV_{AB}}
+\end{aligned}
+$$
+
+Bredden faller ut, fordi en bredere stav har lavere strømtetthet, men spenningen måles over en
+lengre avstand.
+
+Velg elektroner. De havner på den samme kanten, som nå blir negativ, og $V_{AB}$ skifter
+fortegn, så fortegnet gir bærertypen. For elektroner er ${n = I_x\mathcal{B}_z/qt(-V_{AB})}$.
+Spenningen kommer fra majoritetsbærerne, siden minoritetsbærerne fører nesten ingenting av
+strømmen.
+
+<Formula tex={"p = \\dfrac{I_x\\mathcal{B}_z}{qtV_{AB}}, \\qquad \\mu_p = \\dfrac{1}{qp\\rho}"} caption={"Hullkonsentrasjonen fra Hall-spenningen, og mobiliteten fra den og resistiviteten. For elektroner er $V_{AB}$ negativ, og ${n = I_x\\mathcal{B}_z/qt(-V_{AB})}$."} onSheet={false} />
+
+Mobiliteten krever også resistiviteten. Spenningen $V_{CD}$ mellom endene gir
+${R = V_{CD}/I_x}$, så ${\rho = R\,wt/L}$ og ${\mu_p = 1/qp\rho}$.
+
+Står kontakt B forskjøvet langs staven, måler voltmeteret også en del av spenningsfallet langs
+den. Sett «Kontakt B forskjøvet» til +10 µm, og begge viserne flytter seg like mye. Snur du
+magnetfeltet, snur Hall-spenningen, mens spenningsfallet står fast. Hall-spenningen er derfor
+${V_H = \tfrac12[V_{AB}(\mathcal{B}) - V_{AB}(-\mathcal{B})]}$, og prikken midt mellom viserne er
+spenningsfallet.
+
+<Callout title="Hall-effekten">
+Magnetfeltet presser både hull og elektroner mot den samme kanten, så fortegnet på Hall-spenningen gir bærertypen, og ${p = I_x\mathcal{B}_z/qtV_{AB}}$ gir konsentrasjonen. Med resistiviteten gir det mobiliteten.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Hall-måling på en n-type stav">
+<ExamRef id="2025-nov" task="4" />
+
+<Figure
+  src="/figures/eksamen-2025-11-oppgave-4.png"
+  alt="En avlang halvlederstav i perspektiv med aksene x, y og z. Strømmen I_x går inn i kontakt C i den bakre enden og ut av kontakt D i den fremre. Kontakt A, merket (+), står på venstre side og kontakt B, merket (−), på høyre. Magnetfeltet ℬ_z peker opp, ℰ_y peker fra A mot B, og ℰ_x langs staven mot D. Bredden w, tykkelsen t og lengden L er merket."
+  width={905}
+  height={708}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The figure above shows the setup for the Hall experiment. The n-type semiconductor bar has a
+width ${w = 0.01\text{cm}}$, thickness ${t = 10^{-3}\text{cm}}$ and length ${L = 0.5\text{cm}}$. A
+magnetic field of ${B_z = 10^{-4}\text{Wb/cm}^2}$ is applied in the direction shown. For a current
+${I_x = 1\text{mA}}$ we have ${V_{AB} = -3\text{mV}}$ and ${V_{CD} = 100\text{mV}}$.
+
+Given: The force on a particle with charge $q$ and velocity $\vec{v}$, from a magnetic field
+$\vec{B}$, is ${\vec{F} = q\vec{E} + q\vec{v} \times \vec{B}}$
+
+Find the concentration and mobility of the majority carrier and fill in the numerical answer
+below.
+
+Majority carrier concentration : … ${\cdot 10^{17}\text{cm}^{-3}}$
+
+Majority carrier mobility: … ${\text{cm}^2/(\text{V} \cdot \text{s})}$
+
+<Solution>
+
+Merkene (+) og (−) i figuren viser hvordan voltmeteret er koblet, så $V_{AB}$ er potensialet i
+A minus potensialet i B. Staven er n-type, og $V_{AB}$ er negativ, som den skal være for
+elektroner. Konsentrasjonen er
+
+$$
+\begin{aligned}
+n_0 &= \frac{I_x\mathcal{B}_z}{qt(-V_{AB})} \\
+&= \frac{10^{-3} \cdot 10^{-4}}{1{,}6 \times 10^{-19} \cdot 10^{-3} \cdot 3 \times 10^{-3}} \\
+&= 2{,}1 \times 10^{17}\ \text{cm}^{-3}
+\end{aligned}
+$$
+
+med strømmen i A, feltet i Wb/cm², tykkelsen i cm og spenningen i V. Resistansen langs staven
+er ${R = V_{CD}/I_x = 0{,}1/10^{-3} = 100}$ Ω, og tverrsnittet er
+${wt = 0{,}01 \cdot 10^{-3} = 10^{-5}}$ cm², så
 
 $$
 \begin{aligned}
 \rho &= R\,\frac{wt}{L} \\
-&= 100\ \Omega \cdot \frac{0{,}01\ \text{cm} \cdot 10^{-3}\ \text{cm}}{0{,}5\ \text{cm}} \\
-&= 2 \cdot 10^{-3}\ \Omega\cdot\text{cm}
+&= 100 \cdot \frac{10^{-5}}{0{,}5}\ \Omega\cdot\text{cm} \\
+&= 0{,}002\ \Omega\cdot\text{cm}
 \end{aligned}
 $$
 
-Med bare elektroner er ledningsevnen $\sigma = q\mu_n n_0$, og
-$\sigma = 1/\rho$, så $\mu_n = 1/qn_0\rho$, som er det samme som
-$|R_H|/\rho$. Med $qn_0 = 1{,}6 \cdot 10^{-19} \cdot 3{,}1 \cdot 10^{17} = 0{,}05$ C/cm³:
+Ledningsevnen er ${\sigma = 1/\rho = 500}$ (Ω·cm)⁻¹, og mobiliteten er
 
 $$
 \begin{aligned}
-\mu_n &= \frac{1}{q n_0 \rho} \\
-&= \frac{1}{0{,}05 \cdot 2 \cdot 10^{-3}} \\
-&= 10^{4}\ \text{cm}^2/\text{V·s}
+\mu_n &= \frac{\sigma}{qn_0} \\
+&= \frac{500}{1{,}6 \times 10^{-19} \cdot 2{,}1 \times 10^{17}} \\
+&= 1{,}5 \times 10^4\ \text{cm}^2/\text{V·s}
 \end{aligned}
 $$
 
-Mobiliteten er langt over de 700 cm²/V·s Si har allerede ved
-$10^{17}$ cm⁻³, så staven kan ikke være av Si.
-
-<Answer>n-type med $n_0 = 3{,}1 \times 10^{17}$ cm⁻³ og $\mu_n = 10^4$ cm²/V·s.</Answer>
+<Answer>${n_0 \approx 2{,}1 \times 10^{17}}$ cm⁻³ og ${\mu_n \approx 1{,}5 \times 10^4}$ cm²/V·s.</Answer>
 
 </Solution>
-
 </Example>
 
-## Fermi-nivået ved likevekt
+## Fermi-nivået i likevekt
 
-Sett to materialer i kontakt slik at elektroner kan gå mellom dem. En
-overgang ved energien $E$ krever et elektron i 1 og en ledig tilstand i 2
-ved samme energi, så raten fra 1 til 2 er proporsjonal med fylte tilstander
-i 1 ganger tomme i 2, $N_1 f_1 \cdot N_2(1 - f_2)$, og raten motsatt vei er
-$N_2 f_2 \cdot N_1(1 - f_1)$. I termisk likevekt går overgangene like ofte
-begge veier ved hver energi for seg, så ratene er like:
+Legg to biter n-type silisium inntil hverandre, bit 1 med $10^{17}$ og bit 2 med $10^{15}$
+fosforatomer per cm³. Hver for seg står Fermi-nivået 0,15 eV under $E_c$ i bit 1 og 0,27 eV
+under $E_c$ i bit 2, fra
+<FormulaRef id="likevektskonsentrasjoner">${E_c - E_F = k_BT\ln(N_c/n_0)}$</FormulaRef> med
+${N_c = 2{,}9 \times 10^{19}}$ cm⁻³ og ${k_BT = 0{,}0259}$ eV. Bit 1 har altså en større andel
+fylte tilstander ved hver energi i ledningsbåndet.
+
+I kontakt går elektroner over grenseflaten begge veier. Ved energien $E$ går et elektron fra en
+fylt tilstand i den ene biten til en tom tilstand med samme energi i den andre, så raten er
+proporsjonal med antall fylte tilstander på den ene siden ganger antall tomme på den andre:
 
 $$
-N_1 f_1\,N_2(1 - f_2) = N_2 f_2\,N_1(1 - f_1)
-\quad\Rightarrow\quad
-f_1 - f_1 f_2 = f_2 - f_1 f_2
-\quad\Rightarrow\quad
-f_1 = f_2
+\begin{aligned}
+r_{12} &\propto N_1f_1 \cdot N_2\,(1 - f_2) \\
+r_{21} &\propto N_2f_2 \cdot N_1\,(1 - f_1)
+\end{aligned}
 $$
 
-Da går det verken netto ladning eller netto energi mellom materialene.
-Begge materialene har samme temperatur, så Fermi–Dirac-fordelingene er like
-ved alle energier bare når $E_{F1} = E_{F2}$.
+$N$ er tilstandstettheten og $f$ sannsynligheten for at en tilstand er fylt, ved energien $E$
+i hver bit. I likevekt skjer hver overgang like ofte begge veier, også ved hver enkelt energi,
+så de to ratene er like. Da forkortes $N_1N_2$:
+
+$$
+\begin{aligned}
+f_1(1 - f_2) &= f_2(1 - f_1) \\
+\Rightarrow\quad f_1 &= f_2
+\end{aligned}
+$$
+
+To Fermi–Dirac-fordelinger er like ved hver energi bare når de har samme $E_F$.
+
+<Figure
+  src="/figures/fermi-kontakt.svg"
+  alt="To blokker med rader av tilstander som ringer og elektroner som blå prikker, materiale 1 med seks tilstander per rad og materiale 2 med tolv. Før kontakt står E_F1 én rad over E_F2; i den markerte raden er to av seks fylt i 1 og to av tolv i 2, og pilen fra 1 til 2 er tykkest. I kontakt står radene i 1 én rad lavere, én E_F går gjennom begge, andelen fylte er den samme i hver rad, og pilene er like tykke."
+  number={4}
+  width={340}
+  height={393}
+  caption="To materialer med ulik tilstandstetthet, tegnet som rader av tilstander (ringer) med elektroner (prikker), før og etter kontakt. Pilene er elektronene som går hver vei i den merkede raden."
+/>
+
+I figur 4 står $E_{F1}$ høyere enn $E_{F2}$ før kontakt. I den merkede raden er 2 av 6
+tilstander fylt i 1 og 2 av 12 i 2, så ratene er ${2 \cdot 10 = 20}$ mot ${2 \cdot 4 = 8}$, og
+elektroner går fra 1 til 2. Bit 1 blir positiv, og elektronenergiene der synker, fordi
+elektronets potensielle energi er lavest der potensialet er høyest. De synker til
+Fermi-nivåene står likt. Da er andelen fylte tilstander den samme i hver rad, og i den merkede
+raden er ratene ${2 \cdot 8 = 4 \cdot 4 = 16}$.
+
+Fermi-nivåene oppfører seg som vannet i to kar som kobles sammen. Vannet renner til
+overflatene står likt, uansett formen på karene. Fermi-nivået er overflaten, og formen på
+karet er tilstandstettheten. Analogien stopper ved at bitene ikke trenger å flytte mye
+ladning, fordi en liten ladning flytter nivåene i den ene biten i forhold til den andre.
 
 <Statement kind="principle" name="Fermi-nivået er flatt i likevekt">
-
-Gjennom materialer i kontakt ved termisk likevekt er $E_F$ konstant,
-<FormulaRef id="fermi-flat" />. Det gjelder ulikt dopede områder i samme
-krystall like mye som en metallkontakt på en halvleder.
-
+I termisk likevekt er Fermi-nivået det samme overalt i materialer som er i kontakt med hverandre, så ${dE_F/dx = 0}$.
 </Statement>
+
+For de to silisiumbitene ligger $E_c$ da 0,15 eV over $E_F$ i bit 1 og 0,27 eV over i bit 2,
+altså 0,12 eV høyere i bit 2, og båndene bøyer seg der dopingen endrer seg.
+
+<Callout title="Fermi-nivået i likevekt">
+I likevekt går like mange elektroner hver vei ved hver energi, og det krever samme Fermi–Dirac-fordeling på begge sider. Fermi-nivået er det samme overalt, mens båndene bøyer seg der materialet endrer seg.
+</Callout>
 
 ## Sjekk deg selv
 
 <Quiz
-  question={"Du dobler donortettheten i n-type Si fra $10^{16}$ til $2 \\times 10^{16}$ cm⁻³ ved 300 K. Hva skjer med ledningsevnen?"}
+  question={"I GaAs er ${\\mu_n = 8500}$ cm²/V·s og ${m_n^* = 0{,}067\\,m_0}$. I Si er ${\\mu_n = 1350}$ cm²/V·s og ${m_n^* = 0{,}26\\,m_0}$. Hva er hovedgrunnen til at mobiliteten er høyere i GaAs?"}
   options={[
-    "Den dobles nøyaktig",
-    "Den øker, men mindre enn til det dobbelte",
-    "Den er uendret, siden $n_0 p_0 = n_i^2$",
-    "Den minker, fordi urenhetsspredningen øker"
+    "Tiden mellom kollisjonene er over seks ganger lengre, og massen betyr lite",
+    "Elektronene er nesten fire ganger lettere, og tiden mellom kollisjonene er bare 1,6 ganger lengre",
+    "GaAs har flere elektroner i ledningsbåndet, så strømmen blir større",
+    "Elektronene er lettere, og de spres like ofte i begge materialene"
   ]}
   answer={1}
-  explanation={"$\\sigma = q n_0 \\mu_n$, og $n_0$ dobles. Flere ioniserte donorer gir mer urenhetsspredning, så $\\mu_n$ faller, men mye mindre enn en faktor 2 ved så lav doping, og produktet vokser mindre enn til det dobbelte. Massevirkningsloven styrer $p_0$, som ikke betyr noe for $\\sigma$ her."}
+  explanation={"Fra ${\\bar{t} = \\mu_n m_n^*/q}$ er $\\bar{t}$ omtrent 0,2 ps i Si og 0,32 ps i GaAs, 1,6 ganger lengre. Massen er 3,9 ganger mindre, og ${1{,}6 \\cdot 3{,}9 = 6{,}3}$ er forholdet mellom mobilitetene. Antallet elektroner påvirker strømmen, men ikke mobiliteten."}
 />
 
 <Quiz
-  question={"I en Hall-måling leser du $V_{AB} = +4{,}4$ mV, og når du snur magnetfeltet, $-3{,}6$ mV. Hva er Hall-spenningen?"}
+  question={"To silisiumprøver har begge ${n_0 = 10^{16}}$ cm⁻³ ved romtemperatur. Prøve A har $10^{16}$ donorer per cm³ og ingen akseptorer. Prøve B har $10^{17}$ donorer og ${9 \\times 10^{16}}$ akseptorer per cm³. Hvilken prøve har høyest ledningsevne?"}
   options={[
-    "4,4 mV",
-    "4,0 mV",
-    "0,4 mV",
-    "8,0 mV"
+    "Like høy, fordi $n_0$ er den samme",
+    "B, fordi den har flere dopeatomer",
+    "A, fordi B har nesten tjue ganger så mange ioner som sprer elektronene",
+    "B, fordi akseptorene opphever spredningen fra donorene"
+  ]}
+  answer={2}
+  explanation={"Ledningsevnen er $qn_0\\mu_n$, og $n_0$ er den samme, så forskjellen ligger i mobiliteten. B har ${N_d + N_a = 1{,}9 \\times 10^{17}}$ ioner per cm³ mot $10^{16}$ i A, og urenhetsspredningen er mye sterkere. Akseptorene tar elektronene donorene ga, men blir selv ioner og sprer like godt."}
+/>
+
+<Quiz
+  question={"To biter av to ulike halvledere, bit 1 og bit 2, legges i kontakt. Før kontakt står Fermi-nivået i bit 1 0,2 eV høyere enn i bit 2. Hvor mye har elektronenergiene i bit 1 sunket i forhold til bit 2 når likevekten er nådd?"}
+  options={[
+    "0,1 eV, fordi begge bitene flytter seg halvveis",
+    "0,2 eV, fordi Fermi-nivåene må komme på samme høyde",
+    "Ingenting, fordi det er Fermi-nivåene som flytter seg, ikke båndene",
+    "Akkurat så mye at ledningsbåndkantene står i samme høyde"
   ]}
   answer={1}
-  explanation={"Bare Hall-delen bytter fortegn når $\\mathcal{B}$ snus, mens et resistivt spenningsfall fra forskjøvne kontakter står fast. Halve differansen, $(4{,}4 + 3{,}6)/2 = 4{,}0$ mV, er Hall-spenningen, og halve summen, $0{,}4$ mV, er forskyvningen."}
+  explanation={"Langt fra grenseflaten bestemmer materialet og dopingen hvor $E_F$ står i forhold til båndene i hver bit, så nivåene i de to bitene må flytte seg i forhold til hverandre med hele forskjellen, 0,2 eV. Hvordan flyttingen fordeler seg, endrer ikke forskjellen. Båndkantene trenger ikke stå likt: i de to silisiumbitene står $E_c$ 0,12 eV fra hverandre i likevekt."}
 />
 
 <KeyTakeaways>
 
-- Kollisjoner hver $\bar{t}$ balanserer feltet: $\mu = q\bar{t}/m^*$ og $J = q(n\mu_n + p\mu_p)\mathcal{E} = \sigma\mathcal{E}$, med det harmoniske middelet $0{,}26\,m_0$ som masse i Si.
-- Gitterspredning gir $\mu \sim T^{-3/2}$, urenhetsspredning $\mu \sim T^{3/2}$, og den minste mobiliteten dominerer. $10^{17}$ donorer per cm³ halverer $\mu_n$ i Si. Over $10^3$ V/cm bøyer $v_d$ av, og den flater ut ved $10^7$ cm/s.
-- Hall-spenningen gir $R_H = 1/qp_0$ med fortegn etter bærertypen, og $\mu = R_H/\rho$.
-- $E_F$ er flat gjennom alt som er i likevekt med hverandre.
+- Kollisjonene gir bærerne en ny, tilfeldig fart, så et felt gir en jevn drifthastighet ${\langle v_x\rangle = \mp\mu\mathcal{E}_x}$ med ${\mu = q\bar{t}/m^*}$, langt under den termiske farten.
+- Elektronene driver mot feltet og hullene med det, men begge gir strøm langs feltet: ${J = q(n\mu_n + p\mu_p)\mathcal{E}}$.
+- Gittersvingningene sprer mest i varme krystaller, ionene mest i kalde. De inverse mobilitetene legges sammen, og mobiliteten har en topp.
+- Over omtrent $10^3$ V/cm i Si vokser drifthastigheten saktere enn feltet og flater ut ved ${v_s \approx 10^7}$ cm/s.
+- Fortegnet på Hall-spenningen gir bærertypen, ${p = I_x\mathcal{B}_z/qtV_{AB}}$ gir konsentrasjonen, og med resistiviteten gir det mobiliteten.
+- I likevekt er Fermi-nivået det samme overalt, og båndene bøyer seg der materialet endrer seg.
 
 </KeyTakeaways>
