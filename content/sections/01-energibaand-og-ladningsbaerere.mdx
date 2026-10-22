@@ -20,8 +20,8 @@ updated: 2026-10-20
 </LearningGoals>
 
 En kobbertråd leder strøm, en glassplate leder nesten ikke noe, og silisium gjør en
-mellomting. Resistiviteten til kobber er omtrent $2 \times 10^{-6}$ Ω·cm, til glass
-over $10^{10}$ Ω·cm, og til rent silisium ved romtemperatur $2 \times 10^{5}$ Ω·cm.
+mellomting. Resistiviteten til kobber er omtrent ${2 \times 10^{-6}}$ Ω·cm, til glass
+over $10^{10}$ Ω·cm, og til rent silisium ved romtemperatur ${2 \times 10^{5}}$ Ω·cm.
 Bytt ut ett av femti millioner silisiumatomer med fosfor, og resistiviteten faller
 til omtrent 5 Ω·cm, 40 000 ganger lavere. Hver komponent i dette emnet bygger
 på at ledningsevnen i en halvleder kan styres slik. For å forstå hvorfor, trenger
@@ -41,10 +41,10 @@ krever energi. Krystallen leder derfor ikke strøm i det hele tatt.
 
 Å rive et elektron løs fra en binding i silisium koster 1,1 eV. Varmen i
 krystallen gir atomene tilfeldige støt, og et typisk støt ved romtemperatur har
-energi av størrelsesorden $k_BT = 0{,}026$ eV, der $k_B$ er Boltzmanns konstant.
+energi av størrelsesorden ${k_BT = 0{,}026}$ eV, der $k_B$ er Boltzmanns konstant.
 1,1 eV er over førti ganger så mye, og sannsynligheten for et så stort støt faller
 eksponentielt med forholdet. Derfor brytes bindinger svært sjeldent: i rent silisium
-ved romtemperatur er én binding brutt per $3 \times 10^{12}$ atomer.
+ved romtemperatur er én binding brutt per ${3 \times 10^{12}}$ atomer.
 
 Når en binding brytes, skjer to ting på én gang. Elektronet som rives løs, kan
 vandre fritt gjennom krystallen. Og i bindingen det forlot, mangler det nå et
@@ -97,12 +97,29 @@ halvleder</Term>, og konsentrasjonen av hver bærer der kalles $n_i$:
 
 <Formula tex={"n = p = n_i"} caption={"Bærerkonsentrasjonene i intrinsisk materiale: $n$ for frie elektroner, $p$ for hull."} />
 
-For silisium ved romtemperatur er $n_i = 1{,}5 \times 10^{10}$ cm⁻³, mot
-$5 \times 10^{22}$ atomer per cm³.
+For silisium ved romtemperatur er ${n_i = 1{,}5 \times 10^{10}}$ cm⁻³, mot
+${5 \times 10^{22}}$ atomer per cm³.
 
 <Callout title="Frie elektroner og hull">
 En brutt binding gir et fritt elektron og et hull. Hullet flytter seg ved at elektroner i nabobindinger hopper inn i det, og det oppfører seg som en positiv ladning. I et felt går elektronene mot feltet og hullene med det, og begge gir strøm i feltets retning.
 </Callout>
+
+<Example label="Eksamensoppgave" title="Bindingen i silisium">
+<ExamRef id="2021-des" task="1" />
+
+<Quiz
+  question={"Which kind of bonding is found in the diamond lattice elemental semiconductors:"}
+  options={[
+    "Ionic bonding",
+    "Van der Waals bonding",
+    "Covalent bonding",
+    "Metallic bonding"
+  ]}
+  answer={2}
+  explanation={"Diamantgitteret er krystallstrukturen til diamant, silisium og germanium, og der deler hvert atom ett elektronpar med hver av de fire naboene. Et delt elektronpar er en kovalent binding. I en ionisk binding gir ett atom elektroner til et annet, i en metallisk binding deles elektronene av hele krystallen, og van der Waals-binding er en svak tiltrekning mellom nøytrale atomer eller molekyler."}
+/>
+
+</Example>
 
 ## Fra bindinger til bånd
 
@@ -178,7 +195,7 @@ mange antibindende. De $4N$ valenselektronene fyller valensbåndet nøyaktig, s�
 
 <Statement kind="definition" name="Båndgap">
 
-$E_g = E_c - E_v$ er avstanden fra toppen av valensbåndet, $E_v$, til bunnen av
+${E_g = E_c - E_v}$ er avstanden fra toppen av valensbåndet, $E_v$, til bunnen av
 ledningsbåndet, $E_c$. I en perfekt krystall har ingen elektrontilstand en energi i
 gapet.
 
@@ -227,8 +244,8 @@ seg.
 I simuleringen «Fra bindinger til bånd» skilte nivåene i et bånd seg i hvor tett
 knutepunktene mellom bindingene står. I valensbåndet har hver binding én pukkel, over
 eller under kjeden, og fortegnet fra binding til binding følger selv en bølge langs
-kjeden. Bølgetallet $k$ til den bølgen sier hvor ofte fortegnet skifter: $k = 0$ når
-alle bindingene har samme fortegn, og $k = \pi/a$ når fortegnet skifter fra hver
+kjeden. Bølgetallet $k$ til den bølgen sier hvor ofte fortegnet skifter: ${k = 0}$ når
+alle bindingene har samme fortegn, og ${k = \pi/a}$ når fortegnet skifter fra hver
 binding til den neste, med $a$ som avstanden mellom bindingene. En bølge som skifter
 enda fortere, har de samme verdiene i hver binding som en bølge med lavere $k$, så alle
 tilstandene i et bånd har $k$ mellom $-\pi/a$ og $\pi/a$, og $-\pi/a$ og $\pi/a$ er
@@ -236,12 +253,12 @@ samme tilstand. I ledningsbåndet har hver binding i tillegg et knutepunkt i mid
 $k$ teller på samme måte hvor ofte mønsteret snur fra én binding til den neste.
 
 En stående bølge i kjeden er summen av to bølger som går hver sin vei, med $k$ og $-k$
-og samme energi. I krystallen er hver av dem en egen tilstand, så $E(-k) = E(k)$.
+og samme energi. I krystallen er hver av dem en egen tilstand, så ${E(-k) = E(k)}$.
 Grafen $E(k)$ for et bånd kalles et <Term name="E-k-diagram">$E$–$k$-diagram</Term>.
-I kjeden ligger toppen av valensbåndet ved $k = \pi/a$. En silisiumkrystall gjentar
+I kjeden ligger toppen av valensbåndet ved ${k = \pi/a}$. En silisiumkrystall gjentar
 seg for hver gittercelle, og hver celle har flere bindinger. Bølgen kan da skifte
 fortegn mellom nabobindinger inne i cellen og likevel være lik i hver celle, altså ha
-$k = 0$, og der ligger toppen av valensbåndet i silisium.
+${k = 0}$, og der ligger toppen av valensbåndet i silisium.
 
 <Derivation title="Kronig–Penney-modellen">
 
@@ -249,9 +266,9 @@ Kronig–Penney-modellen viser hvordan bånd og gap kommer ut av Schrödingerlig
 for ett elektron i et periodisk potensial. Gitterets potensial erstattes av en
 uendelig rekke like, rektangulære barrierer med høyden $U_0$ og perioden $a$.
 Mellom barrierene og inne i dem er potensialet konstant, så løsningene er de du
-kjenner fra en endelig brønn. I brønnen er $\psi = Ae^{j\alpha x} + Be^{-j\alpha x}$
-med $\alpha = \sqrt{2mE}/\hbar$, og i barrieren er $\psi = Ce^{\beta x} + De^{-\beta x}$
-med $\beta = \sqrt{2m(U_0 - E)}/\hbar$.
+kjenner fra en endelig brønn. I brønnen er ${\psi = Ae^{j\alpha x} + Be^{-j\alpha x}}$
+med ${\alpha = \sqrt{2mE}/\hbar}$, og i barrieren er ${\psi = Ce^{\beta x} + De^{-\beta x}}$
+med ${\beta = \sqrt{2m(U_0 - E)}/\hbar}$.
 
 To krav binder delene sammen. $\psi$ og $d\psi/dx$ er kontinuerlige på hver kant,
 og løsningen er en <Term name="Bloch-funksjon">Bloch-funksjon</Term>,
@@ -265,9 +282,9 @@ $$
 
 der $f(E)$ er en funksjon som brønnbredden og barrierene bestemmer. Velg en
 energi, regn ut $f(E)$ og løs for $k$, så gir punktene $E(k)$-diagrammet.
-Venstresiden ligger alltid mellom $-1$ og $1$, så en energi med $|f(E)| > 1$ har
+Venstresiden ligger alltid mellom $-1$ og $1$, så en energi med ${|f(E)| > 1}$ har
 ingen $k$ og ingen tilstand. Slike energiintervaller er båndgapene. Uten barrierer
-er $f(E) = \cos(a\sqrt{2mE}/\hbar)$, som aldri er større enn 1 i absoluttverdi, og
+er ${f(E) = \cos(a\sqrt{2mE}/\hbar)}$, som aldri er større enn 1 i absoluttverdi, og
 det frie elektronet har ingen gap.
 
 </Derivation>
@@ -291,7 +308,7 @@ kraften og kalles <Term name="Krystallmomentum">krystallmomentum</Term>.
 
 I løpet av tiden $dt$ gjør den ytre kraften $F$ arbeidet $F\,v\,dt$ på elektronet.
 Kreftene fra gitteret ligger allerede i $E(k)$, så arbeidet er hele endringen i
-energien. Med $v = (1/\hbar)\,dE/dk$ er $dE = \hbar v\,dk$, og
+energien. Med ${v = (1/\hbar)\,dE/dk}$ er ${dE = \hbar v\,dk}$, og
 
 $$
 F\,v\,dt = \hbar v\,dk \quad\Rightarrow\quad F = \hbar\frac{dk}{dt}
@@ -348,9 +365,9 @@ romtemperatur, og $n_i$ er i cm⁻³:
 <Table
   columns={["", "$E_g$ (eV)", "$E_g/k_BT$", "$n_i$"]}
   rows={[
-    ["Si", "1,1", "43", "$1{,}5 \\cdot 10^{10}$"],
-    ["GaAs", "1,43", "55", "$2 \\cdot 10^{6}$"],
-    ["Diamant", "5,5", "210", "$10^{-27}$"],
+    ["Si", "1,1", "43", "${1{,}5 \\cdot 10^{10}}$"],
+    ["GaAs", "1,43", "55", "${2 \\cdot 10^{6}}$"],
+    ["Diamant", "5,5", "210", "${10^{-27}}$"],
   ]}
   rowHeader={false}
 />
@@ -400,7 +417,7 @@ ytre kraft, kan du regne med elektronet som en fri partikkel med en annen masse.
 
 Trykk «Dytt» i simuleringen. Den samme kraften virker på et elektron i hver dal,
 og begge elektronene følger den samme stiplede linjen gjennom $k$, fordi
-$\hbar\,dk/dt = F$ gjelder i alle bånd. Merkene på $k$-aksen kommer derfor med
+${\hbar\,dk/dt = F}$ gjelder i alle bånd. Merkene på $k$-aksen kommer derfor med
 like store mellomrom. Farten er stigningstallet i $E(k)$, og i den skarpe dalen
 blir stigningen bratt etter et kort steg i $k$, mens den i den flate dalen vokser
 langsomt. I krystallen under spres merkene for det lette elektronet ut, mens de
@@ -415,26 +432,26 @@ massen som Newtons lov trenger for den ytre kraften alene, er
 <Formula tex={"m^* = \\dfrac{\\hbar^2}{d^2E/dk^2}"} caption={"Effektiv masse fra krumningen i $E(k)$."} />
 
 Massen $m^*$ kalles <FormulaRef id="effektiv-masse">den effektive massen</FormulaRef>.
-For et fritt elektron er $E = \hbar^2k^2/2m_0$, krumningen er $\hbar^2/m_0$, og
-formelen gir $m^* = m_0$, elektronets vanlige masse. Nær bunnen av ledningsbåndet er
-båndet som regel parabolsk, <FormulaRef id="parabolsk-band">$E = E_c + \hbar^2k^2/2m^*$</FormulaRef>,
+For et fritt elektron er ${E = \hbar^2k^2/2m_0}$, krumningen er $\hbar^2/m_0$, og
+formelen gir ${m^* = m_0}$, elektronets vanlige masse. Nær bunnen av ledningsbåndet er
+båndet som regel parabolsk, <FormulaRef id="parabolsk-band">${E = E_c + \hbar^2k^2/2m^*}$</FormulaRef>,
 og $m^*$ er konstant. Bærerne ligger innenfor noen få $k_BT$ fra båndkanten, der
 tilnærmingen holder.
 
 <Derivation title="Massen fra krumningen">
 
 Deriver farten med hensyn på tiden, der bare $k$ endrer seg, og sett inn
-$dk/dt = F/\hbar$:
+${dk/dt = F/\hbar}$:
 
 $$
 \frac{dv}{dt} = \frac{1}{\hbar}\frac{d^2E}{dk^2}\frac{dk}{dt} = \frac{1}{\hbar^2}\frac{d^2E}{dk^2}\,F
 $$
 
-Sammenlignet med $dv/dt = F/m$ er massen $\hbar^2/(d^2E/dk^2)$.
+Sammenlignet med ${dv/dt = F/m}$ er massen $\hbar^2/(d^2E/dk^2)$.
 
 </Derivation>
 
-I GaAs har elektronene nederst i ledningsbåndet $m^* = 0{,}067\,m_0$, femten ganger
+I GaAs har elektronene nederst i ledningsbåndet ${m^* = 0{,}067\,m_0}$, femten ganger
 lettere enn et fritt elektron. Ledningsbåndet i GaAs har også daler høyere oppe, med
 flatere krumning og tyngre elektroner. Et lett elektron får mer fart av det samme
 feltet mellom hvert sammenstøt med svingningene i gitteret og med urenheter, så
@@ -464,13 +481,13 @@ Det er akselerasjonen til en partikkel med ladning $+q$ og positiv masse $|m^*|$
 så hullet akselererer med feltet, som en vanlig positiv partikkel.
 
 <Callout title="Effektiv masse">
-En ytre kraft endrer $k$ like fort i alle bånd, og farten er stigningstallet i $E(k)$. Derfor bestemmer krumningen hvor lett bæreren er: $m^* = \hbar^2/(d^2E/dk^2)$. Massen gjelder bare inne i krystallen, og hullet øverst i valensbåndet har positiv ladning og positiv masse.
+En ytre kraft endrer $k$ like fort i alle bånd, og farten er stigningstallet i $E(k)$. Derfor bestemmer krumningen hvor lett bæreren er: ${m^* = \hbar^2/(d^2E/dk^2)}$. Massen gjelder bare inne i krystallen, og hullet øverst i valensbåndet har positiv ladning og positiv masse.
 </Callout>
 
 <Example title="effektiv masse fra et bånd">
 
-Nær bunnen av et ledningsbånd er $E = (4k^2 + 5)$ eV, med $k$ i Å⁻¹. Finn den
-effektive massen, uttrykt ved $m_0$. Bruk $\hbar^2/m_0 = 7{,}62$ eV·Å².
+Nær bunnen av et ledningsbånd er ${E = (4k^2 + 5)}$ eV, med $k$ i Å⁻¹. Finn den
+effektive massen, uttrykt ved $m_0$. Bruk ${\hbar^2/m_0 = 7{,}62}$ eV·Å².
 
 <Solution>
 
@@ -480,7 +497,7 @@ $$
 \frac{d^2E}{dk^2} = 2 \cdot 4\ \text{eV·Å}^2 = 8\ \text{eV·Å}^2
 $$
 
-Sett inn i $m^* = \hbar^2/(d^2E/dk^2)$:
+Sett inn i ${m^* = \hbar^2/(d^2E/dk^2)}$:
 
 $$
 \begin{aligned}
@@ -489,9 +506,34 @@ m^* &= \frac{\hbar^2}{8\ \text{eV·Å}^2} = \frac{\hbar^2}{m_0}\cdot\frac{m_0}{8
 \end{aligned}
 $$
 
-<Answer>$m^* \approx 0{,}95\,m_0$. Konstantleddet 5 eV er bare båndkanten $E_c$ og påvirker ikke massen.</Answer>
+<Answer>${m^* \approx 0{,}95\,m_0}$. Konstantleddet 5 eV er bare båndkanten $E_c$ og påvirker ikke massen.</Answer>
 
 </Solution>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Dalene i GaAs">
+<ExamRef id="2025-nov" task="2" />
+
+<Figure
+  src="/figures/eksamen-2025-11-oppgave-2.png"
+  alt="Båndstrukturen til GaAs, E mot k fra retningen 100 til venstre til retningen 111 til høyre. Ledningsbåndet er blått, med en smal og dyp dal ved k = 0 merket Γ-valley, en flatere dal merket X-valley til venstre og en flatere dal merket L-valley til høyre. Valensbåndene er røde, med toppen ved k = 0. Energiene E_g, E_X, E_L og E_so er merket med piler."
+  width={910}
+  height={722}
+  caption="Figuren fra oppgavesettet."
+/>
+
+<Quiz
+  question={"The figure shows the band structure of GaAs. In which energy valley of the GaAs conduction band will an electron have the highest mobility?"}
+  options={[
+    "The $X$-valley",
+    "The $L$-valley",
+    "The $\\Gamma$-valley",
+    "It will be the same in the entire band."
+  ]}
+  answer={2}
+  explanation={"Mobiliteten sier hvor mye fart elektronet får av det samme feltet, og den er størst der elektronet er lettest. ${m^* = \\hbar^2/(d^2E/dk^2)}$ er minst der krumningen er skarpest, og $\\Gamma$-dalen ved ${k = 0}$ er den smaleste av de tre. Den er også den laveste, men det er krumningen som avgjør. X- og L-dalene er flatere, så elektronene der er tyngre og leder dårligere. Krumningen er forskjellig i de tre dalene, så mobiliteten er ikke den samme i hele båndet."}
+/>
 
 </Example>
 
@@ -499,11 +541,11 @@ $$
 
 Faller et elektron fra bunnen av ledningsbåndet ned i et hull øverst i
 valensbåndet, frigjør det energien $E_g$. Energien kan gå ut som lys, et foton med
-<FormulaRef id="planck">$h\nu = E_g$</FormulaRef>. Krystallmomentet $\hbar k$ må
+<FormulaRef id="planck">${h\nu = E_g}$</FormulaRef>. Krystallmomentet $\hbar k$ må
 da være bevart, på samme måte som bevegelsesmengde, så fotonet må ta med seg
 endringen i $k$. Et foton med 1,43 eV har bølgelengden 870 nm og bølgetallet
-$2\pi/\lambda \approx 7 \times 10^{4}$ cm⁻¹, mens $k$-området i krystallen er
-$2\pi/a \approx 10^{8}$ cm⁻¹ bredt, over tusen ganger mer. Fotonet kan altså nesten
+${2\pi/\lambda \approx 7 \times 10^{4}}$ cm⁻¹, mens $k$-området i krystallen er
+${2\pi/a \approx 10^{8}}$ cm⁻¹ bredt, over tusen ganger mer. Fotonet kan altså nesten
 ikke endre $k$, og en overgang med lys går rett ned i $E$–$k$-diagrammet.
 
 <Figure
@@ -516,12 +558,12 @@ ikke endre $k$, og en overgang med lys går rett ned i $E$–$k$-diagrammet.
 />
 
 I GaAs ligger bunnen av ledningsbåndet rett over toppen av valensbåndet, ved
-$k = 0$. Elektronet kan falle rett ned og sende ut et foton med $E_g = 1{,}43$ eV,
+${k = 0}$. Elektronet kan falle rett ned og sende ut et foton med ${E_g = 1{,}43}$ eV,
 og materialet kalles en <Term name="Direkte halvleder">direkte halvleder</Term>.
 I silisium ligger bunnen av ledningsbåndet omtrent 85 % av veien ut mot enden av
-$k$-området. Der står elektronet stille, $v = 0$, selv om $\hbar k \ne 0$, så
+$k$-området. Der står elektronet stille, ${v = 0}$, selv om ${\hbar k \ne 0}$, så
 $\hbar k$ er ikke elektronets vanlige bevegelsesmengde. For å falle ned i et hull
-ved $k = 0$ må elektronet endre $k$ i tillegg til å gi fra seg energien, og
+ved ${k = 0}$ må elektronet endre $k$ i tillegg til å gi fra seg energien, og
 endringen må komme fra en svingning i gitteret, et <Term name="Fonon">fonon</Term>,
 i samme øyeblikk som fotonet sendes ut. At begge må være med samtidig, gjør
 overgangen sjelden, og i silisium går energien nesten alltid til varme i stedet,
@@ -530,8 +572,8 @@ gjerne via en urenhet. Silisium er en
 lysdioder og lasere lages av direkte materialer som GaAs.
 
 Gapet kan stilles inn ved å blande materialer. I Al$_x$Ga$_{1-x}$As vokser gapet med
-andelen aluminium $x$, og legeringen er direkte opp til $x \approx 0{,}38$. Fargen
-på lyset følger gapet, med bølgelengden $\lambda = hc/E_g$: GaAs med 1,43 eV gir
+andelen aluminium $x$, og legeringen er direkte opp til ${x \approx 0{,}38}$. Fargen
+på lyset følger gapet, med bølgelengden ${\lambda = hc/E_g}$: GaAs med 1,43 eV gir
 870 nm, infrarødt, mens Al$_{0,38}$Ga$_{0,62}$As med 1,9 eV gir 650 nm, rødt.
 
 <Callout title="Direkte og indirekte gap">
@@ -555,11 +597,11 @@ som i silisium. Det femte har ingen binding å gå inn i, og holdes bare av
 tiltrekningen fra fosforatomet, som uten det femte elektronet er et positivt ion.
 
 Den tiltrekningen er svak av to grunner. Silisiumet rundt skjermer ladningen, så
-kraften er $\varepsilon_r = 11{,}8$ ganger svakere enn i vakuum. Og elektronet
-beveger seg i krystallen med sin effektive masse, $m^* = 0{,}26\,m_0$, så det får en
+kraften er ${\varepsilon_r = 11{,}8}$ ganger svakere enn i vakuum. Og elektronet
+beveger seg i krystallen med sin effektive masse, ${m^* = 0{,}26\,m_0}$, så det får en
 større bane, lenger fra ionet. Ellers er situasjonen som i et hydrogenatom, med ett
 elektron rundt én positiv ladning. Bindingsenergien i et hydrogenatom er
-$mq^4/[2(4\pi\varepsilon_0)^2\hbar^2] = 13{,}6$ eV, og radien til banen er 0,53 Å. I
+${mq^4/[2(4\pi\varepsilon_0)^2\hbar^2] = 13{,}6}$ eV, og radien til banen er 0,53 Å. I
 krystallen byttes $m$ med $m^*$ og $\varepsilon_0$ med $\varepsilon_r\varepsilon_0$,
 så bindingsenergien blir $(m^*/m_0)/\varepsilon_r^2$ ganger så stor og radien
 $\varepsilon_r/(m^*/m_0)$ ganger så stor
@@ -570,10 +612,10 @@ $$
 E_c - E_d = 13{,}6\ \text{eV} \cdot \frac{0{,}26}{11{,}8^2} = 0{,}025\ \text{eV}
 $$
 
-og radien er $0{,}53\ \text{Å} \cdot 11{,}8/0{,}26 = 24$ Å. Banen strekker seg altså
+og radien er ${0{,}53\ \text{Å} \cdot 11{,}8/0{,}26 = 24}$ Å. Banen strekker seg altså
 over omtrent ti atomavstander i hver retning, som i figur 3, og kula den fyller,
 rommer rundt 3000 silisiumatomer. Målt er bindingsenergien for fosfor i silisium
-0,045 eV. Begge tallene er av samme størrelse som $k_BT = 0{,}026$ eV ved
+0,045 eV. Begge tallene er av samme størrelse som ${k_BT = 0{,}026}$ eV ved
 romtemperatur, mens en binding koster 1,1 eV.
 
 <Figure
@@ -607,8 +649,8 @@ er
 
 der indeksen 0 betyr termisk likevekt. Det er nettopp eksempelet fra starten:
 $10^{15}$ fosforatomer per cm³, ett av femti millioner atomer, gir
-$n_0 \approx 10^{15}$ cm⁻³, over 60 000 ganger flere frie elektroner enn de
-$1{,}5 \times 10^{10}$ cm⁻³ i rent silisium. Resistiviteten faller noe mindre, 40 000
+${n_0 \approx 10^{15}}$ cm⁻³, over 60 000 ganger flere frie elektroner enn de
+${1{,}5 \times 10^{10}}$ cm⁻³ i rent silisium. Resistiviteten faller noe mindre, 40 000
 ganger, fordi hullene også leder i rent silisium.
 
 Velg «Bor» i simuleringen. Bor står i gruppe III og har bare tre valenselektroner.
@@ -616,7 +658,7 @@ Velg «Bor» i simuleringen. Bor står i gruppe III og har bare tre valenselektr
 hull, svakt bundet til boratomet. Et elektron fra en nabobinding hopper lett inn,
 hullet vandrer bort, og boratomet står igjen som et fast negativt ion. Bor kalles en
 <Term name="Akseptor">akseptor</Term>, fordi det tar imot et elektron, og med
-$N_a$ akseptorer per cm³ er $p_0 \approx N_a$.
+$N_a$ akseptorer per cm³ er ${p_0 \approx N_a}$.
 
 I båndbildet sitter det femte elektronet fra en donor på et nivå $E_d$ like under
 ledningsbåndet, fordi det trenger $E_c - E_d$ for å komme opp i ledningsbåndet.
@@ -643,7 +685,7 @@ er 0,03–0,06 eV i silisium, mot et gap på 1,1 eV.
 - Det femte elektronet har ingen binding.
 - Nivå $E_d$ like under $E_c$, fylt ved 0 K.
 - Ionisert: fast positivt ion og et fritt elektron.
-- Gir <Term name="n-type materiale">n-type</Term>, $n_0 \approx N_d$.
+- Gir <Term name="n-type materiale">n-type</Term>, ${n_0 \approx N_d}$.
 
 </CompareCol>
 
@@ -653,7 +695,7 @@ er 0,03–0,06 eV i silisium, mot et gap på 1,1 eV.
 - Én binding mangler et elektron.
 - Nivå $E_a$ like over $E_v$, tomt ved 0 K.
 - Ionisert: fast negativt ion og et hull.
-- Gir <Term name="p-type materiale">p-type</Term>, $p_0 \approx N_a$.
+- Gir <Term name="p-type materiale">p-type</Term>, ${p_0 \approx N_a}$.
 
 </CompareCol>
 
@@ -668,13 +710,13 @@ hullene også færre enn i rent silisium: med mange frie elektroner finner hvert
 raskere et elektron å rekombinere med, mens nye par lages like sjelden som før.
 
 <Callout title="Donorer og akseptorer">
-Det femte elektronet fra en donor er bundet med omtrent $k_BT$, så ved romtemperatur er nesten alle donorene ionisert, og $n_0 \approx N_d$ når $N_d \gg n_i$. En akseptor gir på samme måte et hull, og $p_0 \approx N_a$. Ionene står fast, og materialet er nøytralt.
+Det femte elektronet fra en donor er bundet med omtrent $k_BT$, så ved romtemperatur er nesten alle donorene ionisert, og ${n_0 \approx N_d}$ når ${N_d \gg n_i}$. En akseptor gir på samme måte et hull, og ${p_0 \approx N_a}$. Ionene står fast, og materialet er nøytralt.
 </Callout>
 
 <Example title="er donorene i GaN ionisert?">
 
-Galliumnitrid har $\varepsilon_r = 9{,}7$, og elektronene i ledningsbåndet har
-$m^* = 0{,}13\,m_0$. Anslå bindingsenergien $E_c - E_d$ til elektronet fra en donor
+Galliumnitrid har ${\varepsilon_r = 9{,}7}$, og elektronene i ledningsbåndet har
+${m^* = 0{,}13\,m_0}$. Anslå bindingsenergien $E_c - E_d$ til elektronet fra en donor
 med hydrogenmodellen, og avgjør om donorene er ionisert ved romtemperatur.
 
 <Solution>
@@ -689,11 +731,51 @@ E_c - E_d &= 13{,}6\ \text{eV} \cdot \frac{m^*/m_0}{\varepsilon_r^2} \\
 \end{aligned}
 $$
 
-Det er av samme størrelse som $k_BT = 0{,}026$ eV ved 300 K, som for fosfor i silisium.
+Det er av samme størrelse som ${k_BT = 0{,}026}$ eV ved 300 K, som for fosfor i silisium.
 
-<Answer>$E_c - E_d \approx 19$ meV, av samme størrelse som $k_BT$, så donorene er praktisk talt alle ionisert ved romtemperatur.</Answer>
+<Answer>${E_c - E_d \approx 19}$ meV, av samme størrelse som $k_BT$, så donorene er praktisk talt alle ionisert ved romtemperatur.</Answer>
 
 </Solution>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Bor i silisium">
+<ExamRef id="2023-des" task="1, de to første spørsmålene" />
+
+<Figure
+  src="/figures/eksamen-2023-12-oppgave-1.png"
+  alt="Et utsnitt av en silisiumkrystall tegnet flatt: grå Si-atomer bundet sammen av doble blå streker. To av atomene er byttet ut med blå B-atomer, og ved hvert av dem står h pluss for et hull."
+  width={849}
+  height={455}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The simple schematic above illustrates a Si crystal at room temperature where some of the Si
+atoms have been replaced by a B atom. In this case, each of the dopant atoms have an electron
+less than the Si atoms, introducing an additional hole to the crystal.
+
+<Quiz
+  question={"How will the introduction of B atoms change the net charge of the crystal?"}
+  options={[
+    "The B doping will not affect the net charge of the crystal",
+    "The B doping will make the crystal negatively charged.",
+    "The B doping will make the crystal positively charged."
+  ]}
+  answer={0}
+  explanation={"Boratomet er nøytralt, og silisiumet også, så krystallen er nøytral etter dopingen. Når et naboelektron hopper inn i den ufullstendige bindingen og hullet vandrer bort, står boratomet igjen som et negativt ion, men hullet har ladningen $+q$, så summen er null. Det er fristende å svare negativt ladet fordi boratomet blir et negativt ion, eller positivt ladet fordi hullene er positive, men ionet og hullet opphever hverandre."}
+/>
+
+<Quiz
+  question={"What do we typically call the kind of doping shown above?"}
+  options={[
+    "Blood doping",
+    "Acceptor doping",
+    "Donor doping",
+    "Intrinsic doping"
+  ]}
+  answer={1}
+  explanation={"Bor har tre valenselektroner og tar imot et elektron fra en nabobinding, så det er en akseptor, og dopingen kalles akseptordoping. Donordoping er det motsatte, med et grunnstoff fra gruppe V som gir fra seg et elektron. Intrinsisk betyr rent materiale, uten dopeatomer."}
+/>
 
 </Example>
 
@@ -752,8 +834,8 @@ Det er av samme størrelse som $k_BT = 0{,}026$ eV ved 300 K, som for fosfor i s
 - I silisium sitter hvert valenselektron i en binding ved 0 K. Varme bryter av og til en binding og gir et fritt elektron og et hull, og hullet flytter seg ved at naboelektroner hopper inn i det.
 - De bindende nivåene blir valensbåndet, fullt, og de antibindende ledningsbåndet, tomt. Båndgapet er energien en brutt binding koster, 1,1 eV i silisium.
 - Et fullt bånd fører ingen strøm. Mangler ett elektron, fører båndet strømmen $+qv_j$ fra hullet. Metall, halvleder og isolator skilles av fyllingen og av gapet målt mot $k_BT$.
-- Den effektive massen er $m^* = \hbar^2/(d^2E/dk^2)$: skarp krumning gir en lett bærer. Øverst i valensbåndet er elektronmassen negativ, og hullet har positiv ladning og positiv masse.
+- Den effektive massen er ${m^* = \hbar^2/(d^2E/dk^2)}$: skarp krumning gir en lett bærer. Øverst i valensbåndet er elektronmassen negativ, og hullet har positiv ladning og positiv masse.
 - Bare et direkte gap gir lys effektivt, fordi et foton nesten ikke kan endre $k$.
-- Donorer og akseptorer er bundet med omtrent $k_BT$ og er ionisert ved romtemperatur, så $n_0 \approx N_d$ i n-type og $p_0 \approx N_a$ i p-type.
+- Donorer og akseptorer er bundet med omtrent $k_BT$ og er ionisert ved romtemperatur, så ${n_0 \approx N_d}$ i n-type og ${p_0 \approx N_a}$ i p-type.
 
 </KeyTakeaways>

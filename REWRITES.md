@@ -25,7 +25,7 @@ maintainer), **rewritten** (approved and committed).
 
 | Module | Status | Notes |
 |---|---|---|
-| 01 Energibånd og ladningsbærere | **rewritten** | Rewritten from scratch with five new sims and four figures; approved and committed 2026-10-20. The reference module for `WRITING.md` §2. |
+| 01 Energibånd og ladningsbærere | **rewritten** | Rewritten from scratch with five new sims and four figures; approved and committed 2026-10-20. The reference module for `WRITING.md` §2. Three exam tasks added 2026-10-22. |
 | 02 Bærerkonsentrasjoner ved likevekt | **rewritten** | Rewritten from scratch with two new sims (band states with Monte Carlo electrons, n₀ against temperature for Si, Ge and GaAs), two figures and four exam tasks; approved and committed 2026-10-22. |
 | 03 Drift og Hall-effekten | to rewrite |  |
 | 04 Overskuddsbærere og diffusjon | to rewrite |  |
