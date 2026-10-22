@@ -33,6 +33,60 @@ exam:
   # Formelarket ligger bare i Blackboard-rommet, så det er vendret her (AUTHORING §7).
   formulaSheetUrl: "/formelark.pdf"
 
+# Tidligere eksamener. Settene ligger bare i Blackboard-rommet («Previous exams»), så alle er
+# vendret i public/exams/ (AUTHORING §7). Datoene er fra forsidene og NTNUs eksamensdata.
+exams:
+  - {
+      label: "Ordinær eksamen, november 2025 (med løsningsforslag)",
+      id: "2025-nov",
+      date: 2025-11-24,
+      url: "/exams/2025-nov.pdf",
+    }
+  - {
+      label: "Ordinær eksamen, november 2024",
+      id: "2024-nov",
+      date: 2024-11-26,
+      url: "/exams/2024-nov.pdf",
+    }
+  - {
+      label: "Ordinær eksamen, desember 2023",
+      id: "2023-des",
+      date: 2023-12-13,
+      url: "/exams/2023-des.pdf",
+    }
+  - {
+      label: "Ordinær eksamen, desember 2022",
+      id: "2022-des",
+      date: 2022-12-14,
+      url: "/exams/2022-des.pdf",
+    }
+  - {
+      label: "Ordinær eksamen, desember 2021 (med løsningsforslag)",
+      id: "2021-des",
+      date: 2021-12-18,
+      url: "/exams/2021-des.pdf",
+    }
+  - {
+      label: "Ordinær eksamen, november 2020 (med løsningsforslag)",
+      id: "2020-nov",
+      date: 2020-11-24,
+      url: "/exams/2020-nov.pdf",
+    }
+  - {
+      label: "Ordinær eksamen, mai 2020",
+      id: "2020-mai",
+      date: 2020-05-27,
+      url: "/exams/2020-mai.pdf",
+      solutionUrl: "/exams/2020-mai-lf.pdf",
+    }
+  - {
+      label: "Eksamen i TFE4164, desember 2018 (lignende pensum)",
+      id: "2018-des-tfe4164",
+      date: 2018-12-14,
+      url: "/exams/2018-des-tfe4164.pdf",
+      solutionUrl: "/exams/2018-des-tfe4164-lf.pdf",
+    }
+
 # Formelsamlingen. `onSheet` følger det offisielle formelarket til eksamen
 # («Formula sheet for the exam» i Blackboard-rommet, «Formulas TFE-4146», 4 sider,
 # vendret som public/formelark.pdf): true bare når formelen står på arket.
@@ -94,18 +148,23 @@ formulas:
     onSheet: false
     tex: "E_d = 13{,}6\\ \\text{eV}\\cdot\\dfrac{m_n^*/m_0}{\\varepsilon_r^2}, \\qquad a^* = a_0\\,\\dfrac{\\varepsilon_r}{m_n^*/m_0}"
     label: "Hydrogenatomets egne resultater med to bytter: lettere elektron ($m_n^*$) og skjermet Coulomb-kraft ($\\varepsilon_r$). Med $a_0 = 0{,}529$ Å gir det $25$ meV og $24$ Å for Si. Anslaget ligger konsekvent under det målte, fordi elektronet nær kjernen verken ser full $\\varepsilon_r$ eller én isotrop masse."
+  - id: tilstandstetthet
+    section: Tilstandene i et bånd
+    onSheet: false
+    tex: "N(E) = 4\\pi\\left(\\dfrac{2m_n^*}{h^2}\\right)^{3/2}\\sqrt{E - E_c}"
+    label: "Tilstandstettheten nær bunnen av ledningsbåndet, tilstander per volum og energi. De tillatte $\\vec k$ ligger jevnt i $k$-rommet, og energien vokser som $k^2$, så antallet per energi vokser som $\\sqrt{E - E_c}$. I valensbåndet er det $\\sqrt{E_v - E}$ med $m_p^*$."
   - id: fermi-dirac
-    section: Fermi–Dirac-fordelingen
+    section: Sannsynligheten for at en tilstand er fylt
     onSheet: true
     tex: "\\begin{aligned} f(E) &= \\dfrac{1}{e^{(E - E_F)/k_BT} + 1} \\\\ &\\cong e^{(E_F - E)/k_BT} \\quad \\text{for } E \\gg E_F \\end{aligned}"
-    label: "Sannsynligheten for at en tillatt tilstand ved energi $E$ er okkupert ved termisk likevekt. $f(E_F) = \\tfrac{1}{2}$, og fordelingen er symmetrisk om nivået: $f(E_F + \\Delta E) = 1 - f(E_F - \\Delta E)$. Mer enn omtrent $3k_BT$ over $E_F$ blir den en Boltzmann-hale med under 5 % feil, og halen gir eksponentialene i $n_0$. Ved 300 K er $k_BT = 0{,}0259$ eV."
+    label: "Sannsynligheten for at en tilstand med energien $E$ er fylt ved termisk likevekt. $f(E_F) = \\tfrac{1}{2}$, og fordelingen er symmetrisk om nivået: $f(E_F + \\Delta E) = 1 - f(E_F - \\Delta E)$. Mer enn omtrent $3k_BT$ over $E_F$ blir den en Boltzmann-hale med under 5 % feil, og halen gir eksponentialene i $n_0$. Ved 300 K er $k_BT = 0{,}0259$ eV."
   - id: likevektskonsentrasjoner
-    section: Fra fordeling til konsentrasjon
+    section: Konsentrasjonene
     onSheet: true
     tex: "\\begin{aligned} n_0 &= \\int_{E_c}^{\\infty} f(E)N(E)\\,dE \\\\ &= N_c f(E_c) = N_c\\, e^{-(E_c - E_F)/k_BT} \\\\ p_0 &= N_v[1 - f(E_v)] = N_v\\, e^{-(E_F - E_v)/k_BT} \\end{aligned}"
-    label: "Likevektskonsentrasjonene: tilstandstettheten $N(E)$ ganger sannsynligheten for at tilstanden er okkupert, summert over båndet. Hull er tomme tilstander, derav $1 - f$. Eksponentialene gjelder når $E_F$ ligger mer enn omtrent $3k_BT$ fra båndkantene (Boltzmann-tilnærmingen). Avstanden fra $E_F$ til kanten står i eksponenten: 60 meV per tierpotens ved romtemperatur."
+    label: "Likevektskonsentrasjonene: tilstandstettheten $N(E)$ ganger sannsynligheten for at tilstanden er fylt, summert over båndet. Hull er tomme tilstander, derav $1 - f$. Eksponentialene gjelder når $E_F$ ligger mer enn omtrent $3k_BT$ fra båndkantene (Boltzmann-tilnærmingen). Avstanden fra $E_F$ til kanten står i eksponenten: 60 meV per tierpotens ved romtemperatur."
   - id: effektiv-tilstandstetthet
-    section: Fra fordeling til konsentrasjon
+    section: Konsentrasjonene
     onSheet: true
     tex: "\\begin{aligned} N_c &= 2\\left(\\dfrac{2\\pi m_n^* k_BT}{h^2}\\right)^{3/2} \\\\ N_v &= 2\\left(\\dfrac{2\\pi m_p^* k_BT}{h^2}\\right)^{3/2} \\end{aligned}"
     label: "Effektiv tilstandstetthet: hele ledningsbåndet regnet som $N_c$ tilstander lagt på $E_c$, slik at $n_0 = N_c f(E_c)$. For Si ved 300 K er $N_c \\approx 2{,}9 \\times 10^{19}$ cm⁻³ og $N_v \\approx 1{,}0 \\times 10^{19}$ cm⁻³; begge vokser som $T^{3/2}$."
@@ -120,22 +179,27 @@ formulas:
     tex: "\\begin{aligned} n_i &= \\sqrt{N_c N_v}\\; e^{-E_g/2k_BT} \\\\ &= 2\\left(\\dfrac{2\\pi k_BT}{h^2}\\right)^{3/2}(m_n^*m_p^*)^{3/4}\\, e^{-E_g/2k_BT} \\end{aligned}"
     label: "Intrinsisk konsentrasjon, med halve gapet i eksponenten fordi $E_F$ ligger nær midten av det. For Si ved 300 K er $n_i = 1{,}5 \\times 10^{10}$ cm⁻³. Eksponenten dominerer temperaturavhengigheten; $T^{3/2}$-faktorene fra $N_c$ og $N_v$ synes knapt ved siden av."
   - id: ni-formene
-    section: Massevirkningsloven
+    section: Fermi-nivået målt fra det intrinsiske nivået
     onSheet: true
     tex: "\\begin{aligned} n_0 &= n_i\\, e^{(E_F - E_i)/k_BT} \\\\ p_0 &= n_i\\, e^{(E_i - E_F)/k_BT} \\end{aligned}"
     label: "Likevektskonsentrasjonene målt fra det intrinsiske nivået $E_i$. Står $E_F$ på $E_i$, er $n_0 = p_0 = n_i$, og fra avstanden $E_F - E_i$ leser du direkte hvor sterkt dopet materialet er."
   - id: intrinsisk-niva
-    section: Massevirkningsloven
+    section: Fermi-nivået målt fra det intrinsiske nivået
     onSheet: true
     tex: "\\begin{aligned} n_i &= N_c\\, e^{-(E_c - E_i)/k_BT} \\\\ p_i &= N_v\\, e^{-(E_i - E_v)/k_BT} \\end{aligned}"
     label: "Likevektsuttrykkene i udopet materiale, der Fermi-nivået er det intrinsiske nivået $E_i$ og $n_i = p_i$. Ganget sammen gir de $n_i = \\sqrt{N_cN_v}\\,e^{-E_g/2k_BT}$; satt like viser de at $E_i$ ligger litt fra midten av gapet når $N_c \\neq N_v$."
+  - id: intrinsisk-niva-plassering
+    section: Fermi-nivået målt fra det intrinsiske nivået
+    onSheet: false
+    tex: "E_i = \\dfrac{E_c + E_v}{2} - \\dfrac{k_BT}{2}\\ln\\dfrac{N_c}{N_v} \\allowbreak = \\dfrac{E_c + E_v}{2} - \\dfrac34 k_BT\\ln\\dfrac{m_n^*}{m_p^*}"
+    label: "Hvor det intrinsiske nivået ligger, fra $n_0 = p_0$. Med $N_c > N_v$ står det litt under midten av gapet, så elektronene ikke blir flere enn hullene. Midt i gapet bare når $N_c = N_v$; i Si 13 meV under midten ved 300 K."
   - id: dos-masse
     section: Effektiv masse for tilstandstetthet
     onSheet: false
     tex: "(m_n^*)^{3/2} = 6\\,(m_l\\, m_t^2)^{1/2}"
     label: "Effektiv masse for tilstandstetthet i Si: geometrisk middel av krumningsmassene i én dal, ganget opp med de seks dalene. Med $m_l = 0{,}98\\,m_0$ og $m_t = 0{,}19\\,m_0$ gir det $m_n^* = 1{,}1\\,m_0$, tallet som hører hjemme i $N_c$."
   - id: ladningsnoytralitet
-    section: Kompensasjon og ladningsnøytralitet
+    section: Donorer og akseptorer i samme materiale
     onSheet: false
     tex: "p_0 + N_d^+ = n_0 + N_a^-"
     label: "Ladningsnøytralitet: summen av positiv ladning (hull og ioniserte donorer) er lik summen av negativ (elektroner og ioniserte akseptorer). Sammen med $n_0 p_0 = n_i^2$ bestemmer kravet $n_0$, $p_0$ og $E_F$ entydig."
@@ -691,31 +755,31 @@ glossary:
     section: Doping
     definition: "(<em>minority carriers</em>) Den fåtallige bærertypen, altså hull i n-type og elektroner i p-type. De er få, og de styrer likevel oppførselen til pn-overganger og bipolare transistorer."
   - term: Fermi-Dirac-fordelingen
-    section: Fermi–Dirac-fordelingen
-    definition: "(<em>Fermi–Dirac distribution</em>) $f(E) = [1 + e^{(E - E_F)/k_BT}]^{-1}$, sannsynligheten for at en tillatt tilstand er okkupert ved termisk likevekt. Følger av at elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Ved 0 K er den en firkant: alt under $E_F$ fullt, alt over tomt."
+    section: Sannsynligheten for at en tilstand er fylt
+    definition: "(<em>Fermi–Dirac distribution</em>) $f(E) = [1 + e^{(E - E_F)/k_BT}]^{-1}$, sannsynligheten for at en tilstand med energien $E$ er fylt ved termisk likevekt. Følger av Pauli-prinsippet og av at et hopp som øker energien med $\\Delta E$, er $e^{-\\Delta E/k_BT}$ ganger så sannsynlig som hoppet tilbake. Ved 0 K er den et trinn, med alt under $E_F$ fylt og alt over tomt."
   - term: Fermi-nivå
-    section: Fermi–Dirac-fordelingen
-    definition: "(<em>Fermi level</em>) Energien $E_F$ der sannsynligheten for okkupasjon er nøyaktig $\\tfrac{1}{2}$. Fordelingen er symmetrisk om nivået, og plasseringen i gapet bærer hele bærerbildet: nær midten i intrinsisk materiale, nær $E_c$ i n-type og nær $E_v$ i p-type."
+    section: Hvor Fermi-nivået står
+    definition: "(<em>Fermi level</em>) Energien $E_F$ der en tilstand er fylt med sannsynligheten $\\tfrac{1}{2}$. Nivået står der antall elektroner krever: nær midten av gapet i intrinsisk materiale, nær $E_c$ i n-type og nær $E_v$ i p-type. Den samme $f$ gir både elektronene og hullene, så $E_F$ alene bestemmer $n_0$ og $p_0$."
   - term: Tilstandstetthet
-    section: Fra fordeling til konsentrasjon
-    definition: "(<em>density of states</em>) $N(E)$, antall tilstander per volum og energienhet. Nær en båndkant vokser den som $\\sqrt{E - E_c}$, fra null på selve kanten. Produktet $f(E)N(E)$ er det som telles når $n_0$ skal regnes ut."
+    section: Tilstandene i et bånd
+    definition: "(<em>density of states</em>) $N(E)$, antall tilstander per volum og energienhet. De tillatte $\\vec k$ ligger jevnt i $k$-rommet, og nær en båndkant vokser energien som $k^2$, så $N(E)$ vokser som $\\sqrt{E - E_c}$, fra null på selve kanten. Produktet $f(E)N(E)$ er det som telles når $n_0$ skal regnes ut."
   - term: Effektiv tilstandstetthet
-    section: Fra fordeling til konsentrasjon
-    definition: "(<em>effective density of states</em>) $N_c$ og $N_v$: alle båndets fordelte tilstander representert som ett tall lagt på båndkanten, slik at $n_0 = N_c f(E_c)$. Av størrelsesorden $10^{19}$ cm⁻³ for Si ved 300 K, temperaturavhengig som $T^{3/2}$."
+    section: Konsentrasjonene
+    definition: "(<em>effective density of states</em>) $N_c$ og $N_v$, antallet tilstander som, lagt på selve båndkanten, gir like mange bærere som hele båndet, slik at $n_0 = N_c f(E_c)$. Av størrelsesorden $10^{19}$ cm⁻³ for Si ved 300 K, og de vokser som $T^{3/2}$."
   - term: Boltzmann-tilnærmingen
-    section: Fra fordeling til konsentrasjon
+    section: Konsentrasjonene
     definition: "(<em>Boltzmann approximation</em>) $f(E) \\approx e^{-(E - E_F)/k_BT}$ når $E - E_F$ er mer enn omtrent $3k_BT$; da er feilen under 5 %. Gjelder for vanlig doping, der $E_F$ holder seg unna båndkantene; svikter når dopingen presser $E_F$ helt inntil en kant."
   - term: Massevirkningsloven
     section: Massevirkningsloven
-    definition: "(<em>mass action law</em>) $n_0 p_0 = n_i^2$ ved termisk likevekt, uansett doping. Doper du inn flere elektroner, forsvinner hull i samme faktor, og produktet står stille."
+    definition: "(<em>mass action law</em>) $n_0 p_0 = n_i^2$ ved termisk likevekt, uansett doping. Dobler dopingen $n_0$, halveres $p_0$, fordi hvert hull da finner et elektron dobbelt så fort, mens nye par lages like ofte."
   - term: Intrinsisk nivå
-    section: Massevirkningsloven
+    section: Fermi-nivået målt fra det intrinsiske nivået
     definition: "(<em>intrinsic level</em>) $E_i$, energien $E_F$ har i intrinsisk materiale. Nivået ligger nær midten av gapet, forskjøvet litt fordi $N_c \\neq N_v$; i Si omtrent 13 meV under midten ved romtemperatur."
   - term: Kompensasjon
-    section: Kompensasjon og ladningsnøytralitet
-    definition: "(<em>compensation</em>) Donorer og akseptorer i samme krystall opphever hverandre: akseptornivåene fylles av donerte elektroner, og ledningsbåndet sitter igjen med netto $N_d - N_a$ når $N_d - N_a \\gg n_i$. Med $N_a = N_d$ oppfører materialet seg intrinsisk, fullt av dopanter."
+    section: Donorer og akseptorer i samme materiale
+    definition: "(<em>compensation</em>) Akseptorene i en krystall med både donorer og akseptorer tar elektronene fra like mange donorer, så ledningsbåndet sitter igjen med $n_0 \\approx N_d - N_a$ når $N_d - N_a \\gg n_i$. Med $N_a = N_d$ oppfører materialet seg som rent, selv om det er fullt av dopeatomer."
   - term: Ladningsnøytralitet
-    section: Kompensasjon og ladningsnøytralitet
+    section: Donorer og akseptorer i samme materiale
     definition: "(<em>space charge neutrality</em>) Kravet $p_0 + N_d^+ = n_0 + N_a^-$: krystallen er nøytral, så positiv og negativ ladning balanserer. $E_F$ stiller seg dit kravet og massevirkningsloven er oppfylt samtidig."
   - term: Mobilitet
     section: Drift
@@ -947,8 +1011,8 @@ symbols:
   - { tex: "N_c,\\ N_v", meaning: "Effektiv tilstandstetthet i lednings- og valensbåndet", unit: "cm⁻³", section: "Bærere og konsentrasjoner", term: "Effektiv tilstandstetthet", formula: effektiv-tilstandstetthet, id: nc, note: "$2{,}9 \\times 10^{19}$ og $1{,}0 \\times 10^{19}$ cm⁻³ for Si ved 300 K." }
   - { tex: "N_d,\\ N_a", meaning: "Konsentrasjonen av donorer og akseptorer", unit: "cm⁻³", section: "Bærere og konsentrasjoner", term: "Akseptor" }
   - { tex: "N_d^+,\\ N_a^-", meaning: "Konsentrasjonen av <em>ioniserte</em> donorer og akseptorer", unit: "cm⁻³", section: "Bærere og konsentrasjoner", formula: ladningsnoytralitet, note: "Lik $N_d$ og $N_a$ ved romtemperatur i Si." }
-  - { tex: "f(E)", meaning: "Fermi–Dirac-fordelingen, sannsynligheten for at en tilstand er okkupert", section: "Bærere og konsentrasjoner", term: "Fermi-Dirac-fordelingen", formula: fermi-dirac }
-  - { tex: "N(E)", meaning: "Tilstandstettheten, antall tilstander per volum og energi", unit: "cm⁻³·eV⁻¹", section: "Bærere og konsentrasjoner", term: "Tilstandstetthet" }
+  - { tex: "f(E)", meaning: "Fermi–Dirac-fordelingen, sannsynligheten for at en tilstand er fylt", section: "Bærere og konsentrasjoner", term: "Fermi-Dirac-fordelingen", formula: fermi-dirac }
+  - { tex: "N(E)", meaning: "Tilstandstettheten, antall tilstander per volum og energi", unit: "cm⁻³·eV⁻¹", section: "Bærere og konsentrasjoner", term: "Tilstandstetthet", formula: tilstandstetthet }
   # ── Transport ──
   - { tex: "\\mathcal{E}", meaning: "Elektrisk felt", unit: "V/cm", section: "Transport", term: "Innebygd felt", formula: felt-baandskjema, id: e-felt, note: "Ikke energien $E$. Positiv retning er den et hull driver i." }
   - { tex: "\\mathcal{B}", meaning: "Magnetisk flukstetthet, i Hall-effekten", unit: "Wb/cm²", section: "Transport", term: "Hall-effekten", formula: hall-koeffisient, note: "$1$ Wb/cm² $= 10^4$ T. Hører sammen med $v$ i cm/s og $\\mathcal{E}$ i V/cm." }

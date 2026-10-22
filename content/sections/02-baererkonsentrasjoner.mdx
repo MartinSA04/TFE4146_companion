@@ -1,216 +1,585 @@
 ---
 order: 2
 title: "Bærerkonsentrasjoner ved likevekt"
-summary: "Hvordan Fermi-Dirac-fordelingen og tilstandstettheten gir n0 og p0, hvorfor produktet n0p0 er låst til ni², hvilken effektiv masse som teller tilstander, og når temperaturen tar styringen fra dopingen."
+summary: "Hvor mange elektroner og hull en halvleder har ved likevekt: tilstandene i båndene, sannsynligheten for at de er fylt, Fermi-nivået, massevirkningsloven og temperaturen som til slutt tar over fra dopingen."
 importance: core
 tag: "Uke 35 · Streetman §3.3"
 part: "Del 1: Energibånd og ladningsbærere"
-updated: 2026-09-27
+updated: 2026-10-22
 ---
 
 <LearningGoals>
 
-- Bruke <Term name="Fermi-Dirac-fordelingen">Fermi–Dirac-fordelingen</Term> og forklare hva <Term name="Fermi-nivå">Fermi-nivået</Term> er.
-- Regne ut $n_0$ og $p_0$ fra $N_c$, $N_v$ og avstanden mellom $E_F$ og båndkanten.
-- Begrunne <Term name="Massevirkningsloven">massevirkningsloven</Term> $n_0p_0 = n_i^2$ og bruke den på dopet materiale.
-- Slå sammen krumningsmassene i Si til én effektiv masse for telling av tilstander.
-- Lese et plott av $n_0$ mot $1000/T$ og skille ionisering, ekstrinsisk og intrinsisk område.
+- Telle tilstandene i et bånd i $k$-rommet og forklare hvorfor <Term name="Tilstandstetthet">tilstandstettheten</Term> vokser som $\sqrt{E - E_c}$.
+- Forklare hva <Term name="Fermi-Dirac-fordelingen">Fermi–Dirac-fordelingen</Term> sier, og hvorfor <Term name="Fermi-nivå">Fermi-nivået</Term> flytter seg når du doper.
+- Regne ut $n_0$ og $p_0$ fra avstanden mellom $E_F$ og båndkantene, og avgjøre om <Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term> holder.
+- Begrunne <Term name="Massevirkningsloven">massevirkningsloven</Term> ${n_0p_0 = n_i^2}$ og bruke den til å finne minoritetskonsentrasjonen.
+- Finne den effektive massen for tilstandstetthet i Si fra de seks dalene i ledningsbåndet.
+- Forklare de tre temperaturområdene for $n_0$ i et dopet materiale.
 - Stille opp <Term name="Ladningsnøytralitet">ladningsnøytralitet</Term> når materialet har både donorer og akseptorer.
 
 </LearningGoals>
 
-## Fermi–Dirac-fordelingen
+Et stykke silisium med $10^{15}$ fosforatomer per cm³ har ved romtemperatur
+$10^{15}$ frie elektroner per cm³, ett fra hvert fosforatom. Hullene er bare
+${2{,}25 \times 10^{5}}$ per cm³, mens rent silisium har ${1{,}5 \times 10^{10}}$ av
+hvert slag. Fosforet har altså fjernet nesten alle hullene. Ganger du
+konsentrasjonene sammen, får du likevel det samme tallet i begge stykkene,
+${2{,}25 \times 10^{20}\ \text{cm}^{-6}}$. Varmer du det dopede stykket opp til 600 K, har stykket omtrent
+${2{,}6 \times 10^{15}}$ elektroner og ${1{,}6 \times 10^{15}}$ hull per cm³, og varmen
+har da laget flere bærere enn fosforet ga.
 
-Majoritetskonsentrasjonen i dopet materiale er grei: én bærer per ionisert
-dopant. Minoritetskonsentrasjonen og temperaturavhengigheten er ikke like
-synlige, og for å finne dem må du vite hvordan elektronene fordeler seg over
-tilstandene som finnes.
+Alle disse tallene kommer av hvordan elektronene fordeler seg på energiene i
+båndene. Antallet elektroner i ledningsbåndet får du ved å telle. For hver energi i
+båndet ganger du antall tilstander med sannsynligheten for at en tilstand er fylt,
+og så summerer du over båndet. Den første faktoren avhenger bare av båndet. Den
+andre avhenger av temperaturen og av hvor mange elektroner det er.
 
-Elektroner er identiske, har bølgenatur og lyder Pauli-prinsippet. Fordelingen
-som følger av de tre kravene, er
-<Term name="Fermi-Dirac-fordelingen">Fermi–Dirac-fordelingen</Term>:
+## Tilstandene i et bånd
 
-$$
-f(E) = \frac{1}{1 + e^{(E - E_F)/k_BT}}
-$$
+Et bånd i en krystall med $N$ gitterceller har $N$ nivåer, og hvert nivå har plass
+til to elektroner, ett med hver spinnretning. Nivåene skilles av bølgetallet $k$,
+som sier hvor ofte bølgen skifter fortegn fra celle til celle. For å telle nivåene
+trenger du å vite hvilke $k$ som passer i krystallen.
 
-$f(E)$ er sannsynligheten for at en tillatt tilstand med energi $E$ er okkupert
-ved termisk likevekt, og $k_B$ er Boltzmanns konstant,
-$8{,}62 \times 10^{-5}$ eV/K. Ved romtemperatur er $k_BT = 0{,}0259$ eV. Den ene
-frie størrelsen i fordelingen er $E_F$.
-
-<Statement kind="definition" name="Fermi-nivået">
-
-Energien der sannsynligheten for okkupasjon er nøyaktig $\tfrac{1}{2}$.
-Fordelingen er symmetrisk om $E_F$: sannsynligheten for å finne et elektron
-$\Delta E$ over nivået er lik sannsynligheten for å finne en tom tilstand
-$\Delta E$ under, $f(E_F + \Delta E) = 1 - f(E_F - \Delta E)$.
-
-</Statement>
-
-Ved 0 K er fordelingen en firkant: hver tilstand under $E_F$ er fylt, hver
-tilstand over er tom. Varmer du materialet opp, mykner kanten over noen $k_BT$,
-og fordelingen får en hale av fylte tilstander over $E_F$ og en tilsvarende
-hale av tomme under. Halene faller eksponentielt, med en faktor $e$ for hver
-$k_BT$ fra $E_F$.
-
-$f(E)$ gjelder bare tilstander som finnes. I gapet har fordelingen helt
-vanlige verdier, men ingenting å virke på, så der blir det ingen elektroner
-uansett.
-
-## Fra fordeling til konsentrasjon
-
-Konsentrasjonen av elektroner i ledningsbåndet er sannsynlighet ganger antall
-plasser, summert over båndet:
+Tenk deg krystallen bøyd til en ring, slik at bølgen må gå opp et helt antall ganger
+rundt. Med lengden $L$ må $L$ være et helt antall bølgelengder, så
 
 $$
-n_0 = \int_{E_c}^{\infty} f(E)\,N(E)\,dE
+k = \frac{2\pi}{L}\,n, \qquad n = 0, \pm 1, \pm 2, \ldots
 $$
 
-Her er <Term name="Tilstandstetthet">tilstandstettheten</Term> $N(E)$ antall
-tilstander per volum og energienhet. Nær båndkanten vokser den som
-$\sqrt{E - E_c}$, fra null på selve kanten, mens $f$ faller eksponentielt.
-Produktet $fN$ er derfor null på kanten, topper seg $k_BT/2$ over den og dør ut
-over noen få $k_BT$: elektronene ligger i en tynn stripe like over $E_c$. Hullene ligger
-tilsvarende i en stripe like under $E_v$, med $1 - f$ som sannsynlighet og
-$\sqrt{E_v - E}$ som tetthet.
+En ekte krystall er ingen ring, men i en krystall på noen millimeter betyr det ingenting
+for antallet tilstander hva som skjer ved overflaten. I tre dimensjoner gjelder det
+samme i hver retning. De tillatte bølgevektorene ${\vec k = (k_x, k_y, k_z)}$ danner et
+rutenett med $2\pi/L$ mellom punktene, og hvert punkt er to tilstander. Figur 1 viser
+et snitt gjennom dette $k$-rommet.
 
-Legg $f(E)$ på siden, med energiaksen loddrett langs båndskjemaets. Står $E_F$
-nær midten av gapet, er elektronhalen over $E_c$ og hullhalen under $E_v$ like
-store, og materialet er intrinsisk. Skyver dopingen $E_F$ oppover, vokser
-elektronstripen eksponentielt mens hullstripen krymper like fort. Derfor
-trenger et båndskjema bare én strek for $E_F$: posisjonen gir begge
-fordelingene.
+Nær bunnen av ledningsbåndet er båndet parabolsk,
+<FormulaRef id="parabolsk-band">${E = E_c + \hbar^2k^2/2m_n^*}$</FormulaRef>, der $k$ er
+lengden av $\vec k$ og $m_n^*$ den effektive massen til elektronene. Energien avhenger
+bare av $k$, så alle tilstandene med energi under $E$ ligger inne i en kule rundt
+${\vec k = 0}$ med radius
 
-<Simulation
-  src={"/sims/fermi-fordeling.js"}
-  host={"dom"}
-  title={"Fordelingen, tilstandene og bærerne"}
-  caption={"Venstre panel er $f(E)$ med energiaksen loddrett; høyre panel er bærerstripene $f(E)N(E)$ og $[1-f(E)]N(E)$, normert til den største og ikke i skala. Merket $E_i$ er nivået der stripene blir like store."}
-  height={420}
+$$
+k = \frac{\sqrt{2m_n^*(E - E_c)}}{\hbar}
+$$
+
+Tilstandene med energi mellom $E$ og ${E + dE}$ ligger i et tynt skall utenpå kula.
+Silisium har seks slike bunner, og de er avlange, men forskjellen endrer bare tallene, som
+avsnittet om effektiv masse for tilstandstetthet viser.
+
+<Figure
+  src="/figures/k-rommet.svg"
+  alt="Et rutenett av små ringer med like stor avstand, merket 2π/L, og aksene k_x og k_y gjennom midten. En sirkel med radius k er tegnet rundt midten, og en litt større sirkel utenfor den; skallet mellom dem er skyggelagt og merket dk. Ringene inne i den minste sirkelen er grå, merket energi under E. Ringene i skallet er uthevet i en annen farge, merket mellom E og E + dE. Ringene utenfor er bleke."
+  number={1}
+  width={340}
+  height={378}
+  caption="Et snitt gjennom $k$-rommet. Hvert punkt, tegnet som en liten ring, er en tillatt $\vec k$, med $2\pi/L$ mellom punktene. Ringene inne i sirkelen er tilstander med energi under $E$, og de uthevede i skallet er tilstandene mellom $E$ og $E + dE$. I tre dimensjoner er sirkelen en kule og skallet et kuleskall."
 />
 
-Ligger $E_F$ mer enn omtrent $3k_BT$ under $E_c$, er eksponentialen i nevneren
-til $f$ større enn $e^3 \approx 20$ i hele båndet. Eneren ved siden av endrer da
-$f$ med under 5 %, og sannsynligheten blir en ren eksponensial. Å regne med den
-rene eksponensialen kalles
-<Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>. For hullene
-er testen at $E_F$ ligger mer enn $3k_BT$ over $E_v$. Med tilnærmingen kan
-integralet for $n_0$ skrives som om hele båndet var
-<Term name="Effektiv tilstandstetthet">$N_c$ tilstander lagt på selve
-kanten</Term>, $n_0 = N_c f(E_c)$, med $N_c$ gitt av
-<FormulaRef id="effektiv-tilstandstetthet">$N_c = 2(2\pi m_n^*k_BT/h^2)^{3/2}$</FormulaRef>:
+Antall tilstander i skallet er volumet av skallet, $4\pi k^2\,dk$, delt på volumet
+hvert punkt tar, $(2\pi/L)^3$, og ganget med 2 for spinnet. Når $E$ øker, endrer to
+ting seg. Flaten $4\pi k^2$ vokser i takt med $E - E_c$. Samtidig blir skallet
+tynnere for det samme energisteget $dE$, fordi energien vokser som $k^2$, så et steg i
+$k$ gir mer energi jo større $k$ er. Tykkelsen $dk$ avtar som $1/\sqrt{E - E_c}$. Til sammen
+vokser antall tilstander per energi som $\sqrt{E - E_c}$. Delt på volumet $L^3$ gir det
+<Term name="Tilstandstetthet">tilstandstettheten</Term>, antall tilstander per volum
+og energi:
+
+<Formula tex={"N(E) = 4\\pi\\left(\\frac{2m_n^*}{h^2}\\right)^{3/2}\\!\\sqrt{E - E_c}"} caption={"Tilstandstettheten nær bunnen av ledningsbåndet."} onSheet={false} />
+
+Tilstandstettheten er null på selve kanten og vokser oppover i båndet. Større
+$m_n^*$, altså flatere krumning, gir flere tilstander, fordi energien da vokser
+langsommere med $k$ og kula har plass til flere punkter før den når en gitt energi.
+Valensbåndet er speilvendt. Tettheten der vokser som $\sqrt{E_v - E}$ nedover fra
+toppen, med hullmassen $m_p^*$.
+
+<Derivation title="Tellingen av tilstandene">
+
+Hvert punkt i $k$-rommet tar volumet $(2\pi/L)^3$ og er to tilstander. Kula med
+radius $k$ har volumet $\tfrac43\pi k^3$, så antall tilstander med energi under $E$,
+per volum av krystallen, er
 
 $$
-n_0 = N_c\, e^{-(E_c - E_F)/k_BT}, \qquad \allowbreak p_0 = N_v\, e^{-(E_F - E_v)/k_BT}
+\frac{1}{L^3}\cdot 2\cdot\frac{\tfrac43\pi k^3}{(2\pi/L)^3} = \frac{k^3}{3\pi^2}
 $$
 
-<Derivation title="Hvordan integralet blir til Boltzmann-uttrykket">
-
-Nær kanten er tilstandstettheten $N(E) = C\sqrt{E - E_c}$, og med
-Boltzmann-tilnærmingen er $f(E) = e^{-(E - E_F)/k_BT}$. Sett inn begge:
+Sett inn ${k = \sqrt{2m_n^*(E - E_c)}/\hbar}$:
 
 $$
-n_0 = C \int_{E_c}^{\infty} \sqrt{E - E_c}\; e^{-(E - E_F)/k_BT}\, dE
+\frac{k^3}{3\pi^2} = \frac{1}{3\pi^2}\left(\frac{2m_n^*}{\hbar^2}\right)^{3/2}(E - E_c)^{3/2}
 $$
 
-Trekk den faste faktoren $e^{-(E_c - E_F)/k_BT}$ ut av integralet, og bytt
-variabel til $x = (E - E_c)/k_BT$:
+Tilstandstettheten er hvor fort dette tallet vokser med energien. Deriver med hensyn
+på $E$:
 
 $$
-n_0 = C\,(k_BT)^{3/2}\, e^{-(E_c - E_F)/k_BT} \int_{0}^{\infty} \sqrt{x}\, e^{-x}\, dx
+N(E) = \frac{1}{2\pi^2}\left(\frac{2m_n^*}{\hbar^2}\right)^{3/2}\sqrt{E - E_c}
 $$
 
-Integralet er et rent tall, $\sqrt{\pi}/2$. Alt foran eksponensialen er
-materialkonstanter og $T^{3/2}$, og det er $N_c$: sett inn
-$C = 4\pi(2m_n^*)^{3/2}/h^3$, og
-<FormulaRef id="effektiv-tilstandstetthet">$N_c = 2(2\pi m_n^*k_BT/h^2)^{3/2}$</FormulaRef>
-kommer ut. Hullregningen er identisk, med $1 - f$ og $\sqrt{E_v - E}$.
+Med ${\hbar = h/2\pi}$ er ${(2m_n^*/\hbar^2)^{3/2} = 8\pi^3(2m_n^*/h^2)^{3/2}}$, og
+formelen blir ${N(E) = 4\pi(2m_n^*/h^2)^{3/2}\sqrt{E - E_c}}$.
 
 </Derivation>
 
-Avstanden fra $E_F$ til båndkanten står i eksponenten i
-<FormulaRef id="likevektskonsentrasjoner">likevektskonsentrasjonene</FormulaRef>,
-og $k_BT \ln 10 \approx 60$ meV ved romtemperatur. For hver 60 meV $E_F$ flyttes
-nærmere $E_c$, tidobles altså $n_0$.
-
-<Callout title="Avstand og konsentrasjon">
-
-$n_0$ er bestemt av avstanden fra $E_F$ opp til $E_c$, $p_0$ av avstanden ned
-til $E_v$. Ved romtemperatur endrer hver 60 meV konsentrasjonen med en faktor 10.
-
+<Callout title="Tilstandene i et bånd">
+De tillatte $\vec k$ ligger jevnt i $k$-rommet, med $2\pi/L$ mellom punktene. Nær båndkanten vokser energien som $k^2$, så antall tilstander per energi vokser som $\sqrt{E - E_c}$, fra null på kanten.
 </Callout>
 
-For Si ved 300 K er $N_c \approx 2{,}9 \times 10^{19}$ cm⁻³ og
-$N_v \approx 1{,}0 \times 10^{19}$ cm⁻³. Intrinsisk Si har $1{,}5 \times 10^{10}$ bærere per
-cm³, så hver enkelt tilstand nær kanten er nesten sikkert tom. Det er de
-enorme antallene tilstander som likevel gjør konsentrasjonene merkbare, og som
-gjør at små endringer i $f$ gir store endringer i bærertall.
+## Sannsynligheten for at en tilstand er fylt
 
-## Massevirkningsloven
+Ved 0 K sitter elektronene i de laveste tilstandene, ett i hver, og alle tilstandene
+over er tomme. I silisium er valensbåndet da fullt og ledningsbåndet tomt. Ved en
+høyere temperatur svinger atomene i gitteret, og de gir og tar energi fra elektronene
+hele tiden. Noen elektroner havner i tilstander over de fylte og etterlater tomme
+tilstander under.
 
-Gang Boltzmann-uttrykkene for $n_0$ og $p_0$ sammen, og $E_F$ faller bort:
+Hvor mange som havner hvor, følger av to regler. Den første er Pauli-prinsippet. Hver
+tilstand har plass til ett elektron, så et elektron kan bare hoppe til en tilstand som
+er tom. Den andre er Boltzmann-faktoren, og den gjelder alt som utveksler energi med
+omgivelser som har temperaturen $T$. Når et elektron kan hoppe til en tom tilstand som
+ligger $\Delta E$ høyere, er hoppet $e^{-\Delta E/k_BT}$ ganger så sannsynlig som det
+samme hoppet tilbake.
 
-$$
-n_0 p_0 = N_c N_v\, e^{-E_g/k_BT}
-$$
+Boltzmann-faktoren bestemmer også hvor tynn lufta er i høyden. Et luftmolekyl i
+høyden $z$ har energien $mgz$ mer enn ved bakken, og tettheten faller med en faktor
+$e$ for hver gang $mgz$ øker med $k_BT$, det vil si for hver 8 km. Trykket på toppen
+av Mount Everest, nesten 9 km oppe, er derfor omtrent en tredjedel av trykket ved
+havet. For elektronene er det energien i båndene som teller i stedet for høyden. Men
+luftmolekylene kan stå så tett de vil, mens et elektron bare kan gå inn i en tom
+tilstand.
 
-Produktet avhenger av materialet og temperaturen, ikke av dopingen, så lenge
-Boltzmann-tilnærmingen holder for begge bærertypene. I
-intrinsisk materiale er $n_0 = p_0 = n_i$, så
-<FormulaRef id="intrinsisk-konsentrasjon">$n_i = \sqrt{N_cN_v}\,e^{-E_g/2k_BT}$</FormulaRef>,
-med halve gapet i eksponenten. For Si ved 300 K er
-$n_i = 1{,}5 \times 10^{10}$ cm⁻³.
+Simuleringen nedenfor lar elektronene hoppe etter disse to reglene. Hver
+ring er én tilstand, og hver rad er én energi. Radene blir lengre jo lenger fra
+båndkanten de ligger, slik tilstandstettheten $N(E)$ vokser, og hver ring i figur 1 er
+to av ringene her, én for hver spinnretning.
 
-<Statement kind="law" name="Massevirkningsloven" id="massevirkning">
+<Simulation
+  src={"/sims/tilstander.js"}
+  host={"dom"}
+  title={"Tilstander og elektroner"}
+  caption={"Båndbildet med én ring for hver tilstand: ledningsbåndet øverst, valensbåndet nederst og gapet imellom. Blå prikker er elektroner, og røde ringer er hull. Til høyre står $n(E)$ og $p(E)$, normert til den største, og $f(E)$, alle på den samme energiaksen. Under båndene står donor- og akseptorionene, $\\oplus$ og $\\ominus$, som alltid er ionisert her. Gapet er bare $4{,}5\\,k_BT$ ved 300 K, mot $43\\,k_BT$ i silisium, dopingen er mye tyngre målt mot antall tilstander, og radene er bare tilstandene nærmest båndkantene."}
+  height={440}
+/>
 
-Ved termisk likevekt er $n_0 p_0 = n_i^2$ for et gitt materiale ved en gitt
-temperatur, uansett doping, så lenge $E_F$ ligger flere $k_BT$ fra begge
-båndkantene. Boltzmann-uttrykkene gir den samme loven som
-<FormulaRef id="generasjon-rekombinasjon">ratebalansen</FormulaRef>:
-generasjonen avhenger bare av temperaturen, så produktet er låst.
+Velg «Ren» og sett temperaturen til 150 K. Valensbåndet er nesten hele tiden fullt og
+ledningsbåndet tomt, som ved 0 K, fordi et hopp over gapet sjelden får nok energi. Skru
+opp til 300 K. Nå og da hopper et elektron over gapet og etterlater et hull, og nå og da
+faller et elektron ned i et hull igjen. Ved 600 K er det mange flere av begge.
+
+Teller du hvor stor del av tilstandene i en rad som er fylt, i gjennomsnitt over tid,
+får du en funksjon av energien alene. Den kalles
+<Term name="Fermi-Dirac-fordelingen">Fermi–Dirac-fordelingen</Term>:
+
+<Formula tex={"f(E) = \\dfrac{1}{1 + e^{(E - E_F)/k_BT}}"} caption={"Sannsynligheten for at en tilstand med energien $E$ er fylt ved termisk likevekt."} />
+
+<Statement kind="definition" name="Fermi-nivået">
+
+Energien $E_F$ der en tilstand er fylt med sannsynligheten $\tfrac12$. Fordelingen er
+symmetrisk om $E_F$. En tilstand $\Delta E$ over $E_F$ er fylt like ofte som en
+tilstand $\Delta E$ under er tom, ${f(E_F + \Delta E) = 1 - f(E_F - \Delta E)}$.
 
 </Statement>
 
-Ofte er det enklere å regne $E_F$ fra
-<Term name="Intrinsisk nivå">det intrinsiske nivået</Term> $E_i$, energien $E_F$
-har i intrinsisk materiale, enn fra en båndkant. Da trenger du bare $n_i$, ikke
-$N_c$, $N_v$ og båndkantene, og fortegnet på $E_F - E_i$ viser direkte om
-materialet er n- eller p-type. Skriv avstanden til kanten som
-$E_c - E_F = (E_c - E_i) - (E_F - E_i)$. Da deler $n_0$ seg i
-$N_c e^{-(E_c - E_i)/k_BT}$ ganget med $e^{(E_F - E_i)/k_BT}$, og den første
-faktoren er $n_i$, fordi $E_F = E_i$ i intrinsisk materiale. $p_0$ deler seg på
-samme måte, og konsentrasjonene blir
-<FormulaRef id="ni-formene">$n_0 = n_i e^{(E_F - E_i)/k_BT}$ og
-$p_0 = n_i e^{(E_i - E_F)/k_BT}$</FormulaRef>: $n_0$ er $n_i$ når $E_F$ står på
-$E_i$, og vokser eksponentielt når nivået trekker mot ledningsbåndet. $E_i$
-ligger nær midten av gapet, men ikke nøyaktig. Sett $n_0 = p_0$ i
-Boltzmann-uttrykkene og løs for $E_F$, som da er $E_i$: $E_i$ ligger
-$\tfrac{1}{2}k_BT\ln(N_c/N_v) = \tfrac{3}{4}k_BT\ln(m_n^*/m_p^*)$ under midten,
-altså midt i gapet bare når $N_c = N_v$. Med $N_c > N_v$ har ledningsbåndet
-flere tilstander nær kanten enn valensbåndet, så $E_F$ må stå litt under midten
-for at elektronstripen ikke skal bli større enn hullstripen. For Si gir massene omtrent
-13 meV ved romtemperatur.
+I simuleringen er $E_F$ den stiplede linjen, der kurven $f(E)$ helt til høyre krysser
+$\tfrac12$.
 
-<Callout title="$E_F$ målt fra $E_i$">
+Formen kommer fra de to reglene. Langt over $E_F$ er nesten alle tilstandene tomme,
+og da teller bare Boltzmann-faktoren. Sannsynligheten faller med en faktor $e$ for hver
+$k_BT$, ${f \approx e^{-(E - E_F)/k_BT}}$, slik lufta tynnes ut. Langt under $E_F$ er
+nesten alle tilstandene fylt, og der er det de tomme tilstandene som blir sjeldnere med
+en faktor $e$ for hver $k_BT$ nedover. Eneren i nevneren kommer fra Pauli-prinsippet
+og holder $f$ under 1.
 
-$n_0 = n_i e^{(E_F - E_i)/k_BT}$ og $p_0 = n_i e^{(E_i - E_F)/k_BT}$. Står
-$E_F$ over $E_i$, er materialet n-type; står $E_F$ under $E_i$, er materialet p-type.
+<Derivation title="Fordelingen fra de to reglene">
 
+Ta to tilstander med energiene ${E_1 < E_2}$, fylt med sannsynlighetene $f_1$ og $f_2$.
+Et hopp opp fra 1 til 2 krever at 1 er fylt og 2 er tom, og et hopp ned krever det
+omvendte. I likevekt skjer like mange hopp hver vei, og Boltzmann-faktoren gir hoppet opp
+faktoren $e^{-(E_2 - E_1)/k_BT}$:
+
+$$
+f_1(1 - f_2)\,e^{-(E_2 - E_1)/k_BT} \allowbreak = f_2(1 - f_1)
+$$
+
+Ordnet om er
+
+$$
+\frac{f_2}{1 - f_2}\,e^{E_2/k_BT} = \frac{f_1}{1 - f_1}\,e^{E_1/k_BT}
+$$
+
+Venstresiden avhenger bare av tilstand 2 og høyresiden bare av tilstand 1, så begge er
+lik det samme tallet for alle tilstander. Skriv tallet som $e^{E_F/k_BT}$. Da er
+${f/(1 - f) = e^{-(E - E_F)/k_BT}}$ for hver tilstand, og løst for $f$ er det
+Fermi–Dirac-fordelingen.
+
+</Derivation>
+
+Ved 0 K er $f$ et trinn, med alt under $E_F$ fylt og alt over tomt. Varme gjør trinnet
+til en overgang som er noen få $k_BT$ bred. I simuleringen er $f(E)$ ved 150 K nesten
+et trinn inne i gapet, og ved 600 K går overgangen langt inn i
+begge båndene.
+
+$f(E)$ er en sannsynlighet for tilstander som finnes. I rent materiale står $E_F$ midt
+i gapet, så der er ${f = \tfrac12}$, men det finnes ingen tilstander der og dermed ingen
+elektroner.
+
+<Callout title="Fermi–Dirac-fordelingen">
+En tilstand har plass til ett elektron, og et hopp som øker energien med $\Delta E$, er $e^{-\Delta E/k_BT}$ ganger så sannsynlig som hoppet tilbake. De to reglene gir $f(E)$, som er $\tfrac12$ ved $E_F$ og faller med en faktor $e$ for hver $k_BT$ over $E_F$.
 </Callout>
 
-<Example title="hvor havner Fermi-nivået når du doper?">
+## Hvor Fermi-nivået står
 
-En Si-prøve dopes med $10^{17}$ As-atomer per cm³, alle ionisert ved 300 K.
-Finn $p_0$, og plasser $E_F$ i forhold til $E_i$.
+Temperaturen er gitt av omgivelsene, men hvor $E_F$ står, er ikke gitt på forhånd.
+Fermi-nivået står der antall elektroner krever.
+
+I rent silisium kommer hvert elektron i ledningsbåndet fra en brutt binding, så det er
+like mange elektroner i ledningsbåndet som hull i valensbåndet. Fordelingen er
+symmetrisk om $E_F$, så når båndene er speilbilder av hverandre, blir halen av
+elektroner over $E_c$ like stor som halen av hull under $E_v$ bare når $E_F$ står
+midt i gapet. Båndene i simuleringen er speilbilder, og med «Ren» står $E_F$ på $E_i$
+midt i gapet ved alle temperaturer.
+
+Velg «n-type». Hver av de seks donorene har gitt elektronet sitt til ledningsbåndet og
+står igjen som et fast ion $\oplus$, tegnet under båndene. For at ledningsbåndet skal ha
+plass til de ekstra elektronene, må $f$ være større der, og $E_F$ har flyttet seg opp mot $E_c$.
+Den samme kurven ligger da nærmere 1 i valensbåndet, så hull er sjeldne. Når et
+elektron hopper opp og etterlater et hull, faller et av de mange elektronene i
+ledningsbåndet raskt ned i det. Velg «p-type», og bildet er speilvendt, med $E_F$ nede
+ved $E_v$.
+
+Elektronene kan hoppe mellom båndene, men ingen forsvinner, og hver donor har gitt ett.
+Antall elektroner i ledningsbåndet er derfor til enhver tid antall hull pluss antall
+donorer, og i likevekt er ${n_0 = p_0 + N_d}$. Kravet er det samme som at krystallen er nøytral, med like
+mye positiv ladning i hull og donorioner som negativ ladning i elektroner.
+
+Den samme $f$ gir både elektronene og hullene, så det er nok å vite hvor $E_F$ står.
+Et båndskjema viser derfor bare $E_c$, $E_v$ og $E_F$, og avstandene fra $E_F$ til de
+to båndkantene forteller hvor mange av hver bærer det er.
+
+<Callout title="Hvor Fermi-nivået står">
+$E_F$ står der antall elektroner krever. I rent materiale står $E_F$ nær midten av gapet, donorer skyver nivået opp mot $E_c$, og akseptorer skyver det ned mot $E_v$. Den samme $f$ gir både elektronene og hullene, så flere elektroner betyr færre hull.
+</Callout>
+
+## Konsentrasjonene
+
+Konsentrasjonen av elektroner i ledningsbåndet er tilstandstettheten ganger
+sannsynligheten for at tilstanden er fylt, summert over båndet:
+
+<Formula tex={"n_0 = \\int_{E_c}^{\\infty} f(E)\\,N(E)\\,dE"} caption={"Elektronkonsentrasjonen ved termisk likevekt, som indeksen 0 står for."} />
+
+Integralet går til uendelig, men $f$ blir så liten høyt oppe i båndet at det ikke
+betyr noe hvor båndet slutter. Produktet $f(E)N(E)$ er null på kanten, der det ikke er
+noen tilstander, og blir lite igjen høyere oppe, der $f$ har falt med en faktor $e$ for
+hver $k_BT$. Produktet er størst $k_BT/2$ over kanten, og nesten alle elektronene
+ligger innenfor noen få $k_BT$ fra den. Hullene ligger på samme måte i et tynt lag
+like under $E_v$. I simuleringen er kurven $n(E)$ dette produktet, gjennomsnittet av
+elektronene ved hver energi, og $p(E)$ er det samme for hullene, $N(E)[1 - f(E)]$. Begge
+er størst like ved båndkanten. Velg «n-type», og $p(E)$ blir nesten borte ved siden av
+$n(E)$.
+
+Står $E_F$ mer enn omtrent $3k_BT$ under $E_c$, er $e^{(E - E_F)/k_BT}$ større enn
+${e^3 \approx 20}$ overalt i ledningsbåndet. Eneren i nevneren endrer da $f$ med under
+5 %, og
+
+$$
+f(E) \approx e^{-(E - E_F)/k_BT}
+$$
+
+Å regne med denne eksponentialen kalles
+<Term name="Boltzmann-tilnærmingen">Boltzmann-tilnærmingen</Term>. Tilnærmingen holder
+for vanlig doping, der $E_F$ står flere $k_BT$ fra båndkantene.
+
+Med tilnærmingen kan eksponentialen deles i to faktorer:
+
+$$
+e^{-(E - E_F)/k_BT} = e^{-(E_c - E_F)/k_BT} \allowbreak \cdot e^{-(E - E_c)/k_BT}
+$$
+
+Den første faktoren er sannsynligheten $f(E_c)$ ved kanten, og den er den samme i hele
+integralet. Den andre avhenger bare av avstanden fra kanten, og integralet av den
+ganger $N(E)$ er et tall som bare avhenger av båndet og temperaturen. Tallet kalles den
+<Term name="Effektiv tilstandstetthet">effektive tilstandstettheten</Term> $N_c$, og
+konsentrasjonen blir
+
+<Formula tex={"n_0 = N_c\\,e^{-(E_c - E_F)/k_BT}"} caption={"Elektronkonsentrasjonen når $E_F$ står mer enn omtrent $3k_BT$ under $E_c$."} />
+
+Konsentrasjonen er altså den samme som om hele ledningsbåndet var $N_c$ tilstander lagt
+på selve kanten, alle fylt med sannsynligheten $f(E_c)$. Integralet gir
+
+<Formula tex={"N_c = 2\\left(\\dfrac{2\\pi m_n^* k_BT}{h^2}\\right)^{3/2}"} caption={"Den effektive tilstandstettheten i ledningsbåndet. $N_v$ har samme form med hullmassen $m_p^*$."} />
+
+<Derivation title="Integralet med Boltzmann-tilnærmingen">
+
+Sett inn ${N(E) = 4\pi(2m_n^*/h^2)^{3/2}\sqrt{E - E_c}}$ og trekk den faste faktoren
+$e^{-(E_c - E_F)/k_BT}$ ut av integralet:
+
+$$
+n_0 = 4\pi\left(\frac{2m_n^*}{h^2}\right)^{3/2} e^{-(E_c - E_F)/k_BT} \allowbreak \cdot I
+$$
+
+der $I$ er integralet
+
+$$
+I = \int_{E_c}^{\infty}\sqrt{E - E_c}\;e^{-(E - E_c)/k_BT}\,dE
+$$
+
+Bytt variabel til ${x = (E - E_c)/k_BT}$. Da er
+${\sqrt{E - E_c}\,dE = (k_BT)^{3/2}\sqrt{x}\,dx}$, og
+${I = (k_BT)^{3/2}\int_0^\infty \sqrt{x}\,e^{-x}\,dx}$, der integralet er et rent tall,
+$\sqrt{\pi}/2$. Alt foran eksponentialen blir
+
+$$
+\begin{aligned}
+&4\pi\left(\frac{2m_n^*}{h^2}\right)^{3/2}(k_BT)^{3/2}\,\frac{\sqrt{\pi}}{2} \\
+&\quad = 2\left(\frac{2\pi m_n^* k_BT}{h^2}\right)^{3/2} = N_c
+\end{aligned}
+$$
+
+</Derivation>
+
+For silisium ved 300 K er ${N_c = 2{,}9 \times 10^{19}\ \text{cm}^{-3}}$, omtrent én tilstand per
+1700 atomer. Massen som gir dette tallet, er ${m_n^* = 1{,}1\,m_0}$, og den
+får sin forklaring under «Effektiv masse for tilstandstetthet». I rent silisium er
+${n_0 = 1{,}5 \times 10^{10}\ \text{cm}^{-3}}$, så ${f(E_c) = 5 \times 10^{-10}}$. Hver enkelt
+tilstand ved kanten er altså nesten sikkert tom, og det er det store antallet
+tilstander som likevel gir merkbart mange elektroner.
+
+Hullene telles på samme måte, med sannsynligheten $1 - f$ for at en tilstand i
+valensbåndet er tom:
+
+<Formula tex={"p_0 = N_v\\,e^{-(E_F - E_v)/k_BT}"} caption={"Hullkonsentrasjonen når $E_F$ står mer enn omtrent $3k_BT$ over $E_v$."} />
+
+For silisium er ${N_v = 1{,}0 \times 10^{19}\ \text{cm}^{-3}}$. Avstanden fra $E_F$ til kanten står i
+eksponenten, og ved romtemperatur er ${k_BT \ln 10 = 60\ \text{meV}}$. For hver 60 meV $E_F$
+flyttes nærmere $E_c$, blir $n_0$ altså ti ganger større.
+
+<Callout title="Konsentrasjonene">
+Elektronene ligger innenfor noen få $k_BT$ over $E_c$. Står $E_F$ mer enn $3k_BT$ fra kanten, er ${n_0 = N_c e^{-(E_c - E_F)/k_BT}}$, som om båndet var $N_c$ tilstander på kanten. Ved romtemperatur gir hver 60 meV $E_F$ flytter seg mot $E_c$, ti ganger flere elektroner.
+</Callout>
+
+<Example title="hvor står Fermi-nivået i det dopede silisiumet?">
+
+Silisium er dopet med $10^{15}$ fosforatomer per cm³, alle ionisert. Finn hvor langt
+under $E_c$ Fermi-nivået står ved 300 K, og sjekk om Boltzmann-tilnærmingen holder.
+Bruk ${N_c = 2{,}9 \times 10^{19}\ \text{cm}^{-3}}$.
 
 <Solution>
 
-- Donorene dominerer: $n_0 \approx N_d = 10^{17}$ cm⁻³.
-- Massevirkningsloven gir minoriteten: $p_0 = n_i^2/n_0 = (1{,}5 \times 10^{10})^2/10^{17} = 2{,}25 \times 10^{3}$ cm⁻³.
-- Snu $n_0 = n_i e^{(E_F - E_i)/k_BT}$: $E_F - E_i = k_BT \ln(n_0/n_i) = 0{,}0259\ \text{eV} \cdot \ln(6{,}7 \times 10^{6}) = 0{,}41$ eV.
+Donorene gir ${n_0 = 10^{15}\ \text{cm}^{-3}}$. Løs ${n_0 = N_c e^{-(E_c - E_F)/k_BT}}$ for
+avstanden:
 
-<Answer>$p_0 = 2{,}25 \times 10^{3}$ cm⁻³, fjorten tierpotenser under majoriteten, og $E_F$ ligger $0{,}41$ eV over $E_i$, omtrent $0{,}16$ eV under $E_c$. Det er fortsatt seks $k_BT$ fra kanten, så Boltzmann-tilnærmingen holder.</Answer>
+$$
+\begin{aligned}
+&E_c - E_F = k_BT\ln\frac{N_c}{n_0} \\
+&\quad = 0{,}0259\ \text{eV}\cdot\ln\frac{2{,}9 \times 10^{19}}{10^{15}} \\
+&\quad = 0{,}0259\ \text{eV}\cdot 10{,}3 \\
+&\quad = 0{,}27\ \text{eV}
+\end{aligned}
+$$
+
+Avstanden er omtrent $10\,k_BT$, langt over $3k_BT$, så tilnærmingen holder.
+
+<Answer>$E_F$ står ${0{,}27\ \text{eV}}$ under $E_c$, omtrent ti $k_BT$, og Boltzmann-tilnærmingen holder godt.</Answer>
+
+</Solution>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Tre båndbilder">
+<ExamRef id="2018-des-tfe4164" task="I-1" />
+
+<Figure
+  src="/figures/eksamen-2018-12-oppgave-I-1.png"
+  alt="Tre rader, merket I, II og III, med tre panel hver: tilstandstettheten over og under gapet, Fermi–Dirac-fordelingen med en stiplet linje for E_F, og bærerkonsentrasjonene som en blå topp ved E_c og en svart ved E_v. I rad I står E_F like over E_v, og den svarte toppen er stor. I rad II står E_F midt i gapet, og toppene er like små. I rad III står E_F like under E_c, og den blå toppen er stor."
+  width={850}
+  height={965}
+  caption="Figure 1 i oppgavesettet."
+/>
+
+<Quiz
+  question={"The doping conditions for the three cases depicted in Figure 1 above are,"}
+  options={[
+    "I: intrinsic II: n-type III: p-type",
+    "I: p-type II: intrinsic III: n-type",
+    "I: n-type II: intrinsic III: p-type"
+  ]}
+  answer={1}
+  explanation={"Tilstandstettheten er den samme i alle tre radene, så det er $E_F$ som skiller dem. I rad I står $E_F$ like over $E_v$: hullkonsentrasjonen ved $E_v$ er stor og elektronkonsentrasjonen ved $E_c$ liten, så materialet er p-type. I rad II står $E_F$ midt i gapet, og de to er like store, så materialet er intrinsisk. I rad III står $E_F$ like under $E_c$, og elektronkonsentrasjonen er stor, så materialet er n-type. Det tredje alternativet bytter om n- og p-type, som du gjør hvis du tar den store toppen ved $E_v$ i rad I for elektroner. Det første tar rad I for intrinsisk, men der er hullkonsentrasjonen mye større enn elektronkonsentrasjonen."}
+/>
+
+</Example>
+
+## Massevirkningsloven
+
+Simuleringen «Tilstander og elektroner» viser hvorfor flere elektroner betyr færre hull.
+Bytt mellom «Ren» og «n-type», og følg med på valensbåndet. Et elektron hopper opp fra
+valensbåndet omtrent like ofte i begge, fordi hoppet bare avhenger av temperaturen og
+gapet, og fordi valensbåndet er nesten fullt og ledningsbåndet nesten tomt i begge.
+Men med «n-type» blir hvert hull fylt igjen mye raskere, fordi det er mange flere
+elektroner i ledningsbåndet som kan falle ned i det.
+
+Hullene oppfører seg som gjestene på en fest. Antallet gjester som er der til enhver tid,
+er hvor mange som kommer i timen, ganget med hvor lenge hver blir. Hullene kommer like
+ofte som før, men hvert hull blir bare til et elektron finner det, og med dobbelt så
+mange elektroner skjer det dobbelt så fort. Da er det halvparten så mange hull til
+enhver tid. Rekombinasjonen er altså proporsjonal med $n_0p_0$, mens nye par lages i et
+tempo som bare avhenger av temperaturen, og i likevekt er de to like
+(<FormulaRef id="generasjon-rekombinasjon">ratebalansen</FormulaRef>). Derfor er
+produktet låst.
+
+Uttrykkene for $n_0$ og $p_0$ gir det samme. Gang dem sammen, og $E_F$ faller bort:
+
+$$
+\begin{aligned}
+n_0p_0 &= N_cN_v\,e^{-[(E_c - E_F) + (E_F - E_v)]/k_BT} \\
+&= N_cN_v\,e^{-E_g/k_BT}
+\end{aligned}
+$$
+
+Produktet avhenger bare av materialet og temperaturen. Flytter dopingen $E_F$ opp, blir
+$n_0$ større med den samme faktoren som $p_0$ blir mindre med. I rent materiale er
+begge lik $n_i$, så produktet er $n_i^2$ uansett doping.
+
+<Statement kind="law" name="Massevirkningsloven" id="massevirkning">
+
+Ved termisk likevekt er ${n_0p_0 = n_i^2}$ for et gitt materiale ved en gitt
+temperatur, uansett doping, så lenge $E_F$ står flere $k_BT$ fra begge båndkantene.
+
+</Statement>
+
+Med ${n_0 = p_0 = n_i}$ gir produktet også den intrinsiske konsentrasjonen,
+<FormulaRef id="intrinsisk-konsentrasjon">${n_i = \sqrt{N_cN_v}\,e^{-E_g/2k_BT}}$</FormulaRef>,
+med halve gapet i eksponenten fordi $E_F$ står omtrent midt i gapet, et halvt gap fra
+hver kant. For silisiumet fra starten gir loven
+
+$$
+p_0 = \frac{n_i^2}{n_0} = \frac{(1{,}5 \times 10^{10})^2}{10^{15}} \allowbreak = 2{,}25 \times 10^{5}\ \text{cm}^{-3}
+$$
+
+<Callout title="Massevirkningsloven">
+${n_0p_0 = n_i^2}$ ved likevekt, uansett doping. Dobler dopingen $n_0$, halveres $p_0$, fordi hvert hull da finner et elektron dobbelt så fort, mens nye par lages like ofte.
+</Callout>
+
+## Fermi-nivået målt fra det intrinsiske nivået
+
+I rent materiale står $E_F$ på et nivå som kalles det
+<Term name="Intrinsisk nivå">intrinsiske nivået</Term>, $E_i$. Der er ${n_0 = n_i}$, så
+
+$$
+n_i = N_c\,e^{-(E_c - E_i)/k_BT}
+$$
+
+Del uttrykket for $n_0$ på dette, og $N_c$ og $E_c$ faller bort:
+
+$$
+\frac{n_0}{n_i} = e^{(E_F - E_i)/k_BT}
+$$
+
+Hullene gir det samme med motsatt fortegn i eksponenten, så konsentrasjonene målt fra
+$E_i$ er
+
+<Formula tex={"\\begin{aligned} n_0 &= n_i\\,e^{(E_F - E_i)/k_BT} \\\\ p_0 &= n_i\\,e^{(E_i - E_F)/k_BT} \\end{aligned}"} caption={"Likevektskonsentrasjonene målt fra det intrinsiske nivået."} />
+
+Står $E_F$ på $E_i$, er ${n_0 = p_0 = n_i}$. Står $E_F$ over $E_i$, er materialet n-type,
+og hver 60 meV over $E_i$ gir ti ganger flere elektroner og ti ganger færre hull. Med
+disse formene er $n_i$ alt du trenger å kjenne. I silisiumet fra
+starten står $E_F$ over $E_i$ med
+
+$$
+\begin{aligned}
+E_F - E_i &= k_BT\ln\frac{n_0}{n_i} \\
+&= 0{,}0259\ \text{eV}\cdot\ln\frac{10^{15}}{1{,}5 \times 10^{10}} \\
+&= 0{,}29\ \text{eV}
+\end{aligned}
+$$
+
+$E_i$ ligger nær midten av gapet, men ikke helt. Har ledningsbåndet flere tilstander
+nær kanten enn valensbåndet, altså ${N_c > N_v}$, må $E_F$ stå litt lavere for at det ikke
+skal bli flere elektroner enn hull. Setter du ${n_0 = p_0}$ i uttrykkene med $N_c$ og
+$N_v$, finner du hvor mye lavere:
+
+<Formula tex={"E_i = \\frac{E_c + E_v}{2} - \\frac{k_BT}{2}\\ln\\frac{N_c}{N_v} \\allowbreak = \\frac{E_c + E_v}{2} - \\frac34 k_BT\\ln\\frac{m_n^*}{m_p^*}"} caption={"Det intrinsiske nivået. Det ligger midt i gapet bare når $N_c = N_v$."} onSheet={false} />
+
+Den siste formen kommer av at ${N_c/N_v = (m_n^*/m_p^*)^{3/2}}$. I silisium er
+${m_n^* = 1{,}1\,m_0}$ og ${m_p^* = 0{,}56\,m_0}$, så $E_i$ ligger
+${\tfrac34 \cdot 0{,}0259\ \text{eV}\cdot\ln(1{,}1/0{,}56) = 13\ \text{meV}}$ under midten av gapet,
+omtrent en halv $k_BT$. I GaAs er elektronene mye lettere enn hullene, så ${N_c < N_v}$,
+og $E_i$ ligger over midten. I simuleringen er båndene speilbilder, så der er ${N_c = N_v}$, og
+$E_i$ står nøyaktig i midten.
+
+<Derivation title="Hvor $E_i$ ligger">
+
+I rent materiale er ${n_0 = p_0}$, og ${E_F = E_i}$:
+
+$$
+N_c\,e^{-(E_c - E_i)/k_BT} \allowbreak = N_v\,e^{-(E_i - E_v)/k_BT}
+$$
+
+Ta logaritmen og samle leddene med $E_i$:
+
+$$
+\begin{aligned}
+\ln\frac{N_c}{N_v} &= \frac{(E_c - E_i) - (E_i - E_v)}{k_BT} \\
+&= \frac{E_c + E_v - 2E_i}{k_BT}
+\end{aligned}
+$$
+
+Løst for $E_i$:
+
+$$
+E_i = \frac{E_c + E_v}{2} - \frac{k_BT}{2}\ln\frac{N_c}{N_v}
+$$
+
+Med ${N_c/N_v = (m_n^*/m_p^*)^{3/2}}$ blir det siste leddet
+$\tfrac34 k_BT\ln(m_n^*/m_p^*)$. Leddet er null bare når ${N_c = N_v}$, så $E_i$ ligger
+midt i gapet hvis og bare hvis de effektive tilstandstetthetene er like.
+
+</Derivation>
+
+<Callout title="Målt fra $E_i$">
+${n_0 = n_i e^{(E_F - E_i)/k_BT}}$ og ${p_0 = n_i e^{(E_i - E_F)/k_BT}}$. Står $E_F$ over $E_i$, er materialet n-type, og under $E_i$ p-type. $E_i$ ligger litt under midten av gapet når ${N_c > N_v}$, i silisium 13 meV.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Fermi-nivået i silisium med arsen">
+<ExamRef id="2021-des" task="2" />
+
+For a sample of Si doped with arsenic to ${N_D = 10^{17}\ \text{cm}^{-3}}$ in thermal
+equilibrium at room temperature $(300\ \text{K})$, how far above the intrinsic Fermi
+level, $E_i$, is the Fermi level in this material?
+
+Given: ${n_i = 1.5 \cdot 10^{10}\ \text{cm}^{-3}}$
+
+Fill in your numeric answer here: ${E_F - E_i = \underline{\qquad}\ \text{eV}}$.
+
+<Solution>
+
+Arsen er en donor, og alle donorene er ionisert, så ${n_0 = N_D = 10^{17}\ \text{cm}^{-3}}$.
+Løs ${n_0 = n_ie^{(E_F - E_i)/k_BT}}$ for avstanden:
+
+$$
+\begin{aligned}
+&E_F - E_i = k_BT\ln\frac{N_D}{n_i} \\
+&\quad = 0{,}0259\ \text{eV}\cdot\ln\frac{10^{17}}{1{,}5 \times 10^{10}} \\
+&\quad = 0{,}0259\ \text{eV}\cdot 15{,}7 \\
+&\quad = 0{,}41\ \text{eV}
+\end{aligned}
+$$
+
+Avstanden til ledningsbåndet er
+
+$$
+\begin{aligned}
+&E_c - E_F = k_BT\ln\frac{N_c}{N_D} \\
+&\quad = 0{,}0259\ \text{eV}\cdot\ln 290 \\
+&\quad = 0{,}15\ \text{eV}
+\end{aligned}
+$$
+
+Avstanden er nesten $6k_BT$, så Boltzmann-tilnærmingen holder.
+
+<Answer>${E_F - E_i \approx 0{,}41\ \text{eV}}$. Løsningsforslaget godtar 0,39–0,41 eV.</Answer>
 
 </Solution>
 
@@ -218,143 +587,297 @@ Finn $p_0$, og plasser $E_F$ i forhold til $E_i$.
 
 ## Effektiv masse for tilstandstetthet
 
-Formelen for $N_c$ inneholder én effektiv masse, og ledningsbåndet i Si har
-flere krumninger å velge mellom. Minimet ligger et stykke ut mot sonegrensen,
-og krystallen har seks likeverdige retninger å legge det i, så båndet har seks
-like daler. Flatene med konstant energi rundt hvert minimum er sigarformede
-ellipsoider: krumningen langs sigaren gir $m_l = 0{,}98\,m_0$, krumningen på
-tvers gir $m_t = 0{,}19\,m_0$.
+Formelen for $N_c$ har én masse, fordi den bygger på at tilstandene med energi under
+$E$ fyller én kule i $k$-rommet. Slik er det i GaAs, der bunnen av ledningsbåndet ligger
+ved ${k = 0}$ og energien vokser like fort i alle retninger. I silisium ligger bunnen av
+ledningsbåndet et stykke ut mot kanten av $k$-området, og krystallen har seks like
+retninger å legge den i, langs $\pm k_x$, $\pm k_y$ og $\pm k_z$. Ledningsbåndet har
+derfor seks like daler, som i figur 2.
 
-Tilstandene med energi under $E$ i én dal ligger inne i en ellipsoide i
-$k$-rommet, med halvaksen $\sqrt{2m_lE}/\hbar$ langs sigaren og
-$\sqrt{2m_tE}/\hbar$ i begge retningene på tvers, med $E$ målt fra $E_c$.
-Antallet er proporsjonalt med volumet, altså med $(m_lm_t^2)^{1/2}$, mens en
-kuleformet dal med massen $m^*$ gir $(m^*)^{3/2}$. Seks daler gir seks ganger så
-mange tilstander, så massen i $N_c$ er gitt ved <FormulaRef id="dos-masse" />.
+<Figure
+  src="/figures/daler.svg"
+  alt="To tredimensjonale skisser av k-rommet med aksene k_x, k_y og k_z. Øverst GaAs, merket én dal ved k = 0: en kule rundt origo. Under Si, merket seks daler: seks avlange, sigarformede ellipsoider, én på hver side av origo langs hver akse. På ellipsoiden langs minus k_x er den lange aksen merket m_l og den korte m_t."
+  number={2}
+  width={340}
+  height={438}
+  caption="Flater med konstant energi nær bunnen av ledningsbåndet. I GaAs er det én dal ved $k = 0$, og flaten er en kule. I Si er det seks daler, og flatene er avlange: langs sigaren hører krumningen til massen $m_l$, på tvers til $m_t$."
+/>
 
-<Example title="hvilken masse skal stå i formelen for Si?">
+Rundt bunnen av hver dal er flatene med konstant energi avlange, som sigarer. Langs
+sigaren vokser energien langsomt, så båndet er flatt og massen stor,
+${m_l = 0{,}98\,m_0}$. På tvers er krumningen skarp, og ${m_t = 0{,}19\,m_0}$. I én dal fyller tilstandene med energi under $E$ en slik sigar.
+Halvaksen i hver retning er $\sqrt{2m(E - E_c)}/\hbar$ med massen i den retningen, så
+volumet er proporsjonalt med $\sqrt{m_l\,m_t\,m_t}$, der en kule med massen $m^*$ ville
+gitt $(m^*)^{3/2}$. Seks daler gir seks ganger så mange tilstander. Den massen som gir
+like mange tilstander i én kule, er derfor gitt ved
 
-Finn den effektive massen for tilstandstetthet for elektroner i Si, med
-$m_l = 0{,}98\,m_0$ og $m_t = 0{,}19\,m_0$.
+<Formula tex={"(m_n^*)^{3/2} = 6\\,(m_l\\,m_t^2)^{1/2}"} caption={"Effektiv masse for tilstandstetthet for elektronene i Si, fra de seks dalene."} onSheet={false} />
+
+Med tallene for silisium er
+
+$$
+\begin{aligned}
+m_n^* &= 6^{2/3}\,(0{,}98 \cdot 0{,}19^2)^{1/3}\,m_0 \\
+&= 3{,}30 \cdot 0{,}33\,m_0 = 1{,}1\,m_0
+\end{aligned}
+$$
+
+Massen er større enn begge krumningsmassene, fordi den teller tilstander, og seks daler
+har seks ganger så mange tilstander som én. Det er denne massen som står i $N_c$.
+Massen som avgjør hvordan elektronene i silisium beveger seg i et felt, er en annen
+middelverdi over dalene, $0{,}26\,m_0$, og det er den som står i hydrogenmodellen for
+donorelektronet. Toppen av valensbåndet har to bånd som møtes ved ${k = 0}$, ett for
+lette og ett for tunge hull, og massen ${m_p^* = 0{,}56\,m_0}$ i $N_v$ teller tilstandene
+i begge.
+
+I GaAs er det én kuleformet dal, og massen i $N_c$ er krumningsmassen selv,
+$0{,}067\,m_0$. Den lette massen betyr få tilstander. $N_c$ er
+${4{,}7 \times 10^{17}\ \text{cm}^{-3}}$ i GaAs, omtrent 60 ganger mindre enn i silisium.
+
+<Callout title="Massen som teller tilstander">
+I Si har ledningsbåndet seks avlange daler, og massen i $N_c$ er ${m_n^* = 6^{2/3}(m_lm_t^2)^{1/3} = 1{,}1\,m_0}$. Den teller tilstander og er større enn begge krumningsmassene. For bevegelse i et felt gjelder en annen middelverdi, $0{,}26\,m_0$.
+</Callout>
+
+## Temperaturen
+
+Temperaturen står to steder i ${n_i = \sqrt{N_cN_v}\,e^{-E_g/2k_BT}}$: i $N_c$ og $N_v$,
+som vokser som $T^{3/2}$, og i eksponenten. Eksponenten dominerer. For silisium er
+${E_g/2k_BT = 21}$ ved 300 K og 16 ved 400 K, så fra 300 til 400 K blir $n_i$ omtrent
+300 ganger større, mens $T^{3/2}$ bare gir en faktor 1,5. Tegner du $\ln n_i$ mot $1/T$,
+blir kurven derfor nesten en rett linje med stigningstallet $-E_g/2k_B$, og det er
+grunnen til at boka tegner slike kurver mot $1000/T$. Ved 300 K er $n_i$
+${2{,}5 \times 10^{13}\ \text{cm}^{-3}}$ i germanium, ${1{,}5 \times 10^{10}}$ i silisium og
+${2 \times 10^{6}}$ i GaAs. Jo større gapet er, desto lavere ligger $n_i$, og desto
+brattere vokser den med temperaturen.
+
+I et dopet materiale følger $n_0$ bare $n_i$ ved de høyeste temperaturene. Simuleringen
+nedenfor viser $n_0$ og $p_0$ mot temperaturen for et materiale med donorer.
+
+<Simulation
+  src={"/sims/temperatur.js"}
+  host={"dom"}
+  title={"Bærerne og temperaturen"}
+  caption={"$n_0$ (blå), $p_0$ (rød) og $n_i$ (stiplet) mot temperaturen for et materiale med donorer, med logaritmisk akse for konsentrasjonen. De tonede feltene er områdene der donorene ikke er ionisert, og der $n_i$ har tatt igjen dopingen. Gapet er holdt fast, så kurvene er omtrentlige langt fra 300 K. Boka tegner de samme kurvene mot $1000/T$, med den varme siden til venstre."}
+  height={380}
+/>
+
+Velg Si og $10^{15}$. Kurven for $n_0$ har tre områder:
+
+- Under omtrent 100 K har ikke alle donorene gitt fra seg elektronet sitt. Et donornivå
+  er en tilstand som alle andre, og donoren er ionisert når $E_F$ står flere $k_BT$ under
+  $E_d$, som ligger 45 meV under $E_c$. Ved 300 K står $E_F$ 0,27 eV under $E_c$, langt
+  under $E_d$. Avstanden er ${E_c - E_F = k_BT\ln(N_c/N_d)}$, og den blir mindre når
+  temperaturen synker. Rundt 60 K når $E_F$ opp til $E_d$, og ved lavere temperaturer
+  holder de fleste donorene på elektronet sitt.
+- Rundt 100 K er nesten alle donorene ionisert. Derfra er ${n_0 = N_d}$ over et bredt
+  temperaturområde, fordi donorene ikke har flere elektroner å gi og $n_i$ fortsatt er
+  mange tierpotenser mindre. Hullene er minoritetsbærere, ${p_0 = n_i^2/N_d}$, og de vokser
+  like bratt som $n_i^2$.
+- Over omtrent 520 K har $n_i$ nådd opp mot $N_d$, og parene fra brutte bindinger tar
+  over. $n_0$ og $p_0$ nærmer seg hverandre, og materialet oppfører seg som om det var
+  rent. Det samme ser du i simuleringen «Tilstander og elektroner» med «n-type» ved
+  600 K, der $E_F$ har sunket mot $E_i$ og hullene er over halvparten så mange som
+  elektronene.
+
+Velg $10^{16}$, og platået løfter seg en tierpotens, mens det intrinsiske området
+først begynner rundt 630 K. Velg Ge med $10^{15}$. Germanium har mindre gap, og $n_i$
+tar igjen dopingen allerede rundt 365 K, 92 °C. I GaAs varer platået forbi 700 K.
+
+En komponent skal styres av dopingen. Materialet dopes derfor slik at platået dekker
+alle temperaturene komponenten skal virke ved, og med større gap varer platået til
+høyere temperatur.
+
+<Callout title="Tre temperaturområder">
+Ved lave temperaturer sitter donorelektronene fast. På platået er ${n_0 = N_d}$, og når $n_i$ når opp mot $N_d$, oppfører materialet seg som rent, uansett doping. Høyere doping og større gap gir et platå som varer til høyere temperatur.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Under 100 K">
+<ExamRef id="2020-mai" task="I-4" />
+
+<Figure
+  src="/figures/eksamen-2020-05-oppgave-I-4.png"
+  alt="Elektronkonsentrasjonen n_0 fra 10^11 til 10^17 per kubikkcentimeter mot 1000/T fra 0 til 12 per kelvin. Til venstre, område I, stiger kurven bratt mot venstre, over en stiplet n_i-linje; i midten, område II, er den flat på 10^15; til høyre for 1000/T = 10, område III, faller den."
+  width={730}
+  height={562}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The figure above traces the majority carrier (electron) concentration in thermal
+equilibrium vs. inverse temperature for an n-type Si substrate doped with $10^{15}$
+donors/cm³.
+
+<Quiz
+  question={"A p⁺-n junction fabricated on this substrate will not work for temperatures below approximately 100K (region III) because,"}
+  options={[
+    "The thermal velocity of holes and electrons is insufficient for diffusion across the depletion zone",
+    "The temperature is too low for excitation of a sufficient number of electron-hole pairs",
+    "The temperature is insufficient for ionization of an appreciable fraction of the substrate donor atoms"
+  ]}
+  answer={2}
+  explanation={"Aksen er $1000/T$, så kalde temperaturer ligger til høyre, og $1000/T = 10$ er 100 K. Der faller $n_0$ under $N_d = 10^{15}\\ \\text{cm}^{-3}$, fordi $E_F$ nærmer seg $E_d$ og flere og flere donorer holder på elektronet sitt. Komponenten trenger elektronene fra donorene. Elektron-hull-par fra varmen betyr ingenting for $n_0$ selv ved romtemperatur, der $n_i$ er $10^{10}$ mot ${N_d = 10^{15}}$, så for få par kan ikke være grunnen. Det første alternativet peker på hvor fort bærerne beveger seg, men kurven viser at det er antallet elektroner som faller."}
+/>
+
+</Example>
+
+<Example title="silisiumet fra starten ved 600 K">
+
+Silisium med ${N_d = 10^{15}\ \text{cm}^{-3}}$ varmes til 600 K, der
+${n_i \approx 2{,}0 \times 10^{15}\ \text{cm}^{-3}}$. Donorene er ionisert. Finn $n_0$ og $p_0$.
 
 <Solution>
 
-- Én dal: $(m_l m_t^2)^{1/3} = (0{,}98 \cdot 0{,}19^2)^{1/3} = (0{,}0354)^{1/3} = 0{,}33$.
-- Seks daler: $m_n^* = 6^{2/3} \cdot 0{,}33\,m_0 = 3{,}30 \cdot 0{,}33\,m_0 = 1{,}1\,m_0$.
+$n_i$ er større enn $N_d$, så ${n_0 = N_d}$ holder ikke. Nøytraliteten gir
+${n_0 = p_0 + N_d}$, og massevirkningsloven gir ${p_0 = n_i^2/n_0}$. Sett den andre inn i
+den første:
 
-<Answer>$m_n^* = 1{,}1\,m_0$, tyngre enn begge krumningsmassene: seks daler betyr seks ganger så mange tilstander, og det løfter massen over begge krumningene. I GaAs er flatene kuler i én dal, og massen i $N_c$ er krumningsmassen selv, $0{,}067\,m_0$.</Answer>
+$$
+n_0^2 - N_dn_0 - n_i^2 = 0
+$$
+
+Den positive løsningen er
+
+$$
+n_0 = \frac{N_d}{2} + \sqrt{\frac{N_d^2}{4} + n_i^2}
+$$
+
+Med ${N_d/2 = 0{,}5 \times 10^{15}}$, ${N_d^2/4 = 0{,}25 \times 10^{30}}$ og
+${n_i^2 = 4{,}0 \times 10^{30}}$, de to siste i cm⁻⁶, er
+
+$$
+\begin{aligned}
+n_0 &= 0{,}5 \times 10^{15} + \sqrt{4{,}25 \times 10^{30}} \\
+&= 0{,}5 \times 10^{15} + 2{,}06 \times 10^{15} \\
+&= 2{,}6 \times 10^{15}\ \text{cm}^{-3}
+\end{aligned}
+$$
+
+og hullene er ${p_0 = n_0 - N_d = 1{,}6 \times 10^{15}\ \text{cm}^{-3}}$.
+
+<Answer>${n_0 \approx 2{,}6 \times 10^{15}\ \text{cm}^{-3}}$ og ${p_0 \approx 1{,}6 \times 10^{15}\ \text{cm}^{-3}}$. Parene fra brutte bindinger er nå flere enn donorelektronene.</Answer>
 
 </Solution>
 
 </Example>
 
-Valensbåndtoppen telles på samme måte. Der møtes to bånd med hver sin
-krumning, lette og tunge hull, og $(m_p^*)^{3/2}$ er summen av de to
-krumningsmassene, hver i potensen $3/2$. For Si er $m_p^* \approx 0{,}55\,m_0$.
+## Donorer og akseptorer i samme materiale
 
-Massen her er til telling. I et felt er det farten som avgjør strømmen, og
-farten en kraft gir, går som $1/m$ i kraftens retning. Der er det derfor $1/m_l$
-og $1/m_t$ som midles over dalene, og tallet for elektroner i Si blir
-$0{,}26\,m_0$, mye nærmere $m_t$ enn $m_l$.
+Et materiale kan ha både donorer og akseptorer. Velg «Donorer og akseptorer» i
+simuleringen «Tilstander og elektroner», og sett temperaturen til 300 K. Der er det seks
+donorer og tre akseptorer. En akseptor tar et elektron fra valensbåndet, og hullet det
+etterlater, fylles av et elektron fra ledningsbåndet. Til slutt sitter elektronene fra
+tre av donorene på akseptorene. I ledningsbåndet er det tre elektroner flere enn det er
+hull i valensbåndet, ett for hver donor som er til overs, og $E_F$ står lavere enn med
+«n-type».
 
-<Callout title="To masser i Si">
+At akseptorene tar elektronene fra like mange donorer, kalles
+<Term name="Kompensasjon">kompensasjon</Term>. Med alle dopeatomene ionisert
+og ${N_d > N_a}$ er ${n_0 \approx N_d - N_a}$ når ${N_d - N_a \gg n_i}$. Med ${N_a = N_d}$ er
+${n_0 = p_0 = n_i}$, som i rent materiale, selv om krystallen er full av dopeatomer. I ekte
+silisium er $N_d - N_a$ som regel mye større enn $n_i$, og da flytter $E_F$ seg lite. Med
+${N_d = 6 \times 10^{15}}$ og ${N_a = 3 \times 10^{15}\ \text{cm}^{-3}}$ halveres $n_0$, og
+$E_F$ synker bare ${k_BT\ln 2 = 18\ \text{meV}}$.
 
-Massen i $N_c$ teller tilstander og er $1{,}1\,m_0$ for elektroner i Si. For
-bevegelse i et felt midles $1/m$, og tallet er $0{,}26\,m_0$.
+Regnskapet er det samme som med donorer alene. Krystallen er nøytral, så den positive
+ladningen i hull og ioniserte donorer er lik den negative ladningen i elektroner og
+ioniserte akseptorer:
 
+<Formula tex={"p_0 + N_d^+ = n_0 + N_a^-"} caption={"Ladningsnøytralitet. $N_d^+$ og $N_a^-$ er konsentrasjonene av ioniserte donorer og akseptorer."} onSheet={false} />
+
+Det kravet kalles <Term name="Ladningsnøytralitet">ladningsnøytralitet</Term>. Sammen
+med massevirkningsloven bestemmer ladningsnøytraliteten $n_0$ og $p_0$, og dermed hvor
+$E_F$ står.
+
+<Callout title="Kompensasjon">
+Akseptorene tar elektronene fra like mange donorer, så ${n_0 \approx N_d - N_a}$ når ${N_d > N_a}$. Ladningsnøytraliteten ${p_0 + N_d^+ = n_0 + N_a^-}$ og massevirkningsloven bestemmer sammen $n_0$, $p_0$ og $E_F$.
 </Callout>
 
-## Temperaturavhengigheten
+<Example label="Eksamensoppgave" title="Både donorer og akseptorer">
+<ExamRef id="2020-mai" task="I-2" />
 
-Temperaturen står to steder i $n_i$: som $T^{3/2}$ i $N_c$ og $N_v$, og i
-eksponenten $e^{-E_g/2k_BT}$. Eksponenten dominerer så grundig at $\ln n_i$ mot
-$1/T$ er praktisk talt en rett linje med stigningstall $-E_g/2k_B$. Slike kurver
-plottes mot $1000/T$, så temperaturen øker mot venstre. Gapet bestemmer
-nivåene: ved 300 K er $n_i$ lik $2{,}5 \times 10^{13}$ cm⁻³ i Ge,
-$1{,}5 \times 10^{10}$ i Si og $2 \times 10^{6}$ i GaAs.
-
-Dopet materiale følger $n_i$-kurven bare ved de høyeste temperaturene. Ved
-lave temperaturer sitter donorelektronene fortsatt bundet på donorene; oppvarming ioniserer
-dem, og i typisk dopet Si er praktisk talt alle donorene ionisert rundt 100 K.
-Derfra er $n_0 = N_d$, flatt over et bredt temperaturområde: ioniseringen er
-ferdig, og $n_i$ er ennå mange tierpotenser mindre. Først når $n_i$ vokser seg
-opp mot $N_d$, tar de termiske parene over, og materialet oppfører seg
-intrinsisk uansett doping.
-
-Komponenter skal styres av dopingen, så materialet dopes hardt nok til at det
-ekstrinsiske platået dekker hele driftsområdet: jo høyere $N_d$, desto høyere
-temperatur før $n_i$ tar igjen.
-
-<Callout title="Tre temperaturområder">
-
-Ved lave temperaturer er donorene ikke ionisert. På platået er $n_0 = N_d$, og
-når $n_i$ når opp mot $N_d$, blir materialet intrinsisk uansett doping.
-
-</Callout>
-
-<Simulation
-  src={"/sims/temperaturavhengighet.js"}
-  host={"dom"}
-  title={"Bærerkonsentrasjonen mot temperaturen"}
-  caption={"$n_0$ mot temperaturen for én donortetthet. I det tonede feltet til venstre er donorene ennå ikke ionisert; på platået er $n_0 = N_d$; i feltet til høyre har den stiplede $n_i(T)$-kurven tatt igjen dopingen, og materialet er intrinsisk. Boka tegner de samme kurvene mot $1000/T$, med den varme siden mot venstre."}
-  height={400}
+<Quiz
+  question={"The thermal equilibrium concentration of mobile charge carriers in Si at room temperature when doped with ${N_D = 5\\times10^{18}\\ \\text{cm}^{-3}}$ (donors) and ${N_A = 10^{18}\\ \\text{cm}^{-3}}$ (acceptors) is,"}
+  options={[
+    "${n \\approx 5\\times10^{18}\\ \\text{cm}^{-3}}$, ${p \\approx 1\\times10^{18}\\ \\text{cm}^{-3}}$",
+    "${n = p \\approx \\sqrt{5} \\times 10^{18}\\ \\text{cm}^{-3}}$",
+    "${n \\approx 4\\times10^{18}\\ \\text{cm}^{-3}}$, ${p \\approx 0.5\\times10^{2}\\ \\text{cm}^{-3}}$"
+  ]}
+  answer={2}
+  explanation={"Akseptorene tar elektronene fra $10^{18}$ av donorene, så ${n_0 \\approx N_D - N_A = 4 \\times 10^{18}\\ \\text{cm}^{-3}}$, og massevirkningsloven gir ${p_0 = n_i^2/n_0 = 2{,}25 \\times 10^{20}/(4 \\times 10^{18}) \\approx 56\\ \\text{cm}^{-3}}$, altså $0{,}5 \\times 10^2$. Det første alternativet regner hver dopetype for seg, som om akseptorene ga hull uten å ta elektroner. Det andre tar $\\sqrt{N_DN_A}$ som om materialet var intrinsisk. Oppgaven regner med at alle dopeatomene er ionisert og bruker massevirkningsloven slik den står. Med så tung doping står $E_F$ bare omtrent $2k_BT$ under $E_c$, nær $E_d$, så begge antakelsene er bare omtrentlige, men svaret er riktig i størrelsesorden."}
 />
 
-## Kompensasjon og ladningsnøytralitet
-
-Et materiale kan inneholde begge slags dopanter samtidig. Med $N_d > N_a$ er
-det n-type, og $E_F$ ligger høyt i gapet, så akseptornivåene er fylt.
-Elektronene som fyller dem, er tatt fra ledningsbåndet: hver akseptor
-annullerer én donor, og igjen står
-$n_0 \approx N_d - N_a$ så lenge $N_d - N_a \gg n_i$. Denne annulleringen kalles
-<Term name="Kompensasjon">kompensasjon</Term>, og med $N_a = N_d$ er
-konsentrasjonene tilbake på $n_0 = p_0 = n_i$, i et materiale fullt av dopanter.
-
-Regnskapet bak er <Term name="Ladningsnøytralitet">ladningsnøytralitet</Term>:
-krystallen er nøytral, så positiv og negativ ladning må balansere,
-
-$$
-p_0 + N_d^+ = n_0 + N_a^-
-$$
-
-Sammen med massevirkningsloven bestemmer
-<FormulaRef id="ladningsnoytralitet">nøytralitetskravet</FormulaRef> $n_0$,
-$p_0$ og $E_F$ entydig; $E_F$ stiller seg dit begge er oppfylt.
+</Example>
 
 ## Sjekk deg selv
 
 <Quiz
-  question={"Du dobler donortettheten i n-type Si og holder temperaturen fast. Hva skjer med hullkonsentrasjonen $p_0$?"}
+  question={"$E_F$ står $0{,}30$ eV under $E_c$ i et stykke silisium ved 300 K. Mer doping flytter $E_F$ til $0{,}18$ eV under $E_c$. Hvor mange ganger større blir $n_0$?"}
   options={[
-    "Den dobles",
-    "Den er uendret",
-    "Den halveres",
-    "Den faller til en fjerdedel"
+    "1,7 ganger",
+    "Omtrent 100 ganger",
+    "Omtrent 4,6 ganger",
+    "2 ganger"
   ]}
-  answer={2}
-  explanation={"Produktet $n_0p_0 = n_i^2$ er låst av materiale og temperatur, og $n_0 \\approx N_d$ dobles, så $p_0 = n_i^2/N_d$ halveres. Uendret er fristende fordi hullene ikke kommer fra donorene, men generasjonen av par avhenger bare av temperaturen, og med dobbelt så mange elektroner finner hvert hull en partner dobbelt så fort."}
+  answer={1}
+  explanation={"${n_0 = N_ce^{-(E_c - E_F)/k_BT}}$, så forholdet er ${e^{0{,}12/0{,}0259} = e^{4{,}6} \\approx 100}$. Hver 60 meV er en faktor 10, og 120 meV er to slike faktorer ganget sammen, altså 100. Svarer du 2, har du lagt faktorene sammen i stedet for å gange dem. Avstanden står i eksponenten, så forholdet mellom avstandene, 1,7, sier ingenting om konsentrasjonene, og 4,6 er eksponenten selv."}
 />
 
 <Quiz
-  question={"Ge har $n_i = 2{,}5 \\times 10^{13}$ cm⁻³ ved 300 K. En Ge-prøve er dopet med $N_d = 10^{13}$ cm⁻³, alle ionisert. Hvordan oppfører prøven seg ved 300 K?"}
+  question={"Silisium er dopet med ${N_a = 10^{16}}$ akseptorer per cm³, alle ionisert, ved 300 K. Hva er elektronkonsentrasjonen $n_0$?"}
   options={[
-    "Nær intrinsisk, fordi $n_i$ allerede er større enn $N_d$",
-    "n-type med $n_0 = N_d$, fordi alle donorene er ionisert",
-    "n-type med $p_0 = n_i^2/N_d$, langt under $n_0$",
-    "p-type, fordi $n_i$ er større enn $N_d$"
+    "${1{,}5 \\times 10^{10}\\ \\text{cm}^{-3}}$",
+    "${2{,}25 \\times 10^{4}\\ \\text{cm}^{-3}}$",
+    "${10^{16}\\ \\text{cm}^{-3}}$",
+    "${1{,}5 \\times 10^{-6}\\ \\text{cm}^{-3}}$"
   ]}
-  answer={0}
-  explanation={"Platået $n_0 = N_d$ krever $n_i \\ll N_d$, og her er $n_i$ 2,5 ganger $N_d$. Nøytralitet og massevirkningsloven gir $n_0 \\approx 3{,}1 \\times 10^{13}$ og $p_0 \\approx 2{,}0 \\times 10^{13}$ cm⁻³, nesten like. Setter du $n_0 = N_d$, gir $p_0 = n_i^2/N_d = 6{,}3 \\times 10^{13}$ cm⁻³ flere hull enn elektroner, og nøytraliteten bryter sammen."}
+  answer={1}
+  explanation={"Hullene er ${p_0 = N_a = 10^{16}\\ \\text{cm}^{-3}}$, og massevirkningsloven gir ${n_0 = n_i^2/p_0 = 2{,}25 \\times 10^{20}/10^{16} = 2{,}25 \\times 10^{4}\\ \\text{cm}^{-3}}$. Det er fristende å la $n_0$ bli stående på $n_i$, siden akseptorene ikke tar elektroner fra ledningsbåndet direkte, men med så mange hull faller hvert elektron raskt ned i ett av dem. ${10^{16}\\ \\text{cm}^{-3}}$ er hullkonsentrasjonen, ikke elektronkonsentrasjonen. Deler du $n_i$ på $N_a$ uten å kvadrere $n_i$, får du ${1{,}5 \\times 10^{-6}\\ \\text{cm}^{-3}}$."}
+/>
+
+<Quiz
+  question={"Et materiale har ${N_c = 4N_v}$ ved 300 K. Hvor står det intrinsiske nivået $E_i$?"}
+  options={[
+    "Midt i gapet, fordi elektronene og hullene er like mange",
+    "18 meV over midten av gapet",
+    "36 meV under midten av gapet",
+    "18 meV under midten av gapet"
+  ]}
+  answer={3}
+  explanation={"$E_i$ ligger ${\\tfrac12 k_BT\\ln(N_c/N_v) = \\tfrac12 \\cdot 0{,}0259\\ \\text{eV}\\cdot\\ln 4 = 18\\ \\text{meV}}$ under midten. Ledningsbåndet har flere tilstander nær kanten, så $E_F$ må stå lavere, bort fra ledningsbåndet, for at elektronene ikke skal bli flere enn hullene. Over midten får du med fortegnet snudd. Elektronene og hullene er riktignok like mange, men det krever at nivået flytter seg. Glemmer du faktoren $\\tfrac12$, får du 36 meV."}
+/>
+
+<Quiz
+  question={"Ledningsbåndet i germanium har fire like daler med ${m_l = 1{,}64\\,m_0}$ og ${m_t = 0{,}082\\,m_0}$. Hva er den effektive massen for tilstandstetthet $m_n^*$?"}
+  options={[
+    "$0{,}22\\,m_0$",
+    "$0{,}89\\,m_0$",
+    "$0{,}56\\,m_0$",
+    "$1{,}64\\,m_0$"
+  ]}
+  answer={2}
+  explanation={"Én dal gir ${(m_lm_t^2)^{1/3} = (1{,}64 \\cdot 0{,}082^2)^{1/3}\\,m_0 = 0{,}22\\,m_0}$, og fire daler gir ${m_n^* = 4^{2/3} \\cdot 0{,}22\\,m_0 = 0{,}56\\,m_0}$. Glemmer du dalene, får du $0{,}22\\,m_0$. Ganger du med 4 i stedet for $4^{2/3}$, får du $0{,}89\\,m_0$, men antallet daler ganger opp $(m_n^*)^{3/2}$ og ikke massen selv. $1{,}64\\,m_0$ er bare den langsgående massen, og tellingen trenger alle tre retningene."}
+/>
+
+<Quiz
+  question={"Silisium har ${N_d = 3 \\times 10^{16}}$ og ${N_a = 10^{16}}$ per cm³, alle ionisert, ved 300 K. Hva er $n_0$ og $p_0$?"}
+  options={[
+    "${n_0 = 3 \\times 10^{16}}$ og ${p_0 = 10^{16}\\ \\text{cm}^{-3}}$",
+    "${n_0 = 2 \\times 10^{16}}$ og ${p_0 = 1{,}1 \\times 10^{4}\\ \\text{cm}^{-3}}$",
+    "${n_0 = 3 \\times 10^{16}}$ og ${p_0 = 7{,}5 \\times 10^{3}\\ \\text{cm}^{-3}}$",
+    "${n_0 = 4 \\times 10^{16}}$ og ${p_0 = 5{,}6 \\times 10^{3}\\ \\text{cm}^{-3}}$"
+  ]}
+  answer={1}
+  explanation={"Akseptorene tar elektronene fra $10^{16}$ av donorene, så ${n_0 = N_d - N_a = 2 \\times 10^{16}\\ \\text{cm}^{-3}}$, og ${p_0 = n_i^2/n_0 = 2{,}25 \\times 10^{20}/(2 \\times 10^{16}) = 1{,}1 \\times 10^{4}\\ \\text{cm}^{-3}}$. Akseptorene gir ikke $10^{16}$ hull ved siden av donorelektronene, fordi hullene de lager, fylles av donorelektroner. Ser du bort fra akseptorene, får du ${n_0 = 3 \\times 10^{16}}$, og legger du dem til donorene, får du ${4 \\times 10^{16}}$, men en akseptor tar et elektron og gir ikke et."}
 />
 
 <KeyTakeaways>
 
-- $f(E) = [1 + e^{(E - E_F)/k_BT}]^{-1}$ er sannsynligheten for at en tilstand er okkupert. $f(E_F) = \tfrac{1}{2}$, fordelingen er symmetrisk om nivået, og ved 300 K er $k_BT = 0{,}0259$ eV.
-- Bærerne ligger i tynne striper ved båndkantene: $N(E)$ vokser fra null, $f$ faller eksponentielt, og produktet topper seg $k_BT/2$ fra kanten.
-- Med Boltzmann-tilnærmingen er $n_0 = N_c e^{-(E_c - E_F)/k_BT}$ og $p_0 = N_v e^{-(E_F - E_v)/k_BT}$. 60 meV i $E_F$-avstand er en tierpotens ved romtemperatur.
-- $n_0 p_0 = n_i^2$ uansett doping, og $n_i = \sqrt{N_c N_v}\,e^{-E_g/2k_BT}$, som er $1{,}5 \times 10^{10}$ cm⁻³ for Si ved 300 K.
-- Massen i $N_c$ teller tilstander: seks daler og geometrisk middel gir $m_n^* = 1{,}1\,m_0$ i Si. For bevegelse i et felt midles $1/m$ over dalene, og da er tallet $0{,}26\,m_0$.
-- $n_0(T)$ har tre områder: ionisering, ekstrinsisk platå på $N_d$ og intrinsisk der $n_i$ tar igjen dopingen. Komponenter dopes så platået dekker driftsområdet.
-- Ladningsnøytralitet $p_0 + N_d^+ = n_0 + N_a^-$ og massevirkningsloven bestemmer alt; kompensasjon gir netto $N_d - N_a$.
+- De tillatte $\vec k$ ligger jevnt i $k$-rommet, og nær en båndkant vokser tilstandstettheten som $\sqrt{E - E_c}$.
+- To regler, ett elektron per tilstand og Boltzmann-faktoren $e^{-\Delta E/k_BT}$ for hopp oppover, gir Fermi–Dirac-fordelingen. ${f(E_F) = \tfrac12}$, og halen faller med en faktor $e$ for hver $k_BT$.
+- $E_F$ står der antall elektroner krever, og den samme $f$ gir både elektronene og hullene.
+- Med Boltzmann-tilnærmingen er ${n_0 = N_ce^{-(E_c - E_F)/k_BT}}$ og ${p_0 = N_ve^{-(E_F - E_v)/k_BT}}$. Hver 60 meV er en faktor 10 ved romtemperatur.
+- ${n_0p_0 = n_i^2}$ uansett doping, med ${n_i = \sqrt{N_cN_v}\,e^{-E_g/2k_BT}}$. Målt fra $E_i$ er ${n_0 = n_ie^{(E_F - E_i)/k_BT}}$.
+- Massen i $N_c$ teller tilstander, og seks daler gir ${m_n^* = 1{,}1\,m_0}$ i Si.
+- $n_0(T)$ har tre områder: donorelektronene sitter fast, platået ${n_0 = N_d}$ og det intrinsiske området, der $n_i$ har tatt igjen dopingen.
+- Med både donorer og akseptorer er ${n_0 \approx N_d - N_a}$, og ${p_0 + N_d^+ = n_0 + N_a^-}$ sammen med massevirkningsloven bestemmer alt.
 
 </KeyTakeaways>

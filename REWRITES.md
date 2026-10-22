@@ -13,6 +13,11 @@ page, build intuition before the math with sims and figures designed alongside t
 independent agent review the draft, and show the maintainer the new module side by side with the
 current one. Nothing is committed until the maintainer approves it.
 
+Every rewrite quotes the past-exam tasks the module can solve (`WRITING.md` §3). The course's
+papers are on Blackboard under «Previous exams» (in `exports/`, from the 22 October 2026 export on):
+2018 (TFE4164), spring and fall 2020, 2021, 2022, 2023, 2024 and 2025. They are not public, so all
+of them are hosted in `public/exams/` and listed in `course.yaml` `exams[]`.
+
 Statuses: **to rewrite**, **in review** (a draft exists outside this repo and is with the
 maintainer), **rewritten** (approved and committed).
 
@@ -21,7 +26,7 @@ maintainer), **rewritten** (approved and committed).
 | Module | Status | Notes |
 |---|---|---|
 | 01 Energibånd og ladningsbærere | **rewritten** | Rewritten from scratch with five new sims and four figures; approved and committed 2026-10-20. The reference module for `WRITING.md` §2. |
-| 02 Bærerkonsentrasjoner ved likevekt | to rewrite |  |
+| 02 Bærerkonsentrasjoner ved likevekt | **rewritten** | Rewritten from scratch with two new sims (band states with Monte Carlo electrons, n₀ against temperature for Si, Ge and GaAs), two figures and four exam tasks; approved and committed 2026-10-22. |
 | 03 Drift og Hall-effekten | to rewrite |  |
 | 04 Overskuddsbærere og diffusjon | to rewrite |  |
 | 05 pn-overgangen i likevekt og med forspenning | to rewrite | Approved restructure, on hold until the writing review is finished: «Forspenning» moves into 06, so the diode equation is derived once; 05 becomes «pn-overgangen i likevekt» (§5.1–5.2). |
