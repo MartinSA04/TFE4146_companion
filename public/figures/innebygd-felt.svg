@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 318" width="340" height="318">
+  <!-- n-type Si der dopingen faller fra 10^17 til 10^15 cm^-3, i likevekt. Øverst båndskjemaet med flatt E_F
+       og E_c 0,12 eV høyere til høyre; nederst staven med donorioner og elektroner, ikke i skala. -->
+  <defs><marker id="bl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d7cc4"/></marker><marker id="ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f7a88"/></marker></defs>
+  <path d="M 34 105 L 36 105 L 38 105 L 40 105 L 42 105 L 44 105 L 46 105 L 48 105 L 50 105 L 52 105 L 54 105 L 56 105 L 58 105 L 60 105 L 62 105 L 64 105 L 66 105 L 68 105 L 70 105 L 72 105 L 74 105 L 76 105 L 78 105 L 80 105 L 82 105 L 84 105 L 86 105 L 88 105 L 90 105 L 92 105 L 94 105 L 96 105 L 98 105 L 100 105 L 102 105 L 104 105 L 106 105 L 108 105 L 110 104.9 L 112 104.9 L 114 104.9 L 116 104.9 L 118 104.9 L 120 104.9 L 122 104.8 L 124 104.8 L 126 104.8 L 128 104.7 L 130 104.7 L 132 104.6 L 134 104.5 L 136 104.5 L 138 104.4 L 140 104.2 L 142 104.1 L 144 103.9 L 146 103.7 L 148 103.4 L 150 103.1 L 152 102.8 L 154 102.4 L 156 101.9 L 158 101.3 L 160 100.7 L 162 100 L 164 99.1 L 166 98.2 L 168 97.1 L 170 95.9 L 172 94.7 L 174 93.3 L 176 91.8 L 178 90.2 L 180 88.6 L 182 87 L 184 85.4 L 186 83.8 L 188 82.2 L 190 80.7 L 192 79.3 L 194 78.1 L 196 76.9 L 198 75.8 L 200 74.9 L 202 74 L 204 73.3 L 206 72.7 L 208 72.1 L 210 71.6 L 212 71.2 L 214 70.9 L 216 70.6 L 218 70.3 L 220 70.1 L 222 69.9 L 224 69.8 L 226 69.6 L 228 69.5 L 230 69.5 L 232 69.4 L 234 69.3 L 236 69.3 L 238 69.2 L 240 69.2 L 242 69.2 L 244 69.1 L 246 69.1 L 248 69.1 L 250 69.1 L 252 69.1 L 254 69.1 L 256 69 L 258 69 L 260 69 L 262 69 L 264 69 L 266 69 L 268 69 L 270 69 L 272 69 L 274 69 L 276 69 L 278 69 L 280 69 L 282 69 L 284 69 L 286 69 L 288 69 L 290 69 L 292 69 L 294 69 L 296 69 L 298 69 L 300 69 L 302 69 L 304 69 L 306 69 L 308 69 L 310 69 L 312 69 L 314 69 L 316 69 L 318 69 L 320 69 L 322 69 L 324 69 L 326 69 L 328 69 L 330 69" fill="none" stroke="#8d98a6" stroke-width="2"/>
+  <line x1="34" y1="150" x2="330" y2="150" stroke="#6f7a88" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="4" y="111" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#7c8795" text-anchor="start">E<tspan dy="5" font-size="13">c</tspan></text>
+  <text x="4" y="156" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">E<tspan dy="5" font-size="13">F</tspan></text>
+  <path d="M 54 105 h 8 M 58 105 V 150 M 54 150 h 8" stroke="#7c8795" stroke-width="1.1" fill="none"/>
+  <text x="65" y="132.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#7c8795" text-anchor="start">0,15 eV</text>
+  <path d="M 316 69 h 8 M 320 69 V 150 M 316 150 h 8" stroke="#7c8795" stroke-width="1.1" fill="none"/>
+  <text x="313" y="114.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#7c8795" text-anchor="end">0,27 eV</text>
+  <circle cx="52" cy="96" r="4.2" fill="#3d7cc4"/>
+  <circle cx="66" cy="90" r="4.2" fill="#3d7cc4"/>
+  <circle cx="80" cy="95" r="4.2" fill="#3d7cc4"/>
+  <circle cx="94" cy="88" r="4.2" fill="#3d7cc4"/>
+  <circle cx="108" cy="94" r="4.2" fill="#3d7cc4"/>
+  <circle cx="122" cy="88.8" r="4.2" fill="#3d7cc4"/>
+  <circle cx="136" cy="95.5" r="4.2" fill="#3d7cc4"/>
+  <circle cx="150" cy="89.1" r="4.2" fill="#3d7cc4"/>
+  <circle cx="172" cy="81.7" r="4.2" fill="#3d7cc4"/>
+  <circle cx="196" cy="64.9" r="4.2" fill="#3d7cc4"/>
+  <circle cx="250" cy="58.1" r="4.2" fill="#3d7cc4"/>
+  <circle cx="300" cy="55" r="4.2" fill="#3d7cc4"/>
+  <line x1="152" y1="30" x2="212" y2="30" stroke="#3d7cc4" stroke-width="2" marker-end="url(#bl)"/>
+  <text x="144" y="35" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#3d7cc4" text-anchor="end">diffusjon</text>
+  <line x1="212" y1="46" x2="152" y2="46" stroke="#3d7cc4" stroke-width="2" marker-end="url(#bl)"/>
+  <text x="220" y="51" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#3d7cc4" text-anchor="start">drift</text>
+  <rect x="34" y="206" width="296" height="62" rx="4" fill="#8d98a6" fill-opacity="0.12" stroke="#8d98a6" stroke-width="1.2"/>
+  <circle cx="46" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 43.4 222 h 5.2 M 46 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="53" cy="231" r="3.6" fill="#3d7cc4"/>
+  <circle cx="55" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 52.4 250 h 5.2 M 55 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="62" cy="242" r="3.6" fill="#3d7cc4"/>
+  <circle cx="65" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 62.4 222 h 5.2 M 65 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="72" cy="231" r="3.6" fill="#3d7cc4"/>
+  <circle cx="74" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 71.4 250 h 5.2 M 74 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="81" cy="242" r="3.6" fill="#3d7cc4"/>
+  <circle cx="84" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 81.4 222 h 5.2 M 84 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="91" cy="231" r="3.6" fill="#3d7cc4"/>
+  <circle cx="93" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 90.4 250 h 5.2 M 93 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="100" cy="242" r="3.6" fill="#3d7cc4"/>
+  <circle cx="103" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 100.4 222 h 5.2 M 103 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="110" cy="231" r="3.6" fill="#3d7cc4"/>
+  <circle cx="112" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 109.4 250 h 5.2 M 112 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="119" cy="242" r="3.6" fill="#3d7cc4"/>
+  <circle cx="122" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 119.4 222 h 5.2 M 122 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="129" cy="231" r="3.6" fill="#3d7cc4"/>
+  <circle cx="131" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 128.4 250 h 5.2 M 131 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="138" cy="242" r="3.6" fill="#3d7cc4"/>
+  <circle cx="141" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 138.4 222 h 5.2 M 141 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="148" cy="231" r="3.6" fill="#3d7cc4"/>
+  <circle cx="150" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 147.4 250 h 5.2 M 150 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="160" cy="222" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 157.4 222 h 5.2 M 160 219.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="169" cy="250" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 166.4 250 h 5.2 M 169 247.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="212" cy="224" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 209.4 224 h 5.2 M 212 221.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="220" cy="232" r="3.6" fill="#3d7cc4"/>
+  <circle cx="262" cy="248" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 259.4 248 h 5.2 M 262 245.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="270" cy="256" r="3.6" fill="#3d7cc4"/>
+  <circle cx="306" cy="226" r="5" fill="none" stroke="#c0703a" stroke-width="1.4"/><path d="M 303.4 226 h 5.2 M 306 223.4 v 5.2" stroke="#c0703a" stroke-width="1.4"/>
+  <circle cx="314" cy="234" r="3.6" fill="#3d7cc4"/>
+  <circle cx="194" cy="220" r="3.6" fill="#3d7cc4"/>
+  <circle cx="202" cy="240" r="3.6" fill="#3d7cc4"/>
+  <circle cx="212" cy="228" r="3.6" fill="#3d7cc4"/>
+  <text x="152" y="199" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#c0703a" text-anchor="middle" font-weight="600">+</text>
+  <text x="204" y="199" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#3d7cc4" text-anchor="middle" font-weight="600">−</text>
+  <line x1="162" y1="194" x2="194" y2="194" stroke="#6f7a88" stroke-width="1.6" marker-end="url(#ink)"/>
+  <text x="178" y="188" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="16" fill="#6f7a88" text-anchor="middle">ℰ</text>
+  <text x="104" y="290" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#7c8795" text-anchor="middle">10¹⁷ cm⁻³</text>
+  <text x="264" y="290" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" fill="#7c8795" text-anchor="middle">10¹⁵ cm⁻³</text>
+</svg>

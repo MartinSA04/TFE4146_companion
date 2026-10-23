@@ -248,77 +248,87 @@ formulas:
     onSheet: false
     tex: "\\dfrac{dE_F}{dx} = 0"
     label: "Fermi-nivået er det samme overalt i materialer i kontakt ved termisk likevekt. Raten $N_1 f_1 \\cdot N_2(1 - f_2)$ fra 1 til 2 må være lik raten tilbake ved hver energi, og det krever $f_1 = f_2$, altså $E_{F1} = E_{F2}$."
+  - id: absorpsjon
+    section: Lys lager elektron-hull-par
+    onSheet: false
+    tex: "I(x) = I(0)\\,e^{-\\alpha x}"
+    label: "Intensiteten av lys med $h\\nu \\ge E_g$ i dybden $x$. Et foton som har kommet til $x$, har den samme sjansen for å bli absorbert i det neste stykket, så andelen per lengde, absorpsjonskoeffisienten $\\alpha$, er konstant. Parene lages innenfor omtrent $1/\\alpha$ fra overflaten, noen få mikrometer for rødt lys i Si."
   - id: levetid
-    section: Overskuddsbærere
+    section: Rekombinasjon og levetid
     onSheet: false
-    tex: "\\delta n(t) = \\Delta n\\, e^{-t/\\tau_n}, \\qquad \\tau_n = \\dfrac{1}{a_r(n_0 + p_0)} \\approx \\dfrac{1}{a_r p_0}"
-    label: "Overskuddet dør ut eksponentielt med levetiden til minoritetsbærerne, her elektroner i p-type materiale. Gjelder ved lav injeksjon, der $\\delta n^2$-leddet i rekombinasjonen $a_r np$ kan strykes. Majoriteten faller med samme rate, siden bærerne forsvinner parvis."
+    tex: "\\delta p(t) = \\Delta p\\,e^{-t/\\tau_p}, \\qquad \\tau_p = \\dfrac{1}{a_r(n_0 + p_0)} \\approx \\dfrac{1}{a_r n_0}"
+    label: "Overskuddet av hull i n-type etter et glimt, ved lav injeksjon og direkte rekombinasjon. Hvert hull har den samme sjansen per sekund for å bli fylt, fordi $n \\approx n_0$, så overskuddet dør ut eksponentielt. Elektronene i overskuddet forsvinner like fort, parvis med hullene. I p-type er $\\tau_n \\approx 1/a_rp_0$. I Si går rekombinasjonen via sentre i gapet, og levetiden er satt av hvor mange sentre det er."
   - id: stasjonaert-overskudd
-    section: Kvasi-Fermi-nivåer
+    section: Jevnt lys og kvasi-Fermi-nivåer
     onSheet: false
-    tex: "\\delta n = \\delta p = g_\\text{op}\\,\\tau_n"
-    label: "Stasjonært overskudd under jevn belysning: den optiske generasjonsraten ganger levetiden. Da er $np \\neq n_i^2$, og likevektens $E_F$ må byttes ut med to nivåer."
+    tex: "\\delta n = \\delta p = g_\\text{op}\\,\\tau_p"
+    label: "Det stasjonære overskuddet under jevnt lys, ved lav injeksjon: lyset lager $g_\\text{op}$ par per cm³ og sekund, og hvert lever $\\tau_p$. Da er $np \\neq n_i^2$, og ett Fermi-nivå kan ikke gi både $n$ og $p$."
   - id: kvasi-fermi-nivaaer
-    section: Kvasi-Fermi-nivåer
+    section: Jevnt lys og kvasi-Fermi-nivåer
     onSheet: true
     tex: "\\begin{aligned} n &= N_c\\, e^{-(E_c - F_n)/k_BT} = n_i\\, e^{(F_n - E_i)/k_BT} \\\\ p &= N_v\\, e^{-(F_p - E_v)/k_BT} = n_i\\, e^{(E_i - F_p)/k_BT} \\end{aligned}"
-    label: "Definisjonen av kvasi-Fermi-nivåene $F_n$ og $F_p$: samme form som likevektsuttrykkene, med hvert sitt nivå. I likevekt er $F_n = F_p = E_F$; avstanden $F_n - F_p$ måler hvor langt materialet er fra likevekt. Minoritetsnivået flytter seg mest."
+    label: "Kvasi-Fermi-nivåene $F_n$ og $F_p$: samme form som likevektsuttrykkene, med hvert sitt nivå. Inne i et bånd fordeler bærerne seg på pikosekunder, mellom båndene tar det mikrosekunder, så under lys har hvert bånd sitt eget nivå. I likevekt er $F_n = F_p = E_F$. Minoritetsnivået flytter seg mest, $k_BT$ for hver faktor $e$ konsentrasjonen endrer seg med."
   - id: diffusjonsstrom
     section: Diffusjon
     onSheet: true
     tex: "J_n^\\text{diff}(x) = +qD_n\\dfrac{dn(x)}{dx}, \\qquad J_p^\\text{diff}(x) = -qD_p\\dfrac{dp(x)}{dx}"
-    label: "Diffusjonsstrømmene, fra partikkelfluksen $\\phi = -D\\,dn/dx$ ganger ladningen. Elektroner og hull i samme gradient beveger seg samme vei, men strømmene går motsatt, siden ladningene har ulikt fortegn. $D$ har enhet cm²/s; for Si er $D_n = 35$ og $D_p = 12{,}5$."
-  - id: driftdiffusjonsstrom
+    label: "Diffusjonsstrømmene, fra fluksen $\\phi = -D\\,dn/dx$ ganger ladningen. Elektroner og hull i samme gradient går samme vei, men strømmene deres går motsatt vei. For Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s."
+  - id: diffusjonskoeffisient
     section: Diffusjon
+    onSheet: false
+    tex: "D = \\dfrac{l^2}{2\\bar{t}}"
+    label: "Diffusjonskoeffisienten i modellen der hver bærer tar ett steg $l$ til venstre eller høyre hver midlere kollisjonstid $\\bar{t}$. Halvparten av bærerne innenfor ett steg på hver side av et snitt går over, så fluksen er $(l/2\\bar{t})(n_1 - n_2) = -D\\,dn/dx$. Modellen er grov: for elektroner i Si gir den omtrent 50 cm²/s, mot målte 35. Med flukter i alle retninger og ulike lengder blir $D = l^2/3\\bar{t} \\approx 34$ cm²/s."
+  - id: driftdiffusjonsstrom
+    section: Drift og diffusjon sammen
     onSheet: true
     tex: "\\begin{aligned} J_n(x) &= q\\mu_n n(x)\\mathcal{E}(x) + qD_n\\dfrac{dn(x)}{dx} \\\\ J_p(x) &= q\\mu_p p(x)\\mathcal{E}(x) - qD_p\\dfrac{dp(x)}{dx} \\end{aligned}"
-    label: "Hele strømmen for hver bærertype: et driftledd proporsjonalt med konsentrasjonen og et diffusjonsledd proporsjonalt med gradienten. Minoritetsbærerne bidrar lite til drift, men gradienten kan være stor, så minoritetsstrøm er nesten alltid diffusjon. $J = J_n + J_p$."
+    label: "Strømmen for hver bærertype: et driftledd proporsjonalt med konsentrasjonen og et diffusjonsledd proporsjonalt med gradienten. Minoritetsbærerne bærer lite strøm ved drift, men kan bære mye ved diffusjon, fordi gradienten deres kan være bratt. $J = J_n + J_p$."
   - id: total-strom
-    section: Diffusjon
+    section: Drift og diffusjon sammen
     onSheet: true
     tex: "\\begin{aligned} J_\\text{tot} &= J_\\text{ledning} + J_\\text{forskyvning} \\\\ &= J_n + J_p + C\\dfrac{dV}{dt} \\end{aligned}"
     label: "Den totale strømtettheten: ledningsstrømmen fra bærerne pluss forskyvningsstrømmen når spenningen endrer seg, med $C$ som kapasitansen per areal. I stasjonær tilstand er det siste leddet null."
   - id: felt-baandskjema
-    section: Diffusjon
+    section: Drift og diffusjon sammen
     onSheet: true
     tex: "\\mathcal{E}(x) = -\\dfrac{d\\mathcal{V}(x)}{dx} = \\dfrac{1}{q}\\dfrac{dE_i}{dx}"
-    label: "Et felt tegnes som skrå bånd. Båndkanten er elektronets potensielle energi, $E_c = \\text{konstant} - q\\mathcal{V}$, så båndene ligger lavest der potensialet er høyest. Potensialet faller langs feltet, så båndene stiger i feltretningen, og stigningen er feltet. Elektroner driver nedover i skjemaet, hull oppover, og $\\mathcal{E}$ peker oppoverbakke."
+    label: "Et felt tegnes som skrå bånd. Båndkanten er elektronets potensielle energi, $E_c = \\text{konstant} - q\\mathcal{V}$, så båndene ligger lavest der potensialet er høyest. Potensialet faller i feltretningen, så båndene stiger i feltretningen, og hellingen er feltet. Elektronene triller nedover i båndskjemaet, hullene flyter oppover, og $\\mathcal{E}$ peker oppover bakken."
   - id: einstein
-    section: Einstein-relasjonen
+    section: Innebygd felt og Einstein-relasjonen
     onSheet: true
     tex: "\\dfrac{D}{\\mu} = \\dfrac{k_BT}{q}"
-    label: "Einstein-relasjonen, fra kravet om null strøm i likevekt med $dE_F/dx = 0$. Forholdet er $0{,}0259$ V ved romtemperatur, uansett bærertype og materiale, så måler du den ene av $D$ og $\\mu$, har du den andre."
+    label: "Einstein-relasjonen. Der dopingen varierer, driver det innebygde feltet bærerne like fort tilbake som de diffunderer, og med $n = N_ce^{-(E_c - E_F)/k_BT}$ og $E_F$ flatt krever $J_n = 0$ dette forholdet. Det er $0{,}0259$ V ved romtemperatur for begge bærertypene, fordi regningen bare bruker at konsentrasjonen endrer seg med en faktor $e$ for hver $k_BT$ båndkanten flytter seg i forhold til $E_F$."
   - id: kontinuitet
     section: Kontinuitetsligningen
     onSheet: true
     tex: "\\begin{aligned} \\dfrac{\\partial p(x,t)}{\\partial t} &= \\dfrac{\\partial\\,\\delta p}{\\partial t} = -\\dfrac{1}{q}\\dfrac{\\partial J_p}{\\partial x} - \\dfrac{\\delta p}{\\tau_p} \\\\ \\dfrac{\\partial\\,\\delta n}{\\partial t} &= \\dfrac{1}{q}\\dfrac{\\partial J_n}{\\partial x} - \\dfrac{\\delta n}{\\tau_n} \\end{aligned}"
-    label: "Kontinuitetsligningen: konsentrasjonen i en skive øker med nettoinnstrømmen av partikler og minker med rekombinasjonen. Fortegnet på strømleddet følger ladningen."
+    label: "Kontinuitetsligningen: overskuddet i en skive endrer seg med det som strømmer inn, minus det som strømmer ut, minus det som rekombinerer. Fortegnet skifter for elektronene, fordi strømmen deres går motsatt vei av elektronene."
   - id: diffusjonsligning
     section: Kontinuitetsligningen
     onSheet: false
-    tex: "\\dfrac{\\partial\\,\\delta n}{\\partial t} = D_n\\dfrac{\\partial^2\\,\\delta n}{\\partial x^2} - \\dfrac{\\delta n}{\\tau_n}"
-    label: "Diffusjonsligningen: kontinuitetsligningen med ren diffusjonsstrøm satt inn. Krumningen i profilen jevner den ut, levetiden tømmer den. Tilsvarende for hull med $D_p$ og $\\tau_p$."
+    tex: "\\dfrac{\\partial\\,\\delta p}{\\partial t} = D_p\\dfrac{\\partial^2\\delta p}{\\partial x^2} - \\dfrac{\\delta p}{\\tau_p}"
+    label: "Diffusjonsligningen: kontinuitetsligningen med ren diffusjonsstrøm satt inn. Krumningen til profilen jevner den ut, og levetiden tømmer den. For elektronene står $D_n$ og $\\tau_n$."
 
   - id: stasjonaer-diffusjon
-    section: Stasjonær injeksjon og diffusjonslengde
+    section: Stasjonær injeksjon og diffusjonslengden
     onSheet: true
     tex: "\\dfrac{d^2\\delta n}{dx^2} = \\dfrac{\\delta n}{D_n\\tau_n} \\equiv \\dfrac{\\delta n}{L_n^2}, \\qquad \\dfrac{d^2\\delta p}{dx^2} = \\dfrac{\\delta p}{L_p^2}"
     label: "Diffusjonsligningen i stasjonær tilstand, uten felt. I en lang stav med overskuddet $\\Delta p$ i enden er løsningen $\\delta p(x) = \\Delta p\\,e^{-x/L_p}$."
   - id: diffusjonslengde
-    section: Stasjonær injeksjon og diffusjonslengde
+    section: Stasjonær injeksjon og diffusjonslengden
     onSheet: true
     tex: "L \\equiv \\sqrt{D\\tau}"
-    label: "Diffusjonslengden er avstanden der overskuddet har falt til $1/e$, og gjennomsnittsavstanden en bærer diffunderer før den rekombinerer. For hull i Si med $D_p = 12{,}5$ cm²/s og $\\tau_p = 1$ µs er $L_p = 35$ µm."
+    label: "Diffusjonslengden, hvor langt en bærer diffunderer på én levetid. Overskuddet har falt til $1/e$ der, og en bærer kommer i gjennomsnitt $L$ inn før den rekombinerer. For hull i Si med $D_p = 12{,}5$ cm²/s og $\\tau_p = 1$ µs er $L_p = 35$ µm."
   - id: injeksjonsstrom
-    section: Stasjonær injeksjon og diffusjonslengde
+    section: Stasjonær injeksjon og diffusjonslengden
     onSheet: false
     tex: "\\begin{aligned} \\delta p(x) &= \\Delta p\\, e^{-x/L_p} \\\\ J_p(x) &= q\\dfrac{D_p}{L_p}\\,\\delta p(x) \\\\ Q_p &= qA\\,\\Delta p\\,L_p \\end{aligned}"
-    label: "Stasjonær injeksjon i en lang stav. Diffusjonsstrømmen fra den eksponentielle profilen er proporsjonal med overskuddet i hvert punkt, og ladningen som er lagret i staven, er arealet under profilen. Begge brukes på minoritetsbærerne som sprøytes inn over en pn-overgang, der formelarket skriver dem med $x_n$ og $\\Delta p_n$."
+    label: "Stasjonær injeksjon i en lang stav. Diffusjonsstrømmen fra den eksponentielle profilen er proporsjonal med overskuddet i hvert punkt, og ladningen som er lagret i staven, er arealet under profilen. Strømmen inn er $Q_p/\\tau_p$, fordi rekombinasjonen i staven i stasjonær tilstand må ta like mange hull som strømmer inn. Begge brukes på minoritetsbærerne som sprøytes inn over en pn-overgang, der formelarket skriver dem med $x_n$ og $\\Delta p_n$."
   - id: haynes-shockley
     section: Haynes–Shockley-eksperimentet
     onSheet: false
     tex: "\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"
-    label: "Haynes–Shockley: en hullpuls driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet måler bredden i tid, $\\Delta t$, og driftfarten regner den om."
+    label: "Haynes–Shockley: en puls av hull i en n-type stav driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet viser bredden i tid, $\\Delta t$, og driftfarten regner den om."
   - id: kontaktpotensial
     section: "Likevekt: kontaktpotensialet"
     onSheet: true
@@ -809,23 +819,23 @@ glossary:
     section: Hall-effekten
     definition: "(<em>Hall effect</em>) Et magnetfelt på tvers av strømmen presser bærerne mot den ene kanten, til feltet på tvers, $\\mathcal{E}_y = v_x\\mathcal{B}_z$, holder igjen. Hull og elektroner havner på den samme kanten, så fortegnet på spenningen på tvers, Hall-spenningen, gir bærertypen. Størrelsen gir konsentrasjonen, og sammen med resistiviteten mobiliteten."
   - term: Overskuddsbærere
-    section: Overskuddsbærere
-    definition: "(<em>excess carriers</em>) Bærere ut over likevektskonsentrasjonene, $\\delta n = n - n_0$ og $\\delta p = p - p_0$, laget av lys med $h\\nu \\ge E_g$ eller sprøytet inn over en kontakt. De lages og rekombinerer parvis, så $\\delta n = \\delta p$ uten fangst."
+    section: Lys lager elektron-hull-par
+    definition: "(<em>excess carriers</em>) Bærere ut over likevektskonsentrasjonene, $\\delta n = n - n_0$ og $\\delta p = p - p_0$, laget av lys med $h\\nu \\ge E_g$ eller sprøytet inn over en kontakt. De lages og forsvinner parvis, så $\\delta n = \\delta p$ når ingen bærere er fanget i en felle."
   - term: Lav injeksjon
-    section: Overskuddsbærere
-    definition: "(<em>low-level injection</em>) Overskuddet er lite mot majoritetskonsentrasjonen, $\\delta n \\ll p_0$ i p-type. Da kan $\\delta n^2$-leddet i rekombinasjonen strykes, og overskuddet dør ut eksponentielt med én levetid. Ved sonekantene i en pn-overgang: $\\Delta p_n \\ll N_d$ og $\\Delta n_p \\ll N_a$; grensen nås først på den lett dopede siden."
+    section: Lys lager elektron-hull-par
+    definition: "(<em>low-level injection</em>) Overskuddet er lite mot majoritetskonsentrasjonen, $\\delta p \\ll n_0$ i n-type. Da endrer lyset nesten bare minoritetsbærerne, $\\delta p^2$-leddet i rekombinasjonen kan strykes, og overskuddet dør ut eksponentielt med én levetid. Ved sonekantene i en pn-overgang: $\\Delta p_n \\ll N_d$ og $\\Delta n_p \\ll N_a$; grensen nås først på den lett dopede siden."
   - term: Levetid
-    section: Overskuddsbærere
-    definition: "(<em>minority carrier lifetime</em>) $\\tau_n = 1/a_r p_0$ i p-type materiale: tiden det tar før overskuddet er falt til $1/e$. Kalles levetiden til minoritetsbærerne, siden regningen er gjort for dem, men majoriteten faller med samme rate."
+    section: Rekombinasjon og levetid
+    definition: "(<em>minority carrier lifetime</em>) Tiden et overskudd av minoritetsbærere bruker på å falle med en faktor $e$ ved lav injeksjon, $\\tau_p$ for hull i n-type og $\\tau_n$ for elektroner i p-type. Ved direkte rekombinasjon er $\\tau_p = 1/a_rn_0$, fordi hvert hull har $n_0$ elektroner som kan falle ned i det. Majoriteten i overskuddet forsvinner like fort, parvis med minoriteten."
   - term: Rekombinasjonssenter
-    section: Overskuddsbærere
-    definition: "(<em>recombination center</em>) En urenhet eller defekt med et nivå $E_r$ i gapet som fanger først den ene bærertypen og så den andre, og gir energien til gitteret som varme. Dominerer rekombinasjonen i indirekte materialer som Si og Ge; dype nivåer som gull i Si er de mest effektive."
+    section: Rekombinasjon og levetid
+    definition: "(<em>recombination center</em>) En urenhet eller defekt med et nivå $E_r$ dypt i gapet. Et elektron i senteret faller ned i et hull i valensbåndet, og så faller et elektron fra ledningsbåndet ned i det tomme senteret, så et par forsvinner og energien går til gitteret som varme. Dominerer rekombinasjonen i indirekte halvledere som Si og Ge; gull i Si gir slike nivåer."
   - term: Felle
-    section: Overskuddsbærere
-    definition: "(<em>trap</em>) Et senter som slipper den fangede bæreren tilbake til båndet før den andre bærertypen kommer. Grunne nivåer virker oftest som feller, dype nivåer oftest som rekombinasjonssentre."
+    section: Rekombinasjon og levetid
+    definition: "(<em>trap</em>) Et nivå i gapet som slipper den fangede bæreren tilbake til båndet før den andre bærertypen kommer, så den holder på bæreren en stund uten at noe par forsvinner. Nivåer nær et av båndene virker oftest som feller, nivåer dypt i gapet som rekombinasjonssentre."
   - term: Kvasi-Fermi-nivå
-    section: Kvasi-Fermi-nivåer
-    definition: "(<em>quasi-Fermi level</em>, IMREF) Hver bærertype sitt eget nivå utenfor likevekt, definert ved $n = n_i e^{(F_n - E_i)/k_BT}$ og $p = n_i e^{(E_i - F_p)/k_BT}$. I likevekt er $F_n = F_p = E_F$; splittingen $F_n - F_p$ måler avstanden fra likevekt, og minoritetsnivået flytter seg mest."
+    section: Jevnt lys og kvasi-Fermi-nivåer
+    definition: "(<em>quasi-Fermi level</em>, IMREF) Nivået $F_n$ for elektronene i ledningsbåndet og $F_p$ for hullene i valensbåndet utenfor likevekt, definert ved $n = n_i e^{(F_n - E_i)/k_BT}$ og $p = n_i e^{(E_i - F_p)/k_BT}$. Inne i et bånd fordeler bærerne seg på pikosekunder, mellom båndene tar det mikrosekunder, så under lys har hvert bånd sitt eget nivå. I likevekt er $F_n = F_p = E_F$, og minoritetsnivået flytter seg mest."
   - term: Diffusjon
     section: Diffusjon
     definition: "(<em>diffusion</em>) Netto bevegelse fra høy til lav konsentrasjon som følger av tilfeldig termisk bevegelse alene. Partikkelfluksen er $\\phi_n = -D_n\\,dn/dx$, og diffusjonsstrømmen er fluksen ganger ladningen, så elektron- og hullstrømmene går hver sin vei i samme gradient."
@@ -833,21 +843,21 @@ glossary:
     section: Diffusjon
     definition: "(<em>diffusion coefficient</em>) $D = l^2/2\\bar{t}$ i den enkle modellen, i cm²/s. Knyttet til mobiliteten ved Einstein-relasjonen $D/\\mu = k_BT/q$; for Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s."
   - term: Innebygd felt
-    section: Einstein-relasjonen
-    definition: "(<em>built-in field</em>) Feltet som må finnes i likevekt der konsentrasjonen varierer, for eksempel i en dopinggradient: det driver bærerne tilbake akkurat like fort som de diffunderer, så nettostrømmen er null og $E_F$ er flat."
+    section: Innebygd felt og Einstein-relasjonen
+    definition: "(<em>built-in field</em>) Feltet som finnes i likevekt der dopingen varierer. Bærerne som har diffundert mot den lett dopede siden, etterlater ioner med ladning, og ladningen gir et felt som driver bærerne tilbake akkurat like fort som de diffunderer, så det går ingen strøm og $E_F$ er flatt."
   - term: Einstein-relasjonen
-    section: Einstein-relasjonen
-    definition: "(<em>Einstein relation</em>) $D/\\mu = k_BT/q$, som følger av null strøm og flatt $E_F$ i likevekt. Forholdet er $0{,}0259$ V ved romtemperatur for begge bærertypene i alle materialer."
+    section: Innebygd felt og Einstein-relasjonen
+    definition: "(<em>Einstein relation</em>) $D/\\mu = k_BT/q$, som følger av at driften i det innebygde feltet opphever diffusjonen i likevekt. Forholdet er $0{,}0259$ V ved romtemperatur for begge bærertypene. Både $D$ og $\\mu$ er satt av kollisjonene, så en bærer som kolliderer ofte, diffunderer sakte og driver sakte."
   - term: Kontinuitetsligningen
     section: Kontinuitetsligningen
-    definition: "(<em>continuity equation</em>) $\\partial\\,\\delta p/\\partial t = -(1/q)\\,\\partial J_p/\\partial x - \\delta p/\\tau_p$: overskuddet i en skive vokser med nettoinnstrømmen og faller med rekombinasjonen. Med ren diffusjonsstrøm blir den diffusjonsligningen."
+    definition: "(<em>continuity equation</em>) $\\partial\\,\\delta p/\\partial t = -(1/q)\\,\\partial J_p/\\partial x - \\delta p/\\tau_p$: overskuddet i en skive endrer seg med det som strømmer inn, minus det som strømmer ut, minus det som rekombinerer. Med ren diffusjonsstrøm blir den diffusjonsligningen."
 
   - term: Diffusjonslengde
-    section: Stasjonær injeksjon og diffusjonslengde
-    definition: "(<em>diffusion length</em>) $L_p = \\sqrt{D_p\\tau_p}$, avstanden der et stasjonært injisert overskudd har falt til $1/e$, og gjennomsnittsavstanden en minoritetsbærer diffunderer før den rekombinerer. For Si er $L_p$ typisk noen titalls mikrometer, mange ganger bredden av romladningssonen."
+    section: Stasjonær injeksjon og diffusjonslengden
+    definition: "(<em>diffusion length</em>) $L_p = \\sqrt{D_p\\tau_p}$, hvor langt et hull diffunderer på én levetid. Et stasjonært overskudd i enden av en lang stav har falt til $1/e$ der, og et hull kommer i gjennomsnitt $L_p$ inn før det rekombinerer. For hull i Si med $\\tau_p = 1$ µs er $L_p = 35$ µm."
   - term: Haynes–Shockley-eksperimentet
     section: Haynes–Shockley-eksperimentet
-    definition: "(<em>Haynes–Shockley experiment</em>) En lyspuls lager minoritetsbærere i en stav med felt langs; pulsen driver til en detektor og brer seg ut underveis. Drifttiden gir minoritetsmobiliteten, bredden på pulsen gir diffusjonskoeffisienten. Hall-målingen gir bare majoritetens mobilitet."
+    definition: "(<em>Haynes–Shockley experiment</em>) Et lysglimt lager et overskudd av bærere i en stav med felt langs, og en detektor lenger ned måler pulsen av minoritetsbærere. Tiden pulsen bruker, gir minoritetsmobiliteten, og bredden gir diffusjonskoeffisienten. Hall-effekten måler majoritetsbærerne."
   - term: pn-overgang
     section: Den abrupte overgangen
     definition: "(<em>p-n junction</em>) Skillet mellom et p-dopet og et n-dopet område i samme krystall, lagd ved implantasjon eller diffusjon gjennom et vindu i oksidet. Grunnenheten i dioder, transistorer, solceller og lysdioder."
@@ -1045,8 +1055,13 @@ symbols:
   - { tex: "g_i,\\ r_i", meaning: "Termisk generasjons- og rekombinasjonsrate i likevekt", unit: "cm⁻³·s⁻¹", section: "Overskuddsbærere", formula: generasjon-rekombinasjon }
   - { tex: "a_r", meaning: "Rekombinasjonskoeffisienten, $r = a_r np$", unit: "cm³/s", section: "Overskuddsbærere", formula: generasjon-rekombinasjon }
   - { tex: "L_n,\\ L_p", meaning: "Diffusjonslengden, $\\sqrt{D\\tau}$", unit: "cm", section: "Overskuddsbærere", term: "Diffusjonslengde", formula: diffusjonslengde, id: lp, note: "Så langt et overskudd rekker før det har rekombinert til $1/e$." }
-  - { tex: "\\alpha", meaning: "Absorpsjonskoeffisienten for lys, intensiteten faller som $e^{-\\alpha x}$", unit: "cm⁻¹", section: "Overskuddsbærere" }
+  - { tex: "\\alpha", meaning: "Absorpsjonskoeffisienten for lys, intensiteten faller som $e^{-\\alpha x}$", unit: "cm⁻¹", section: "Overskuddsbærere", formula: absorpsjon }
   - { tex: "h\\nu", meaning: "Fotonenergien", unit: "eV", section: "Overskuddsbærere", term: "Elektron-hull-par", note: "Må være minst $E_g$ for å lage et par." }
+  - { tex: "E_r,\\ E_t", meaning: "Nivået til et rekombinasjonssenter og til en felle i gapet", unit: "eV", section: "Overskuddsbærere", term: "Rekombinasjonssenter" }
+  - { tex: "t_d", meaning: "Drifttiden i Haynes–Shockley-eksperimentet, fra glimtet til toppen av pulsen ved detektoren", unit: "s", section: "Overskuddsbærere", term: "Haynes–Shockley-eksperimentet", formula: haynes-shockley }
+  - { tex: "\\Delta x,\\ \\Delta t", meaning: "Bredden av pulsen mellom $1/e$-punktene, i staven og på oscilloskopet", unit: "cm, s", section: "Overskuddsbærere", formula: haynes-shockley, note: "$\\Delta x = v_d\\,\\Delta t$." }
+  - { tex: "\\Delta P", meaning: "Antall hull per areal som et glimt lager", unit: "cm⁻²", section: "Overskuddsbærere" }
+  - { tex: "L", meaning: "Avstanden mellom lyset ved (1) og detektoren ved (2) i Haynes–Shockley-eksperimentet", unit: "cm", section: "Overskuddsbærere", formula: haynes-shockley, note: "Ikke diffusjonslengdene $L_n$ og $L_p$, og ikke kanallengden." }
   # ── pn-overgangen ──
   - { tex: "\\rho(x)", meaning: "Romladningstettheten, $q(p - n + N_d^+ - N_a^-)$", unit: "C/cm³", section: "pn-overgangen", formula: poisson, note: "Ikke resistiviteten $\\rho$." }
   - { tex: "W", meaning: "Bredden av romladningssonen, $x_{p0} + x_{n0}$", unit: "cm", section: "pn-overgangen", term: "Romladningssone", formula: sonebredde, id: w }

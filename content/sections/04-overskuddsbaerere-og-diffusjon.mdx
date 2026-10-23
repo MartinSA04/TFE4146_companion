@@ -1,306 +1,526 @@
 ---
 order: 4
 title: "Overskuddsbærere og diffusjon"
-summary: "Hvordan overskuddsbærere rekombinerer med en levetid, hvorfor kvasi-Fermi-nivåene splitter seg under lys, hvordan en gradient gir diffusjonsstrøm, hva Einstein-relasjonen knytter sammen, hvordan drift, diffusjon og rekombinasjon samles i kontinuitetsligningen, hvor langt injiserte bærere kommer før de rekombinerer, og hvordan Haynes–Shockley-eksperimentet måler mobilitet og diffusjonskoeffisient."
+summary: "Hvordan lys lager overskuddsbærere og hvor lenge de lever, hvorfor hvert bånd får sitt eget kvasi-Fermi-nivå under lys og hvordan tilfeldige steg gir diffusjonsstrøm og Einstein-relasjonen. Kontinuitetsligningen gir så diffusjonslengden og forklarer Haynes–Shockley-eksperimentet."
 importance: core
 tag: "Uke 36–37 · Streetman §4.1–4.4.5"
 part: "Del 1: Energibånd og ladningsbærere"
-updated: 2026-09-27
+updated: 2026-10-22
 ---
 
 <LearningGoals>
 
-- Sette opp rekombinasjonen av <Term name="Overskuddsbærere">overskuddsbærere</Term> og regne med <Term name="Levetid">levetid</Term> ved lav injeksjon.
-- Bruke <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåer</Term> for $n$ og $p$ utenfor likevekt.
-- Skrive ned drift- og <Term name="Diffusjon">diffusjonsstrømmen</Term> for begge bærertyper, og bruke <Term name="Einstein-relasjonen">Einstein-relasjonen</Term>.
-- Stille opp <Term name="Kontinuitetsligningen">kontinuitetsligningen</Term> og si hva hvert ledd betyr.
-- Løse den for stasjonær injeksjon, og bruke <Term name="Diffusjonslengde">diffusjonslengden</Term> til å finne profil, strøm og lagret ladning.
+- Forklare hvorfor lys endrer minoritetskonsentrasjonen med mange tierpotenser og majoritetskonsentrasjonen nesten ikke, og regne med <Term name="Levetid">levetiden</Term> ved <Term name="Lav injeksjon">lav injeksjon</Term>.
+- Forklare hvorfor hvert bånd får sitt eget <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivå</Term> under lys, og finne $F_n$ og $F_p$ fra konsentrasjonene.
+- Forklare <Term name="Diffusjon">diffusjon</Term> fra tilfeldige steg, og finne retningen på diffusjonsstrømmen for elektroner og hull.
+- Utlede <Term name="Einstein-relasjonen">Einstein-relasjonen</Term> fra likevekt der dopingen varierer.
+- Sette opp <Term name="Kontinuitetsligningen">kontinuitetsligningen</Term> og løse den for stasjonær injeksjon med <Term name="Diffusjonslengde">diffusjonslengden</Term>.
+- Finne mobiliteten og diffusjonskoeffisienten til minoritetsbærerne fra en måling med <Term name="Haynes–Shockley-eksperimentet">Haynes–Shockley-eksperimentet</Term>.
 
 </LearningGoals>
 
-## Overskuddsbærere
+Et kort lysglimt treffer et punkt på en stav av n-type germanium som er 1 cm lang, med 2 V
+over. En detektor 0,95 cm lenger ned registrerer hullene lyset laget, som en puls 0,25 ms
+senere. Pulsen går altså 0,95 cm på 0,25 ms og bruker 117 µs på å passere, så den er nesten en
+halv centimeter bred.
 
-Nesten alle komponenter virker ved at det finnes flere bærere enn likevekten
-gir. Lys med $h\nu \ge E_g$ absorberes og lager par, med intensiteten fallende
-som $e^{-\alpha x}$ innover i materialet. Bærere kan også sprøytes inn over en
-kontakt. Skriv $n = n_0 + \delta n$ og $p = p_0 + \delta p$. Lyset lager
-bærerne parvis, og de rekombinerer parvis, så $\delta n = \delta p$.
+Feltet har flyttet hullene, de har spredt seg, og noen av dem har forsvunnet. Det samme skjer
+med alle bærere som kommer i tillegg til dem som er der i likevekt, og de to tallene fra
+detektoren gir hullenes mobilitet og diffusjonskoeffisient.
 
-I mørket balanserer generasjonen $g(T) = a_r n_i^2$ rekombinasjonen
-$a_r n_0 p_0$. Med overskudd rekombinerer bærerne raskere enn de genereres.
-Sett $\delta p = \delta n$ og gang ut. Leddet $a_r n_0 p_0$ er $a_r n_i^2$ og
-opphever generasjonen, og igjen står:
+## Lys lager elektron-hull-par
+
+Et foton med energien ${h\nu \ge E_g}$ kan bryte en binding i krystallen. Elektronet går opp i
+ledningsbåndet, og hullet blir igjen i valensbåndet, så lys lager bærerne parvis, som
+<Term name="Elektron-hull-par">elektron-hull-par</Term>. Fotoner med
+mindre energi går rett gjennom, og derfor slipper silisium gjennom infrarødt lys med
+bølgelengde over 1,1 µm.
+
+Et foton som har kommet til dybden $x$ uten å bli absorbert, har like stor sjanse for å bli
+absorbert i det neste lille stykket som det hadde ved overflaten. Andelen som absorberes per
+lengde, absorpsjonskoeffisienten $\alpha$, er altså den samme i hele dybden, og intensiteten
+faller eksponentielt:
+
+<Formula tex={"I(x) = I(0)\\,e^{-\\alpha x}"} caption={"Intensiteten av lyset i dybden $x$, med absorpsjonskoeffisienten $\\alpha$ i cm⁻¹. Lyset lager de fleste parene innenfor $1/\\alpha$ fra overflaten."} onSheet={false} />
+
+For rødt lys i silisium er $1/\alpha$ noen få mikrometer, så parene lages nær overflaten.
+
+Et foton med mer energi enn $E_g$ setter elektronet høyt opp i ledningsbåndet. Der kolliderer
+det med gitteret omtrent hvert 0,2 ps, gir fra seg energien over båndkanten som varme og havner
+nederst i båndet, blant de andre ledningselektronene. Hullet flyter på samme måte opp mot
+toppen av valensbåndet.
+
+<Simulation
+  src={"/sims/under-lys.js"}
+  host={"dom"}
+  title={"Bånd under lys"}
+  caption={"Båndbildet med én ring per tilstand: blå prikker er elektroner, røde ringer hull og gule bølgepiler fotoner. Til høyre står $f(E)$, regnet med $F_n$ i ledningsbåndet og med $F_p$ i valensbåndet, og den svake prikkete linjen merket $E_F$ er nivået uten lys. Gapet er bare $4{,}5\\,k_BT$, det er bare et titall bærere, og par som lages av varme, er ikke tegnet."}
+  height={420}
+/>
+
+Trykk «Lysglimt» i simuleringen. Elektronene havner nederst i ledningsbåndet nesten med en gang,
+og så forsvinner parene ett og ett, når et elektron faller ned i et hull.
+
+Konsentrasjonene skrives som likevektsverdien pluss et overskudd, ${n = n_0 + \delta n}$ og
+${p = p_0 + \delta p}$. Bærerne lages og forsvinner parvis, så ${\delta n = \delta p}$.
+Overskuddet når lyset nettopp er slått av eller ved et bestemt sted, skrives $\Delta n$ og
+$\Delta p$.
+
+Ta en stav av n-type silisium med ${N_d = 10^{15}\ \text{cm}^{-3}}$, så ${n_0 = 10^{15}}$ og
+${p_0 = 2{,}25 \times 10^5\ \text{cm}^{-3}}$. Et glimt som lager $10^{13}$ par per cm³, øker
+elektronkonsentrasjonen med 1 %, men hullkonsentrasjonen med en faktor $4{,}4 \times 10^7$
+(figur 1). Lyset endrer altså nesten bare minoritetsbærerne. Når overskuddet er lite mot
+majoritetskonsentrasjonen, ${\delta p \ll n_0}$, kalles tilstanden
+<Term name="Lav injeksjon">lav injeksjon</Term>.
+
+<Figure
+  src="/figures/glimt.svg"
+  alt="Konsentrasjon på logaritmisk akse fra 10^4 til 10^16 per kubikkcentimeter mot tiden fra −3 til 20 mikrosekunder. Elektronkonsentrasjonen n er en blå vannrett linje ved 10^15 som ikke flytter seg synlig. Hullkonsentrasjonen p er en rød linje ved p_0 rundt 2·10^5, som hopper til 10^13 ved glimtet ved t = 0 og så faller som en rett linje tilbake mot p_0, som den når etter knapt 18 mikrosekunder."
+  number={1}
+  width={340}
+  height={272}
+  caption="Elektron- og hullkonsentrasjonen i n-type silisium med $N_d = 10^{15}$ cm⁻³ før og etter et lysglimt som lager $10^{13}$ par per cm³, med $\tau_p = 1$ µs. Konsentrasjonsaksen er logaritmisk."
+/>
+
+<Callout title="Overskuddsbærere">
+Lys med ${h\nu \ge E_g}$ lager elektroner og hull parvis, så ${\delta n = \delta p}$. Ved lav injeksjon er overskuddet lite mot majoritetskonsentrasjonen, og lyset endrer nesten bare minoritetsbærerne, men dem med mange tierpotenser.
+</Callout>
+
+## Rekombinasjon og levetid
+
+Etter glimtet forsvinner overskuddet igjen. Et hull forsvinner når et elektron faller ned i
+det, og rundt hvert hull er det $10^{15}$ elektroner per cm³ som kan falle. Overskuddet endrer
+det tallet med bare 1 %, så hvert hull har den samme sjansen per sekund for å bli fylt hele
+tiden mens overskuddet dør ut. Hullene oppfører seg som radioaktive kjerner, og overskuddet dør
+ut eksponentielt.
+
+Regnestykket starter med ratene for rekombinasjon og generasjon. Et elektron og et hull må
+møtes for å rekombinere, så raten er $a_r np$, og varmen lager nye par med raten
+$a_r n_i^2$, den samme som i likevekt, fordi den bare avhenger av temperaturen. For hullene er
+da
 
 $$
-\begin{aligned}
-\frac{d\,\delta n}{dt} &= a_r n_i^2 - a_r(n_0 + \delta n)(p_0 + \delta p) \\
-&= -a_r\left[(n_0 + p_0)\,\delta n + \delta n^2\right]
-\end{aligned}
+\frac{d\,\delta p}{dt} = a_r n_i^2 - a_r np
 $$
 
-Ved <Term name="Lav injeksjon">lav injeksjon</Term> er $\delta n$ liten mot
-majoritetskonsentrasjonen, i p-type $\delta n \ll p_0$, så $\delta n^2$ kan
-strykes, og $n_0$ er ubetydelig ved siden av $p_0$. Det som står igjen, er en
-lineær ligning med eksponentiell løsning:
+Sett inn ${n = n_0 + \delta p}$ og ${p = p_0 + \delta p}$, og bruk ${n_0p_0 = n_i^2}$:
 
 $$
-\delta n(t) = \Delta n\, e^{-a_r p_0 t} = \Delta n\, e^{-t/\tau_n}
+\frac{d\,\delta p}{dt} = -a_r\left[(n_0 + p_0)\,\delta p + \delta p^2\right]
 $$
 
-med $\tau_n = 1/a_r p_0$.
+Ved lav injeksjon er $\delta p^2$ lite mot $n_0\,\delta p$, og i n-type er ${p_0 \ll n_0}$. Da
+står ${d\,\delta p/dt = -a_r n_0\,\delta p}$ igjen, og løsningen er
 
-$\tau_n$ er <Term name="Levetid">levetiden</Term> til minoritetsbærerne. Uten
-å stryke $n_0$ er den <FormulaRef id="levetid">$1/a_r(n_0 + p_0)$</FormulaRef>,
-så i n-type materiale er levetiden til hullene $\tau_p = 1/a_r n_0$.
-Majoriteten faller med samme rate, siden bærerne forsvinner parvis, men for
-den er $\delta p$ en liten korreksjon på $p_0$.
+<Formula tex={"\\begin{aligned} \\delta p(t) &= \\Delta p\\,e^{-t/\\tau_p} \\\\ \\tau_p &= \\dfrac{1}{a_r(n_0 + p_0)} \\approx \\dfrac{1}{a_r n_0} \\end{aligned}"} caption={"Overskuddet av hull i n-type etter et glimt, ved lav injeksjon og direkte rekombinasjon. I p-type er levetiden til elektronene $\\tau_n \\approx 1/a_rp_0$."} onSheet={false} />
 
-I Si og Ge er direkte rekombinasjon sjelden. Nesten all rekombinasjon går via
-<Term name="Rekombinasjonssenter">rekombinasjonssentre</Term>, urenheter og
-defekter med et nivå $E_r$ inne i gapet. Et senter under $E_F$ er fylt, og
-fanger først et hull og deretter et elektron; energien går til gitteret som
-varme i to steg. Slipper senteret den første bæreren tilbake til båndet før
-den andre kommer, er det en <Term name="Felle">felle</Term>. Nivåer nær
-midten av gapet, som gull i Si med 0,54 eV, ligger langt fra begge båndene og
-holder derfor på det de fanger, så de er effektive rekombinasjonssentre. Ved
-lav injeksjon dør overskuddet i Si fortsatt ut eksponentielt, men levetiden
-settes av sentrene, og dermed av renheten.
+<Term name="Levetid">Levetiden</Term> $\tau_p$ er tiden overskuddet bruker på å falle med en
+faktor $e$. Den kalles levetiden til minoritetsbærerne, men elektronene i overskuddet
+forsvinner like fort, siden de forsvinner parvis med hullene. Levetiden er satt av
+majoritetskonsentrasjonen. Med ti ganger tyngre doping har hvert hull ti ganger så mange
+elektroner som kan falle ned i det, og levetiden blir ti ganger kortere.
+
+I figur 1 er dette den rette linjen hullene følger etter glimtet. En eksponentiell faller som
+en rett linje på en logaritmisk akse, og med ${\tau_p = 1}$ µs faller den en tierpotens per
+2,3 µs, til den når $p_0$ etter knapt 18 µs.
+
+<Quiz
+  question={"GaAs har et direkte gap, og elektronene og hullene rekombinerer direkte. En GaAs-prøve med $10^{15}$ akseptorer per cm³ har $\\tau_n = 10$ ns. Den samme GaAs-en dopes i stedet med $10^{17}$ donorer per cm³. Hva blir levetiden til hullene?"}
+  options={[
+    "0,1 ns",
+    "10 ns",
+    "1 ns",
+    "1 µs"
+  ]}
+  answer={0}
+  explanation={"I p-type er $\\tau_n = 1/a_rp_0$, så $a_r = 1/(10^{-8}\\ \\text{s} \\cdot 10^{15}\\ \\text{cm}^{-3}) = 10^{-7}$ cm³/s, en materialkonstant. I n-type har hvert hull $n_0 = 10^{17}$ elektroner som kan falle ned i det, så $\\tau_p = 1/a_rn_0 = 10^{-10}$ s. Levetiden er ikke en materialkonstant: hundre ganger flere majoritetsbærere gir hundre ganger kortere levetid. 1 ns er bare en faktor ti, og 1 µs har snudd forholdet."}
+/>
+
+I silisium skjer direkte rekombinasjon nesten aldri. Gapet er indirekte, så et elektron som
+faller rett ned i et hull, må få endringen i $k$ fra et fonon i samme øyeblikk. Rekombinasjonen
+går i stedet via urenheter og defekter med et nivå $E_r$ i gapet,
+<Term name="Rekombinasjonssenter">rekombinasjonssentre</Term>, i to steg (figur 2). I steg 1
+faller elektronet i senteret ned i et hull i valensbåndet, og hullet er borte. I steg 2 faller
+et elektron fra ledningsbåndet ned i det tomme senteret. Da er et par borte, senteret er som
+før, og energien har gått til gitteret som varme i to porsjoner.
+
+<Figure
+  src="/figures/senter.svg"
+  alt="Båndkantene E_c øverst og E_v nederst. Til venstre, merket senter, et nivå E_r midt i gapet med et elektron på. Pil 1 går fra elektronet ned til et hull i valensbåndet, pil 2 fra et elektron i ledningsbåndet ned til en stiplet ring på nivået, senteret når det er tomt etter steg 1, og ved hver pil går en fiolett sikksakkpil ut for varme. Til høyre, merket felle, et nivå E_t like under E_c: en pil merket fanges går fra et elektron i ledningsbåndet ned til nivået, og en pil merket slippes går opp igjen."
+  number={2}
+  width={340}
+  height={236}
+  caption="Rekombinasjon via et senter med nivået $E_r$ dypt i gapet, i to steg, og en felle med nivået $E_t$ nær ledningsbåndet, som slipper elektronet igjen. Elektroner er blå prikker, den stiplede blå ringen er senteret når det er tomt etter steg 1, hull er røde ringer, og de fiolette pilene er varme til gitteret."
+/>
+
+Et nivå nær et av båndene virker annerledes. Et elektron som fanges der, trenger lite energi for
+å komme opp igjen, og slippes som regel før et hull kommer forbi. Et slikt nivå er en
+<Term name="Felle">felle</Term>, og den holder på bæreren en stund uten at noe par forsvinner.
+Et nivå dypt i gapet holder på bæreren til den andre typen kommer, og er det mest effektive
+senteret. Gull i silisium gir slike nivåer og brukes til å gjøre levetiden kort. Mens en bærer
+sitter i en felle, er ${\delta n \ne \delta p}$ en stund, men forskjellen forsvinner når bæreren
+slippes. Ved
+lav injeksjon dør overskuddet fortsatt ut eksponentielt, med en levetid som er satt av hvor mange
+sentre det er, fordi hver minoritetsbærer har like mange sentre rundt seg hele tiden. I
+regneeksemplene her er ${\tau_p = 1}$ µs.
 
 <Callout title="Levetid">
-Ved lav injeksjon dør overskuddet ut eksponentielt med levetiden til
-minoritetsbærerne, $\tau_n = 1/a_r p_0$ ved direkte rekombinasjon. I Si
-setter rekombinasjonssentrene levetiden.
+Ved lav injeksjon har hver minoritetsbærer den samme sjansen per sekund for å rekombinere, så overskuddet dør ut som $e^{-t/\tau}$. Ved direkte rekombinasjon er ${\tau_p = 1/a_rn_0}$ i n-type. I silisium går rekombinasjonen via sentre med nivåer dypt i gapet.
 </Callout>
 
-### Kvasi-Fermi-nivåer
+## Jevnt lys og kvasi-Fermi-nivåer
 
-Med jevnt lys på prøven legges den optiske generasjonen $g_\text{op}$ til den
-termiske, og ved lav injeksjon er da
-$d\,\delta n/dt = g_\text{op} - \delta n/\tau_n$. I stasjonær
-tilstand er den deriverte null, så overskuddet er generasjonsraten ganger
-levetiden,
-<FormulaRef id="stasjonaert-overskudd">$\delta n = \delta p = g_\text{op}\tau_n$</FormulaRef>.
-Nå er $np > n_i^2$, og ett nivå kan ikke gi begge konsentrasjonene: setter du
-samme $E_F$ inn i likevektsuttrykkene for $n$ og $p$, blir produktet $n_i^2$
-igjen. Behold formen på uttrykkene, men gi hver bærertype sitt eget nivå, så
-du fortsatt kan lese hver konsentrasjon av båndskjemaet som avstanden fra
-$E_i$:
+Med jevnt lys lages $g_\text{op}$ par per cm³ og sekund. Overskuddet vokser til rekombinasjonen,
+$\delta p/\tau_p$ per cm³ og sekund, tar like mange som lyset lager:
 
-$$
-n = n_i\, e^{(F_n - E_i)/k_BT}, \qquad p = n_i\, e^{(E_i - F_p)/k_BT}
-$$
+<Formula tex={"\\delta n = \\delta p = g_\\text{op}\\,\\tau_p"} caption={"Det stasjonære overskuddet under jevnt lys, ved lav injeksjon."} onSheet={false} />
 
-$F_n$ og $F_p$ er <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivåene</Term>.
-I likevekt faller de sammen med $E_F$, og avstanden $F_n - F_p$ måler hvor
-langt materialet er fra likevekt. Et gitt overskudd flytter minoritetsnivået
-langt og majoritetsnivået nesten ikke, siden overskuddet er mange tierpotenser
-for minoriteten og en brøkdel for majoriteten.
+Antallet som er der, er raten de lages med ganger tiden hver lever. Med
+${g_\text{op} = 10^{19}\ \text{cm}^{-3}\text{s}^{-1}}$ og ${\tau_p = 1}$ µs er ${\delta p = 10^{13}\ \text{cm}^{-3}}$, det
+samme som etter glimtet.
 
-<Callout title="Kvasi-Fermi-nivåer">
-Utenfor likevekt har elektroner og hull hvert sitt nivå, $F_n$ og $F_p$. Et
-overskudd flytter minoritetsnivået langt og majoritetsnivået nesten ikke.
-</Callout>
+Nå er ${np \approx 10^{28}\ \text{cm}^{-6}}$, mot ${n_i^2 = 2{,}25 \times 10^{20}\ \text{cm}^{-6}}$ i likevekt. I
+likevekt gir det samme $E_F$ både $n_0$ og $p_0$, og produktet deres er alltid $n_i^2$, så ett
+Fermi-nivå kan ikke beskrive den belyste staven av silisium.
 
-<Example title="hvor havner kvasi-Fermi-nivåene i belyst Si?">
+Fermi-nivåer kan likevel brukes, fordi bærerne fordeler seg mye raskere inne i et bånd enn
+mellom båndene. Et elektron i ledningsbåndet kolliderer med gitteret omtrent
+hvert 0,2 ps og kan gi eller få energi i hver kollisjon. Etter noen få kollisjoner er
+elektronene fordelt over tilstandene i båndet med en Fermi–Dirac-fordeling, som i likevekt.
+Over gapet går det mikrosekunder før et elektron finner et hull, fem millioner ganger lenger.
+Hvert bånd rekker altså å komme i likevekt med seg selv, men ikke med det andre båndet, og
+fordelingen i hvert bånd får sitt eget nivå.
 
-En Si-prøve med $n_0 = 10^{14}$ cm⁻³ og $\tau_n = \tau_p = 2$ µs belyses så
-det lages $10^{19}$ par per cm³ og sekund. Finn $n$, $p$ og de to nivåene
-ved 300 K.
+Velg «Jevnt lys» i simuleringen «Bånd under lys». Etter noen sekunder står det to stiplede
+linjer i stedet for $E_F$: $F_n$ for ledningsbåndet og $F_p$ for valensbåndet. I n-type har $F_p$
+falt langt ned mot midten av gapet, mens $F_n$ knapt har flyttet seg. Velg «p-type», og det er
+$F_n$ som flytter seg.
+
+Nivåene oppfører seg som vannet i to kar. Kobles karene sammen, renner vannet til overflatene
+står likt, og det er likevekten med ett Fermi-nivå. Pump så vann fra det ene karet til det
+andre, og la det renne sakte tilbake gjennom et tynt rør. Vannet i hvert kar flater seg ut med
+en gang, så hvert kar har én flat overflate, men de to overflatene står i hver sin høyde så
+lenge pumpen går. Karene er båndene, pumpen er lyset, røret er rekombinasjonen, og hver
+overflate er et kvasi-Fermi-nivå. Hvor mye hvert nivå flytter seg, sier analogien ikke noe om.
+
+<Term name="Kvasi-Fermi-nivå">Kvasi-Fermi-nivåene</Term> er definert ved at $n$ og $p$ har
+samme form som i likevekt, med hvert sitt nivå:
+
+<Formula tex={"\\begin{aligned} n &= N_c\\, e^{-(E_c - F_n)/k_BT} \\\\ &= n_i\\, e^{(F_n - E_i)/k_BT} \\\\ p &= N_v\\, e^{-(F_p - E_v)/k_BT} \\\\ &= n_i\\, e^{(E_i - F_p)/k_BT} \\end{aligned}"} caption={"Kvasi-Fermi-nivåene $F_n$ og $F_p$. I likevekt er $F_n = F_p = E_F$."} />
+
+Gang de to sammen, og ${np = n_i^2\,e^{(F_n - F_p)/k_BT}}$, så avstanden mellom nivåene sier hvor
+langt materialet er fra likevekt. Konsentrasjonen avhenger eksponentielt av nivået, så nivået
+flytter seg $k_BT$ for hver faktor $e$ konsentrasjonen endrer seg med. Hullene i silisiumstaven
+øker med en faktor $4{,}4 \times 10^7$, og $F_p$ flytter seg ${k_BT\ln(4{,}4 \times 10^7) = 0{,}46\ \text{eV}}$.
+Elektronene øker med 1 %, og $F_n$ flytter seg ${k_BT\ln 1{,}01 = 0{,}26\ \text{meV}}$.
+
+<Example title="Kvasi-Fermi-nivåene i belyst silisium">
+
+Silisium med ${N_d = 10^{15}\ \text{cm}^{-3}}$ og ${\tau_p = 1}$ µs belyses jevnt med
+${g_\text{op} = 10^{19}}$ par per cm³ og sekund, ved 300 K med ${n_i = 1{,}5 \times 10^{10}\ \text{cm}^{-3}}$.
+
+1. Finn $n$ og $p$, og sjekk at injeksjonen er lav.
+2. Hvor ligger $F_n$ og $F_p$ i forhold til $E_i$, og hvor lå $E_F$ uten lys?
+3. Lyset slås av. Hvor ligger $F_p$ 3 µs senere?
 
 <Solution>
 
-- Overskuddet: $\delta n = \delta p = g_\text{op}\tau_n$, altså $10^{19} \cdot 2 \times 10^{-6} = 2 \times 10^{13}$ cm⁻³.
-- Lav injeksjon: $\delta n/n_0 = 0{,}2$, nær grensen for tilnærmingen, så tallene under er overslag.
-- Majoriteten: $n = 1{,}2 \times 10^{14}$ cm⁻³, 20 % over $n_0$.
-- Minoriteten: $p_0 = n_i^2/n_0 = 2{,}25 \times 10^{6}$ cm⁻³ i mørket, mot $p = 2 \times 10^{13}$ cm⁻³ i lyset.
-- $F_n - E_i = k_BT\ln(n/n_i)$, altså $0{,}0259 \cdot \ln(8 \times 10^{3}) = 0{,}233$ eV.
-- $E_i - F_p = k_BT\ln(p/n_i)$, altså $0{,}0259 \cdot \ln(1{,}3 \times 10^{3}) = 0{,}186$ eV.
+1. Overskuddet er ${\delta p = g_\text{op}\tau_p = 10^{13}\ \text{cm}^{-3}}$, så
+${n = 1{,}01 \times 10^{15}}$ og ${p = 10^{13} + p_0 \approx 10^{13}\ \text{cm}^{-3}}$. Injeksjonen
+er lav, siden ${10^{13} \ll 10^{15}}$.
 
-<Answer>$F_n$ ligger $0{,}233$ eV over $E_i$, bare 5 meV over likevektsnivået $E_F$ på $0{,}228$ eV. $F_p$ ligger $0{,}186$ eV under $E_i$, mens $E_F$ lå over. Hullene har økt sju tierpotenser, elektronene 20 %, og $F_n - F_p = 0{,}42$ eV.</Answer>
-
-</Solution>
-
-</Example>
-
-<Simulation
-  src={"/sims/kvasi-fermi.js"}
-  host={"dom"}
-  title={"Kvasi-Fermi-nivåene i belyst n-type Si"}
-  caption={"Til venstre står båndskjemaet med $E_F$ i mørket stiplet og $F_n$ og $F_p$ i lyset, og klammen er splittingen $F_n - F_p$. Til høyre står $n$ og $p$ som stolper på logaritmisk skala, med likevektsverdiene $n_0$ og $p_0$ merket."}
-  height={400}
-/>
-
-## Diffusjon
-
-Der konsentrasjonen varierer, gir den tilfeldige bevegelsen alene en netto
-strøm av bærere fra høy til lav konsentrasjon. Del $x$-aksen i biter på én
-midlere fri veilengde $l$, og la biten til venstre for $x_0$ ha konsentrasjonen
-$n_1$ og biten til høyre $n_2$. Per areal inneholder biten til venstre $n_1 l$
-bærere, og halvparten av dem krysser mot høyre i løpet av $\bar{t}$. Fra høyre
-krysser $n_2 l/2$ mot venstre. Nettofluksen er da
-$\tfrac{l}{2\bar{t}}(n_1 - n_2)$, og midtpunktene av bitene ligger $l$ fra
-hverandre, så $n_1 - n_2 = -l\,dn/dx$:
-
-$$
-\phi_n = -D_n\frac{dn}{dx}, \qquad D_n = \frac{l^2}{2\bar{t}}
-$$
-
-$D_n$ er <Term name="Diffusjonskoeffisient">diffusjonskoeffisienten</Term>,
-med enhet cm²/s. Hull diffunderer på samme måte med $D_p$. Elektroner og hull
-i samme gradient beveger seg samme vei, men ladningene har motsatt fortegn,
-så <FormulaRef id="diffusjonsstrom">diffusjonsstrømmene</FormulaRef> går
-hver sin vei:
-
-$$
-J_n^\text{diff} = +qD_n\frac{dn}{dx}, \qquad J_p^\text{diff} = -qD_p\frac{dp}{dx}
-$$
-
-<Callout title="Diffusjonsstrømmenes retning">
-Elektroner og hull i samme gradient diffunderer samme vei, fra høy mot lav
-konsentrasjon, men den elektriske strømmen fra elektronene går motsatt vei av
-strømmen fra hullene.
-</Callout>
-
-Med felt og gradient samtidig har hver strøm et driftledd og et
-diffusjonsledd:
+2. Forholdene til $n_i$ er ${n/n_i = 6{,}73 \times 10^4}$ og ${p/n_i = 667}$. Fra definisjonen av
+nivåene, med ${k_BT = 0{,}0259\ \text{eV}}$:
 
 $$
 \begin{aligned}
-J_n &= q\mu_n n\,\mathcal{E} + qD_n\frac{dn}{dx} \\
-J_p &= q\mu_p p\,\mathcal{E} - qD_p\frac{dp}{dx}
+&F_n - E_i = k_BT\ln\frac{n}{n_i} \\
+&= 0{,}0259\ln(6{,}73 \times 10^{4})\ \text{eV} \\
+&= 0{,}288\ \text{eV}
 \end{aligned}
 $$
 
-Driftleddet er proporsjonalt med konsentrasjonen, så minoritetsbærerne
-bidrar lite til drift. Diffusjonsleddet er proporsjonalt med gradienten, og
-den kan være stor selv om konsentrasjonen er liten. Minoritetsstrømmen i en
-komponent er derfor nesten alltid diffusjon.
-
-Et felt vises i båndskjemaet som skrå bånd. Båndkantene er elektronets
-potensielle energi pluss en konstant, $E_c(x) = \text{konstant} - q\mathcal{V}(x)$,
-så båndene ligger lavest der potensialet $\mathcal{V}$ er høyest. Feltet peker
-fra høyt mot lavt potensial, så $E_c$, $E_v$ og $E_i$ stiger i feltretningen,
-og stigningen er feltet: <FormulaRef id="felt-baandskjema" />. Elektroner
-driver nedover i skjemaet, hull oppover, og $\mathcal{E}$ peker
-oppoverbakke.
-
-### Einstein-relasjonen
-
-I likevekt er strømmen null, og likevel kan konsentrasjonen variere med $x$,
-for eksempel i en krystall med dopinggradient. Da må diffusjonen balanseres
-av drift i et <Term name="Innebygd felt">innebygd felt</Term>, og kravet
-knytter $D$ til $\mu$.
-
-<Derivation title="Hvorfor D og μ ikke er uavhengige">
-
-Sett $J_p = 0$: $\mu_p p\,\mathcal{E} = D_p\,dp/dx$. Skriv $p$ med
-$E_i$-formen, $p = n_i e^{(E_i - E_F)/k_BT}$, og deriver:
-
 $$
-\frac{dp}{dx} = \frac{p}{k_BT}\left(\frac{dE_i}{dx} - \frac{dE_F}{dx}\right)
-= \frac{p}{k_BT}\,q\mathcal{E}
+\begin{aligned}
+&E_i - F_p = k_BT\ln\frac{p}{n_i} \\
+&= 0{,}0259\ln 667\ \text{eV} \\
+&= 0{,}168\ \text{eV}
+\end{aligned}
 $$
 
-Her er $dE_F/dx = 0$ fordi <FormulaRef id="fermi-flat">Fermi-nivået er flatt i likevekt</FormulaRef>, og
-$dE_i/dx = q\mathcal{E}$ fra båndskjemaet. Sett inn, og $p\,\mathcal{E}$
-forkortes:
+Uten lys er ${E_F - E_i = k_BT\ln(N_d/n_i)}$, også 0,288 eV med tre siffer. $F_n$ ligger altså der $E_F$ lå, mens $F_p$ har falt fra 0,288 eV over $E_i$ til 0,168 eV
+under, 0,46 eV.
+
+3. Overskuddet dør ut med levetiden, ${\delta p = 10^{13}\,e^{-3} = 5{,}0 \times 10^{11}\ \text{cm}^{-3}}$,
+så ${p/n_i = 33}$ og
 
 $$
-\frac{D_p}{\mu_p} = \frac{k_BT}{q}
+\begin{aligned}
+&E_i - F_p = k_BT\ln\frac{p}{n_i} \\
+&= 0{,}0259\ln 33\ \text{eV} \\
+&= 0{,}091\ \text{eV}
+\end{aligned}
 $$
 
-Samme regning for elektroner gir samme forhold.
+$F_p$ har steget 0,078 eV, ${3\,k_BT}$, fordi overskuddet faller med en faktor $e$ per levetid.
 
-</Derivation>
+<Answer>Med lys ligger $F_n$ 0,288 eV over $E_i$, der $E_F$ lå uten lys, og $F_p$ 0,168 eV under $E_i$. 3 µs etter at lyset er slått av, ligger $F_p$ 0,091 eV under $E_i$.</Answer>
+</Solution>
+</Example>
 
-Etter <FormulaRef id="einstein">Einstein-relasjonen</FormulaRef> er
-$D/\mu = k_BT/q = 0{,}0259$ V ved romtemperatur, uansett bærertype og
-materiale. For Si er $D_n = 35$ og $D_p = 12{,}5$ cm²/s, som stemmer med
-mobilitetene: $1350 \cdot 0{,}0259 = 35$ og $480 \cdot 0{,}0259 \approx 12{,}4$.
-Måler du den ene av $D$ og $\mu$, har du den andre.
+<Callout title="Kvasi-Fermi-nivåer">
+Inne i hvert bånd fordeler bærerne seg på pikosekunder, mellom båndene tar det mikrosekunder. Under lys har derfor hvert bånd sitt eget nivå, $F_n$ og $F_p$, og minoritetsnivået flytter seg mest, $k_BT$ for hver faktor $e$ konsentrasjonen endrer seg med.
+</Callout>
+
+## Diffusjon
+
+En dråpe blekk i et glass med stille vann sprer seg uten at noen rører i det. Ingen kraft
+skyver blekket utover. Hvert blekkmolekyl beveger seg tilfeldig og kolliderer med
+vannmolekylene rundt, og der det er mange blekkmolekyler, går flere utover enn innover. Hullene
+i staven gjør det samme. Et hull beveger seg med den <Term name="Termisk fart">termiske
+farten</Term> og skifter retning i hver kollisjon, så det tar tilfeldige steg av omtrent den
+<Term name="Midlere fri veilengde">frie veilengden</Term> $l$, ett for hver
+<Term name="Midlere kollisjonstid">midlere kollisjonstid</Term> $\bar{t}$.
+
+<Simulation
+  src={"/sims/diffusjon.js"}
+  host={"dom"}
+  title={"Diffusjon"}
+  caption={"En stav av n-type silisium med bare overskuddshullene tegnet, som røde ringer, og profilen $\\delta p(x)$ under, med søyler for hullene og den stiplede kurven regnet ut med $D$. Den stiplede loddrette linjen er snittet. Pilene over det viser hvor mange hull som har gått over hver vei det siste sekundet, målt mot hverandre, og de tonede stripene er ett steg på hver side. Steglengden, tidene og antall hull er ikke i skala."}
+  height={340}
+/>
+
+I simuleringen tar hvert hull ett steg mot venstre eller høyre om gangen, med like stor sjanse,
+og pulsen fra glimtet brer seg ut. Med snittet på siden av pulsen er pilen ut fra midten
+lengst rett etter glimtet, mens pulsen er bratt. Når pulsen flater ut, blir pilene nesten like
+lange, selv om det fortsatt går mange hull hver vei. Flytt snittet til toppen, og pilene blir
+like lange.
+
+Tell hullene i stripene på hver side av snittet. Halvparten av hullene i stripen til venstre,
+innenfor ett steg fra snittet, går over mot høyre i løpet av $\bar{t}$, og halvparten av dem i
+stripen til høyre går over mot venstre. Med
+konsentrasjonen $p_1$ til venstre og $p_2$ til høyre går det netto $\tfrac12 (p_1 - p_2)\,l$
+hull per areal mot høyre per $\bar{t}$. Over ett steg er ${p_1 - p_2 = -l\,dp/dx}$, så
+fluksen, antall hull per areal og tid, er
+
+$$
+\begin{aligned}
+\phi_p &= \frac{l}{2\bar{t}}\,(p_1 - p_2) \\
+&= -\frac{l^2}{2\bar{t}}\,\frac{dp}{dx} = -D_p\frac{dp}{dx}
+\end{aligned}
+$$
+
+<Formula tex={"D = \\dfrac{l^2}{2\\bar{t}}"} caption={"Diffusjonskoeffisienten i modellen med like lange steg, i cm²/s."} onSheet={false} />
+
+Minustegnet sier at hullene går mot lavere konsentrasjon. Modellen med like lange steg er grov.
+For elektronene i silisium, med ${l = 45\ \text{nm}}$ og ${\bar{t} = 0{,}2\ \text{ps}}$, gir den
+${D_n \approx 50\ \text{cm}^2/\text{s}}$, mot målte 35 cm²/s. I krystallen går flyktene i alle
+retninger og er ulikt lange, og da blir ${D = l^2/3\bar{t} \approx 34\ \text{cm}^2/\text{s}}$. For
+hullene i silisium er ${D_p = 12{,}5\ \text{cm}^2/\text{s}}$.
+
+Enheten cm²/s sier hvor fort en puls brer seg. Den eneste lengden $D_p$ og en tid $t$ gir, er
+$\sqrt{D_pt}$, så bredden vokser som kvadratroten av tiden: fire ganger så lang tid gir dobbelt
+så bred puls. På 1 µs kommer hullene i silisium omtrent
+
+$$
+\begin{aligned}
+\sqrt{D_pt} &= \sqrt{12{,}5\ \text{cm}^2/\text{s} \cdot 10^{-6}\ \text{s}} \\
+&= 3{,}5 \times 10^{-3}\ \text{cm}
+\end{aligned}
+$$
+
+ut fra der de startet, altså 35 µm.
+
+Strømmen er fluksen ganger ladningen. Hullene har ladningen $+q$ og elektronene $-q$, så
+
+<Formula tex={"\\begin{aligned} J_n^\\text{diff}(x) &= +qD_n\\dfrac{dn(x)}{dx} \\\\ J_p^\\text{diff}(x) &= -qD_p\\dfrac{dp(x)}{dx} \\end{aligned}"} caption={"Diffusjonsstrømmene for elektroner og hull."} />
+
+Faller konsentrasjonene mot høyre, diffunderer både elektronene og hullene mot høyre.
+Hullstrømmen går da mot høyre og elektronstrømmen mot venstre.
+
+<Callout title="Diffusjon">
+Hvert steg er tilfeldig, men det går flere bærere ut fra der de er mange. Fluksen er ${-D\,dn/dx}$, og strømmen er fluksen ganger ladningen, så elektroner og hull i samme gradient gir strøm hver sin vei.
+</Callout>
+
+## Drift og diffusjon sammen
+
+Med et felt i tillegg driver bærerne mens de diffunderer, og strømmen for hver bærertype har to
+ledd:
+
+<Formula tex={"\\begin{aligned} J_n(x) &= q\\mu_n n(x)\\mathcal{E}(x) \\\\ &\\quad + qD_n\\dfrac{dn(x)}{dx} \\\\ J_p(x) &= q\\mu_p p(x)\\mathcal{E}(x) \\\\ &\\quad - qD_p\\dfrac{dp(x)}{dx} \\end{aligned}"} caption={"Strømmen for hver bærertype: drift i feltet og diffusjon i gradienten. Den samlede strømmen er $J = J_n + J_p$."} />
+
+<Table
+  columns={["", "Drift", "Diffusjon"]}
+  rowHeader={false}
+  rows={[
+    ["Hullene går", "→", "→"],
+    ["Hullstrømmen", "→", "→"],
+    ["Elektronene går", "←", "→"],
+    ["Elektronstrømmen", "→", "←"]
+  ]}
+  caption={"Retningene når feltet peker mot høyre og både $n$ og $p$ faller mot høyre. For hullene virker leddene samme vei, for elektronene motsatt vei."}
+/>
+
+<Quiz
+  question={"Feltet peker mot venstre, og elektronkonsentrasjonen faller mot høyre. Hvilken vei går driftstrømmen og diffusjonsstrømmen til elektronene?"}
+  options={[
+    "Begge mot venstre",
+    "Begge mot høyre",
+    "Drift mot venstre, diffusjon mot høyre",
+    "Drift mot høyre, diffusjon mot venstre"
+  ]}
+  answer={0}
+  explanation={"Elektronene driver mot feltet, altså mot høyre, og med ladningen $-q$ går driftstrømmen deres med feltet, mot venstre. De diffunderer mot lavere konsentrasjon, også mot høyre, og diffusjonsstrømmen går da mot venstre: $J_n^\\text{diff} = qD_n\\,dn/dx < 0$. Svarer du «begge mot høyre», har du fulgt elektronene og glemt fortegnet til ladningen i begge leddene; de to blandede svarene glemmer det i ett av dem."}
+/>
+
+Driftleddet er proporsjonalt med konsentrasjonen, diffusjonsleddet med gradienten. I den
+belyste silisiumstaven er det hundre ganger færre hull enn elektroner, så i samme felt bærer
+hullene en liten del av driftstrømmen. Gradienten deres kan likevel være bratt, så
+minoritetsbærerne kan bære mye strøm ved diffusjon.
+
+<Callout title="Drift og diffusjon">
+Strømmen for hver bærertype er et driftledd, proporsjonalt med konsentrasjonen, pluss et diffusjonsledd, proporsjonalt med gradienten. Minoritetsbærerne er få og bærer lite strøm ved drift, men gradienten deres kan være bratt, så de kan bære mye ved diffusjon.
+</Callout>
+
+Båndkanten er elektronets potensielle energi, og potensialet $\mathcal{V}$ faller i
+feltretningen, så båndene stiger i feltretningen. Hellingen er feltet:
+
+<Formula tex={"\\mathcal{E}(x) = -\\dfrac{d\\mathcal{V}(x)}{dx} = \\dfrac{1}{q}\\dfrac{dE_i}{dx}"} caption={"Feltet fra hellingen til båndene. $E_c$, $E_i$ og $E_v$ har samme helling."} />
+
+Elektronene triller nedover i båndskjemaet, mot feltet, og hullene flyter oppover, med feltet.
+Feltet peker oppover bakken.
+
+## Innebygd felt og Einstein-relasjonen
+
+Legg n-type silisium med $10^{17}$ fosforatomer per cm³ inntil en bit med $10^{15}$, og la dem
+komme i likevekt. Fermi-nivået er flatt, og $E_c$ ligger 0,15 eV over det i den tungt dopede
+biten og 0,27 eV over i den lett dopede, 0,12 eV høyere (figur 3).
+
+<Figure
+  src="/figures/innebygd-felt.svg"
+  alt="Øverst et båndskjema: E_F er en vannrett stiplet linje, og E_c ligger 0,15 eV over den til venstre og 0,27 eV over den til høyre, med en jevn stigning i midten. Elektroner som blå prikker ligger tett over E_c til venstre og glissent til høyre. Over midten peker en pil merket diffusjon mot høyre og en pil merket drift mot venstre. Nederst staven, merket 10^17 per kubikkcentimeter til venstre og 10^15 til høyre, med donorioner som oransje ringer med pluss og elektroner som blå prikker. Nær midten er tre ioner uten elektron til venstre og tre ekstra elektroner til høyre, med pluss og minus over, og en pil merket ℰ fra pluss mot minus, mot høyre."
+  number={3}
+  width={340}
+  height={318}
+  caption="Silisium der dopingen faller fra $10^{17}$ til $10^{15}$ fosforatomer per cm³, i likevekt. Øverst båndskjemaet med $E_F$ flatt, nederst staven med donorionene og elektronene, ikke i skala."
+/>
+
+Elektronkonsentrasjonen faller mot høyre, så elektronene diffunderer mot høyre. Elektronene som
+har diffundert over, etterlater positive donorioner til venstre og gir negativ ladning til
+høyre. Ladningen gir et felt fra venstre mot høyre, det samme feltet som hellingen i
+båndskjemaet. Feltet driver elektronene tilbake mot venstre, nedover bakken, og i likevekt er
+driften like stor som diffusjonen i hvert punkt, så det går ingen strøm. Et slikt felt kalles
+et <Term name="Innebygd felt">innebygd felt</Term>.
+
+At driften og diffusjonen opphever hverandre, gir en sammenheng mellom $D$ og $\mu$. I
+likevekt er ${J_n = 0}$:
+
+$$
+q\mu_n n\mathcal{E} + qD_n\frac{dn}{dx} = 0
+$$
+
+Konsentrasjonen er ${n = N_ce^{-(E_c - E_F)/k_BT}}$ med $E_F$ flatt, så $n$ faller med en faktor
+$e$ der $E_c$ stiger med $k_BT$. Med ${dE_c/dx = q\mathcal{E}}$ er
+
+$$
+\frac{dn}{dx} = -\frac{n}{k_BT}\frac{dE_c}{dx} = -\frac{q\mathcal{E}}{k_BT}\,n
+$$
+
+Sett det inn i ${J_n = 0}$, og både $n$ og $\mathcal{E}$ faller bort:
+
+$$
+\begin{aligned}
+& q\mu_n n\mathcal{E} - qD_n\frac{q\mathcal{E}}{k_BT}\,n = 0 \\
+\Rightarrow\quad & \frac{D_n}{\mu_n} = \frac{k_BT}{q}
+\end{aligned}
+$$
+
+Det samme regnestykket med hullstrømmen gir det samme forholdet for hullene.
+
+<Formula tex={"\\dfrac{D}{\\mu} = \\dfrac{k_BT}{q}"} caption={"Einstein-relasjonen, for begge bærertypene. Ved romtemperatur er $k_BT/q = 0{,}0259$ V."} />
+
+Forholdet er det samme for begge bærertypene, fordi regningen bare bruker at konsentrasjonen
+endrer seg med en faktor $e$ for hver $k_BT$ båndkanten flytter seg i forhold til $E_F$. Både
+$D$ og $\mu$ er satt av
+kollisjonene, så et hull som kolliderer ofte, diffunderer sakte og driver sakte. For
+elektronene i silisium er ${D_n/\mu_n = 35/1350 = 0{,}026\ \text{V}}$. Måler du den
+ene, har du den andre.
+
+<Callout title="Einstein-relasjonen">
+Der dopingen varierer, diffunderer bærerne til ladningen de etterlater, gir et felt som driver dem like fort tilbake. Den balansen krever ${D/\mu = k_BT/q}$, 0,0259 V ved romtemperatur.
+</Callout>
 
 ## Kontinuitetsligningen
 
-Ta en skive med tykkelse $\Delta x$ og areal $A$. Antallet hull i skiva endrer seg
-med det som strømmer inn ved $x$, minus det som strømmer ut ved
-$x + \Delta x$, minus det som rekombinerer. Strømtetthet delt på $q$ er
-partikkelfluks, så
+Overskuddet i en tynn skive av staven, mellom $x$ og ${x + \Delta x}$, endrer seg av tre
+grunner: hull strømmer inn på den ene siden, hull strømmer ut på den andre, og hull rekombinerer
+inne i skiven. Hullstrømtettheten $J_p$ delt på $q$ er antall hull per areal og tid, så per
+volum av skiven er nettoinnstrømmen ${[J_p(x) - J_p(x + \Delta x)]/q\Delta x}$, og
+rekombinasjonen tar $\delta p/\tau_p$. La skiven bli tynn:
 
-$$
-\frac{\partial\,\delta p}{\partial t}\,A\,\Delta x
-= \frac{1}{q}\left[J_p(x) - J_p(x + \Delta x)\right]A
-- \frac{\delta p}{\tau_p}\,A\,\Delta x
-$$
+<Formula tex={"\\begin{aligned} \\dfrac{\\partial p(x,t)}{\\partial t} &= \\dfrac{\\partial\\,\\delta p}{\\partial t} = -\\dfrac{1}{q}\\dfrac{\\partial J_p}{\\partial x} - \\dfrac{\\delta p}{\\tau_p} \\\\ \\dfrac{\\partial\\,\\delta n}{\\partial t} &= \\dfrac{1}{q}\\dfrac{\\partial J_n}{\\partial x} - \\dfrac{\\delta n}{\\tau_n} \\end{aligned}"} caption={"Kontinuitetsligningen for hull og elektroner."} />
 
-Del på $A\,\Delta x$ og la $\Delta x \to 0$. Da blir hakeparentesen delt på
-$\Delta x$ til $-\partial J_p/\partial x$:
+Fortegnet skifter for elektronene, fordi strømmen deres går motsatt vei av elektronene.
 
-$$
-\frac{\partial\,\delta p}{\partial t}
-= -\frac{1}{q}\frac{\partial J_p}{\partial x} - \frac{\delta p}{\tau_p}
-$$
+Bærer diffusjonen hele strømmen, er ${J_p = -qD_p\,\partial\,\delta p/\partial x}$, siden bare
+overskuddet varierer med $x$. Satt inn blir kontinuitetsligningen diffusjonsligningen:
 
-For elektroner bytter det første leddet fortegn, siden ladningen er negativ.
-Ligningen er <FormulaRef id="kontinuitet">kontinuitetsligningen</FormulaRef>:
-det som strømmer inn og ikke ut igjen, er enten lagret eller rekombinert.
+<Formula tex={"\\dfrac{\\partial\\,\\delta p}{\\partial t} = D_p\\dfrac{\\partial^2\\delta p}{\\partial x^2} - \\dfrac{\\delta p}{\\tau_p}"} caption={"Diffusjonsligningen for hullene. For elektronene står $D_n$ og $\\tau_n$."} onSheet={false} />
 
-Er strømmen ren diffusjon, som for minoritetsbærere der feltet er lite,
-setter du $J_p^\text{diff} = -qD_p\,\partial p/\partial x$ inn i ligningen
-over. Med jevn doping er $p_0$ lik overalt, så
-$\partial p/\partial x = \partial\,\delta p/\partial x$, og strømleddet blir
-$D_p\,\partial^2\delta p/\partial x^2$:
+Det første leddet er krumningen til profilen. På toppen av en puls krummer profilen nedover,
+leddet er negativt, og toppen synker. Der profilen krummer oppover, fylles den. Det er derfor
+toppen synker i simuleringen «Diffusjon». Det andre leddet tømmer overskuddet med levetiden
+overalt.
 
-$$
-\frac{\partial\,\delta p}{\partial t}
-= D_p\frac{\partial^2\,\delta p}{\partial x^2} - \frac{\delta p}{\tau_p}
-$$
 
-Ligningen er <FormulaRef id="diffusjonsligning">diffusjonsligningen</FormulaRef>,
-og for elektroner har den $D_n$ og $\tau_n$.
+## Stasjonær injeksjon og diffusjonslengden
 
-Krumningen i profilen jevner den ut, og levetiden tømmer den. En puls av
-overskuddsbærere brer seg derfor utover og forsvinner samtidig, og hvor
-langt den rekker, avgjøres av $D$ og $\tau$ sammen.
+Belys endeflaten av en lang stav av n-type silisium jevnt. Lyset absorberes i de første
+mikrometrene og holder overskuddet der på ${\Delta p = 10^{13}\ \text{cm}^{-3}}$. Hullene diffunderer
+innover i staven og rekombinerer underveis.
 
-## Stasjonær injeksjon og diffusjonslengde
+Velg «Jevnt lys i enden» i simuleringen «Diffusjon». Hullene kommer inn i venstre ende, vandrer
+og forsvinner, og søylene legger seg langs den stiplede kurven. Velg så «Kort» levetid, en
+fjerdedel av den lange, og profilen blir halvparten så lang.
 
-I mange komponenter holdes overskuddet konstant i tid, for eksempel av en
-kontakt som sprøyter hull inn i enden av en n-type stav. Da er tidsleddet i
-diffusjonsligningen null, og det som står igjen er
+Når profilen ikke endrer seg lenger, er tilstanden stasjonær, ${\partial\,\delta p/\partial t = 0}$,
+og diffusjonsligningen blir
 
-$$
-\frac{d^2\,\delta p}{dx^2} = \frac{\delta p}{D_p\tau_p} = \frac{\delta p}{L_p^2}
-$$
+<Formula tex={"\\begin{aligned} \\dfrac{d^2\\delta n}{dx^2} &= \\dfrac{\\delta n}{D_n\\tau_n} \\equiv \\dfrac{\\delta n}{L_n^2} \\\\ \\dfrac{d^2\\delta p}{dx^2} &= \\dfrac{\\delta p}{L_p^2} \\end{aligned}"} caption={"Diffusjonsligningen i stasjonær tilstand, uten felt."} />
 
 med <Term name="Diffusjonslengde">diffusjonslengden</Term>
-$L_p = \sqrt{D_p\tau_p}$. Løsningen er en sum av $e^{x/L_p}$ og
-$e^{-x/L_p}$. I en stav som er lang mot $L_p$, må overskuddet dø ut langt fra
-kontakten, så
-den voksende delen faller bort, og med $\delta p(0) = \Delta p$ ved
-kontakten står det igjen
+
+<Formula tex={"L = \\sqrt{D\\tau}"} caption={"Diffusjonslengden, hvor langt en bærer diffunderer på én levetid."} />
+
+Løsningen er ${\delta p = C_1e^{x/L_p} + C_2e^{-x/L_p}}$. Langt inne i staven har alle hullene
+rekombinert, så ${C_1 = 0}$, og ved endeflaten er ${\delta p = \Delta p}$, så ${C_2 = \Delta p}$:
 
 $$
-\delta p(x) = \Delta p\, e^{-x/L_p}
+\delta p(x) = \Delta p\,e^{-x/L_p}
 $$
 
-$L_p$ er avstanden der overskuddet har falt til $1/e$, og også
-gjennomsnittsavstanden et hull diffunderer før det rekombinerer. For Si med
-$D_p = 12{,}5$ cm²/s og $\tau_p = 1$ µs er $L_p = 35$ µm, altså mange ganger
-bredden av romladningssonen i en pn-overgang.
+$L_p$ er hvor langt et hull diffunderer på én levetid. Tallet fra diffusjonen, 35 µm på 1 µs, er
+altså diffusjonslengden til hullene i silisium med ${\tau_p = 1}$ µs. Den er mye lenger enn de få
+mikrometrene lyset trenger inn, så det er riktig å regne overskuddet som holdt fast i enden.
+Overskuddet har falt til ${1/e}$ ved ${x = L_p}$, og et hull kommer i gjennomsnitt $L_p$ inn før
+det rekombinerer.
 
-<Derivation title="Hvorfor diffusjonslengden er gjennomsnittsavstanden">
+Diffusjonsstrømmen fra profilen er
 
-Hullene rekombinerer med raten $\delta p(x)/\tau_p$ per volum. I stasjonær
-tilstand rekombinerer alle hullene som sprøytes inn, så andelen som
-rekombinerer mellom $x$ og $x + dx$, er raten der delt på raten i hele staven:
+<Formula tex={"\\begin{aligned} J_p(x) &= -qD_p\\dfrac{d\\,\\delta p}{dx} \\\\ &= q\\dfrac{D_p}{L_p}\\,\\delta p(x) \\\\ Q_p &= qA\\,\\Delta p\\,L_p \\end{aligned}"} caption={"Hullstrømmen fra et stasjonært overskudd i en lang stav, proporsjonal med overskuddet i hvert punkt, og ladningen som er lagret i staven, arealet under profilen ganger $qA$."} onSheet={false} />
+
+<Derivation title="Hvor langt et hull kommer i gjennomsnitt">
+
+Hullstrømmen, antall hull som passerer per sekund, er proporsjonal med $\delta p$, så andelen av
+hullene som kommer forbi $x$ uten å rekombinere, er ${\delta p(x)/\Delta p = e^{-x/L_p}}$.
+Av dem som når $x$, rekombinerer andelen
 
 $$
-\frac{\delta p(x)\,dx/\tau_p}{\int_0^\infty \delta p\,dx/\tau_p}
-= \frac{e^{-x/L_p}\,dx}{L_p}
+-\frac{d\,\delta p}{\delta p} = \frac{dx}{L_p}
 $$
 
-Uttrykket er sannsynlighetsfordelingen for hvor et hull rekombinerer, og
-middelverdien er
+i det neste stykket $dx$, fordi ${d\,\delta p/dx = -\delta p/L_p}$. Sannsynligheten for at et hull rekombinerer mellom $x$ og ${x + dx}$, er
+produktet av de to, ${e^{-x/L_p}\,dx/L_p}$, og gjennomsnittet er
 
 $$
 \langle x\rangle = \int_0^\infty x\,\frac{e^{-x/L_p}}{L_p}\,dx = L_p
@@ -308,156 +528,252 @@ $$
 
 </Derivation>
 
-Diffusjonsstrømmen følger rett fra profilen, siden $p_0$ er konstant og
-bare overskuddet har gradient:
+Med tallene for staven er ${L_p = 3{,}54 \times 10^{-3}\ \text{cm}}$, og det kommer
+${D_p\Delta p/L_p = 3{,}54 \times 10^{16}}$ hull inn per cm² og sekund. Strømmen inn ved
+endeflaten er
 
 $$
-J_p(x) = -qD_p\frac{d\,\delta p}{dx} = q\frac{D_p}{L_p}\,\delta p(x)
+\begin{aligned}
+J_p(0) &= q\frac{D_p}{L_p}\,\Delta p \\
+&= 1{,}6 \times 10^{-19} \cdot 3{,}54 \times 10^{16} \\
+&= 5{,}7 \times 10^{-3}\ \text{A/cm}^2
+\end{aligned}
 $$
 
-Strømmen i hvert punkt er proporsjonal med overskuddet der, og ved kontakten
-er den $qD_p\Delta p/L_p$. Ladningen som er lagret i staven, er arealet
-under profilen, <FormulaRef id="injeksjonsstrom">$Q_p = qA\,\Delta p\,L_p$</FormulaRef>.
+Ladningen per areal er ${q\Delta pL_p = 5{,}7 \times 10^{-9}\ \text{C/cm}^2}$. Delt på levetiden gir
+den den samme strømmen, fordi rekombinasjonen i staven, $Q_p/\tau_p$, i stasjonær tilstand må ta
+like mange hull som strømmer inn.
+Regningen forutsetter lav injeksjon, og ${10^{13} \ll 10^{15}}$ holder.
 
-<Callout title="Diffusjonslengde">
-Et stasjonært injisert overskudd faller som $e^{-x/L_p}$ med
-$L_p = \sqrt{D_p\tau_p}$, og diffusjonsstrømmen i hvert punkt er
-$qD_p\,\delta p/L_p$.
+<Quiz
+  question={"To lange staver er like, bortsett fra at levetiden er dobbelt så lang i den ene. Begge har det samme overskuddet $\\Delta p$ i enden. Hvor langt rekker overskuddet i den med lengst levetid, målt med diffusjonslengden?"}
+  options={[
+    "$\\sqrt{2}$ ganger lenger",
+    "Dobbelt så langt",
+    "Like langt, fordi diffusjonskoeffisienten er den samme",
+    "Halvparten så langt"
+  ]}
+  answer={0}
+  explanation={"$L_p = \\sqrt{D_p\\tau_p}$, så dobbel levetid gir $\\sqrt 2$ ganger lengre diffusjonslengde. Hullene vandrer dobbelt så lenge, men bredden av en tilfeldig vandring vokser bare som kvadratroten av tiden. Dobbelt så langt ville krevd fire ganger så lang levetid."}
+/>
+
+<Callout title="Diffusjonslengden">
+Et stasjonært overskudd i enden av en lang stav faller som ${\Delta p\,e^{-x/L_p}}$, med ${L_p = \sqrt{D_p\tau_p}}$, hvor langt et hull diffunderer på én levetid. Diffusjonsstrømmen er proporsjonal med overskuddet, ${J_p = qD_p\,\delta p/L_p}$.
 </Callout>
 
-<Example title="hvor langt kommer de injiserte hullene?">
+## Haynes–Shockley-eksperimentet
 
-Hull sprøytes inn i enden av en lang n-type Si-stav med $N_d = 10^{16}$
-cm⁻³, slik at $\delta p(0) = \Delta p = 10^{14}$ cm⁻³ holdes konstant. Bruk
-$D_p = 12{,}5$ cm²/s og $\tau_p = 1$ µs. Finn diffusjonslengden,
-overskuddet 50 µm inne i staven, og strømtettheten ved kontakten.
-
-<Solution>
-
-- Lav injeksjon: $\Delta p = 10^{14} \ll n_0 = 10^{16}$ cm⁻³, så uttrykkene over gjelder.
-- Diffusjonslengden:
-
-$$
-\begin{aligned}
-L_p &= \sqrt{D_p\tau_p} = \sqrt{12{,}5 \cdot 10^{-6}}\ \text{cm} \\
-&= 3{,}54 \times 10^{-3}\ \text{cm} = 35\ \mu\text{m}
-\end{aligned}
-$$
-
-- Overskuddet ved 50 µm:
-
-$$
-\delta p = 10^{14}\, e^{-50/35} = 2{,}4 \times 10^{13}\ \text{cm}^{-3}
-$$
-
-- Strømtettheten ved kontakten:
-
-$$
-\begin{aligned}
-\frac{D_p}{L_p} &= \frac{12{,}5}{3{,}54 \times 10^{-3}}\ \frac{\text{cm}}{\text{s}} \\
-&= 3{,}5 \times 10^{3}\ \text{cm/s} \\
-q\frac{D_p}{L_p} &= 1{,}6 \times 10^{-19} \cdot 3{,}5 \times 10^{3} \\
-&= 5{,}6 \times 10^{-16}\ \text{C\,cm/s} \\
-J_p(0) &= q\frac{D_p}{L_p}\,\Delta p \\
-&= 5{,}6 \times 10^{-16} \cdot 10^{14} \\
-&= 5{,}6 \times 10^{-2}\ \text{A/cm}^2
-\end{aligned}
-$$
-
-<Answer>
-
-$L_p = 35$ µm, $\delta p(50\ \mu\text{m}) = 2{,}4 \times 10^{13}$ cm⁻³ og
-$J_p(0) = 56$ mA/cm².
-
-</Answer>
-
-</Solution>
-
-</Example>
-
-### Haynes–Shockley-eksperimentet
-
-Drift og diffusjon av minoritetsbærere kan måles direkte. En lysblink lager
-en puls av hull ved $x = 0$ i en n-type stav med et felt $\mathcal{E}$
-langs staven. Pulsen driver med feltet, brer seg ut ved diffusjon og
-passerer en detektor ved $x = L$ etter drifttiden $t_d$. Drifttiden gir
-mobiliteten:
-
-$$
-v_d = \frac{L}{t_d}, \qquad \mu_p = \frac{v_d}{\mathcal{E}}
-$$
-
-Hall-målingen gir mobiliteten til majoriteten, og Haynes–Shockley-eksperimentet
-gir minoritetens.
-
-Bredden på pulsen gir $D_p$. Uten felt og uten rekombinasjon løses
-diffusjonsligningen av en gaussisk puls,
-
-$$
-\delta p(x,t) = \frac{\Delta P}{2\sqrt{\pi D_p t}}\, e^{-x^2/4D_p t}
-$$
-
-der $\Delta P$ er antall hull per areal i pulsen ved $t = 0$. Toppen
-synker og bredden vokser med tiden. Feltet flytter hele pulsen med $v_d t$,
-og rekombinasjonen ganger den med $e^{-t/\tau_p}$. Ingen av dem endrer
-formen, så bredden ved tiden $t$ er den samme som uten felt og
-rekombinasjon. Når pulsen passerer
-detektoren ved $t_d$, er den falt til $1/e$ av toppen i $x = \pm\Delta x/2$
-fra midten. Sett $x = \Delta x/2$ og $t = t_d$ i eksponenten og krev at den er
-$-1$:
-
-$$
-\frac{(\Delta x/2)^2}{4D_pt_d} = 1 \quad\Rightarrow\quad D_p = \frac{(\Delta x)^2}{16\,t_d}
-$$
-
-Oscilloskopet viser pulsen i tid, så bredden $\Delta t$ regnes om med
-driftfarten: $\Delta x = v_d\,\Delta t$.
-
-Et sterkere felt gir kortere $t_d$, så pulsen har mindre tid til å bre seg ut
-og kommer tidligere og smalere fram til detektoren. Lengre avstand gir lengre
-$t_d$ og en bredere puls. Kortere levetid senker bare toppen, siden
-rekombinasjonen ikke endrer formen.
+Germaniumstaven fra starten er tegnet i simuleringen «Haynes–Shockley». Batteriet $E_0$ legger
+et felt langs staven, lyset lager et overskudd av par ved (1), og detektoren ved (2) måler
+hvor mange hull det er der. Pulsen driver med feltet, brer seg ut ved diffusjon og mister hull
+ved rekombinasjon.
 
 <Simulation
   src={"/sims/haynes-shockley.js"}
   host={"dom"}
-  title={"Hullpulsen fra lysblinket til detektoren"}
-  caption={"Øverst er n-type Si-staven med feltet $\\mathcal{E}$ langs. De blå prikkene er elektronene, de røde er pulsen av hull som lysblinket lager ved $x = 0$, og klammen $\\Delta x$ spenner $1/e$-bredden. Nederst er oscilloskopet ved detektoren i $x = L$, med drifttiden $t_d$ og bredden $\\Delta t$ mellom $1/e$-punktene merket; tidsaksen og den loddrette skalaen står fast, og tettheten av prikker er ikke i skala med noen konsentrasjon."}
-  height={372}
+  title={"Haynes–Shockley"}
+  caption={"En stav av n-type germanium med batteriet $E_0$ over 1 cm, lyset ved (1) og detektoren ved (2), 0,95 cm lenger ned. Overskuddshullene er røde ringer, og under står det oscilloskopet viser, $\\delta p$ ved (2) mot tiden. Mobiliteten og diffusjonskoeffisienten er de samme som i målingen, og levetiden er satt til 0,5 ms."}
+  height={380}
 />
 
-## Sjekk deg selv
+Lyset lager like mange elektroner som hull, men elektronene i overskuddet er få mot dem som er
+der fra før. De mange elektronene trenger bare å flytte seg litt for å dekke ladningen til
+hullene der pulsen er, så pulsen flytter seg og brer seg ut med hullenes mobilitet og
+diffusjonskoeffisient. Haynes–Shockley måler altså minoritetsbærerne, mens Hall-effekten måler
+majoritetsbærerne.
 
-<Quiz
-  question={"p-type Si med $p_0 = 10^{16}$ cm⁻³ belyses ved 300 K, slik at $\\delta n = \\delta p = 10^{13}$ cm⁻³. Omtrent hvor langt flytter kvasi-Fermi-nivåene seg fra $E_F$?"}
-  options={[
-    "$F_n$ 0,52 eV opp og $F_p$ 0,03 meV ned",
-    "$F_p$ 0,52 eV ned og $F_n$ 0,03 meV opp",
-    "$F_n$ 0,17 eV opp og $F_p$ 0,03 meV ned",
-    "$F_n$ og $F_p$ 0,52 eV hver, i hver sin retning"
-  ]}
-  answer={0}
-  explanation={"Elektronene er minoritet: $n_0 = n_i^2/p_0 = 2{,}25 \\times 10^{4}$ cm⁻³, så $F_n$ flytter seg $k_BT\\ln(n/n_0) = 0{,}0259 \\cdot \\ln(4{,}4 \\times 10^{8}) = 0{,}52$ eV. Hullene øker bare med en tusendel, så $F_p$ flytter seg $k_BT\\ln(1{,}001) \\approx 0{,}03$ meV. Samme $\\delta n = \\delta p$ gir ikke samme flytting, fordi nivået følger den relative endringen. 0,17 eV er avstanden fra $E_i$ opp til $F_n$, ikke flyttingen fra $E_F$."}
+Med ${E_0 = 2\ \text{V}}$ kommer pulsen fram til (2) etter omtrent et kvart millisekund, som i
+målingen. Velg 4 V. Pulsen kommer på halve tiden og er høyere, fordi hullene har hatt kortere
+tid til å spre seg og rekombinere. På oscilloskopet er den nesten tre ganger smalere, fordi
+den er smalere i staven og passerer detektoren dobbelt så fort.
+
+Tiden fram til detektoren gir mobiliteten. Pulsen driver avstanden $L$ mellom (1) og (2) på
+tiden $t_d$, så ${v_d = L/t_d}$ og ${\mu_p = v_d/\mathcal{E}}$.
+
+Bredden gir diffusjonskoeffisienten. Uten felt og rekombinasjon er pulsen den stiplede kurven i
+simuleringen «Diffusjon» med «Lysglimt». Bredden vokser som $\sqrt{D_pt}$, og antall hull er det
+samme hele tiden, så høyden faller som ${1/\sqrt{D_pt}}$, og formen er gaussisk, fordi hvert hull
+har tatt mange tilfeldige steg. For en puls som starter smal ved ${x = 0}$, er kurven
+
+$$
+\delta p(x,t) = \frac{\Delta P}{2\sqrt{\pi D_pt}}\,e^{-x^2/4D_pt}
+$$
+
+$\Delta P$ er antall hull per areal lyset laget. Med feltet flytter hele kurven seg med $v_d$,
+og rekombinasjonen ganger den med $e^{-t/\tau_p}$.
+
+<Derivation title="Gaussen løser diffusjonsligningen">
+
+Skriv ${\delta p = A\,t^{-1/2}e^{-x^2/4D_pt}}$. Deriver med hensyn på $t$:
+
+$$
+\frac{\partial\,\delta p}{\partial t} = \left(-\frac{1}{2t} + \frac{x^2}{4D_pt^2}\right)\delta p
+$$
+
+og to ganger med hensyn på $x$:
+
+$$
+\begin{aligned}
+\frac{\partial\,\delta p}{\partial x} &= -\frac{x}{2D_pt}\,\delta p \\
+\frac{\partial^2\delta p}{\partial x^2} &= \left(-\frac{1}{2D_pt} + \frac{x^2}{4D_p^2t^2}\right)\delta p
+\end{aligned}
+$$
+
+Ganger du den siste med $D_p$, står det samme som i den første, så
+${\partial\,\delta p/\partial t = D_p\,\partial^2\delta p/\partial x^2}$. Integralet av gaussen over
+$x$ er ${A\sqrt{4\pi D_p}}$, uavhengig av $t$, så ${A = \Delta P/2\sqrt{\pi D_p}}$ gir $\Delta P$ hull
+per areal hele tiden.
+
+</Derivation>
+
+Kurven har falt til ${1/e}$ av toppen der ${x^2 = 4D_pt}$, så bredden mellom de to
+$1/e$-punktene er ${\Delta x = 4\sqrt{D_pt_d}}$ når pulsen passerer detektoren. Oscilloskopet
+viser bredden i tid, $\Delta t$, og pulsen passerer med farten $v_d$, så ${\Delta x = v_d\,\Delta t}$.
+Omregningen forutsetter at pulsen ikke rekker å bli merkbart bredere mens den passerer. Med
+tallene fra målingen gir den bare noen prosent feil i $D_p$.
+
+<Formula tex={"\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"} caption={"Mobiliteten og diffusjonskoeffisienten til minoritetsbærerne fra en Haynes–Shockley-måling. $L$ er avstanden mellom (1) og (2), ikke diffusjonslengden."} onSheet={false} />
+
+
+<Example title="Germaniumstaven fra starten">
+
+En stav av n-type germanium er 1 cm lang, med ${E_0 = 2\ \text{V}}$ over. Lyset og detektoren står
+0,95 cm fra hverandre. Pulsen kommer fram 0,25 ms etter glimtet og er 117 µs bred. Finn
+mobiliteten og diffusjonskoeffisienten til hullene, og sjekk dem mot Einstein-relasjonen.
+
+<Solution>
+
+Feltet er ${\mathcal{E} = 2\ \text{V}/1\ \text{cm} = 2\ \text{V/cm}}$, og
+
+$$
+\begin{aligned}
+v_d &= \frac{0{,}95\ \text{cm}}{0{,}25 \times 10^{-3}\ \text{s}} \\
+&= 3800\ \text{cm/s} \\
+\mu_p &= \frac{v_d}{\mathcal{E}} = \frac{3800}{2}\ \text{cm}^2/\text{V}\cdot\text{s} \\
+&= 1900\ \text{cm}^2/\text{V}\cdot\text{s}
+\end{aligned}
+$$
+
+Bredden i staven er ${\Delta x = v_d\,\Delta t = 0{,}445\ \text{cm}}$, og
+
+$$
+\begin{aligned}
+D_p &= \frac{(\Delta x)^2}{16\,t_d} \\
+&= \frac{0{,}445^2}{16 \cdot 0{,}25 \times 10^{-3}}\ \text{cm}^2/\text{s} \\
+&= 49{,}4\ \text{cm}^2/\text{s}
+\end{aligned}
+$$
+
+Forholdet er ${D_p/\mu_p = 49{,}4/1900 = 0{,}026\ \text{V}}$, som er $k_BT/q$ ved romtemperatur.
+
+<Answer>${\mu_p = 1900\ \text{cm}^2/\text{V}\cdot\text{s}}$ og ${D_p = 49{,}4\ \text{cm}^2/\text{s}}$, med ${D_p/\mu_p = 0{,}026\ \text{V}}$.</Answer>
+</Solution>
+</Example>
+
+<Example label="Eksamensoppgave" title="Hva Haynes–Shockley måler">
+<ExamRef id="2025-nov" task="3" />
+
+<Figure
+  src="/figures/eksamen-2025-11-oppgave-3.png"
+  alt="Kretsskjema: en n-type stav med kontaktene (1) og (2) avstanden L fra hverandre langs toppen. En pulsgenerator med motstanden R1 er koblet til (1), og (2) er koblet via motstanden R2 og batteriet E2 til et oscilloskop som viser spenningen V. Batteriet E0 er koblet over hele staven, med lengden L0, og strømmen I går gjennom den."
+  width={920}
+  height={370}
+  caption="Figuren fra oppgavesettet."
 />
 
+The figure above shows the experimental setup for the Haynes-Shockley experiment.
+
 <Quiz
-  question={"Både $n$ og $p$ faller mot høyre, og det er ikke noe felt. Hvilken retning har partikkelstrømmene og de elektriske strømmene?"}
+  question={"Which parameters can be measured using the Haynes-Shockley experiment?"}
   options={[
-    "Begge går mot høyre, og begge strømmene peker mot høyre",
-    "Begge går mot høyre, elektronstrømmen peker mot venstre og hullstrømmen mot høyre",
-    "Elektronene går mot venstre og hullene mot høyre, begge strømmene peker mot høyre",
-    "Begge går mot høyre, og strømmene opphever hverandre nøyaktig"
+    "minority carrier concentration",
+    "diffusion coefficient for minority carriers",
+    "mobility of majority carriers",
+    "mobility of minority carriers",
+    "diffusion coefficient for majority carriers",
+    "majority carrier concentration"
   ]}
+  answer={[1, 3]}
+  explanation={"Pulsen er et overskudd av minoritetsbærere, hull i en n-type stav. Tiden den bruker fra (1) til (2), gir $\\mu_p = L/t_d\\mathcal{E}$, og bredden gir $D_p = (\\Delta x)^2/16t_d$. Majoritetsbærerne flytter seg bare litt for å dekke ladningen til pulsen, så målingen sier ingenting om deres mobilitet eller diffusjonskoeffisient, og ingen av konsentrasjonene måles."}
+/>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Fremgangsmåten i Haynes–Shockley">
+<ExamRef id="2023-des" task="10" />
+
+<Figure
+  src="/figures/eksamen-2023-12-oppgave-10.png"
+  alt="En n-type stav med strømmen I inn fra (+) til venstre og ut mot (−) til høyre, og feltet ℰ langs staven mot høyre. Punktet (1) ligger nær venstre ende ved x = 0, og punktet (3) nær høyre ende ved x = L."
+  width={990}
+  height={330}
+  caption="Figuren fra oppgavesettet."
+/>
+
+Fill in the blanks in the text below. Words are suggested for each blank – choose the most
+appropriate one.
+
+In an n-type bar which contains an electric field, as shown in the figure, the basic
+principles of the Haynes-Shockley experiment are as follows:
+
+<Quiz
+  question={"1. A pulse of ___ is created close to one side of the bar (1)."}
+  options={["electrons", "holes"]}
   answer={1}
-  explanation={"Diffusjon går fra høy til lav konsentrasjon for begge bærertypene. Strømmen er fluks ganger ladning, og ladningene har motsatt fortegn, så $J_n^\\text{diff} = +qD_n\\,dn/dx$ peker mot venstre mens $J_p^\\text{diff} = -qD_p\\,dp/dx$ peker mot høyre. De opphever hverandre bare hvis $D_n\\,dn/dx = D_p\\,dp/dx$."}
+  explanation={"Lyset lager par, men det som måles, er overskuddet av minoritetsbærere, og i en n-type stav er det hull."}
 />
+
+<Quiz
+  question={"2. As the pulse ___ along the bar in the direction of the electric field,"}
+  options={["diffuses", "drifts"]}
+  answer={1}
+  explanation={"Pulsen flytter seg med feltet fordi hullene driver, med farten $v_d = \\mu_p\\mathcal{E}$. Diffusjon flytter ikke midten av pulsen."}
+/>
+
+<Quiz
+  question={"it spreads out due to ___."}
+  options={["diffusion", "drift"]}
+  answer={0}
+  explanation={"Driften flytter hele pulsen like fort, så den sprer den ikke. Den blir bredere fordi hullene diffunderer, med bredden $4\\sqrt{D_pt}$ mellom $1/e$-punktene."}
+/>
+
+<Quiz
+  question={"3. At the other end of the bar (3), we measure the width of the pulse to calculate the ___"}
+  options={["carrier type", "concentration", "diffusion coefficient", "mobility"]}
+  answer={2}
+  explanation={"Bredden gir $D_p = (\\Delta x)^2/16t_d$."}
+/>
+
+<Quiz
+  question={"of ___."}
+  options={["majority carriers", "minority carriers"]}
+  answer={1}
+  explanation={"Pulsen er et overskudd av hull i en n-type stav, altså minoritetsbærere."}
+/>
+
+<Quiz
+  question={"We also measure the drift time of the pulse to calculate the ___"}
+  options={["mobility", "carrier type", "diffusion coefficient", "concentration"]}
+  answer={0}
+  explanation={"Drifttiden gir farten $v_d = L/t_d$, og mobiliteten er $\\mu_p = v_d/\\mathcal{E}$."}
+/>
+
+<Quiz
+  question={"of ___."}
+  options={["majority carriers", "minority carriers"]}
+  answer={1}
+  explanation={"Også mobiliteten er hullenes, minoritetsbærernes."}
+/>
+
+</Example>
 
 <KeyTakeaways>
 
-- Overskuddsbærere rekombinerer med levetiden $\tau_n = 1/a_r p_0$ ved lav injeksjon, i Si via dype nivåer i gapet. Jevnt lys gir $\delta n = g_\text{op}\tau_n$.
-- Utenfor likevekt er $np \ne n_i^2$, og $n = n_i e^{(F_n - E_i)/k_BT}$, $p = n_i e^{(E_i - F_p)/k_BT}$. $F_n - F_p$ måler avstanden fra likevekt, og minoritetsnivået flytter seg mest.
-- $J_n = q\mu_n n\mathcal{E} + qD_n\,dn/dx$ og $J_p = q\mu_p p\mathcal{E} - qD_p\,dp/dx$; minoritetsstrøm er diffusjon, og $D/\mu = k_BT/q = 0{,}0259$ V.
-- Kontinuitetsligningen: inn minus ut er lagret eller rekombinert. Med ren diffusjon blir den diffusjonsligningen.
-- Stasjonær injeksjon gir $\delta p(x) = \Delta p\,e^{-x/L_p}$ med $L_p = \sqrt{D_p\tau_p}$, strømmen $J_p = qD_p\,\delta p/L_p$ og ladningen $Q_p = qA\,\Delta p\,L_p$. Haynes–Shockley gir $\mu_p$ fra drifttiden og $D_p$ fra pulsbredden.
+- Lys med ${h\nu \ge E_g}$ lager elektroner og hull parvis. Ved lav injeksjon endrer det minoritetskonsentrasjonen med mange tierpotenser og majoritetskonsentrasjonen nesten ikke.
+- Overskuddet dør ut som $e^{-t/\tau}$, fordi hver minoritetsbærer har den samme sjansen per sekund for å rekombinere. I silisium går rekombinasjonen via sentre dypt i gapet.
+- Under lys kommer hvert bånd i likevekt med seg selv, men ikke med det andre, så hvert bånd får sitt eget nivå, $F_n$ og $F_p$. Minoritetsnivået flytter seg $k_BT$ for hver faktor $e$ konsentrasjonen endrer seg med.
+- Diffusjon kommer av tilfeldige steg: fluksen er ${-D\,dn/dx}$, og elektroner og hull i samme gradient gir strøm hver sin vei.
+- Der dopingen varierer, gir likevekt et innebygd felt som driver bærerne like fort tilbake som de diffunderer, og det krever ${D/\mu = k_BT/q}$.
+- Et stasjonært overskudd i enden av en stav faller som ${\Delta p\,e^{-x/L_p}}$ med ${L_p = \sqrt{D_p\tau_p}}$. I Haynes–Shockley gir drifttiden mobiliteten og bredden diffusjonskoeffisienten til minoritetsbærerne.
 
 </KeyTakeaways>

@@ -28,7 +28,7 @@ maintainer), **rewritten** (approved and committed).
 | 01 Energibånd og ladningsbærere | **rewritten** | Rewritten from scratch with five new sims and four figures; approved and committed 2026-10-20. The reference module for `WRITING.md` §2. Three exam tasks added 2026-10-22. |
 | 02 Bærerkonsentrasjoner ved likevekt | **rewritten** | Rewritten from scratch with two new sims (band states with Monte Carlo electrons, n₀ against temperature for Si, Ge and GaAs), two figures and four exam tasks; approved and committed 2026-10-22. |
 | 03 Drift og Hall-effekten | **rewritten** | Rewritten from scratch with two new sims (one electron with and without a field, with its band diagram; what scatters electrons, with μ(T)), the Hall sim extended with a concentration control, four figures and three exam tasks; cut from about 6500 to about 5400 words in round 2; approved and committed 2026-10-22. |
-| 04 Overskuddsbærere og diffusjon | to rewrite |  |
+| 04 Overskuddsbærere og diffusjon | **rewritten** | Rewritten from scratch with three new sims (band states under light with two quasi-Fermi levels; holes taking random steps across a plane, then steady injection; Haynes–Shockley rebuilt with the book's germanium numbers), three figures and two exam tasks; approved and committed 2026-10-23. |
 | 05 pn-overgangen i likevekt og med forspenning | to rewrite | Approved restructure, on hold until the writing review is finished: «Forspenning» moves into 06, so the diode equation is derived once; 05 becomes «pn-overgangen i likevekt» (§5.1–5.2). |
 | 06 Diodeligningen og gjennombrudd | to rewrite | Takes «Forspenning» from 05 (on hold, see 05) and covers §5.3–5.4. |
 | 07 Transienter, kapasitans og avvik fra den enkle teorien | to rewrite |  |
