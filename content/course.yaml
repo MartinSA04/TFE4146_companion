@@ -370,22 +370,22 @@ formulas:
     tex: "\\begin{aligned} x_{n0} &= \\dfrac{WN_a}{N_a + N_d} \\simeq W \\\\ V_0 &= \\dfrac{qN_dW^2}{2\\varepsilon} \\end{aligned}"
     label: "Den ensidige p⁺n-overgangen. Brøken gjelder alltid, og på p-siden er $x_{p0} = WN_d/(N_a + N_d)$. Med $N_a \\gg N_d$ ligger hele sonen på n-siden, og $V_0$ er arealet av felttrekanten med $\\mathcal{E}_0 = -qN_dW/\\varepsilon$."
   - id: diodeligning
-    section: Forspenning
+    section: Fire strømmer med spenning
     onSheet: true
     tex: "I = I_0\\left(e^{qV/k_BT} - 1\\right)"
-    label: "Strømmen gjennom overgangen, positiv fra p til n. Diffusjonsstrømmen over barrieren er likevektsverdien ganger $e^{qV/k_BT}$; generasjonsstrømmen av minoritetsbærere er uavhengig av $V$, og de to er like store i likevekt, så $I_0 = |I_\\text{gen}|$. I lederetningen vokser strømmen eksponentielt, i sperreretningen er den $-I_0$, metningsstrømmen, uansett spenning."
+    label: "Strømmen gjennom overgangen, positiv fra p til n. Diffusjonsstrømmen over barrieren er likevektsverdien ganger $e^{qV/k_BT}$; generasjonsstrømmen av minoritetsbærere er uavhengig av $V$, og de to er like store i likevekt, så $I_0 = |I_\\text{gen}|$. I lederetningen vokser strømmen med en faktor 10 for hver 60 mV ved romtemperatur, og i sperreretningen er den $-I_0$, metningsstrømmen, uansett spenning."
   - id: injeksjon-kant
-    section: Injeksjon av minoritetsbærere
+    section: Minoritetsbærerne ved kantene
     onSheet: true
     tex: "\\begin{aligned} \\Delta p_n &= p(x_{n0}) - p_n \\\\ &= p_n\\left(e^{qV/k_BT} - 1\\right) \\end{aligned}"
     label: "Overskuddet av hull ved n-kanten av romladningssonen, fra $p(x_{n0})/p_n = e^{qV/k_BT}$ ved lav injeksjon. På p-siden er $\\Delta n_p = n_p(e^{qV/k_BT} - 1)$. Vokser eksponentielt i lederetningen; i sperreretningen med $V_r \\gg k_BT/q$ er $\\Delta p_n \\approx -p_n$ og $\\Delta n_p \\approx -n_p$, så kantene er tømt for minoritetsbærere."
   - id: minoritetsprofiler
-    section: Injeksjon av minoritetsbærere
+    section: Minoritetsbærerne ved kantene
     onSheet: true
     tex: "\\begin{aligned} \\delta p(x_n) &= \\Delta p_n\\, e^{-x_n/L_p} \\\\ &= p_n\\left(e^{qV/k_BT} - 1\\right)e^{-x_n/L_p} \\end{aligned}"
     label: "Profilen av injiserte hull i en lang n-side, med $x_n$ målt fra $x_{n0}$ innover. På p-siden er $\\delta n(x_p) = \\Delta n_p\\,e^{-x_p/L_n}$, med $x_p$ fra $-x_{p0}$ innover. Samme løsning som for injeksjon i enden av en stav, med overskuddet ved kanten satt av spenningen."
   - id: kvasi-fermi-sone
-    section: Injeksjon av minoritetsbærere
+    section: Minoritetsbærerne ved kantene
     onSheet: true
     tex: "np = n_i^2\\, e^{(F_n - F_p)/k_BT}"
     label: "Produktet utenfor likevekt. Inne i romladningssonen ligger kvasi-Fermi-nivåene $qV$ fra hverandre, så $np = n_i^2e^{qV/k_BT}$ der. Utenfor er det minoritetsnivået som flytter seg, lineært med avstanden, til det møter $E_F$ etter mange diffusjonslengder. I sperreretningen er $np \\approx 0$ i sonen."
@@ -393,7 +393,7 @@ formulas:
     section: Diodeligningen
     onSheet: true
     tex: "\\begin{aligned} I &= qA\\left(\\dfrac{D_p}{L_p}\\,p_n + \\dfrac{D_n}{L_n}\\,n_p\\right)\\left(e^{qV/k_BT} - 1\\right) \\\\ &= I_0\\left(e^{qV/k_BT} - 1\\right) \\end{aligned}"
-    label: "Den ideelle diodeligningen med metningsstrømmen $I_0$ skrevet ut: diffusjonsstrømmene ved de to sonekantene lagt sammen, uten rekombinasjon i sonen. Med $p_n = n_i^2/N_d$ og $n_p = n_i^2/N_a$ er det den lett dopede siden som teller; i en p⁺n-overgang er strømmen nesten bare hull injisert i n-siden."
+    label: "Den ideelle diodeligningen med metningsstrømmen $I_0$ skrevet ut: diffusjonsstrømmene ved de to sonekantene lagt sammen, uten rekombinasjon i sonen. Med $p_n = n_i^2/N_d$ og $n_p = n_i^2/N_a$ er det den lett dopede siden som teller, og i en p⁺n-overgang er strømmen nesten bare hull injisert i n-siden. Siden $D_p/L_p = L_p/\\tau_p$, er $I_0$ lik $q$ ganger antall par som dannes termisk per sekund innenfor en diffusjonslengde fra sonen."
   - id: lagret-ladning
     section: Ladningskontroll
     onSheet: true
@@ -405,7 +405,7 @@ formulas:
     tex: "\\begin{aligned} I_p(x_n = 0) &= \\dfrac{Q_p}{\\tau_p} = qA\\dfrac{L_p}{\\tau_p}\\,\\Delta p_n \\\\ &= qA\\dfrac{D_p}{L_p}\\,p_n\\left(e^{qV/k_BT} - 1\\right) \\end{aligned}"
     label: "Strømmen inn må fylle opp den lagrede ladningen på hvert $\\tau_p$ sekund. Samme svar som fra gradienten ved sonekanten, siden $L_p/\\tau_p = D_p/L_p$."
   - id: majoritetsstrom
-    section: Strømkomponentene langs dioden
+    section: Strømmen langs dioden
     onSheet: false
     tex: "\\begin{aligned} I_p(x_n) &= qA\\dfrac{D_p}{L_p}\\,\\delta p(x_n) \\\\ I_n(x_n) &= I - I_p(x_n) \\end{aligned}"
     label: "Den samlede strømmen er den samme i hvert tverrsnitt. Minoritetsstrømmen er proporsjonal med overskuddet og dør ut som $e^{-x_n/L_p}$ fra sonen, så majoritetsbærerne tar over: elektronene på n-siden erstatter dem som rekombinerer med de injiserte hullene, og leverer dem som injiseres inn i p-siden."
@@ -874,16 +874,16 @@ glossary:
     section: En sone uten bærere
     definition: "(<em>depletion approximation</em>) Sonen regnes som helt tømt for bærere, så ladningen der er bare ionene, $+qN_d$ og $-qN_a$, og materialet utenfor regnes som nøytralt. Gjør Poissons ligning til to konstanter og feltet til en trekant. Den holder når spenningen over sonen er mange $k_BT/q$: bærerkonsentrasjonen faller med en faktor $e$ for hver $k_BT/q$ potensialet endrer seg, så bærerne finnes bare nær kantene."
   - term: Forspenning
-    section: Forspenning
+    section: Spenning over overgangen
     definition: "(<em>bias</em>) En spenning $V$ over dioden, regnet positiv med p-siden positiv. Den faller over romladningssonen og gjør barrieren $V_0 - V$. Lederetning (<em>forward bias</em>): $V > 0$, lavere barriere, smalere sone, stor strøm. Sperreretning (<em>reverse bias</em>): $V < 0$, høyere barriere, bredere sone, bare metningsstrømmen."
   - term: Generasjonsstrøm
-    section: Forspenning
+    section: Fire strømmer med spenning
     definition: "(<em>generation current</em>) Driftstrømmen av minoritetsbærere som feies ned barrieren. Den går fra n til p, motsatt av diffusjonsstrømmen. Den er satt av hvor mange som når sonen per sekund, altså av den termiske generasjonen innenfor en diffusjonslengde, og er derfor uavhengig av spenningen. Lys nær sonen øker den."
   - term: Metningsstrøm
-    section: Forspenning
+    section: Fire strømmer med spenning
     definition: "(<em>reverse saturation current</em>) $I_0$, strømmen i sperreretningen: generasjonsstrømmen alene, siden barrieren har stoppet diffusjonen. Den er liten og nesten uavhengig av sperrespenningen, og er samme $I_0$ som står foran $e^{qV/k_BT}$ i lederetningen."
   - term: Injeksjon
-    section: Injeksjon av minoritetsbærere
+    section: Minoritetsbærerne ved kantene
     definition: "(<em>minority carrier injection</em>) Spenningen i lederetningen holder et overskudd av minoritetsbærere ved hver sonekant, $\\Delta p_n = p_n(e^{qV/k_BT} - 1)$ på n-siden og tilsvarende for elektroner på p-siden. Overskuddet diffunderer innover og rekombinerer, og diffusjonsstrømmen fra profilen er diodestrømmen."
   - term: Diodeligningen
     section: Diodeligningen
@@ -895,7 +895,7 @@ glossary:
     section: Ladningskontroll
     definition: "(<em>charge control approximation</em>) Strømmen inn i et område er ladningen som er lagret i minoritetsprofilen der, delt på levetiden: $I_p(0) = Q_p/\\tau_p$ med $Q_p = qAL_p\\Delta p_n$. Gir det samme som gradienten ved kanten, ofte raskere."
   - term: Ekstraksjon
-    section: "Sperreretning: ekstraksjon"
+    section: Minoritetsbærerne ved kantene
     definition: "(<em>minority carrier extraction</em>) Motstykket til injeksjon: i sperreretningen feies minoritetsbærerne som når sonekanten, over, og ingen kommer tilbake, så konsentrasjonen ved kantene går mot null og profilen er tømt en diffusjonslengde ut. Metningsstrømmen mates av termisk generasjon i det volumet."
   - term: Gjennombrudd
     section: Gjennombrudd
@@ -910,10 +910,10 @@ glossary:
     section: Skredgjennombrudd
     definition: "(<em>impact ionization</em>) En bærer med nok kinetisk energi slår løs et elektron-hull-par i en kollisjon med gitteret. Mekanismen bak skredgjennombrudd."
   - term: Likeretter
-    section: Likerettere og gjennombruddsdioder
+    section: Skredgjennombrudd
     definition: "(<em>rectifier</em>) En diode brukt til å slippe strøm bare én vei, så bare de positive halvperiodene av en vekselspenning kommer gjennom. Regnes som kortslutning i lederetningen og brudd i sperreretningen, eventuelt med et spenningsfall på omtrent $V_0$ og en seriemotstand i tillegg. God likeretter: liten $I_0$, stor $V_\\text{br}$, liten seriemotstand."
   - term: Gjennombruddsdiode
-    section: Likerettere og gjennombruddsdioder
+    section: Skredgjennombrudd
     definition: "(<em>breakdown diode</em>, <em>Zener diode</em>) En diode dopet for en bestemt $V_\\text{br}$, fra under én volt til flere hundre, brukt i gjennombrudd som spenningsregulator eller referanse. Kalles Zener-diode selv om mekanismen som regel er skred."
 
   - term: Kvasistasjonær tilnærming
