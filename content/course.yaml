@@ -330,42 +330,42 @@ formulas:
     tex: "\\begin{aligned} \\mu_p &= \\dfrac{L}{t_d\\,\\mathcal{E}}, \\qquad D_p = \\dfrac{(\\Delta x)^2}{16\\,t_d} \\\\ \\Delta x &= \\dfrac{L}{t_d}\\,\\Delta t \\end{aligned}"
     label: "Haynes–Shockley: en puls av hull i en n-type stav driver avstanden $L$ på tiden $t_d$ i feltet $\\mathcal{E}$, og drifttiden gir minoritetsmobiliteten. Pulsen er gaussisk, $\\delta p \\propto e^{-x^2/4D_pt}$, så bredden $\\Delta x$ mellom $1/e$-punktene gir $D_p$. Oscilloskopet viser bredden i tid, $\\Delta t$, og driftfarten regner den om."
   - id: kontaktpotensial
-    section: "Likevekt: kontaktpotensialet"
+    section: Båndskjemaet og kontaktpotensialet
     onSheet: true
     tex: "\\begin{aligned} V_0 &= \\dfrac{k_BT}{q}\\ln\\dfrac{p_p}{p_n} = \\dfrac{k_BT}{q}\\ln\\dfrac{N_a}{n_i^2/N_d} \\\\ &= \\dfrac{k_BT}{q}\\ln\\dfrac{N_aN_d}{n_i^2} \\end{aligned}"
-    label: "Kontaktpotensialet over romladningssonen i likevekt, fra kravet om null hullstrøm og Einstein-relasjonen. Det vokser bare logaritmisk med dopingen: mellom 0,6 og 0,9 V for Si ved 300 K. Potensialet er høyest på n-siden. Kontaktpotensialet er en likevektsstørrelse og driver ingen strøm; et voltmeter over dioden viser null."
+    label: "Kontaktpotensialet over romladningssonen i likevekt. Fermi-nivået er flatt, så båndene er skjøvet med summen av avstandene fra $E_i$ til $E_F$ på de to sidene, $k_BT\\ln(N_a/n_i)$ og $k_BT\\ln(N_d/n_i)$. Det vokser bare logaritmisk med dopingen og er typisk 0,6 til 0,9 V for Si ved 300 K. Potensialet er høyest på n-siden. Et voltmeter over dioden viser likevel null, fordi Fermi-nivået er flatt gjennom hele kretsen."
   - id: boltzmann-overgang
-    section: "Likevekt: kontaktpotensialet"
+    section: Bærerne som krysser overgangen
     onSheet: true
     tex: "\\dfrac{p_p}{p_n} = \\dfrac{n_n}{n_p} = e^{qV_0/k_BT}"
-    label: "Forholdet mellom konsentrasjonene på de to sidene av overgangen, samme ligning som $V_0$ snudd om. Den andre likheten følger av $p_pn_p = p_nn_n = n_i^2$. Det er denne formen som brukes når strømmen gjennom overgangen skal regnes ut."
+    label: "Forholdet mellom konsentrasjonene på de to sidene, satt av barrieren. Med $E_F$ flatt faller konsentrasjonen med en faktor $e$ for hver $k_BT$ båndkanten ligger høyere, og på p-siden ligger $E_c$ $qV_0$ høyere enn på n-siden. Den andre likheten følger av $p_pn_p = p_nn_n = n_i^2$."
   - id: baandforskyvning
-    section: Båndskjemaet
+    section: Båndskjemaet og kontaktpotensialet
     onSheet: false
     tex: "\\begin{aligned} qV_0 &= E_{vp} - E_{vn} \\\\ &= (E_{ip} - E_F) \\\\ &\\quad + (E_F - E_{in}) \\end{aligned}"
-    label: "Båndene på p-siden ligger $qV_0$ over båndene på n-siden, fordi Fermi-nivået er flatt i likevekt. Båndkanten er $\\text{konstant} - q\\mathcal{V}$, så båndene ligger lavest på n-siden, der potensialet er høyest. Tegn hver side for seg med sitt $E_F$, skyv dem loddrett til nivåene faller sammen, og les $qV_0$ som summen av avstandene fra $E_i$ til $E_F$ på de to sidene."
+    label: "Båndene på p-siden ligger $qV_0$ over båndene på n-siden, fordi Fermi-nivået er flatt i likevekt. Båndkanten er $\\text{konstant} - q\\mathcal{V}$, så båndene ligger lavest på n-siden, der potensialet er høyest. Tegn hver side for seg med sitt $E_F$, skyv dem loddrett til Fermi-nivåene faller sammen, og les $qV_0$ som summen av avstandene fra $E_i$ til $E_F$ på de to sidene."
   - id: ladningsbalanse
-    section: Romladningen
+    section: Ladningen, feltet og bredden
     onSheet: false
     tex: "qA\\,x_{p0}N_a = qA\\,x_{n0}N_d"
     label: "Ladningen i romladningssonen er like stor på begge sider, siden feltlinjene starter på ionene på n-siden og ender på ionene på p-siden. Den lett dopede siden må avdekke en tykkere skive for samme ladning, så sonen ligger mest der."
   - id: poisson
-    section: Romladningen
+    section: Ladningen, feltet og bredden
     onSheet: true
     tex: "\\begin{aligned} \\dfrac{d\\mathcal{E}(x)}{dx} &= -\\dfrac{d^2\\mathcal{V}(x)}{dx^2} = \\dfrac{\\rho(x)}{\\varepsilon} \\\\ &= \\dfrac{q}{\\varepsilon}\\,(p - n + N_d^+ - N_a^-) \\end{aligned}"
-    label: "Poissons ligning. I utarmingstilnærmingen er bærerne strøket inne i sonen, så $d\\mathcal{E}/dx = qN_d/\\varepsilon$ for $0 < x < x_{n0}$ og $-qN_a/\\varepsilon$ for $-x_{p0} < x < 0$. Feltet blir en trekant som er null ved begge kantene og negativ i hele sonen, siden det peker fra n mot p."
+    label: "Poissons ligning. I utarmingstilnærmingen er sonen tom for bærere, så $d\\mathcal{E}/dx = qN_d/\\varepsilon$ for $0 < x < x_{n0}$ og $-qN_a/\\varepsilon$ for $-x_{p0} < x < 0$. Feltet blir en trekant som er null ved begge kantene og negativ i hele sonen, siden det peker fra n mot p."
   - id: maksfelt
-    section: Romladningen
+    section: Ladningen, feltet og bredden
     onSheet: false
     tex: "\\begin{aligned} \\mathcal{E}_0 &= -\\dfrac{q}{\\varepsilon}N_d\\,x_{n0} = -\\dfrac{q}{\\varepsilon}N_a\\,x_{p0} \\\\ V_0 &= -\\tfrac{1}{2}\\mathcal{E}_0 W \\end{aligned}"
     label: "Det største feltet står ved skillet $x = 0$, der alle feltlinjene passerer, og kontaktpotensialet er arealet av felttrekanten. Med $V_0 = 0{,}8$ V og $W = 0{,}46$ µm er $\\mathcal{E}_0 = -3{,}5 \\times 10^4$ V/cm."
   - id: sonebredde
-    section: Romladningen
+    section: Ladningen, feltet og bredden
     onSheet: true
     tex: "W = \\left[\\dfrac{2\\varepsilon(V_0 - V)}{q}\\left(\\dfrac{N_a + N_d}{N_aN_d}\\right)\\right]^{1/2}"
-    label: "Bredden på romladningssonen, fra felttrekanten og ladningsbalansen. Den lettest dopede siden setter bredden, siden $(N_a + N_d)/N_aN_d = 1/N_a + 1/N_d$. Den vokser som roten av spenningen over sonen: $V_0$ i likevekt, $V_0 - V$ med forspenning, så sonen krymper i lederetningen og vokser i sperreretningen. For Si er den typisk noen tideler av en mikrometer."
+    label: "Bredden på romladningssonen, fra felttrekanten og ladningsbalansen. Den lettest dopede siden setter bredden, siden $(N_a + N_d)/N_aN_d = 1/N_a + 1/N_d$. Den vokser som roten av spenningen over sonen: $V_0$ i likevekt, $V_0 - V$ med forspenning, så sonen krymper i lederetningen og vokser i sperreretningen. For Si er den typisk mellom 0,1 og 1 µm."
   - id: ensidig-overgang
-    section: Romladningen
+    section: Ladningen, feltet og bredden
     onSheet: true
     tex: "\\begin{aligned} x_{n0} &= \\dfrac{WN_a}{N_a + N_d} \\simeq W \\\\ V_0 &= \\dfrac{qN_dW^2}{2\\varepsilon} \\end{aligned}"
     label: "Den ensidige p⁺n-overgangen. Brøken gjelder alltid, og på p-siden er $x_{p0} = WN_d/(N_a + N_d)$. Med $N_a \\gg N_d$ ligger hele sonen på n-siden, og $V_0$ er arealet av felttrekanten med $\\mathcal{E}_0 = -qN_dW/\\varepsilon$."
@@ -859,19 +859,19 @@ glossary:
     section: Haynes–Shockley-eksperimentet
     definition: "(<em>Haynes–Shockley experiment</em>) Et lysglimt lager et overskudd av bærere i en stav med felt langs, og en detektor lenger ned måler pulsen av minoritetsbærere. Tiden pulsen bruker, gir minoritetsmobiliteten, og bredden gir diffusjonskoeffisienten. Hall-effekten måler majoritetsbærerne."
   - term: pn-overgang
-    section: Den abrupte overgangen
+    section: Når p møter n
     definition: "(<em>p-n junction</em>) Skillet mellom et p-dopet og et n-dopet område i samme krystall, lagd ved implantasjon eller diffusjon gjennom et vindu i oksidet. Grunnenheten i dioder, transistorer, solceller og lysdioder."
   - term: Abrupt overgang
-    section: Den abrupte overgangen
-    definition: "(<em>step junction</em>) Modellen med jevn $N_a$ på den ene siden, jevn $N_d$ på den andre og et skarpt skille ved $x = 0$. Beskriver epitaksielle overganger godt; diffunderte og implanterte overganger er gradvise, og det gir korreksjoner."
+    section: Når p møter n
+    definition: "(<em>step junction</em>) Modellen med jevn $N_a$ på den ene siden, jevn $N_d$ på den andre og et skarpt skille ved $x = 0$. I en implantert eller diffundert overgang endrer dopingen seg gradvis over skillet, og der er modellen en tilnærming."
   - term: Romladningssone
-    section: "Likevekt: kontaktpotensialet"
+    section: Når p møter n
     definition: "(<em>space charge region</em>, <em>transition region</em>, <em>depletion region</em>) Sonen $W = x_{p0} + x_{n0}$ rundt skillet der bærerne er borte og de faste ionene står igjen som romladning. Feltet og hele potensialforskjellen ligger her; utenfor er materialet nøytralt."
   - term: Kontaktpotensial
-    section: "Likevekt: kontaktpotensialet"
+    section: Båndskjemaet og kontaktpotensialet
     definition: "(<em>contact potential</em>, <em>built-in potential</em>) $V_0 = (k_BT/q)\\ln(N_aN_d/n_i^2)$, potensialforskjellen over romladningssonen i likevekt, med n-siden høyest. Barrieren de diffunderende bærerne må over. Kontaktpotensialet er en likevektsstørrelse: det driver ingen strøm, og et voltmeter over dioden viser null."
   - term: Utarmingstilnærmingen
-    section: Romladningen
+    section: En sone uten bærere
     definition: "(<em>depletion approximation</em>) Sonen regnes som helt tømt for bærere, så ladningen der er bare ionene, $+qN_d$ og $-qN_a$, og materialet utenfor regnes som nøytralt. Gjør Poissons ligning til to konstanter og feltet til en trekant. Den holder når spenningen over sonen er mange $k_BT/q$: bærerkonsentrasjonen faller med en faktor $e$ for hver $k_BT/q$ potensialet endrer seg, så bærerne finnes bare nær kantene."
   - term: Forspenning
     section: Forspenning
