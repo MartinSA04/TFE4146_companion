@@ -527,20 +527,15 @@ formulas:
     tex: "\\dfrac{V_{01}}{V_{02}} = \\dfrac{\\varepsilon_2N_2}{\\varepsilon_1N_1}"
     label: "Hvordan kontaktpotensialet $V_0 = V_{01} + V_{02}$ deles i en heteroovergang der begge sidene er tømt nær grenseflaten, med 1 for materialet med størst båndgap og $N_1$, $N_2$ som dopingen på hver side. Fra Poissons ligning med $\\varepsilon_1\\mathcal{E}_1 = \\varepsilon_2\\mathcal{E}_2$ ved grenseflaten. Den lettest dopede siden tar mest av spenningen."
   - id: lastlinje
-    section: Transistoren i en krets
+    section: Lastlinjen
     onSheet: false
     tex: "V_{DD} = I_DR_L + V_D"
     label: "Lastlinjen: Kirchhoffs spenningslov for en transistor i serie med motstanden $R_L$ til kilden $V_{DD}$. I diagrammet for $I_D$ mot $V_D$ er den en rett linje fra $V_D = V_{DD}$ ved $I_D = 0$ til $I_D = V_{DD}/R_L$ ved $V_D = 0$, og arbeidspunktet er der den krysser kurven for gatespenningen."
   - id: forsterkning
-    section: Transistoren i en krets
+    section: Forsterkning og bryter
     onSheet: false
     tex: "\\begin{aligned} v_d &= -g_mR_Lv_g \\\\ g_m &= \\dfrac{\\partial I_D(\\text{sat.})}{\\partial V_G} \\end{aligned}"
-    label: "Et lite signal $v_g$ på gaten gir signalet $v_d$ på drain når transistoren er i metning, der strømmen bare avhenger av gatespenningen. Mer strøm gir større fall over $R_L$ og mindre spenning over transistoren, derfor minustegnet. $g_m$ er transkonduktansen, i siemens."
-  - id: svitsjetid
-    section: Transistoren i en krets
-    onSheet: false
-    tex: "\\tau = \\dfrac{C_LV_{DD}}{I_D(\\text{sat.})}"
-    label: "Tiden en transistor bruker på å lade eller tømme kapasitansen $C_L$ til neste trinn når den fører strømmen $I_D(\\text{sat.})$. Stor strøm i metning gir en rask bryter."
+    label: "Et lite signal $v_g$ på gaten gir signalet $v_d$ på drain når transistoren er i metning, der strømmen bare avhenger av gatespenningen. Mer strøm gir større fall over $R_L$ og mindre spenning over transistoren, derfor minustegnet. $g_m$ er transkonduktansen, i siemens. Gjelder så lenge transistoren er i metning gjennom hele svingningen og signalet er så lite at $g_m$ er nesten den samme over den."
   - id: jfet-sonebredde
     section: JFET-en
     onSheet: false
@@ -978,13 +973,19 @@ glossary:
     section: Elektronene i brønnen
     definition: "(<em>two-dimensional electron gas</em>) Elektroner fanget i en smal brønn i ledningsbåndet ved en heteroovergang, som ved N⁺-AlGaAs mot lett dopet GaAs. De beveger seg fritt bare langs grenseflaten. Donorene ligger i AlGaAs, så det er lite urenhetsspredning, og mobiliteten blir høy, særlig ved lave temperaturer."
   - term: Felteffekttransistor
-    section: Transistoren i en krets
+    section: En strøm som styres fra en tredje tilkobling
     definition: "(<em>field-effect transistor</em>, FET) En transistor der spenningen på gaten styrer strømmen mellom source og drain ved å endre hvor mye av kanalen som leder. Strømmen føres av majoritetsbærerne i kanalen, og gaten trekker nesten ingen strøm."
+  - term: Metning
+    section: En strøm som styres fra en tredje tilkobling
+    definition: "(<em>saturation</em>) Området over drain-spenningen $V_D(\\text{sat.})$ der strømmen gjennom en felteffekttransistor er $I_D(\\text{sat.})$, satt av gatespenningen alene og nesten uavhengig av $V_D$."
   - term: Lastlinje
-    section: Transistoren i en krets
+    section: Lastlinjen
     definition: "(<em>load line</em>) Linjen $V_{DD} = I_DR_L + V_D$ for en transistor i serie med motstanden $R_L$ til kilden $V_{DD}$, tegnet i diagrammet for $I_D$ mot $V_D$. Arbeidspunktet er der den krysser kurven for gatespenningen."
+  - term: Arbeidspunkt
+    section: Lastlinjen
+    definition: "(<em>operating point</em>) Strømmen og spenningen en transistor står på uten signal, der lastlinjen krysser kurven for gatespenningen. Et signal på gaten flytter transistoren fram og tilbake langs lastlinjen rundt arbeidspunktet."
   - term: Transkonduktans
-    section: Transistoren i en krets
+    section: En strøm som styres fra en tredje tilkobling
     definition: "(<em>transconductance</em>) $g_m = \\partial I_D/\\partial V_G$, hvor mye drain-strømmen endrer seg per volt på gaten, i siemens (A/V). I metning er $g_m = \\partial I_D(\\text{sat.})/\\partial V_G$, og med lastmotstanden $R_L$ blir signalet på drain $-g_mR_L$ ganger signalet på gaten."
   - term: JFET
     section: JFET-en
@@ -1100,10 +1101,10 @@ symbols:
   - { tex: "\\Delta E_c,\\ \\Delta E_v", meaning: "Spranget i ledningsbåndet og valensbåndet ved en heteroovergang", unit: "eV", section: "Kontakter og heterooverganger", term: "Heteroovergang", formula: heteroovergang-sprang, note: "Til sammen $\\Delta E_g = E_{g1} - E_{g2}$." }
   - { tex: "V_{01},\\ V_{02}", meaning: "Delen av kontaktpotensialet som ligger på side 1 og side 2 av en heteroovergang", unit: "V", section: "Kontakter og heterooverganger", formula: hetero-spenningsdeling }
   # ── Transistorer ──
-  - { tex: "V_G,\\ V_D", meaning: "Spenningen på gaten og på drain, målt fra source", unit: "V", section: "Transistorer", term: "JFET", id: vg-vd, note: "Source er referansen, $V_S = 0$. I en n-kanal-JFET er $V_G \\le 0$ og $V_D > 0$." }
-  - { tex: "I_D", meaning: "Drain-strømmen, fra drain til source gjennom kanalen", unit: "A", section: "Transistorer", term: "JFET", id: id-strom }
-  - { tex: "V_D(\\text{sat.})", meaning: "Drain-spenningen der kanalen klemmes av, $V_G + V_p - V_0$", unit: "V", section: "Transistorer", term: "Avklemming", formula: avklemmingsspenning }
-  - { tex: "I_D(\\text{sat.})", meaning: "Drain-strømmen i metning, over $V_D(\\text{sat.})$", unit: "A", section: "Transistorer", term: "Avklemming", formula: jfet-metning, note: "Ikke metningsstrømmen $I_0$ i en diode." }
+  - { tex: "V_G,\\ V_D", meaning: "Spenningen på gaten og på drain, målt fra source", unit: "V", section: "Transistorer", term: "Felteffekttransistor", id: vg-vd, note: "Source er referansen, $V_S = 0$. I en n-kanal-JFET er $V_G \\le 0$ og $V_D > 0$." }
+  - { tex: "I_D", meaning: "Drain-strømmen, fra drain til source gjennom kanalen", unit: "A", section: "Transistorer", term: "Felteffekttransistor", id: id-strom }
+  - { tex: "V_D(\\text{sat.})", meaning: "Drain-spenningen der metningen begynner", unit: "V", section: "Transistorer", term: "Metning", formula: avklemmingsspenning, note: "I en n-kanal-JFET er den $V_G + V_p - V_0$." }
+  - { tex: "I_D(\\text{sat.})", meaning: "Drain-strømmen i metning, over $V_D(\\text{sat.})$", unit: "A", section: "Transistorer", term: "Metning", formula: jfet-metning, note: "Ikke metningsstrømmen $I_0$ i en diode." }
   - { tex: "V_p", meaning: "Avklemmingsspenningen, $qN_da^2/2\\varepsilon$", unit: "V", section: "Transistorer", term: "Avklemming", formula: avklemmingsspenning, id: vp, note: "Barrieren $V_0 - V$ over gateovergangen når sonen fyller halvhøyden. Sperrespenningen som trengs, er $V_p - V_0$." }
   - { tex: "V_x", meaning: "Spenningen i kanalen i punktet $x$, målt fra source", unit: "V", section: "Transistorer", formula: jfet-sonebredde }
   - { tex: "a", meaning: "Halvhøyden av kanalen mellom de to gateovergangene", unit: "cm", section: "Transistorer", formula: avklemmingsspenning, note: "Ikke Bohr-radien $a_0$." }
@@ -1113,7 +1114,6 @@ symbols:
   - { tex: "V_{DD}", meaning: "Kildespenningen i kretsen med transistoren", unit: "V", section: "Transistorer", term: "Lastlinje", formula: lastlinje }
   - { tex: "R_L", meaning: "Lastmotstanden mellom kilden og drain", unit: "Ω", section: "Transistorer", term: "Lastlinje", formula: lastlinje }
   - { tex: "i_d,\\ v_g,\\ v_d", meaning: "Små endringer i drain-strømmen, gatespenningen og drain-spenningen rundt arbeidspunktet", section: "Transistorer", formula: forsterkning, note: "$i_d$ i A, $v_g$ og $v_d$ i V." }
-  - { tex: "C_L", meaning: "Kapasitansen til neste trinn, som transistoren lader og tømmer", unit: "F", section: "Transistorer", formula: svitsjetid }
   - { tex: "Z", meaning: "Kanalbredden, på tvers av strømmen langs gateflaten", unit: "cm", section: "Transistorer", formula: jfet-strom }
   - { tex: "G_0", meaning: "Konduktansen til kanalen uten romladningssoner, $(Z/L)\\,2aq\\mu_nN_d$", unit: "S", section: "Transistorer", formula: jfet-strom, id: g0 }
   - { tex: "I_{DSS}", meaning: "Strømmen i metning med $V_G = 0$", unit: "A", section: "Transistorer", formula: jfet-kvadratlov, id: idss }

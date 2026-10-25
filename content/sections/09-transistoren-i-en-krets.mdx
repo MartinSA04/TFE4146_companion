@@ -1,0 +1,166 @@
+---
+order: 9
+title: "Transistoren i en krets"
+summary: "Hvordan gatespenningen styrer strømmen gjennom en transistor, hvordan kurvene for strømmen leses og hvordan en transistor i serie med en motstand finner arbeidspunktet sitt på lastlinjen, forsterker et lite signal og slår strømmen av og på."
+importance: core
+tag: "Uke 41 · Streetman §6.1"
+part: "Del 4: Transistorer"
+updated: 2026-10-25
+---
+
+<LearningGoals>
+
+- Lese kurvene for $I_D$ mot $V_D$: <Term name="Metning">metning</Term>, $V_D(\text{sat.})$, $I_D(\text{sat.})$ og <Term name="Transkonduktans">transkonduktansen</Term> $g_m$.
+- Finne <Term name="Arbeidspunkt">arbeidspunktet</Term> til en transistor i serie med en motstand med <Term name="Lastlinje">lastlinjen</Term>.
+- Forklare hvorfor et lite signal på gaten gir et stort signal med motsatt fortegn på drain og hvordan transistoren slår strømmen av og på.
+
+</LearningGoals>
+
+En transistor står i serie med en motstand på 2 kΩ mellom en kilde på 10 V og jord. Med 2 V på
+gaten går det 2 mA gjennom den, og drain ligger på 6 V. Legg et signal på 0,1 V oppå de 2 voltene,
+og spenningen på drain svinger 0,8 V, åtte ganger så mye. Den går ned når gatespenningen går opp.
+Med 0 V på gaten går det ingen strøm, og med 4 V ligger drain på bare 0,4 V. Den samme transistoren
+forsterker altså et signal og slår strømmen av og på, og alle tallene kan leses av kurvene til
+transistoren.
+
+## En strøm som styres fra en tredje tilkobling
+
+En transistor har tre tilkoblinger. Strømmen går mellom to av dem, og spenningen eller strømmen på
+den tredje bestemmer hvor stor den er. Figur 1 viser symbolene for tre vanlige typer: JFET-en,
+MOSFET-en og bipolartransistoren.
+
+<Figure
+  src="/figures/transistorer.svg"
+  alt="Øverst tre symboler. JFET: en loddrett strek med drain øverst og source nederst på høyre side og gaten fra venstre med en pil inn mot streken. MOSFET: den samme streken med drain og source, en pil ut på source og gaten som en egen strek like ved. Bipolartransistor: basen fra venstre mot en loddrett strek, kollektoren og emitteren på skrå mot høyre, med en pil ut på emitteren. Strømveien er ravgul, tilkoblingen som styrer, er blå. Under: I_D mot V_D fra 0 til 10 V for gatespenningene 1,5, 2, 2,5 og 3 V, med merker for hver milliampere. Hver kurve stiger fra origo og flater ut. En stiplet kurve går gjennom knekkene. Kurven for 2,5 V er ravgul, med knekken ved V_D(sat.) = 1,5 V og den flate delen merket I_D(sat.). Det flate området er merket metning."
+  width={340}
+  height={426}
+  number={1}
+  caption="Symbolene for en JFET, en MOSFET og en bipolartransistor, med strømveien i ravgult og tilkoblingen som styrer, i blått. Under står $I_D$ mot $V_D$ for transistoren i simuleringen lenger ned, med én kurve for hver gatespenning og den stiplede kurven der metningen begynner."
+/>
+
+I de to <Term name="Felteffekttransistor">felteffekttransistorene</Term> går strømmen fra drain til
+source, og spenningen på gaten styrer den. I bipolartransistoren går strømmen fra kollektor til
+emitter, og en liten strøm inn i basen styrer den. Navnene fra felteffekttransistoren brukes
+nedenfor. Spenningene måles fra source: $V_G$ er spenningen på gaten og $V_D$ spenningen på drain,
+og $I_D$ er strømmen inn i drain.
+
+Hold gatespenningen fast, øk drain-spenningen fra null og mål strømmen, så får du én kurve. Gjenta
+for flere gatespenninger, og du får kurvene nederst i figur 1. Ved liten $V_D$ vokser strømmen
+nesten proporsjonalt med $V_D$, som i en motstand, og transistoren leder bedre jo høyere
+gatespenningen er. Over en viss drain-spenning, $V_D(\text{sat.})$, flater kurven ut, og strømmen
+holder seg på $I_D(\text{sat.})$ når $V_D$ øker videre. Der er transistoren i
+<Term name="Metning">metning</Term>, og gatespenningen alene bestemmer strømmen. Den stiplede
+kurven går gjennom punktene der metningen begynner. Under 1 V på gaten går det ingen strøm i denne
+transistoren, så det er ingen kurve for lavere gatespenninger.
+
+<Term name="Transkonduktans">Transkonduktansen</Term> er hvor mye strømmen i metning endrer seg per
+volt på gaten:
+
+$$
+g_m = \frac{\partial I_D(\text{sat.})}{\partial V_G}
+$$
+
+målt i siemens, ampere per volt. Fra 1,5 til 2,5 V på gaten øker strømmen i figur 1 med 4 mA, så
+rundt 2 V er ${g_m = 4\ \text{mS}}$. Kurvene ligger glissere jo høyere de ligger, så $g_m$ vokser
+med gatespenningen. Hvor store $V_D(\text{sat.})$, $I_D(\text{sat.})$ og $g_m$ blir, avhenger av
+hvordan transistoren er bygd, og er forskjellig for JFET-en, MOSFET-en og bipolartransistoren.
+
+<Callout title="Kurvene til en transistor">
+I metning, over $V_D(\text{sat.})$, er strømmen $I_D(\text{sat.})$ satt av gatespenningen alene. Transkonduktansen ${g_m = \partial I_D(\text{sat.})/\partial V_G}$ er hvor mye den endrer seg per volt på gaten.
+</Callout>
+
+<Quiz
+  question={"Transistoren i figur 1 har $V_G = 2{,}5$ V og bare 0,5 V på drain. Hvor stor er strømmen?"}
+  options={["Mindre enn 4,5 mA", "4,5 mA", "Null"]}
+  answer={0}
+  explanation={"Kurven for 2,5 V flater ut først ved $V_D(\\text{sat.}) = 1{,}5$ V. Ved 0,5 V ligger transistoren på den stigende delen av kurven, der strømmen også avhenger av $V_D$, og strømmen er under $I_D(\\text{sat.}) = 4{,}5$ mA. Gatespenningen bestemmer strømmen alene bare i metning. Utenfor metning går det likevel strøm, og ved små $V_D$ oppfører transistoren seg som en motstand."}
+/>
+
+## Lastlinjen
+
+Kretsen fra starten deler kildespenningen $V_{DD}$ mellom lastmotstanden $R_L$ og transistoren.
+Strømmen $I_D$ går gjennom begge, så spenningen over motstanden er $I_DR_L$, og resten ligger over
+transistoren. Summen av de to spenningene er <FormulaRef id="lastlinje">kildespenningen</FormulaRef>:
+
+$$
+V_{DD} = I_DR_L + V_D
+$$
+
+Ligningen har to ukjente, strømmen og spenningen over transistoren. Den andre sammenhengen mellom
+dem er kurven til transistoren for gatespenningen, og kurven har ingen formel, bare en graf. De to
+løses derfor sammen ved å tegne ligningen inn i diagrammet med kurvene. Ligningen er en rett linje,
+<Term name="Lastlinje">lastlinjen</Term>, fra ${V_D = V_{DD}}$ ved ${I_D = 0}$ til
+${I_D = V_{DD}/R_L}$ ved ${V_D = 0}$. Transistoren står der linjen krysser kurven, i
+<Term name="Arbeidspunkt">arbeidspunktet</Term>.
+
+Med tallene fra starten går linjen fra 10 V til ${10\ \text{V}/2\ \text{k}\Omega = 5\ \text{mA}}$.
+Kurven for 2 V er flat på 2 mA, og linjen er på 2 mA ved ${V_D = 10 - 2 \cdot 2 = 6\ \text{V}}$. Der
+er arbeidspunktet, over ${V_D(\text{sat.}) = 1\ \text{V}}$ for den kurven, så transistoren er i
+metning.
+
+<Simulation
+  src={"/sims/transistor-og-last.js"}
+  host={"dom"}
+  title={"Transistoren og lastmotstanden"}
+  caption={"Gaten er drevet av et batteri $V_G$ og en signalkilde $v_g$ i serie. Skopet viser svingningene $v_g$ og $v_d$ på samme skala, og skalaen endrer seg med svingningen. Diagrammet har kurvene for fire gatespenninger, den stiplede kurven der metningen begynner, lastlinjen (oransje) og kurven for gatespenningen akkurat nå (blå). Punktet er der transistoren står nå, ringen er arbeidspunktet uten signal, og strekene langs aksene viser hvor langt $V_D$ og $I_D$ svinger."}
+  height={430}
+/>
+
+Sett «Signal» til 0 i simuleringen og dra «Gatespenning» fra 0 til 4 V. Den blå kurven stiger, og
+punktet glir oppover langs lastlinjen. Under 1 V er det ingen blå kurve, og punktet står nederst på
+linjen, med hele $V_{DD}$ over transistoren. Ved 4 V står punktet øverst til venstre, med 0,4 V
+over transistoren og nesten 5 mA gjennom den. Lastlinjen kommer fra kretsen alene, så gaten
+bestemmer bare hvor på linjen transistoren står.
+
+<Callout title="Lastlinjen">
+Kretsen gir ${V_{DD} = I_DR_L + V_D}$, en rett linje fra $V_{DD}$ på spenningsaksen til $V_{DD}/R_L$ på strømaksen. Transistoren står der linjen krysser kurven for gatespenningen, og gatespenningen flytter arbeidspunktet langs linjen.
+</Callout>
+
+<Quiz
+  question={"En diode med $I_0 = 1{,}14$ pA står i lederetningen i serie med 9 kΩ og en kilde på 5 V ved 300 K. Med lastlinjen kan du finne strømmen her også. Hvor stor er den?"}
+  options={["0,50 mA", "0,56 mA", "0,48 mA"]}
+  answer={0}
+  explanation={"Lastlinjen går fra 5 V til ${5\\ \\text{V}/9\\ \\text{k}\\Omega = 0{,}556}$ mA. Start i toppen av linjen: ved 0,556 mA gir diodeligningen ${V = 0{,}0259\\ln(0{,}556\\ \\text{mA}/1{,}14\\ \\text{pA}) = 0{,}518}$ V, og linjen gir ${(5 - 0{,}518)/9\\ \\text{k}\\Omega = 0{,}498}$ mA. En runde til gir 0,515 V og 0,498 mA igjen, så linjen og diodekurven krysser ved 0,50 mA. 0,56 mA er strømmen uten spenning over dioden, og 0,48 mA kommer av å regne med 0,7 V, som er for mye for en så liten strøm i denne dioden."}
+/>
+
+## Forsterkning og bryter
+
+Små bokstaver står for svingningene rundt arbeidspunktet. Sett «Gatespenning» til 2 V og «Signal»
+til 0,1 V i simuleringen «Transistoren og lastmotstanden». Punktet glir fram og tilbake langs
+lastlinjen rundt arbeidspunktet, og på skopet svinger $v_d$ åtte ganger så mye som $v_g$. Den går
+ned når $v_g$ går opp.
+
+Signalet blir forsterket fordi transistoren er i metning. Der bestemmer gaten strømmen alene, så
+signalet $v_g$ endrer strømmen med ${i_d = g_mv_g}$. Hele endringen går gjennom motstanden, og
+spenningen over den endrer seg med $R_Li_d$. Kilden holder $V_{DD}$ fast, så spenningen over
+transistoren endrer seg like mye motsatt vei, og <FormulaRef id="forsterkning">signalet på
+drain</FormulaRef> blir
+
+$$
+v_d = -R_Li_d = -g_mR_Lv_g
+$$
+
+Forsterkningen er ${g_mR_L = 4\ \text{mS} \cdot 2\ \text{k}\Omega = 8}$, og minustegnet sier at
+$v_d$ går ned når $v_g$ går opp.
+
+Formelen holder så lenge transistoren er i metning gjennom hele svingningen. Dra «Gatespenning» til
+3 V. Arbeidspunktet ligger da til venstre for den stiplede kurven, der strømmen også avhenger av
+$V_D$, og $v_d$ blir mindre enn $v_g$. Kurvene må også ligge like tett over svingningen for at $v_d$
+skal bli en kopi av $v_g$. Sett gatespenningen tilbake til 2 V og «Signal» til 0,4 V, så går $v_d$
+3,8 V ned og bare 2,6 V opp.
+
+Som bryter veksler transistoren mellom de to endene av lastlinjen. Med gaten under 1 V er den av,
+uten strøm. Med høy gatespenning er den på, med nesten hele $V_{DD}$ over motstanden og lite
+spenning over seg selv.
+
+<Callout title="Forsterkning og bryter">
+I metning gir et lite signal $v_g$ på gaten ${v_d = -g_mR_Lv_g}$ på drain, forsterket og med motsatt fortegn. Som bryter er transistoren av nederst på lastlinjen og på øverst.
+</Callout>
+
+<KeyTakeaways>
+
+- Spenningen på gaten styrer strømmen fra drain til source. I metning, over $V_D(\text{sat.})$, er strømmen $I_D(\text{sat.})$ satt av gatespenningen alene, og ${g_m = \partial I_D(\text{sat.})/\partial V_G}$.
+- I serie med motstanden $R_L$ til $V_{DD}$ står transistoren der kurven for gatespenningen krysser lastlinjen ${V_{DD} = I_DR_L + V_D}$.
+- I metning gir et lite signal på gaten ${v_d = -g_mR_Lv_g}$ på drain. Som bryter står transistoren nederst eller øverst på lastlinjen.
+
+</KeyTakeaways>
