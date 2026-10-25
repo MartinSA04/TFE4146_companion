@@ -1,0 +1,657 @@
+---
+order: 10
+title: "JFET-en"
+summary: "Hvordan en n-kanal-JFET er bygd, hvorfor spenningen langs kanalen klemmer den av ved drain så strømmen metter, hvordan gatespenningen flytter kurvene og gjennombruddet, hvordan strømmen regnes ut skive for skive og hvordan kanalen lages for lav avklemmingsspenning og stor transkonduktans."
+importance: core
+tag: "Uke 41–42 · Streetman §6.2"
+part: "Del 4: Transistorer"
+updated: 2026-10-25
+---
+
+<LearningGoals>
+
+- Beskrive en n-kanal-<Term name="JFET">JFET</Term> og hvilke spenninger source, gate og drain skal ha.
+- Forklare hvorfor kanalen er smalest ved drain, hvorfor den <Term name="Avklemming">klemmes av</Term> der og hvorfor strømmen da metter.
+- Regne ut avklemmingsspenningen $V_p$, $V_D(\text{sat.})$ og gatespenningen som stenger kanalen, og skissere kurvene for $I_D$ mot $V_D$ med gjennombrudd.
+- Utlede $I_D(V_D, V_G)$ ved å dele kanalen i skiver, og si når <Term name="Gradvis kanal">tilnærmingen med gradvis kanal</Term> gjelder.
+- Regne ut strømmen i metning og <Term name="Transkonduktans">transkonduktansen</Term>, og velge halvhøyde, doping og $Z/L$ for lav avklemmingsspenning og stor transkonduktans.
+
+</LearningGoals>
+
+En 2SK117 er en JFET med tre bein, laget for forsterkere til lyd. Med gaten koblet til source går
+det 2,5 mA gjennom den når drain ligger på 1 V, og 2,8 mA når drain ligger på 10 V. Spenningen er
+ti ganger så stor, men strømmen har nesten ikke endret seg. Legg 0,2 V negativt på gaten, og
+strømmen faller til rundt 0,7 mA. Ved −0,4 V går det nesten ingen strøm. Gaten selv trekker under
+1 nA. Inni transistoren er det en kanal av n-type silisium mellom to pn-overganger, og
+romladningssonene i de to overgangene gir alle disse tallene.
+
+## Kanalen og gaten
+
+Figur 1 viser hvordan en n-kanal-<Term name="JFET">JFET</Term> er bygd. Strømmen går gjennom en
+kanal av n-type silisium, med et p⁺-lag over i overflaten og et p⁺-substrat under. De to
+p⁺-områdene er gaten, og de er koblet sammen. Kontaktene i hver ende av kanalen heter source og
+drain. Elektronene kommer inn i kanalen ved source og går ut ved drain, så strømmen $I_D$ går
+motsatt vei, fra drain til source.
+
+<Figure
+  src="/figures/jfet-oppbygning.svg"
+  alt="Øverst en plan JFET i snitt: et n-lag på et p⁺-substrat, et p⁺-lag i overflaten midt på, kontaktene S og D i overflaten i hver ende, G på p⁺-laget og G under substratet. Romladningssonene under p⁺-laget og over substratet er tonet med stiplet kant, og noen elektroner ligger i kanalen mellom dem. Nederst den symmetriske modellen: n-kanalen mellom to p⁺-gater, S til venstre, D til høyre og G over og under. Sonene langs begge gatene er tonet med donorioner som pluss. Halvhøyden a er merket fra midtlinjen til gaten. Elektroner går mot høyre, og en pil merket I_D peker mot venstre. Under står x-aksen fra 0 ved source til L ved drain."
+  width={340}
+  height={404}
+  number={1}
+  caption="En n-kanal-JFET med gaten i overflaten og i substratet (øverst), og den symmetriske modellen med kanalen mellom to like gater (nederst). Sonene er tonet. Elektronene (blå) går fra source til drain, og strømmen $I_D$ går motsatt vei. Ikke i skala."
+/>
+
+Modellen nederst i figur 1 legger kanalen mellom to like p⁺-gater. Gaten i overflaten og substratet
+under virker på samme måte, så modellen gir de samme resultatene og er enklere å regne på. Kanalen er
+$2a$ høy, med halvhøyden $a$ fra midten til hver gate, og $L$ lang. Posisjonen $x$ går fra 0 ved
+source til $L$ ved drain.
+
+Spenningene måles fra source. Drain har $V_D > 0$, så elektronene trekkes fra source mot drain.
+Gaten har $V_G \le 0$, så de to pn-overgangene mellom gaten og kanalen står i sperreretning eller
+uten spenning. Med positiv gate ville overgangene lede, og gaten ville injisere hull i kanalen. Gjennom
+en overgang i sperreretning går bare den lille
+<Term name="Generasjonsstrøm">generasjonsstrømmen</Term>, og derfor trekker gaten i 2SK117 under 1 nA.
+
+Hver gateovergang er en p⁺n-overgang, så <Term name="Romladningssone">romladningssonen</Term> ligger
+nesten bare på n-siden, inne i kanalen. Med spenningen $V$ over overgangen er den
+
+$$
+W = \left[\frac{2\varepsilon(V_0 - V)}{qN_d}\right]^{1/2}
+$$
+
+bred, der $V_0$ er kontaktpotensialet og $N_d$ dopingen i kanalen. Med liten spenning på drain,
+${V_D \ll V_0 - V_G}$, er hele kanalen nær 0 V, og spenningen over overgangen er $V_G$. Jo mer negativ
+gaten er, desto bredere er sonen. Bare midten av kanalen er nøytral og leder strøm, og halvhøyden av
+den ledende delen er
+
+$$
+h = a - W
+$$
+
+Med liten $V_D$ er kanalen en motstand. Den ledende delen har ledningsevnen ${\sigma = q\mu_nN_d}$
+og tverrsnittet $2hZ$, der $Z$ er bredden av kanalen inn i figuren, så motstanden er
+
+$$
+R = \frac{L}{\sigma \cdot 2hZ}
+$$
+
+Gaten bestemmer $h$ og dermed motstanden.
+
+<Simulation
+  src={"/sims/jfet-kanalen.js"}
+  host={"dom"}
+  title={"Kanalen i JFET-en"}
+  caption={"Kanalen i en n-kanal-JFET, med sonene tonet, donorionene som +, elektronene som blå prikker og hullene fra skredet som røde ringer. Under står spenningen $V_x$ langs kanalen, og nederst $I_D$ mot $V_D$ for fire gatespenninger, med kurven og punktet for spenningene du har valgt. Kanalen er ikke i skala, og gateovergangen bryter gjennom ved 10 V sperrespenning, ikke ved rundt 60 V som en virkelig overgang med denne dopingen."}
+  height={500}
+/>
+
+Sett «Drain» til 0,2 V i simuleringen og dra «Gate» fra 0 til −5 V. Sonene blir bredere langs hele
+kanalen, og kurven nederst starter slakere fra origo, fordi motstanden øker. Nær −4 V møtes sonene
+langs hele kanalen, og kanalen er stengt.
+
+Kanalen stenges når sonen fra hver gate er like bred som halvhøyden, ${W = a}$. Satt inn i formelen
+for $W$ gir kravet ${V_0 - V_G = qN_da^2/2\varepsilon}$. Høyre side avhenger bare av hvordan kanalen
+er laget, og den kalles <FormulaRef id="avklemmingsspenning">avklemmingsspenningen</FormulaRef>:
+
+$$
+V_p = \frac{qN_da^2}{2\varepsilon}
+$$
+
+$V_p$ er spenningen $V_0 - V$ over sonen som gjør den like bred som halvhøyden. Kontaktpotensialet
+står for $V_0$ av den, så gaten trenger bare $V_p - V_0$ i sperreretning, og kanalen er stengt når
+
+$$
+V_G = V_0 - V_p
+$$
+
+Med $V_p$ kan sonen skrives som ${W/a = [(V_0 - V)/V_p]^{1/2}}$, en brøkdel av halvhøyden.
+
+Kanalen i simuleringen har ${N_d = 10^{16}\ \text{cm}^{-3}}$, ${a = 0{,}8\ \mu\text{m}}$ og p⁺-gater med
+${10^{19}\ \text{cm}^{-3}}$. Med ${\varepsilon = 11{,}8\,\varepsilon_0 = 1{,}044 \cdot 10^{-12}\ \text{F/cm}}$ er
+
+$$
+\begin{aligned}
+&V_p = \frac{1{,}6 \cdot 10^{-19} \cdot 10^{16} \cdot 0{,}64 \cdot 10^{-8}}{2 \cdot 1{,}044 \cdot 10^{-12}} \\
+&= 4{,}9\ \text{V} \\
+&V_0 = 0{,}0259 \ln\frac{10^{19} \cdot 10^{16}}{(1{,}5 \cdot 10^{10})^2}\ \text{V} \\
+&= 0{,}87\ \text{V}
+\end{aligned}
+$$
+
+så kanalen stenges ved ${V_G = 0{,}87 - 4{,}9 = -4{,}0\ \text{V}}$. Uten spenning på gaten fyller hver
+sone allerede ${(0{,}87/4{,}9)^{1/2} = 42\ \%}$ av halvhøyden.
+
+<Callout title="Kanalen og gaten">
+Gaten danner to p⁺n-overganger i sperreretning med kanalen, så den trekker nesten ingen strøm. Sonene gjør den ledende delen ${2h = 2(a - W)}$ høy, og kanalen stenges ved ${V_G = V_0 - V_p}$, der ${V_p = qN_da^2/2\varepsilon}$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Hvilken komponent?">
+<ExamRef id="2020-mai" task="I-7" />
+
+<Figure
+  src="/figures/eksamen-2020-05-oppgave-I-7.png"
+  alt="En rektangulær stav merket n, med kontakten A øverst og B nederst. Langs venstre og høyre kant inne i staven ligger et skravert p⁺-område, med kontakten C til venstre og D til høyre."
+  width={480}
+  height={512}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The figure above depicts a uniformly n-doped slab of a semiconductor with ohmic contacts to the top
+and bottom faces (A,B) and abrupt p⁺-n junctions with ohmic contact electrodes (C,D) to the p⁺
+regions.
+
+<Quiz
+  question={"Which common semiconductor device does this figure represent if the terminals C and D are connected?"}
+  options={["a diode", "a JFET", "a p⁺-n-p⁺ BJT"]}
+  answer={1}
+  explanation={"Staven mellom A og B er kanalen, og de to p⁺-områdene med C og D koblet sammen er gaten. Med sperrespenning på gaten bestemmer sonene fra de to overgangene hvor mye av staven som leder strøm mellom A og B, og det er en JFET. En diode har bare to tilkoblinger, og i en p⁺-n-p⁺ bipolartransistor går strømmen fra det ene p⁺-området til det andre, som her er koblet sammen."}
+/>
+
+</Example>
+
+## Kanalen klemmes av ved drain
+
+Sett «Gate» til 0 og dra «Drain» fra 0 til 4 V i simuleringen «Kanalen i JFET-en». Sonene blir
+bredere mot drain, kurven for $V_x$ blir brattere mot drain, og punktet nederst følger en kurve som
+bøyer av.
+
+Med strøm gjennom kanalen er spenningen ikke lenger den samme langs den. Kanalen er en motstand fra
+source til drain, så spenningen $V_x$ i kanalen stiger fra 0 ved source til $V_D$ ved drain. Gaten er
+sterkt dopet og leder godt, så den har spenningen $V_G$ hele veien. Sperrespenningen over
+gateovergangen i punktet $x$ er derfor ${V_x - V_G}$, og den er størst ved drain. Med
+${V = V_G - V_x}$ i formelen for sonen er sonen
+
+$$
+W(x) = a\left[\frac{V_0 + V_x - V_G}{V_p}\right]^{1/2}
+$$
+
+bred i punktet $x$, så kanalen er smalest ved drain.
+
+Høyere $V_D$ løfter $V_x$ langs hele kanalen, så sonene blir bredere og motstanden i kanalen større.
+Hver volt ekstra på drain gir derfor mindre ekstra strøm enn den forrige, og kurven for $I_D$ mot
+$V_D$ bøyer av fra den rette linjen. Den smale delen ved drain har størst motstand per lengde, så $V_x$
+stiger brattest der.
+
+Et mykt sugerør gjør det samme. Når du suger, er trykket inne i røret lavest ved munnen, så
+forskjellen mot lufttrykket utenfor er størst der, og der klemmes røret sammen. Forskjellen mellom
+lufttrykket utenfor og trykket inne i røret svarer til sperrespenningen ${V_x - V_G}$, og munnen
+svarer til drain. Suger du hardere, klemmes røret mer, og du får ikke mer drikke gjennom det. Et
+sugerør kan klemmes helt igjen så drikken stopper, men strømmen gjennom kanalen stopper ikke.
+
+Ved drain er sperrespenningen ${V_D - V_G}$, og spenningen over sonen der er ${V_0 + V_D - V_G}$. Når
+den har vokst til $V_p$, er sonen ved drain like bred som halvhøyden, sonene fra de to gatene møtes,
+og kanalen er <Term name="Avklemming">klemt av</Term>. Det skjer ved
+<FormulaRef id="avklemmingsspenning">drain-spenningen</FormulaRef>
+
+$$
+V_D(\text{sat.}) = V_G + V_p - V_0
+$$
+
+For kanalen i simuleringen med ${V_G = 0}$ er ${V_D(\text{sat.}) = 4{,}0\ \text{V}}$, og der når kurven
+for $V_x$ den stiplede linjen ved drain.
+
+Over $V_D(\text{sat.})$ møtes sonene litt før drain, og et kort stykke av kanalen ved drain er klemt
+av. Den åpne delen, fra source til der sonene møtes, slutter der ${V_x = V_D(\text{sat.})}$, uansett
+hvor høy $V_D$ er. Den har altså samme form og samme spenning over seg som ved avklemming, så den fører
+den samme strømmen, $I_D(\text{sat.})$. Resten av spenningen, ${V_D - V_D(\text{sat.})}$, ligger over
+den avklemte delen. Den delen er en romladningssone med et sterkt felt langs kanalen, og elektronene
+som kommer fram til den, feies gjennom til drain, slik minoritetsbærerne som når sonen i en diode i
+sperreretning, feies over.
+
+Dra «Drain» videre fra 4 til 9 V. Punktet går flatt, og sonene og kurven for $V_x$ i den åpne delen
+endrer seg nesten ikke. Den avklemte delen ved drain blir litt lengre, og over den stiger $V_x$ bratt
+fra $V_D(\text{sat.})$ til $V_D$.
+
+Derfor endrer strømmen i 2SK117 seg nesten ikke fra 1 til 10 V på drain. Den lille økningen kommer
+av at den avklemte delen blir lengre når $V_D$ øker, så den åpne delen blir litt kortere og leder
+litt bedre. I en lang kanal er effekten liten, og her regnes strømmen som konstant over
+$V_D(\text{sat.})$.
+
+<Callout title="Avklemming og metning">
+Sperrespenningen over gateovergangen er ${V_x - V_G}$ og størst ved drain, så kanalen klemmes av der, ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$. Ved høyere $V_D$ ligger resten av spenningen over den avklemte delen, og strømmen holder seg på $I_D(\text{sat.})$.
+</Callout>
+
+## Gatespenningen og kurvene
+
+Med negativ gate er sonene bredere langs hele kanalen fra før. Kanalen leder dårligere ved liten
+$V_D$, den klemmes av ved lavere drain-spenning, og strømmen i metning blir mindre. Hver gatespenning
+gir sin kurve, og simuleringen «Kanalen i JFET-en» viser kurvene for 0, −1, −2 og −3 V. Den stiplede
+kurven går gjennom punktene der kanalen klemmes av.
+
+Ved ${V_G = V_0 - V_p}$ er ${V_D(\text{sat.}) = 0}$, og kanalen er stengt. Da møtes sonene allerede ved
+source, og ingen åpen del fører elektroner fram. Ved avklemming møtes sonene bare ved drain, og
+elektronene som kommer gjennom den åpne delen, feies over den avklemte delen.
+
+Ved drain er sperrespenningen ${V_D - V_G}$. Når den blir lik gjennombruddsspenningen $V_\text{br}$ for
+overgangen, starter <Term name="Skredgjennombrudd">skredet</Term>, og strømmen fra drain til gaten
+vokser bratt. Det skjer ved <FormulaRef id="jfet-gjennombrudd">drain-spenningen</FormulaRef>
+
+$$
+V_D = V_\text{br} + V_G
+$$
+
+så med negativ gate bryter transistoren gjennom ved lavere drain-spenning. Databladet til 2SK117
+oppgir derfor gjennombruddsspenningen mellom gate og drain, minst 50 V.
+
+Sett «Drain» til 4 V og «Gate» til −2 V. Den stiplede linjen for $V_D(\text{sat.})$ i diagrammet for
+$V_x$ faller til 2,0 V, og kurven nederst ligger lavere. Gateovergangen i simuleringen bryter gjennom
+ved ${V_\text{br} = 10\ \text{V}}$, så med denne gaten kommer skredet ved ${V_D = 8\ \text{V}}$. Dra
+«Drain» forbi 8 V. Ved drain-enden av sonene dannes par av elektroner og hull, hullene går til gaten,
+og strømmen stiger bratt.
+
+<Callout title="Gatespenningen og kurvene">
+Negativ gate gjør sonene bredere langs hele kanalen, så kanalen leder dårligere, klemmes av ved lavere $V_D$ og gir mindre $I_D(\text{sat.})$. Ved ${V_G = V_0 - V_p}$ er kanalen stengt. Gjennombruddet kommer ved drain, ved ${V_D = V_\text{br} + V_G}$.
+</Callout>
+
+<Quiz
+  question={"En n-kanal-JFET har $V_p = 6{,}0$ V og $V_0 = 0{,}9$ V. Gaten ligger på $-1{,}5$ V. Ved hvilken drain-spenning klemmes kanalen av?"}
+  options={["3,6 V", "4,5 V", "5,1 V", "6,6 V"]}
+  answer={0}
+  explanation={"Kanalen klemmes av ved drain når spenningen over sonen der, ${V_0 + V_D - V_G}$, er lik $V_p$. Det gir ${V_D = V_G + V_p - V_0 = -1{,}5 + 6{,}0 - 0{,}9 = 3{,}6}$ V. 4,5 V glemmer kontaktpotensialet, og 5,1 V glemmer gaten. 6,6 V tar gatespenningen med feil fortegn. En negativ gate gjør sonene bredere, så kanalen klemmes av ved lavere drain-spenning."}
+/>
+
+<Example label="Eksamensoppgave" title="Sonene og kurvene">
+<ExamRef id="2024-nov" task="11" />
+
+Match the illustration of the depletion region (blue) of a JFET with zero gate bias to its
+corresponding IV-curve.
+
+<Figure
+  src="/figures/eksamen-2024-11-oppgave-11.png"
+  alt="Øverst tre små diagrammer av I_D mot V_D. Til venstre en kurve som bøyer av, med et punkt der den fortsatt stiger. I midten et kort rett linjestykke fra origo med et punkt. Til høyre en kurve som flater ut, med punktet der den blir flat. Under står tre JFET-er med kanalen grå og sonene blå, nummerert 1 til 3. I 1 blir sonene bredere mot drain og møtes nesten der. I 2 er sonene like brede langs hele kanalen. I 3 møtes sonene et stykke før drain."
+  width={655}
+  height={1041}
+  caption="Figuren fra oppgavesettet, med kurvene øverst og illustrasjonene nummerert 1 til 3 ovenfra, i samme rekkefølge som i oppgaven."
+/>
+
+<Quiz
+  question={"Hvilken kurve hører til illustrasjon 1?"}
+  options={["Kurven til venstre", "Kurven i midten", "Kurven til høyre"]}
+  answer={0}
+  explanation={"Sonene blir bredere mot drain og møtes nesten der, så spenningen langs kanalen er stor nok til å snevre den inn ved drain, men kanalen er ennå ikke klemt av. Kurven bøyer av og stiger fortsatt, som kurven til venstre."}
+/>
+
+<Quiz
+  question={"Hvilken kurve hører til illustrasjon 2?"}
+  options={["Kurven til venstre", "Kurven i midten", "Kurven til høyre"]}
+  answer={1}
+  explanation={"Sonene er like brede langs hele kanalen, så spenningen langs kanalen er liten, og kanalen er en motstand. Strømmen er proporsjonal med $V_D$, som det rette stykket i midten."}
+/>
+
+<Quiz
+  question={"Hvilken kurve hører til illustrasjon 3?"}
+  options={["Kurven til venstre", "Kurven i midten", "Kurven til høyre"]}
+  answer={2}
+  explanation={"Sonene møtes før drain, så et stykke av kanalen er klemt av, og drain-spenningen er ved eller over $V_D(\\text{sat.})$. Strømmen har flatet ut, som kurven til høyre."}
+/>
+
+</Example>
+
+## Strømmen gjennom kanalen
+
+Et datablad for en JFET oppgir strømmen i metning og transkonduktansen. For å regne dem ut trengs $I_D$ som
+funksjon av $V_D$ og $V_G$. Motstanden ${R = L/(\sigma \cdot 2hZ)}$ gjelder bare når $h$ er den samme
+langs hele kanalen. Med strøm er $h$ minst ved drain, og den avhenger av $V_x$, som igjen avhenger av
+strømmen.
+
+Del derfor kanalen i tynne skiver, som i figur 2. Skiven i punktet $x$ er $dx$ tykk, og den ledende
+delen av den er $2h(x)$ høy og $Z$ bred, så motstanden i skiven er
+
+$$
+dR = \frac{dx}{\sigma \cdot 2h(x)Z}
+$$
+
+<Figure
+  src="/figures/jfet-skive.svg"
+  alt="Kanalen i den symmetriske modellen tegnet på skrå, så den har dybde. Forsiden er snittet med p⁺-gatene over og under og sonene tonet med stiplet kant, bredere mot drain. Kanalen går Z inn i bildet. En tynn blå skive står i midten av den åpne delen, dx tykk og 2h(x) høy, og går hele bredden Z inn. Under står x-aksen fra 0 til L, med skiven ved x."
+  width={340}
+  height={292}
+  number={2}
+  caption="Kanalen delt i skiver. Skiven i punktet $x$ er $dx$ tykk, og den ledende delen er $2h(x)$ høy og $Z$ bred. Tykkelsen $dx$ er overdrevet."
+/>
+
+Gaten trekker nesten ingen strøm, så hele $I_D$ går gjennom hver skive, og spenningen over skiven er
+${dV_x = I_D\,dR}$. Ganget ut blir sammenhengen
+
+$$
+I_D\,dx = 2\sigma Z\,h(x)\,dV_x
+$$
+
+Ohms lov gjelder for hver skive, fordi elektrontettheten i den ledende delen er $N_d$ overalt. Det er
+ingen diffusjon langs kanalen, og strømmen er drift alene. Boksen under viser at Ohms lov med
+spenningen et voltmeter måler, gjelder også der tettheten varierer.
+
+<Derivation title="Strømmen og kvasi-Fermi-nivået">
+
+Spenningen $V$ et voltmeter måler, er ikke alltid forskjellen i det elektrostatiske potensialet
+$\mathcal{V}$. Over en pn-overgang i likevekt er det en forskjell $V_0$ i potensialet, men spenningen er null.
+Ohms lov med spenningen gjelder likevel også der elektrontettheten varierer. Elektronstrømmen er drift
+og diffusjon:
+
+$$
+J_n = q\mu_nn\mathcal{E} + qD_n\frac{dn}{dx}
+$$
+
+Med ${n = n_ie^{(F_n - E_i)/k_BT}}$ er ${dn/dx = (n/k_BT)(dF_n/dx - dE_i/dx)}$. Båndene er
+elektronets potensielle energi, så ${dE_i/dx = q\mathcal{E}}$. Med Einsteins relasjon
+${D_n = \mu_nk_BT/q}$ blir
+
+$$
+\begin{aligned}
+J_n &= q\mu_nn\mathcal{E} + \mu_nn\left(\frac{dF_n}{dx} - q\mathcal{E}\right) \\
+&= \mu_nn\frac{dF_n}{dx}
+\end{aligned}
+$$
+
+Et voltmeter måler forskjellen i Fermi-nivå mellom to punkter, så ${F_n = F_n(0) - qV_x}$, og ${J_n = -q\mu_nn\,dV_x/dx}$.
+Strømtettheten fra drain mot source er altså ${\sigma\,dV_x/dx}$, med $V_x$ som spenningen et
+voltmeter måler.
+
+</Derivation>
+
+Halvhøyden i skiven kommer fra sonen i punktet $x$:
+
+$$
+h(x) = a - W(x) \allowbreak = a\left[1 - \left(\frac{V_0 + V_x - V_G}{V_p}\right)^{1/2}\right]
+$$
+
+Formelen for $W$ gjelder for en plan overgang, der feltet i sonen står rett på overgangen. I kanalen
+endrer sonen bredde langs $x$, så feltet har også en del langs kanalen. Med $x$ langs kanalen og $y$ på
+tvers er <FormulaRef id="poisson">Poissons ligning</FormulaRef> i sonen
+
+$$
+\frac{\partial^2\mathcal{V}}{\partial x^2} + \frac{\partial^2\mathcal{V}}{\partial y^2} = -\frac{\rho}{\varepsilon}
+$$
+
+Potensialet $\mathcal{V}$ endrer seg med noen volt, $V$, over avstanden $a$ på tvers og over $L$ langs
+kanalen, så det andre leddet er av størrelse $V/a^2$ og det første $V/L^2$. I en typisk JFET er $L$
+rundt $10a$, så leddet på tvers er hundre ganger større, og sonen i hvert punkt er som i en plan
+overgang med spenningen i det punktet. Det er
+<Term name="Gradvis kanal">tilnærmingen med gradvis kanal</Term>. Den gjelder når kanalen er mye
+lengre enn den er høy, så $h$ endrer seg langsomt langs den, og den svikter like ved
+avklemmingspunktet, der $h$ faller bratt mot null.
+
+Halvhøyden avhenger av $x$ bare gjennom $V_x$, så $h$ kan stå sammen med $dV_x$. Samle $x$ på den ene
+siden og $V_x$ på den andre, og integrer fra source, der ${x = 0}$ og ${V_x = 0}$,
+til drain, der ${x = L}$ og ${V_x = V_D}$. Strømmen er den samme i hver skive, så venstre side blir
+$I_DL$:
+
+$$
+I_DL = 2\sigma Z\int_0^{V_D} h\,dV_x
+$$
+
+Konduktansen til kanalen uten soner er
+
+$$
+G_0 = \frac{Z}{L}\,2a\sigma = \frac{Z}{L}\,2aq\mu_nN_d
+$$
+
+og med den blir strømmen
+
+$$
+I_D = \frac{G_0}{a}\int_0^{V_D} h\,dV_x
+$$
+
+Ved liten $V_D$ er $h$ nesten lik halvhøyden ved source, $h(0)$, og ${I_D = G_0[h(0)/a]V_D}$, altså
+$V_D/R$ med ${R = L/(\sigma \cdot 2h(0)Z)}$. Øk $V_D$ litt, og integralet får et nytt stykke med halvhøyden der
+${V_x = V_D}$, altså ved drain. Stigningen til kurven er derfor
+
+$$
+\frac{\partial I_D}{\partial V_D} = G_0\frac{h(L)}{a}
+$$
+
+Den er null akkurat når kanalen er klemt av ved drain, så kurven blir flat ved $V_D(\text{sat.})$, slik
+simuleringen «Kanalen i JFET-en» viser.
+
+Integralet er gjort i boksen under, og resultatet er <FormulaRef id="jfet-strom">drain-strømmen før
+avklemming</FormulaRef>:
+
+$$
+I_D = G_0V_p\Big[\frac{V_D}{V_p} \allowbreak - \frac23\Big(\frac{V_0 + V_D - V_G}{V_p}\Big)^{3/2} \allowbreak + \frac23\Big(\frac{V_0 - V_G}{V_p}\Big)^{3/2}\Big]
+$$
+
+<Derivation title="Integralet">
+
+Skriv ${u = (V_0 + V_x - V_G)/V_p}$. Da er ${h = a(1 - u^{1/2})}$ og ${dV_x = V_p\,du}$, og $u$ går fra
+${u_S = (V_0 - V_G)/V_p}$ ved source til ${u_D = (V_0 + V_D - V_G)/V_p}$ ved drain:
+
+$$
+\begin{aligned}
+&\int_0^{V_D} h\,dV_x \\
+&= aV_D - aV_p\int_{u_S}^{u_D} u^{1/2}\,du \\
+&= a\left[V_D - \tfrac23V_p\left(u_D^{3/2} - u_S^{3/2}\right)\right]
+\end{aligned}
+$$
+
+Ganget med $G_0/a$ og med $V_p$ satt utenfor gir det formelen for $I_D$.
+
+</Derivation>
+
+Formelen gjelder til kanalen klemmes av. Over $V_D(\text{sat.})$ holder strømmen seg på
+<FormulaRef id="jfet-metning">strømmen i metning</FormulaRef>, formelen ved
+${V_D = V_D(\text{sat.}) = V_G + V_p - V_0}$. Da er ${V_0 + V_D - V_G = V_p}$, så parentesen i det
+midterste leddet blir 1, og leddet blir $-\tfrac23$. Det første leddet blir ${1 - (V_0 - V_G)/V_p}$:
+
+$$
+I_D(\text{sat.}) = G_0V_p\Big[\frac13 - \frac{V_0 - V_G}{V_p} \allowbreak + \frac23\Big(\frac{V_0 - V_G}{V_p}\Big)^{3/2}\Big]
+$$
+
+Ved ${V_G = V_0 - V_p}$ er brøken 1, og hakeparentesen er ${\tfrac13 - 1 + \tfrac23 = 0}$, så kanalen
+er stengt.
+
+<FormulaRef id="jfet-transkonduktans">Transkonduktansen i metning</FormulaRef> er den deriverte med
+hensyn på $V_G$. Med ${s = (V_0 - V_G)/V_p}$ er hakeparentesen ${\tfrac13 - s + \tfrac23s^{3/2}}$, som
+har den deriverte ${-1 + s^{1/2}}$ med hensyn på $s$, og ${ds/dV_G = -1/V_p}$:
+
+$$
+\begin{aligned}
+g_m(\text{sat.}) &= \frac{\partial I_D(\text{sat.})}{\partial V_G} \\
+&= G_0\left[1 - \left(\frac{V_0 - V_G}{V_p}\right)^{1/2}\right]
+\end{aligned}
+$$
+
+Hakeparentesen er $h(0)/a$, halvhøyden ved source som brøkdel av $a$, så ${g_m(\text{sat.}) = G_0h(0)/a}$. Det er den
+samme konduktansen som kanalen har ved liten $V_D$ med samme gatespenning. Transkonduktansen er størst
+ved ${V_G = 0}$ og null der kanalen stenges.
+
+<Callout title="Strømmen gjennom kanalen">
+Delt i skiver gir kanalen ${I_D = (G_0/a)\int_0^{V_D} h\,dV_x}$ med tilnærmingen med gradvis kanal, som gjelder når $L \gg a$. Stigningen er ${G_0h(L)/a}$ og null ved avklemming, og i metning er ${g_m(\text{sat.}) = G_0h(0)/a}$.
+</Callout>
+
+<Example title="Strømmen i kanalen fra simuleringen">
+
+Kanalen i simuleringen har ${N_d = 10^{16}\ \text{cm}^{-3}}$, ${a = 0{,}8\ \mu\text{m}}$, ${V_p = 4{,}9\ \text{V}}$ og
+${V_0 = 0{,}87\ \text{V}}$. Den er ${L = 10\ \mu\text{m}}$ lang og ${Z = 100\ \mu\text{m}}$ bred, og ${\mu_n = 1200}$ cm²/V·s ved
+denne dopingen. Finn strømmen i metning og transkonduktansen ved ${V_G = 0}$ og ${V_G = -2\ \text{V}}$.
+
+<Solution>
+
+- Tilnærmingen med gradvis kanal: ${L/a = 12{,}5}$, så leddet på tvers i Poissons ligning er rundt
+  150 ganger større enn leddet langs kanalen.
+- Ledningsevnen og konduktansen uten soner, med ${Z/L = 10}$:
+
+$$
+\begin{aligned}
+&\sigma = q\mu_nN_d \\
+&= 1{,}6 \cdot 10^{-19} \cdot 1200 \cdot 10^{16} \\
+&= 1{,}92\ \text{S/cm} \\
+&G_0 = \frac{Z}{L}\,2a\sigma \\
+&= 10 \cdot 2 \cdot 0{,}8 \cdot 10^{-4} \cdot 1{,}92\ \text{S} \\
+&= 3{,}07\ \text{mS}
+\end{aligned}
+$$
+
+- Med ${s = (V_0 - V_G)/V_p}$ er hakeparentesen i $I_D(\text{sat.})$ lik ${\tfrac13 - s + \tfrac23s^{3/2}}$,
+  og ${G_0V_p = 15{,}0\ \text{mA}}$. Hakeparentesen er en liten differanse, så regn den med fire desimaler.
+- Ved ${V_G = 0}$ er ${s = 0{,}87/4{,}9 = 0{,}1776}$:
+
+$$
+\begin{aligned}
+&\tfrac13 - s + \tfrac23s^{3/2} \\
+&= 0{,}3333 - 0{,}1776 + 0{,}0499 \\
+&= 0{,}2056 \\
+&I_D(\text{sat.}) = 15{,}0\ \text{mA} \cdot 0{,}2056 \\
+&= 3{,}1\ \text{mA} \\
+&g_m(\text{sat.}) = G_0(1 - s^{1/2}) \\
+&= 3{,}07\ \text{mS} \cdot (1 - 0{,}4214) \\
+&= 1{,}78\ \text{mS}
+\end{aligned}
+$$
+
+- Ved ${V_G = -2\ \text{V}}$ er ${s = 2{,}87/4{,}9 = 0{,}5857}$:
+
+$$
+\begin{aligned}
+&\tfrac13 - s + \tfrac23s^{3/2} \\
+&= 0{,}3333 - 0{,}5857 + 0{,}2988 \\
+&= 0{,}0464 \\
+&I_D(\text{sat.}) = 15{,}0\ \text{mA} \cdot 0{,}0464 \\
+&= 0{,}70\ \text{mA} \\
+&g_m(\text{sat.}) = G_0(1 - s^{1/2}) \\
+&= 3{,}07\ \text{mS} \cdot (1 - 0{,}7653) \\
+&= 0{,}72\ \text{mS}
+\end{aligned}
+$$
+
+<Answer>
+
+${I_D(\text{sat.}) = 3{,}1\ \text{mA}}$ og ${g_m(\text{sat.}) = 1{,}78\ \text{mS}}$ ved ${V_G = 0}$, og 0,70 mA og
+0,72 mS ved $-2$ V. Kurvene i simuleringen «Kanalen i JFET-en» flater ut på de samme strømmene.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+## Lav avklemmingsspenning og stor transkonduktans
+
+2SK117 stenges ved rundt −0,4 V, mens kanalen i simuleringen «Kanalen i JFET-en» trenger −4,0 V.
+Kanalen stenges ved ${V_G = V_0 - V_p}$, og $V_0$ er rundt 0,9 V for vanlige dopinger, så
+avklemmingsspenningen til 2SK117 er bare litt over 1 V. Med ${V_p = qN_da^2/2\varepsilon}$ krever det en
+tynn eller lett dopet kanal.
+
+En tynn eller lett dopet kanal leder dårlig, fordi ${G_0 = (Z/L)\,2aq\mu_nN_d}$ er proporsjonal med
+$aN_d$. I tillegg fyller sonene det meste av kanalen uten spenning på gaten når $V_p$ er nær $V_0$,
+fordi ${h(0)/a = 1 - (V_0/V_p)^{1/2}}$ ved ${V_G = 0}$. Stor transkonduktans krever da en bred og kort
+kanal, med stor $Z/L$.
+
+<Example title="En JFET som stenges ved lav gatespenning">
+
+En n-kanal-JFET har ${a = 1\ \mu\text{m}}$, ${N_d = 2 \cdot 10^{15}\ \text{cm}^{-3}}$, p⁺-gater med
+${10^{20}\ \text{cm}^{-3}}$ og ${\mu_n = 1350}$ cm²/V·s. Finn gatespenningen som stenger
+kanalen og hvor stor del av halvhøyden som leder ved ${V_G = 0}$. Hvor stor må $Z/L$ være for at
+${g_m(\text{sat.}) = 15\ \text{mS}}$ ved ${V_G = 0}$, som for 2SK117, og hvor stor blir da $I_{DSS}$,
+strømmen i metning ved ${V_G = 0}$?
+
+<Solution>
+
+- Avklemmingsspenningen og kontaktpotensialet:
+
+$$
+\begin{aligned}
+&V_p = \frac{qN_da^2}{2\varepsilon} \\
+&= \frac{1{,}6 \cdot 10^{-19} \cdot 2 \cdot 10^{15} \cdot 10^{-8}}{2 \cdot 1{,}044 \cdot 10^{-12}} \\
+&= 1{,}53\ \text{V} \\
+&V_0 = \frac{k_BT}{q}\ln\frac{N_aN_d}{n_i^2} \\
+&= 0{,}0259 \ln\frac{10^{20} \cdot 2 \cdot 10^{15}}{(1{,}5 \cdot 10^{10})^2} \\
+&= 0{,}89\ \text{V}
+\end{aligned}
+$$
+
+- Kanalen stenges ved
+
+$$
+\begin{aligned}
+&V_G = V_0 - V_p \\
+&= 0{,}89 - 1{,}53 = -0{,}64\ \text{V}
+\end{aligned}
+$$
+
+- Ved ${V_G = 0}$ er
+
+$$
+\begin{aligned}
+&\frac{h(0)}{a} = 1 - \left(\frac{0{,}89}{1{,}53}\right)^{1/2} \\
+&= 1 - 0{,}763 = 0{,}237
+\end{aligned}
+$$
+
+  Sonene fyller tre firedeler av kanalen.
+- Med ${g_m(\text{sat.}) = G_0h(0)/a}$ må ${G_0 = 15\ \text{mS}/0{,}237 = 63\ \text{mS}}$. En kanal med
+  ${Z = L}$ har konduktansen $2a\sigma$:
+
+$$
+\begin{aligned}
+&\sigma = q\mu_nN_d \\
+&= 1{,}6 \cdot 10^{-19} \cdot 1350 \cdot 2 \cdot 10^{15} \\
+&= 0{,}432\ \text{S/cm} \\
+&2a\sigma = 2 \cdot 10^{-4} \cdot 0{,}432\ \text{S} \\
+&= 86\ \mu\text{S}
+\end{aligned}
+$$
+
+- $G_0$ vokser med $Z/L$, så ${Z/L = 63\ \text{mS}/86\ \mu\text{S} = 730}$.
+- Med ${s = 0{,}89/1{,}53 = 0{,}5817}$ og ${G_0V_p = 63\ \text{mS} \cdot 1{,}53\ \text{V} = 96\ \text{mA}}$:
+
+$$
+\begin{aligned}
+&\tfrac13 - s + \tfrac23s^{3/2} \\
+&= 0{,}3333 - 0{,}5817 + 0{,}2958 \\
+&= 0{,}0474 \\
+&I_{DSS} = 96\ \text{mA} \cdot 0{,}0474 \\
+&= 4{,}6\ \text{mA}
+\end{aligned}
+$$
+
+<Answer>
+
+Kanalen stenges ved −0,64 V, og ved ${V_G = 0}$ leder bare 24 % av halvhøyden. For 15 mS må kanalen
+være rundt 730 ganger bredere enn den er lang, og da er ${I_{DSS} = 4{,}6\ \text{mA}}$. Databladet til
+2SK117 oppgir $-0{,}2$ til $-1{,}5$ V for gatespenningen som stenger kanalen, og 1,2 til 14 mA for
+$I_{DSS}$.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+Formelen for $I_D(\text{sat.})$ er tung å regne med, og målte JFET-er følger nesten en
+<FormulaRef id="jfet-kvadratlov">parabel</FormulaRef>:
+
+$$
+I_D(\text{sat.}) \approx I_{DSS}\left(1 + \frac{V_G}{V_p - V_0}\right)^2
+$$
+
+Parabelen er $I_{DSS}$ ved ${V_G = 0}$ og null der kanalen stenges, ved ${V_G = V_0 - V_p}$, og den
+deriverte ved ${V_G = 0}$ gir ${g_m = 2I_{DSS}/(V_p - V_0)}$. For kanalen i simuleringen gir parabelen
+0,79 mA ved −2 V, mot 0,70 mA fra formelen for $I_D(\text{sat.})$.
+
+Et datablad oppgir de samme størrelsene under andre navn. $I_{DSS}$ står der direkte, gatespenningen
+som stenger kanalen, ${V_0 - V_p}$, heter $V_{GS(\text{OFF})}$, og transkonduktansen ved ${V_G = 0}$
+heter $|Y_{fs}|$. Transistoren i kurvene i databladet til 2SK117 har ${I_{DSS} = 2{,}8\ \text{mA}}$ og
+${V_{GS(\text{OFF})} \approx -0{,}4\ \text{V}}$. Parabelen gir da
+${g_m = 2 \cdot 2{,}8\ \text{mA}/0{,}4\ \text{V} = 14\ \text{mS}}$, nær de 15 mS databladet oppgir som
+typisk.
+
+<Callout title="Lav avklemmingsspenning og stor transkonduktans">
+Lav $V_p$ krever liten $a^2N_d$, men da blir $G_0$ liten, og sonene fyller mye av kanalen uten spenning på gaten. Stor transkonduktans krever da en bred og kort kanal. Målte JFET-er følger nesten parabelen ${I_D(\text{sat.}) \approx I_{DSS}[1 + V_G/(V_p - V_0)]^2}$.
+</Callout>
+
+<Quiz
+  question={"For 2SK117 i kurvene i databladet er $I_{DSS} = 2{,}8$ mA og $V_{GS(\\text{OFF})} = -0{,}4$ V. Hva gir parabelen for strømmen i metning med $V_G = -0{,}1$ V?"}
+  options={["1,6 mA", "2,1 mA", "0,18 mA", "4,4 mA"]}
+  answer={0}
+  explanation={"Med ${V_p - V_0 = 0{,}4}$ V er ${1 + V_G/(V_p - V_0) = 1 - 0{,}25 = 0{,}75}$, og ${2{,}8\\ \\text{mA} \\cdot 0{,}75^2 = 1{,}6}$ mA. Kurven i databladet ligger på 1,5 mA. 2,1 mA er en rett linje fra $I_{DSS}$ til null, men parabelen faller dobbelt så bratt ved ${V_G = 0}$. 0,18 mA er ${I_{DSS}(V_G/V_{GS(\\text{OFF})})^2}$, parabelen regnet fra feil ende. 4,4 mA tar gatespenningen med feil fortegn."}
+/>
+
+<KeyTakeaways>
+
+- Gaten er to p⁺n-overganger i sperreretning mot en n-kanal, så den trekker nesten ingen strøm. Sonene gjør den ledende delen ${2h = 2(a - W)}$ høy, og kanalen stenges ved ${V_G = V_0 - V_p}$, der ${V_p = qN_da^2/2\varepsilon}$.
+- Sperrespenningen ${V_x - V_G}$ er størst ved drain, så kanalen klemmes av der ved ${V_D(\text{sat.}) = V_G + V_p - V_0}$, og ved høyere $V_D$ er strømmen $I_D(\text{sat.})$. Gjennombruddet kommer ved ${V_D = V_\text{br} + V_G}$.
+- Med gradvis kanal er ${I_D = (G_0/a)\int_0^{V_D} h\,dV_x}$, og i metning er ${g_m(\text{sat.}) = G_0h(0)/a}$, størst ved ${V_G = 0}$.
+- Lav avklemmingsspenning krever en tynn eller lett dopet kanal, og stor transkonduktans krever da en bred og kort kanal.
+
+</KeyTakeaways>

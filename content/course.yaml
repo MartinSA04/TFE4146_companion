@@ -537,42 +537,42 @@ formulas:
     tex: "\\begin{aligned} v_d &= -g_mR_Lv_g \\\\ g_m &= \\dfrac{\\partial I_D(\\text{sat.})}{\\partial V_G} \\end{aligned}"
     label: "Et lite signal $v_g$ på gaten gir signalet $v_d$ på drain når transistoren er i metning, der strømmen bare avhenger av gatespenningen. Mer strøm gir større fall over $R_L$ og mindre spenning over transistoren, derfor minustegnet. $g_m$ er transkonduktansen, i siemens. Gjelder så lenge transistoren er i metning gjennom hele svingningen og signalet er så lite at $g_m$ er nesten den samme over den."
   - id: jfet-sonebredde
-    section: JFET-en
+    section: Kanalen klemmes av ved drain
     onSheet: false
     tex: "\\begin{aligned} W(x) &= \\left[\\dfrac{2\\varepsilon(V_0 + V_x - V_G)}{qN_d}\\right]^{1/2} \\\\ h(x) &= a - W(x) \\end{aligned}"
     label: "Romladningssonen fra gaten i punktet $x$ i en n-kanal-JFET med p⁺-gater. Spenningen i kanalen, $V_x$, går fra 0 ved source til $V_D$ ved drain, så sperrespenningen $V_x - V_G$ og sonen er størst ved drain. Bare halvhøyden $h$ av kanalen leder. Gjelder når kanalhøyden endrer seg langsomt langs kanalen."
   - id: kvasi-fermi-strom
-    section: JFET-en
+    section: Strømmen gjennom kanalen
     onSheet: false
     tex: "J_n = \\mu_nn\\dfrac{dF_n}{dx}"
     label: "Elektronstrømmen, drift og diffusjon sammen, er satt av hellingen til kvasi-Fermi-nivået. Med $F_n = F_n(0) - qV_x$ blir strømtettheten fra drain mot source i kanalen $\\sigma\\,dV_x/dx$, der $V_x$ er spenningen et voltmeter måler."
   - id: avklemmingsspenning
-    section: Avklemming og metning
+    section: Kanalen klemmes av ved drain
     onSheet: false
     tex: "\\begin{aligned} V_p &= \\dfrac{qN_da^2}{2\\varepsilon} \\\\ V_D(\\text{sat.}) &= V_G + V_p - V_0 \\end{aligned}"
-    label: "Avklemmingsspenningen i en n-kanal-JFET med halvhøyden $a$: barrieren $V_0 - V$ over gateovergangen som gjør sonen like bred som halve kanalen. Kontaktpotensialet står for $V_0$ av den, så kanalen klemmes av ved drain når $V_D - V_G = V_p - V_0$, og strømmen metter. $V_G = V_0 - V_p$ stenger kanalen i hele lengden."
+    label: "Avklemmingsspenningen i en n-kanal-JFET med halvhøyden $a$: spenningen $V_0 - V$ over sonen som gjør den like bred som halvhøyden. Kontaktpotensialet står for $V_0$ av den, så kanalen klemmes av ved drain når $V_D - V_G = V_p - V_0$, og strømmen metter. $V_G = V_0 - V_p$ stenger kanalen i hele lengden."
   - id: jfet-gjennombrudd
-    section: Gatestyring og gjennombrudd
+    section: Gatespenningen og kurvene
     onSheet: false
     tex: "V_D = V_\\text{br} + V_G"
     label: "Drain-spenningen der gateovergangen i en n-kanal-JFET bryter gjennom. Sperrespenningen er størst ved drain, der den er $V_D - V_G$, så med negativ $V_G$ kommer skredet ved en lavere drain-spenning."
   - id: jfet-strom
-    section: Strømmen før avklemming
+    section: Strømmen gjennom kanalen
     onSheet: false
     tex: "\\begin{aligned} I_D &= G_0V_p\\Big[\\dfrac{V_D}{V_p} \\\\ &\\quad - \\tfrac23\\Big(\\dfrac{V_0 + V_D - V_G}{V_p}\\Big)^{3/2} \\\\ &\\quad + \\tfrac23\\Big(\\dfrac{V_0 - V_G}{V_p}\\Big)^{3/2}\\Big] \\\\ G_0 &= \\dfrac{Z}{L}\\,2aq\\mu_nN_d \\end{aligned}"
     label: "Drain-strømmen i en n-kanal-JFET før avklemming, fra kanalen delt i skiver med hver sin halvhøyde og integrert fra source til drain med tilnærmingen med gradvis kanal. $G_0$ er konduktansen til kanalen uten romladningssoner, $Z$ er kanalbredden og $L$ kanallengden. Gjelder til $V_D(\\text{sat.}) = V_G + V_p - V_0$, der stigningen $\\partial I_D/\\partial V_D$ er null."
   - id: jfet-metning
-    section: Strømmen i metning og transkonduktansen
+    section: Strømmen gjennom kanalen
     onSheet: false
     tex: "\\begin{aligned} &I_D(\\text{sat.}) = G_0V_p\\Big[\\tfrac13 - \\dfrac{V_0 - V_G}{V_p} \\\\ &\\qquad + \\tfrac23\\Big(\\dfrac{V_0 - V_G}{V_p}\\Big)^{3/2}\\Big] \\end{aligned}"
     label: "Strømmen i metning i en n-kanal-JFET: $I_D$ ved avklemming, $V_D = V_G + V_p - V_0$, regnet konstant for større $V_D$. Den avhenger bare av $V_G$ og er null ved $V_G = V_0 - V_p$, der kanalen er stengt i hele lengden. Gjelder for $V_0 - V_p \\le V_G \\le 0$."
   - id: jfet-transkonduktans
-    section: Strømmen i metning og transkonduktansen
+    section: Strømmen gjennom kanalen
     onSheet: false
     tex: "\\begin{aligned} &g_m(\\text{sat.}) = \\dfrac{\\partial I_D(\\text{sat.})}{\\partial V_G} \\\\ &= G_0\\left[1 - \\left(\\dfrac{V_0 - V_G}{V_p}\\right)^{1/2}\\right] \\end{aligned}"
     label: "Transkonduktansen i metning i en n-kanal-JFET. Den er den samme konduktansen $G_0h(0)/a$, satt av halvhøyden ved source, som stigningen $\\partial I_D/\\partial V_D$ ved liten $V_D$. Den er størst ved $V_G = 0$ og aldri større enn $G_0$, og den er null der kanalen stenges."
   - id: jfet-kvadratlov
-    section: Strømmen i metning og transkonduktansen
+    section: Lav avklemmingsspenning og stor transkonduktans
     onSheet: false
     tex: "I_D(\\text{sat.}) \\approx I_{DSS}\\Big(1 + \\tfrac{V_G}{V_p - V_0}\\Big)^2"
     label: "Parabelen som målt strøm i metning nesten følger. $I_{DSS}$ er strømmen i metning med $V_G = 0$, og parabelen er null der kanalen stenges, ved $V_G = V_0 - V_p$."
@@ -988,13 +988,13 @@ glossary:
     section: En strøm som styres fra en tredje tilkobling
     definition: "(<em>transconductance</em>) $g_m = \\partial I_D/\\partial V_G$, hvor mye drain-strømmen endrer seg per volt på gaten, i siemens (A/V). I metning er $g_m = \\partial I_D(\\text{sat.})/\\partial V_G$, og med lastmotstanden $R_L$ blir signalet på drain $-g_mR_L$ ganger signalet på gaten."
   - term: JFET
-    section: JFET-en
+    section: Kanalen og gaten
     definition: "(<em>junction field-effect transistor</em>) En felteffekttransistor der gaten er en pn-overgang i sperreretning mot kanalen. I en n-kanal-JFET ligger kanalen mellom to p⁺-gater, og romladningssonene fra gatene bestemmer hvor høy den ledende delen er. Gaten skal ha $V_G \\le 0$ og drain $V_D > 0$, målt fra source."
   - term: Avklemming
-    section: Avklemming og metning
-    definition: "(<em>pinch-off</em>) Romladningssonene fra de to gatene møtes og stenger kanalen. I en JFET skjer det først ved drain, når $V_D - V_G = V_p - V_0$. Strømmen metter da på $I_D(\\text{sat.})$, fordi spenningen ut over $V_D(\\text{sat.}) = V_G + V_p - V_0$ faller over den avklemte delen, der elektronene feies gjennom til drain."
+    section: Kanalen klemmes av ved drain
+    definition: "(<em>pinch-off</em>) Romladningssonene fra de to gatene møtes ved drain, og kanalen er klemt av der. I en JFET skjer det når $V_D - V_G = V_p - V_0$. Strømmen metter da på $I_D(\\text{sat.})$, fordi spenningen ut over $V_D(\\text{sat.}) = V_G + V_p - V_0$ faller over den avklemte delen, der elektronene feies gjennom til drain. Møtes sonene langs hele kanalen, ved $V_G = V_0 - V_p$, er kanalen stengt, og det går ingen strøm."
   - term: Gradvis kanal
-    section: Tilnærmingen med gradvis kanal
+    section: Strømmen gjennom kanalen
     definition: "(<em>gradual channel approximation</em>) Tilnærmingen at romladningssonen i hvert punkt langs kanalen er som i en plan overgang med spenningen i det punktet. Gjelder når kanalen er mye lengre enn den er høy, slik at leddet på tvers i Poissons ligning dominerer og halvhøyden endrer seg langsomt langs kanalen."
 
 features:
@@ -1105,7 +1105,7 @@ symbols:
   - { tex: "I_D", meaning: "Drain-strømmen, fra drain til source gjennom kanalen", unit: "A", section: "Transistorer", term: "Felteffekttransistor", id: id-strom }
   - { tex: "V_D(\\text{sat.})", meaning: "Drain-spenningen der metningen begynner", unit: "V", section: "Transistorer", term: "Metning", formula: avklemmingsspenning, note: "I en n-kanal-JFET er den $V_G + V_p - V_0$." }
   - { tex: "I_D(\\text{sat.})", meaning: "Drain-strømmen i metning, over $V_D(\\text{sat.})$", unit: "A", section: "Transistorer", term: "Metning", formula: jfet-metning, note: "Ikke metningsstrømmen $I_0$ i en diode." }
-  - { tex: "V_p", meaning: "Avklemmingsspenningen, $qN_da^2/2\\varepsilon$", unit: "V", section: "Transistorer", term: "Avklemming", formula: avklemmingsspenning, id: vp, note: "Barrieren $V_0 - V$ over gateovergangen når sonen fyller halvhøyden. Sperrespenningen som trengs, er $V_p - V_0$." }
+  - { tex: "V_p", meaning: "Avklemmingsspenningen, $qN_da^2/2\\varepsilon$", unit: "V", section: "Transistorer", term: "Avklemming", formula: avklemmingsspenning, id: vp, note: "Spenningen $V_0 - V$ over sonen når den fyller halvhøyden. Sperrespenningen som trengs, er $V_p - V_0$." }
   - { tex: "V_x", meaning: "Spenningen i kanalen i punktet $x$, målt fra source", unit: "V", section: "Transistorer", formula: jfet-sonebredde }
   - { tex: "a", meaning: "Halvhøyden av kanalen mellom de to gateovergangene", unit: "cm", section: "Transistorer", formula: avklemmingsspenning, note: "Ikke Bohr-radien $a_0$." }
   - { tex: "h(x)", meaning: "Halvhøyden av den ledende delen av kanalen, $a - W(x)$", unit: "cm", section: "Transistorer", formula: jfet-sonebredde, note: "Ikke Plancks konstant $h$." }
@@ -1117,6 +1117,8 @@ symbols:
   - { tex: "Z", meaning: "Kanalbredden, på tvers av strømmen langs gateflaten", unit: "cm", section: "Transistorer", formula: jfet-strom }
   - { tex: "G_0", meaning: "Konduktansen til kanalen uten romladningssoner, $(Z/L)\\,2aq\\mu_nN_d$", unit: "S", section: "Transistorer", formula: jfet-strom, id: g0 }
   - { tex: "I_{DSS}", meaning: "Strømmen i metning med $V_G = 0$", unit: "A", section: "Transistorer", formula: jfet-kvadratlov, id: idss }
+  - { tex: "V_{GS(\\text{OFF})}", meaning: "Gatespenningen som stenger kanalen, $V_0 - V_p$, slik et datablad kaller den", unit: "V", section: "Transistorer", formula: avklemmingsspenning, id: vgs-off }
+  - { tex: "|Y_{fs}|", meaning: "Transkonduktansen ved $V_G = 0$, slik et datablad kaller den", unit: "S", section: "Transistorer", term: "Transkonduktans", id: yfs }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
