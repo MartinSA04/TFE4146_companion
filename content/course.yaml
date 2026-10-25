@@ -416,40 +416,40 @@ formulas:
     label: "Multiplikasjonen i skredgjennombrudd, med $P$ som sannsynligheten for en ioniserende kollisjon per tur gjennom sonen. Den nederste er den målte formen nær gjennombrudd, der eksponenten $n$ er et tall mellom 3 og 6, satt av materialet, og ikke en konsentrasjon. $V_\\text{br}$ vokser med båndgapet og faller med dopingen på den lett dopede siden."
 
   - id: ladning-transient
-    section: Lagret ladning og tid
+    section: Ladningen som er lagret
     onSheet: true
     tex: "i(t) = \\dfrac{Q_p(t)}{\\tau_p} + \\dfrac{dQ_p(t)}{dt}"
-    label: "Strømmen inn i n-siden av en p⁺n-overgang i en transient: den erstatter hullene som rekombinerer, og bygger opp eller tømmer den lagrede ladningen. Kontinuitetsligningen integrert over n-siden. I stasjonær tilstand står ladningskontroll igjen."
+    label: "Strømmen inn i n-siden av en p⁺n-diode mens strømmen endrer seg: den erstatter hullene som rekombinerer, og bygger opp eller tømmer den lagrede ladningen. Kontinuitetsligningen integrert over n-siden. I stasjonær tilstand står ladningskontroll igjen."
   - id: strom-slatt-av
-    section: Når strømmen slås av
+    section: Når strømmen brytes
     onSheet: false
     tex: "Q_p(t) = I\\tau_p\\,e^{-t/\\tau_p}"
-    label: "Strømmen $I$ slås av ved $t = 0$, og den lagrede ladningen dør ut med levetiden. Så lenge den er der, ligger det en spenning over overgangen."
+    label: "Strømmen $I$ brytes ved $t = 0$, og den lagrede ladningen dør ut med levetiden, fordi hullene bare kan forsvinne ved å rekombinere. Så lenge den er der, ligger det en spenning over overgangen."
   - id: spenning-slatt-av
-    section: Når strømmen slås av
+    section: Når strømmen brytes
     onSheet: false
     tex: "v(t) = \\tfrac{k_BT}{q}\\ln\\bigl(\\tfrac{I\\tau_p}{qAL_pp_n}e^{-t/\\tau_p} + 1\\bigr)"
-    label: "Spenningen over overgangen etter at strømmen er slått av, fra den kvasistasjonære tilnærmingen $Q_p = qAL_p\\Delta p_n$. Den er logaritmen av ladningen, så den faller bare omtrent $k_BT/q$ per levetid."
+    label: "Spenningen over overgangen etter at strømmen er brutt, i den kvasistasjonære tilnærmingen $\\Delta p_n = Q_p/qAL_p$. Den synker med $k_BT/q$ per levetid så lenge argumentet er stort. Kanten tømmes i virkeligheten litt raskere, fordi profilen flater ut der."
   - id: lagringstid
-    section: Lagringstid
+    section: Lagringstiden
     onSheet: false
     tex: "t_{sd} = \\tau_p\\left[\\operatorname{erf}^{-1}\\!\\left(\\dfrac{I_f}{I_f + I_r}\\right)\\right]^2"
-    label: "Lagringstiden etter omslag fra $I_f$ i lederetningen til $-I_r$: så lenge er overskuddet ved sonekanten positivt, spenningen over overgangen liten og sperrestrømmen satt av kretsen. Eksakt løsning av diffusjonsligningen. Med $I_r = I_f$ er $t_{sd} = 0{,}23\\,\\tau_p$. Snudd gir den levetiden fra en måling av $t_{sd}$."
+    label: "Lagringstiden etter omslag fra $I_f$ i lederetningen til $-I_r$: så lenge har kanten av sonen et overskudd, spenningen over overgangen er liten, og motstanden setter strømmen. Eksakt løsning av diffusjonsligningen. Med $I_r = I_f$ er $t_{sd} = 0{,}23\\,\\tau_p$. Snudd gir den levetiden fra en måling av $t_{sd}$. Ladningen i sonen forlenger strømmen når den ikke er liten mot $I_rt_{sd}$."
   - id: lagringstid-kvasistasjonar
-    section: Lagringstid
+    section: Lagringstiden
     onSheet: false
     tex: "Q_p(t) = -I_r\\tau_p \\allowbreak + (I_f + I_r)\\,\\tau_p\\,e^{-t/\\tau_p} \\allowbreak\\quad t_{sd} = \\tau_p\\ln\\!\\left(1 + \\dfrac{I_f}{I_r}\\right)"
-    label: "Ladningen etter omslaget er eksakt. Lagringstiden $t_{sd} = \\tau_p\\ln(1 + I_f/I_r)$ er den kvasistasjonære tilnærmingen, der $\\Delta p_n = 0$ først når $Q_p = 0$. Den er for lang, tre ganger for lang med $I_r = I_f$, fordi kanten i virkeligheten tømmes mens det ligger ladning lenger inne."
+    label: "Ladningen etter omslaget er eksakt. Lagringstiden $t_{sd} = \\tau_p\\ln(1 + I_f/I_r)$ er den kvasistasjonære tilnærmingen, der kanten er tom først når $Q_p = 0$. Den er for lang, tre ganger for lang med $I_r = I_f$, fordi kanten i virkeligheten tømmes mens det ligger hull lenger inne."
   - id: kapasitans
-    section: Kapasitans
+    section: Dioden som kondensator
     onSheet: true
     tex: "C = \\left|\\dfrac{dQ}{dV}\\right|"
-    label: "Kapasitansen når ladningen ikke er proporsjonal med spenningen: den deriverte i arbeidspunktet og ikke forholdet $Q/V$ som i en vanlig kondensator. Gjelder både ionene i romladningssonen og de lagrede minoritetsbærerne."
+    label: "Kapasitansen når ladningen ikke er proporsjonal med spenningen: hvor mye ladning som flytter seg per volt rundt spenningen dioden står på. Gjelder både ionene i romladningssonen og de lagrede minoritetsbærerne."
   - id: overgangskapasitans
     section: Overgangskapasitansen
     onSheet: true
     tex: "\\begin{aligned} C_j &= \\varepsilon A\\left[\\dfrac{q}{2\\varepsilon(V_0 - V)}\\,\\dfrac{N_dN_a}{N_d + N_a}\\right]^{1/2} \\\\ &= \\dfrac{\\varepsilon A}{W} \\end{aligned}"
-    label: "Kapasitansen $C_j = |dQ/d(V_0 - V)|$ fra ionene i romladningssonen. Samme form som en platekondensator med avstanden $W$, men $W$ vokser med sperrespenningen. Dominerer i sperreretningen. Går som $V_r^{-1/2}$ i en abrupt overgang og $V_r^{-1/3}$ i en gradvis med lineær nettodoping."
+    label: "Kapasitansen fra ionene i romladningssonen. Ladningen som kommer til når spenningen endrer seg, sitter ved kantene av sonen, så den er kapasitansen til en platekondensator med avstanden $W$. Dominerer i sperreretningen. Går som $V_r^{-1/2}$ i en abrupt overgang og $V_r^{-1/3}$ i en lineært gradvis."
   - id: overgangskapasitans-ensidig
     section: Overgangskapasitansen
     onSheet: false
@@ -458,38 +458,38 @@ formulas:
   - id: diffusjonskapasitans
     section: Diffusjonskapasitansen
     onSheet: false
-    tex: "C_s = \\dfrac{1}{3}\\dfrac{q^2}{k_BT}\\,Acp_n\\,e^{qV/k_BT}"
-    label: "Diffusjonskapasitansen fra hullene i en kort diode med n-siden $c$ lang, der to tredjedeler av endringen i lagret ladning går tilbake over sonekanten. I en lang diode er det halvparten, $C_s = \\tau_pG_s/2$. Dominerer i lederetningen. Elektronene på p-siden gir et tilsvarende bidrag."
+    tex: "C_s = \\tfrac{2}{3}\\,\\dfrac{dQ_p}{dV} = \\dfrac{1}{3}\\,\\dfrac{q^2}{k_BT}\\,Alp_n\\,e^{qV/k_BT}"
+    label: "Diffusjonskapasitansen fra hullene i en kort diode med n-siden $l$ lang: to tredjedeler av endringen i den lagrede ladningen kommer tilbake ut over kanten av sonen, resten går ut gjennom kontakten. Her er $dQ_p/dV = (q/k_BT)Q_p$. Vokser som $e^{qV/k_BT}$ og dominerer ved store strømmer i lederetningen."
   - id: smasignalkonduktans
     section: Diffusjonskapasitansen
     onSheet: true
     tex: "\\begin{aligned} G_s &= \\dfrac{dI}{dV} = \\dfrac{qAL_pp_n}{\\tau_p}\\dfrac{d}{dV}\\left(e^{qV/k_BT}\\right) \\\\ &= \\dfrac{q}{k_BT}\\,I \\end{aligned}"
     label: "Småsignalkonduktansen til en lang diode i lederetningen: hvor mye strømmen endrer seg for en liten endring i spenningen rundt arbeidspunktet. Ved 1 mA er $1/G_s = 26$ Ω."
-  - id: strom-bandgap
-    section: Båndgapet og høy injeksjon
+  - id: gradvis-overgang
+    section: Gradvise overganger
     onSheet: false
-    tex: "I = qA\\dfrac{D_p}{L_p}\\,N_v\\,e^{[qV - (E_F - E_{vn})]/k_BT}"
-    label: "Diodeligningen for en p⁺n-overgang i lederetningen med $p_n$ skrevet ut. Strømmen er liten til $qV$ nærmer seg $E_F - E_{vn} \\approx qV_0$, som er nær $E_g$ når begge sidene er sterkt dopet. Spenningen over overgangen kan ikke bli større enn $V_0$."
-  - id: hoy-injeksjon
-    section: Båndgapet og høy injeksjon
-    onSheet: false
-    tex: "\\Delta p_n = n_i\\,e^{qV/2k_BT} \\allowbreak\\quad I \\propto e^{qV/2k_BT}"
-    label: "Høy injeksjon på den lett dopede n-siden av en p⁺n-overgang: overskuddet er større enn $n_n$, så $pn = n_i^2e^{qV/k_BT}$ ved sonekanten gir $\\Delta p_n^2 = n_i^2e^{qV/k_BT}$. Strømmen vokser med halve eksponenten."
+    tex: "\\begin{aligned} W &= \\left[\\dfrac{12\\varepsilon(V_0 - V)}{qk}\\right]^{1/3} \\\\ \\mathcal{E}(x) &= \\dfrac{qk}{2\\varepsilon}\\Big(x^2 - \\dfrac{W^2}{4}\\Big) \\end{aligned}"
+    label: "Den lineært gradvise overgangen, med nettodopingen $N_d - N_a = kx$ gjennom sonen og $x$ målt fra skillet. Sonen ligger symmetrisk om skillet, feltet er en parabel med det største feltet $\\mathcal{E}_0 = -qkW^2/8\\varepsilon$ ved skillet, og $C_j = \\varepsilon A/W \\propto (V_0 - V)^{-1/3}$."
   - id: idealitetsfaktor
     section: Rekombinasjon og generasjon i sonen
     onSheet: true
     tex: "\\begin{aligned} I &= I_0'\\left(e^{qV/nk_BT} - 1\\right) \\\\ n &= 1 \\text{ til } 2 \\end{aligned}"
-    label: "Diodeligningen med idealitetsfaktoren $n$, som ikke er elektronkonsentrasjonen. Diffusjon fra de nøytrale områdene går som $n_i^2e^{qV/k_BT}$ og gir $n = 1$; rekombinasjon i sonen går som $n_ie^{qV/2k_BT}$ og gir $n \\approx 2$. I Si går $n$ fra omtrent 2 ved lav spenning til 1."
+    label: "Diodeligningen med idealitetsfaktoren $n$, som ikke er elektronkonsentrasjonen. Diffusjon fra de nøytrale områdene går som $n_i^2e^{qV/k_BT}$ og gir $n = 1$. Rekombinasjon i sonen går som $n_ie^{qV/2k_BT}$, fordi den går raskest der $n = p$, og gir $n = 2$. I Si går $n$ fra omtrent 2 ved små spenninger mot 1."
+  - id: hoy-injeksjon
+    section: Høy injeksjon og motstand
+    onSheet: false
+    tex: "\\Delta p_n = n_i\\,e^{qV/2k_BT} \\allowbreak\\quad I \\propto e^{qV/2k_BT}"
+    label: "Høy injeksjon på den lett dopede n-siden av en p⁺n-overgang: overskuddet er mye større enn $N_d$, og like mange elektroner følger med, så $pn = n_i^2e^{qV/k_BT}$ ved kanten gir $\\Delta p_n^2 = n_i^2e^{qV/k_BT}$. Strømmen vokser med halve eksponenten."
   - id: seriemotstand
-    section: Seriemotstand og gradvise overganger
+    section: Høy injeksjon og motstand
     onSheet: false
     tex: "V = V_a - I\\,(R_p + R_n)"
-    label: "Spenningen over overgangen når de nøytrale områdene tar sin del av spenningen $V_a$ over komponenten. Merkes ved store strømmer, der strømmen vokser saktere enn eksponentielt. Motstandene synker når de injiserte bærerne øker ledningsevnen."
-  - id: gradvis-overgang
-    section: Seriemotstand og gradvise overganger
+    label: "Spenningen over overgangen når de nøytrale områdene tar sin del av spenningen $V_a$ over hele dioden. Merkes ved store strømmer, der strømmen til slutt vokser nesten lineært."
+  - id: strom-bandgap
+    section: Båndgapet og spenningen dioden trenger
     onSheet: false
-    tex: "\\begin{aligned} W &= \\left[\\dfrac{12\\varepsilon(V_0 - V)}{qk}\\right]^{1/3} \\\\ \\mathcal{E}(x) &= \\dfrac{qk}{2\\varepsilon}\\Big(x^2 - \\dfrac{W^2}{4}\\Big) \\end{aligned}"
-    label: "Den lineært gradvise overgangen, med nettodopingen $N_d - N_a = kx$ gjennom sonen og $x$ målt fra skillet. Sonen ligger symmetrisk om skillet, feltet er en parabel med det største feltet $\\mathcal{E}_0 = -qkW^2/8\\varepsilon$ ved skillet, og $C_j = \\varepsilon A/W \\propto (V_0 - V)^{-1/3}$."
+    tex: "I = qA\\dfrac{D_p}{L_p}\\,N_v\\,e^{[qV - (E_F - E_v)]/k_BT}"
+    label: "Diodeligningen for en p⁺n-overgang i lederetningen med $p_n$ skrevet ut, der $E_F - E_v$ gjelder n-siden. Strømmen blir merkbar først når $qV$ nærmer seg $E_F - E_v \\approx qV_0$, som er nær $E_g$ når begge sidene er sterkt dopet."
 
   - id: arbeidsfunksjon-halvleder
     section: Arbeidsfunksjon og elektronaffinitet
@@ -899,7 +899,7 @@ glossary:
     definition: "(<em>minority carrier extraction</em>) Motstykket til injeksjon: i sperreretningen feies minoritetsbærerne som når sonekanten, over, og ingen kommer tilbake, så konsentrasjonen ved kantene går mot null og profilen er tømt en diffusjonslengde ut. Metningsstrømmen mates av termisk generasjon i det volumet."
   - term: Gjennombrudd
     section: Gjennombrudd
-    definition: "(<em>reverse breakdown</em>) Ved sperrespenningen $V_\\text{br}$ vokser sperrestrømmen bratt, og strømmen kan bli stor med nesten ingen økning i spenningen. Ikke ødeleggende i seg selv når kretsen begrenser strømmen; det er varmen som ødelegger. To mekanismer: Zener-effekten og skred."
+    definition: "(<em>reverse breakdown</em>) Ved sperrespenningen $V_\\text{br}$ vokser strømmen i sperreretningen bratt, og strømmen kan bli stor med nesten ingen økning i spenningen. Ikke ødeleggende i seg selv når kretsen begrenser strømmen; det er varmen som ødelegger. To mekanismer: Zener-effekten og skred."
   - term: Zener-gjennombrudd
     section: Zener-effekten
     definition: "(<em>Zener effect</em>) Gjennombrudd ved tunnelering i en tynn, sterkt dopet sone: sperrespenningen legger ledningsbåndet på n-siden overfor valensbåndet på p-siden, og elektroner tunnelerer gjennom barrieren med bredde $d$. Krever felt på omtrent $10^6$ V/cm og skjer under noen få volt."
@@ -917,32 +917,32 @@ glossary:
     definition: "(<em>breakdown diode</em>, <em>Zener diode</em>) En diode dopet for en bestemt $V_\\text{br}$, fra under én volt til flere hundre, brukt i gjennombrudd som spenningsregulator eller referanse. Kalles Zener-diode selv om mekanismen som regel er skred."
 
   - term: Kvasistasjonær tilnærming
-    section: Når strømmen slås av
-    definition: "(<em>quasi-steady state approximation</em>) Antagelsen at profilen av lagrede minoritetsbærere er eksponentiell i hvert øyeblikk av en transient, så $Q_p = qAL_p\\Delta p_n$ hele tiden. Gir spenningen fra ladningen, men grovt, siden profilen endrer form nær sonekanten. Lagringstiden blir for lang. Krever at ladningen endrer seg langsomt mot $L_p^2/D_p = \\tau_p$, tiden diffusjonen bruker over en diffusjonslengde."
+    section: Når strømmen brytes
+    definition: "(<em>quasi-steady state approximation</em>) Antagelsen at profilen av lagrede minoritetsbærere beholder formen $e^{-x_n/L_p}$ mens strømmen endrer seg, så $Q_p = qAL_p\\Delta p_n$ hele tiden. Gir spenningen fra ladningen, men grovt, fordi profilen endrer form nær kanten av sonen. Lagringstiden blir for lang."
   - term: Lagringstid
-    section: Lagringstid
-    definition: "(<em>storage delay time</em>) $t_{sd}$, tiden etter omslag fra lederetning til sperreretning der overskuddet ved sonekanten fortsatt er positivt. Så lenge er spenningen over overgangen liten og positiv, og sperrestrømmen settes av kretsen. Proporsjonal med levetiden, og en vanlig måte å måle den på."
+    section: Lagringstiden
+    definition: "(<em>storage delay time</em>) $t_{sd}$, tiden etter omslag fra lederetning til sperreretning der kanten av sonen fortsatt har et overskudd av minoritetsbærere. Så lenge er spenningen over overgangen liten og positiv, og sperrestrømmen settes av kretsen. Proporsjonal med levetiden, og en vanlig måte å måle den på."
   - term: Svitsjediode
-    section: Lagringstid
+    section: Lagringstiden
     definition: "(<em>switching diode</em>) En diode laget for å slå raskt mellom lederetning og sperreretning. Kort levetid, for eksempel med gull i Si, eller lite lagret ladning i en kort diode gir kort lagringstid."
   - term: Kort diode
-    section: Diffusjonskapasitansen
-    definition: "(<em>short diode</em>, <em>narrow base diode</em>) En diode der den lett dopede siden er kortere enn diffusjonslengden, så de fleste injiserte bærerne når kontakten før de rekombinerer. Profilen er en rett linje, og lite ladning lagres. I en lang diode er siden mange diffusjonslengder."
+    section: Lagringstiden
+    definition: "(<em>short diode</em>, <em>narrow base diode</em>) En diode der den lett dopede siden er kortere enn diffusjonslengden, så de fleste injiserte bærerne når kontakten før de rekombinerer. Profilen er nesten en rett linje, og lite ladning lagres. I en lang diode er siden mange diffusjonslengder."
   - term: Overgangskapasitans
     section: Overgangskapasitansen
     definition: "(<em>junction capacitance</em>, <em>depletion capacitance</em>) $C_j = \\varepsilon A/W$, kapasitansen fra ionene i romladningssonen. Avtar med sperrespenningen fordi sonen blir bredere, og dominerer i sperreretningen."
   - term: Varaktor
-    section: Seriemotstand og gradvise overganger
-    definition: "(<em>varactor</em>) En diode som brukes i sperreretning for den spenningsstyrte overgangskapasitansen, for eksempel til avstemming. $C_j \\propto V_r^{-1/2}$ i en abrupt overgang; dopingprofilen setter eksponenten."
+    section: Gradvise overganger
+    definition: "(<em>varactor</em>) En diode som brukes i sperreretning som en kondensator styrt av spenningen, for eksempel til å stille inn frekvensen i en radiomottaker. $C_j \\propto V_r^{-1/2}$ i en abrupt overgang og $V_r^{-1/3}$ i en lineært gradvis. Dopingprofilen setter eksponenten."
   - term: Gradvis overgang
-    section: Seriemotstand og gradvise overganger
+    section: Gradvise overganger
     definition: "(<em>graded junction</em>) En overgang der dopingen går gradvis fra p til n, som etter diffusjon eller implantasjon. Med lineær nettodoping $N_d - N_a = kx$ gjennom sonen blir feltet en parabel, $W \\propto (V_0 - V)^{1/3}$ og $C_j \\propto V_r^{-1/3}$."
   - term: Diffusjonskapasitans
     section: Diffusjonskapasitansen
-    definition: "(<em>charge storage capacitance</em>, <em>diffusion capacitance</em>) $C_s$, kapasitansen fra den lagrede ladningen av minoritetsbærere, regnet med bare den delen av endringen som går tilbake over sonekanten. Den delen er to tredjedeler i en kort diode, $C_s = \\tfrac{2}{3}\\,dQ_p/dV$, og halvparten i en lang, $C_s = \\tau_pG_s/2$. Vokser eksponentielt med spenningen og dominerer i lederetningen."
+    definition: "(<em>charge storage capacitance</em>, <em>diffusion capacitance</em>) $C_s$, kapasitansen fra den lagrede ladningen av minoritetsbærere. Bare den delen av ladningen som kommer tilbake ut over kanten av sonen når spenningen synker, teller. I en kort diode er det to tredjedeler, $C_s = \\tfrac{2}{3}\\,dQ_p/dV$. Vokser med strømmen og dominerer ved store strømmer i lederetningen."
   - term: Høy injeksjon
-    section: Båndgapet og høy injeksjon
-    definition: "(<em>high-level injection</em>) Overskuddet av bærere er like stort som eller større enn majoritetskonsentrasjonen. Da vokser strømmen som $e^{qV/2k_BT}$, og spenningen over overgangen kan ikke bli større enn $V_0$."
+    section: Høy injeksjon og motstand
+    definition: "(<em>high-level injection</em>) Overskuddet av bærere er like stort som eller større enn majoritetskonsentrasjonen. Da må spenningen løfte både minoritets- og majoritetsbærerne ved kanten, og strømmen vokser bare som $e^{qV/2k_BT}$."
   - term: Idealitetsfaktor
     section: Rekombinasjon og generasjon i sonen
     definition: "(<em>ideality factor</em>) $n$ i $I = I_0'(e^{qV/nk_BT} - 1)$. $n = 1$ når strømmen er diffusjon fra de nøytrale områdene, $n \\approx 2$ når den er rekombinasjon i sonen eller høy injeksjon. I en Schottky-kontakt ligger $n$ også mellom 1 og 2, fordi barrieren i en virkelig kontakt endrer seg litt med spenningen."
@@ -1038,7 +1038,7 @@ symbols:
   - { tex: "v_s", meaning: "Metningshastigheten ved sterkt felt", unit: "cm/s", section: "Transport", term: "Metningshastighet", note: "Omtrent $10^7$ cm/s i Si." }
   - { tex: "\\mu_n,\\ \\mu_p", meaning: "Mobiliteten til elektroner og hull, drifthastighet per felt", unit: "cm²/V·s", section: "Transport", term: "Mobilitet", formula: mobilitet, id: mu, note: "$1350$ og $480$ cm²/V·s i rent Si ved 300 K. Alltid positiv." }
   - { tex: "\\bar{t}", meaning: "Midlere tid mellom kollisjoner", unit: "s", section: "Transport", term: "Midlere kollisjonstid", formula: mobilitet, id: tbar, note: "Ikke levetiden $\\tau_n$, $\\tau_p$, som er tiden før rekombinasjon." }
-  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", term: "Midlere fri veilengde" }
+  - { tex: "l", meaning: "Midlere fri veilengde mellom kollisjoner", unit: "cm", section: "Transport", term: "Midlere fri veilengde", note: "Ikke lengden $l$ av n-siden i en kort diode." }
   - { tex: "\\sigma", meaning: "Ledningsevne", unit: "(Ω·cm)⁻¹", section: "Transport", formula: ledningsevne }
   - { tex: "\\rho", meaning: "Resistivitet, $1/\\sigma$", unit: "Ω·cm", section: "Transport", formula: resistans, note: "Ikke romladningstettheten $\\rho(x)$ i Poissons ligning." }
   - { tex: "R", meaning: "Resistansen til en stav, $\\rho L/A$", unit: "Ω", section: "Transport", formula: resistans, note: "$L$ er lengden langs strømmen og $A = wt$ tverrsnittet, med bredden $w$ og tykkelsen $t$." }
@@ -1085,7 +1085,7 @@ symbols:
   - { tex: "C_j", meaning: "Overgangskapasitansen, fra ionene i romladningssonen", unit: "F", section: "pn-overgangen", term: "Overgangskapasitans", formula: overgangskapasitans, id: cj }
   - { tex: "C_s", meaning: "Diffusjonskapasitansen, fra den lagrede ladningen", unit: "F", section: "pn-overgangen", term: "Diffusjonskapasitans", formula: diffusjonskapasitans }
   - { tex: "G_s", meaning: "Småsignalkonduktansen, $dI/dV$", unit: "Ω⁻¹", section: "pn-overgangen", formula: smasignalkonduktans }
-  - { tex: "c", meaning: "Lengden av den lett dopede siden i en kort diode", unit: "cm", section: "pn-overgangen", term: "Kort diode", formula: diffusjonskapasitans }
+  - { tex: "l", meaning: "Lengden av den lett dopede siden i en kort diode", unit: "cm", section: "pn-overgangen", term: "Kort diode", formula: diffusjonskapasitans, note: "Ikke den midlere frie veilengden $l$." }
   - { tex: "n", meaning: "Idealitetsfaktoren i diodeligningen", section: "pn-overgangen", term: "Idealitetsfaktor", formula: idealitetsfaktor, note: "Ikke elektronkonsentrasjonen $n$. Mellom 1 og 2." }
   - { tex: "V_a", meaning: "Spenningen over hele komponenten", unit: "V", section: "pn-overgangen", formula: seriemotstand, note: "$V$ er den delen som ligger over overgangen." }
   - { tex: "R_p,\\ R_n", meaning: "Motstanden i det nøytrale p- og n-området", unit: "Ω", section: "pn-overgangen", formula: seriemotstand }
