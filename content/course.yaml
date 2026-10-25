@@ -492,30 +492,30 @@ formulas:
     label: "Diodeligningen for en p⁺n-overgang i lederetningen med $p_n$ skrevet ut, der $E_F - E_v$ gjelder n-siden. Strømmen blir merkbar først når $qV$ nærmer seg $E_F - E_v \\approx qV_0$, som er nær $E_g$ når begge sidene er sterkt dopet."
 
   - id: arbeidsfunksjon-halvleder
-    section: Arbeidsfunksjon og elektronaffinitet
+    section: Fermi-nivåene før kontakt
     onSheet: false
     tex: "q\\Phi_s = q\\chi + (E_c - E_F)"
     label: "Arbeidsfunksjonen til en halvleder, fra Fermi-nivået opp til vakuumnivået. Elektronaffiniteten $q\\chi$ er fast for materialet, $4{,}05$ eV for Si, mens $E_c - E_F$ og dermed $\\Phi_s$ avhenger av dopingen."
   - id: schottky-barriere
-    section: Schottky-kontakten
+    section: Når metallet og halvlederen møtes
     onSheet: false
     tex: "\\begin{aligned} V_0 &= \\Phi_m - \\Phi_s \\\\ \\Phi_B &= \\Phi_m - \\chi \\end{aligned}"
     label: "Kontaktpotensialet og barrierehøyden i en Schottky-kontakt på n-type, der $\\Phi_m > \\Phi_s$ og halvlederen tømmes nær grenseflaten. $V_0$ holder elektronene i halvlederen tilbake og blir $V_0 - V$ med spenning; $\\Phi_B$ er barrieren for elektronene i metallet og endres ikke av spenningen i en ideell kontakt. På p-type kreves $\\Phi_m < \\Phi_s$, og $V_0 = \\Phi_s - \\Phi_m$."
   - id: schottky-sonebredde
-    section: Schottky-kontakten
+    section: Når metallet og halvlederen møtes
     onSheet: false
     tex: "W = \\left[\\dfrac{2\\varepsilon(V_0 - V)}{qN_d}\\right]^{1/2}"
-    label: "Bredden av romladningssonen i en Schottky-kontakt på n-type. Sonen ligger bare i halvlederen, som på n-siden av en p⁺n-overgang, og kapasitansen er $C_j = \\varepsilon A/W$."
+    label: "Bredden av romladningssonen i en Schottky-kontakt på n-type, med $V$ positiv når metallet er positivt. Sonen ligger nesten bare i halvlederen, som på n-siden av en p⁺n-overgang."
   - id: schottky-diode
     section: Strømmen over barrieren
     onSheet: false
     tex: "\\begin{aligned} I &= I_0\\left(e^{qV/k_BT} - 1\\right) \\\\ I_0 &\\propto e^{-q\\Phi_B/k_BT} \\end{aligned}"
-    label: "Strømmen gjennom en Schottky-kontakt, positiv fra metallet til halvlederen på n-type. Spenningen endrer barrieren fra halvledersiden, mens strømmen fra metallet over $\\Phi_B$ er den samme uansett spenning og setter $I_0$. Strømmen er majoritetsbærere, så det er ingen lagret ladning og ingen lagringstid."
+    label: "Strømmen gjennom en Schottky-kontakt, positiv fra metallet til halvlederen på n-type. Spenningen endrer barrieren fra halvledersiden, mens elektronene fra metallet over $\\Phi_B$ er like mange uansett spenning og setter $I_0$. Strømmen er majoritetsbærere, så det er nesten ingen lagret ladning og ingen lagringstid."
   - id: schottky-termionisk
     section: Strømmen over barrieren
     onSheet: false
     tex: "I = ABT^2\\,e^{-q\\Phi_B/k_BT}\\,e^{qV/nk_BT}"
-    label: "Strømmen i lederetningen regnet fullt ut, på samme måte som termionisk emisjon av elektroner fra en varm metalloverflate. $B$ er en effektiv Richardson-konstant for overgangen, og $n$ ligger mellom 1 og 2, fordi barrieren i en virkelig kontakt endrer seg litt med spenningen."
+    label: "Strømmen i lederetningen regnet fullt ut, på samme måte som for elektroner som slipper ut av en glødende metalltråd. $B$ er en konstant for overgangen, rundt 110 A/cm²K² for n-type Si, og $n$ ligger mellom 1 og 2, fordi barrieren i en virkelig kontakt endrer seg litt med spenningen."
   - id: heteroovergang-sprang
     section: Heterooverganger
     onSheet: false
@@ -524,8 +524,8 @@ formulas:
   - id: hetero-spenningsdeling
     section: Heterooverganger
     onSheet: false
-    tex: "\\dfrac{V_{01}}{V_{02}} = \\dfrac{\\varepsilon_2N_{d2}}{\\varepsilon_1N_{a1}}"
-    label: "Hvordan kontaktpotensialet $V_0 = V_{01} + V_{02}$ deles i en heteroovergang med p-type på side 1 og n-type på side 2. Fra Poissons ligning med $\\varepsilon_1\\mathcal{E}_1 = \\varepsilon_2\\mathcal{E}_2$ ved grenseflaten. Den lettest dopede siden tar mest av spenningen."
+    tex: "\\dfrac{V_{01}}{V_{02}} = \\dfrac{\\varepsilon_2N_2}{\\varepsilon_1N_1}"
+    label: "Hvordan kontaktpotensialet $V_0 = V_{01} + V_{02}$ deles i en heteroovergang der begge sidene er tømt nær grenseflaten, med 1 for materialet med størst båndgap og $N_1$, $N_2$ som dopingen på hver side. Fra Poissons ligning med $\\varepsilon_1\\mathcal{E}_1 = \\varepsilon_2\\mathcal{E}_2$ ved grenseflaten. Den lettest dopede siden tar mest av spenningen."
   - id: lastlinje
     section: Transistoren i en krets
     onSheet: false
@@ -948,34 +948,34 @@ glossary:
     definition: "(<em>ideality factor</em>) $n$ i $I = I_0'(e^{qV/nk_BT} - 1)$. $n = 1$ når strømmen er diffusjon fra de nøytrale områdene, $n \\approx 2$ når den er rekombinasjon i sonen eller høy injeksjon. I en Schottky-kontakt ligger $n$ også mellom 1 og 2, fordi barrieren i en virkelig kontakt endrer seg litt med spenningen."
 
   - term: Arbeidsfunksjon
-    section: Arbeidsfunksjon og elektronaffinitet
+    section: Fermi-nivåene før kontakt
     definition: "(<em>work function</em>) $q\\Phi$, energien som skal til for å flytte et elektron fra Fermi-nivået og ut i vakuum like utenfor overflaten. Omtrent 4,3 eV for Al og 4,8 eV for Au. For en halvleder avhenger den av dopingen, $q\\Phi_s = q\\chi + (E_c - E_F)$."
   - term: Elektronaffinitet
-    section: Arbeidsfunksjon og elektronaffinitet
+    section: Fermi-nivåene før kontakt
     definition: "(<em>electron affinity</em>) $q\\chi$, avstanden fra ledningsbåndkanten opp til vakuumnivået. Fast for materialet og uavhengig av dopingen; 4,05 eV for Si."
   - term: Vakuumnivå
-    section: Arbeidsfunksjon og elektronaffinitet
+    section: Fermi-nivåene før kontakt
     definition: "(<em>vacuum level</em>) $E_\\text{vac}$, energien til et elektron i ro like utenfor materialet. Det lokale vakuumnivået ligger $q\\chi$ over ledningsbåndkanten og bøyer seg med den, så det endrer seg med $qV_0$ over en overgang. Det globale vakuumnivået langt unna er konstant."
   - term: Schottky-kontakt
-    section: Schottky-kontakten
-    definition: "(<em>Schottky barrier</em>, <em>Schottky diode</em>) En likerettende metall–halvleder-overgang, der halvlederen tømmes for majoritetsbærere nær grenseflaten: $\\Phi_m > \\Phi_s$ på n-type og $\\Phi_m < \\Phi_s$ på p-type. Strømmen er majoritetsbærere, så det lagres ingen minoritetsladning, og dioden slår raskt om."
+    section: Når metallet og halvlederen møtes
+    definition: "(<em>Schottky barrier</em>, <em>Schottky diode</em>) En likerettende metall–halvleder-overgang, der halvlederen tømmes for majoritetsbærere nær grenseflaten: $\\Phi_m > \\Phi_s$ på n-type og $\\Phi_m < \\Phi_s$ på p-type. Strømmen er majoritetsbærere, så det lagres nesten ingen minoritetsladning, og kontakten slår raskt om."
   - term: Barrierehøyde
-    section: Schottky-kontakten
+    section: Når metallet og halvlederen møtes
     definition: "(<em>barrier height</em>) $\\Phi_B$, barrieren elektronene i metallet må over for å komme inn i halvlederen, $\\Phi_m - \\chi$ i en ideell kontakt på n-type. I en ideell kontakt endres den ikke av spenningen, og den setter metningsstrømmen, $I_0 \\propto e^{-q\\Phi_B/k_BT}$. I praksis måles den."
   - term: Ohmsk kontakt
-    section: Ohmske kontakter
+    section: Når metallet og halvlederen møtes
     definition: "(<em>ohmic contact</em>) En kontakt med lineær strøm–spenning-karakteristikk i begge retninger og liten motstand. Ideelt når majoritetsbærerne samles ved grenseflaten, $\\Phi_m < \\Phi_s$ på n-type. I praksis lages den med et sterkt dopet lag under metallet, så sonen blir tynn nok til at bærerne tunnelerer gjennom."
   - term: Grenseflatetilstander
-    section: Virkelige Schottky-barrierer
+    section: Virkelige kontakter
     definition: "(<em>interface states</em>) Nivåer i gapet ved grenseflaten mellom halvlederen og metallet, fra ufullstendige bindinger og mellomlaget. Er det mange nok, låser de Fermi-nivået på et fast sted, så barrieren nesten ikke avhenger av metallet; på n-type GaAs blir den omtrent 0,8 eV."
   - term: Heteroovergang
     section: Heterooverganger
     definition: "(<em>heterojunction</em>) En overgang mellom to halvledere med ulikt båndgap, for eksempel AlGaAs og GaAs. Har de samme gitterkonstant, kan grenseflaten bli nesten fri for defekter. Båndkantene gjør sprangene $\\Delta E_c$ og $\\Delta E_v$ ved grenseflaten, så barrieren for elektroner og for hull blir forskjellig. En overgang i én halvleder er en homoovergang."
   - term: Andersons affinitetsregel
     section: Heterooverganger
-    definition: "(<em>Anderson affinity rule</em>) $\\Delta E_c = q(\\chi_2 - \\chi_1)$: spranget i ledningsbåndet ved en heteroovergang er forskjellen i elektronaffinitet, og $\\Delta E_v = \\Delta E_g - \\Delta E_c$. Gjelder når vakuumnivået er kontinuerlig over grenseflaten; i praksis måles sprangene."
+    definition: "(<em>Anderson affinity rule</em>) $\\Delta E_c = q(\\chi_2 - \\chi_1)$: spranget i ledningsbåndet ved en heteroovergang er forskjellen i elektronaffinitet, og $\\Delta E_v = \\Delta E_g - \\Delta E_c$. Gjelder når vakuumnivået er sammenhengende over grenseflaten; i praksis måles sprangene."
   - term: Todimensjonal elektrongass
-    section: Elektroner i brønnen ved grenseflaten
+    section: Elektronene i brønnen
     definition: "(<em>two-dimensional electron gas</em>) Elektroner fanget i en smal brønn i ledningsbåndet ved en heteroovergang, som ved N⁺-AlGaAs mot lett dopet GaAs. De beveger seg fritt bare langs grenseflaten. Donorene ligger i AlGaAs, så det er lite urenhetsspredning, og mobiliteten blir høy, særlig ved lave temperaturer."
   - term: Felteffekttransistor
     section: Transistoren i en krets
