@@ -550,7 +550,7 @@ formulas:
     section: Kanalen klemmes av ved drain
     onSheet: false
     tex: "\\begin{aligned} V_p &= \\dfrac{qN_da^2}{2\\varepsilon} \\\\ V_D(\\text{sat.}) &= V_G + V_p - V_0 \\end{aligned}"
-    label: "Avklemmingsspenningen i en n-kanal-JFET med halvhøyden $a$: spenningen $V_0 - V$ over sonen som gjør den like bred som halvhøyden. Kontaktpotensialet står for $V_0$ av den, så kanalen klemmes av ved drain når $V_D - V_G = V_p - V_0$, og strømmen metter. $V_G = V_0 - V_p$ stenger kanalen i hele lengden."
+    label: "Avklemmingsspenningen i en n-kanal-JFET med halvhøyden $a$: spenningen $V_0 - V$ over sonen som gjør den like bred som halvhøyden. Kontaktpotensialet står for $V_0$ av den, så kanalen klemmes av ved drain når $V_D - V_G = V_p - V_0$, og strømmen metter. $V_G = V_0 - V_p$ stenger kanalen i hele lengden. I en MESFET, der sonen bare kommer fra gaten, er $a$ tykkelsen av laget."
   - id: jfet-gjennombrudd
     section: Gatespenningen og kurvene
     onSheet: false
@@ -577,45 +577,73 @@ formulas:
     tex: "I_D(\\text{sat.}) \\approx I_{DSS}\\Big(1 + \\tfrac{V_G}{V_p - V_0}\\Big)^2"
     label: "Parabelen som målt strøm i metning nesten følger. $I_{DSS}$ er strømmen i metning med $V_G = 0$, og parabelen er null der kanalen stenges, ved $V_G = V_0 - V_p$."
 
-  # Resten av formelarket (Streetman kap. 6–8) står her før modulene er skrevet.
-  # Bytt seksjonsnavnene til modulenes overskrifter når modulene kommer.
-  - id: mos-kapasitans
-    section: MOS-kondensatoren
-    onSheet: true
-    tex: "\\begin{aligned} C_i &= \\dfrac{\\varepsilon_i}{d}, \\qquad C_d = \\dfrac{\\varepsilon_s}{W} \\\\ C &= \\dfrac{C_iC_d}{C_i + C_d} \\end{aligned}"
-    label: "Kapasitansene per areal i en MOS-kondensator: oksidet med tykkelse $d$ og permittivitet $\\varepsilon_i$, og romladningssonen med bredde $W$ i halvlederen med permittivitet $\\varepsilon_s$. De står i serie, så den minste dominerer. I akkumulasjon er kapasitansen lik oksidets, og i utarming synker den når $W$ vokser."
+  - id: mesfet-kort-kanal
+    section: Kort kanal
+    onSheet: false
+    tex: "I_D(\\text{sat.}) \\approx qN_dv_sZh"
+    label: "Strømmen i metning i en kort kanal, der elektronene går med metningshastigheten $v_s$: ladningen per lengde i den åpne kanalen ganger $v_s$. $h$ er høyden av den ledende delen, mellom verdien ved source og ved drain. Kurvene for like steg i $V_G$ ligger jevnere enn i en lang kanal."
+
+  # MOS-kondensatoren (Streetman §6.4.2–6.4.4).
   - id: inversjon
-    section: MOS-kondensatoren
+    section: Hvor langt båndene bøyer seg
     onSheet: true
     tex: "\\phi_s(\\text{inv.}) = 2\\phi_F = 2\\dfrac{k_BT}{q}\\ln\\dfrac{N_a}{n_i}"
     label: "Sterk inversjon: overflaten er like sterkt n-type som substratet er p-type når båndene er bøyd ned $2\\phi_F$, der $q\\phi_F = E_i - E_F$ i substratet. Overflatepotensialet $\\phi_s$ er båndbøyningen fra substratet til overflaten."
+  - id: mos-baandboyning
+    section: Hvor langt båndene bøyer seg
+    onSheet: false
+    tex: "p = p_0e^{-q\\phi/k_BT}, \\qquad n = n_0e^{q\\phi/k_BT}"
+    label: "Hull- og elektronkonsentrasjonen der båndene er bøyd ned $q\\phi$, uttrykt ved konsentrasjonene $p_0$ og $n_0$ langt inne i silisiumet. $\\phi$ er hvor mye lavere $E_i$ ligger enn langt inne."
   - id: mos-sonebredde
-    section: MOS-kondensatoren
+    section: Ladningen i silisiumet
     onSheet: true
     tex: "W = \\left[\\dfrac{2\\varepsilon_s\\phi_s}{qN_a}\\right]^{1/2}"
-    label: "Bredden av romladningssonen under gaten ved overflatepotensialet $\\phi_s$, som i en ensidig overgang. Ved inversjon slutter den å vokse, fordi mer gateladning går til elektronene i kanalen; den største bredden $W_m$ er verdien ved $\\phi_s = 2\\phi_F$."
+    label: "Bredden av romladningssonen under gaten ved overflatepotensialet $\\phi_s$, som i en ensidig overgang. Ved inversjon slutter den å vokse, fordi mer gateladning går til elektronene ved overflaten; den største bredden $W_m$ er verdien ved $\\phi_s = 2\\phi_F$."
   - id: mos-sonelading
-    section: MOS-kondensatoren
+    section: Ladningen i silisiumet
     onSheet: true
     tex: "Q_d = -qN_aW_m = -2(\\varepsilon_s qN_a\\phi_F)^{1/2}"
     label: "Ladningen per areal i romladningssonen ved inversjon: de ioniserte akseptorene i den største sonebredden $W_m$. Negativ i et p-type substrat."
-  - id: terskelspenning
-    section: MOS-kondensatoren
+  - id: oksidspenning
+    section: Terskelspenningen
+    onSheet: false
+    tex: "V_G = V_i + \\phi_s, \\qquad V_i = -\\dfrac{Q_s}{C_i}"
+    label: "Gatespenningen i en ideell MOS-kondensator fordeler seg på oksidet og silisiumet. Oksidet er en platekondensator med $C_i = \\varepsilon_i/d$, og $Q_s$ er ladningen per areal i silisiumet."
+  - id: terskelspenning-ideell
+    section: Terskelspenningen
+    onSheet: false
+    tex: "V_T = -\\dfrac{Q_d}{C_i} + 2\\phi_F"
+    label: "Terskelspenningen i en ideell MOS-kondensator, uten forskjell i arbeidsfunksjon og uten ladning i oksidet. Gaten må bøye båndene $2\\phi_F$ og bære ladningen $Q_d$ i sonen over oksidet. Begge leddene er positive for p-type substrat."
+  - id: mos-kapasitans
+    section: Kapasitansen
     onSheet: true
-    tex: "V_T = \\underbrace{\\Phi_{ms} - \\dfrac{Q_i}{C_i}}_{\\text{flatbånd}} - \\dfrac{Q_d}{C_i} + 2\\phi_F"
-    label: "Terskelspenningen for en n-kanal-MOSFET på p-type substrat, gatespenningen som gir sterk inversjon. De to første leddene er flatbåndspenningen $V_{FB}$: $\\Phi_{ms}$ er forskjellen i arbeidsfunksjon mellom metallet og halvlederen, og $Q_i$ er ladningen per areal i oksidet og ved grenseflaten. Deretter må gaten bære ladningen $Q_d$ i romladningssonen og bøye båndene $2\\phi_F$."
+    tex: "\\begin{aligned} C_i &= \\dfrac{\\varepsilon_i}{d}, \\qquad C_d = \\dfrac{\\varepsilon_s}{W} \\\\ C &= \\dfrac{C_iC_d}{C_i + C_d} \\end{aligned}"
+    label: "Kapasitansene per areal i en MOS-kondensator: oksidet med tykkelse $d$ og permittivitet $\\varepsilon_i$, og romladningssonen med bredde $W$ i halvlederen med permittivitet $\\varepsilon_s$. De står i serie, så den minste dominerer. I akkumulasjon er kapasitansen lik oksidets, og i utarming synker den når $W$ vokser."
   - id: debye-lengde
-    section: MOS-kondensatoren
+    section: Kapasitansen
     onSheet: true
     tex: "L_D = \\sqrt{\\dfrac{\\varepsilon_s k_BT}{q^2p_0}}, \\qquad C_\\text{debye} = \\dfrac{\\varepsilon_s}{L_D}"
-    label: "Debye-lengden er avstanden der en ladning i halvlederen skjermes av majoritetsbærerne, her hull i p-type. Den blir kortere med mer doping. Ved flatbånd er det denne lengden, ikke en romladningssone, som gir halvlederens kapasitans."
+    label: "Debye-lengden er avstanden der en ladning i halvlederen skjermes av majoritetsbærerne, her hull i p-type. Den blir kortere med mer doping. Ved flate bånd er det denne lengden, ikke en romladningssone, som gir halvlederens kapasitans."
   - id: flatbaandskapasitans
-    section: MOS-kondensatoren
+    section: Kapasitansen
     onSheet: true
     tex: "C_{FB} = \\dfrac{C_i\\,C_\\text{debye}}{C_i + C_\\text{debye}}"
     label: "MOS-kapasitansen ved flatbåndspenningen $V_{FB}$: oksidet i serie med Debye-kapasitansen. Spenningen der en målt C–V-kurve har verdien $C_{FB}$, er $V_{FB}$."
+  - id: flatbaandspenning
+    section: Virkelige MOS-kondensatorer
+    onSheet: false
+    tex: "V_{FB} = \\Phi_{ms} - \\dfrac{Q_i}{C_i}"
+    label: "Gatespenningen som gjør båndene flate i en virkelig MOS-kondensator. $\\Phi_{ms} = \\Phi_m - \\Phi_s$ er forskjellen i arbeidsfunksjon, og $Q_i$ er den positive ladningen per areal i oksidet og ved grenseflaten. Begge leddene er som regel negative."
+  - id: terskelspenning
+    section: Virkelige MOS-kondensatorer
+    onSheet: true
+    tex: "V_T = \\underbrace{\\Phi_{ms} - \\dfrac{Q_i}{C_i}}_{\\text{flatbånd}} - \\dfrac{Q_d}{C_i} + 2\\phi_F"
+    label: "Terskelspenningen for en n-kanal-MOSFET på p-type substrat, gatespenningen som gir sterk inversjon. De to første leddene er flatbåndspenningen $V_{FB}$: $\\Phi_{ms}$ er forskjellen i arbeidsfunksjon mellom metallet og halvlederen, og $Q_i$ er ladningen per areal i oksidet og ved grenseflaten. Deretter må gaten bære ladningen $Q_d$ i romladningssonen og bøye båndene $2\\phi_F$."
+
+  # Resten av formelarket (Streetman kap. 6–8) står her før modulene er skrevet.
+  # Bytt seksjonsnavnene til modulenes overskrifter når modulene kommer.
   - id: substratspenning
-    section: MOS-kondensatoren
+    section: MOSFET-en
     onSheet: true
     tex: "\\Delta V_T \\simeq \\dfrac{\\sqrt{2\\varepsilon_s qN_a}}{C_i}\\,(-V_B)^{1/2} \\quad (\\text{n-kanal})"
     label: "Substrateffekten: en negativ spenning $V_B$ på p-substratet gjør romladningssonen under kanalen bredere, og terskelspenningen øker. Uttrykket gjelder når $|V_B|$ er stor mot $2\\phi_F$. Effekten er sterkere jo høyere substratet er dopet."
@@ -996,6 +1024,45 @@ glossary:
   - term: Gradvis kanal
     section: Strømmen gjennom kanalen
     definition: "(<em>gradual channel approximation</em>) Tilnærmingen at romladningssonen i hvert punkt langs kanalen er som i en plan overgang med spenningen i det punktet. Gjelder når kanalen er mye lengre enn den er høy, slik at leddet på tvers i Poissons ligning dominerer og halvhøyden endrer seg langsomt langs kanalen."
+  - term: MESFET
+    section: Gaten er en Schottky-kontakt
+    definition: "(<em>metal–semiconductor field-effect transistor</em>) En felteffekttransistor der gaten er en Schottky-kontakt på et tynt lag n-type halvleder, oftest GaAs på halvisolerende GaAs. Romladningssonen under gaten kommer bare fra én side, så kanalen stenges når sonen rekker ned til substratet, ved $V_G = V_0 - V_p$ med $V_p = qN_da^2/2\\varepsilon$ og $a$ lik tykkelsen av laget."
+  - term: Halvisolerende GaAs
+    section: Gaten er en Schottky-kontakt
+    definition: "(<em>semi-insulating GaAs</em>) GaAs som er udopet eller dopet med krom, så Fermi-nivået ligger nær midten av båndgapet og resistiviteten er rundt $10^8$ Ω·cm. Det brukes som substrat under MESFET-er, der det isolerer transistorene fra hverandre."
+  - term: Kort kanal
+    section: Kort kanal
+    definition: "(<em>short channel</em>) En kanal så kort at feltet langs den får farten til elektronene nær metningshastigheten $v_s$. Strømmen metter da når elektronene ved drain kommer opp i $v_s$, før kanalen klemmes av, og i en MESFET er den omtrent $qN_dv_sZh$. Kurvene for like steg i $V_G$ ligger jevnere enn i en lang kanal, og de stiger etter metning fordi stykket ved drain tar en større del av kanalen."
+  - term: MOS-kondensator
+    section: En kondensator med silisium som den ene platen
+    definition: "(<em>MOS capacitor</em>) Et metall, et tynt oksid og en halvleder lagt oppå hverandre. Oksidet leder ikke, så gaten og halvlederen får like stor ladning med motsatt fortegn, og halvlederen er i likevekt. Gatespenningen bestemmer om overflaten er i akkumulasjon, utarming eller inversjon."
+  - term: Akkumulasjon
+    section: En kondensator med silisium som den ene platen
+    definition: "(<em>accumulation</em>) Majoritetsbærerne samles ved overflaten under gaten, i p-type silisium hull når gaten er negativ. Båndene bøyer seg opp ved overflaten."
+  - term: Utarming
+    section: En kondensator med silisium som den ene platen
+    definition: "(<em>depletion</em>) Gaten skyver majoritetsbærerne bort fra overflaten, så de ioniserte dopeatomene står igjen i en romladningssone, som på den ene siden av en pn-overgang. I p-type silisium skjer det med positiv gate, og båndene bøyer seg ned."
+  - term: Inversjon
+    section: En kondensator med silisium som den ene platen
+    definition: "(<em>inversion</em>) Overflaten under gaten har flere minoritetsbærere enn majoritetsbærere, i p-type silisium flere elektroner enn hull. Svak inversjon begynner ved $\\phi_s = \\phi_F$. Sterk inversjon, der overflaten er like sterkt n-type som substratet er p-type, er $\\phi_s = 2\\phi_F$."
+  - term: Overflatepotensial
+    section: Hvor langt båndene bøyer seg
+    definition: "(<em>surface potential</em>) $\\phi_s$, hvor mye båndene er bøyd ned ved overflaten under gaten, målt fra båndene langt inne i halvlederen og regnet i volt. Positiv $\\phi_s$ betyr at båndene er bøyd ned."
+  - term: Fermi-potensial
+    section: Hvor langt båndene bøyer seg
+    definition: "(<em>Fermi potential</em>) $\\phi_F$, avstanden fra Fermi-nivået opp til det intrinsiske nivået langt inne i halvlederen, i volt. For p-type er $q\\phi_F = E_i - E_F = k_BT\\ln(N_a/n_i)$, og for n-type er $\\phi_F$ negativ."
+  - term: Terskelspenning
+    section: Terskelspenningen
+    definition: "(<em>threshold voltage</em>) $V_T$, gatespenningen som gir sterk inversjon, $\\phi_s = 2\\phi_F$. I en ideell MOS-kondensator er $V_T = -Q_d/C_i + 2\\phi_F$, og i en virkelig kommer flatbåndspenningen i tillegg. Over $V_T$ går nesten all ny gatespenning over oksidet og gir elektroner ved overflaten."
+  - term: Flatbåndspenning
+    section: Virkelige MOS-kondensatorer
+    definition: "(<em>flat-band voltage</em>) $V_{FB} = \\Phi_{ms} - Q_i/C_i$, gatespenningen som gjør båndene i halvlederen flate. Forskjellen i arbeidsfunksjon og den positive ladningen ved grenseflaten bøyer båndene ned uten spenning, så $V_{FB}$ er som regel negativ."
+  - term: Grenseflateladning
+    section: Virkelige MOS-kondensatorer
+    definition: "(<em>interface charge</em>) $Q_i$, ladningene i oksidet og ved grenseflaten mot silisiumet regnet som én ladning per areal ved grenseflaten: natriumioner som kan flytte seg, faste ladninger og ladede tilstander ved grenseflaten. Den er som regel positiv, rundt $10^{10}$ ladninger per cm² på {100}-silisium, og gir leddet $-Q_i/C_i$ i flatbåndspenningen."
+  - term: Debye-lengde
+    section: Kapasitansen
+    definition: "(<em>Debye length</em>) $L_D = (\\varepsilon_sk_BT/q^2p_0)^{1/2}$, avstanden majoritetsbærerne trenger for å skjerme en ladning i halvlederen. Ved flate bånd gir den halvlederens kapasitans, $\\varepsilon_s/L_D$. Den er 58 nm i p-type silisium med $5 \\cdot 10^{15}$ cm⁻³."
 
 features:
   progress: true
@@ -1047,7 +1114,7 @@ symbols:
   - { tex: "I", meaning: "Strøm, $J$ ganger tverrsnittet", unit: "A", section: "Transport", formula: diodeligning }
   - { tex: "V_{AB},\\ V_H", meaning: "Spenningen mellom kontaktene på tvers av en Hall-stav, og Hall-delen av den", unit: "V", section: "Transport", term: "Hall-effekten", formula: hall-konsentrasjon, note: "Fortegnet gir bærertypen. Med forskjøvne kontakter er $V_H$ halve forskjellen mellom avlesningene med feltet snudd." }
   - { tex: "D_n,\\ D_p", meaning: "Diffusjonskoeffisienten til elektroner og hull", unit: "cm²/s", section: "Transport", term: "Diffusjonskoeffisient", formula: einstein, id: d, note: "$35$ og $12{,}5$ cm²/s i Si ved 300 K." }
-  - { tex: "\\phi", meaning: "Partikkelfluks, antall bærere per areal og tid", unit: "cm⁻²·s⁻¹", section: "Transport", formula: diffusjonsstrom, note: "Strømtettheten er fluksen ganger ladningen." }
+  - { tex: "\\phi", meaning: "Partikkelfluks, antall bærere per areal og tid", unit: "cm⁻²·s⁻¹", section: "Transport", formula: diffusjonsstrom, note: "Strømtettheten er fluksen ganger ladningen. Ikke båndbøyningen $\\phi(y)$ i en MOS-kondensator." }
   # ── Overskuddsbærere ──
   - { tex: "\\delta n,\\ \\delta p", meaning: "Overskuddet av bærere ut over likevekt, $n - n_0$ og $p - p_0$", unit: "cm⁻³", section: "Overskuddsbærere", term: "Overskuddsbærere", formula: levetid, id: delta-n, note: "Liten delta: overskuddet som funksjon av tid eller sted." }
   - { tex: "\\Delta n,\\ \\Delta p", meaning: "Startverdien av overskuddet, ved $t = 0$ eller $x = 0$", unit: "cm⁻³", section: "Overskuddsbærere", formula: diffusjonsligning, note: "Stor delta: en konstant, ikke en funksjon." }
@@ -1070,21 +1137,21 @@ symbols:
   - { tex: "V_0", meaning: "Kontaktpotensialet over sonen i likevekt", unit: "V", section: "pn-overgangen", term: "Kontaktpotensial", formula: kontaktpotensial, id: v0 }
   - { tex: "V", meaning: "Påtrykt spenning over overgangen", unit: "V", section: "pn-overgangen", term: "Forspenning", formula: diodeligning, id: v, note: "Positiv i lederetningen (p-siden høyest). Sperrespenningen skrives $V = -V_r$." }
   - { tex: "\\mathcal{E}_0", meaning: "Det største feltet i sonen, ved skillet $x = 0$", unit: "V/cm", section: "pn-overgangen", formula: maksfelt }
-  - { tex: "\\varepsilon", meaning: "Permittiviteten til halvlederen, $\\varepsilon_r\\varepsilon_0$", unit: "F/cm", section: "pn-overgangen", formula: poisson, note: "$\\varepsilon_r = 11{,}8$ for Si." }
+  - { tex: "\\varepsilon", meaning: "Permittiviteten til halvlederen, $\\varepsilon_r\\varepsilon_0$", unit: "F/cm", section: "pn-overgangen", formula: poisson, note: "$\\varepsilon_r = 11{,}8$ for Si. Skrives $\\varepsilon_s$ i MOS-kondensatoren." }
   - { tex: "I_0", meaning: "Metningsstrømmen i sperreretningen", unit: "A", section: "pn-overgangen", term: "Metningsstrøm", formula: diodeligning, id: i0 }
   - { tex: "x_n,\\ x_p", meaning: "Avstanden fra sonekanten innover i n- og p-siden", unit: "cm", section: "pn-overgangen", formula: minoritetsprofiler, note: "Måles fra $x_{n0}$ og $-x_{p0}$, ikke fra skillet $x = 0$." }
   - { tex: "\\Delta p_n,\\ \\Delta n_p", meaning: "Overskuddet av minoritetsbærere ved sonekantene", unit: "cm⁻³", section: "pn-overgangen", term: "Injeksjon", formula: injeksjon-kant, note: "Negativt i sperreretningen, ned til $-p_n$ og $-n_p$." }
-  - { tex: "Q_p,\\ Q_n", meaning: "Ladningen som er lagret i minoritetsprofilen på n- og p-siden", unit: "C", section: "pn-overgangen", term: "Ladningskontroll", formula: lagret-ladning }
+  - { tex: "Q_p,\\ Q_n", meaning: "Ladningen som er lagret i minoritetsprofilen på n- og p-siden", unit: "C", section: "pn-overgangen", term: "Ladningskontroll", formula: lagret-ladning, note: "Ikke elektronladningen $Q_n$ ved overflaten i en MOS-kondensator." }
   - { tex: "A", meaning: "Tverrsnittet av overgangen", unit: "cm²", section: "pn-overgangen", formula: metningsstrom-i0 }
   - { tex: "V_\\text{br}", meaning: "Gjennombruddsspenningen", unit: "V", section: "pn-overgangen", term: "Gjennombrudd", formula: skredmultiplikasjon, id: vbr }
   - { tex: "M", meaning: "Multiplikasjonen i skred, bærere ut per bærer inn", section: "pn-overgangen", term: "Skredgjennombrudd", formula: skredmultiplikasjon }
   - { tex: "P", meaning: "Sannsynligheten for en ioniserende kollisjon på én tur gjennom sonen", section: "pn-overgangen", term: "Støtionisasjon", formula: skredmultiplikasjon }
-  - { tex: "d", meaning: "Tunnelavstanden mellom båndene i Zener-effekten", unit: "cm", section: "pn-overgangen", term: "Zener-gjennombrudd" }
+  - { tex: "d", meaning: "Tunnelavstanden mellom båndene i Zener-effekten", unit: "cm", section: "pn-overgangen", term: "Zener-gjennombrudd", note: "Ikke tykkelsen $d$ av oksidet i en MOS-kondensator." }
   - { tex: "i(t),\\ v(t)", meaning: "Strømmen gjennom og spenningen over overgangen under en transient", section: "pn-overgangen", formula: ladning-transient, note: "Små bokstaver for størrelser som endrer seg med tiden." }
   - { tex: "I_f,\\ I_r", meaning: "Strømmen i lederetningen før omslaget og sperrestrømmen etter", unit: "A", section: "pn-overgangen", formula: lagringstid }
   - { tex: "t_{sd}", meaning: "Lagringstiden", unit: "s", section: "pn-overgangen", term: "Lagringstid", formula: lagringstid, id: tsd }
   - { tex: "C_j", meaning: "Overgangskapasitansen, fra ionene i romladningssonen", unit: "F", section: "pn-overgangen", term: "Overgangskapasitans", formula: overgangskapasitans, id: cj }
-  - { tex: "C_s", meaning: "Diffusjonskapasitansen, fra den lagrede ladningen", unit: "F", section: "pn-overgangen", term: "Diffusjonskapasitans", formula: diffusjonskapasitans }
+  - { tex: "C_s", meaning: "Diffusjonskapasitansen, fra den lagrede ladningen", unit: "F", section: "pn-overgangen", term: "Diffusjonskapasitans", formula: diffusjonskapasitans, note: "Ikke kapasitansen $C_s$ til halvlederen i en MOS-kondensator." }
   - { tex: "G_s", meaning: "Småsignalkonduktansen, $dI/dV$", unit: "Ω⁻¹", section: "pn-overgangen", formula: smasignalkonduktans }
   - { tex: "l", meaning: "Lengden av den lett dopede siden i en kort diode", unit: "cm", section: "pn-overgangen", term: "Kort diode", formula: diffusjonskapasitans, note: "Ikke den midlere frie veilengden $l$." }
   - { tex: "n", meaning: "Idealitetsfaktoren i diodeligningen", section: "pn-overgangen", term: "Idealitetsfaktor", formula: idealitetsfaktor, note: "Ikke elektronkonsentrasjonen $n$. Mellom 1 og 2." }
@@ -1101,24 +1168,44 @@ symbols:
   - { tex: "\\Delta E_c,\\ \\Delta E_v", meaning: "Spranget i ledningsbåndet og valensbåndet ved en heteroovergang", unit: "eV", section: "Kontakter og heterooverganger", term: "Heteroovergang", formula: heteroovergang-sprang, note: "Til sammen $\\Delta E_g = E_{g1} - E_{g2}$." }
   - { tex: "V_{01},\\ V_{02}", meaning: "Delen av kontaktpotensialet som ligger på side 1 og side 2 av en heteroovergang", unit: "V", section: "Kontakter og heterooverganger", formula: hetero-spenningsdeling }
   # ── Transistorer ──
-  - { tex: "V_G,\\ V_D", meaning: "Spenningen på gaten og på drain, målt fra source", unit: "V", section: "Transistorer", term: "Felteffekttransistor", id: vg-vd, note: "Source er referansen, $V_S = 0$. I en n-kanal-JFET er $V_G \\le 0$ og $V_D > 0$." }
+  - { tex: "V_G,\\ V_D", meaning: "Spenningen på gaten og på drain, målt fra source", unit: "V", section: "Transistorer", term: "Felteffekttransistor", id: vg-vd, note: "Source er referansen, $V_S = 0$. I en n-kanal-JFET er $V_G \\le 0$ og $V_D > 0$. I en MOS-kondensator måles $V_G$ fra substratet." }
   - { tex: "I_D", meaning: "Drain-strømmen, fra drain til source gjennom kanalen", unit: "A", section: "Transistorer", term: "Felteffekttransistor", id: id-strom }
   - { tex: "V_D(\\text{sat.})", meaning: "Drain-spenningen der metningen begynner", unit: "V", section: "Transistorer", term: "Metning", formula: avklemmingsspenning, note: "I en n-kanal-JFET er den $V_G + V_p - V_0$." }
   - { tex: "I_D(\\text{sat.})", meaning: "Drain-strømmen i metning, over $V_D(\\text{sat.})$", unit: "A", section: "Transistorer", term: "Metning", formula: jfet-metning, note: "Ikke metningsstrømmen $I_0$ i en diode." }
   - { tex: "V_p", meaning: "Avklemmingsspenningen, $qN_da^2/2\\varepsilon$", unit: "V", section: "Transistorer", term: "Avklemming", formula: avklemmingsspenning, id: vp, note: "Spenningen $V_0 - V$ over sonen når den fyller halvhøyden. Sperrespenningen som trengs, er $V_p - V_0$." }
   - { tex: "V_x", meaning: "Spenningen i kanalen i punktet $x$, målt fra source", unit: "V", section: "Transistorer", formula: jfet-sonebredde }
-  - { tex: "a", meaning: "Halvhøyden av kanalen mellom de to gateovergangene", unit: "cm", section: "Transistorer", formula: avklemmingsspenning, note: "Ikke Bohr-radien $a_0$." }
-  - { tex: "h(x)", meaning: "Halvhøyden av den ledende delen av kanalen, $a - W(x)$", unit: "cm", section: "Transistorer", formula: jfet-sonebredde, note: "Ikke Plancks konstant $h$." }
+  - { tex: "a", meaning: "Halvhøyden av kanalen mellom de to gateovergangene", unit: "cm", section: "Transistorer", formula: avklemmingsspenning, note: "I en MESFET tykkelsen av n-laget. Ikke Bohr-radien $a_0$." }
+  - { tex: "h(x)", meaning: "Halvhøyden av den ledende delen av kanalen, $a - W(x)$", unit: "cm", section: "Transistorer", formula: jfet-sonebredde, note: "I en MESFET høyden av den ledende delen av laget. Ikke Plancks konstant $h$." }
   - { tex: "L", meaning: "Kanallengden fra source til drain", unit: "cm", section: "Transistorer", note: "Ikke diffusjonslengdene $L_n$ og $L_p$." }
   - { tex: "g_m", meaning: "Transkonduktansen, $\\partial I_D/\\partial V_G$, i metning $\\partial I_D(\\text{sat.})/\\partial V_G$", unit: "S", section: "Transistorer", term: "Transkonduktans", formula: forsterkning }
   - { tex: "V_{DD}", meaning: "Kildespenningen i kretsen med transistoren", unit: "V", section: "Transistorer", term: "Lastlinje", formula: lastlinje }
   - { tex: "R_L", meaning: "Lastmotstanden mellom kilden og drain", unit: "Ω", section: "Transistorer", term: "Lastlinje", formula: lastlinje }
   - { tex: "i_d,\\ v_g,\\ v_d", meaning: "Små endringer i drain-strømmen, gatespenningen og drain-spenningen rundt arbeidspunktet", section: "Transistorer", formula: forsterkning, note: "$i_d$ i A, $v_g$ og $v_d$ i V." }
   - { tex: "Z", meaning: "Kanalbredden, på tvers av strømmen langs gateflaten", unit: "cm", section: "Transistorer", formula: jfet-strom }
-  - { tex: "G_0", meaning: "Konduktansen til kanalen uten romladningssoner, $(Z/L)\\,2aq\\mu_nN_d$", unit: "S", section: "Transistorer", formula: jfet-strom, id: g0 }
+  - { tex: "G_0", meaning: "Konduktansen til kanalen uten romladningssoner, $(Z/L)\\,2aq\\mu_nN_d$", unit: "S", section: "Transistorer", formula: jfet-strom, id: g0, note: "I en MESFET, med én gate, er den $(Z/L)\\,aq\\mu_nN_d$." }
   - { tex: "I_{DSS}", meaning: "Strømmen i metning med $V_G = 0$", unit: "A", section: "Transistorer", formula: jfet-kvadratlov, id: idss }
   - { tex: "V_{GS(\\text{OFF})}", meaning: "Gatespenningen som stenger kanalen, $V_0 - V_p$, slik et datablad kaller den", unit: "V", section: "Transistorer", formula: avklemmingsspenning, id: vgs-off }
   - { tex: "|Y_{fs}|", meaning: "Transkonduktansen ved $V_G = 0$, slik et datablad kaller den", unit: "S", section: "Transistorer", term: "Transkonduktans", id: yfs }
+  # ── MOS-kondensatoren ──
+  - { tex: "y", meaning: "Dybden inn i silisiumet, målt fra grenseflaten mot oksidet", unit: "cm", section: "MOS-kondensatoren" }
+  - { tex: "\\phi(y)", meaning: "Båndbøyningen: hvor mye lavere $E_i$ ligger i dybden $y$ enn langt inne, i volt", unit: "V", section: "MOS-kondensatoren", formula: mos-baandboyning, id: phi-y, note: "Ikke partikkelfluksen $\\phi$." }
+  - { tex: "\\phi_s", meaning: "Overflatepotensialet, båndbøyningen ved overflaten", unit: "V", section: "MOS-kondensatoren", term: "Overflatepotensial", formula: inversjon, id: phi-s }
+  - { tex: "\\phi_F", meaning: "Fermi-potensialet, $(E_i - E_F)/q$ langt inne i halvlederen", unit: "V", section: "MOS-kondensatoren", term: "Fermi-potensial", formula: inversjon, id: phi-f, note: "Positiv for p-type, negativ for n-type." }
+  - { tex: "\\varepsilon_s,\\ \\varepsilon_i", meaning: "Permittiviteten til halvlederen og til oksidet", unit: "F/cm", section: "MOS-kondensatoren", formula: mos-kapasitans, id: eps-s-i, note: "$\\varepsilon_s$ er den samme som $\\varepsilon$ i pn-overgangen. $\\varepsilon_i = 3{,}9\\,\\varepsilon_0$ for SiO₂." }
+  - { tex: "d", meaning: "Tykkelsen av oksidet under gaten", unit: "cm", section: "MOS-kondensatoren", formula: mos-kapasitans, id: d-oksid, note: "Ikke tunnelavstanden $d$ i Zener-effekten." }
+  - { tex: "C_i", meaning: "Kapasitansen til oksidet per areal, $\\varepsilon_i/d$", unit: "F/cm²", section: "MOS-kondensatoren", formula: mos-kapasitans, id: ci }
+  - { tex: "C_s,\\ C_d", meaning: "Kapasitansen til halvlederen per areal, $d|Q_s|/d\\phi_s$, og i utarming sonens $\\varepsilon_s/W$", unit: "F/cm²", section: "MOS-kondensatoren", formula: mos-kapasitans, id: cs-mos, note: "Ikke diffusjonskapasitansen $C_s$ i en pn-overgang." }
+  - { tex: "C_\\text{min},\\ C_{FB}", meaning: "MOS-kapasitansen ved høy frekvens i sterk inversjon, og ved flate bånd", unit: "F/cm²", section: "MOS-kondensatoren", formula: flatbaandskapasitans, id: cmin-cfb }
+  - { tex: "Q_s,\\ Q_m", meaning: "Ladningen per areal i halvlederen og på gaten, $Q_m = -Q_s$", unit: "C/cm²", section: "MOS-kondensatoren", term: "MOS-kondensator", formula: oksidspenning, id: qs }
+  - { tex: "Q_d", meaning: "Ladningen per areal til ionene i sonen ved sterk inversjon, $-qN_aW_m$", unit: "C/cm²", section: "MOS-kondensatoren", formula: mos-sonelading, id: qd }
+  - { tex: "Q_n", meaning: "Ladningen per areal til elektronene ved overflaten i inversjon", unit: "C/cm²", section: "MOS-kondensatoren", term: "Inversjon", id: qn-mos, note: "Ikke den lagrede ladningen $Q_n$ i en pn-overgang." }
+  - { tex: "Q_i", meaning: "Ladningen per areal i oksidet og ved grenseflaten, regnet som én ladning ved grenseflaten", unit: "C/cm²", section: "MOS-kondensatoren", term: "Grenseflateladning", formula: flatbaandspenning, id: qi }
+  - { tex: "W_m", meaning: "Den største bredden av sonen under gaten, ved sterk inversjon", unit: "cm", section: "MOS-kondensatoren", formula: mos-sonelading, id: wm }
+  - { tex: "V_i", meaning: "Spenningen over oksidet", unit: "V", section: "MOS-kondensatoren", formula: oksidspenning, id: vi }
+  - { tex: "V_T", meaning: "Terskelspenningen, gatespenningen som gir sterk inversjon", unit: "V", section: "MOS-kondensatoren", term: "Terskelspenning", formula: terskelspenning, id: vt }
+  - { tex: "V_{FB}", meaning: "Flatbåndspenningen, gatespenningen som gjør båndene flate", unit: "V", section: "MOS-kondensatoren", term: "Flatbåndspenning", formula: flatbaandspenning, id: vfb }
+  - { tex: "\\Phi_{ms}", meaning: "Forskjellen i arbeidsfunksjon mellom gaten og halvlederen, $\\Phi_m - \\Phi_s$", unit: "V", section: "MOS-kondensatoren", term: "Arbeidsfunksjon", formula: flatbaandspenning, id: phi-ms }
+  - { tex: "L_D", meaning: "Debye-lengden", unit: "cm", section: "MOS-kondensatoren", term: "Debye-lengde", formula: debye-lengde, id: ld, note: "Ikke diffusjonslengdene $L_n$ og $L_p$." }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }

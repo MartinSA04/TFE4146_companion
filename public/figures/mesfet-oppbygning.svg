@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" width="340" height="250">
+  <!-- MESFET-en, figur 1: en MESFET i GaAs i snitt (Streetman fig. 6–7). Et tynt n-lag på halvisolerende
+       GaAs, etset bort i hver ende, med ohmske kontakter for source og drain og en Schottky-gate mellom dem.
+       Sonen under gaten er tonet med donorioner som +, elektronene blå. Ikke i skala. -->
+  <rect x="8" y="160" width="324" height="66" fill="#7c8795" fill-opacity="0.12" stroke="#8d98a6" stroke-width="1"/>
+  <text x="170" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">halvisolerende GaAs</text>
+  <path d="M 14 160 L 26 96 L 314 96 L 326 160 Z" fill="none" stroke="#8d98a6" stroke-width="1.2"/>
+  <text x="28" y="150" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="start">n-GaAs</text>
+  <rect x="34" y="80" width="52" height="16" fill="#6f7a88" fill-opacity="0.55" stroke="#8d98a6" stroke-width="1"/>
+  <rect x="254" y="80" width="52" height="16" fill="#6f7a88" fill-opacity="0.55" stroke="#8d98a6" stroke-width="1"/>
+  <rect x="132" y="80" width="76" height="16" fill="#7c8795" fill-opacity="0.35" stroke="#8d98a6" stroke-width="1"/>
+  <text x="60" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">S</text>
+  <text x="280" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">D</text>
+  <text x="170" y="50" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">G</text>
+  <text x="60" y="72" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#7c8795" text-anchor="middle">ohmsk</text>
+  <text x="280" y="72" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#7c8795" text-anchor="middle">ohmsk</text>
+  <text x="170" y="72" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#7c8795" text-anchor="middle">Schottky</text>
+  <rect x="128" y="96" width="84" height="36" fill="#a67828" fill-opacity="0.16" stroke="none" stroke-width="1"/>
+  <path d="M 128 97 V 132 H 212 V 97" fill="none" stroke="#a67828" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3"/>
+  <path d="M 135.6 104 h 4.8 M 138 101.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 140.6 114 h 4.8 M 143 111.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 135.6 124 h 4.8 M 138 121.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 148.6 104 h 4.8 M 151 101.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 153.6 114 h 4.8 M 156 111.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 148.6 124 h 4.8 M 151 121.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 161.6 104 h 4.8 M 164 101.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 166.6 114 h 4.8 M 169 111.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 161.6 124 h 4.8 M 164 121.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 174.6 104 h 4.8 M 177 101.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 179.6 114 h 4.8 M 182 111.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 174.6 124 h 4.8 M 177 121.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 187.6 104 h 4.8 M 190 101.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 192.6 114 h 4.8 M 195 111.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 187.6 124 h 4.8 M 190 121.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 200.6 104 h 4.8 M 203 101.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 200.6 124 h 4.8 M 203 121.6 v 4.8" fill="none" stroke="#c0703a" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="146" cy="145" r="2.6" fill="#3d7cc4"/>
+  <circle cx="172" cy="145" r="2.6" fill="#3d7cc4"/>
+  <circle cx="198" cy="145" r="2.6" fill="#3d7cc4"/>
+  <circle cx="236" cy="145" r="2.6" fill="#3d7cc4"/>
+  <circle cx="262" cy="145" r="2.6" fill="#3d7cc4"/>
+  <circle cx="290" cy="145" r="2.6" fill="#3d7cc4"/>
+  <circle cx="48" cy="112" r="2.6" fill="#3d7cc4"/>
+  <circle cx="72" cy="112" r="2.6" fill="#3d7cc4"/>
+  <circle cx="254" cy="124" r="2.6" fill="#3d7cc4"/>
+  <circle cx="282" cy="112" r="2.6" fill="#3d7cc4"/>
+  <path d="M 112 96 h 8 M 112 160 h 8 M 116 96 V 160" fill="none" stroke="#6f7a88" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="108" y="134" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="end">a</text>
+  <path d="M 132 28 v 8 M 208 28 v 8 M 132 32 H 208" fill="none" stroke="#6f7a88" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="216" y="38" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">L</text>
+</svg>

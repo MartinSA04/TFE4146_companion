@@ -1,0 +1,599 @@
+---
+order: 12
+title: "MOS-kondensatoren"
+summary: "Hvordan spenningen på gaten i en MOS-kondensator trekker hull til overflaten, tømmer den for hull og til slutt lager et lag av elektroner, hva som gir terskelspenningen, hvorfor kapasitansen avhenger av spenningen og frekvensen, og hvordan arbeidsfunksjonene og ladningen i oksidet flytter terskelspenningen."
+importance: core
+tag: "Uke 43 · Streetman §6.4.2–6.4.4"
+part: "Del 4: Transistorer"
+updated: 2026-10-26
+---
+
+<LearningGoals>
+
+- Beskrive hva som skjer i silisiumet under gaten i en <Term name="MOS-kondensator">MOS-kondensator</Term> ved <Term name="Akkumulasjon">akkumulasjon</Term>, <Term name="Utarming">utarming</Term> og <Term name="Inversjon">inversjon</Term>, og tegne båndskjemaet for hvert tilfelle.
+- Forklare kravet ${\phi_s = 2\phi_F}$ for sterk inversjon, og hvorfor romladningssonen slutter å vokse der.
+- Regne ut $\phi_F$, $W_m$, $Q_d$, $C_i$ og <Term name="Terskelspenning">terskelspenningen</Term> for en ideell MOS-kondensator.
+- Forklare formen på C–V-kurven ved lav og høy frekvens ut fra hvor ladningen som følger signalet sitter, og regne ut $C_i$, $C_\text{min}$ og $C_{FB}$.
+- Regne ut <Term name="Flatbåndspenning">flatbåndspenningen</Term> og terskelspenningen med forskjell i arbeidsfunksjon og ladning i oksidet, og si hvilket fortegn hvert ledd har.
+
+</LearningGoals>
+
+Legg et 10 nm tykt lag silisiumdioksid på p-type silisium med $5 \cdot 10^{15}$ akseptorer per
+cm³, og legg en metallplate oppå med samme arbeidsfunksjon som silisiumet. Sett 1,5 V på metallet. Rett under oksidet samles det da rundt $10^{12}$
+elektroner per cm², i et lag som bare er noen nanometer tykt. Ved overflaten er det over tusen ganger
+så mange elektroner per cm³ som det er hull i resten av silisiumet. Laget er n-type silisium som
+spenningen alene har skapt, og i en MOSFET er det kanalen. Under 0,75 V er det nesten ingen elektroner der. Med en
+gate av sterkt dopet n-type polysilisium, som har lavere arbeidsfunksjon, er laget der allerede uten
+spenning.
+
+## En kondensator med silisium som den ene platen
+
+En <Term name="MOS-kondensator">MOS-kondensator</Term> er et metall, et oksid og en halvleder lagt oppå
+hverandre. Metallet er gaten, oksidet er $d$ tykt og har permittiviteten $\varepsilon_i$, og under ligger
+p-type silisium med en kontakt på baksiden. Gatespenningen $V_G$ måles fra silisiumet. Dybden $y$ inn i
+silisiumet regnes fra grenseflaten mot oksidet.
+
+Oksidet leder ikke, så kondensatoren lades opp som en vanlig platekondensator. Gaten får ladningen $Q_m$
+per areal, og silisiumet like stor ladning med motsatt fortegn, ${Q_s = -Q_m}$. All ladning og kapasitans
+regnes per areal. Fordi ingen
+strøm går gjennom oksidet, er silisiumet i likevekt, og Fermi-nivået $E_F$ i det er flatt. Spenningen
+flytter Fermi-nivået $E_{Fm}$ i metallet. Positiv $V_G$ senker energien til elektronene i metallet, så
+$E_{Fm}$ ligger $qV_G$ under $E_F$ i silisiumet.
+
+I en ideell MOS-kondensator har metallet og silisiumet samme arbeidsfunksjon, og oksidet har ingen
+ladning. Da er båndene flate ved ${V_G = 0}$, og det er ingen ladning noe sted.
+
+<Simulation
+  src={"/sims/mos-kondensator.js"}
+  host={"dom"}
+  title={"MOS-kondensatoren"}
+  caption={"En ideell MOS-kondensator med 10 nm oksid på p-type silisium med ${N_a = 5 \\cdot 10^{15}}$ cm⁻³, med dybden $y$ inn i silisiumet mot høyre og båndskjemaet under på samme akse. Hullene er røde ringer, akseptorionene oransje «−», elektronene blå prikker og ladningen på gaten + eller blå prikker. Oksidet er tegnet mye tykkere enn 10 nm, båndkantene i oksidet ligger egentlig rundt 3 eV over og 4 eV under silisiumets, og lagene av hull og elektroner ved overflaten er bare noen nanometer tykke og mye tettere enn tegnet."}
+  height={430}
+/>
+
+Dra «Gate» til −1 V i simuleringen. Gaten får elektroner, og hullene i silisiumet samles ved
+overflaten. Det heter <Term name="Akkumulasjon">akkumulasjon</Term>. Båndene bøyer seg opp ved
+overflaten, så $E_v$ kommer nærmere $E_F$ der. Dra så «Gate» til 0,3 V. Gaten blir positiv, hullene
+skyves bort fra overflaten, og akseptorionene står igjen i en romladningssone. Det heter
+<Term name="Utarming">utarming</Term>, og sonen er den samme som på p-siden av en pn-overgang. Båndene
+bøyer seg ned. Dra til 1,5 V. Nå ligger det et tett lag elektroner rett ved oksidet. Det heter
+<Term name="Inversjon">inversjon</Term>, fordi overflaten er blitt n-type.
+
+Båndene bøyer seg fordi hullkonsentrasjonen ${p = n_ie^{(E_i - E_F)/k_BT}}$ følger avstanden fra
+$E_F$ til $E_i$. $E_F$ er flatt, så flere hull ved overflaten betyr at $E_i$, og båndene med det,
+ligger høyere der. Båndkanten er elektronets potensielle energi, så en negativ gate løfter båndene ved
+overflaten, og en positiv gate senker dem.
+
+<Callout title="Tre tilstander">
+Negativ gate trekker hull til overflaten (akkumulasjon). Positiv gate skyver hullene bort og lar akseptorionene stå igjen i en sone (utarming). Mer positiv gate samler elektroner ved overflaten, så den blir n-type (inversjon).
+</Callout>
+
+## Hvor langt båndene bøyer seg
+
+Båndbøyningen måles med potensialet $\phi(y)$, som sier hvor mye lavere $E_i$ ligger i dybden $y$ enn
+langt inne i silisiumet:
+
+$$
+E_i(y) = E_i(\infty) - q\phi(y)
+$$
+
+Ved overflaten er det <Term name="Overflatepotensial">overflatepotensialet</Term> ${\phi_s = \phi(0)}$.
+Positiv $\phi_s$ betyr at båndene er bøyd ned. Langt inne avgjør dopingen hvor langt $E_i$ ligger over
+$E_F$. Den avstanden er <Term name="Fermi-potensial">Fermi-potensialet</Term>:
+
+$$
+q\phi_F = E_i - E_F = k_BT\ln\frac{N_a}{n_i}
+$$
+
+Formelen kommer av at hullkonsentrasjonen ${p_0 = n_ie^{q\phi_F/k_BT}}$ er $N_a$. Når båndene er bøyd ned
+$q\phi$, er $E_i - E_F$ mindre med $q\phi$, og konsentrasjonene i dybden $y$ er
+
+$$
+p = p_0e^{-q\phi/k_BT}, \qquad n = n_0e^{q\phi/k_BT}
+$$
+
+der $n_0 = n_i^2/N_a$ er elektronkonsentrasjonen langt inne. Hver $k_BT/q$, 26 mV, som båndene bøyer seg
+ned, gir $e$ ganger færre hull og $e$ ganger flere elektroner.
+
+Ved ${\phi_s = \phi_F}$ ligger $E_i$ akkurat på $E_F$ ved overflaten, og ${n = p = n_i}$ der. Bøyer
+båndene seg mer, er det flere elektroner enn hull ved overflaten, og overflaten er invertert. Det er
+svak inversjon, fordi elektronene ved overflaten fortsatt er mye færre enn hullene langt inne. Overflaten leder som n-type silisium
+først når den er like sterkt n-type som substratet er p-type, ${n(0) = p_0}$. Satt inn er det
+${n_0e^{q\phi_s/k_BT} = n_ie^{q\phi_F/k_BT}}$, og med ${n_0 = n_ie^{-q\phi_F/k_BT}}$ gir det kravet for
+<FormulaRef id="inversjon">sterk inversjon</FormulaRef>:
+
+$$
+\phi_s(\text{inv.}) = 2\phi_F = 2\frac{k_BT}{q}\ln\frac{N_a}{n_i}
+$$
+
+$E_i$ ligger da like langt under $E_F$ ved overflaten som over $E_F$ langt inne. For substratet i
+simuleringen «MOS-kondensatoren» er ${\phi_F = 0{,}0259 \ln(5 \cdot 10^{15}/1{,}5 \cdot 10^{10}) = 0{,}33\ \text{V}}$, så
+sterk inversjon krever at båndene er bøyd ned 0,66 V.
+
+Dra «Gate» fra 0,3 til 0,8 V i simuleringen. Rundt 0,4 V er $q\phi_s$ like stor som $q\phi_F$, og simuleringen går
+over fra «utarming» til «svak inversjon». Mellom 0,75 og 0,80 V blir $q\phi_s$ dobbelt så stor som $q\phi_F$,
+og det står «sterk inversjon».
+
+<Callout title="Sterk inversjon">
+Overflaten er sterkt invertert når den er like sterkt n-type som substratet er p-type. Da er båndene bøyd ned ${\phi_s = 2\phi_F}$, der ${q\phi_F = E_i - E_F = k_BT\ln(N_a/n_i)}$ i substratet.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Sterk inversjon">
+<ExamRef id="2020-mai" task="I-8" />
+
+<Quiz
+  question={"Which is a true statement for an ideal Si MOSFET (MOS structure) at the onset of <em>strong inversion</em>?"}
+  options={[
+    "The conductivity in the inversion channel is approximately the same as that of the bulk substrate",
+    "The intrinsic Fermi level in the inversion channel is equal to the semiconductor Fermi level",
+    "An inversion layer has just formed",
+  ]}
+  answer={0}
+  explanation={"Ved sterk inversjon er elektronkonsentrasjonen ved overflaten lik hullkonsentrasjonen langt inne, ${n(0) = p_0}$, så ledningsevnen er omtrent den samme. Den er noe større, fordi elektronene har rundt tre ganger så høy mobilitet som hullene, men den er av samme størrelsesorden. $E_i$ er lik $E_F$ ved ${\\phi_s = \\phi_F}$, der inversjonen bare så vidt begynner, og der dannes også et invertert lag for første gang."}
+/>
+
+</Example>
+
+## Ladningen i silisiumet
+
+Før inversjonen er ladningen i silisiumet akseptorionene i sonen. Sonen er den samme som i en ensidig
+overgang, med $\phi_s$ i stedet for ${V_0 - V}$, så den er
+<FormulaRef id="mos-sonebredde">bred</FormulaRef>
+
+$$
+W = \left[\frac{2\varepsilon_s\phi_s}{qN_a}\right]^{1/2}
+$$
+
+der ${\varepsilon_s = 11{,}8\,\varepsilon_0}$ er permittiviteten til silisiumet. Ladningen er
+${Q_s = -qN_aW}$, og den vokser som ${\phi_s^{1/2}}$.
+
+Elektronkonsentrasjonen ved overflaten vokser derimot som ${e^{q\phi_s/k_BT}}$, ti ganger for hver
+60 mV. Under $2\phi_F$ er elektronene for få til å telle. Ved $2\phi_F$ er de like mange per cm³ som ionene, og litt mer
+båndbøyning gir mange flere. Mer ladning på gaten blir derfor balansert av flere elektroner ved
+overflaten, mens $\phi_s$ nesten står stille. Sonen slutter å vokse ved den største bredden
+${W_m = [2\varepsilon_s \cdot 2\phi_F/qN_a]^{1/2}}$, og ionene i den har ladningen
+
+$$
+Q_d = -qN_aW_m = -2(\varepsilon_sqN_a\phi_F)^{1/2}
+$$
+
+Det er <FormulaRef id="mos-sonelading">ladningen i sonen ved inversjon</FormulaRef>. For substratet i
+simuleringen «MOS-kondensatoren» er ${W_m = 0{,}41\ \mu\text{m}}$ og ${Q_d = -3{,}3 \cdot 10^{-8}\ \text{C/cm}^2}$, eller
+$2{,}1 \cdot 10^{11}$ ioner per cm².
+
+Figur 1 viser ladningen i silisiumet mot $\phi_s$, regnet ut med alle tre bidragene. I akkumulasjon,
+til venstre, vokser hulladningen like bratt som elektronladningen i sterk inversjon, så båndene bøyer seg
+lite der også.
+
+<Figure
+  src="/figures/mos-ladning.svg"
+  alt="Ladningen |Q_s| i silisiumet, i 10^-8 C/cm², mot overflatepotensialet φ_s fra −0,2 til 0,9 V. Til venstre for null stiger en rød kurve merket hull bratt opp. Fra null stiger en blå kurve sakte som en kvadratrot gjennom utarming og svak inversjon, merket ioner. Ved 2φ_F, merket med en stiplet loddrett linje, bøyer kurven bratt opp, merket elektroner, mens den stiplede kvadratrotkurven for ionene fortsetter flatt videre. φ_F er merket med en stiplet linje ved 0,33 V."
+  width={340}
+  height={270}
+  number={1}
+  caption="Ladningen $|Q_s|$ i silisiumet mot overflatepotensialet $\phi_s$ for substratet i simuleringen, regnet ut uten utarmingstilnærmingen. Den stiplede kurven er ionene i sonen alene, ${qN_aW}$. Over $2\phi_F$ er avstanden opp til den heltrukne kurven elektronene."
+/>
+
+Dra «Gate» fra 0,8 til 1,5 V i simuleringen «MOS-kondensatoren». Laget av elektroner fylles, men
+sonen blir bare litt bredere, og $\phi_s$ øker bare fra 0,70 til 0,84 V.
+
+<Derivation title="Ladningen regnet uten utarmingstilnærmingen">
+
+Ladningstettheten i dybden $y$ er ${\rho = q(N_d^+ - N_a^- + p - n)}$. Langt inne er den null, så
+${N_d^+ - N_a^- = n_0 - p_0}$, og med konsentrasjonene over er
+
+$$
+\rho(\phi) = q\left\{p_0\left[e^{-q\phi/k_BT} - 1\right] - n_0\left[e^{q\phi/k_BT} - 1\right]\right\}
+$$
+
+Tettheten avhenger av $\phi$, og $\phi$ avhenger av tettheten gjennom Poissons ligning
+${d^2\phi/dy^2 = -\rho/\varepsilon_s}$, så de må løses sammen. Tettheten er kjent som funksjon av
+$\phi$, ikke av $y$, så bytt variabel. Med ${\mathcal{E} = -d\phi/dy}$ er ${d\mathcal{E}/dy = \rho/\varepsilon_s}$
+og ${dy = -d\phi/\mathcal{E}}$, så
+
+$$
+\mathcal{E}\,d\mathcal{E} = -\frac{\rho(\phi)}{\varepsilon_s}\,d\phi
+$$
+
+Integrert fra langt inne, der ${\mathcal{E} = 0}$ og ${\phi = 0}$, til overflaten, der ${\mathcal{E} = \mathcal{E}_s}$
+og ${\phi = \phi_s}$, er
+
+$$
+\mathcal{E}_s = \frac{\sqrt2\,k_BT}{qL_D}\left\{\left[e^{-q\phi_s/k_BT} + \frac{q\phi_s}{k_BT} - 1\right] + \frac{n_0}{p_0}\left[e^{q\phi_s/k_BT} - \frac{q\phi_s}{k_BT} - 1\right]\right\}^{1/2}
+$$
+
+der
+
+$$
+L_D = \sqrt{\frac{\varepsilon_sk_BT}{q^2p_0}}
+$$
+
+er <FormulaRef id="debye-lengde">Debye-lengden</FormulaRef>. Feltet er null langt inne, så Gauss' lov
+gir ladningen per areal i silisiumet, ${Q_s = -\varepsilon_s\mathcal{E}_s}$.
+
+For negativ $\phi_s$ dominerer ${e^{-q\phi_s/k_BT}}$, og ${|Q_s| \propto e^{-q\phi_s/2k_BT}}$: hullene i
+akkumulasjon. For liten positiv $\phi_s$ dominerer ${q\phi_s/k_BT}$, og ${|Q_s| \propto \phi_s^{1/2}}$:
+ionene i sonen. Leddet med $n_0/p_0$ er lite inntil ${e^{q\phi_s/k_BT}}$ har tatt igjen ${p_0/n_0 = e^{2q\phi_F/k_BT}}$,
+altså ved ${\phi_s = 2\phi_F}$. Deretter er ${|Q_s| \propto e^{q\phi_s/2k_BT}}$: elektronene i sterk
+inversjon. Figur 1 er regnet ut fra denne formelen.
+
+</Derivation>
+
+<Callout title="Ladningen i silisiumet">
+Før inversjonen er ladningen ionene i en sone med bredde ${W = (2\varepsilon_s\phi_s/qN_a)^{1/2}}$. I sterk inversjon tar elektronene ved overflaten all ny ladning, $\phi_s$ står nesten fast på $2\phi_F$, og sonen stopper ved $W_m$ med ladningen ${Q_d = -qN_aW_m}$.
+</Callout>
+
+## Terskelspenningen
+
+Gatespenningen fordeler seg på oksidet og silisiumet. Sett «Gate» til 1,5 V i simuleringen
+«MOS-kondensatoren». $E_{Fm}$ ligger $qV_G$ under $E_F$, og forskjellen er fordelt på helningen $qV_i$ over oksidet og båndbøyningen
+$q\phi_s$ i silisiumet. Med samme arbeidsfunksjon i metallet og silisiumet er
+
+$$
+V_G = V_i + \phi_s
+$$
+
+Oksidet er en platekondensator med kapasitansen ${C_i = \varepsilon_i/d}$ per areal. Ladningen på
+gaten er $-Q_s$, så spenningen over oksidet er ${V_i = -Q_s/C_i}$, og
+
+$$
+V_G = \phi_s - \frac{Q_s}{C_i}
+$$
+
+<Term name="Terskelspenning">Terskelspenningen</Term> $V_T$ er gatespenningen som gir sterk inversjon.
+Da er ${\phi_s = 2\phi_F}$, og ladningen i silisiumet er nesten bare ionene, ${Q_s \approx Q_d}$. Gaten må
+altså gjøre to ting: bøye båndene $2\phi_F$ og bære ladningen til ionene i sonen over oksidet. Det gir
+<FormulaRef id="terskelspenning-ideell">terskelspenningen</FormulaRef> i den ideelle kondensatoren:
+
+$$
+V_T = -\frac{Q_d}{C_i} + 2\phi_F
+$$
+
+Begge leddene er positive: $Q_d$ er negativ, og $\phi_F$ er positiv i p-type silisium. Et tykkere oksid gjør $C_i$ mindre og det første
+leddet større, og tettere doping gjør begge leddene større. Med 10 nm SiO₂, ${\varepsilon_i = 3{,}9\,\varepsilon_0}$,
+er
+
+$$
+\begin{aligned}
+&C_i = \frac{3{,}9 \cdot 8{,}85 \cdot 10^{-14}}{10^{-6}} \\
+&= 3{,}45 \cdot 10^{-7}\ \text{F/cm}^2 \\
+&V_T = \frac{3{,}32 \cdot 10^{-8}}{3{,}45 \cdot 10^{-7}} + 0{,}659 \\
+&= 0{,}096 + 0{,}659 = 0{,}755\ \text{V}
+\end{aligned}
+$$
+
+Det er derfor simuleringen går over til «sterk inversjon» mellom 0,75 og 0,80 V. I dette substratet går
+mesteparten av $V_T$ til å bøye båndene, og bare 0,1 V ligger over oksidet.
+
+Over $V_T$ står $\phi_s$ og sonen nesten stille, så det meste av økningen i $V_G$ havner over oksidet, og
+elektronene ved overflaten får ladningen ${C_i\,\Delta V_i}$. Regnet med $\phi_s$ fast på $2\phi_F$ er
+${Q_n \approx -C_i(V_G - V_T)}$, $1{,}6 \cdot 10^{12}$ elektroner per cm² ved 1,5 V. I simuleringen stiger
+$\phi_s$ fortsatt 0,18 V, så $V_i$ øker med 0,56 V, og elektronene blir $1{,}2 \cdot 10^{12}$ per cm². Det er
+tallet i innledningen.
+
+<Callout title="Terskelspenningen">
+Gatespenningen fordeler seg som ${V_G = V_i + \phi_s}$, og den ideelle terskelspenningen er ${V_T = -Q_d/C_i + 2\phi_F}$. Over $V_T$ går nesten all ny spenning over oksidet og gir elektroner ved overflaten.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Terskelspenningen for en ideell kondensator">
+<ExamRef id="2025-nov" task="11" />
+
+Consider a MOS capacitor consisting of a metal whose work function is equal to that of a channel
+region consisting of Si doped with ${2 \times 10^{17}\ \text{cm}^{-3}}$ of Boron. Recall that the
+intrinsic carrier concentration of Si is approximately given by ${n_i = 1.5 \times 10^{10}\ \text{cm}^{-3}}$.
+Assume ${T = 300K}$.
+
+a) Calculate the energy ${q\phi_F = \underline{\qquad}\ \text{eV}}$.
+
+As the channel is brought into inversion, charges accumulate at the oxide-semiconductor interface. Si
+has a relative permittivity of ${\epsilon_r = 11.8}$
+
+b) Calculate the depletion charge of the channel at strong inversion
+${Q_d = \underline{\qquad}\ 10^{-9}\ C/cm^2}$
+
+The gate oxide has a relative permittivity of ${\epsilon_r = 3.9}$ and has a thickness ${d = 10\ \text{nm}}$.
+Assume no interface charges in the gate.
+
+c) Find the threshold voltage for this MOS-channel ${V_T = \underline{\qquad}\ V}$
+
+<Solution>
+
+a) Bor er en akseptor, så ${N_a = 2 \cdot 10^{17}\ \text{cm}^{-3}}$:
+
+$$
+\begin{aligned}
+&q\phi_F = k_BT\ln\frac{N_a}{n_i} \\
+&= 0{,}0259 \ln\frac{2 \cdot 10^{17}}{1{,}5 \cdot 10^{10}}\ \text{eV} \\
+&= 0{,}425\ \text{eV}
+\end{aligned}
+$$
+
+b) Med $\phi_F = 0{,}425$ V og permittiviteten til silisiumet
+
+$$
+\begin{aligned}
+&\varepsilon_s = 11{,}8 \cdot 8{,}85 \cdot 10^{-14} = 1{,}044 \cdot 10^{-12}\ \text{F/cm} \\
+&\varepsilon_sqN_a\phi_F = 1{,}044 \cdot 10^{-12} \cdot 1{,}6 \cdot 10^{-19} \cdot 2 \cdot 10^{17} \cdot 0{,}425 \\
+&= 1{,}42 \cdot 10^{-14} \\
+&Q_d = -2(1{,}42 \cdot 10^{-14})^{1/2} = -2{,}38 \cdot 10^{-7}\ \text{C/cm}^2
+\end{aligned}
+$$
+
+c) Oksidet har ${C_i = 3{,}45 \cdot 10^{-7}\ \text{F/cm}^2}$, som i simuleringen «MOS-kondensatoren».
+Arbeidsfunksjonene er like, og oksidet har ingen ladning, så
+
+$$
+\begin{aligned}
+&V_T = -\frac{Q_d}{C_i} + 2\phi_F \\
+&= \frac{2{,}38 \cdot 10^{-7}}{3{,}45 \cdot 10^{-7}} + 2 \cdot 0{,}425 \\
+&= 0{,}69 + 0{,}85 = 1{,}54\ \text{V}
+\end{aligned}
+$$
+
+<Answer>
+
+${q\phi_F = 0{,}425\ \text{eV}}$, ${Q_d = -238 \cdot 10^{-9}\ \text{C/cm}^2}$ og ${V_T = 1{,}54\ \text{V}}$. Med 40 ganger
+tettere doping enn i simuleringen «MOS-kondensatoren» er terskelspenningen dobbelt så høy, og nå ligger nesten halvparten
+av den over oksidet.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+## Kapasitansen
+
+Kapasitansen til en MOS-kondensator måles med et lite vekselsignal oppå gatespenningen. Signalet flytter
+litt ladning frem og tilbake, og kapasitansen per areal er ${C = dQ_m/dV_G}$. Fra ${V_G = V_i + \phi_s}$ er
+${dV_G = dV_i + d\phi_s}$, og den samme ladningen flyttes over begge, så
+
+$$
+\frac{1}{C} = \frac{1}{C_i} + \frac{1}{C_s}
+$$
+
+der ${C_s = d|Q_s|/d\phi_s}$ er kapasitansen til silisiumet. Oksidet og silisiumet er to kondensatorer i
+serie, og den minste bestemmer $C$. Hvor stor $C_s$ er, avhenger av hvor langt inne i silisiumet
+ladningen som følger signalet sitter. Sitter den rett ved oksidet, er $C_s$ stor og ${C \approx C_i}$.
+
+<Simulation
+  src={"/sims/mos-kapasitans.js"}
+  host={"dom"}
+  title={"Kapasitansen"}
+  caption={"Den samme ideelle MOS-kondensatoren med et lite vekselsignal på gaten. Ladningen som følger signalet, er tegnet sterkere, og under står $C$ mot $V_G$ ved lav og høy frekvens, med punktet for gatespenningen og streken for signalet, som er tegnet mye større og langsommere enn det virkelige."}
+  height={400}
+/>
+
+Med «Gate» på −0,6 V følger hullene ved overflaten signalet, og punktet ligger nær $C_i$. Dra til
+0,3 V. Nå er det kanten av sonen som flytter seg, og ladningen sitter $W$ inne i silisiumet. Sonen er en
+<FormulaRef id="mos-kapasitans">kondensator med kapasitansen ${C_d = \varepsilon_s/W}$</FormulaRef> i serie
+med oksidet:
+
+$$
+C = \frac{C_iC_d}{C_i + C_d}
+$$
+
+Jo bredere sonen er, desto mindre er $C$, så kurven faller gjennom utarmingen. Dra videre til 1,2 V.
+Nå er det elektronene ved overflaten som følger signalet, og $C$ er nær $C_i$ igjen.
+
+Velg «Høy». Det er nesten ingen elektroner i substratet, så elektronene i laget må dannes ved termisk
+generasjon, ett elektron-hull-par om gangen, i sonen og like bak den. Det tar typisk flere hundre
+mikrosekunder å endre laget. Et signal på 1 MHz skifter retning hvert halve mikrosekund, så elektronene rekker ikke å følge
+det. Kanten av sonen ved $W_m$ følger i stedet, og $C$ blir liggende nær
+
+$$
+C_\text{min} = \frac{C_iC_d}{C_i + C_d}, \qquad C_d = \frac{\varepsilon_s}{W_m}
+$$
+
+Hullene er majoritetsbærere og følger på den dielektriske relaksasjonstiden ${\rho\varepsilon_s}$,
+resistiviteten ganger permittiviteten, som er noen pikosekunder i dette substratet.
+De følger et signal på 1 MHz uten problemer, så akkumulasjon og utarming er like ved begge
+frekvensene. For kondensatoren i simuleringen er
+
+$$
+\begin{aligned}
+&C_d = \frac{1{,}044 \cdot 10^{-12}}{0{,}415 \cdot 10^{-4}} \\
+&= 2{,}5 \cdot 10^{-8}\ \text{F/cm}^2 \\
+&C_\text{min} = 2{,}3 \cdot 10^{-8}\ \text{F/cm}^2
+\end{aligned}
+$$
+
+$C_\text{min}$ er 7 % av $C_i$.
+
+Ved flate bånd er det ingen sone. Signalet flytter da hull nær overflaten, og de sprer seg over omtrent
+en Debye-lengde, ${L_D = (\varepsilon_sk_BT/q^2p_0)^{1/2}}$, som er 58 nm i dette substratet. Silisiumet er
+da en kondensator med kapasitansen ${C_\text{debye} = \varepsilon_s/L_D}$, og
+<FormulaRef id="flatbaandskapasitans">kapasitansen ved flate bånd</FormulaRef> er
+
+$$
+C_{FB} = \frac{C_iC_\text{debye}}{C_i + C_\text{debye}}
+$$
+
+Her er ${C_\text{debye} = 1{,}8 \cdot 10^{-7}\ \text{F/cm}^2}$ og ${C_{FB} = 1{,}2 \cdot 10^{-7}\ \text{F/cm}^2}$, 34 % av
+$C_i$, der punktet i simuleringen «Kapasitansen» ligger ved 0 V. Gatespenningen der en målt kurve har verdien $C_{FB}$, er
+spenningen som gjør båndene flate.
+
+<Callout title="Kapasitansen">
+$C$ er $C_i$ i serie med silisiumet, så den er nær $C_i$ når ladningen som følger signalet sitter ved overflaten, og lavere i utarming, der sonen gir ${C_d = \varepsilon_s/W}$. Ved høy frekvens rekker ikke elektronene i inversjon å følge, og $C$ blir liggende nær $C_\text{min}$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Kapasitansen i inversjon">
+<ExamRef id="2021-des" task="15" />
+
+You measure the small-signal capacitance of a MOS capacitor biased in inversion. Which statement is
+true?
+
+<Quiz
+  question={"Select one alternative:"}
+  options={[
+    "We observe a small capacitance if the frequency is higher than the dielectric relaxation time of the of the substrate.",
+    "We observe a small capacitance if the frequency is low compared to the generation-recombination rate in the inversion layer.",
+    "We observe a large capacitance if the frequency is low compared to the generation-recombination rate in the inversion layer.",
+    "We observe a large capacitance if the frequency is higher than the dielectric relaxation time of the of the substrate.",
+  ]}
+  answer={2}
+  explanation={"I inversjon er det elektronene i laget som må følge signalet for at kapasitansen skal bli stor. De dannes og forsvinner ved generasjon og rekombinasjon, så kapasitansen er stor, nær $C_i$, når signalet er langsomt i forhold til det. Dielektrisk relaksasjon er hvor fort majoritetsbærerne, hullene, følger, og den er så rask at den ikke bestemmer kapasitansen i inversjon."}
+/>
+
+You want to realize an RC low-pass filter, but you do not have any capacitors available. You decide to
+use a MOSFET as a grounded capacitor by connecting the source, drain and bulk terminal to ground, as
+shown in the figure below. In a MOSFET, charge can flow very fast into the inversion layer from the
+source and drain terminal. Assume the MOSFET capacitor is biased in inversion. Would you expect the
+high-frequency capacitance to be smaller, larger or similar to to that of a MOS capacitor (also biased in
+inversion)?
+
+<Figure
+  src="/figures/eksamen-2021-12-oppgave-15.png"
+  alt="Kretssymbolet for en MOSFET med gaten G øverst og source S og drain D nederst. S, D og substratet i midten er alle koblet til jord."
+  width={440}
+  height={300}
+  caption="Figuren fra oppgavesettet."
+/>
+
+<Quiz
+  question={"Select one alternative"}
+  options={["Similar", "Larger", "Smaller"]}
+  answer={1}
+  explanation={"I en MOS-kondensator alene må elektronene dannes i sonen, og ved høy frekvens følger de ikke med, så kapasitansen er $C_\\text{min}$. I en MOSFET kommer elektronene raskt inn og ut av laget fra source og drain, så laget følger signalet også ved høy frekvens. Kapasitansen blir da nær $C_i$, altså større."}
+/>
+
+</Example>
+
+## Virkelige MOS-kondensatorer
+
+I en virkelig MOS-kondensator er båndene ikke flate ved ${V_G = 0}$. Det er to grunner til det.
+
+Den første er at gaten og silisiumet har forskjellig <Term name="Arbeidsfunksjon">arbeidsfunksjon</Term>,
+energien fra Fermi-nivået opp til vakuumnivået. Forskjellen ${\Phi_{ms} = \Phi_m - \Phi_s}$ er som regel
+negativ, for eksempel for aluminium eller n⁺-polysilisium på p-type silisium. Uten spenning ligger
+Fermi-nivåene likt, så vakuumnivået i metallet ligger $q|\Phi_{ms}|$ lavere enn i silisiumet. Figur 2 viser
+hva forskjellen gjør med båndene. Elektroner har gått fra metallet til silisiumet, gaten er positiv, og båndene i silisiumet er
+bøyd ned som med en positiv gate. Er $\Phi_{ms}$ negativ nok, er overflaten invertert allerede uten spenning.
+
+<Figure
+  src="/figures/mos-flatbaand.svg"
+  alt="To båndskjemaer for en MOS-kondensator på p-type silisium, med metall til venstre, oksid i midten og silisium til høyre. Øverst ved V_G = 0: Fermi-nivåene i metallet og silisiumet ligger i samme høyde, vakuumnivået stiger fra metallet over oksidet, og båndene i silisiumet bøyer seg ned mot oksidet. qΦ_m er merket fra E_Fm til vakuumnivået i metallet og qΦ_s fra E_F til vakuumnivået langt inne i silisiumet. Nederst ved V_G = V_FB: Fermi-nivået i metallet ligger q|V_FB| over Fermi-nivået i silisiumet, vakuumnivået er flatt, og båndene i silisiumet er flate."
+  width={340}
+  height={420}
+  number={2}
+  caption="En MOS-kondensator der metallet har lavere arbeidsfunksjon enn silisiumet, uten spenning (øverst) og ved flatbåndspenningen (nederst). Den stiplede linjen øverst er vakuumnivået, og avstandene til det er ikke i skala."
+/>
+
+Båndene blir flate når vakuumnivåene ligger likt, og det krever at $E_{Fm}$ løftes $q|\Phi_{ms}|$ over
+$E_F$ i silisiumet. Med negativ gatespenning løftes $E_{Fm}$, så båndene er flate ved ${V_G = \Phi_{ms}}$.
+
+Den andre grunnen er ladning i oksidet og ved grenseflaten. Det kan være natriumioner som har kommet inn under
+produksjonen og kan flytte seg i oksidet, faste ladninger i oksidet, ladede tilstander ved grenseflaten og
+ladninger i det tynne overgangslaget mellom silisiumet og oksidet. Ladningen er som regel positiv. Den
+regnes som én <Term name="Grenseflateladning">ladning $Q_i$ per areal ved grenseflaten</Term>, rundt
+$10^{10}$ ladninger per cm² for godt behandlet silisium med \{100\}-overflate. På \{111\}-overflater er den
+omtrent ti ganger så stor, og derfor lages MOS-komponenter på \{100\}-silisium. En positiv $Q_i$ trekker
+negativ ladning til overflaten av silisiumet. For at båndene skal være flate, må gaten bære ladningen $-Q_i$ i stedet,
+og det krever $-Q_i/C_i$ over oksidet.
+
+Til sammen er <Term name="Flatbåndspenning">flatbåndspenningen</Term>
+
+$$
+V_{FB} = \Phi_{ms} - \frac{Q_i}{C_i}
+$$
+
+og gaten må først nå $V_{FB}$ før den kan begynne på det den ideelle kondensatoren trengte. Det gir
+<FormulaRef id="terskelspenning">terskelspenningen</FormulaRef>:
+
+$$
+V_T = \Phi_{ms} - \frac{Q_i}{C_i} - \frac{Q_d}{C_i} + 2\phi_F
+$$
+
+C–V-kurven har samme form som før, men er flyttet $V_{FB}$ langs spenningsaksen. Formelen gjelder også for
+p-kanal, det vil si n-type substrat, med fortegnene i tabellen. Der er $Q_d$ positiv, fordi ionene er
+donorer, og $\phi_F$ er negativ, fordi $E_F$ ligger over $E_i$.
+
+<Table
+  columns={["Ledd", "n-kanal", "p-kanal"]}
+  rows={[
+    ["$\\Phi_{ms}$", "−", "−"],
+    ["$-Q_i/C_i$", "−", "−"],
+    ["$-Q_d/C_i$", "+", "−"],
+    ["$2\\phi_F$", "+", "−"],
+  ]}
+  rowHeader={false}
+  caption="Fortegnet til hvert ledd i terskelspenningen."
+/>
+
+For p-kanal er alle leddene negative, så $V_T$ er negativ. For n-kanal trekker de to første ned og de to
+siste opp, så $V_T$ kan få begge fortegn. Er $V_T$ negativ i en n-kanal, finnes elektronlaget uten
+spenning på gaten, og gaten må ha negativ spenning for å fjerne det.
+
+<Example label="Eksamensoppgave" title="Flatbåndspenningen">
+<ExamRef id="2024-nov" task="12" />
+
+An n⁺-polysilicon-gate n-channel MOS transistor is made on a p-type Si substrate. The oxide has a
+relative permittivity of 3.9 and a thickness is 100 Åin the gate region, and the effective interface
+charge is ${6.4 \times 10^{-9}\ C\ cm^{-2}}$. The metal-semiconductor work function potential
+difference is ${-0.95\ V}$. Find the flat-band voltage of the transistor.
+
+${V_{FB} = \underline{\qquad}\ \text{V}}$
+
+<Solution>
+
+100 Å er 10 nm, så ${C_i = 3{,}45 \cdot 10^{-7}\ \text{F/cm}^2}$, og
+
+$$
+\begin{aligned}
+&V_{FB} = \Phi_{ms} - \frac{Q_i}{C_i} \\
+&= -0{,}95 - \frac{6{,}4 \cdot 10^{-9}}{3{,}45 \cdot 10^{-7}} \\
+&= -0{,}95 - 0{,}019 = -0{,}97\ \text{V}
+\end{aligned}
+$$
+
+<Answer>
+
+${V_{FB} = -0{,}97\ \text{V}}$. Arbeidsfunksjonene står for nesten hele flatbåndspenningen, og ladningen i
+oksidet for bare 19 mV.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+Tallene i oppgaven passer til kondensatoren fra innledningen med en gate av n⁺-polysilisium. Fermi-nivået
+i gaten ligger ved $E_c$, så $\Phi_{ms}$ er omtrent minus avstanden fra $E_F$ opp til $E_c$ i silisiumet,
+rundt −0,9 V. Med ${N_a = 5 \cdot 10^{15}\ \text{cm}^{-3}}$ er sonen og $\phi_F$ de samme som i
+simuleringen «MOS-kondensatoren», så
+
+$$
+\begin{aligned}
+&V_T = -0{,}97 + 0{,}10 + 0{,}66 \\
+&= -0{,}21\ \text{V}
+\end{aligned}
+$$
+
+Terskelspenningen er negativ, og elektronlaget er der allerede ved ${V_G = 0}$. En MOSFET med denne gaten
+leder uten spenning på gaten, og gaten må under −0,21 V for å stenge den.
+
+<Quiz
+  question={"Substratet i en MOS-kondensator med metallgate på p-type silisium dopes dobbelt så tett. Hvilken vei flytter $V_T$ seg, og hvorfor?"}
+  options={[
+    "$V_T$ øker, fordi $-Q_d/C_i$ og $2\\phi_F$ øker mer enn $\\Phi_{ms}$ synker",
+    "$V_T$ synker, fordi $\\Phi_{ms}$ blir mer negativ",
+    "$V_T$ endrer seg ikke, fordi dopingen ikke endrer oksidet",
+    "$V_T$ øker, fordi $-Q_i/C_i$ øker med dopingen",
+  ]}
+  answer={0}
+  explanation={"$|Q_d|$ er proporsjonal med ${(N_a\\phi_F)^{1/2}}$ og vokser med mer enn 40 % når $N_a$ dobles. $\\phi_F$ øker og $\\Phi_{ms}$ synker bare med ${(k_BT/q)\\ln 2 = 18}$ mV hver, og $Q_i$ avhenger ikke av dopingen. For kondensatoren i simuleringen «MOS-kondensatoren» øker $-Q_d/C_i$ med 44 mV og $2\\phi_F$ med 36 mV, mens $\\Phi_{ms}$ synker med 18 mV, så $V_T$ øker med 62 mV. Oksidet er det samme, men ladningen gaten må bære over det, er større."}
+/>
+
+<Callout title="Virkelige MOS-kondensatorer">
+Forskjellen i arbeidsfunksjon og den positive ladningen ved grenseflaten gir ${V_{FB} = \Phi_{ms} - Q_i/C_i}$ og ${V_T = V_{FB} - Q_d/C_i + 2\phi_F}$. For p-kanal er alle leddene negative, og for n-kanal kan $V_T$ bli negativ, så elektronlaget finnes uten spenning på gaten.
+</Callout>
+
+<KeyTakeaways>
+
+- Negativ gate gir akkumulasjon av hull, positiv gate gir utarming og til slutt inversjon. Silisiumet er i likevekt, så $E_F$ er flatt der, og båndene bøyer seg $q\phi_s$ ved overflaten.
+- Sterk inversjon er ${\phi_s = 2\phi_F}$, med ${q\phi_F = k_BT\ln(N_a/n_i)}$. Der tar elektronene all ny ladning, og sonen stopper ved $W_m$ med ladningen ${Q_d = -2(\varepsilon_sqN_a\phi_F)^{1/2}}$.
+- Gatespenningen fordeler seg som ${V_G = V_i + \phi_s}$, og den ideelle terskelspenningen er ${V_T = -Q_d/C_i + 2\phi_F}$ med ${C_i = \varepsilon_i/d}$.
+- $C$ er $C_i$ i serie med silisiumets kapasitans: $C_i$ i akkumulasjon, ${C_iC_d/(C_i + C_d)}$ i utarming, tilbake til $C_i$ i inversjon ved lav frekvens og $C_\text{min}$ ved høy frekvens. Ved flate bånd er den $C_{FB}$.
+- I en virkelig kondensator er ${V_{FB} = \Phi_{ms} - Q_i/C_i}$ og ${V_T = V_{FB} - Q_d/C_i + 2\phi_F}$. Med n⁺-polysilisium på lett dopet p-type silisium blir $V_T$ ofte negativ.
+
+</KeyTakeaways>

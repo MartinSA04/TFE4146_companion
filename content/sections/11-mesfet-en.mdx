@@ -1,0 +1,171 @@
+---
+order: 11
+title: "MESFET-en"
+summary: "Hvordan en MESFET er bygd, med en Schottky-kontakt som gate på et tynt lag n-type GaAs, og hvorfor strømmen i en kort kanal metter før kanalen klemmes av, fordi elektronene ved drain kommer opp i metningshastigheten."
+importance: useful
+tag: "Streetman §6.3.1, §6.3.3"
+part: "Del 4: Transistorer"
+updated: 2026-10-26
+---
+
+<LearningGoals>
+
+- Beskrive hvordan en GaAs-<Term name="MESFET">MESFET</Term> er bygd og hva Schottky-gaten og det halvisolerende substratet gjør.
+- Regne ut gatespenningen som stenger kanalen når romladningssonen bare kommer fra gaten.
+- Forklare hvorfor strømmen i en <Term name="Kort kanal">kort kanal</Term> metter før kanalen klemmes av, hvorfor kurvene da ligger jevnere og hvorfor de stiger etter metning.
+
+</LearningGoals>
+
+Kanalen i en MESFET er et tynt lag n-type GaAs, og gaten er et metall lagt rett på laget. Ta et lag som
+er 0,2 µm tykt og dopet med $10^{17}$ donorer per cm³, med gaten på 0 V. Med en gate som er 20 µm lang,
+slutter strømmen å øke ved rundt 1,7 V på drain, og der er kanalen ved drain nesten klemt av, som i en
+JFET. Med en gate som er 0,5 µm lang, slutter strømmen å øke allerede ved 0,5 V, mens en tredjedel av
+laget ved drain fortsatt leder.
+
+## Gaten er en Schottky-kontakt
+
+En <Term name="MESFET">MESFET</Term> er en felteffekttransistor der gaten er en
+<Term name="Schottky-kontakt">Schottky-kontakt</Term>, et metall rett på halvlederen. I en JFET er
+gaten en p⁺n-overgang. Figur 1 viser en MESFET i GaAs. Nederst ligger
+<Term name="Halvisolerende GaAs">halvisolerende GaAs</Term>, udopet eller dopet med krom, med
+Fermi-nivået nær midten av båndgapet og resistiviteten rundt $10^8$ Ω·cm. Oppå er det vokst et tynt lag
+n-type GaAs, og det er kanalen. Source og drain er ohmske kontakter, og Schottky-gaten ligger mellom dem.
+
+<Figure
+  src="/figures/mesfet-oppbygning.svg"
+  alt="En MESFET i snitt. Nederst en bred blokk merket halvisolerende GaAs. Oppå et tynt lag merket n-GaAs, med skrå kanter der det er etset bort. På laget står tre kontakter: S til venstre og D til høyre, merket ohmsk, og G i midten, merket Schottky. Under gaten er en romladningssone tonet med donorioner som pluss, og under sonen ligger noen elektroner som blå prikker. Tykkelsen a av laget er merket ved siden av sonen, og gatelengden L er merket over gaten."
+  width={340}
+  height={250}
+  number={1}
+  caption="En MESFET i GaAs. Romladningssonen under Schottky-gaten er tonet, med donorionene som +, og elektronene (blå) leder under den. Laget er etset bort rundt transistoren, så den er isolert fra naboene. Ikke i skala."
+/>
+
+Under gaten ligger romladningssonen til Schottky-kontakten. Med gaten i sperreretning, ${V_G \le 0}$,
+går det nesten ingen strøm gjennom den, som gjennom gaten i en JFET.
+
+Forskjellen fra JFET-en er at sonen bare kommer fra én side. Under laget er det halvisolerende GaAs og
+ingen gate, så den ledende delen av laget er ${h = a - W}$, der $W$ er bredden av sonen og $a$ er tykkelsen av hele laget. I en JFET
+er $a$ halvhøyden mellom to gater. Kanalen stenges når sonen rekker ned til substratet, ${W = a}$. Med
+kontaktpotensialet $V_0$ i Schottky-kontakten er kravet det samme som i JFET-en:
+
+$$
+V_0 - V_G = \frac{qN_da^2}{2\varepsilon} = V_p
+$$
+
+så kanalen stenges ved ${V_G = V_0 - V_p}$.
+
+I GaAs låser tilstandene ved grenseflaten Fermi-nivået rundt 0,8 eV under $E_c$, nesten uansett
+metall. Med $10^{17}$ cm⁻³ ligger Fermi-nivået i laget bare 0,04 eV under $E_c$, fordi den effektive
+tilstandstettheten i GaAs er så liten, ${N_c = 4{,}7 \cdot 10^{17}\ \text{cm}^{-3}}$. Båndene bøyer seg da
+${0{,}8 - 0{,}04 = 0{,}76}$ eV opp mot gaten, så ${V_0 \approx 0{,}76\ \text{V}}$.
+Med ${\varepsilon = 13{,}2\,\varepsilon_0}$ og laget fra innledningen er
+
+$$
+\begin{aligned}
+&V_p = \frac{1{,}6 \cdot 10^{-19} \cdot 10^{17} \cdot (0{,}2 \cdot 10^{-4})^2}{2 \cdot 13{,}2 \cdot 8{,}85 \cdot 10^{-14}} \\
+&= 2{,}74\ \text{V}
+\end{aligned}
+$$
+
+og kanalen stenges ved ${V_G = 0{,}76 - 2{,}74 \approx -2{,}0\ \text{V}}$.
+
+Elektronene i ren GaAs har mobiliteten 8500 cm²/V·s, mot 1350 cm²/V·s i silisium. Det halvisolerende
+substratet isolerer transistorene fra hverandre. En Schottky-gate trenger ingen diffusjon, så den kan
+lages svært kort og plasseres nøyaktig, og gater på 50 nm er vanlige. En kort gate gir kort tid gjennom
+kanalen og liten kapasitans, og begge må være små ved høye frekvenser.
+
+<Callout title="Gaten er en Schottky-kontakt">
+En MESFET er en JFET der gaten er en Schottky-kontakt. Romladningssonen kommer bare fra gaten, så $a$ er tykkelsen av hele laget, og kanalen stenges ved ${V_G = V_0 - V_p}$ med ${V_p = qN_da^2/2\varepsilon}$.
+</Callout>
+
+<Quiz
+  question={"Et lag av n-type GaAs er 0,15 µm tykt og dopet med $10^{17}$ cm⁻³, og gaten har $V_0 = 0{,}76$ V. Ved hvilken gatespenning stenges kanalen?"}
+  options={["−0,78 V", "−1,54 V", "0,37 V", "0,78 V"]}
+  answer={0}
+  explanation={"${V_p = qN_da^2/2\\varepsilon = 1{,}54}$ V med ${a = 0{,}15 \\cdot 10^{-4}}$ cm og ${\\varepsilon = 13{,}2\\,\\varepsilon_0}$, og kanalen stenges ved ${V_G = V_0 - V_p = -0{,}78}$ V. −1,54 V glemmer at kontaktpotensialet allerede står over sonen. 0,37 V bruker halve lagtykkelsen som i en JFET, men sonen kommer bare fra én side. 0,78 V har feil fortegn."}
+/>
+
+## Kort kanal
+
+Elektronene går fra source mot drain, og strømmen $I_D$ går motsatt vei. Som i en JFET stiger
+spenningen $V_x$ langs kanalen fra 0 ved source til $V_D$ ved drain, så sperrespenningen ${V_x - V_G}$ er
+størst ved drain, og sonen er dypest der.
+
+<Simulation
+  src={"/sims/mesfet-kanalen.js"}
+  host={"dom"}
+  title={"Kanalen i en MESFET"}
+  caption={"Kanalen i en MESFET i GaAs, sett fra siden, med romladningssonen tonet, donorionene som + og elektronene som blå prikker. Under står farten $v$ langs kanalen med taket $v_s$, og nederst $I_D$ mot $V_D$ for fire gatespenninger, der den stiplede kurven går gjennom punktene der strømmen metter. Kanalen er tegnet like lang for 20 µm og 0,5 µm med forstørret høyde, og farten følger ${v = \\mu_n\\mathcal{E}/(1 + \\mu_n\\mathcal{E}/v_s)}$ med ${\\mu_n = 4000}$ cm²/V·s, mobiliteten i et lag med $10^{17}$ donorer, og ${v_s = 10^7}$ cm/s, uten toppen på rundt ${2 \\cdot 10^7}$ cm/s som farten i GaAs har."}
+  height={440}
+/>
+
+Velg «Lang» i simuleringen og dra «Drain» fra 0 til 3 V med gaten på 0 V. Kurven bøyer av og flater ut
+ved rundt 1,7 V, der den ledende delen ved drain bare er noen prosent av laget. Velg «Kort». Nå flater
+kurven ut ved 0,5 V, og en tredjedel av laget ved drain leder fortsatt. I diagrammet under kanalen er
+farten høy langs hele kanalen og kommer opp i taket $v_s$ et stykke før drain.
+
+Strømmen er den samme gjennom hvert snitt av kanalen, og elektrontettheten i den ledende delen er $N_d$.
+Strømmen er derfor ladningen per lengde ganger farten,
+
+$$
+I_D = qN_dZh(x)\,v(x)
+$$
+
+der $Z$ er bredden av kanalen og $v$ er drifthastigheten. Elektronene ved drain går fortest, fordi
+kanalen er smalest der. Når de kommer opp i $v_s$, kan strømmen bare øke hvis kanalen ved drain blir
+bredere, og mer spenning på drain gjør den smalere. Strømmen metter derfor selv om kanalen er åpen.
+
+Feltet $\mathcal{E}$ langs kanalen er omtrent ${V_D/L}$, ${2 \cdot 10^4}$ V/cm med 1 V over 0,5 µm. Farten flater ut mot
+metningshastigheten ${v_s \approx 10^7}$ cm/s når $\mu_n\mathcal{E}$ blir like stor som $v_s$, i ren GaAs
+allerede ved ${\mathcal{E} = v_s/\mu_n \approx 1{,}2 \cdot 10^3}$ V/cm. I den lange kanalen er 1 V over 20 µm
+bare 500 V/cm, så elektronene ved drain kommer opp i $v_s$ først der kanalen nesten er klemt av. Formlene
+for JFET-en gjelder da omtrent, med ${G_0 = (Z/L)aq\mu_nN_d}$ uten faktoren 2 fra de to gatene. De
+fleste transistorer ligger likevel mellom de to tilfellene, og selv med 20 µm metter strømmen ved 1,7 V,
+mens formlene for JFET-en gir 2,0 V. I den korte kanalen er farten nær $v_s$
+langs nesten hele kanalen, så <FormulaRef id="mesfet-kort-kanal">strømmen i metning</FormulaRef> er
+omtrent
+
+$$
+I_D(\text{sat.}) \approx qN_dv_sZh
+$$
+
+der $h$ er en høyde mellom høyden ved source og ved drain.
+
+<Callout title="Kort kanal">
+I en kort kanal er feltet så sterkt at elektronene ved drain kommer opp i metningshastigheten $v_s$ mens kanalen der fortsatt er åpen. Strømmen metter da, og den er omtrent ${qN_dv_sZh}$.
+</Callout>
+
+### Kurvene ligger jevnere
+
+Når $V_G$ går ned i den lange kanalen, minker både høyden av kanalen og spenningen der strømmen metter.
+Strømmen faller derfor nesten som et kvadrat, og kurvene for like store steg i $V_G$ ligger tett nederst
+og lenger fra hverandre oppover. I den korte kanalen følger strømmen bare høyden $h$, og kurvene ligger
+jevnere. I simuleringen «Kanalen i en MESFET» er avstanden mellom de to øverste kurvene med «Lang» mer enn
+dobbelt så stor som mellom de to nederste, og med «Kort» halvannen gang så stor.
+
+<Quiz
+  question={"En målt MESFET har strømmene 30, 20 og 10 mA i metning ved $V_G = 0$, $-0{,}5$ og $-1{,}0$ V. Hva sier det om kanalen?"}
+  options={["Kanalen er kort, og elektronene ved drain går med metningshastigheten", "Kanalen er lang, og strømmen metter fordi kanalen klemmes av", "Kanalen er lang, fordi strømmen synker jevnt med gatespenningen", "Kanalen er kort, og strømmen metter fordi kanalen klemmes av ved drain"]}
+  answer={0}
+  explanation={"Like steg i $V_G$ gir like steg i strømmen. Jevne steg passer best med ${I_D \\approx qN_dv_sZh}$, der bare høyden $h$ endrer seg med gaten. Når kanalen klemmes av, minker også spenningen der strømmen metter, så strømmen faller nesten som et kvadrat i $V_G$, og stegene vokser oppover. Jevne steg er tegnet på den korte kanalen, ikke den lange. I en kort kanal metter strømmen før kanalen klemmes av."}
+/>
+
+### Kanalen blir kortere
+
+Over metningen går elektronene med $v_s$ på et stykke ved drain, og resten av spenningen faller over
+det stykket. Stykket blir lengre når $V_D$ øker. Den delen av kanalen som bestemmer strømmen, blir da kortere, og en kortere kanal fører litt
+mer strøm. I en lang kanal er stykket en liten del av $L$, men i en kort kanal kan det være en stor del,
+så kurvene stiger merkbart etter metning. Simuleringen «Kanalen i en MESFET» holder strømmen fast over
+metningen og viser ikke stigningen.
+
+<Callout title="Kurvene i en kort kanal">
+Med farten begrenset følger strømmen i metning bare høyden av kanalen, så kurvene ligger jevnere. Stykket ved drain tar en større del av en kort kanal, så kurvene stiger etter metning.
+</Callout>
+
+<KeyTakeaways>
+
+- En MESFET har en Schottky-kontakt som gate på et tynt lag n-type GaAs over halvisolerende GaAs. Romladningssonen kommer bare fra gaten, og kanalen stenges ved ${V_G = V_0 - V_p}$ med ${V_p = qN_da^2/2\varepsilon}$, der $a$ er tykkelsen av laget.
+- Strømmen er ${I_D = qN_dZhv}$ i hvert snitt. I en kort kanal kommer elektronene ved drain opp i metningshastigheten mens kanalen er åpen, så strømmen metter tidligere og er omtrent ${qN_dv_sZh}$.
+- Kurvene i en kort kanal ligger jevnere, og de stiger etter metning fordi stykket ved drain tar en større del av kanalen.
+
+</KeyTakeaways>
