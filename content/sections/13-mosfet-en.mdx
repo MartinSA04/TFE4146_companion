@@ -1,0 +1,754 @@
+---
+order: 13
+title: "MOSFET-en"
+summary: "Hvordan gatespenningen i en MOSFET lager en kanal av elektroner mellom source og drain, hvorfor strømmen først øker med drain-spenningen og så metter, hva som endrer seg i en kort kanal og under terskelen, og hvordan gaten, oksidet, implantert bor og spenning på substratet flytter terskelspenningen."
+importance: core
+tag: "Uke 43–44 · Streetman §6.4.1, §6.5.1–6.5.2, §6.5.4–6.5.8"
+part: "Del 4: Transistorer"
+updated: 2026-10-27
+---
+
+{/* Skrevet 27.10.2026 før notatene fra forelesningen i uke 44 (§6.5.5–6.5.8) var ute. Sjekk modulen mot dem når de ligger i en eksport, særlig «Hvordan terskelspenningen styres», «Spenning på substratet» og «Kapasitanser og motstander rundt kanalen», som foreløpig bygger på boka alene. */}
+
+<LearningGoals>
+
+- Forklare hvordan en positiv gatespenning lager en kanal mellom source og drain i en n-kanal-<Term name="MOSFET">MOSFET</Term>, både som en barriere som senkes og som et lag av elektroner.
+- Utlede ladningen i kanalen, ${Q_n(x) = -C_i(V_G - V_T - V_x)}$, og drain-strømmen $I_D$ med ${k_N = (Z/L)\bar{\mu}_nC_i}$.
+- Forklare avklemming og metning, regne ut $V_D(\text{sat.})$, $I_D(\text{sat.})$ og $g_m(\text{sat.})$, og finne $V_T$ og $k_N$ fra målte kurver.
+- Forklare hvorfor strømmen i metning bare øker lineært med ${V_G - V_T}$ i en kort kanal.
+- Forklare hvordan gatematerialet, oksidet, implantert bor og spenning på substratet flytter $V_T$, og regne ut dosen og ${\Delta V_T}$.
+- Forklare strømmen under terskelen og regne ut subterskelstigningen $S$, og kjenne kapasitansene og motstandene rundt kanalen.
+
+</LearningGoals>
+
+En n-kanal-MOSFET på p-type silisium med $5 \cdot 10^{15}$ akseptorer per cm³ har 2 µm mellom source og drain,
+er 20 µm bred og har 10 nm oksid under gaten. Terskelspenningen er 0,5 V. Med 0 V på gaten går det mindre enn
+en pikoampere fra drain til source, selv med 1 V på drain. Med 1,5 V på gaten er transistoren en motstand på
+1,4 kΩ så lenge drain-spenningen er liten. Med 1 V på drain går det 0,35 mA, og fra 1 til 3 V øker strømmen nesten
+ikke. Med 2,5 V på gaten er strømmen fire ganger så stor, 1,4 mA. Gaten trekker ingen strøm, fordi oksidet
+ikke leder.
+
+## Source, drain og gate
+
+Figur 1 viser en <Term name="MOSFET">MOSFET</Term> med n-kanal. Substratet er p-type silisium med kontakten B
+på baksiden. To sterkt dopede n⁺-områder er source og drain, og mellom dem ligger gaten, sterkt dopet
+n-type polysilisium over et tynt lag oksid. Under gaten er det en MOS-kondensator. Avstanden fra source til
+drain er kanallengden $L$. Bredden inn i arket er $Z$. Det tykke <Term name="Feltoksid">feltoksidet</Term>
+i hver ende skiller transistoren fra naboene. Spenningene $V_G$ og $V_D$ måles fra source, og substratet er
+koblet til source så lenge ikke noe annet er sagt.
+
+<Figure
+  src="/figures/mosfet-oppbygning.svg"
+  alt="En n-kanal-MOSFET i snitt. p-type silisium med en kontakt B på baksiden. To n⁺-områder i overflaten, source til venstre og drain til høyre, med metallkontakter merket S og D. Mellom dem en gate av n⁺-polysilisium over et tynt oksid, merket G. Tykt oksid i hver ende. Under oksidet et tynt blått lag med elektroner fra source til drain, og under det en tonet sone med akseptorioner som minustegn. Avstanden L mellom n⁺-områdene er merket under sonen, og aksene x langs kanalen og y nedover i silisiumet. Teksten sier at bredden Z går inn i arket."
+  width={340}
+  height={262}
+  number={1}
+  caption="En n-kanal-MOSFET i snitt, med gatespenningen over $V_T$. Kanalen er det blå laget under oksidet, og sonen under den har akseptorionene som −. Ikke i skala."
+/>
+
+Fra source til drain møter et elektron p-type silisium. Source og drain er to n⁺p-overganger rygg mot rygg.
+Uansett fortegn på $V_D$ er den ene i sperreretning, så det går nesten ingen strøm. Simuleringen viser
+det i båndskjemaet langs overflaten.
+
+<Simulation
+  src={"/sims/mosfet-barrieren.js"}
+  host={"dom"}
+  title={"Barrieren langs kanalen"}
+  caption={"Transistoren fra innledningen sett fra siden, og under den ledningsbåndkanten $E_c$ langs overflaten fra source til drain. Fermi-nivået i source og drain og kvasi-Fermi-nivået $F_n$ i kanalen mellom dem er stiplet, og elektronene er blå prikker, de samme i begge tegningene, men antallet tegnede elektroner vokser mye saktere enn ladningen. $E_v$ er ikke tegnet. Nederst står $I_D$ mot $V_G$ på en logaritmisk akse."}
+  height={430}
+/>
+
+Med «Gate» på 0 V ligger $E_c$ i p-området 0,7 eV over Fermi-nivået i source. Det er barrieren
+${\Delta E}$, og nesten ingen elektroner har nok energi til å komme over den. Dra «Gate» til 1,2 V. Gaten
+bøyer båndene ned ved overflaten, som i en MOS-kondensator, og barrieren er nesten borte. Overflaten under
+gaten er invertert og full av elektroner som forbinder source og drain. Det laget av elektroner er
+kanalen.
+
+MOSFET-en kan altså beskrives på to måter. Den er en barriere som gaten senker, og den er en motstand mellom
+source og drain som gaten styrer. Jo høyere gatespenningen er, desto flere elektroner er det i kanalen, og
+desto bedre leder den. Det første bildet forklarer strømmen under terskelen, det andre strømmen over.
+
+Kanalen er der når overflaten er sterkt invertert, altså når gatespenningen er over
+<Term name="Terskelspenning">terskelspenningen</Term> fra MOS-kondensatoren,
+${V_T = V_{FB} - Q_d/C_i + 2\phi_F}$. Transistoren i
+simuleringene har ${V_T = 0{,}5\ \text{V}}$. Med positiv $V_T$ er det ingen kanal uten spenning på gaten.
+Transistoren er normalt av. Den kalles en <Term name="Anrikningstype">anrikningstype</Term>, fordi gaten må
+samle elektroner for å lage kanalen. Med negativ $V_T$ er kanalen der fra før. Transistoren er normalt på,
+og gaten må ha negativ spenning for å tømme kanalen. Den kalles en
+<Term name="Utarmingstype">utarmingstype</Term>.
+
+En p-kanal-MOSFET har n-type substrat og p⁺ i source og drain. Kanalen er et lag av hull, og $V_G$, $V_D$,
+$V_T$ og $I_D$ er negative. Elektroner har høyere mobilitet enn hull, så n-kanal gir mer strøm med samme
+størrelse og foretrekkes. Alt under gjelder n-kanal.
+
+<Callout title="Barrieren og kanalen">
+Mellom source og drain ligger p-type silisium, så et elektron fra source møter en barriere. Over $V_T$ bøyer gaten båndene ned og inverterer overflaten, og laget av elektroner der er kanalen mellom source og drain.
+</Callout>
+
+## Ladningen i kanalen
+
+Med spenning på drain går det strøm gjennom kanalen, og spenningen $V_x$ i kanalen stiger fra 0 ved source
+til $V_D$ ved drain.
+
+<Simulation
+  src={"/sims/mosfet-kanalen.js"}
+  host={"dom"}
+  title={"Kanalen"}
+  caption={"Transistoren fra innledningen sett fra siden, med kanalen under oksidet tegnet så tykk som ladningen $|Q_n|$ og elektronene som blå prikker, og sonen tonet med akseptorionene som −. Under står $V_x$ langs kanalen og den stiplede linjen ${V_G - V_T}$, og nederst $I_D$ mot $V_D$ for fem gatespenninger med den stiplede kurven gjennom punktene der strømmen metter. Kanalen er tegnet like lang for 2 µm og 0,1 µm, kanalen og sonen er ikke i skala, og strømmen under terskelen er ikke med."}
+  height={470}
+/>
+
+Sett «Gate» til 1,5 V og dra «Drain» fra 0 til 0,8 V. Kanalen blir tynnere mot drain, og i diagrammet under
+stiger $V_x$ fra source til drain.
+
+Hvert stykke av kanalen er en MOS-kondensator med gaten over seg. Spenningen mellom gaten og kanalen er
+${V_G - V_x}$, og den er minst ved drain. Av den går $V_T$ med til å nå sterk inversjon. Bare resten gir
+elektroner:
+
+$$
+Q_n(x) = -C_i(V_G - V_T - V_x)
+$$
+
+Det er <FormulaRef id="kanalladning">ladningen i kanalen</FormulaRef> per areal. I diagrammet under kanalen er den
+stiplede linjen ${V_G - V_T}$, og den tonede avstanden ned til $V_x$ er ${|Q_n|/C_i}$. Den har samme form
+som kanalen over.
+
+Terskelen regnes fra spenningen i kanalen fordi elektronene i kanalen henger sammen med source og drain.
+Strømmen langs kanalen gjør at <Term name="Kvasi-Fermi-nivå">kvasi-Fermi-nivået</Term>
+deres synker fra source mot drain, ${F_n(x) = E_F - qV_x}$, der $E_F$ er Fermi-nivået i substratet. Det er
+den stiplede linjen mellom source og drain i simuleringen «Barrieren langs kanalen». Overflaten er like
+sterkt n-type som substratet er p-type når $E_i$ der ligger $q\phi_F$ under $F_n$, slik $E_i$ ligger
+$q\phi_F$ over $E_F$ langt inne. Figur 2 viser at båndene da må bøye seg ${V_x}$ mer enn ved source:
+
+$$
+\phi_s = 2\phi_F + V_x
+$$
+
+Kanalen og substratet er en n-p-overgang med sperrespenningen $V_x$, og som i en pn-overgang gjør
+sperrespenningen sonen bredere.
+
+<Figure
+  src="/figures/mosfet-dybde.svg"
+  alt="To båndskjemaer inn i silisiumet, med overflaten til venstre. Øverst ved V_x = 0: E_c og den stiplede E_i bøyer seg ned mot overflaten, E_F er flat. E_i ligger qφ_F over E_F langt inne og qφ_F under E_F ved overflaten, og den totale bøyningen er merket 2qφ_F. Sonen har bredden W. Nederst ved V_x = 1 V: kvasi-Fermi-nivået F_n ligger qV_x under E_F fra overflaten og ut til kanten av sonen. E_i ved overflaten ligger qφ_F under F_n, og bøyningen er merket q(2φ_F + V_x). Sonen er bredere."
+  width={340}
+  height={452}
+  number={2}
+  caption="Båndskjemaet inn i silisiumet ved sterk inversjon, ved source (øverst) og der kanalen ligger 1 V over source (nederst), for substratet i simuleringene. $E_v$ er ikke tegnet."
+/>
+
+Formelen for $Q_n(x)$ regner ladningen i sonen som den samme langs hele kanalen, som ved source. Figur 2
+viser at sonen vokser, og ladningen i den går som roten av bøyningen, ${|Q_d| = (2\varepsilon_sqN_a\phi_s)^{1/2}}$.
+Med ${V_x = 1}$ V er $|Q_d|$ ${(1{,}66/0{,}66)^{1/2} = 1{,}6}$ ganger så stor som ved source,
+${5{,}3 \cdot 10^{-8}}$ mot ${3{,}3 \cdot 10^{-8}\ \text{C/cm}^2}$, og ekstraladningen tar
+${2{,}0 \cdot 10^{-8}/C_i = 0{,}06}$ V av spenningen som ellers ville gitt elektroner. Tilnærmingen holder der
+denne spenningen er liten mot ${V_G - V_T - V_x}$. Det gjelder nesten hele kanalen, men ikke helt ved drain nær
+avklemming.
+
+<Derivation title="Ladningen fra MOS-kondensatoren">
+
+Gatespenningen fordeler seg som i MOS-kondensatoren, ${V_G = V_{FB} + \phi_s - Q_s/C_i}$, og ladningen i
+silisiumet er elektronene og ionene i sonen, ${Q_s = Q_n + Q_d}$. Løst for elektronene er
+
+$$
+Q_n = -C_i\left[V_G - V_{FB} - \phi_s + \frac{Q_d}{C_i}\right]
+$$
+
+Sett inn ${\phi_s = 2\phi_F + V_x}$, og regn $Q_d$ som ladningen ved source,
+${Q_d = -2(\varepsilon_sqN_a\phi_F)^{1/2}}$. Da er ${V_{FB} + 2\phi_F - Q_d/C_i}$ terskelspenningen $V_T$, og
+hakeparentesen blir ${V_G - V_T - V_x}$. Ved source, der ${V_x = 0}$, er ${Q_n = -C_i(V_G - V_T)}$, elektronene i en
+MOS-kondensator over terskelen.
+
+</Derivation>
+
+<Callout title="Ladningen i kanalen">
+Kanalen i punktet $x$ er en MOS-kondensator med spenningen ${V_G - V_x}$ fra gaten, og ladningen er ${Q_n(x) = -C_i(V_G - V_T - V_x)}$. Elektronene har kvasi-Fermi-nivået ${E_F - qV_x}$, så båndene må bøye seg ${2\phi_F + V_x}$.
+</Callout>
+
+## Strømmen langs kanalen
+
+Elektronene går mot drain, og strømmen $I_D$ går fra drain til source. I et stykke av kanalen er det
+ladningen ${Z|Q_n|}$ per lengde, og feltet ${dV_x/dx}$ langs kanalen driver elektronene med farten
+${\bar{\mu}_n\,dV_x/dx}$. $\bar{\mu}_n$ er <Term name="Overflatemobilitet">overflatemobiliteten</Term>,
+mobiliteten i det tynne laget ved overflaten, som er lavere enn inne i silisiumet. Strømmen er ladningen per
+lengde ganger farten:
+
+$$
+I_D = Z\bar{\mu}_n|Q_n(x)|\frac{dV_x}{dx}
+$$
+
+Strømmen er den samme i hvert snitt av kanalen, så der kanalen er tynn, må feltet være sterkt. Derfor
+stiger $V_x$ i simuleringen «Kanalen» brattest ved drain.
+
+Gang med $dx$ og integrer fra source, der ${V_x = 0}$, til drain, der ${V_x = V_D}$. $I_D$ er den samme
+overalt, så venstresiden blir ${I_DL}$:
+
+$$
+I_DL = Z\bar{\mu}_nC_i\int_0^{V_D}(V_G - V_T - V_x)\,dV_x
+$$
+
+og <FormulaRef id="mosfet-strom">drain-strømmen</FormulaRef> er
+
+$$
+\begin{aligned}
+&I_D = k_N\left[(V_G - V_T)V_D - \tfrac{1}{2}V_D^2\right] \\
+&k_N = \frac{Z}{L}\bar{\mu}_nC_i
+\end{aligned}
+$$
+
+$k_N$ samler det transistoren er laget av: forholdet mellom bredden og lengden, mobiliteten og oksidet.
+Transistoren i simuleringene har ${Z/L = 10}$, ${\bar{\mu}_n = 200}$ cm²/V·s og
+${C_i = 3{,}45 \cdot 10^{-7}\ \text{F/cm}^2}$, så ${k_N = 0{,}69\ \text{mA/V}^2}$.
+
+Ladningen i sonen er regnet som den samme langs hele kanalen. Feilen er størst ved drain, der kanalen har minst
+ladning og bidrar minst til integralet. Med 1,5 V på gaten og 0,5 V på drain gir formelen med sonen som vokser,
+bare 2 % mindre strøm.
+
+Når ${V_D \ll V_G - V_T}$, er det siste leddet lite, og ${I_D \approx k_N(V_G - V_T)V_D}$. Kanalen er da en
+motstand med <FormulaRef id="kanalkonduktans">konduktansen</FormulaRef>
+
+$$
+g = \frac{\partial I_D}{\partial V_D} = k_N(V_G - V_T)
+$$
+
+som gaten styrer. I simuleringen er kurvene rette nær origo, og de er brattere jo høyere gatespenningen er.
+Med 1,5 V på gaten er ${g = 0{,}69}$ mS, og motstanden er 1,4 kΩ, som i innledningen.
+
+<Derivation title="Med sonen som vokser langs kanalen">
+
+Med ${\phi_s = 2\phi_F + V_x}$ er ladningen i sonen ${Q_d(x) = -[2\varepsilon_sqN_a(2\phi_F + V_x)]^{1/2}}$, og
+ladningen i kanalen er
+
+$$
+\begin{aligned}
+&|Q_n(x)| = C_i\left[V_G - V_{FB} - 2\phi_F - V_x\right] \\
+&\quad - \left[2\varepsilon_sqN_a(2\phi_F + V_x)\right]^{1/2}
+\end{aligned}
+$$
+
+Integralet av det første leddet fra 0 til $V_D$ er ${C_i(V_G - V_{FB} - 2\phi_F - \tfrac{1}{2}V_D)V_D}$. Det
+andre er ${\tfrac{2}{3}(2\varepsilon_sqN_a)^{1/2}[(V_D + 2\phi_F)^{3/2} - (2\phi_F)^{3/2}]}$, så
+
+$$
+\begin{aligned}
+&I_D = \frac{\bar{\mu}_nZC_i}{L}\Big\{\big(V_G - V_{FB} - 2\phi_F - \tfrac{1}{2}V_D\big)V_D \\
+&\quad - \tfrac{2}{3}\frac{\sqrt{2\varepsilon_sqN_a}}{C_i} \\
+&\qquad \times \big[(V_D + 2\phi_F)^{3/2} - (2\phi_F)^{3/2}\big]\Big\}
+\end{aligned}
+$$
+
+Det er <FormulaRef id="mosfet-strom-full">formelen på formelarket</FormulaRef>. For små $V_D$ er den
+${k_N(V_G - V_T)V_D}$, som den enkle.
+
+</Derivation>
+
+<Callout title="Strømmen langs kanalen">
+Strømmen ${I_D = Z\bar{\mu}_n|Q_n|\,dV_x/dx}$ er den samme i hvert snitt, og integrert langs kanalen gir den ${I_D = k_N[(V_G - V_T)V_D - V_D^2/2]}$ med ${k_N = (Z/L)\bar{\mu}_nC_i}$. For ${V_D \ll V_G - V_T}$ er kanalen en motstand med konduktansen ${k_N(V_G - V_T)}$.
+</Callout>
+
+## Avklemming og metning
+
+Ved drain er ${|Q_n(L)| = C_i(V_G - V_T - V_D)}$. Når $V_D$ når ${V_G - V_T}$, er spenningen mellom gaten
+og kanalen ved drain akkurat $V_T$, og elektronene der er borte. Kanalen er
+<Term name="Avklemming">klemt av</Term> ved drain, og det skjer ved
+
+$$
+V_D(\text{sat.}) = V_G - V_T
+$$
+
+Dra «Drain» til 3 V med «Gate» på 1,5 V i simuleringen «Kanalen». Ved 1 V når $V_x$ den stiplede linjen ved
+drain, og over 1 V flytter enden av kanalen seg litt mot source. Resten av spenningen ligger da over det
+korte stykket mellom enden og drain. Feltet der er sterkt, så elektronene som kommer til enden av kanalen,
+trekkes gjennom stykket og inn i drain. Kanalen fram til stykket er nesten den
+samme som ved $V_D(\text{sat.})$, så strømmen øker ikke mer. Transistoren er i <Term name="Metning">metning</Term>.
+
+Avklemt betyr ikke stengt. Strømmen er størst i metning, og alle elektronene som går inn i kanalen fra
+source, kommer fram til drain.
+
+<FormulaRef id="mosfet-metning">Strømmen i metning</FormulaRef> er formelen ved ${V_D = V_G - V_T}$:
+
+$$
+\begin{aligned}
+&I_D(\text{sat.}) = \tfrac{1}{2}k_N(V_G - V_T)^2 \\
+&= \frac{Z}{2L}\bar{\mu}_nC_iV_D^2(\text{sat.})
+\end{aligned}
+$$
+
+Den vokser med kvadratet av ${V_G - V_T}$. Med 1,5 V på gaten er den
+${\tfrac{1}{2} \cdot 0{,}69 \cdot 1^2 = 0{,}35\ \text{mA}}$, og med 2,5 V er ${V_G - V_T}$ dobbelt så stor og
+strømmen fire ganger så stor, 1,4 mA. Det er tallene i innledningen.
+
+<FormulaRef id="transkonduktans">Transkonduktansen</FormulaRef> er hvor mye strømmen i metning endrer seg per
+volt på gaten:
+
+$$
+g_m(\text{sat.}) = \frac{\partial I_D(\text{sat.})}{\partial V_G} = k_N(V_G - V_T)
+$$
+
+Den øker med gatespenningen, og den er like stor som konduktansen $g$ for små $V_D$ ved samme
+gatespenning.
+
+<Callout title="Avklemming og metning">
+Ved ${V_D(\text{sat.}) = V_G - V_T}$ er kanalen klemt av ved drain. Mer spenning på drain legges over et kort stykke ved drain, og strømmen er ${I_D(\text{sat.}) = \tfrac{1}{2}k_N(V_G - V_T)^2}$, med ${g_m(\text{sat.}) = k_N(V_G - V_T)}$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Kanalen ved avklemming">
+<ExamRef id="2025-nov" task="14" />
+
+<Figure
+  src="/figures/eksamen-2025-11-oppgave-14.png"
+  alt="Snitt av en MOSFET med source jordet til venstre, gaten med V_G i midten og drain med V_D til høyre. Under gaten er det et lag merket med blå streker som er tykt ved source og avtar til null ved drain. En lysere romladningssone omgir source og drain og ligger under kanalen, dypest mot drain. Substratet er jordet nederst."
+  width={440}
+  height={208}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The figure above shows the cross section of an enhancement mode (normally off) n-channel MOSFET at the
+onset of saturation.
+
+<Quiz
+  question={"Based on the indicated depletion region and inversion layer, select the correct voltage relationships."}
+  options={[
+    "$V_D \\approx 0\\text{V}$",
+    "$V_G \\approx 0\\text{V}$",
+    "$V_D = V_G - V_T$",
+    "$V_G < V_T$",
+    "$V_G > V_T$",
+  ]}
+  answer={[2, 4]}
+  explanation={"Kanalen finnes ved source, så ${V_G > V_T}$. Den blir tynnere mot drain og er akkurat borte der, så spenningen mellom gaten og kanalen ved drain er $V_T$: ${V_G - V_D = V_T}$, altså ${V_D = V_G - V_T}$. Med ${V_D \\approx 0}$ ville kanalen vært like tykk hele veien, og med ${V_G < V_T}$ ville det ikke vært noen kanal."}
+/>
+
+</Example>
+
+## Terskelspenningen fra målte kurver
+
+Kurvene $I_D$ mot $V_D$ med fast gatespenning er utgangskarakteristikken. Målt den andre veien, $I_D$ mot
+$V_G$ med fast $V_D$, er det <Term name="Overføringskarakteristikk">overføringskarakteristikken</Term>. Den gir
+$V_T$ og $k_N$. Kurvene nederst i simuleringen «Barrieren langs kanalen» er overføringskarakteristikken på
+logaritmisk akse, for 0,1 V og 1 V på drain.
+
+Med liten $V_D$ er ${I_D \approx k_N(V_G - V_T)V_D}$ en rett linje i $V_G$. Den skjærer $V_G$-aksen ved $V_T$,
+og stigningen delt på $V_D$ er $k_N$. Figur 3 viser at målte kurver bøyer av fra linjen i begge ender. Under $V_T$ går det
+litt strøm likevel. Ved høye gatespenninger øker strømmen mindre enn linjen, fordi mobiliteten synker når
+feltet fra gaten blir sterkere, og fordi en del av spenningen ligger over motstanden i source og drain.
+
+I metning er det kvadratroten av strømmen som er lineær i $V_G$:
+
+$$
+\sqrt{I_D(\text{sat.})} = \sqrt{\tfrac{1}{2}k_N}\,(V_G - V_T)
+$$
+
+så $\sqrt{I_D}$ mot $V_G$ er en rett linje som skjærer aksen ved $V_T$, og stigningen er ${\sqrt{k_N/2}}$.
+
+<Figure
+  src="/figures/mosfet-overforing.svg"
+  alt="To diagrammer over hverandre for transistoren i simuleringene. Øverst I_D i µA mot V_G fra 0 til 3 V med V_D = 0,1 V: kurven er nær null til V_T = 0,5 V, stiger så nesten rett og bøyer svakt under en stiplet rett linje ved høye gatespenninger. Den stiplede linjen skjærer V_G-aksen ved V_T. Nederst kvadratroten av I_D i metning mot V_G: en nesten rett kurve som skjærer aksen ved V_T og også bøyer under sin stiplede linje ved høye gatespenninger."
+  width={340}
+  height={430}
+  number={3}
+  caption="Overføringskarakteristikken for transistoren i simuleringene, med liten $V_D$ (øverst) og i metning (nederst). De stiplede linjene er formelen. Kurvene er en skisse av formen målte kurver har, ikke regnet ut."
+/>
+
+<Quiz
+  question={"I metning måles ${I_D = 0{,}16}$ mA ved ${V_G = 1{,}5}$ V og ${I_D = 0{,}81}$ mA ved ${V_G = 2{,}5}$ V. Hva er $V_T$ og $k_N$?"}
+  options={[
+    "${V_T = 0{,}7}$ V og ${k_N = 0{,}50}$ mA/V²",
+    "${V_T = 0{,}7}$ V og ${k_N = 0{,}25}$ mA/V²",
+    "${V_T = 1{,}25}$ V og ${k_N = 0{,}65}$ mA/V²",
+    "${V_T = 1{,}25}$ V og ${k_N = 0{,}50}$ mA/V²",
+  ]}
+  answer={0}
+  explanation={"Kvadratrøttene er 0,4 og 0,9 $\\sqrt{\\text{mA}}$, så linjen stiger 0,5 $\\sqrt{\\text{mA}}$ per volt og når null 0,8 V under 1,5 V, ved ${V_T = 0{,}7}$ V. Stigningen er ${\\sqrt{k_N/2}}$, så ${k_N = 2 \\cdot 0{,}5^2 = 0{,}50}$ mA/V². 0,25 mA/V² er stigningen i annen uten faktoren 2. 1,25 V får du med en rett linje gjennom selve strømmene, men strømmen i metning er kvadratisk i $V_G$."}
+/>
+
+## Kort kanal og metningshastighet
+
+Formlene over bygger på at farten til elektronene er ${\bar{\mu}_n\,dV_x/dx}$, proporsjonal med feltet. I
+sterke felt flater farten ut ved <Term name="Metningshastighet">metningshastigheten</Term>
+${v_s \approx 10^7}$ cm/s. Med ${\bar{\mu}_n = 200}$ cm²/V·s flater farten ut rundt
+${\mathcal{E} = v_s/\bar{\mu}_n = 5 \cdot 10^4\ \text{V/cm}}$. I kanalen på 2 µm er feltet langt svakere enn
+${5 \cdot 10^4}$ V/cm langs nesten hele kanalen. I en kanal på 0,1 µm er feltet så sterkt allerede med 0,5 V på
+drain.
+
+Velg «L = 0,1 µm» i simuleringen «Kanalen», sett «Gate» til 1,5 V og dra «Drain» fra 0 til 3 V. Kurven flater
+ut allerede ved 0,4 V, mens kanalen ved drain fortsatt har elektroner. Elektronene der har nådd $v_s$ og kan
+ikke gå fortere, så strømmen kan bare øke hvis det blir flere av dem, og mer spenning på drain gir færre.
+Strømmen metter derfor før kanalen klemmes av. Der elektronene går med $v_s$, er ${|Q_n| = I_D/Zv_s}$, og
+${Q_n = -C_i(V_G - V_T - V_x)}$ gjelder ikke lenger. I diagrammet under kanalen slutter den tonede avstanden der
+elektronene når $v_s$, og $V_x$ går over den stiplede linjen mens kanalen over fortsatt har elektroner.
+
+Når elektronene går med $v_s$ langs nesten hele kanalen, er strømmen ladningen per lengde ved source ganger
+$v_s$, og <FormulaRef id="kort-kanal">strømmen i metning</FormulaRef> er
+
+$$
+I_D(\text{sat.}) \approx ZC_i(V_G - V_T)v_s
+$$
+
+Den er lineær i ${V_G - V_T}$ og avhenger ikke av $L$, og transkonduktansen ${g_m(\text{sat.}) = ZC_iv_s}$ er
+den samme for alle gatespenninger. Like steg i gatespenningen gir da like store sprang mellom kurvene, slik
+kurvene for 0,1 µm i simuleringen ligger. Kurvene for 2 µm ligger tettest nederst.
+
+For transistoren med 0,1 µm er ${ZC_iv_s = 20 \cdot 10^{-4} \cdot 3{,}45 \cdot 10^{-7} \cdot 10^7\ \text{A/V} = 6{,}9}$ mA/V,
+så formelen gir 17 mA ved ${V_G = 3}$ V. Simuleringen gir 14 mA, fordi kanalen er tynnere ved drain, der
+elektronene når $v_s$. Formelen for den lange kanalen ville gitt 43 mA.
+
+<Callout title="Kort kanal">
+I en kort kanal når elektronene ved drain metningshastigheten $v_s$ før kanalen klemmes av. Strømmen i metning blir omtrent ${ZC_i(V_G - V_T)v_s}$, lineær i ${V_G - V_T}$ og uavhengig av $L$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Lang eller kort kanal">
+<ExamRef id="2018-des-tfe4164" task="I-8" />
+
+<Figure
+  src="/figures/eksamen-2018-12-oppgave-I-8.png"
+  alt="I_D i mA, fra 0 ned til −1,5, mot V_D fra 0 til 3 V, for V_G = −0,5, −1,0 og −1,5 V. Kurvene stiger bratt og knekker av ved V_D under 1 V, og stiger svakt etter det. En stiplet loddrett linje ved V_D = 2 V krysser dem ved −0,3, −0,8 og −1,3 mA, markert med stiplede vannrette linjer."
+  width={440}
+  height={338}
+  caption="Figur 4 fra oppgavesettet."
+/>
+
+The MOSFET $I_D$-$V_D$ characteristics in Figure 4 above were measured for an enhancement mode (i.e.,
+normally off) device.
+
+<Quiz
+  question={"They are the $I_D$-$V_D$ characteristics of,"}
+  options={[
+    "a <em>long channel</em>, <em>p-channel</em> MOSFET",
+    "a <em>short channel</em>, <em>p-channel</em> MOSFET",
+    "a <em>short channel</em>, <em>n-channel</em> MOSFET",
+  ]}
+  answer={1}
+  explanation={"Strømmen og gatespenningene er negative, så det er en p-kanal. Ved ${V_D = 2}$ V er strømmene 0,3, 0,8 og 1,3 mA for 0,5, 1,0 og 1,5 V på gaten. Like store sprang betyr at strømmen i metning er lineær i gatespenningen, som i en kort kanal. I en lang kanal ville spranget vokst med gatespenningen, siden strømmen da går som ${(V_G - V_T)^2}$."}
+/>
+
+</Example>
+
+## Hvordan terskelspenningen styres
+
+$V_T$ bestemmer hvilken gatespenning som slår transistoren på, så den må passe til kretsen. En transistor
+som drives av et batteri på 3 V, kan ikke ha ${V_T = 4}$ V. Alle leddene i
+<FormulaRef id="terskelspenning">terskelspenningen</FormulaRef> fra MOS-kondensatoren,
+
+$$
+V_T = \Phi_{ms} - \frac{Q_i}{C_i} - \frac{Q_d}{C_i} + 2\phi_F
+$$
+
+kan styres når transistoren lages. Gatematerialet gir $\Phi_{ms}$, riktig oksidering og \{100\}-silisium
+holder $Q_i$ lav, dopingen av substratet gir $Q_d$ og $\phi_F$, og oksidet gir $C_i$.
+
+Gaten brukes selv som maske når source og drain implanteres, så de havner rett inntil gaten. Det kalles en
+<Term name="Selvjustert gate">selvjustert gate</Term>. Etterpå må implantatet varmes opp til høy temperatur.
+De første MOSFET-ene hadde gate av aluminium, som smelter ved for lav temperatur til det. Aluminium ble
+derfor byttet ut med n⁺-polysilisium, som tåler varmen og har Fermi-nivået ved $E_c$. Det passer godt for
+n-kanal, og for p-kanal brukes noen ganger p⁺-polysilisium. Nå brukes også gater av metall, for eksempel
+wolfram, som har Fermi-nivået nær midten av båndgapet i silisium.
+
+Tynt gateoksid gir stor $C_i$. Stor $C_i$ bringer leddene ${-Q_i/C_i}$ og ${-Q_d/C_i}$ nærmere null og gir mer
+strøm, fordi $k_N$ øker med $C_i$. I moderne transistorer er gateoksidet 1 til 10 nm. Mellom transistorene skal det derimot ikke dannes kanaler. Der ligger det tykke feltoksidet fra
+figur 1. Med 0,5 µm oksid i stedet for 10 nm er $C_i$ 50 ganger mindre, og leddet ${-Q_d/C_i}$ i $V_T$ blir
+4,8 V i stedet for 0,1 V for substratet her.
+
+Det viktigste verktøyet er implantasjon. Bor skytes inn i et tynt lag rett under overflaten, der akseptorene
+blir negative ioner. De virker som en negativ ladning ${-qF_B}$ per areal ved grenseflaten, der $F_B$ er
+antall boratomer per cm², og de flytter $V_T$ motsatt vei av den positive ladningen $Q_i$:
+
+$$
+\Delta V_T = \frac{qF_B}{C_i}
+$$
+
+Det er <FormulaRef id="terskel-implantasjon">forskyvningen</FormulaRef> fra et tynt lag bor. Dosen kan styres
+nøyaktig. Ligger boret dypere, endrer det dopingen i
+sonen i stedet, og da finnes forskyvningen ved målinger. Bor under feltoksidet hever terskelen der enda mer
+for n-kanal.
+
+<Example title="Bor som gjør transistoren normalt av">
+
+Transistoren i simuleringene er laget på p-type silisium med ${N_a = 5 \cdot 10^{15}\ \text{cm}^{-3}}$ og 10 nm
+oksid, med gate av n⁺-polysilisium, ${\Phi_{ms} = -0{,}95}$ V og ${Q_i = 6{,}4 \cdot 10^{-9}\ \text{C/cm}^2}$.
+Hvor mye bor per cm² må implanteres for at ${V_T = 0{,}5}$ V?
+
+<Solution>
+
+Substratet har ${2\phi_F = 0{,}659}$ V og ${Q_d = -3{,}32 \cdot 10^{-8}\ \text{C/cm}^2}$, og oksidet har
+${C_i = 3{,}45 \cdot 10^{-7}\ \text{F/cm}^2}$. Uten bor er leddene i ${V_T = \Phi_{ms} - Q_i/C_i - Q_d/C_i + 2\phi_F}$
+
+$$
+V_T = -0{,}95 - 0{,}019 \allowbreak + 0{,}096 + 0{,}659 \allowbreak = -0{,}21\ \text{V}
+$$
+
+Transistoren er en utarmingstype. Terskelen må opp ${0{,}5 - (-0{,}21) = 0{,}71}$ V, så
+
+$$
+\begin{aligned}
+&F_B = \frac{\Delta V_T\,C_i}{q} \\
+&= \frac{0{,}71 \cdot 3{,}45 \cdot 10^{-7}}{1{,}6 \cdot 10^{-19}} \\
+&= 1{,}5 \cdot 10^{12}\ \text{cm}^{-2}
+\end{aligned}
+$$
+
+<Answer>
+
+${F_B = 1{,}5 \cdot 10^{12}\ \text{cm}^{-2}}$. Det er sju ganger så mange negative ioner som det er i hele sonen
+under kanalen, ${|Q_d|/q = 2{,}1 \cdot 10^{11}\ \text{cm}^{-2}}$, men de ligger rett ved oksidet.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+<Callout title="Terskelspenningen styres">
+Gatematerialet setter $\Phi_{ms}$, oksidet $C_i$, og dopingen $Q_d$ og $\phi_F$. Et tynt lag implantert bor flytter terskelen ${\Delta V_T = qF_B/C_i}$ i positiv retning, og tykt feltoksid hindrer kanaler mellom transistorene.
+</Callout>
+
+## Spenning på substratet
+
+Så langt har substratet vært koblet til source. Det kan også ha sin egen spenning $V_B$, målt fra source.
+I en n-kanal må $V_B$ være null eller negativ, ellers leder overgangen mellom source og substratet. Med
+negativ $V_B$ ligger kanalen $-V_B$ over substratet allerede ved source, slik kanalen lenger inne ligger
+$V_x$ over source. Figur 2 gjelder da med ${V_x - V_B}$ i stedet for $V_x$. Ved source må båndene bøye seg
+${2\phi_F - V_B}$, sonen blir bredere, og gaten må bære flere ioner:
+
+$$
+Q_d' = -\left[2\varepsilon_sqN_a(2\phi_F - V_B)\right]^{1/2}
+$$
+
+Spenningen fra gaten til substratet må være ${V_{FB} - Q_d'/C_i + 2\phi_F - V_B}$. Gatespenningen måles fra
+source, som ligger $-V_B$ over substratet, så $V_G$ er $-V_B$ mindre enn spenningen fra gaten til
+substratet, og leddene med $V_B$ går mot hverandre. Bare den større ladningen i sonen står igjen, og terskelspenningen øker med
+<FormulaRef id="substrateffekt">forskyvningen</FormulaRef>
+
+$$
+\Delta V_T = \frac{\sqrt{2\varepsilon_sqN_a}}{C_i} \allowbreak \left[(2\phi_F - V_B)^{1/2} - (2\phi_F)^{1/2}\right]
+$$
+
+Det er <Term name="Substrateffekt">substrateffekten</Term>. Når ${|V_B| \gg 2\phi_F}$, er det første leddet
+størst, og <FormulaRef id="substratspenning">formelen på formelarket</FormulaRef> er
+${\Delta V_T \approx (\sqrt{2\varepsilon_sqN_a}/C_i)(-V_B)^{1/2}}$.
+
+For transistoren i simuleringene er ${\sqrt{2\varepsilon_sqN_a}/C_i = 0{,}12\ \text{V}^{1/2}}$, så ${V_B = -2}$ V
+gir ${\Delta V_T = 0{,}12(2{,}66^{1/2} - 0{,}66^{1/2}) = 0{,}10}$ V. Den tilnærmede formelen gir 0,17 V, fordi
+2 V ikke er stor mot ${2\phi_F = 0{,}66}$ V.
+
+Effekten er større jo høyere substratet er dopet og jo tykkere oksidet er. Den gjør $|V_T|$ større for
+begge typene. For p-kanal er $V_B$ positiv, og $V_T$ blir mer negativ. Substrateffekten kan heve terskelen i
+en transistor der $V_T$ er nær null. I integrerte kretser der ikke hver source kan kobles til substratet,
+flytter den terskelen, og det må kretsen ta hensyn til.
+
+<Quiz
+  question={"Med ${V_B = -2}$ V øker $V_T$ med 0,10 V i transistoren i simuleringene. Omtrent hvor mye øker den med samme oksid og samme $V_B$ hvis substratet dopes fire ganger tettere?"}
+  options={[
+    "0,2 V",
+    "0,4 V",
+    "0,1 V",
+    "0,05 V",
+  ]}
+  answer={0}
+  explanation={"Faktoren ${\\sqrt{2\\varepsilon_sqN_a}/C_i}$ går som ${N_a^{1/2}}$, så den dobles. $2\\phi_F$ øker bare med ${2 \\cdot 0{,}026 \\ln 4 = 0{,}07}$ V, så hakeparentesen endrer seg lite, og ${\\Delta V_T}$ blir omtrent 0,2 V. 0,4 V er proporsjonal med $N_a$ i stedet for ${N_a^{1/2}}$. 0,1 V er svaret hvis effekten bare avhang av $V_B$ og oksidet. 0,05 V får du hvis tettere doping, som gir smalere sone, skulle gi mindre effekt, men det er ladningen i sonen som teller, og den øker."}
+/>
+
+<Callout title="Spenning på substratet">
+Negativ $V_B$ på substratet i en n-kanal gjør sonen under kanalen bredere, gaten må bære flere ioner, og $V_T$ øker. Økningen er større jo høyere substratet er dopet, og når ${|V_B| \gg 2\phi_F}$, er den omtrent ${(\sqrt{2\varepsilon_sqN_a}/C_i)(-V_B)^{1/2}}$.
+</Callout>
+
+## Strømmen under terskelen
+
+Formelen for strømmen i metning er null ved ${V_G = V_T}$, men det går strøm også under terskelen. Velg
+«0,1 V» i simuleringen «Barrieren langs kanalen» og dra «Gate» fra 0 til 0,5 V. Barrieren ${\Delta E}$
+synker, og strømmen i diagrammet nederst stiger langs en rett linje, fra rundt ${10^{-15}}$ A til
+${3 \cdot 10^{-8}}$ A.
+
+Under terskelen er det ingen kanal. Elektronene i source har energier spredt over noen $k_BT$ over $E_c$, og
+bare de som har mer energi enn barrieren, kommer over. Andelen er ${e^{-\Delta E/k_BT}}$, som for elektronene
+over barrieren i en pn-overgang. Når gaten senker barrieren, øker strømmen med en faktor $e$ for hver $k_BT$,
+ti ganger for hver ${k_BT\ln 10 = 60}$ meV. Elektronene som kommer over, diffunderer gjennom p-området til
+drain.
+
+Gaten senker barrieren mindre enn gatespenningen øker. Spenningen fordeler seg på oksidet og silisiumet, og
+under terskelen er ladningen i silisiumet ionene i sonen. Oksidet og sonen er to kondensatorer i serie, $C_i$
+og ${C_d = \varepsilon_s/W}$, med samme ladning ${\Delta Q}$. Da er ${\Delta V_i = \Delta Q/C_i}$ og
+${\Delta\phi_s = \Delta Q/C_d}$, så
+
+$$
+\Delta\phi_s = \frac{C_i}{C_i + C_d}\,\Delta V_G
+$$
+
+<Term name="Grenseflatetilstander">Tilstander ved grenseflaten</Term> tar også ladning når $\phi_s$ endrer seg, og de virker som en kapasitans
+$C_{it}$ ved siden av $C_d$. Med begge er ${\Delta\phi_s = \Delta V_G/c_r}$ med ${c_r = 1 + (C_d + C_{it})/C_i}$,
+og strømmen øker ti ganger for hver ${c_r \cdot 60}$ mV på gaten. Den spenningen er
+<Term name="Subterskelstigning">subterskelstigningen</Term>:
+
+$$
+S = \frac{dV_G}{d(\log I_D)} \allowbreak = \frac{k_BT}{q}\ln 10\left[1 + \frac{C_d + C_{it}}{C_i}\right]
+$$
+
+Det er <FormulaRef id="subterskel">formelen på formelarket</FormulaRef>. Leddene i hakeparentesen er positive,
+så $S$ er aldri under 60 mV per dekade ved romtemperatur. For
+transistoren i simuleringene er ${C_d = \varepsilon_s/W_m = 2{,}5 \cdot 10^{-8}\ \text{F/cm}^2}$ ved terskelen, og
+${C_d/C_i = 0{,}073}$. Uten tilstander ved grenseflaten er ${S = 60 \cdot 1{,}073 = 64}$ mV per dekade ved terskelen. Under
+terskelen er sonen smalere enn $W_m$, så $C_d$ og $S$ er litt større. I simuleringen faller strømmen rundt
+7,4 dekader fra $V_T$ ned til 0 V.
+
+<FormulaRef id="subterskelstrom">Strømmen under terskelen</FormulaRef> er
+
+$$
+I_D = \bar{\mu}_n(C_d + C_{it})\frac{Z}{L}\left(\frac{k_BT}{q}\right)^2 \allowbreak \left(1 - e^{-qV_D/k_BT}\right) \allowbreak e^{q(V_G - V_T)/c_rk_BT}
+$$
+
+Den siste faktoren er barrieren som gaten senker. Faktoren ${1 - e^{-qV_D/k_BT}}$ trekker fra elektronene fra
+drain, som går motsatt vei over den samme barrieren. Ved ${V_G = V_T}$ er den siste faktoren 1, og med 0,1 V på
+drain og ${C_{it} = 0}$ er strømmen ${\bar{\mu}_nC_d(Z/L)(k_BT/q)^2 \cdot 0{,}98 = 3{,}3 \cdot 10^{-8}}$ A, omtrent
+punktet ved $V_T$ i simuleringen.
+
+Velg «0 V» i simuleringen «Barrieren langs kanalen». Like mange elektroner går hver vei, og ${I_D = 0}$. Med
+0,1 V på drain kommer det bare ${e^{-0{,}1/0{,}0259} = 2\ \%}$ så mange elektroner over fra drain som fra source.
+Velger du «1 V», ligger kurven under $V_T$ nesten oppå kurven for 0,1 V. Over $V_T$ skiller de seg, fordi strømmen der
+øker med $V_D$ til kanalen klemmes av.
+
+Ved 0 V på gaten er strømmen i simuleringen rundt ${10^{-15}}$ A. I en virkelig transistor er lekkasjen i
+overgangen mellom drain og substratet større, og den bestemmer strømmen når transistoren er av, så
+overgangene må være av god kvalitet. En lav $V_T$ gir mer strøm når transistoren er av: hver $S$ lavere
+terskel, her rundt 70 mV, gir ti ganger så mye strøm ved ${V_G = 0}$. En høy $V_T$ gir mindre strøm når den er på, fordi
+strømmen avhenger av hvor langt over $V_T$ gaten kommer. Liten $S$ gir den beste bryteren, fordi
+transistoren da går fra av til på med en liten endring i gatespenningen.
+
+<Callout title="Strømmen under terskelen">
+Under $V_T$ øker strømmen over barrieren fra source ti ganger for hver ${S = 60\ \text{mV} \cdot c_r}$ på gaten ved romtemperatur, så minst 60 mV. Lav $V_T$ gir mer strøm når transistoren er av, høy $V_T$ mindre strøm når den er på.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Subterskelstigningen">
+<ExamRef id="2020-mai" task="I-12" />
+
+<Quiz
+  question={"The <em>subthreshold slope</em>, S, of a MOSFET [mV/decade] is improved by,"}
+  options={[
+    "Decreasing the oxide thickness and increasing the substrate doping",
+    "Decreasing the oxide thickness and decreasing the substrate doping",
+    "Increasing the oxide thickness and decreasing the substrate doping",
+  ]}
+  answer={1}
+  explanation={"$S$ blir mindre, altså bedre, når ${(C_d + C_{it})/C_i}$ blir mindre. Tynnere oksid gir større ${C_i = \\varepsilon_i/d}$. Lettere doping gir bredere sone og mindre ${C_d = \\varepsilon_s/W}$. Tettere doping gjør sonen smalere og $C_d$ større, og tykkere oksid gjør $C_i$ mindre, så begge gjør $S$ større."}
+/>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Falske kurver">
+<ExamRef id="2018-des-tfe4164" task="III-3" />
+
+Figure 3 below show falsified (*fake*) $I_D$-$V_D$ and $I_D$-$V_G$ characteristics of an n-channel MOSFET,
+allegedly fabricated and measured at 300 K in a device fabrication course.
+
+<Figure
+  src="/figures/eksamen-2018-12-oppgave-III-3.png"
+  alt="Til venstre I_D i mA mot V_D i V, med kurver for V_G = 250, 0, −250 og −500 mV som flater ut ved 1,6, 0,9, 0,4 og 0,1 mA. Til høyre I_D i mA på logaritmisk akse fra 10^-6 til 10^0 mot V_G fra −650 til −400 mV: en rett linje fra rundt 3·10^-7 mA ved −640 mV til 0,1 mA ved −500 mV, så nesten flat."
+  width={440}
+  height={188}
+  caption="Figur 3 fra oppgavesettet."
+/>
+
+- If these were actual, measured I-V characteristics, would the MOSFET be a *depletion mode* (normally on)
+  or an *enhancement mode* (normally off) device? Explain why!
+- If these were actual, measured I-V characteristics, would this MOSFET be a “*long channel*” or a “*short
+  channel*” device? Explain why!
+- If these were actual, measured I-V characteristics, what would be the “*subthreshold slope/swing*” S
+  [mV/decade] of this MOSFET?
+- The falsification was eventually disclosed in this case. What physical aspect of these MOSFET I-V
+  characteristics (besides the less than smooth curves) should draw suspicion?
+
+*Hint*: Concentrate on the $I_D$-$V_G$ characteristics in Figure 3 above.
+
+<Solution>
+
+Det går 0,9 mA med ${V_G = 0}$ og strøm også ved −500 mV, så kanalen er der uten spenning på gaten, og
+$V_T$ er negativ. Transistoren er normalt på, en utarmingstype.
+
+Strømmen i metning er 0,1, 0,4, 0,9 og 1,6 mA for like steg på 250 mV. Kvadratrøttene, 0,32, 0,63, 0,95 og
+1,26, øker like mye for hvert steg, så strømmen går som ${(V_G - V_T)^2}$, som i en lang kanal. I en kort
+kanal ville strømmene selv økt like mye.
+
+Den rette delen av kurven til høyre går fra rundt ${3 \cdot 10^{-7}}$ mA ved −640 mV til ${10^{-1}}$ mA ved
+−500 mV, 5,5 dekader på 140 mV:
+
+$$
+\begin{aligned}
+&S = \frac{140\ \text{mV}}{5{,}5\ \text{dekader}} \\
+&= 25\ \text{mV per dekade}
+\end{aligned}
+$$
+
+Ved 300 K er ${S = 60\,[1 + (C_d + C_{it})/C_i]}$ mV per dekade, og alle kapasitansene er positive, så $S$ kan
+ikke være under 60 mV per dekade. 25 mV per dekade er umulig.
+
+<Answer>
+
+Utarmingstype (strøm ved ${V_G \le 0}$, negativ $V_T$), lang kanal (strømmen i metning går som
+${(V_G - V_T)^2}$), ${S = 25}$ mV per dekade, og det er under grensen på 60 mV per dekade ved 300 K.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+## Kapasitanser og motstander rundt kanalen
+
+Formlene over gjelder selve kanalen. Rundt den har en virkelig MOSFET kapasitanser og motstander som også
+bestemmer hvordan den oppfører seg, og figur 4 viser dem. Mellom gaten og kanalen er kapasitansen ${C_iZL}$, fordelt
+på $C_{GS}$ mot source-enden og $C_{GD}$ mot drain-enden. I tillegg overlapper gaten source og drain litt, og
+det gir <Term name="Overlappkapasitans">overlappkapasitansene</Term> $C_{OS}$ og $C_{OD}$. Kapasitansen $C_{OD}$
+mellom gaten og drain kalles Miller-kapasitansen. Den er særlig uheldig, fordi den kobler utgangen, drain,
+tilbake til inngangen, gaten. Den måles ved høy frekvens med ${V_G = 0}$. Da er det ingen kanal, og nesten all
+kapasitans mellom gaten og drain er overlappen. Overgangene mellom source, drain og substratet har kapasitansene
+$C_{JS}$ og $C_{JD}$.
+
+<Figure
+  src="/figures/mosfet-kretsmodell.svg"
+  alt="Snitt av en MOSFET der gaten overlapper n⁺-områdene litt i hver ende. Fire kondensatorsymboler i oksidet mellom gaten og silisiumet, merket C_OS og C_OD over overlappene og C_GS og C_GD over kanalen. En motstand R_S i source og R_D i drain, fra kontakten mot kanalen. Kondensatorer C_JS og C_JD fra bunnen av n⁺-områdene ned i substratet. Under: L mellom gatekantene og den kortere L_eff mellom n⁺-kantene."
+  width={340}
+  height={264}
+  number={4}
+  caption="Kapasitansene og motstandene rundt kanalen. Oksidet er tegnet mye tykkere enn det er."
+/>
+
+Overlappen holdes liten med en selvjustert gate. Implantatet sprer seg likevel litt inn under gatekanten,
+både når det implanteres og når det varmes opp etterpå. Kanalen blir ${\Delta L_R}$ kortere enn gaten, og den
+<Term name="Effektiv kanallengde">effektive kanallengden</Term> er
+
+$$
+L_\text{eff} = L - \Delta L_R
+$$
+
+Her er $L$ lengden av gaten, som er litt lengre enn kanalen. Kanallengden i formlene over, avstanden fra source
+til drain, er $L_\text{eff}$, og det er den som hører hjemme i $k_N$. Isolasjonen rundt transistoren gjør den
+effektive bredden ${Z - \Delta Z}$.
+
+Strømmen går også gjennom motstanden $R_S$ i source og $R_D$ i drain, til sammen ${R_{SD} = R_S + R_D}$. En
+del av $V_D$ ligger over dem i stedet for over kanalen, og jo større strømmen er, desto større del. Det er en
+av grunnene til at strømmen øker mindre enn den rette linjen i figur 3 ved høye gatespenninger. For små $V_D$ er
+kanalen og $R_{SD}$ to motstander i serie, og med konduktansen $g$ for kanalen er
+<FormulaRef id="mosfet-seriemotstand">motstanden mellom drain og source</FormulaRef>
+
+$$
+\frac{V_D}{I_D} = \frac{L - \Delta L_R}{(Z - \Delta Z)\bar{\mu}_nC_i(V_G - V_T)} \allowbreak + R_{SD}
+$$
+
+Måler du ${V_D/I_D}$ for transistorer som bare har ulik $L$, ligger punktene på en rett linje i $L$. Med en
+annen spenning på substratet endrer $V_T$ seg, og stigningen med den. Linjene for flere substratspenninger
+krysser hverandre der kanalleddet er null, ved ${L = \Delta L_R}$, og der er ${V_D/I_D = R_{SD}}$.
+
+<Callout title="Rundt kanalen">
+Gaten overlapper source og drain, og overlappkapasitansen $C_{OD}$ kobler drain tilbake til gaten. Kanalen er ${\Delta L_R}$ kortere enn gaten, ${L_\text{eff} = L - \Delta L_R}$, og motstanden ${R_{SD}}$ i source og drain tar en del av $V_D$.
+</Callout>
+
+<KeyTakeaways>
+
+- Mellom source og drain i en n-kanal-MOSFET ligger p-type silisium. Over $V_T$ inverterer gaten overflaten, og laget av elektroner er kanalen. Positiv $V_T$ gir en anrikningstype (normalt av), negativ en utarmingstype (normalt på).
+- Kanalen i punktet $x$ er en MOS-kondensator med ${\phi_s = 2\phi_F + V_x}$, og ladningen er ${Q_n(x) = -C_i(V_G - V_T - V_x)}$ når sonen regnes som konstant.
+- ${I_D = k_N[(V_G - V_T)V_D - V_D^2/2]}$ med ${k_N = (Z/L)\bar{\mu}_nC_i}$. For små $V_D$ er kanalen en motstand med ${g = k_N(V_G - V_T)}$.
+- Ved ${V_D(\text{sat.}) = V_G - V_T}$ klemmes kanalen av ved drain, og strømmen metter ved ${I_D(\text{sat.}) = \tfrac{1}{2}k_N(V_G - V_T)^2}$ med ${g_m(\text{sat.}) = k_N(V_G - V_T)}$. $\sqrt{I_D(\text{sat.})}$ mot $V_G$ er rett og gir $V_T$.
+- I en kort kanal når elektronene $v_s$ før kanalen klemmes av, og ${I_D(\text{sat.}) \approx ZC_i(V_G - V_T)v_s}$.
+- $V_T$ styres med gatematerialet, oksidet, dopingen og implantert bor, ${\Delta V_T = qF_B/C_i}$. Negativ $V_B$ på substratet øker $V_T$ med ${(\sqrt{2\varepsilon_sqN_a}/C_i)[(2\phi_F - V_B)^{1/2} - (2\phi_F)^{1/2}]}$.
+- Under $V_T$ går strømmen over barrieren fra source og øker ti ganger for hver subterskelstigning $S$ på gaten. $S$ er minst 60 mV ved romtemperatur og større jo større ${(C_d + C_{it})/C_i}$ er.
+- Overlappen mellom gaten og drain gir Miller-kapasitansen $C_{OD}$, kanalen er ${L_\text{eff} = L - \Delta L_R}$ lang, og ${R_{SD}}$ tar en del av $V_D$.
+
+</KeyTakeaways>

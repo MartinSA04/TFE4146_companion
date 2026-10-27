@@ -640,43 +640,75 @@ formulas:
     tex: "V_T = \\underbrace{\\Phi_{ms} - \\dfrac{Q_i}{C_i}}_{\\text{flatbånd}} - \\dfrac{Q_d}{C_i} + 2\\phi_F"
     label: "Terskelspenningen for en n-kanal-MOSFET på p-type substrat, gatespenningen som gir sterk inversjon. De to første leddene er flatbåndspenningen $V_{FB}$: $\\Phi_{ms}$ er forskjellen i arbeidsfunksjon mellom metallet og halvlederen, og $Q_i$ er ladningen per areal i oksidet og ved grenseflaten. Deretter må gaten bære ladningen $Q_d$ i romladningssonen og bøye båndene $2\\phi_F$."
 
-  # Resten av formelarket (Streetman kap. 6–8) står her før modulene er skrevet.
-  # Bytt seksjonsnavnene til modulenes overskrifter når modulene kommer.
-  - id: substratspenning
-    section: MOSFET-en
-    onSheet: true
-    tex: "\\Delta V_T \\simeq \\dfrac{\\sqrt{2\\varepsilon_s qN_a}}{C_i}\\,(-V_B)^{1/2} \\quad (\\text{n-kanal})"
-    label: "Substrateffekten: en negativ spenning $V_B$ på p-substratet gjør romladningssonen under kanalen bredere, og terskelspenningen øker. Uttrykket gjelder når $|V_B|$ er stor mot $2\\phi_F$. Effekten er sterkere jo høyere substratet er dopet."
-  - id: mosfet-strom-full
-    section: MOSFET-en
-    onSheet: true
-    tex: "\\begin{aligned} &I_D = \\dfrac{\\bar{\\mu}_nZC_i}{L}\\Big\\{\\big(V_G - V_{FB} - 2\\phi_F - \\tfrac{1}{2}V_D\\big)V_D \\\\ &\\quad - \\tfrac{2}{3}\\dfrac{\\sqrt{2\\varepsilon_s qN_a}}{C_i}\\big[(V_D + 2\\phi_F)^{3/2} - (2\\phi_F)^{3/2}\\big]\\Big\\} \\end{aligned}"
-    label: "Drain-strømmen i en n-kanal-MOSFET før metning, med ladningen i romladningssonen regnet med langs kanalen. $Z$ er kanalbredden, $L$ kanallengden, $C_i$ oksidkapasitansen per areal og $\\bar{\\mu}_n$ den midlere mobiliteten til elektronene i kanalen."
+  # MOSFET-en (Streetman §6.4.1, §6.5.1–6.5.2, §6.5.4–6.5.8).
+  - id: kanalladning
+    section: Ladningen i kanalen
+    onSheet: false
+    tex: "Q_n(x) = -C_i(V_G - V_T - V_x)"
+    label: "Ladningen per areal til elektronene i kanalen i punktet $x$, der spenningen i kanalen er $V_x$. Hvert stykke av kanalen er en MOS-kondensator med spenningen $V_G - V_x$ fra gaten, og $V_T$ av den går med før det kommer elektroner. Ladningen i sonen er regnet som den samme som ved source."
   - id: mosfet-strom
-    section: MOSFET-en
+    section: Strømmen langs kanalen
     onSheet: true
     tex: "I_D \\simeq \\dfrac{\\bar{\\mu}_nZC_i}{L}\\Big[(V_G - V_T)V_D - \\tfrac{1}{2}V_D^2\\Big]"
-    label: "Den vanlige tilnærmingen før metning: ladningen i romladningssonen regnes som konstant langs kanalen og samles i $V_T$. For liten $V_D$ er strømmen lineær i $V_D$, og kanalen er en motstand styrt av $V_G$."
+    label: "Drain-strømmen i en n-kanal-MOSFET før metning, fra $I_D = Z\\bar{\\mu}_n|Q_n|\\,dV_x/dx$ integrert fra source til drain. $\\bar{\\mu}_n$ er overflatemobiliteten, $Z$ kanalbredden og $L$ kanallengden, og $k_N = (Z/L)\\bar{\\mu}_nC_i$ er faktoren foran hakeparentesen. Ladningen i sonen er regnet som konstant langs kanalen og samlet i $V_T$."
+  - id: mosfet-strom-full
+    section: Strømmen langs kanalen
+    onSheet: true
+    tex: "\\begin{aligned} &I_D = \\dfrac{\\bar{\\mu}_nZC_i}{L}\\Big\\{\\big(V_G - V_{FB} - 2\\phi_F - \\tfrac{1}{2}V_D\\big)V_D \\\\ &\\quad - \\tfrac{2}{3}\\dfrac{\\sqrt{2\\varepsilon_s qN_a}}{C_i}\\big[(V_D + 2\\phi_F)^{3/2} - (2\\phi_F)^{3/2}\\big]\\Big\\} \\end{aligned}"
+    label: "Drain-strømmen før metning med ladningen i sonen regnet med langs kanalen, der båndene må bøye seg $2\\phi_F + V_x$. For små $V_D$ er den $k_N(V_G - V_T)V_D$, som den enkle formelen, og for et tynt oksid på lett dopet silisium gir den bare noen prosent mindre strøm."
+  - id: kanalkonduktans
+    section: Strømmen langs kanalen
+    onSheet: false
+    tex: "g = \\dfrac{\\partial I_D}{\\partial V_D} = \\dfrac{Z}{L}\\bar{\\mu}_nC_i(V_G - V_T)"
+    label: "Konduktansen til kanalen når $V_D \\ll V_G - V_T$. Kanalen er da en motstand som gaten styrer, og den leder bedre jo høyere gatespenningen er over $V_T$."
   - id: mosfet-metning
-    section: MOSFET-en
+    section: Avklemming og metning
     onSheet: true
     tex: "\\begin{aligned} I_D(\\text{sat.}) &\\simeq \\tfrac{1}{2}\\bar{\\mu}_nC_i\\dfrac{Z}{L}(V_G - V_T)^2 \\\\ &= \\dfrac{Z}{2L}\\bar{\\mu}_nC_iV_D^2(\\text{sat.}) \\end{aligned}"
-    label: "Metning: ved $V_D(\\text{sat.}) = V_G - V_T$ klemmes kanalen av ved drain, og større $V_D$ øker ikke strømmen. Strømmen vokser med kvadratet av $V_G - V_T$."
+    label: "Strømmen i metning. Ved $V_D(\\text{sat.}) = V_G - V_T$ er spenningen mellom gaten og kanalen ved drain akkurat $V_T$, kanalen er klemt av der, og mer spenning på drain legges over et kort stykke ved drain. Strømmen vokser med kvadratet av $V_G - V_T$."
   - id: transkonduktans
-    section: MOSFET-en
+    section: Avklemming og metning
     onSheet: true
     tex: "\\begin{aligned} g_m &= \\dfrac{\\partial I_D}{\\partial V_G} \\\\ g_m(\\text{sat.}) &= \\dfrac{\\partial I_D(\\text{sat.})}{\\partial V_G} \\simeq \\dfrac{Z}{L}\\bar{\\mu}_nC_i(V_G - V_T) \\end{aligned}"
-    label: "Transkonduktansen: hvor mye drain-strømmen endrer seg per volt på gaten. I metning vokser den lineært med $V_G - V_T$."
+    label: "Transkonduktansen: hvor mye drain-strømmen endrer seg per volt på gaten. I metning vokser den lineært med $V_G - V_T$, og den er like stor som konduktansen til kanalen for små $V_D$ ved samme gatespenning."
   - id: kort-kanal
-    section: MOSFET-en
+    section: Kort kanal og metningshastighet
     onSheet: true
     tex: "I_D \\simeq ZC_i(V_G - V_T)v_s"
-    label: "Kort kanal: feltet langs kanalen er så sterkt at elektronene går med metningshastigheten $v_s$. Metningsstrømmen blir da lineær i $V_G - V_T$ i stedet for kvadratisk, og uavhengig av $L$."
+    label: "Strømmen i metning i en kort kanal, der elektronene går med metningshastigheten $v_s$ langs nesten hele kanalen: ladningen per lengde ved source ganger $v_s$. Den er lineær i $V_G - V_T$ og avhenger ikke av $L$, så like steg i $V_G$ gir like store sprang mellom kurvene."
+  - id: terskel-implantasjon
+    section: Hvordan terskelspenningen styres
+    onSheet: false
+    tex: "\\Delta V_T = \\dfrac{qF_B}{C_i}"
+    label: "Forskyvningen av terskelspenningen fra $F_B$ boratomer per cm² implantert i et tynt lag rett under oksidet. Akseptorene der er en negativ ladning ved grenseflaten og flytter $V_T$ i positiv retning, motsatt vei av den positive ladningen $Q_i$."
+  - id: substrateffekt
+    section: Spenning på substratet
+    onSheet: false
+    tex: "\\Delta V_T = \\dfrac{\\sqrt{2\\varepsilon_sqN_a}}{C_i} \\allowbreak \\left[(2\\phi_F - V_B)^{1/2} - (2\\phi_F)^{1/2}\\right]"
+    label: "Substrateffekten i en n-kanal: med spenningen $V_B < 0$ på substratet, målt fra source, må båndene ved source bøye seg $2\\phi_F - V_B$, sonen blir bredere, og gaten må bære flere ioner. $V_T$ måles fra source, så bare den større ladningen i sonen øker terskelen."
+  - id: substratspenning
+    section: Spenning på substratet
+    onSheet: true
+    tex: "\\Delta V_T \\simeq \\dfrac{\\sqrt{2\\varepsilon_s qN_a}}{C_i}\\,(-V_B)^{1/2} \\quad (\\text{n-kanal})"
+    label: "Substrateffekten når $|V_B|$ er stor mot $2\\phi_F$. Den er sterkere jo høyere substratet er dopet og jo tykkere oksidet er. For små $|V_B|$ gir den for stor $\\Delta V_T$."
   - id: subterskel
-    section: MOSFET-en
+    section: Strømmen under terskelen
     onSheet: true
     tex: "S = \\dfrac{dV_G}{d(\\log I_D)} = \\dfrac{k_BT}{q}\\ln 10\\left[1 + \\dfrac{C_d + C_{it}}{C_i}\\right]"
-    label: "Subterskelstigningen: gatespenningen som trengs for å endre strømmen én dekade under terskelen. Den er minst $(k_BT/q)\\ln 10 = 60$ mV per dekade ved 300 K. $C_{it}$ er kapasitansen fra grenseflatetilstandene; liten $S$ gir en bedre bryter."
+    label: "Subterskelstigningen: gatespenningen som endrer strømmen under terskelen ti ganger. Gaten senker barrieren fra source bare med $\\Delta V_G/c_r$, der $c_r = 1 + (C_d + C_{it})/C_i$ er forholdet i kapasitansdeleren av oksidet, sonen og grenseflatetilstandene. Den er minst $(k_BT/q)\\ln 10 = 60$ mV per dekade ved 300 K, og liten $S$ gir en bedre bryter."
+  - id: subterskelstrom
+    section: Strømmen under terskelen
+    onSheet: false
+    tex: "I_D = \\bar{\\mu}_n(C_d + C_{it})\\dfrac{Z}{L}\\left(\\dfrac{k_BT}{q}\\right)^2 \\allowbreak \\left(1 - e^{-qV_D/k_BT}\\right) \\allowbreak e^{q(V_G - V_T)/c_rk_BT}"
+    label: "Strømmen under terskelen, elektroner som kommer over barrieren fra source. Faktoren $1 - e^{-qV_D/k_BT}$ er elektronene fra drain som går motsatt vei, så strømmen er null ved $V_D = 0$ og nesten uavhengig av $V_D$ over noen $k_BT/q$."
+  - id: mosfet-seriemotstand
+    section: Kapasitanser og motstander rundt kanalen
+    onSheet: false
+    tex: "\\dfrac{V_D}{I_D} = \\dfrac{L - \\Delta L_R}{(Z - \\Delta Z)\\bar{\\mu}_nC_i(V_G - V_T)} \\allowbreak + R_{SD}"
+    label: "Motstanden mellom drain og source for små $V_D$: kanalen, som er $\\Delta L_R$ kortere og $\\Delta Z$ smalere enn gaten, i serie med motstanden $R_{SD} = R_S + R_D$ i source og drain. Målt mot $L$ for flere substratspenninger krysser linjene hverandre ved $L = \\Delta L_R$ og $V_D/I_D = R_{SD}$."
+
+  # Resten av formelarket (Streetman kap. 7–8) står her før modulene er skrevet.
+  # Bytt seksjonsnavnene til modulenes overskrifter når modulene kommer.
   - id: bjt-kantoverskudd
     section: Bipolartransistoren
     onSheet: true
@@ -990,7 +1022,7 @@ glossary:
     definition: "(<em>ohmic contact</em>) En kontakt med lineær strøm–spenning-karakteristikk i begge retninger og liten motstand. Ideelt når majoritetsbærerne samles ved grenseflaten, $\\Phi_m < \\Phi_s$ på n-type. I praksis lages den med et sterkt dopet lag under metallet, så sonen blir tynn nok til at bærerne tunnelerer gjennom."
   - term: Grenseflatetilstander
     section: Virkelige kontakter
-    definition: "(<em>interface states</em>) Nivåer i gapet ved grenseflaten mellom halvlederen og metallet, fra ufullstendige bindinger og mellomlaget. Er det mange nok, låser de Fermi-nivået på et fast sted, så barrieren nesten ikke avhenger av metallet; på n-type GaAs blir den omtrent 0,8 eV."
+    definition: "(<em>interface states</em>) Nivåer i gapet ved grenseflaten mellom halvlederen og metallet, fra ufullstendige bindinger og mellomlaget. Er det mange nok, låser de Fermi-nivået på et fast sted, så barrieren nesten ikke avhenger av metallet; på n-type GaAs blir den omtrent 0,8 eV. Ved grenseflaten mellom silisium og oksid i en MOSFET tar slike tilstander ladning når $\\phi_s$ endrer seg, og de virker som en kapasitans $C_{it}$."
   - term: Heteroovergang
     section: Heterooverganger
     definition: "(<em>heterojunction</em>) En overgang mellom to halvledere med ulikt båndgap, for eksempel AlGaAs og GaAs. Har de samme gitterkonstant, kan grenseflaten bli nesten fri for defekter. Båndkantene gjør sprangene $\\Delta E_c$ og $\\Delta E_v$ ved grenseflaten, så barrieren for elektroner og for hull blir forskjellig. En overgang i én halvleder er en homoovergang."
@@ -1020,7 +1052,7 @@ glossary:
     definition: "(<em>junction field-effect transistor</em>) En felteffekttransistor der gaten er en pn-overgang i sperreretning mot kanalen. I en n-kanal-JFET ligger kanalen mellom to p⁺-gater, og romladningssonene fra gatene bestemmer hvor høy den ledende delen er. Gaten skal ha $V_G \\le 0$ og drain $V_D > 0$, målt fra source."
   - term: Avklemming
     section: Kanalen klemmes av ved drain
-    definition: "(<em>pinch-off</em>) Romladningssonene fra de to gatene møtes ved drain, og kanalen er klemt av der. I en JFET skjer det når $V_D - V_G = V_p - V_0$. Strømmen metter da på $I_D(\\text{sat.})$, fordi spenningen ut over $V_D(\\text{sat.}) = V_G + V_p - V_0$ faller over den avklemte delen, der elektronene feies gjennom til drain. Møtes sonene langs hele kanalen, ved $V_G = V_0 - V_p$, er kanalen stengt, og det går ingen strøm."
+    definition: "(<em>pinch-off</em>) Kanalen forsvinner ved drain, og strømmen metter på $I_D(\\text{sat.})$, fordi spenningen ut over $V_D(\\text{sat.})$ faller over det korte avklemte stykket, der elektronene feies gjennom til drain. I en JFET møtes romladningssonene fra de to gatene ved drain når $V_D - V_G = V_p - V_0$. Ved $V_G = V_0 - V_p$ møtes de langs hele kanalen, og kanalen er stengt. I en MOSFET skjer det når spenningen mellom gaten og kanalen ved drain er $V_T$, altså ved $V_D(\\text{sat.}) = V_G - V_T$."
   - term: Gradvis kanal
     section: Strømmen gjennom kanalen
     definition: "(<em>gradual channel approximation</em>) Tilnærmingen at romladningssonen i hvert punkt langs kanalen er som i en plan overgang med spenningen i det punktet. Gjelder når kanalen er mye lengre enn den er høy, slik at leddet på tvers i Poissons ligning dominerer og halvhøyden endrer seg langsomt langs kanalen."
@@ -1032,7 +1064,7 @@ glossary:
     definition: "(<em>semi-insulating GaAs</em>) GaAs som er udopet eller dopet med krom, så Fermi-nivået ligger nær midten av båndgapet og resistiviteten er rundt $10^8$ Ω·cm. Det brukes som substrat under MESFET-er, der det isolerer transistorene fra hverandre."
   - term: Kort kanal
     section: Kort kanal
-    definition: "(<em>short channel</em>) En kanal så kort at feltet langs den får farten til elektronene nær metningshastigheten $v_s$. Strømmen metter da når elektronene ved drain kommer opp i $v_s$, før kanalen klemmes av, og i en MESFET er den omtrent $qN_dv_sZh$. Kurvene for like steg i $V_G$ ligger jevnere enn i en lang kanal, og de stiger etter metning fordi stykket ved drain tar en større del av kanalen."
+    definition: "(<em>short channel</em>) En kanal så kort at feltet langs den får farten til elektronene nær metningshastigheten $v_s$. Strømmen metter da når elektronene ved drain kommer opp i $v_s$, før kanalen klemmes av. Strømmen i metning er omtrent $qN_dv_sZh$ i en MESFET og $ZC_i(V_G - V_T)v_s$ i en MOSFET. Kurvene for like steg i $V_G$ ligger jevnere enn i en lang kanal, og de stiger etter metning fordi stykket ved drain tar en større del av kanalen."
   - term: MOS-kondensator
     section: En kondensator med silisium som den ene platen
     definition: "(<em>MOS capacitor</em>) Et metall, et tynt oksid og en halvleder lagt oppå hverandre. Oksidet leder ikke, så gaten og halvlederen får like stor ladning med motsatt fortegn, og halvlederen er i likevekt. Gatespenningen bestemmer om overflaten er i akkumulasjon, utarming eller inversjon."
@@ -1063,6 +1095,39 @@ glossary:
   - term: Debye-lengde
     section: Kapasitansen
     definition: "(<em>Debye length</em>) $L_D = (\\varepsilon_sk_BT/q^2p_0)^{1/2}$, avstanden majoritetsbærerne trenger for å skjerme en ladning i halvlederen. Ved flate bånd gir den halvlederens kapasitans, $\\varepsilon_s/L_D$. Den er 58 nm i p-type silisium med $5 \\cdot 10^{15}$ cm⁻³."
+  - term: MOSFET
+    section: Source, drain og gate
+    definition: "(<em>metal–oxide–semiconductor field-effect transistor</em>) En felteffekttransistor der gaten er en MOS-kondensator over kanalen. I en n-kanal-MOSFET er source og drain n⁺ i et p-type substrat, og en gatespenning over $V_T$ inverterer overflaten mellom dem, så laget av elektroner der er kanalen."
+  - term: Anrikningstype
+    section: Source, drain og gate
+    definition: "(<em>enhancement mode</em>) En MOSFET uten kanal når gatespenningen er null, normalt av. Gaten må samle bærere for å lage kanalen, og i en n-kanal er $V_T$ positiv."
+  - term: Utarmingstype
+    section: Source, drain og gate
+    definition: "(<em>depletion mode</em>) En MOSFET som har kanal når gatespenningen er null, normalt på. Gaten må tømme kanalen for å stenge den, og i en n-kanal er $V_T$ negativ."
+  - term: Feltoksid
+    section: Source, drain og gate
+    definition: "(<em>field oxide</em>) Det tykke oksidet mellom transistorene på en brikke. Den lille kapasitansen gir en høy terskelspenning der, så det ikke dannes kanaler mellom transistorene."
+  - term: Overflatemobilitet
+    section: Strømmen langs kanalen
+    definition: "(<em>surface mobility</em>) $\\bar{\\mu}_n$, mobiliteten til elektronene i det tynne laget ved overflaten i en MOSFET. Den er lavere enn inne i silisiumet."
+  - term: Overføringskarakteristikk
+    section: Terskelspenningen fra målte kurver
+    definition: "(<em>transfer characteristic</em>) $I_D$ mot $V_G$ med fast $V_D$. Med liten $V_D$ er den en rett linje som skjærer $V_G$-aksen ved $V_T$, og i metning er $\\sqrt{I_D}$ mot $V_G$ en rett linje. Under $V_T$ gir den subterskelstigningen på en logaritmisk akse."
+  - term: Selvjustert gate
+    section: Hvordan terskelspenningen styres
+    definition: "(<em>self-aligned gate</em>) Gaten brukes som maske når source og drain implanteres, så de havner rett inntil gaten uten et eget litografisteg. Overlappen mellom gaten og source og drain blir liten, men gaten må tåle oppvarmingen etterpå."
+  - term: Substrateffekt
+    section: Spenning på substratet
+    definition: "(<em>body effect</em>) En spenning $V_B$ på substratet som gir sperrespenning mellom kanalen og substratet, gjør sonen under kanalen bredere og $|V_T|$ større. I en n-kanal er $V_B$ negativ, og $V_T$ øker med omtrent $(\\sqrt{2\\varepsilon_sqN_a}/C_i)(-V_B)^{1/2}$ når $|V_B| \\gg 2\\phi_F$."
+  - term: Subterskelstigning
+    section: Strømmen under terskelen
+    definition: "(<em>subthreshold slope</em>) $S$, gatespenningen som endrer strømmen under terskelen ti ganger, $(k_BT/q)\\ln 10\\,[1 + (C_d + C_{it})/C_i]$. Minst 60 mV per dekade ved 300 K. Liten $S$ gir en transistor som går fra av til på med en liten endring i gatespenningen."
+  - term: Overlappkapasitans
+    section: Kapasitanser og motstander rundt kanalen
+    definition: "(<em>overlap capacitance</em>) Kapasitansen der gaten overlapper source ($C_{OS}$) eller drain ($C_{OD}$). $C_{OD}$ kalles Miller-kapasitansen og kobler drain tilbake til gaten."
+  - term: Effektiv kanallengde
+    section: Kapasitanser og motstander rundt kanalen
+    definition: "(<em>effective channel length</em>) $L_\\text{eff} = L - \\Delta L_R$, lengden av kanalen mellom n⁺-kantene. Den er kortere enn gaten fordi implantatet for source og drain sprer seg inn under gatekanten."
 
 features:
   progress: true
@@ -1176,7 +1241,7 @@ symbols:
   - { tex: "V_x", meaning: "Spenningen i kanalen i punktet $x$, målt fra source", unit: "V", section: "Transistorer", formula: jfet-sonebredde }
   - { tex: "a", meaning: "Halvhøyden av kanalen mellom de to gateovergangene", unit: "cm", section: "Transistorer", formula: avklemmingsspenning, note: "I en MESFET tykkelsen av n-laget. Ikke Bohr-radien $a_0$." }
   - { tex: "h(x)", meaning: "Halvhøyden av den ledende delen av kanalen, $a - W(x)$", unit: "cm", section: "Transistorer", formula: jfet-sonebredde, note: "I en MESFET høyden av den ledende delen av laget. Ikke Plancks konstant $h$." }
-  - { tex: "L", meaning: "Kanallengden fra source til drain", unit: "cm", section: "Transistorer", note: "Ikke diffusjonslengdene $L_n$ og $L_p$." }
+  - { tex: "L", meaning: "Kanallengden fra source til drain", unit: "cm", section: "Transistorer", note: "Ikke diffusjonslengdene $L_n$ og $L_p$. I en MOSFET er gaten litt lengre enn kanalen, og kanalen er $L_\\text{eff} = L - \\Delta L_R$ når $L$ er gatelengden." }
   - { tex: "g_m", meaning: "Transkonduktansen, $\\partial I_D/\\partial V_G$, i metning $\\partial I_D(\\text{sat.})/\\partial V_G$", unit: "S", section: "Transistorer", term: "Transkonduktans", formula: forsterkning }
   - { tex: "V_{DD}", meaning: "Kildespenningen i kretsen med transistoren", unit: "V", section: "Transistorer", term: "Lastlinje", formula: lastlinje }
   - { tex: "R_L", meaning: "Lastmotstanden mellom kilden og drain", unit: "Ω", section: "Transistorer", term: "Lastlinje", formula: lastlinje }
@@ -1206,6 +1271,19 @@ symbols:
   - { tex: "V_{FB}", meaning: "Flatbåndspenningen, gatespenningen som gjør båndene flate", unit: "V", section: "MOS-kondensatoren", term: "Flatbåndspenning", formula: flatbaandspenning, id: vfb }
   - { tex: "\\Phi_{ms}", meaning: "Forskjellen i arbeidsfunksjon mellom gaten og halvlederen, $\\Phi_m - \\Phi_s$", unit: "V", section: "MOS-kondensatoren", term: "Arbeidsfunksjon", formula: flatbaandspenning, id: phi-ms }
   - { tex: "L_D", meaning: "Debye-lengden", unit: "cm", section: "MOS-kondensatoren", term: "Debye-lengde", formula: debye-lengde, id: ld, note: "Ikke diffusjonslengdene $L_n$ og $L_p$." }
+  # ── MOSFET-en ──
+  - { tex: "\\bar{\\mu}_n", meaning: "Overflatemobiliteten, mobiliteten til elektronene i kanalen", unit: "cm²/V·s", section: "MOSFET-en", term: "Overflatemobilitet", formula: mosfet-strom, id: mu-bar, note: "Lavere enn $\\mu_n$ inne i silisiumet. Oppgavene bruker ofte 200 cm²/V·s." }
+  - { tex: "k_N", meaning: "Konduktansfaktoren $(Z/L)\\bar{\\mu}_nC_i$ i en n-kanal-MOSFET", unit: "A/V²", section: "MOSFET-en", formula: mosfet-strom, id: kn }
+  - { tex: "g", meaning: "Konduktansen til kanalen for små $V_D$, $\\partial I_D/\\partial V_D$", unit: "S", section: "MOSFET-en", formula: kanalkonduktans, id: g-kanal, note: "Ikke transkonduktansen $g_m$." }
+  - { tex: "V_B", meaning: "Spenningen på substratet, målt fra source", unit: "V", section: "MOSFET-en", term: "Substrateffekt", formula: substrateffekt, id: vb, note: "Null eller negativ i en n-kanal, null eller positiv i en p-kanal." }
+  - { tex: "\\Delta V_T", meaning: "Forskyvningen av terskelspenningen", unit: "V", section: "MOSFET-en", formula: substrateffekt, id: delta-vt }
+  - { tex: "F_B", meaning: "Antall boratomer per areal implantert rett under oksidet", unit: "cm⁻²", section: "MOSFET-en", formula: terskel-implantasjon, id: fb }
+  - { tex: "S", meaning: "Subterskelstigningen, gatespenningen per dekade strøm under terskelen", unit: "mV/dekade", section: "MOSFET-en", term: "Subterskelstigning", formula: subterskel, id: s-subterskel }
+  - { tex: "C_{it}", meaning: "Kapasitansen per areal fra tilstander ved grenseflaten", unit: "F/cm²", section: "MOSFET-en", term: "Grenseflatetilstander", formula: subterskel, id: cit }
+  - { tex: "c_r", meaning: "Forholdet i kapasitansdeleren, $1 + (C_d + C_{it})/C_i$", section: "MOSFET-en", formula: subterskelstrom, id: cr, note: "Gaten flytter $\\phi_s$ med $\\Delta V_G/c_r$ under terskelen." }
+  - { tex: "C_{OS},\\ C_{OD}", meaning: "Overlappkapasitansene mellom gaten og source og drain", unit: "F", section: "MOSFET-en", term: "Overlappkapasitans", id: cos-cod, note: "$C_{OD}$ er Miller-kapasitansen." }
+  - { tex: "L_\\text{eff},\\ \\Delta L_R", meaning: "Den effektive kanallengden $L - \\Delta L_R$, og hvor mye kortere kanalen er enn gaten", unit: "cm", section: "MOSFET-en", term: "Effektiv kanallengde", formula: mosfet-seriemotstand, id: leff }
+  - { tex: "R_S,\\ R_D,\\ R_{SD}", meaning: "Motstanden i source og i drain, og summen $R_S + R_D$", unit: "Ω", section: "MOSFET-en", formula: mosfet-seriemotstand, id: rsd }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
