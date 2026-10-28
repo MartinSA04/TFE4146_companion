@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" width="340" height="250">
+  <!-- Bipolartransistoren, figur 2: en npn-transistor i en integrert krets, forenklet etter Streetman
+       fig. 7–5e. p-substrat, begravd n⁺-lag, svakt dopet n-kollektor, oksid til isolasjon, p-base med
+       p⁺-kontakter, grunn n⁺-emitter og n⁺-kontakt ned til det begravde laget. Den stiplede linjen er veien
+       strømmen tar under emitteren, med W_b mellom de to overgangene. Ikke i skala. -->
+  <defs><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d7cc4"/></marker></defs>
+  <rect x="8" y="194" width="324" height="46" fill="#a67828" fill-opacity="0.1" stroke="#8d98a6" stroke-width="1"/>
+  <text x="324" y="228" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#7c8795" text-anchor="end">p-substrat</text>
+  <rect x="34" y="170" width="272" height="24" fill="#3d7cc4" fill-opacity="0.3" stroke="#8d98a6" stroke-width="1"/>
+  <text x="298" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="end">n⁺</text>
+  <rect x="34" y="74" width="272" height="96" fill="#3d7cc4" fill-opacity="0.1" stroke="#8d98a6" stroke-width="1"/>
+  <text x="214" y="160" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">n-kollektor</text>
+  <rect x="8" y="66" width="30" height="66" rx="3" fill="#7c8795" fill-opacity="0.22" stroke="#8d98a6" stroke-width="1"/>
+  <rect x="302" y="66" width="30" height="66" rx="3" fill="#7c8795" fill-opacity="0.22" stroke="#8d98a6" stroke-width="1"/>
+  <rect x="206" y="66" width="26" height="66" rx="3" fill="#7c8795" fill-opacity="0.22" stroke="#8d98a6" stroke-width="1"/>
+  <path d="M 46 74 V 106 Q 46 116 56 116 H 190 Q 200 116 200 106 V 74 Z" fill="#a67828" fill-opacity="0.18" stroke="#8d98a6" stroke-width="1"/>
+  <rect x="50" y="74" width="32" height="30" fill="#a67828" fill-opacity="0.32" stroke="none" stroke-width="1"/>
+  <rect x="164" y="74" width="32" height="30" fill="#a67828" fill-opacity="0.32" stroke="none" stroke-width="1"/>
+  <text x="66" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">p⁺</text>
+  <text x="180" y="94" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">p⁺</text>
+  <path d="M 98 74 V 88 Q 98 94 104 94 H 142 Q 148 94 148 88 V 74 Z" fill="#3d7cc4" fill-opacity="0.32" stroke="#8d98a6" stroke-width="1"/>
+  <text x="123" y="89" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">n⁺</text>
+  <text x="68" y="112" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">p</text>
+  <rect x="246" y="74" width="38" height="96" fill="#3d7cc4" fill-opacity="0.3" stroke="none" stroke-width="1"/>
+  <text x="265" y="96" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">n⁺</text>
+  <path d="M 8 74 H 332" fill="none" stroke="#8d98a6" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 56 72 H 76" fill="none" stroke="#6f7a88" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 66 72 V 48" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="66" y="42" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="middle">B</text>
+  <path d="M 113 72 H 133" fill="none" stroke="#6f7a88" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 123 72 V 48" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="123" y="42" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="middle">E</text>
+  <path d="M 170 72 H 190" fill="none" stroke="#6f7a88" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 180 72 V 48" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="180" y="42" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="middle">B</text>
+  <path d="M 255 72 H 275" fill="none" stroke="#6f7a88" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 265 72 V 48" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="265" y="42" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="middle">C</text>
+  <path d="M 123 96 V 180" fill="none" stroke="#3d7cc4" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="4 3" marker-end="url(#ab)"/>
+  <path d="M 148 94 h 8 M 152 94 V 116 M 148 116 h 8" fill="none" stroke="#6f7a88" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="157" y="114" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="17" fill="#6f7a88" text-anchor="start">W<tspan dy="5" font-size="13">b</tspan></text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 222" width="340" height="222">
+  <!-- Bipolartransistoren, figur 1: de fem strømmene i en pnp-transistor i normal modus, nummerert som
+       Streetman fig. 7–3. Hull røde, elektroner blå. 1 injiserte hull som rekombinerer i basen, 2 hull som når
+       kollektoren, 3 termisk genererte bærere over kollektorovergangen, 4 elektroner fra basekontakten til
+       rekombinasjonen, 5 elektroner injisert i emitteren. Ikke i skala. -->
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#c14a3e"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3d7cc4"/></marker><marker id="ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f7a88"/></marker></defs>
+  <rect x="104" y="60" width="14" height="112" fill="#a67828" fill-opacity="0.12" stroke="none" stroke-width="1"/>
+  <rect x="196" y="60" width="32" height="112" fill="#a67828" fill-opacity="0.12" stroke="none" stroke-width="1"/>
+  <rect x="10" y="60" width="320" height="112" rx="3" fill="none" stroke="#8d98a6" stroke-width="1"/>
+  <path d="M 10 62 V 170 M 330 62 V 170 M 145 60 H 169" fill="none" stroke="#6f7a88" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="57" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">p⁺-emitter</text>
+  <text x="157" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">n-base</text>
+  <text x="277" y="194" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">p-kollektor</text>
+  <path d="M 10 116 H 4" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 157 60 V 18" fill="none" stroke="#8d98a6" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 157 52 V 24" fill="none" stroke="#6f7a88" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ai)"/>
+  <text x="167" y="32" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">I<tspan dy="5" font-size="13">B</tspan></text>
+  <path d="M 16 44 H 56" fill="none" stroke="#6f7a88" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ai)"/>
+  <text x="18" y="36" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="start">I<tspan dy="5" font-size="13">E</tspan></text>
+  <path d="M 284 44 H 324" fill="none" stroke="#6f7a88" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ai)"/>
+  <text x="278" y="50" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="18" fill="#6f7a88" text-anchor="end">I<tspan dy="5" font-size="13">C</tspan></text>
+  <path d="M 18 90 H 304" fill="none" stroke="#c14a3e" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" stroke-opacity="0.85"/>
+  <path d="M 302 81 L 322 90 L 302 99 Z" fill="#c14a3e" fill-opacity="0.85"/>
+  <circle cx="296" cy="114" r="10" fill="none" stroke="#6f7a88" stroke-width="1.2"/><text x="296" y="119" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">2</text>
+  <path d="M 131 93 Q 156 96 159 119" fill="none" stroke="#c14a3e" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ar)"/>
+  <circle cx="130" cy="122" r="10" fill="none" stroke="#6f7a88" stroke-width="1.2"/><text x="130" y="127" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">1</text>
+  <path d="M 164.8 127.5 L 168.6 128.7" fill="none" stroke="#a67828" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 161.1 130.9 L 162 134.8" fill="none" stroke="#a67828" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 156.3 129.4 L 153.4 132.1" fill="none" stroke="#a67828" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 155.2 124.5 L 151.4 123.3" fill="none" stroke="#a67828" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 158.9 121.1 L 158 117.2" fill="none" stroke="#a67828" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 163.7 122.6 L 166.6 119.9" fill="none" stroke="#a67828" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M 171 64 Q 173 120 169 128" fill="none" stroke="#3d7cc4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ab)"/>
+  <circle cx="191" cy="118" r="10" fill="none" stroke="#6f7a88" stroke-width="1.2"/><text x="191" y="123" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">4</text>
+  <path d="M 182 152 H 62" fill="none" stroke="#3d7cc4" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ab)"/>
+  <circle cx="44" cy="152" r="10" fill="none" stroke="#6f7a88" stroke-width="1.2"/><text x="44" y="157" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">5</text>
+  <path d="M 192 132 H 238" fill="none" stroke="#c14a3e" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ar)"/>
+  <path d="M 238 142 H 192" fill="none" stroke="#3d7cc4" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#ab)"/>
+  <circle cx="254" cy="137" r="10" fill="none" stroke="#6f7a88" stroke-width="1.2"/><text x="254" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="#6f7a88" text-anchor="middle">3</text>
+  <text x="96" y="116" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="16" fill="#c14a3e" text-anchor="end">I<tspan dy="5" font-size="13">Ep</tspan></text>
+  <text x="96" y="142" font-family="KaTeX_Math, 'Times New Roman', serif" font-style="italic" font-size="16" fill="#3d7cc4" text-anchor="end">I<tspan dy="5" font-size="13">En</tspan></text>
+</svg>

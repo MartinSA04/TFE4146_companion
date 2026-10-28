@@ -707,48 +707,75 @@ formulas:
     tex: "\\dfrac{V_D}{I_D} = \\dfrac{L - \\Delta L_R}{(Z - \\Delta Z)\\bar{\\mu}_nC_i(V_G - V_T)} \\allowbreak + R_{SD}"
     label: "Motstanden mellom drain og source for små $V_D$: kanalen, som er $\\Delta L_R$ kortere og $\\Delta Z$ smalere enn gaten, i serie med motstanden $R_{SD} = R_S + R_D$ i source og drain. Målt mot $L$ for flere substratspenninger krysser linjene hverandre ved $L = \\Delta L_R$ og $V_D/I_D = R_{SD}$."
 
-  # Resten av formelarket (Streetman kap. 7–8) står her før modulene er skrevet.
-  # Bytt seksjonsnavnene til modulenes overskrifter når modulene kommer.
+  # Bipolartransistoren (Streetman §7.1–7.4, §7.5.1).
+  - id: stromforsterkning-alfa
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    onSheet: true
+    tex: "\\dfrac{i_C}{i_E} = B\\gamma \\equiv \\alpha"
+    label: "Strømforsterkningen i felles base: andelen av emitterstrømmen som kommer ut av kollektoren. Litt mindre enn 1."
+  - id: basestrom-komponenter
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    onSheet: false
+    tex: "I_B = (1 - B)I_{Ep} + I_{En}"
+    label: "Basestrømmen i normal modus, $I_E - I_C$: elektronene basekontakten må levere, ett for hvert hull som rekombinerer i basen og ett for hvert elektron som går inn i emitteren."
+  - id: stromforsterkning-beta
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    onSheet: true
+    tex: "\\dfrac{i_C}{i_B} = \\dfrac{B\\gamma}{1 - B\\gamma} = \\dfrac{\\alpha}{1 - \\alpha} \\equiv \\beta"
+    label: "Strømforsterkningen i felles emitter. Siden $\\alpha$ ligger nær 1, blir $\\beta$ stor: $\\alpha = 0{,}99$ gir $\\beta = 99$."
   - id: bjt-kantoverskudd
-    section: Bipolartransistoren
+    section: Båndskjemaet og minoritetsbærerne
     onSheet: true
     tex: "\\begin{aligned} \\Delta p_E &= p_n\\left(e^{qV_{EB}/k_BT} - 1\\right) \\\\ \\Delta p_C &= p_n\\left(e^{qV_{CB}/k_BT} - 1\\right) \\end{aligned}"
-    label: "Overskuddet av hull i basen ved emitter- og kollektorkanten av en pnp-transistor, satt av spenningen over hver overgang som i en diode. I normal drift er $V_{EB} > 0$ og $V_{CB} < 0$, så $\\Delta p_C \\approx -p_n$."
+    label: "Overskuddet av hull i basen ved emitter- og kollektorkanten av en pnp-transistor, satt av spenningen over hver overgang som i en diode. I normal modus er $V_{EB} > 0$ og $V_{CB} < 0$, så $\\Delta p_C \\approx -p_n$."
+  - id: bjt-smal-base
+    section: Strømmene fra hullprofilen
+    onSheet: false
+    tex: "I_C \\approx I_{Ep} \\approx qAD_p\\dfrac{\\Delta p_E}{W_b}"
+    label: "Kollektorstrømmen når $W_b \\ll L_p$ og kollektorovergangen står i sperreretning. Hullprofilen i basen er da nesten en rett linje fra $\\Delta p_E$ til null, og strømmen er $qAD_p$ ganger stigningen."
   - id: bjt-strommer
-    section: Bipolartransistoren
+    section: Strømmene fra hullprofilen
     onSheet: true
     tex: "\\begin{aligned} I_{Ep} &= qA\\dfrac{D_p}{L_p}\\left(\\Delta p_E\\operatorname{ctnh}\\dfrac{W_b}{L_p} - \\Delta p_C\\operatorname{csch}\\dfrac{W_b}{L_p}\\right) \\\\ I_C &= qA\\dfrac{D_p}{L_p}\\left(\\Delta p_E\\operatorname{csch}\\dfrac{W_b}{L_p} - \\Delta p_C\\operatorname{ctnh}\\dfrac{W_b}{L_p}\\right) \\end{aligned}"
     label: "Hullstrømmen inn fra emitteren og strømmen ut i kollektoren, fra diffusjonsligningen i en base med bredde $W_b$ og overskuddet satt ved begge kantene. $\\operatorname{ctnh}$ er $\\coth$, og $I_{Ep}$ er bare hulldelen av emitterstrømmen."
   - id: basestrom
-    section: Bipolartransistoren
+    section: Strømmene fra hullprofilen
     onSheet: true
     tex: "I_B = qA\\dfrac{D_p}{L_p}\\left[(\\Delta p_E + \\Delta p_C)\\tanh\\dfrac{W_b}{2L_p}\\right]"
-    label: "Basestrømmen $I_{Ep} - I_C$: elektronene som må tilføres for å erstatte dem som rekombinerer med hull i basen. Liten når $W_b \\ll L_p$."
+    label: "Basestrømmen fra rekombinasjonen i basen, $I_{Ep} - I_C$: elektronene basekontakten må levere for å erstatte dem som rekombinerer med hull. Den er hele basestrømmen når $\\gamma = 1$, og liten når $W_b \\ll L_p$."
   - id: basetransportfaktor
-    section: Bipolartransistoren
+    section: Strømmene fra hullprofilen
     onSheet: true
     tex: "\\begin{aligned} B &= \\dfrac{I_C}{I_{Ep}} = \\dfrac{\\operatorname{csch} W_b/L_p}{\\operatorname{ctnh} W_b/L_p} \\\\ &= \\operatorname{sech}\\dfrac{W_b}{L_p} \\simeq 1 - \\left(\\dfrac{W_b^2}{2L_p^2}\\right) \\end{aligned}"
     label: "Basetransportfaktoren: andelen av hullene fra emitteren som når kollektoren, med kollektoren i sperreretning så $\\Delta p_C$ er liten mot $\\Delta p_E$. Nær 1 når basen er mye kortere enn diffusjonslengden."
   - id: injeksjonseffektivitet
-    section: Bipolartransistoren
+    section: Strømmene fra hullprofilen
     onSheet: true
     tex: "\\begin{aligned} \\gamma &= \\dfrac{I_{Ep}}{I_{En} + I_{Ep}} \\\\ &= \\left[1 + \\dfrac{L_p^n n_n\\mu_n^p}{L_n^p p_p\\mu_p^n}\\tanh\\dfrac{W_b}{L_p^n}\\right]^{-1} \\\\ &\\simeq \\left[1 + \\dfrac{W_b n_n\\mu_n^p}{L_n^p p_p\\mu_p^n}\\right]^{-1} \\end{aligned}"
     label: "Emitterens injeksjonseffektivitet: andelen av emitterstrømmen som er hull injisert i basen. Hevet skrift viser området, $n$ for basen og $p$ for emitteren, så $L_p^n$ er diffusjonslengden til hull i basen og $\\mu_n^p$ mobiliteten til elektroner i emitteren. $\\gamma$ nær 1 krever $p_p \\gg n_n$, en emitter som er mye sterkere dopet enn basen. Tilnærmingen gjelder for $W_b \\ll L_p^n$."
-  - id: stromforsterkning-alfa
-    section: Bipolartransistoren
-    onSheet: true
-    tex: "\\dfrac{i_C}{i_E} = B\\gamma \\equiv \\alpha"
-    label: "Strømforsterkningen i felles-base-kobling: andelen av emitterstrømmen som kommer fram til kollektoren. Litt mindre enn 1."
-  - id: stromforsterkning-beta
-    section: Bipolartransistoren
-    onSheet: true
-    tex: "\\dfrac{i_C}{i_B} = \\dfrac{B\\gamma}{1 - B\\gamma} = \\dfrac{\\alpha}{1 - \\alpha} \\equiv \\beta"
-    label: "Strømforsterkningen i felles-emitter-kobling. Siden $\\alpha$ ligger nær 1, blir $\\beta$ stor: $\\alpha = 0{,}99$ gir $\\beta = 99$."
+  - id: bjt-ladning
+    section: Basestrømmen styrer kollektorstrømmen
+    onSheet: false
+    tex: "\\begin{aligned} Q_p &= \\tfrac12 qA\\Delta p_EW_b \\\\ I_B &= \\dfrac{Q_p}{\\tau_p} \\\\ \\tau_t &= \\dfrac{Q_p}{I_C} = \\dfrac{W_b^2}{2D_p} \\end{aligned}"
+    label: "Ladningskontroll i basen med en rett hullprofil og $\\gamma = 1$. Hulladningen er trekanten under profilen, rekombinasjonen tar den på levetiden $\\tau_p$, og kollektoren tømmer den på transittiden $\\tau_t$."
   - id: beta-transittid
-    section: Bipolartransistoren
+    section: Basestrømmen styrer kollektorstrømmen
     onSheet: true
     tex: "\\dfrac{i_C}{i_B} = \\beta = \\dfrac{\\tau_p}{\\tau_t} \\quad (\\gamma = 1)"
-    label: "Med perfekt injeksjon: et elektron fra basekontakten venter i gjennomsnitt $\\tau_p$ på å rekombinere, og i mellomtiden går mange hull gjennom basen, hvert på transittiden $\\tau_t$."
+    label: "Med $\\gamma = 1$ er basestrømmen bare rekombinasjonen i basen, $Q_p/\\tau_p$, og kollektorstrømmen er $Q_p/\\tau_t$. Hvert hull har sjansen $\\tau_t/\\tau_p$ for å rekombinere på veien gjennom basen."
+  - id: ebers-moll
+    section: Fire moduser og Ebers–Moll-ligningene
+    onSheet: false
+    tex: "\\begin{aligned} I_E &= I_{ES}\\left(e^{qV_{EB}/k_BT} - 1\\right) - \\alpha_I I_{CS}\\left(e^{qV_{CB}/k_BT} - 1\\right) \\\\ I_C &= \\alpha_N I_{ES}\\left(e^{qV_{EB}/k_BT} - 1\\right) - I_{CS}\\left(e^{qV_{CB}/k_BT} - 1\\right) \\\\ \\alpha_N I_{ES} &= \\alpha_I I_{CS} \\end{aligned}"
+    label: "Ebers–Moll-ligningene for strømmene i en pnp-transistor ved vilkårlige spenninger, $I_E$ inn i emitteren og $I_C$ ut av kollektoren. $I_{ES}$ og $I_{CS}$ er metningsstrømmene til hver overgang med den andre kortsluttet, og $\\alpha_N$ og $\\alpha_I$ er andelen den andre overgangen samler opp i normal og invers modus."
+  - id: ebers-moll-kollektor
+    section: Fire moduser og Ebers–Moll-ligningene
+    onSheet: false
+    tex: "I_C = \\alpha_N I_E \\allowbreak - (1 - \\alpha_N\\alpha_I)I_{CS}\\left(e^{qV_{CB}/k_BT} - 1\\right)"
+    label: "Kollektorstrømmen uttrykt med emitterstrømmen, med $I_{ES}$ eliminert fra Ebers–Moll-ligningene. Med kollektorovergangen i sperreretning er den $\\alpha_N I_E$ pluss en liten metningsstrøm, uavhengig av $V_{CB}$."
+
+  # Resten av formelarket (Streetman kap. 8) står her før modulen er skrevet.
+  # Bytt seksjonsnavnet til modulens overskrift når modulen kommer.
   - id: fotostrom
     section: Fotodioden
     onSheet: true
@@ -1037,7 +1064,7 @@ glossary:
     definition: "(<em>field-effect transistor</em>, FET) En transistor der spenningen på gaten styrer strømmen mellom source og drain ved å endre hvor mye av kanalen som leder. Strømmen føres av majoritetsbærerne i kanalen, og gaten trekker nesten ingen strøm."
   - term: Metning
     section: En strøm som styres fra en tredje tilkobling
-    definition: "(<em>saturation</em>) Området over drain-spenningen $V_D(\\text{sat.})$ der strømmen gjennom en felteffekttransistor er $I_D(\\text{sat.})$, satt av gatespenningen alene og nesten uavhengig av $V_D$."
+    definition: "(<em>saturation</em>) Området over drain-spenningen $V_D(\\text{sat.})$ der strømmen gjennom en felteffekttransistor er $I_D(\\text{sat.})$, satt av gatespenningen alene og nesten uavhengig av $V_D$. I en bipolartransistor betyr metning at begge overgangene står i lederetning, så også kollektoren injiserer, og kollektorstrømmen er mindre enn i normal modus med den samme $V_{EB}$."
   - term: Lastlinje
     section: Lastlinjen
     definition: "(<em>load line</em>) Linjen $V_{DD} = I_DR_L + V_D$ for en transistor i serie med motstanden $R_L$ til kilden $V_{DD}$, tegnet i diagrammet for $I_D$ mot $V_D$. Arbeidspunktet er der den krysser kurven for gatespenningen."
@@ -1128,6 +1155,39 @@ glossary:
   - term: Effektiv kanallengde
     section: Kapasitanser og motstander rundt kanalen
     definition: "(<em>effective channel length</em>) $L_\\text{eff} = L - \\Delta L_R$, lengden av kanalen mellom n⁺-kantene. Den er kortere enn gaten fordi implantatet for source og drain sprer seg inn under gatekanten."
+  - term: Bipolartransistor
+    section: En overgang i sperreretning som leder
+    definition: "(<em>bipolar junction transistor</em>, BJT) En transistor av tre dopede lag, emitter, base og kollektor, som pnp eller npn. Emitteren injiserer minoritetsbærere i en smal base, og kollektorovergangen i sperreretning feier dem over. En liten basestrøm styrer kollektorstrømmen."
+  - term: Normal modus
+    section: En overgang i sperreretning som leder
+    definition: "(<em>normal active mode</em>) Emitterovergangen i lederetning og kollektorovergangen i sperreretning, i en pnp-transistor $V_{EB} > 0$ og $V_{CB} < 0$. Kollektorstrømmen er da satt av $V_{EB}$ og nesten uavhengig av $V_{CB}$."
+  - term: Felles base
+    section: En overgang i sperreretning som leder
+    definition: "(<em>common base</em>) Koblingen der basen er felles for kretsen til emitteren og kretsen til kollektoren. Strømforsterkningen er $\\alpha = I_C/I_E$, litt under 1."
+  - term: Basetransportfaktor
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    definition: "(<em>base transport factor</em>) $B = I_C/I_{Ep}$, andelen av hullene fra emitteren som når kollektoren uten å rekombinere i basen. $B = \\operatorname{sech}(W_b/L_p) \\simeq 1 - W_b^2/2L_p^2$, nær 1 når basen er mye smalere enn diffusjonslengden."
+  - term: Injeksjonseffektivitet
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    definition: "(<em>emitter injection efficiency</em>) $\\gamma = I_{Ep}/(I_{Ep} + I_{En})$, andelen av emitterstrømmen som er hull injisert i basen. Nær 1 når emitteren er mye sterkere dopet enn basen."
+  - term: Strømforsterkning
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    definition: "(<em>current gain</em>) $\\alpha = I_C/I_E = B\\gamma$ i felles base og $\\beta = I_C/I_B = \\alpha/(1 - \\alpha)$ i felles emitter. Siden $\\alpha$ ligger nær 1, er $\\beta$ stor."
+  - term: Felles emitter
+    section: Hvorfor basen er smal og emitteren sterkt dopet
+    definition: "(<em>common emitter</em>) Koblingen der emitteren er felles for de to kretsene og basestrømmen styres utenfra. Strømforsterkningen er $\\beta = I_C/I_B$."
+  - term: Transittid
+    section: Basestrømmen styrer kollektorstrømmen
+    definition: "(<em>transit time</em>) $\\tau_t$, tiden et hull i snitt bruker gjennom basen, $W_b^2/2D_p$ for en rett profil. Kollektorstrømmen er $Q_p/\\tau_t$, og med $\\gamma = 1$ er $\\beta = \\tau_p/\\tau_t$."
+  - term: Sperring
+    section: Fire moduser og Ebers–Moll-ligningene
+    definition: "(<em>cutoff</em>) Begge overgangene i en bipolartransistor står i sperreretning. Basen er tømt for minoritetsbærere, og det går bare en liten strøm, som i en diode i sperreretning."
+  - term: Invers modus
+    section: Fire moduser og Ebers–Moll-ligningene
+    definition: "(<em>inverted mode</em>) Kollektorovergangen i lederetning og emitterovergangen i sperreretning. Kollektoren injiserer og emitteren samler opp, så strømmene går motsatt vei. Andelen som samles opp, er $\\alpha_I$, ofte mye mindre enn $\\alpha_N$."
+  - term: Ebers–Moll-modellen
+    section: Fire moduser og Ebers–Moll-ligningene
+    definition: "(<em>Ebers–Moll model</em>, <em>coupled-diode model</em>) Strømmene i en bipolartransistor ved vilkårlige spenninger, som summen av en normalkomponent fra emitteren og en inverskomponent fra kollektoren. Hver strøm er en diodestrøm fra sin egen overgang pluss et ledd fra den andre. Parameterne er $I_{ES}$, $I_{CS}$, $\\alpha_N$ og $\\alpha_I$, med $\\alpha_NI_{ES} = \\alpha_II_{CS}$."
 
 features:
   progress: true
@@ -1188,7 +1248,7 @@ symbols:
   - { tex: "g_i,\\ r_i", meaning: "Termisk generasjons- og rekombinasjonsrate i likevekt", unit: "cm⁻³·s⁻¹", section: "Overskuddsbærere", formula: generasjon-rekombinasjon }
   - { tex: "a_r", meaning: "Rekombinasjonskoeffisienten, $r = a_r np$", unit: "cm³/s", section: "Overskuddsbærere", formula: generasjon-rekombinasjon }
   - { tex: "L_n,\\ L_p", meaning: "Diffusjonslengden, $\\sqrt{D\\tau}$", unit: "cm", section: "Overskuddsbærere", term: "Diffusjonslengde", formula: diffusjonslengde, id: lp, note: "Så langt et overskudd rekker før det har rekombinert til $1/e$." }
-  - { tex: "\\alpha", meaning: "Absorpsjonskoeffisienten for lys, intensiteten faller som $e^{-\\alpha x}$", unit: "cm⁻¹", section: "Overskuddsbærere", formula: absorpsjon }
+  - { tex: "\\alpha", meaning: "Absorpsjonskoeffisienten for lys, intensiteten faller som $e^{-\\alpha x}$", unit: "cm⁻¹", section: "Overskuddsbærere", formula: absorpsjon, note: "Ikke strømforsterkningen $\\alpha$ i en bipolartransistor." }
   - { tex: "h\\nu", meaning: "Fotonenergien", unit: "eV", section: "Overskuddsbærere", term: "Elektron-hull-par", note: "Må være minst $E_g$ for å lage et par." }
   - { tex: "E_r,\\ E_t", meaning: "Nivået til et rekombinasjonssenter og til en felle i gapet", unit: "eV", section: "Overskuddsbærere", term: "Rekombinasjonssenter" }
   - { tex: "t_d", meaning: "Drifttiden i Haynes–Shockley-eksperimentet, fra glimtet til toppen av pulsen ved detektoren", unit: "s", section: "Overskuddsbærere", term: "Haynes–Shockley-eksperimentet", formula: haynes-shockley }
@@ -1229,7 +1289,7 @@ symbols:
   - { tex: "\\Phi_B", meaning: "Barrierehøyden for elektroner fra metallet inn i halvlederen", unit: "V", section: "Kontakter og heterooverganger", term: "Barrierehøyde", formula: schottky-barriere, id: phi-b }
   - { tex: "E_\\text{vac}", meaning: "Vakuumnivået", unit: "eV", section: "Kontakter og heterooverganger", term: "Vakuumnivå" }
   - { tex: "E_{Fm},\\ E_{Fs}", meaning: "Fermi-nivået i metallet og i halvlederen", unit: "eV", section: "Kontakter og heterooverganger", note: "Like i likevekt; med spenningen $V$ ligger de $qV$ fra hverandre." }
-  - { tex: "B", meaning: "Konstanten i strømmen over en Schottky-barriere, en effektiv Richardson-konstant", unit: "A/cm²·K²", section: "Kontakter og heterooverganger", formula: schottky-termionisk, note: "Ikke den magnetiske flukstettheten $\\mathcal{B}$." }
+  - { tex: "B", meaning: "Konstanten i strømmen over en Schottky-barriere, en effektiv Richardson-konstant", unit: "A/cm²·K²", section: "Kontakter og heterooverganger", formula: schottky-termionisk, note: "Ikke den magnetiske flukstettheten $\\mathcal{B}$ eller basetransportfaktoren $B$." }
   - { tex: "\\Delta E_c,\\ \\Delta E_v", meaning: "Spranget i ledningsbåndet og valensbåndet ved en heteroovergang", unit: "eV", section: "Kontakter og heterooverganger", term: "Heteroovergang", formula: heteroovergang-sprang, note: "Til sammen $\\Delta E_g = E_{g1} - E_{g2}$." }
   - { tex: "V_{01},\\ V_{02}", meaning: "Delen av kontaktpotensialet som ligger på side 1 og side 2 av en heteroovergang", unit: "V", section: "Kontakter og heterooverganger", formula: hetero-spenningsdeling }
   # ── Transistorer ──
@@ -1284,6 +1344,18 @@ symbols:
   - { tex: "C_{OS},\\ C_{OD}", meaning: "Overlappkapasitansene mellom gaten og source og drain", unit: "F", section: "MOSFET-en", term: "Overlappkapasitans", id: cos-cod, note: "$C_{OD}$ er Miller-kapasitansen." }
   - { tex: "L_\\text{eff},\\ \\Delta L_R", meaning: "Den effektive kanallengden $L - \\Delta L_R$, og hvor mye kortere kanalen er enn gaten", unit: "cm", section: "MOSFET-en", term: "Effektiv kanallengde", formula: mosfet-seriemotstand, id: leff }
   - { tex: "R_S,\\ R_D,\\ R_{SD}", meaning: "Motstanden i source og i drain, og summen $R_S + R_D$", unit: "Ω", section: "MOSFET-en", formula: mosfet-seriemotstand, id: rsd }
+  # ── Bipolartransistoren ──
+  - { tex: "I_E,\\ I_B,\\ I_C", meaning: "Strømmen inn i emitteren og strømmene ut av basen og kollektoren i en pnp-transistor", unit: "A", section: "Bipolartransistoren", term: "Bipolartransistor", id: ie-ib-ic, note: "$I_E = I_B + I_C$. I en npn-transistor går alle tre motsatt vei. Formelarket skriver $\\alpha$ og $\\beta$ med $i_C$, $i_E$ og $i_B$ for de samme strømmene, mens $i_b$ og $i_c$ i teksten er svingningene rundt arbeidspunktet." }
+  - { tex: "I_{Ep},\\ I_{En}", meaning: "Hulldelen og elektrondelen av emitterstrømmen", unit: "A", section: "Bipolartransistoren", term: "Injeksjonseffektivitet", formula: injeksjonseffektivitet, id: iep-ien, note: "Tilsvarende $I_{Cp}$ og $I_{Cn}$ i kollektorstrømmen, der $I_{Cn}$ fra termisk genererte elektroner i kollektoren vanligvis regnes bort." }
+  - { tex: "V_{EB},\\ V_{CB}", meaning: "Spenningen på emitteren og på kollektoren, målt fra basen", unit: "V", section: "Bipolartransistoren", term: "Normal modus", formula: bjt-kantoverskudd, id: veb-vcb, note: "Positiv i lederetningen i en pnp-transistor. I normal modus er $V_{EB} > 0$ og $V_{CB} < 0$." }
+  - { tex: "W_b", meaning: "Basebredden, bredden av den nøytrale delen av basen mellom de to sonene", unit: "cm", section: "Bipolartransistoren", formula: bjt-smal-base, id: wb, note: "Ikke bredden $W$ av en romladningssone." }
+  - { tex: "\\Delta p_E,\\ \\Delta p_C", meaning: "Overskuddet av hull ved emitterkanten og ved kollektorkanten av basen", unit: "cm⁻³", section: "Bipolartransistoren", formula: bjt-kantoverskudd, id: dpe-dpc, note: "$\\Delta p_C \\approx -p_n$ med kollektorovergangen i sperreretning." }
+  - { tex: "B", meaning: "Basetransportfaktoren, andelen av hullene fra emitteren som når kollektoren", section: "Bipolartransistoren", term: "Basetransportfaktor", formula: basetransportfaktor, id: b-transport, note: "Ikke konstanten $B$ i strømmen over en Schottky-barriere eller den magnetiske flukstettheten $\\mathcal{B}$." }
+  - { tex: "\\gamma", meaning: "Injeksjonseffektiviteten, andelen av emitterstrømmen som er hull injisert i basen", section: "Bipolartransistoren", term: "Injeksjonseffektivitet", formula: injeksjonseffektivitet, id: gamma-inj }
+  - { tex: "\\alpha,\\ \\beta", meaning: "Strømforsterkningen i felles base og i felles emitter", section: "Bipolartransistoren", term: "Strømforsterkning", formula: stromforsterkning-beta, id: alfa-beta, note: "Ikke absorpsjonskoeffisienten $\\alpha$." }
+  - { tex: "\\tau_t", meaning: "Transittiden, tiden et hull i snitt bruker gjennom basen", unit: "s", section: "Bipolartransistoren", term: "Transittid", formula: bjt-ladning, id: tau-t, note: "Ikke levetiden $\\tau_p$, som er mye lengre." }
+  - { tex: "\\alpha_N,\\ \\alpha_I", meaning: "Andelen av den injiserte strømmen som den andre overgangen samler opp, i normal og i invers modus", section: "Bipolartransistoren", term: "Ebers–Moll-modellen", formula: ebers-moll, id: alfa-n-i }
+  - { tex: "I_{ES},\\ I_{CS}", meaning: "Metningsstrømmen til emitterovergangen med kollektoren kortsluttet til basen, og omvendt", unit: "A", section: "Bipolartransistoren", term: "Ebers–Moll-modellen", formula: ebers-moll, id: ies-ics }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }

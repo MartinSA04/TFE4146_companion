@@ -1,0 +1,692 @@
+---
+order: 14
+title: "Bipolartransistoren"
+summary: "Hvordan en pnp-transistor sender hull fra emitteren gjennom en smal base til kollektoren, hvorfor en liten basestrøm styrer en stor kollektorstrøm, hvordan strømmene følger av hullprofilen i basen, og hvordan Ebers–Moll-ligningene gir strømmene i alle fire moduser."
+importance: core
+tag: "Uke 44 · Streetman §7.1–7.4, §7.5.1"
+part: "Del 4: Transistorer"
+updated: 2026-10-27
+---
+
+{/* Skrevet 27.10.2026 før forelesningene 29. og 30.10 (§7–7.4), fordi øving 8 trenger stoffet. §7.5.1 (Ebers–Moll) er med fordi øving 8 bruker den. Sjekk modulen mot forelesningsnotatene når de ligger i en eksport. */}
+
+<LearningGoals>
+
+- Forklare hvordan emitteren sender hull gjennom en smal base til kollektoren, og hvorfor kollektorstrømmen nesten ikke avhenger av spenningen over kollektorovergangen.
+- Regne ut basetransportfaktoren $B$, injeksjonseffektiviteten $\gamma$ og strømforsterkningene $\alpha$ og $\beta$, og forklare hvorfor basen må være smal og emitteren sterkt dopet.
+- Tegne båndskjemaet og minoritetsbærerne i emitter, base og kollektor, i likevekt og i hver av de fire modusene.
+- Finne strømmene fra hullprofilen i basen, og regne ut basestrømmen med ladningskontroll, ${I_B = Q_p/\tau_p}$, og ${\beta = \tau_p/\tau_t}$.
+- Bruke Ebers–Moll-ligningene for strømmene ved vilkårlige spenninger over de to overgangene.
+
+</LearningGoals>
+
+En pnp-transistor av silisium er tre lag. Emitteren er p-type med $10^{19}$ akseptorer per cm³, basen er
+n-type med $10^{17}$ donorer og 0,5 µm bred, og kollektoren er p-type med $10^{15}$ akseptorer. Med 0,70 V i
+lederetningen over overgangen mellom emitter og base går det 3,06 mA ut av kollektoren og 15 µA ut av
+basen, 200 ganger mindre. Overgangen mellom base og kollektor står i sperreretning, og kollektorstrømmen
+endrer seg nesten ikke om sperrespenningen er 1 V eller 10 V. En diode i sperreretning leder nesten
+ingenting, men denne overgangen fører 3 mA. Basestrømmen styrer kollektorstrømmen, og med dobbelt så stor
+basestrøm blir kollektorstrømmen dobbelt så stor.
+
+## En overgang i sperreretning som leder
+
+En pn-overgang i sperreretning leder bare minoritetsbærerne som når sonen. Et hull på n-siden som vandrer inn
+i sonen, feies over av feltet. Strømmen er derfor satt av hvor mange hull som kommer dit per sekund, og
+spenningen endrer den nesten ikke. I en diode kommer hullstrømmen bare fra hullene som dannes termisk
+innenfor en diffusjonslengde fra sonen, og den er en del av den lille metningsstrømmen $I_0$. Lys som lager par nær sonen, gir flere hull og en større
+strøm.
+
+Hullene kan også komme fra en annen pn-overgang. Legg et sterkt dopet p⁺-lag inntil den samme n-siden, og sett
+den nye overgangen i lederetning. Den injiserer hull i n-siden. Hvis avstanden mellom de to sonene er mye kortere enn
+diffusjonslengden $L_p$, kommer nesten alle hullene fram til overgangen i sperreretning og feies over.
+
+Dette er en pnp-<Term name="Bipolartransistor">bipolartransistor</Term>. Emitteren er p⁺-laget som injiserer
+hullene, basen er n-laget i midten, og kollektoren er p-laget som samler hullene opp. Overgangen mellom
+emitter og base er emitterovergangen, og overgangen mellom base og kollektor er kollektorovergangen.
+Basebredden $W_b$ er bredden av den nøytrale delen av basen, mellom de to sonene. Spenningene måles fra
+basen: $V_{EB}$ er spenningen på emitteren og $V_{CB}$ spenningen på kollektoren. Med emitterovergangen i
+lederetning, ${V_{EB} > 0}$, og kollektorovergangen i sperreretning, ${V_{CB} < 0}$, er transistoren i
+<Term name="Normal modus">normal modus</Term>. Basen er felles for kretsen til emitteren og kretsen til
+kollektoren, og koblingen heter <Term name="Felles base">felles base</Term>.
+
+<Simulation
+  src={"/sims/hull-gjennom-basen.js"}
+  host={"dom"}
+  title={"Hull gjennom basen"}
+  height={185}
+  caption={"En pnp-transistor i felles base, med batteriet $V_{EB}$ mellom emitter og base og $V_{CB}$ mellom kollektor og base. Hull er røde ringer og elektroner blå prikker, og bare bærerne som fører strømmen, er tegnet. En ring som vokser og blir borte, er en rekombinasjon, og ionene i sonene er oransje. Ledningene er tykkere jo mer strøm de fører. Hvor mange hull som rekombinerer i basen, og hvor mange elektroner som går til emitteren, er mye mer enn i en virkelig transistor."}
+/>
+
+Sett $V_{EB}$ til 0,70 V i simuleringen. Hullene går fra emitterkontakten til sonen, over i basen og vandrer
+tilfeldig gjennom den. Når et hull når sonen ved kollektoren, feies det over og går videre til
+kollektorkontakten. Senk $V_{EB}$ til 0,64 V, og det kommer ti ganger færre hull. Injeksjonen følger
+$e^{qV_{EB}/k_BT}$ som i en diode, så hver 60 mV gir en faktor ti.
+
+Dra så $V_{CB}$ fra 0 til −10 V. Sonen ved kollektoren blir bredere, men ledningen til kollektoren blir ikke
+tykkere. Feltet i sonen feier over hvert hull som når kanten, og en større spenning gir et sterkere felt, men
+feltet kan ikke feie over flere hull enn det som kommer. Kollektorovergangen er som en foss. Hvor mye vann
+som går over kanten, er satt av elva ovenfor, og høyden på fossen endrer det ikke. Elva er hullene som diffunderer gjennom basen, og
+høyden er sperrespenningen. Sonen vokser nesten bare inn i kollektoren, fordi kollektoren er svakest dopet, så
+basen beholder bredden sin. Derfor endrer kollektorstrømmen i transistoren fra starten seg nesten ikke
+mellom 1 og 10 V.
+
+<Callout title="Normal modus">
+Emitterovergangen i lederetning injiserer hull i en smal base, og kollektorovergangen i sperreretning feier over hullene som når fram. Kollektorstrømmen er satt av $V_{EB}$ og nesten uavhengig av $V_{CB}$.
+</Callout>
+
+I en npn-transistor bytter elektroner og hull roller. Emitteren injiserer elektroner i en p-base, og alle
+strømmer og spenninger har motsatt fortegn.
+
+## Hvorfor basen er smal og emitteren sterkt dopet
+
+Velg «Bred base» i simuleringen «Hull gjennom basen». Basen er nå nesten tre ganger så bred, og mange hull
+rekombinerer før de når kollektoren. Et hull som rekombinerer, tar med seg et elektron fra basen, og
+basekontakten må erstatte det, ellers blir basen positivt ladd. Ledningen til kollektoren blir mye tynnere, og
+ledningen til basen er nesten like tykk som den. Basen må derfor være mye smalere enn diffusjonslengden til hullene i den, ${W_b \ll L_p}$.
+
+Velg så «Svakt dopet emitter». Nå går mange elektroner fra basen over i emitteren, der de rekombinerer.
+Emitterovergangen er en pn-overgang i lederetning, og strømmen over den er hull som går inn i basen og
+elektroner som går inn i emitteren. Hver side får en injeksjon som er omtrent proporsjonal med
+minoritetskonsentrasjonen der, $n_i^2/N$, så den svakest dopede siden får mest. Elektronene kommer fra basen,
+og basekontakten må erstatte dem også. Ledningen til basen blir nesten like tykk som ledningen til
+kollektoren. Emitteren må derfor være mye sterkere dopet enn basen.
+
+<Figure
+  src="/figures/bjt-strommene.svg"
+  alt="En pnp-transistor som en liggende stav: p⁺-emitter til venstre, n-base i midten med kontakten på oversiden og p-kollektor til høyre, med de to sonene tonet. En tykk rød pil for hullene går fra emitteren gjennom basen til kollektoren, merket 2 ved kollektoren og I_Ep ved emitterovergangen. En tynn rød pil bøyer av fra den i basen og ender i en rekombinasjon, merket 1. En blå pil går fra basekontakten ned til den samme rekombinasjonen, merket 4. En blå pil går fra basen til venstre over i emitteren, merket 5 og I_En. Ved kollektorovergangen går en kort rød pil mot kollektoren og en kort blå pil mot basen, merket 3. Over staven går I_E inn i emitteren, I_B opp av basen og I_C ut av kollektoren."
+  width={340}
+  height={222}
+  number={1}
+  caption="De fem strømmene i en pnp-transistor i normal modus, hull i rødt og elektroner i blått: 1 hull som rekombinerer i basen, 2 hull som når kollektoren, 3 termisk genererte bærere over kollektorovergangen, 4 elektroner fra basekontakten til rekombinasjonen og 5 elektroner som går inn i emitteren. Pilene viser hvilken vei bærerne går, og strømmen fra elektronene går motsatt vei. Ikke i skala."
+/>
+
+Figur 1 samler strømmene. Hullene som går fra emitteren inn i basen, strøm 1 og 2 til sammen, gir strømmen
+$I_{Ep}$. Elektronene som går fra basen inn i emitteren, strøm 5, gir strømmen $I_{En}$. Elektronene er
+negative, så $I_{En}$ går samme vei som $I_{Ep}$, fra emitteren inn i basen, og begge er deler av
+emitterstrømmen. Strøm 3 er termisk genererte bærere over kollektorovergangen, som i en diode
+i sperreretning. Den gir kollektorstrømmen en liten
+elektrondel $I_{Cn}$ i tillegg til hulldelen $I_{Cp}$, og elektrondelen regnes bort, så ${I_C = I_{Cp}}$.
+
+To tall sier hvor godt basen slipper hullene gjennom og hvor godt emitteren injiserer hull.
+<Term name="Basetransportfaktor">Basetransportfaktoren</Term> $B$ er andelen av hullene fra emitteren som når
+kollektoren, og <Term name="Injeksjonseffektivitet">injeksjonseffektiviteten</Term> $\gamma$ er andelen av
+emitterstrømmen som er hull:
+
+$$
+B = \frac{I_C}{I_{Ep}}, \qquad \gamma = \frac{I_{Ep}}{I_{Ep} + I_{En}}
+$$
+
+Kollektorstrømmen er $BI_{Ep}$, og emitterstrømmen er ${I_E = I_{Ep} + I_{En}}$, så andelen av emitterstrømmen
+som kommer ut av kollektoren, er <FormulaRef id="stromforsterkning-alfa">strømforsterkningen i felles
+base</FormulaRef>:
+
+$$
+\alpha = \frac{I_C}{I_E} = \frac{BI_{Ep}}{I_{Ep} + I_{En}} = B\gamma
+$$
+
+Den er litt mindre enn 1. Basestrømmen erstatter elektronene som går tapt i basen, ett for hvert hull som
+rekombinerer og ett for hvert elektron som går inn i emitteren. Basestrømmen er
+<FormulaRef id="basestrom-komponenter">differansen</FormulaRef> ${I_E - I_C}$:
+
+$$
+I_B = (1 - B)I_{Ep} + I_{En}
+$$
+
+Forholdet mellom kollektorstrømmen og basestrømmen er <Term name="Strømforsterkning">strømforsterkningen</Term>
+i <Term name="Felles emitter">felles emitter</Term>, koblingen der emitteren er felles for de to kretsene og
+basestrømmen styres utenfra. Del både $I_C$ og $I_B$ på $I_E$. Da er ${I_C/I_E = B\gamma}$ og
+${I_B/I_E = 1 - B\gamma}$, og <FormulaRef id="stromforsterkning-beta">forholdet</FormulaRef> er
+
+$$
+\beta = \frac{I_C}{I_B} = \frac{B\gamma}{1 - B\gamma} = \frac{\alpha}{1 - \alpha}
+$$
+
+Når $\alpha$ ligger nær 1, er nevneren liten og $\beta$ stor. Transistoren fra starten har
+${\beta = 3{,}06\ \text{mA}/14{,}9\ \mu\text{A} = 205}$, og ${\alpha = \beta/(\beta + 1) = 0{,}995}$. Av 1000
+ladninger som går inn i emitteren, går under 5 tapt på veien, og det gir en forsterkning på 205.
+
+<Callout title="$B$, $\gamma$, $\alpha$ og $\beta$">
+${B = I_C/I_{Ep}}$ er andelen av hullene som kommer gjennom basen, og ${\gamma = I_{Ep}/I_E}$ andelen av emitterstrømmen som er hull. Basestrømmen er tapene, ${I_B = (1 - B)I_{Ep} + I_{En}}$, og ${\alpha = B\gamma}$ og ${\beta = \alpha/(1 - \alpha)}$. En smal base gir $B$ nær 1, og en emitter som er mye sterkere dopet enn basen, gir $\gamma$ nær 1.
+</Callout>
+
+<Quiz
+  question={"I en pnp-transistor rekombinerer 1 % av hullene fra emitteren i basen, og 1 % av emitterstrømmen er elektroner som går inn i emitteren. Hvor stor er $\\beta$?"}
+  options={["Rundt 49", "Rundt 99", "Rundt 9800"]}
+  answer={0}
+  explanation={"${B = 0{,}99}$ og ${\\gamma = 0{,}99}$, så ${\\alpha = B\\gamma = 0{,}9801}$ og ${\\beta = 0{,}9801/0{,}0199 = 49}$. Basestrømmen må erstatte begge tapene, så de legges sammen til omtrent 2 % av emitterstrømmen. 99 er svaret med bare det ene tapet, og 9800 kommer av å gange to forsterkninger på 99 med hverandre, men tapene er ikke to trinn etter hverandre."}
+/>
+
+## Båndskjemaet og minoritetsbærerne
+
+<Simulation
+  src={"/sims/transistorens-baand.js"}
+  host={"dom"}
+  title={"Båndene og minoritetsbærerne"}
+  height={440}
+  caption={"Øverst båndskjemaet til pnp-transistoren fra starten, med kvasi-Fermi-nivåene $F_n$ (blå) og $F_p$ (rød) stiplet. Under står minoritetsbærerne: elektronene i emitteren, hullene i basen og elektronene i kollektoren, hver med sin egen konsentrasjonsskala og med likevektsverdien stiplet. Den prikkede linjen i hver sone er grensen mellom lagene. Pilene over basen er hullstrømmen ved hver kant, målt mot strømmen den kanten med størst overskudd ville gitt alene. Energiene er i skala, bredden av områdene og sonene ikke."}
+/>
+
+Sett begge spenningene til 0 i simuleringen. Transistoren er to pn-overganger rygg mot rygg, og Fermi-nivået
+er flatt gjennom hele. Hver sone ligger nesten bare på den svakest dopede siden av
+grensen mellom lagene, i basen ved emitterovergangen og i kollektoren ved kollektorovergangen. Barrieren ved emitteren er høyere enn barrieren ved
+kollektoren, fordi emitteren er sterkere dopet enn kollektoren.
+
+Sett så $V_{EB}$ til 0,60 V og $V_{CB}$ til −0,50 V. Barrieren ved emitterovergangen er senket med
+$qV_{EB}$, og barrieren ved kollektorovergangen er hevet med $q|V_{CB}|$. Kvasi-Fermi-nivåene skilles.
+$F_p$ i emitteren ligger $qV_{EB}$ under $F_n$ i basen, og $F_p$ i kollektoren ligger $q|V_{CB}|$ over.
+
+Under båndskjemaet faller hullkonsentrasjonen i basen fra emitterkanten til nesten null ved kollektorkanten.
+Profilen viser hvor tett hullene ligger, de samme hullene som vandret gjennom basen i simuleringen
+«Hull gjennom basen». De ligger tettest ved emitteren.
+Ved hver kant av basen setter spenningen over overgangen <FormulaRef id="bjt-kantoverskudd">overskuddet av
+hull</FormulaRef>, som i en diode:
+
+$$
+\Delta p_E = p_n\left(e^{qV_{EB}/k_BT} - 1\right), \qquad \Delta p_C = p_n\left(e^{qV_{CB}/k_BT} - 1\right)
+$$
+
+Med 0,60 V er ${e^{qV_{EB}/k_BT} = e^{23{,}2} \approx 10^{10}}$, så $\Delta p_E$ er ti milliarder ganger
+likevektskonsentrasjonen $p_n$, og $p_n$ ligger i praksis på aksen. Ved kollektorkanten er
+${\Delta p_C \approx -p_n}$ i sperreretning, og hullkonsentrasjonen der er ${p_n + \Delta p_C \approx 0}$. I
+emitteren faller overskuddet av elektroner som basen har injisert, innover fra kanten. I kollektoren er
+elektronene tømt nær sonen, som på p-siden av en diode i sperreretning.
+
+<Callout title="Kantene av basen">
+Spenningen over hver overgang setter hullkonsentrasjonen ved sin kant av basen: ${\Delta p_E = p_n(e^{qV_{EB}/k_BT} - 1)}$ og ${\Delta p_C = p_n(e^{qV_{CB}/k_BT} - 1)}$. I normal modus faller hullene fra $\Delta p_E$ ved emitteren til nesten null ved kollektoren.
+</Callout>
+
+## Strømmene fra hullprofilen
+
+Basen er nøytral og har nesten ikke noe felt, så hullene går gjennom den ved diffusjon. Hullstrømmen i hvert
+punkt er gitt av stigningen til profilen:
+
+$$
+I_p(x_n) = -qAD_p\frac{d\,\delta p(x_n)}{dx_n}
+$$
+
+med $x_n$ fra emitterkanten av basen. Hvis ingen hull rekombinerte, ville strømmen vært den samme i hele basen,
+og profilen en rett linje. Nesten alle hullene kommer fram, så profilen er nesten en rett linje fra
+$\Delta p_E$ til null over bredden $W_b$, og strømmen er
+<FormulaRef id="bjt-smal-base">stigningen ganger $qAD_p$</FormulaRef>:
+
+$$
+I_C \approx I_{Ep} \approx qAD_p\frac{\Delta p_E}{W_b}
+$$
+
+I transistoren fra starten har basen ${p_n = n_i^2/N_d = (1{,}5 \cdot 10^{10})^2/10^{17} = 2250}$ cm⁻³, så
+ved 0,70 V er ${\Delta p_E = 2250 \cdot e^{27{,}0} = 1{,}23 \cdot 10^{15}}$ cm⁻³. Det er 1,2 prosent av
+dopingen i basen, så injeksjonen er lav. Hullene i basen har mobiliteten ${\mu_p = 300}$ cm²/V·s, så
+${D_p = (k_BT/q)\mu_p = 7{,}77}$ cm²/s. Levetiden deres er ${\tau_p = 0{,}1}$ µs, og tverrsnittet er
+${A = 10^{-4}}$ cm². Diffusjonslengden er
+${L_p = \sqrt{D_p\tau_p} = 8{,}8}$ µm, 18 ganger basebredden, og
+
+$$
+\begin{aligned}
+I_C &\approx \frac{1{,}6 \cdot 10^{-19} \cdot 10^{-4} \cdot 7{,}77 \cdot 1{,}23 \cdot 10^{15}}{0{,}5 \cdot 10^{-4}}\ \text{A} \\
+&= 3{,}06\ \text{mA}
+\end{aligned}
+$$
+
+som er kollektorstrømmen fra starten.
+
+Profilen er likevel ikke helt rett. Noen hull rekombinerer underveis, så det går mer hullstrøm inn ved
+emitterkanten enn ut ved kollektorkanten, og profilen bøyer seg litt ned. Stigningen er brattest ved
+emitteren, og forskjellen i stigning er hullene som rekombinerer, ${(1 - B)I_{Ep}}$. Velg «Bred base» i
+simuleringen «Båndene og minoritetsbærerne». Profilen bøyer tydelig ned, og pilen for $I_C$ er kortere enn
+pilen for $I_{Ep}$.
+
+Diffusjonsligningen i basen, med $\Delta p_E$ og $\Delta p_C$ som kantverdier, gir profilen og strømmene
+eksakt. Strømmene er stigningene ved de to kantene, og differansen mellom dem er
+<FormulaRef id="basestrom">basestrømmen fra rekombinasjonen</FormulaRef>, hele basestrømmen når ${\gamma = 1}$:
+
+$$
+\begin{aligned}
+I_{Ep} &= qA\frac{D_p}{L_p}\left(\Delta p_E\operatorname{ctnh}\frac{W_b}{L_p} - \Delta p_C\operatorname{csch}\frac{W_b}{L_p}\right) \\
+I_C &= qA\frac{D_p}{L_p}\left(\Delta p_E\operatorname{csch}\frac{W_b}{L_p} - \Delta p_C\operatorname{ctnh}\frac{W_b}{L_p}\right) \\
+I_B &= qA\frac{D_p}{L_p}\left[(\Delta p_E + \Delta p_C)\tanh\frac{W_b}{2L_p}\right] \qquad (\gamma = 1)
+\end{aligned}
+$$
+
+<Derivation title="Profilen og strømmene fra diffusjonsligningen">
+
+I stasjonær tilstand er diffusjonsligningen for hullene i basen
+
+$$
+\frac{d^2\delta p}{dx_n^2} = \frac{\delta p}{L_p^2}
+$$
+
+med løsningen ${\delta p = C_1e^{x_n/L_p} + C_2e^{-x_n/L_p}}$. Basen er kort, så ingen av leddene kan
+strykes. Kantverdiene ${\delta p(0) = \Delta p_E}$ og ${\delta p(W_b) = \Delta p_C}$ bestemmer de to konstantene,
+og løsningen kan skrives med sinh:
+
+$$
+\delta p(x_n) = \frac{\Delta p_E\sinh\left[(W_b - x_n)/L_p\right] + \Delta p_C\sinh(x_n/L_p)}{\sinh(W_b/L_p)}
+$$
+
+Sjekk kantene: ved ${x_n = 0}$ er det andre leddet null og det første $\Delta p_E$, og ved ${x_n = W_b}$ er det
+omvendt. Strømmen er ${I_p = -qAD_p\,d\delta p/dx_n}$. Deriver, og bruk ${\cosh y/\sinh y = \operatorname{ctnh} y}$
+og ${1/\sinh y = \operatorname{csch} y}$. Ved ${x_n = 0}$ gir det $I_{Ep}$, og ved ${x_n = W_b}$ gir det $I_C$, som
+over. Basestrømmen fra rekombinasjonen er differansen, og med ${\operatorname{ctnh} y - \operatorname{csch} y = \tanh(y/2)}$ blir den
+${qA(D_p/L_p)(\Delta p_E + \Delta p_C)\tanh(W_b/2L_p)}$.
+
+For små ${y = W_b/L_p}$ er ${\operatorname{ctnh} y \approx 1/y + y/3}$ og ${\operatorname{csch} y \approx 1/y - y/6}$.
+Med ${\Delta p_C \approx 0}$ er begge strømmene ${qAD_p\Delta p_E/W_b}$ til første orden, og differansen er
+${qA(D_p/L_p)\Delta p_E\,y/2 = qAW_b\Delta p_E/2\tau_p}$.
+
+</Derivation>
+
+Forholdet mellom de to strømmene er <FormulaRef id="basetransportfaktor">basetransportfaktoren</FormulaRef>,
+med $\Delta p_C$ regnet bort:
+
+$$
+B = \frac{\operatorname{csch}(W_b/L_p)}{\operatorname{ctnh}(W_b/L_p)} = \operatorname{sech}\frac{W_b}{L_p} \simeq 1 - \frac{W_b^2}{2L_p^2}
+$$
+
+Med ${W_b/L_p = 0{,}5/8{,}8 = 0{,}0567}$ er ${B = 0{,}9984}$, så 16 av 10 000 hull rekombinerer i basen.
+
+Emitteren i transistoren fra starten er tykkere enn diffusjonslengden til elektronene i den,
+${L_n = 0{,}51}$ µm. Elektronene som basen injiserer i
+emitteren, gir derfor en diodestrøm som på p-siden av en lang diode,
+${I_{En} = qA(D_n/L_n)n_p\,e^{qV_{EB}/k_BT}}$, der $n_p$, $D_n$ og $L_n$ gjelder elektronene i emitteren.
+Forholdet til $I_{Ep}$ gir <FormulaRef id="injeksjonseffektivitet">injeksjonseffektiviteten</FormulaRef>.
+Formelarket skriver den med mobilitetene, og en hevet $n$ eller $p$ sier hvilken side av emitterovergangen en
+størrelse gjelder: $L_p^n$ er diffusjonslengden til hull i basen, og $\mu_n^p$ mobiliteten til elektroner i
+emitteren.
+
+$$
+\gamma = \left[1 + \frac{L_p^n n_n\mu_n^p}{L_n^p p_p\mu_p^n}\tanh\frac{W_b}{L_p^n}\right]^{-1} \simeq \left[1 + \frac{W_b n_n\mu_n^p}{L_n^p p_p\mu_p^n}\right]^{-1}
+$$
+
+<Derivation title="Injeksjonseffektiviteten">
+
+Med ${\Delta p_C \approx 0}$ og ${e^{qV_{EB}/k_BT} \gg 1}$ er
+${I_{Ep} = qA(D_p/L_p)p_n\operatorname{ctnh}(W_b/L_p)\,e^{qV_{EB}/k_BT}}$, og forholdet er
+
+$$
+\frac{I_{En}}{I_{Ep}} = \frac{D_n\,n_p\,L_p}{D_p\,p_n\,L_n}\tanh\frac{W_b}{L_p}
+$$
+
+Minoritetskonsentrasjonene er ${n_p = n_i^2/p_p}$ og ${p_n = n_i^2/n_n}$, så ${n_p/p_n = n_n/p_p}$. Einstein-relasjonen
+gir ${D = (k_BT/q)\mu}$ på begge sider, så ${D_n/D_p = \mu_n^p/\mu_p^n}$. Da er ${\gamma = I_{Ep}/(I_{Ep} + I_{En}) = [1 + I_{En}/I_{Ep}]^{-1}}$
+formelen over. For ${W_b \ll L_p}$ er ${\tanh(W_b/L_p) \approx W_b/L_p}$, og $L_p$ forkortes.
+
+</Derivation>
+
+Forholdet ${n_n/p_p}$ er dopingen i basen delt på dopingen i emitteren. Leddet er lite når emitteren er mye
+sterkere dopet enn basen, og når basen er smal.
+
+<Example title="Den samme transistoren med dobbelt så bred base">
+
+Transistoren fra starten har en p⁺-emitter med ${p_p = 10^{19}}$ cm⁻³, der elektronene har
+${\mu_n^p = 100}$ cm²/V·s og ${L_n^p = 0{,}51}$ µm. Basen har ${n_n = 10^{17}}$ cm⁻³, ${\mu_p^n = 300}$ cm²/V·s og
+${L_p^n = 8{,}8}$ µm. Regn ut $B$, $\gamma$ og $\beta$ for ${W_b = 0{,}5}$ µm og for ${W_b = 1{,}0}$ µm.
+
+<Solution>
+
+Med ${W_b = 0{,}5}$ µm er ${W_b/L_p = 0{,}0567}$, og
+
+$$
+B = 1 - \frac{0{,}0567^2}{2} = 0{,}99839
+$$
+
+Leddet i $\gamma$ er
+
+$$
+\begin{aligned}
+&\frac{W_b n_n\mu_n^p}{L_n^p p_p\mu_p^n} \\
+&= \frac{0{,}5 \cdot 10^{17} \cdot 100}{0{,}51 \cdot 10^{19} \cdot 300} \\
+&= 3{,}27 \cdot 10^{-3}
+\end{aligned}
+$$
+
+så ${\gamma = 1/1{,}00327 = 0{,}99674}$. Med ${B = 0{,}99839}$ er ${\alpha = B\gamma = 0{,}99514}$ og
+${\beta = 0{,}99514/0{,}00486 = 205}$, som fra strømmene i starten.
+
+Med dobbelt så bred base blir ${W_b/L_p = 0{,}114}$, og tapet i $B$ blir fire ganger så stort:
+${B = 1 - 0{,}1134^2/2 = 0{,}99357}$. Leddet i $\gamma$ dobles til ${6{,}54 \cdot 10^{-3}}$, så
+${\gamma = 0{,}99350}$. Da er ${\alpha = 0{,}98711}$ og ${\beta = 0{,}98711/0{,}01289 = 77}$.
+
+<Answer>
+
+${\beta = 205}$ med 0,5 µm base og ${\beta = 77}$ med 1,0 µm. Begge tapene øker med bredden. Andelen av hullene som
+rekombinerer i basen, ${1 - B}$, blir fire ganger så stor, og forholdet ${I_{En}/I_{Ep}}$ blir dobbelt så stort, så
+$\beta$ faller med mer enn halvparten.
+
+</Answer>
+
+</Solution>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Tre transistorer">
+<ExamRef id="2020-mai" task="I-13" />
+
+<Figure
+  src="/figures/eksamen-2020-05-oppgave-I-13.png"
+  alt="Tre pnp-transistorer ved siden av hverandre, merket BJT #1, BJT #2 og BJT #3, hver tegnet som p, n og p med basebredden W_b1, W_b2 og W_b3. Basen i BJT #2 er bredest."
+  width={535}
+  height={145}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The three p-n-p bipolar transistors in the figure above are all symmetric and identical, except for BJT #2
+having twice the base width of BJT #1 (${W_{b2}=2\times W_{b1}}$), and BJT #3 having twice the base doping of
+BJT #1 (${N_{B3}=2\times N_{B1}}$). The emitter efficiency $\gamma$ can be expressed on the form,
+
+$$
+\gamma = \left[1 + \frac{L_p^n n_n \mu_n^p}{L_n^p p_p \mu_p^n}\, tanh\left(\frac{W_b}{L_p^n}\right)\right]^{-1}
+$$
+
+where superscripts denote which side of the emitter-base junction the diffusion lengths $L_{n,p}$ and
+mobilities $\mu_{n,p}$ are referred to. [*Hint:* The base width $W_b$ may be assumed {"<<"} $L_p^n$, the hole
+diffusion length].
+
+<Quiz
+  question={"Which of these three BJTs have the highest value for the emitter efficiency, $\\gamma$ ?"}
+  options={["BJT #1", "BJT #2", "BJT #3"]}
+  answer={0}
+  explanation={"Med ${W_b \\ll L_p^n}$ er ${\\tanh(W_b/L_p^n) \\approx W_b/L_p^n}$, så leddet i hakeparentesen er ${W_bn_n\\mu_n^p/(L_n^pp_p\\mu_p^n)}$ med ${n_n = N_B}$. Dobbel basebredde i BJT #2 og dobbel basedoping i BJT #3 dobler begge leddet og gir lavere $\\gamma$. BJT #1 har det minste leddet og den høyeste $\\gamma$."}
+/>
+
+</Example>
+
+<Callout title="Strømmene fra profilen">
+Hullstrømmen ved hver kant av basen er $-qAD_p$ ganger stigningen der. Profilen er nesten rett, så ${I_C \approx qAD_p\Delta p_E/W_b}$, og den lille nedbøyningen er basestrømmen fra rekombinasjonen. ${B = \operatorname{sech}(W_b/L_p) \simeq 1 - W_b^2/2L_p^2}$, og $\gamma$ er nær 1 når ${W_bn_n \ll L_np_p}$.
+</Callout>
+
+## Basestrømmen styrer kollektorstrømmen
+
+I felles emitter bestemmer en krets utenfor basestrømmen. Den lille basestrømmen styrer den store
+kollektorstrømmen fordi basen må være nøytral. Hullene i basen er en positiv ladning, og like mange
+ekstra elektroner må ligge ved siden av dem. Elektronene kommer gjennom basekontakten. Leverer kontakten
+færre elektroner enn det som går tapt, blir basen positivt ladd. Da faller spenningen $V_{EB}$ over
+emitterovergangen, og emitteren injiserer færre hull, helt til tapene igjen er det basestrømmen leverer. Med større basestrøm øker injeksjonen på samme måte.
+
+Ladningskontroll gir sammenhengen. Hullene i basen er ladningen $Q_p$, $qA$ ganger arealet under hullprofilen i
+simuleringen «Båndene og minoritetsbærerne».
+Profilen er en trekant med høyde $\Delta p_E$ og bredde $W_b$, så
+
+$$
+Q_p = \tfrac12 qA\Delta p_EW_b
+$$
+
+I transistoren fra starten er
+
+$$
+\begin{aligned}
+Q_p &= \tfrac12 \cdot 1{,}6 \cdot 10^{-19} \cdot 10^{-4} \cdot 1{,}23 \cdot 10^{15} \cdot 0{,}5 \cdot 10^{-4}\ \text{C} \\
+&= 0{,}49\ \text{pC}
+\end{aligned}
+$$
+
+Hvert hull lever i snitt $\tau_p$ før det rekombinerer, så det rekombinerer ${Q_p/\tau_p}$ ladning per sekund
+i basen. Når ${\gamma = 1}$, går ingen elektroner inn i emitteren, og basestrømmen
+erstatter bare elektronene som rekombinerer:
+
+$$
+I_B = \frac{Q_p}{\tau_p} = \frac{qA\Delta p_EW_b}{2\tau_p}
+$$
+
+Uttrykket er det samme som differansen mellom strømmene til første orden. Kollektoren tømmer den samme ladningen.
+Hvert hull bruker i snitt <Term name="Transittid">transittiden</Term> $\tau_t$ gjennom basen, så
+${I_C = Q_p/\tau_t}$. Med ${I_C = qAD_p\Delta p_E/W_b}$ er
+<FormulaRef id="bjt-ladning">transittiden</FormulaRef>
+
+$$
+\tau_t = \frac{Q_p}{I_C} = \frac{W_b^2}{2D_p}
+$$
+
+og forholdet mellom de to strømmene er <FormulaRef id="beta-transittid">forholdet mellom tidene</FormulaRef>:
+
+$$
+\beta = \frac{I_C}{I_B} = \frac{\tau_p}{\tau_t} \qquad (\gamma = 1)
+$$
+
+Transittiden er kort fordi basen er smal. I transistoren fra starten er
+${\tau_t = (0{,}5 \cdot 10^{-4})^2/(2 \cdot 7{,}77)\ \text{s} = 0{,}16}$ ns, mot ${\tau_p = 100}$ ns, så
+${\tau_p/\tau_t = 620}$. Hvert hull har sjansen ${\tau_t/\tau_p}$ for å rekombinere på veien gjennom basen, 1 av
+620. Med ${\tau_p = L_p^2/D_p}$ er ${\tau_p/\tau_t = 2L_p^2/W_b^2}$, og det er ${B/(1 - B)}$ med
+${B \simeq 1 - W_b^2/2L_p^2}$. Ladningskontroll og den eksakte profilen gir altså det samme.
+
+Transistoren fra starten har likevel bare ${\beta = 205}$, fordi ${\gamma < 1}$. Rekombinasjonen gir
+${Q_p/\tau_p = 0{,}49\ \text{pC}/100\ \text{ns} = 4{,}9}$ µA av basestrømmen. Resten, 10 µA, er elektroner som
+går inn i emitteren.
+
+Når basestrømmen svinger med en liten del $i_b$ rundt arbeidspunktet, svinger kollektorstrømmen med
+${i_c = \beta i_b}$, og transistoren forsterker strømmen.
+
+<Callout title="Basestrømmen styrer">
+Basen er nøytral, så basestrømmen bestemmer hvor mye hulladning $Q_p$ basen kan holde. Kollektoren tømmer den på $\tau_t$ og rekombinasjonen på $\tau_p$, så ${I_C = Q_p/\tau_t}$, ${I_B = Q_p/\tau_p}$ og ${\beta = \tau_p/\tau_t}$ når ${\gamma = 1}$, med ${\tau_t = W_b^2/2D_p}$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Basestrømmen fra en rett profil">
+<ExamRef id="2023-des" task="16" />
+
+<Figure
+  src="/figures/eksamen-2023-12-oppgave-16.png"
+  alt="Minoritetsbærerne i en pnp-transistor i normal modus. I emitteren stiger n_p + δn mot E-B-sonen fra n_p. I basen faller p_n + δp(x_n) som en rett linje fra toppen ved E-B-sonen til null ved B-C-sonen, med p_n stiplet. I kollektoren stiger n_p + δn fra null ved B-C-sonen mot n_p. Feltpilene i sonene peker mot venstre ved E-B og mot høyre ved B-C."
+  width={440}
+  height={300}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The figure above shows the minority carrier distributions of a PNP bipolar junction transistor (BJT) in the
+normal active mode. The hole concentration at the emitter- and collector-end of the base region is
+$\Delta p_E$ and $\Delta p_C$, respectively, the width of the neutral base region is $W_b$, the cross-section
+area of the BJT is $A$ and the minority carrier lifetime in the base is $\tau_p$.
+
+<Quiz
+  question={"Assuming $\\delta p_n(x_n)$ is linear in the base region, what is the expression for the base current?"}
+  options={[
+    "$I_B = qA\\frac{D_p}{L_p}\\left[(\\Delta p_E+\\Delta p_C)\\tanh\\frac{W_b}{2L_p}\\right]$",
+    "$I_B = \\frac{qA\\Delta p_E W_b}{2\\tau_p}$",
+    "$I_B = \\frac{qAL_p\\Delta p_n}{\\tau_p}$",
+    "$I_B = \\frac{qA\\Delta p_E W_b}{\\tau_p}$",
+  ]}
+  answer={1}
+  explanation={"En rett profil fra $\\Delta p_E$ til ${\\Delta p_C \\approx 0}$ er en trekant, så ${Q_p = \\tfrac12 qA\\Delta p_EW_b}$, og ladningskontroll gir ${I_B = Q_p/\\tau_p}$. Det første alternativet er den eksakte formelen, ikke den for en rett profil. Det tredje er strømmen fra ladningen i en lang diode, og det siste mangler halvparten fra trekanten."}
+/>
+
+</Example>
+
+## Fire moduser og Ebers–Moll-ligningene
+
+Strømformlene fra hullprofilen gjelder for alle fortegn av de to spenningene. Hver overgang kan stå i lederetning eller i sperreretning, og det gir fire moduser.
+I en pnp-transistor er spenningen positiv i lederetning:
+
+<Table
+  columns={["Modus", "$V_{EB}$", "$V_{CB}$"]}
+  rows={[
+    ["normal modus", "$> 0$", "$< 0$"],
+    ["metning", "$> 0$", "$> 0$"],
+    ["sperring", "$< 0$", "$< 0$"],
+    ["invers modus", "$< 0$", "$> 0$"],
+  ]}
+/>
+
+Velg «Smal base» igjen i simuleringen «Båndene og minoritetsbærerne», sett $V_{EB}$ til 0,60 V og dra
+$V_{CB}$ fra −0,50 V opp til 0,60 V. Så snart $V_{CB}$ er over 0, står også kollektorovergangen i lederetning, men den injiserer lite før $V_{CB}$
+nærmer seg $V_{EB}$. Ved 0,55 V injiserer den hull tilbake i basen, og profilen ender på $\Delta p_C$ ved
+kollektorkanten. Stigningen er mindre, og begge pilene er kortere. Ved 0,60 V er profilen
+flat, og det går nesten ingen strøm gjennom basen. Begge overgangene i lederetning er
+<Term name="Metning">metning</Term>. Ordet betyr noe annet enn i en felteffekttransistor, der metning er
+området der strømmen er flat. I metning injiserer også kollektoren, og
+kollektorstrømmen er mindre enn i normal modus med den samme $V_{EB}$.
+
+Sett så $V_{EB}$ til −0,30 V og $V_{CB}$ til −0,50 V. Begge overgangene står i sperreretning, basen er tømt for hull, og det går bare en liten strøm, som i en diode i sperreretning. Det er <Term name="Sperring">sperring</Term>. Med $V_{CB}$ på 0,55 V og $V_{EB}$ fortsatt på −0,30 V er det kollektoren som injiserer og emitteren som samler opp. Strømmene
+går motsatt vei, og transistoren er i <Term name="Invers modus">invers modus</Term>.
+
+Diffusjonsligningen er lineær, så profilen er alltid summen av to profiler. Normalkomponenten har
+$\Delta p_E$ ved emitteren og null ved kollektoren, som i normal modus med ${V_{CB} = 0}$. Inverskomponenten
+har null ved emitteren og $\Delta p_C$ ved kollektoren. Sett $V_{EB}$ tilbake til 0,60 V, så tegner simuleringen de to komponentene stiplet. Hver komponent gir strømmene den ville gitt alene, og strømmene er summen.
+
+Strømformlene fra hullprofilen behandler de to overgangene likt og regner bare med hullene. En virkelig
+transistor er ikke symmetrisk. I transistoren fra starten er emitteren sterkt dopet og kollektoren svakt, så i
+invers modus går mange elektroner fra basen inn i kollektoren, og en mye mindre andel av strømmen kommer fram
+enn i normal modus. Hver komponent trenger derfor sin egen metningsstrøm og sin egen andel som kommer fram.
+
+I normalkomponenten er emitterstrømmen en diodestrøm ${I_{ES}(e^{qV_{EB}/k_BT} - 1)}$, der $I_{ES}$ er
+metningsstrømmen til emitterovergangen med kollektoren kortsluttet til basen. Kollektoren samler andelen
+$\alpha_N$ av den. I inverskomponenten injiserer kollektoren ${I_{CS}(e^{qV_{CB}/k_BT} - 1)}$, og emitteren
+samler andelen $\alpha_I$. Strømmene regnes inn i emitteren og ut av kollektoren, så inverskomponentene får
+minus. Summen er <FormulaRef id="ebers-moll">Ebers–Moll-ligningene</FormulaRef>:
+
+$$
+\begin{aligned}
+I_E &= I_{ES}\left(e^{qV_{EB}/k_BT} - 1\right) - \alpha_I I_{CS}\left(e^{qV_{CB}/k_BT} - 1\right) \\
+I_C &= \alpha_N I_{ES}\left(e^{qV_{EB}/k_BT} - 1\right) - I_{CS}\left(e^{qV_{CB}/k_BT} - 1\right)
+\end{aligned}
+$$
+
+Hver strøm er en diodestrøm fra sin egen overgang pluss et ledd fra den andre overgangen, så
+<Term name="Ebers–Moll-modellen">Ebers–Moll-modellen</Term> beskriver transistoren som to koblede dioder
+(<i>coupled-diode model</i>). De fire parameterne er bundet av
+
+$$
+\alpha_N I_{ES} = \alpha_I I_{CS}
+$$
+
+også når de to overgangene er forskjellige. I en symmetrisk transistor er ${I_{ES} = I_{CS}}$ og
+${\alpha_N = \alpha_I}$, og med ${\gamma = 1}$ er ligningene strømformlene fra
+hullprofilen med ${\Delta p_E}$ og ${\Delta p_C}$ satt inn. I transistoren fra starten er $\alpha_I$ mye mindre enn
+$\alpha_N$.
+
+Gang den første ligningen med $\alpha_N$ og trekk den fra den andre. Da forsvinner $I_{ES}$, og
+
+$$
+I_C = \alpha_N I_E - (1 - \alpha_N\alpha_I)I_{CS}\left(e^{qV_{CB}/k_BT} - 1\right)
+$$
+
+Med kollektorovergangen i sperreretning er parentesen $-1$, og ${I_C = \alpha_N I_E + (1 - \alpha_N\alpha_I)I_{CS}}$.
+Kollektorstrømmen er da satt av emitterstrømmen og avhenger ikke av $V_{CB}$, som i simuleringen
+«Hull gjennom basen».
+
+<Callout title="Fire moduser">
+Fortegnet til $V_{EB}$ og $V_{CB}$ gir modusen: normal modus, metning, sperring eller invers modus. Profilen i basen er summen av en normalkomponent fra $\Delta p_E$ og en inverskomponent fra $\Delta p_C$, og strømmene er Ebers–Moll-ligningene med ${\alpha_NI_{ES} = \alpha_II_{CS}}$.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Modusene fra minoritetsbærerne">
+<ExamRef id="2025-nov" task="18" />
+
+<Figure
+  src="/figures/eksamen-2025-11-oppgave-18-transistor.png"
+  alt="En stav merket EMITTER p⁺, BASE n og COLLECTOR p, med alle tre tilkoblingene jordet. Sonen mellom emitter og base er tonet blå, sonen mellom base og kollektor rød."
+  width={405}
+  height={110}
+  caption="Transistoren fra oppgavesettet."
+/>
+
+The figure above shows a p-n-p bipolar junction transistor in thermal equilibrium. The figures below show the
+minority carrier distributions in the emitter (E), base (B), and collector (C), when the p-n-p transistor is
+operating in different regimes.
+
+<Figure
+  src="/figures/eksamen-2025-11-oppgave-18-fordelinger.png"
+  alt="Fire bilder over hverandre, hvert med E, B og C og sonene ved 0 og W. Bilde 1: elektronene i emitteren er tømt mot sonen, hullene i basen stiger fra null ved 0 til en topp ved W, og elektronene i kollektoren er hevet ved sonen. Bilde 2: elektronene er tømt mot sonen på begge sider, og hullene i basen er nesten null. Bilde 3: elektronene i emitteren er hevet ved sonen, hullene i basen faller som en rett linje fra 0 til null ved W, og elektronene i kollektoren er tømt ved sonen. Bilde 4: elektronene er hevet ved sonen på begge sider, og hullene i basen er høye i begge ender."
+  width={200}
+  height={620}
+  caption="Minoritetsbærerne fra oppgavesettet, bilde 1 til 4 ovenfra."
+/>
+
+Match the figures and the names of the different operation regimes.
+
+<Quiz
+  question={"Bilde 1"}
+  options={["Cut-off", "Normal active", "Saturation", "Inverted"]}
+  answer={3}
+  explanation={"Hullene i basen er høyest ved kollektoren og faller mot null ved emitteren, så kollektorovergangen injiserer og emitterovergangen samler opp. Elektronene er hevet i kollektoren og tømt i emitteren. Det er invers modus."}
+/>
+
+<Quiz
+  question={"Bilde 2"}
+  options={["Cut-off", "Normal active", "Saturation", "Inverted"]}
+  answer={0}
+  explanation={"Minoritetsbærerne er tømt ved begge sonene og hullene i basen nesten borte, så begge overgangene står i sperreretning. Det er sperring."}
+/>
+
+<Quiz
+  question={"Bilde 3"}
+  options={["Cut-off", "Normal active", "Saturation", "Inverted"]}
+  answer={1}
+  explanation={"Hullene i basen faller fra et stort overskudd ved emitteren til null ved kollektoren, og elektronene er hevet i emitteren og tømt i kollektoren. Emitterovergangen står i lederetning og kollektorovergangen i sperreretning, så det er normal modus."}
+/>
+
+<Quiz
+  question={"Bilde 4"}
+  options={["Cut-off", "Normal active", "Saturation", "Inverted"]}
+  answer={2}
+  explanation={"Hullene i basen er høye ved begge kantene, og elektronene er hevet på begge sider, så begge overgangene står i lederetning. Det er metning."}
+/>
+
+</Example>
+
+<Example label="Eksamensoppgave" title="Dopingen, modusen og koblingen">
+<ExamRef id="2021-des" task="10" />
+
+<Figure
+  src="/figures/eksamen-2021-12-oppgave-10.png"
+  alt="En stav merket EMITTER p⁺, BASE n og COLLECTOR p. Sonen mellom emitter og base er smal og ligger mest i basen. Sonen mellom base og kollektor er bred og ligger mest i kollektoren. I_E går inn i emitteren fra en vekselspenningskilde i serie med V_EB, plussiden mot emitteren. Basen er jordet, og I_B går ut av den. I_C går ut av kollektoren gjennom en motstand merket OUTPUT og batteriet V_BC, plussiden mot basen."
+  width={515}
+  height={165}
+  caption="Figuren fra oppgavesettet."
+/>
+
+<Quiz
+  question={"For the BJT shown above, which relationship between the doping concentrations agrees with the sketch:"}
+  options={["$N_E > N_B > N_C$", "$N_E < N_B < N_C$", "$N_E > N_B < N_C$", "$N_E < N_B > N_C$"]}
+  answer={0}
+  explanation={"Hver sone ligger mest på den svakest dopede siden. Sonen ved emitterovergangen ligger i basen, så ${N_E > N_B}$, og sonen ved kollektorovergangen ligger i kollektoren, så ${N_B > N_C}$."}
+/>
+
+<Quiz
+  question={"What is the operation mode of the BJT shown above:"}
+  options={["Saturation", "Cutoff", "Normal active", "Inverted"]}
+  answer={2}
+  explanation={"Plussiden av $V_{EB}$ er mot emitteren, så emitterovergangen står i lederetning. Plussiden av $V_{BC}$ er mot basen, så kollektoren er negativ i forhold til basen, og kollektorovergangen står i sperreretning. Det er normal modus. Den smale sonen ved emitteren og den brede ved kollektoren viser det samme."}
+/>
+
+<Quiz
+  question={"What is the the biasing arrangement shown above called:"}
+  options={["Common base", "Gummel-Poon", "Common emitter", "Coupled-diode"]}
+  answer={0}
+  explanation={"Basen er jordet og felles for kretsen til emitteren og kretsen til kollektoren, så koblingen er felles base. Coupled-diode er en modell for strømmene, ikke en kobling."}
+/>
+
+</Example>
+
+## Slik lages en bipolartransistor
+
+De fleste bipolartransistorene i integrerte kretser er npn, fordi elektronene har høyere mobilitet enn hullene.
+Figur 2 viser en npn-transistor i snitt. Transistoren er bygd ned i silisiumet fra overflaten, og strømmen
+under emitteren går loddrett. Langs den stiplede pilen ligger n⁺-emitteren, p-basen og n-kollektoren over
+hverandre, som i staven i figur 1 med typene byttet.
+
+<Figure
+  src="/figures/bjt-oppbygning.svg"
+  alt="En npn-transistor i snitt. Nederst p-substrat, over det et begravd n⁺-lag og over det en svakt dopet n-kollektor. Fra overflaten går en p-base ned i kollektoren, med en sterkt dopet p⁺-del under basekontaktene på hver side og en grunn n⁺-emitter i midten. Til høyre går en n⁺-kontakt fra overflaten ned til det begravde laget. Oksid skiller transistoren fra naboene og basen fra kollektorkontakten. Kontaktene B, E, B og C står på overflaten. En stiplet blå pil for elektronene går rett ned fra emitteren gjennom basen og kollektoren til det begravde laget, og W_b er merket mellom overgangen under emitteren og overgangen under basen."
+  width={340}
+  height={250}
+  number={2}
+  caption="En npn-transistor i en integrert krets, forenklet. Den stiplede pilen er veien elektronene går fra emitteren til kollektoren, og avstanden mellom de to overgangene langs den bestemmer basebredden $W_b$. Ikke i skala."
+/>
+
+Basen lages ved å implantere akseptorer gjennom et vindu i oksidet, og emitteren ved å la donorer diffundere
+inn i et mindre vindu inne i basen. Forskjellen mellom hvor dypt basen og emitteren går, bestemmer da
+basebredden $W_b$, og den kan gjøres svært smal. Emitteren havner inne i basen uten et eget maskesteg, fordi oksid på
+kantene av vinduet holder den på plass. Den sterkt dopede p⁺-delen av basen rundt emitteren
+gir liten motstand fra basekontaktene inn til basen under emitteren.
+
+Under kollektoren ligger et begravd n⁺-lag som leder strømmen sidelengs til kollektorkontakten med liten
+motstand. Kollektoren over laget er svakt dopet, så sonen ved kollektorovergangen vokser inn i kollektoren og
+tåler høy sperrespenning. Oksid rundt transistoren skiller den fra naboene i kretsen.
+
+<KeyTakeaways>
+
+- I normal modus står emitterovergangen i lederetning og kollektorovergangen i sperreretning. Emitteren injiserer hull i en smal base, og kollektoren feier over dem som når fram, så kollektorstrømmen er satt av $V_{EB}$ og nesten uavhengig av $V_{CB}$.
+- ${B = I_C/I_{Ep}}$ og ${\gamma = I_{Ep}/(I_{Ep} + I_{En})}$. ${\alpha = B\gamma}$, ${I_B = (1 - B)I_{Ep} + I_{En}}$ og ${\beta = \alpha/(1 - \alpha)}$. En smal base, ${W_b \ll L_p}$, gir $B$ nær 1, og en emitter som er mye sterkere dopet enn basen, gir $\gamma$ nær 1.
+- Spenningen over hver overgang setter hullene ved sin kant av basen, ${\Delta p = p_n(e^{qV/k_BT} - 1)}$. Profilen er nesten rett, og strømmene er stigningene ved kantene: ${I_C \approx qAD_p\Delta p_E/W_b}$, eksakt med ctnh og csch, og ${B = \operatorname{sech}(W_b/L_p) \simeq 1 - W_b^2/2L_p^2}$.
+- Ladningskontroll: ${Q_p = \tfrac12 qA\Delta p_EW_b}$, ${I_B = Q_p/\tau_p}$ og ${I_C = Q_p/\tau_t}$ med ${\tau_t = W_b^2/2D_p}$, så ${\beta = \tau_p/\tau_t}$ når ${\gamma = 1}$. Basen må være nøytral, og derfor styrer basestrømmen kollektorstrømmen.
+- Fortegnet til $V_{EB}$ og $V_{CB}$ gir normal modus, metning, sperring eller invers modus. Ebers–Moll-ligningene gir strømmene i alle fire, med ${\alpha_NI_{ES} = \alpha_II_{CS}}$.
+- En npn-transistor i en integrert krets er bygd loddrett: n⁺-emitter, p-base og svakt dopet n-kollektor over et begravd n⁺-lag.
+
+</KeyTakeaways>
