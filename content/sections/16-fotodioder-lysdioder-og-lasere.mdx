@@ -1,0 +1,614 @@
+---
+order: 16
+title: "Fotodioder, lysdioder og lasere"
+summary: "Hvordan lys gir en strøm i en pn-overgang, hvorfor den samme overgangen er solcelle, fotodetektor eller lysdiode etter materialet og hvilken kvadrant den arbeider i, og hvordan en sterkt dopet overgang mellom to speil blir en laser."
+importance: core
+tag: "Uke 46 · Streetman §8.1.1–8.1.3, §8.2–8.2.1, §8.3–8.4.3, §8.4.5–8.4.6"
+part: "Del 5: Optoelektronikk"
+updated: 2026-11-15
+---
+
+<LearningGoals>
+
+- Forklare hvorfor lys gir en strøm fra n til p i en pn-overgang, og finne $I_\text{op}$, $I_\text{sc}$ og $V_\text{oc}$.
+- Si hvilken kvadrant av I–V-kurven en solcelle, en fotodetektor og en lysdiode eller laser arbeider i, og hvorfor.
+- Forklare fyllfaktoren, hvorfor ett båndgap ikke kan bruke hele sollyset, og avveiningene i hvordan en solcelle bygges.
+- Forklare hvorfor en rask fotodetektor har en bred romladningssone, og hva p-i-n-dioden og skredfotodioden gjør.
+- Forklare hvorfor en lysdiode lages av en direkte halvleder, og hva som bestemmer fargen og hvor mye av strømmen som blir lys.
+- Forklare de to kravene for laservirkning og hvordan en sterkt dopet pn-overgang mellom to speil oppfyller dem.
+
+</LearningGoals>
+
+Solcellen på taket, fotodetektoren som tar imot signalene i enden av en optisk fiber, lysdioden i en lampe og
+laseren som sender signalene inn i fiberen, er alle pn-overganger. De to første gjør lys om til strøm, de to
+siste gjør strøm om til lys. Forskjellen ligger i materialet, i dopingen og i kretsen rundt overgangen.
+
+En solcelle av silisium gir rundt 0,6 V i fullt sollys, enten den er 1 cm² eller 15 × 15 cm. Strømmen vokser
+med arealet og med lyset, men spenningen gjør nesten ikke det. Et solcellepanel har derfor mange celler
+koblet i serie.
+
+## Lys på overgangen
+
+Et foton med energien $h\nu$ har <FormulaRef id="foton-bolgelengde">bølgelengden</FormulaRef> ${\lambda = hc/h\nu}$, og med $\lambda$ i nanometer og $h\nu$ i
+elektronvolt er ${\lambda = 1240/h\nu}$. Silisium har ${E_g = 1{,}11}$ eV, så lys med bølgelengde under
+1120 nm har ${h\nu > E_g}$ og lager elektron-hull-par i silisium, og alt synlig lys har kortere bølgelengde enn det.
+
+<Simulation
+  src={"/sims/belyst-overgang.js"}
+  host={"dom"}
+  title={"Lys på pn-overgangen"}
+  height={440}
+  caption={"Båndene i en pn-overgang av silisium på 1 cm², belyst jevnt over hele staven, med elektronene (blå prikker) og hullene (røde ringer) som lyset lager. En gul pil er et foton som løfter et elektron fra valensbåndet til ledningsbåndet. Under står strømmen $I$ mot spenningen $V$, mørk (stiplet) og belyst, med $I_0 = 3 \\cdot 10^{-12}$ A og $I_\\text{op} = 40$ mA i fullt sollys. Sonen er tegnet mye bredere i forhold til diffusjonslengdene enn den er, og hvor ofte par dannes, er ikke i skala."}
+/>
+
+Simuleringen «Lys på pn-overgangen» viser båndene i en belyst overgang med spenningen 0. Et par som dannes i
+romladningssonen, skilles av feltet med en gang. Elektronet går ned til n-siden og hullet opp til p-siden. Et
+par som dannes på p-siden, har et elektron som minoritetsbærer. Hullet blir ett av de mange hullene som alt
+er der, mens elektronet vandrer tilfeldig til det enten rekombinerer eller når sonen og feies over. Elektroner
+som dannes innenfor omtrent en diffusjonslengde $L_n$ fra sonen, rekker frem; de som dannes lenger ute,
+rekombinerer først. På n-siden gjelder det samme for hullene innenfor $L_p$.
+
+Med $g_\text{op}$ par per cm³ og sekund samler overgangen derfor $AL_ng_\text{op}$ elektroner fra p-siden,
+$AL_pg_\text{op}$ hull fra n-siden og $AWg_\text{op}$ par fra sonen hvert sekund, der $A$ er arealet og $W$
+bredden av sonen. Hvert gir ladningen $q$ gjennom overgangen, og
+<FormulaRef id="fotostrom">fotostrømmen</FormulaRef> er
+
+$$
+I_\text{op} = qAg_\text{op}(L_p + L_n + W)
+$$
+
+Elektronene går til n og hullene til p, så strømmen går fra n til p gjennom overgangen, samme vei som
+generasjonsstrømmen i en diode i sperreretning. Med strømmen $I$ regnet positiv fra p til n blir
+<FormulaRef id="belyst-diode">diodeligningen</FormulaRef>
+
+$$
+I = I_0\left(e^{qV/k_BT} - 1\right) - I_\text{op}
+$$
+
+Sett lyset i simuleringen til 0 %, og kurven er den vanlige diodekurven. Sett det til 100 %, og hele kurven
+flytter seg 40 mA ned. Metningsstrømmen $I_0$ er selv en strøm av samme slag: $q$ ganger antall par som dannes
+termisk per sekund innenfor en diffusjonslengde fra sonen. Lyset legger til flere par, og i fullt sollys er
+$I_\text{op}$ over ti milliarder ganger større enn $I_0$.
+
+<Callout title="Lys gir en strøm fra n til p">
+Par som dannes i sonen eller innenfor en diffusjonslengde fra den, samles opp av feltet og gir ${I_\text{op} = qAg_\text{op}(L_p + L_n + W)}$ fra n til p gjennom overgangen. Lyset senker I–V-kurven med $I_\text{op}$.
+</Callout>
+
+## Spenningen fra lyset
+
+Når overgangen er kortsluttet, er ${V = 0}$, diodeleddet er null, og strømmen er <Term name="Kortslutningsstrøm">kortslutningsstrømmen</Term> ${I_\text{sc} = -I_\text{op}}$. Den vokser med lyset og med arealet.
+
+Når kretsen er åpen, kan ingen strøm gå ut. Elektronene som feies til n-siden, og hullene som feies til
+p-siden, blir liggende, så n-siden lades negativt og p-siden positivt. Ladningene gir en spenning i
+lederetningen. Den senker barrieren, og flere majoritetsbærere kommer over den andre veien, helt til strømmen over barrieren er
+like stor som $I_\text{op}$. Da er ${I = 0}$. Sett ${I = 0}$ i diodeligningen, så er
+${I_0(e^{qV_\text{oc}/k_BT} - 1) = I_\text{op}}$, og <Term name="Tomgangsspenning">tomgangsspenningen</Term> er <FormulaRef id="tomgangsspenning">gitt ved</FormulaRef>
+
+$$
+V_\text{oc} = \frac{k_BT}{q}\ln\left(\frac{I_\text{op}}{I_0} + 1\right)
+$$
+
+Flytt spenningen i simuleringen «Lys på pn-overgangen» til der kurven krysser aksen, ved ${V_\text{oc} = 0{,}60}$ V. Over den lave
+barrieren kommer nå like mange bærere fra den andre siden som lyset samler opp, og de vandrer inn og
+rekombinerer.
+
+Spenningen vokser bare med logaritmen til lyset. Ti ganger mindre lys gir ${(k_BT/q)\ln 10 = 60}$ mV lavere
+$V_\text{oc}$. Sett lyset til 10 %, og $V_\text{oc}$ flytter seg fra 0,60 til 0,54 V. Både $I_\text{op}$ og
+$I_0$ er proporsjonale med arealet $A$, så forholdet mellom dem, og dermed $V_\text{oc}$, er det samme for en
+stor og en liten celle. Derfor gir en silisiumcelle rundt 0,6 V uansett størrelse. For en
+symmetrisk overgang med $W$ liten mot diffusjonslengdene er forholdet ${g_\text{op}/g_\text{th}}$, der
+${g_\text{th} = p_n/\tau_p}$ er den termiske generasjonsraten, så
+${V_\text{oc} \approx (k_BT/q)\ln(g_\text{op}/g_\text{th})}$ når lyset er sterkt.
+
+Formelen sier at $V_\text{oc}$ vokser uten grense med lyset, men den kan ikke bli større enn
+kontaktpotensialet $V_0$. En spenning $V$ i lederetningen senker barrieren fra $qV_0$ til ${q(V_0 - V)}$, og ved
+${V = V_0}$ er båndene flate. Da er det ikke noe felt igjen som kan skille parene, så lyset kan ikke lade
+overgangen mer. Formelen slutter å gjelde før det, fordi levetiden blir kortere med svært mye lys, så
+$g_\text{th}$ og $I_0$ vokser også. $V_0$ er mindre enn $E_g/q$, så en solcelle av silisium gir under
+${E_g/q = 1{,}11}$ V, i praksis rundt 0,6 V.
+
+<Callout title="Tomgangsspenningen">
+Med åpen krets gir lyset overgangen en spenning i lederetningen, ${V_\text{oc} = (k_BT/q)\ln(I_\text{op}/I_0 + 1)}$. Den vokser bare med logaritmen til lyset, er den samme for store og små celler og kan ikke bli større enn $V_0$.
+</Callout>
+
+## Fire kvadranter
+
+Kretsen rundt overgangen avgjør hvor på kurven den arbeider. Effekten overgangen tar imot, er ${P = VI}$, med
+$V$ positiv når p-siden er positiv og $I$ positiv fra p til n gjennom overgangen. Når $V$ og $I$ har samme
+fortegn, er $P$ positiv, og overgangen tar imot effekt fra kretsen. Når de har motsatt fortegn, leverer
+overgangen effekt, slik et batteri gjør. I simuleringen «Lys på pn-overgangen» er rektangelet fra origo til
+arbeidspunktet $|VI|$, og det er grønt når overgangen leverer effekt.
+
+- I første kvadrant er $V$ og $I$ positive. Et batteri driver strøm i lederetningen, og overgangen tar imot
+  effekt. I en direkte halvleder lyser den: lysdioden og laseren arbeider her.
+- I tredje kvadrant er begge negative. Et batteri ligger i sperreretningen, og strømmen er $-I_\text{op}$ uansett
+  spenning. Fotodetektoren arbeider her.
+- I fjerde kvadrant er $V$ positiv og $I$ negativ. Overgangen driver strøm gjennom en last og leverer effekt.
+  Solcellen arbeider her.
+
+Kurven går aldri inn i andre kvadrant, der $V$ er negativ og $I$ positiv.
+
+Flytt spenningen fra 0 til −0,5 V. Strømmen endrer seg nesten ikke. Den er satt av lyset alene, og derfor
+brukes tredje kvadrant til å måle lys. Flytt spenningen over $V_\text{oc}$. Strømmen snur og går i
+lederetningen, og nå tar overgangen imot effekt.
+
+<Callout title="Kvadranten avgjør hva overgangen er">
+En solcelle arbeider i fjerde kvadrant og leverer effekt til en last. En fotodetektor arbeider i tredje, der strømmen er satt av lyset. En lysdiode og en laser arbeider i første, der et batteri driver strøm i lederetningen.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Kvadrantene">
+<ExamRef id="2021-des" task="17" />
+
+The figure below shows a p-n junction operated in the various quadrants of its I-V characteristic.
+
+<Figure
+  src="/figures/eksamen-2021-12-oppgave-17.png"
+  alt="Tre pn-overganger i hver sin krets med I–V-kurven under. Første kvadrant: et batteri E og en motstand R driver strømmen I i lederetningen, med V positiv på p-siden, og punktet sitter på kurven oppe til høyre. Tredje kvadrant: batteriet er snudd, spenningen er −V_r, strømmen I_r går motsatt vei, og punktet sitter på den flate delen nede til venstre. Fjerde kvadrant: bare en motstand R, V positiv på p-siden, strømmen I_r går motsatt vei, og punktet sitter nede til høyre der kurven bøyer opp."
+  width={705}
+  height={382}
+  caption="Figuren fra oppgavesettet."
+/>
+
+(correct: 1p, wrong: -1p, blank: -1p, minimum score 0p)
+
+Select which quadrant the junction should be operated in, when it is to be used as a solar cell, photodetector
+and a LASER.
+
+<Quiz
+  question={"Photodetector"}
+  options={["3rd quadrant", "1st quadrant", "4th quadrant"]}
+  answer={0}
+  explanation={"I tredje kvadrant ligger overgangen i sperreretning, og strømmen er $-I_\\text{op}$ uansett spenning, så den følger lyset."}
+/>
+
+<Quiz
+  question={"Solar cell"}
+  options={["3rd quadrant", "1st quadrant", "4th quadrant"]}
+  answer={2}
+  explanation={"I fjerde kvadrant er $V$ positiv og $I$ negativ, så $P = VI$ er negativ: overgangen leverer effekt til lasten."}
+/>
+
+<Quiz
+  question={"LASER"}
+  options={["3rd quadrant", "1st quadrant", "4th quadrant"]}
+  answer={1}
+  explanation={"En laser trenger en stor strøm i lederetningen, slik at bærerne som injiseres, kan rekombinere og gi lys. Både $V$ og $I$ er positive."}
+/>
+
+</Example>
+
+## Solcellen
+
+En solcelle arbeider i fjerde kvadrant, og effekten den leverer, er arealet av rektangelet i simuleringen
+«Lys på pn-overgangen».
+Effekten er null ved kortslutning, der ${V = 0}$, og ved åpen krets, der ${I = 0}$, og størst et sted imellom.
+Flytt spenningen med fullt lys og finn det største rektangelet. Det ligger ved omtrent ${V_m = 0{,}52}$ V og
+${I_m = -38}$ mA, der cellen leverer 20 mW.
+
+Det største rektangelet er alltid mindre enn det stiplede rektangelet ${V_\text{oc}I_\text{sc}}$. Forholdet er
+<Term name="Fyllfaktor">fyllfaktoren</Term>, og den gir den største <FormulaRef id="fyllfaktor">effekten</FormulaRef>:
+
+$$
+\begin{aligned}
+FF &= \frac{V_mI_m}{V_\text{oc}I_\text{sc}} \\
+P_\text{max} &= FF \cdot V_\text{oc}|I_\text{sc}|
+\end{aligned}
+$$
+
+For cellen i simuleringen er ${FF = 20\ \text{mW}/(0{,}60\ \text{V} \cdot 40\ \text{mA}) = 0{,}83}$. Jo
+brattere kurven bøyer av nær $V_\text{oc}$, jo nærmere et rektangel er den, og jo nærmere 1 er fyllfaktoren.
+En motstand i serie med cellen gjør knekket slakere og fyllfaktoren mindre.
+
+<Example label="Eksamensoppgave" title="Fyllfaktoren">
+<ExamRef id="2020-mai" task="I-15" />
+
+<Quiz
+  question={"A Si photovoltaic solar cell with fill factor $FF = 0.8$ delivers a maximum power of 28 mW under full illumination. The open-circuit voltage $V_{oc}$ and short-circuit current $I_{sc}$ of this PV cell is,"}
+  options={["$V_{oc}$ = 1.4 V and $I_{sc}$ = 25 mA", "$V_{oc}$ = 1.0 V and $I_{sc}$ = 28 mA", "$V_{oc}$ = 0.7 V and $I_{sc}$ = 50 mA"]}
+  answer={2}
+  explanation={"Med $P_\\text{max} = FF \\cdot V_\\text{oc}|I_\\text{sc}|$ må $V_\\text{oc}|I_\\text{sc}| = 28/0{,}8 = 35$ mW. 1,0 V · 28 mA gir bare 28 mW, som ville betydd $FF = 1$. Både 1,4 V · 25 mA og 0,7 V · 50 mA gir 35 mW, men $V_\\text{oc}$ er mindre enn $V_0$, som er mindre enn $E_g/q = 1{,}11$ V i silisium. Bare 0,7 V er mulig."}
+/>
+
+</Example>
+
+### Hvor mye av sollyset blir elektrisk effekt
+
+Et godt solcellepanel av silisium gjør over 20 % av sollyset om til elektrisk effekt. Av rundt 1 kW per kvadratmeter i
+fullt sollys blir rundt 200 W. Det meste av resten tapes på to måter, og et større båndgap gjør det ene tapet mindre og det andre større. Fotoner med
+${h\nu < E_g}$ blir ikke absorbert og går rett gjennom. Et foton med ${h\nu > E_g}$ lager ett par, men
+elektronet havner høyt oppe i ledningsbåndet og hullet langt nede i valensbåndet. Begge faller ned til
+båndkanten på pikosekunder og gir overskuddet til gitteret som varme. Hvert absorbert foton gir derfor bare
+$E_g$, uansett hvor mye energi det hadde.
+
+<Simulation
+  src={"/sims/baandgap-og-sollys.js"}
+  host={"dom"}
+  title={"Båndgapet og sollyset"}
+  height={300}
+  caption={"Effekten i sollyset per fotonenergi, tilnærmet som stråling fra et svart legeme på 5800 K, med det synlige båndet i sine egne farger under aksen. Ved hver fotonenergi over $E_g$ kan andelen $E_g/h\\nu$ brukes, og resten blir varme."}
+/>
+
+I simuleringen «Båndgapet og sollyset» står $E_g$ på 1,11 eV for silisium: 23 % av sollyset går gjennom,
+34 % blir varme, og 44 % kan brukes. Dra $E_g$ ned mot 0,5 eV. Nesten alt lyset absorberes, men hvert foton
+gir lite, og varmen tar to tredeler. Dra den opp mot 2,5 eV. Hvert foton gir mye, men tre firedeler av lyset
+går gjennom. Andelen som kan brukes, er størst ved rundt 1,1 eV, nær silisiumets båndgap. Et lite båndgap gir
+altså stor strøm, siden mange fotoner absorberes, men liten spenning, siden $V_\text{oc}$ er under $E_g/q$.
+Et stort båndgap gir det motsatte.
+
+Cellen kan heller ikke hente ut hele andelen som kan brukes, fordi spenningen den leverer, er lavere enn
+$E_g/q$. En celle med ett båndgap kan ikke gjøre mer enn rundt en tredel av sollyset om til elektrisk effekt.
+For å komme høyere stables celler med ulike båndgap oppå hverandre, slik at hver bruker sin del av spekteret. Slike celler
+av III–V-halvledere brukes i romfart.
+
+### Hvordan cellen er bygd
+
+<Figure
+  src="/figures/solcelle.svg"
+  alt="En solcelle i snitt. Fronten er etset til små pyramider dekket av et antirefleksbelegg. To metallfingre står på fronten. Under fronten ligger et tynt p⁺-lag med tykkelse d, så overgangen som en stiplet linje, og under den n-basen. På baksiden ligger et oksid med to små åpninger og under det bakkontakten. En lysstråle treffer en fasett, en liten del reflekteres mot nabofasetten, og resten går på skrå ned gjennom cellen og reflekteres fra baksiden. En pil i p⁺-laget viser strømmen sideveis til en finger."
+  width={340}
+  height={318}
+  number={1}
+  caption="En solcelle av silisium i snitt. Cellen er rundt 15 × 15 cm og 180 µm tykk. Ikke i skala."
+/>
+
+Figur 1 viser en vanlig solcelle av silisium i snitt. Overgangen ligger like under fronten, mellom et tynt
+p⁺-lag og en n-base. Det meste av lyset absorberes i basen, og parene samles opp når de dannes innenfor en
+diffusjonslengde fra overgangen. p⁺-laget må være tynnere enn diffusjonslengden der, ellers rekombinerer
+bærerne som dannes nær fronten, før de når overgangen.
+
+Fronten er etset til små pyramider og dekket av et antirefleksbelegg av silisiumnitrid. Lys som reflekteres fra
+én fasett, treffer nabofasetten og får en ny sjanse til å komme inn. Lyset som kommer inn, går på skrå og får
+lengre vei gjennom cellen, og lys som treffer fronten innenfra på skrå, totalreflekteres. Med slik optikk ville
+rundt 40 µm silisium være nok til å absorbere lyset. Cellene er tykkere fordi tynnere skiver er svakere og
+vanskeligere å lage. Baksiden er dekket av et oksid, slik at færre bærere rekombinerer der, og oksidet
+virker som et speil. Bakkontakten når silisiumet gjennom små åpninger i oksidet.
+
+Strømmen fra overgangen må gå sideveis gjennom det tynne p⁺-laget til en kontakt, så kontakten er smale fingre
+spredt over fronten. Med stor avstand mellom fingrene skygger de lite, men strømmen får lang vei gjennom
+laget og møter stor motstand. Med liten avstand er det omvendt, så avstanden velges sammen med tykkelsen
+og ledningsevnen til laget. Dopingen er et kompromiss på samme måte. Sterkere doping gir større $V_0$ og dermed
+plass til større $V_\text{oc}$, men kortere levetid, så færre par samles opp.
+
+<Callout title="Kompromissene i en solcelle">
+Et lite båndgap gir stor strøm og liten spenning. Tette fingre gir liten motstand og mye skygge. Sterk doping gir stor $V_0$ og kort levetid.
+</Callout>
+
+## Fotodetektoren
+
+En fotodetektor arbeider i tredje kvadrant, der strømmen er $-I_\text{op}$ og proporsjonal med lyset. I en
+fiberforbindelse skal den følge lyspulser som kommer med nanosekunders mellomrom, så den må være rask.
+
+Et par som dannes i romladningssonen, feies ut av feltet med en gang. Et par som dannes i en nøytral del, må
+først diffundere til sonen, og diffusjon er treg. Tiden for å diffundere en avstand $l$ er omtrent $l^2/D$. For
+elektroner i silisium, med ${D_n \approx 35}$ cm²/s, tar 10 µm rundt 30 ns. Gjennom en sone på 10 µm driver de
+med metningshastigheten ${10^7}$ cm/s på 0,1 ns.
+
+En rask detektor har derfor en bred sone, slik at de fleste fotonene absorberes i den. En bred sone gir også
+stor følsomhet og liten kapasitans, ${C_j = \varepsilon A/W}$, så RC-tiden i kretsen blir kort. Men sonen kan
+ikke være for bred, fordi det da tar for lang tid å drive gjennom den.
+
+<Figure
+  src="/figures/pin.svg"
+  alt="Båndskjema for en p-i-n-diode i sperreretning. Båndene ligger høyt og flatt på p-siden, faller jevnt gjennom det brede i-laget og ligger lavt og flatt på n-siden. F_p er stiplet på p-siden og F_n på n-siden. Midt i i-laget løfter et foton hν et elektron fra valensbåndet til ledningsbåndet; elektronet går ned langs ledningsbåndet mot n og hullet opp langs valensbåndet mot p. Bredden W er merket under i-laget."
+  width={340}
+  height={290}
+  number={2}
+  caption="En p-i-n-diode i sperreretning. Ikke i skala."
+/>
+
+Sonen gjøres bred med et nesten udopet, altså nesten intrinsisk, lag mellom p- og n-siden. En diode med et slikt
+lag er en <Term name="p-i-n-diode">p-i-n-diode</Term> (figur 2). Laget har høy resistivitet, så nesten hele sperrespenningen faller over det, og feltet fyller hele
+laget. Når levetiden i i-laget er lang mot tiden det tar å drive gjennom det, kommer nesten alle parene som dannes
+der, frem til p- og n-siden.
+
+Svake signaler gir få par. Med sperrespenningen nær gjennombruddet starter hvert par et skred av nye par ved
+støtionisasjon, så strømmen ganges opp i en <Term name="Skredfotodiode">skredfotodiode</Term>. Skredet ganger
+også opp støyen.
+
+<Figure
+  src="/figures/farger.svg"
+  alt="En akse for fotonenergi fra 0,5 til 3,6 eV med bølgelengden over, fra 2 µm til 400 nm. Det synlige båndet ligger i sine egne farger fra rødt ved 1,65 eV til fiolett ved 3,3 eV. Halvlederne står ved båndgapet sitt: InGaAs ved 0,75 eV, Si ved 1,11 eV (åpen sirkel, indirekte), GaAs ved 1,43 eV, GaAsP ved 1,9 eV i rødt, GaP ved 2,26 eV (åpen sirkel, indirekte), InGaN ved 2,7 eV i blått og GaN ved 3,4 eV i ultrafiolett."
+  width={340}
+  height={168}
+  number={3}
+  caption="Båndgapene til noen halvledere på en akse for fotonenergi, med bølgelengden over. Fylt sirkel: direkte gap. Åpen sirkel: indirekte gap."
+/>
+
+Materialet velges etter lyset som skal måles. Fotoner med ${h\nu < E_g}$ absorberes ikke. Fotoner med $h\nu$
+mye større enn $E_g$ absorberes nær overflaten, der mange bærere rekombinerer. Båndgapet skal derfor ligge
+like under fotonenergien. Fiberforbindelser bruker lys med bølgelengden 1,55 µm, som er 0,80 eV, og silisium
+absorberer det ikke. Detektoren lages av $\text{In}_{0{,}53}\text{Ga}_{0{,}47}\text{As}$, med
+${E_g = 0{,}75}$ eV (figur 3), som vokses på InP med samme gitterkonstant. InP har ${E_g = 1{,}35}$ eV og
+slipper lyset gjennom, så lyset kan komme inn gjennom InP og absorberes i InGaAs-laget, borte fra overflaten.
+I en skredfotodiode absorberes lyset i InGaAs, mens skredet skjer i en overgang i InP. Det store båndgapet i
+InP gir mye mindre strøm uten lys, og signalet skiller seg bedre fra støyen.
+
+<Callout title="En rask detektor">
+Par som dannes i sonen, feies ut på en brøkdel av et nanosekund, mens par som må diffundere, bruker titalls nanosekunder. En rask detektor har en bred sone, som i p-i-n-dioden, og et båndgap like under fotonenergien.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Fotodetektoren">
+<ExamRef id="2024-nov" task="19" />
+
+Fill in the blanks in the following section of text. Words are suggested for each blank – choose the most
+appropriate one. (correct: 1p, wrong: -0.5p, blank: -0.5p, minimum score: 0p)
+
+<Quiz
+  question={"When using a photodiode as a photodetector, it is operated in the _____ quadrant of its I-V characteristic,"}
+  options={["fourth", "second", "third", "first"]}
+  answer={2}
+  explanation={"Fotodetektoren ligger i sperreretning, med $V$ og $I$ begge negative."}
+/>
+
+<Quiz
+  question={"where the current _____."}
+  options={["is essentially independent of voltage, but proportional to the optical generation rate", "is dependent on the voltage and the device delivers power from the junction to the external circuit"]}
+  answer={0}
+  explanation={"I sperreretning er diodeleddet $-I_0$, som er svært lite, så strømmen er $-I_\\text{op} = -qAg_\\text{op}(L_p + L_n + W)$. Det andre alternativet beskriver solcellen i fjerde kvadrant."}
+/>
+
+<Quiz
+  question={"In a reverse-biased p-i-n photodetector, where the i stands for _____, the applied voltage appears almost entirely across the i region."}
+  options={["impurity", "inversion", "intrinsic", "Indium"]}
+  answer={2}
+  explanation={"i-laget er nesten udopet, altså nesten intrinsisk, og har derfor høy resistivitet."}
+/>
+
+<Quiz
+  question={"If the carrier lifetime within the i region is _____, most of the photogenerated carriers will be collected by the n and p regions."}
+  options={["short compared to the storage delay time", "long compared to the speed of light", "long compared to the drift time", "short compared to the diode switching time"]}
+  answer={2}
+  explanation={"Et par som dannes i i-laget, må drive ut før det rekombinerer, så levetiden må være lang mot tiden det tar å drive gjennom laget."}
+/>
+
+<Quiz
+  question={"If low-level optical signals are to be detected, it is often desirable to operate the photodiode in the _____ region of its I-V characteristic."}
+  options={["linear", "avalanche", "positive"]}
+  answer={1}
+  explanation={"Nær gjennombruddet starter hvert par et skred, så et svakt signal gir en merkbar strøm."}
+/>
+
+<Quiz
+  question={"In this mode, each photogenerated carrier results in a significant change in current due to _____."}
+  options={["avalanche multiplication", "Zener breakdown", "charge recombination"]}
+  answer={0}
+  explanation={"Hver bærer som feies gjennom sonen, lager nye par ved støtionisasjon, og de lager nye igjen. Zener-gjennombrudd er tunnelering og ganger ikke opp bærerne."}
+/>
+
+</Example>
+
+## Lysdioden
+
+I lederetningen injiseres elektroner i p-siden og hull i n-siden, og nær sonen er ${np \gg n_i^2}$, så de
+rekombinerer. Et elektron som faller fra ledningsbåndet ned til et hull i valensbåndet, kan gi fra seg energien
+som et foton eller som varme til gitteret. I en indirekte halvleder som silisium må rekombinasjonen også endre
+krystallmomentet, og nesten all rekombinasjon går via sentre i gapet og gir varme. I en direkte halvleder som
+GaAs kan elektronet falle rett ned, og mye av rekombinasjonen gir lys. En pn-overgang i en direkte halvleder,
+i lederetningen, er en <Term name="Lysdiode">lysdiode</Term>.
+
+Hvor stor del av rekombinasjonen som gir lys, avhenger av to levetider: $\tau_r$ for rekombinasjon med et foton
+og $\tau_\text{nr}$ for rekombinasjon uten. Ratene legges sammen, ${1/\tau = 1/\tau_r + 1/\tau_\text{nr}}$, og
+<FormulaRef id="lysdiode-andel">andelen som gir lys</FormulaRef>, er
+
+$$
+\eta = \frac{1/\tau_r}{1/\tau_r + 1/\tau_\text{nr}} = \frac{1}{1 + \tau_r/\tau_\text{nr}}
+$$
+
+En god lysdiode har ${\tau_r \ll \tau_\text{nr}}$ og ${\eta}$ nær 1. Kort $\tau_r$ krever et direkte båndgap, og
+lang $\tau_\text{nr}$ krever få defekter som rekombinasjonen kan gå via.
+
+Elektronene og hullene ligger nær båndkantene, så fotonet har ${h\nu \approx E_g}$, og båndgapet bestemmer
+fargen. I figur 3 gir InGaAs og GaAs infrarødt lys, og GaN, med 3,4 eV, gir ultrafiolett. Mellom dem lages
+legeringer. I $\text{GaAs}_{1-x}\text{P}_x$ vokser båndgapet fra 1,43 eV i GaAs mot 2,26 eV i GaP
+når $x$ øker. Gapet er direkte til ${x \approx 0{,}45}$, og med ${x \approx 0{,}4}$ er det 1,9 eV, som gir
+rødt lys med bølgelengden 650 nm. Med mer fosfor blir gapet indirekte, og materialet lyser dårlig. En
+legering med riktig båndgap vokses som et tynt lag på en krystall med samme gitterkonstant, slik at laget får
+få defekter og lang $\tau_\text{nr}$.
+
+<Callout title="Lysdioden">
+En lysdiode er en pn-overgang i en direkte halvleder, i lederetningen. Fotonene har ${h\nu \approx E_g}$, og andelen av rekombinasjonen som gir lys, er ${\eta = 1/(1 + \tau_r/\tau_\text{nr})}$.
+</Callout>
+
+<Quiz
+  question={"En lysdiode av GaAs, med $E_g = 1{,}43$ eV, gir lys med bølgelengde rundt"}
+  options={["870 nm", "650 nm", "1120 nm", "1,43 µm"]}
+  answer={0}
+  explanation={"Fotonene har $h\\nu \\approx E_g$, så $\\lambda \\approx 1240\\ \\text{nm·eV}/1{,}43\\ \\text{eV} \\approx 870$ nm, i infrarødt. 1120 nm er grensen for silisium, og 650 nm er lyset fra $\\text{GaAs}_{0{,}6}\\text{P}_{0{,}4}$. Båndgapet i eV er ikke bølgelengden i µm."}
+/>
+
+## Laseren
+
+Et elektron i et høyt nivå $E_2$ kan falle til et lavere nivå $E_1$ og sende ut et foton med
+${h\nu_{12} = E_2 - E_1}$ av seg selv, på et tilfeldig tidspunkt og i en tilfeldig retning. Denne prosessen er
+spontan emisjon, og den gir lyset i en lysdiode. Et foton med akkurat energien $h\nu_{12}$ kan også få
+elektronet til å falle med en gang. Da sendes det ut et foton til, med samme energi, retning og fase som det
+første. Denne prosessen er <Term name="Stimulert emisjon">stimulert emisjon</Term>. Hvert av de to fotonene kan sette i
+gang en ny stimulert emisjon, så lyset forsterkes. Laser står for *light amplification by stimulated emission
+of radiation*.
+
+Ta to nivåer med $n_1$ elektroner i det nederste og $n_2$ i det øverste, i et felt av fotoner med
+energitettheten $\rho(\nu_{12})$.
+
+<Figure
+  src="/figures/emisjon.svg"
+  alt="Tre par av nivåer E_2 over E_1. Absorpsjon: et foton kommer inn og løfter elektronet fra E_1 til E_2. Spontan emisjon: elektronet faller fra E_2 til E_1 av seg selv og sender ut ett foton i en tilfeldig retning. Stimulert emisjon: et foton kommer inn mens elektronet er i E_2, elektronet faller, og to like fotoner går ut i samme retning."
+  width={340}
+  height={250}
+  number={4}
+  caption="Absorpsjon, spontan emisjon og stimulert emisjon mellom to nivåer, med ratene under."
+/>
+
+Tre prosesser går samtidig, med <FormulaRef id="einstein-rater">ratene</FormulaRef>
+${B_{12}n_1\rho(\nu_{12})}$ for absorpsjon, ${A_{21}n_2}$ for spontan emisjon og ${B_{21}n_2\rho(\nu_{12})}$
+for stimulert emisjon. Figur 4 viser de tre prosessene. Absorpsjon og stimulert emisjon trenger et foton og er proporsjonale med
+$\rho$; spontan emisjon trenger det ikke. I stasjonær tilstand er absorpsjonen like stor som de to emisjonene
+til sammen. For en laser skal den stimulerte emisjonen vinne over begge de andre:
+
+$$
+\begin{aligned}
+\frac{\text{stimulert}}{\text{spontan}} &= \frac{B_{21}}{A_{21}}\,\rho(\nu_{12}) \\
+\frac{\text{stimulert}}{\text{absorpsjon}} &= \frac{B_{21}}{B_{12}}\,\frac{n_2}{n_1}
+\end{aligned}
+$$
+
+Den første brøken vokser med fotontettheten, så lyset må holdes inne og bygges opp. Med like mange tilstander
+i de to nivåene er ${B_{21} = B_{12}}$, så den andre brøken er større enn 1 bare når ${n_2 > n_1}$. I likevekt
+er ${n_2/n_1 = e^{-(E_2 - E_1)/k_BT} < 1}$, så flere elektroner i det øverste nivået er en tilstand langt fra
+likevekt.
+
+<Statement kind="principle" name="To krav for laservirkning">
+Fotontettheten må bygges opp i en optisk resonator, slik at stimulert emisjon vinner over spontan emisjon. Og
+det må være flere elektroner i det øverste nivået enn i det nederste, <Term name="Populasjonsinversjon">populasjonsinversjon</Term>, slik at stimulert emisjon vinner over absorpsjon.
+</Statement>
+
+### Inversjon i en pn-overgang
+
+I en halvleder er nivåene bånd. Et foton med energien $h\nu$ kan få et elektron i ledningsbåndet ved energien
+$E$ til å falle til en tom tilstand i valensbåndet ved ${E - h\nu}$. Den øverste tilstanden er fylt med
+sannsynligheten ${1/(1 + e^{(E - F_n)/k_BT})}$ og den nederste med ${1/(1 + e^{(E - h\nu - F_p)/k_BT})}$, og
+den øverste er mest fylt når ${E - F_n < E - h\nu - F_p}$. Da er det <FormulaRef id="inversjon-baand">populasjonsinversjon</FormulaRef> for fotonenergien $h\nu$:
+
+$$
+F_n - F_p > h\nu \ge E_g
+$$
+
+Fotoner med energi mellom $E_g$ og ${F_n - F_p}$ forsterkes. Det minste $h\nu$ er $E_g$, så kvasi-Fermi-nivåene
+må ligge mer enn $E_g$ fra hverandre på samme sted, ${F_n - F_p > E_g}$. Da ligger minst ett av dem inne i båndet
+sitt. Du får inversjon når begge sidene av overgangen er så sterkt dopet at Fermi-nivået ligger inne i båndet,
+altså degenerert doping, og spenningen i lederetningen er stor. I romladningssonen er ${F_n - F_p = qV}$, så det trengs ${qV > E_g}$, altså mer enn 1,43 V i
+GaAs. Populasjonsinversjon er ikke det samme som inversjon i en MOS-kondensator.
+
+<Simulation
+  src={"/sims/laserdioden.js"}
+  host={"dom"}
+  title={"Laserdioden"}
+  height={440}
+  caption={"Båndene nær overgangen i en laser av GaAs der begge sidene er så sterkt dopet at Fermi-nivået ligger 50 meV inne i båndet. Blått er fylte tilstander i ledningsbåndet, rødt tomme tilstander i valensbåndet. Midten av gapet er klippet ut; nær båndkantene er energiene i skala. Sonen er tegnet mye bredere i forhold til diffusjonslengden enn den er. Under står lyset mot fotonenergien: den spontane emisjonen som flate og modene i resonatoren som streker, skalert på nytt for hver strøm. Modene ligger i virkeligheten ti ganger tettere."}
+/>
+
+Simuleringen «Laserdioden» viser båndene i en slik overgang. Glideren gir strømmen i forhold til
+terskelstrømmen, strømmen der laseren begynner å gi laserlys. Ved 0,1 × terskelen er ${F_n - F_p}$ mindre enn
+$E_g$, og lyset er bare spontan emisjon med fotonenergier litt over $E_g$, som i en lysdiode. Øk strømmen. Fra
+rundt en tredel av terskelstrømmen er ${F_n - F_p > E_g}$ i et område rundt overgangen, inversjonsområdet.
+
+### Resonatoren og terskelen
+
+<Term name="Resonator">Resonatoren</Term> er to parallelle speil med lyset frem og tilbake mellom seg. En runde frem og
+tilbake er $2L$, og en bølge forsterker seg selv bare når den er i fase med seg selv etter en runde, altså når et
+helt antall halve bølgelengder <FormulaRef id="resonator">passer mellom speilene</FormulaRef>:
+
+$$
+L = m\frac{\lambda}{2} \qquad \lambda = \frac{\lambda_0}{n}
+$$
+
+Her er $\lambda$ bølgelengden i halvlederen, $\lambda_0$ bølgelengden i luft og $n$ brytningsindeksen, ikke
+elektronkonsentrasjonen. Speilene lages ved å kløyve krystallen. Den sprekker langs krystallplanene, så de to
+endeflatene blir helt parallelle. Endeflatene slipper ut en del av lyset, og det er laserstrålen.
+
+Resonatoren er mye lengre enn bølgelengden, så mange bølgelengder passer. En GaAs-laser med ${L = 300}$ µm,
+${n = 3{,}6}$ og ${\lambda_0 = 870}$ nm har ${m = 2Ln/\lambda_0 \approx 2500}$. Når $m$ endres med 1, endres $\lambda_0$ med
+omtrent $\lambda_0/m$, så to naboer ligger <FormulaRef id="modeavstand">avstanden</FormulaRef>
+
+$$
+\Delta\lambda_0 = \frac{\lambda_0^2}{2Ln}
+$$
+
+fra hverandre når $n$ ikke endrer seg med bølgelengden, her 0,35 nm.
+
+<Derivation title="Avstanden mellom modene">
+
+Med ${\lambda = \lambda_0/n}$ gir resonansbetingelsen ${m = 2Ln/\lambda_0}$. Når $m$ er stor, kan den behandles
+som kontinuerlig, og den deriverte med hensyn på $\lambda_0$, der også $n$ kan avhenge av $\lambda_0$, er
+
+$$
+\frac{dm}{d\lambda_0} = -\frac{2Ln}{\lambda_0^2} + \frac{2L}{\lambda_0}\frac{dn}{d\lambda_0}
+$$
+
+For to naboer er ${\Delta m = -1}$, og ${\Delta m \approx (dm/d\lambda_0)\Delta\lambda_0}$ gir
+
+$$
+\Delta\lambda_0 = \frac{\lambda_0^2}{2Ln}\left(1 - \frac{\lambda_0}{n}\frac{dn}{d\lambda_0}\right)^{-1}
+$$
+
+Med ${dn/d\lambda_0 = 0}$ blir parentesen 1.
+
+</Derivation>
+
+Lyset i en mode vokser bare når forsterkningen gjennom resonatoren er større enn det som går tapt, mest gjennom
+speilet som slipper lyset ut. Strømmen der forsterkningen akkurat veier opp for tapet, er
+<Term name="Terskelstrøm">terskelstrømmen</Term>. Øk strømmen mot terskelen i simuleringen «Laserdioden». Modene med fotonenergi mellom $E_g$ og ${F_n - F_p}$ forsterkes og
+stikker opp over den spontane emisjonen, flere ved siden av hverandre. Ved terskelen tar moden med mest
+forsterkning av, og over terskelen vokser bare den. Lyset er da nesten bare én bølgelengde, og skalaen må
+krympes tusenvis av ganger for at toppen skal få plass. Over terskelen vokser ikke ${F_n - F_p}$ lenger, fordi
+hvert ekstra par strømmen leverer, går med en gang med til stimulert emisjon i den ene moden.
+
+En kort resonator gir større avstand mellom modene, så færre får plass der forsterkningen er størst, og
+laseren gir lettere bare én bølgelengde. Men lyset går kortere vei gjennom halvlederen per runde, så
+forsterkningen per lengde må være større.
+
+<Callout title="Laserdioden">
+En laserdiode er en pn-overgang med begge sidene degenerert, med så stor strøm i lederetningen at ${F_n - F_p > E_g}$ ved overgangen, mellom to kløyvde endeflater som speil. Over terskelstrømmen dominerer én mode.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Halvlederlaseren">
+<ExamRef id="2021-des" task="19" />
+
+Explain how a semiconductor can be used as a laser. Your answer should include a description of the necessary
+requirements for stimulated emission and how these conditions can be achieved with a p-n junction.
+
+<Solution>
+
+En laser gir lys med én bølgelengde og én fase fordi lyset lages ved stimulert emisjon. Et foton med energien
+${E_2 - E_1}$ får et elektron i $E_2$ til å falle og sende ut et foton til, likt det første. Tre prosesser
+konkurrerer: absorpsjon ${B_{12}n_1\rho}$, spontan emisjon ${A_{21}n_2}$ og stimulert emisjon
+${B_{21}n_2\rho}$.
+
+1. Stimulert emisjon skal vinne over spontan emisjon. Forholdet er ${(B_{21}/A_{21})\rho}$, så fotontettheten
+   $\rho$ må bygges opp. Det gjør en optisk resonator, to parallelle speil der det ene slipper ut litt av
+   lyset.
+2. Stimulert emisjon skal vinne over absorpsjon. Forholdet er ${n_2/n_1}$ når ${B_{21} = B_{12}}$, så det må
+   være flere elektroner i det øverste nivået enn i det nederste, populasjonsinversjon. Det er aldri slik i
+   likevekt.
+
+I en pn-overgang er nivåene bånd, og kravet for fotoner med energien $h\nu$ er ${F_n - F_p > h\nu}$, så minst
+${F_n - F_p > E_g}$. Begge sidene dopes så sterkt at Fermi-nivået ligger inne i båndet, og overgangen får en stor
+spenning i lederetningen, ${qV > E_g}$. Da er ledningsbåndet fylt opp til $F_n$ og valensbåndet tomt ned til
+$F_p$ i et område rundt overgangen. Materialet må ha et direkte gap, som GaAs. Resonatoren lages ved å kløyve
+krystallen langs krystallplan, så endeflatene blir parallelle speil, og bølgelengdene som oppfyller
+${L = m\lambda/2}$, forsterker seg selv. Under
+terskelstrømmen gir overgangen spontan emisjon som en lysdiode. Ved terskelen veier forsterkningen opp for
+tapet gjennom speilene, og over den dominerer én mode.
+
+</Solution>
+</Example>
+
+### Andre lasere
+
+Materialet i en laser må gi lys effektivt, så gapet må være direkte, og det må kunne dopes til både p- og
+n-type. GaAs og AlGaAs gir infrarødt lys rundt 0,8 til 0,9 µm. For fiber brukes InGaAsP på InP. Med fire
+grunnstoffer kan båndgapet og gitterkonstanten velges hver for seg, så lag med båndgap for 1,3 til 1,55 µm kan
+vokses på InP. Nitridene, GaN og legeringene med indium og aluminium, har direkte gap for alle sammensetninger og
+gir blått og ultrafiolett lys. GaN var lenge vanskelig å dope p-type, og det fantes ingen krystall med samme
+gitterkonstant å vokse det på. II–VI-forbindelser som ZnSe gir mye lys, men det er
+vanskelig å lage pn-overganger i dem.
+
+Alle laserne over sender ut et foton når et elektron i ledningsbåndet faller til et hull i valensbåndet, så
+fotonenergien er nær $E_g$. En <Term name="Kvantekaskadelaser">kvantekaskadelaser</Term> bruker bare
+elektroner. Den er bygd av mange tynne lag av to halvledere. Et lag med lite båndgap mellom to med stort er en
+kvantebrønn, der elektronet bare kan ha noen bestemte energinivåer i ledningsbåndet, som en partikkel i en boks.
+Fotonet sendes ut når elektronet faller fra ett slikt nivå til et lavere, så fotonenergien er satt av hvor
+tykke lagene er. Den er mye mindre enn $E_g$, og gapet trenger ikke være direkte. Lagene er satt sammen som en trapp:
+elektronet går videre til neste trinn og sender ut et foton i hvert. Laseren gir
+infrarødt lys og terahertzstråling.
+
+<KeyTakeaways>
+
+- Lys med ${h\nu > E_g}$ lager par, og parene som dannes i sonen eller innenfor en diffusjonslengde fra den, gir ${I_\text{op} = qAg_\text{op}(L_p + L_n + W)}$ fra n til p. Diodeligningen blir ${I = I_0(e^{qV/k_BT} - 1) - I_\text{op}}$.
+- Kortsluttet går ${I_\text{sc} = -I_\text{op}}$. Med åpen krets lader parene opp overgangen til ${V_\text{oc} = (k_BT/q)\ln(I_\text{op}/I_0 + 1)}$, som vokser med logaritmen til lyset, ikke avhenger av arealet og holder seg under $V_0$.
+- Solcellen arbeider i fjerde kvadrant og leverer effekt, fotodetektoren i tredje med strømmen satt av lyset, lysdioden og laseren i første.
+- En solcelle leverer ${P_\text{max} = FF \cdot V_\text{oc}|I_\text{sc}|}$. Fotoner under $E_g$ går gjennom, og overskuddet over $E_g$ blir varme, så ett båndgap nær silisiumets er best, og cellen gir høyst rundt en tredel.
+- En rask fotodetektor har en bred sone, så parene dannes der og driver ut i stedet for å diffundere. p-i-n-dioden har et bredt i-lag, og skredfotodioden ganger opp strømmen ved støtionisasjon.
+- En lysdiode trenger et direkte gap. Fotonene har ${h\nu \approx E_g}$, og andelen som gir lys, er ${\eta = 1/(1 + \tau_r/\tau_\text{nr})}$.
+- En laser trenger en resonator og populasjonsinversjon. I en degenerert pn-overgang med stor strøm i lederetningen er ${F_n - F_p > E_g}$ nær overgangen, kløyvde endeflater er speilene, og over terskelstrømmen dominerer én mode.
+
+</KeyTakeaways>

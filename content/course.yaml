@@ -806,13 +806,57 @@ formulas:
     tex: "\\begin{aligned} V_{EA} &= V_{EB} - I_B(r_b + r_b') \\\\ V_{ED} &= V_{EB} - I_Br_b \\end{aligned}"
     label: "Spenningen over emitterovergangen midt under emitteren (A) og ved kanten (D), med basemotstanden $r_b$ ut til kontakten og $r_b'$ langs den tynne basen under emitteren. Spenningen er størst ved kanten, så emitteren injiserer mest der."
 
-  # Resten av formelarket (Streetman kap. 8) står her før modulen er skrevet.
-  # Bytt seksjonsnavnet til modulens overskrift når modulen kommer.
+  # Fotodioder, lysdioder og lasere (Streetman §8.1.1–8.1.3, §8.2–8.2.1, §8.3–8.4.3, §8.4.5–8.4.6).
   - id: fotostrom
-    section: Fotodioden
+    section: Lys på overgangen
     onSheet: true
     tex: "I_\\text{op} = qAg_\\text{op}(L_p + L_n + W)"
-    label: "Fotostrømmen i en belyst pn-overgang: bærerpar som genereres inne i sonen eller innenfor en diffusjonslengde fra den, samles opp av feltet. Den går fra n til p, så diodeligningen blir $I = I_0(e^{qV/k_BT} - 1) - I_\\text{op}$."
+    label: "Fotostrømmen i en belyst pn-overgang. Par som dannes i sonen eller innenfor en diffusjonslengde fra den, samles opp av feltet, elektronene på n-siden og hullene på p-siden, så strømmen går fra n til p gjennom overgangen."
+  - id: foton-bolgelengde
+    section: Lys på overgangen
+    onSheet: false
+    tex: "\\lambda = \\dfrac{hc}{h\\nu} \\approx \\dfrac{1240\\ \\text{nm·eV}}{h\\nu}"
+    label: "Bølgelengden til et foton med energien $h\\nu$. Silisium, med $E_g = 1{,}11$ eV, absorberer lys med bølgelengde under 1120 nm, og en lysdiode gir lys med $\\lambda \\approx 1240\\ \\text{nm·eV}/E_g$."
+  - id: belyst-diode
+    section: Lys på overgangen
+    onSheet: false
+    tex: "I = I_0\\left(e^{qV/k_BT} - 1\\right) - I_\\text{op}"
+    label: "Strømmen gjennom en belyst pn-overgang, positiv fra p til n. Lyset senker hele diodekurven med fotostrømmen $I_\\text{op}$. Kortsluttet er strømmen $I_\\text{sc} = -I_\\text{op}$, og i sperreretningen er den $-I_\\text{op}$ uansett spenning."
+  - id: tomgangsspenning
+    section: Spenningen fra lyset
+    onSheet: false
+    tex: "\\begin{aligned} V_\\text{oc} &= \\dfrac{k_BT}{q}\\ln\\left(\\dfrac{I_\\text{op}}{I_0} + 1\\right) \\\\ &\\approx \\dfrac{k_BT}{q}\\ln\\dfrac{g_\\text{op}}{g_\\text{th}} \\end{aligned}"
+    label: "Tomgangsspenningen: med åpen krets lader de oppsamlede parene overgangen opp i lederetningen, til strømmen over den lavere barrieren er like stor som $I_\\text{op}$. Den vokser med 60 mV for hver tidobling av lyset og avhenger ikke av arealet, siden både $I_\\text{op}$ og $I_0$ er proporsjonale med det. Den siste formen gjelder en symmetrisk overgang med $W$ liten mot diffusjonslengdene og sterkt lys, med $g_\\text{th} = p_n/\\tau_p$. $V_\\text{oc}$ kan ikke bli større enn $V_0$."
+  - id: fyllfaktor
+    section: Solcellen
+    onSheet: false
+    tex: "\\begin{aligned} FF &= \\dfrac{V_mI_m}{V_\\text{oc}I_\\text{sc}} \\\\ P_\\text{max} &= FF \\cdot V_\\text{oc}|I_\\text{sc}| \\end{aligned}"
+    label: "Fyllfaktoren til en solcelle: den største effekten, $V_mI_m$ i punktet der rektangelet mellom aksene og kurven i fjerde kvadrant er størst, delt på $V_\\text{oc}I_\\text{sc}$. En kurve som bøyer brått av nær $V_\\text{oc}$, gir fyllfaktor nær 1, og motstand i serie gjør den mindre."
+  - id: lysdiode-andel
+    section: Lysdioden
+    onSheet: false
+    tex: "\\begin{aligned} \\dfrac{1}{\\tau} &= \\dfrac{1}{\\tau_r} + \\dfrac{1}{\\tau_\\text{nr}} \\\\ \\eta &= \\dfrac{1}{1 + \\tau_r/\\tau_\\text{nr}} \\end{aligned}"
+    label: "Andelen av rekombinasjonen i en lysdiode som gir et foton. $\\tau_r$ er levetiden for rekombinasjon med foton og $\\tau_\\text{nr}$ for rekombinasjon uten, og ratene legges sammen. En god lysdiode har $\\tau_r \\ll \\tau_\\text{nr}$: et direkte gap gir kort $\\tau_r$, og få defekter gir lang $\\tau_\\text{nr}$."
+  - id: einstein-rater
+    section: Laseren
+    onSheet: false
+    tex: "\\begin{aligned} B_{12}n_1\\rho(\\nu_{12}) &= A_{21}n_2 + B_{21}n_2\\rho(\\nu_{12}) \\\\ \\dfrac{\\text{stimulert}}{\\text{spontan}} &= \\dfrac{B_{21}}{A_{21}}\\,\\rho(\\nu_{12}) \\\\ \\dfrac{\\text{stimulert}}{\\text{absorpsjon}} &= \\dfrac{B_{21}}{B_{12}}\\,\\dfrac{n_2}{n_1} \\end{aligned}"
+    label: "Absorpsjon, spontan emisjon og stimulert emisjon mellom to nivåer med $n_1$ og $n_2$ elektroner, i et felt med fotontettheten $\\rho(\\nu_{12})$. I stasjonær tilstand balanserer absorpsjonen de to emisjonene. Stimulert emisjon vinner over spontan når $\\rho$ er stor, i en resonator, og over absorpsjon når $n_2 > n_1$, siden $B_{21} = B_{12}$ når nivåene har like mange tilstander."
+  - id: inversjon-baand
+    section: Inversjon i en pn-overgang
+    onSheet: false
+    tex: "F_n - F_p > h\\nu \\ge E_g"
+    label: "Populasjonsinversjon mellom båndene for fotoner med energien $h\\nu$: tilstanden i ledningsbåndet er mer fylt enn tilstanden $h\\nu$ lenger ned i valensbåndet. Siden $h\\nu \\ge E_g$, krever inversjon minst $F_n - F_p > E_g$, og da forsterkes fotoner mellom $E_g$ og $F_n - F_p$. En pn-overgang der begge sidene er så sterkt dopet at Fermi-nivået ligger inne i båndet, får det med $qV > E_g$ i lederetningen."
+  - id: resonator
+    section: Resonatoren og terskelen
+    onSheet: false
+    tex: "\\begin{aligned} L &= m\\dfrac{\\lambda}{2} \\\\ \\lambda &= \\dfrac{\\lambda_0}{n} \\end{aligned}"
+    label: "Resonansbetingelsen for to parallelle speil i avstanden $L$: et helt antall halve bølgelengder i halvlederen. $\\lambda_0$ er bølgelengden i luft og $n$ brytningsindeksen. I en halvlederlaser er $L \\gg \\lambda$, så $m$ er stor og mange bølgelengder passer."
+  - id: modeavstand
+    section: Resonatoren og terskelen
+    onSheet: false
+    tex: "\\Delta\\lambda_0 = \\dfrac{\\lambda_0^2}{2Ln}\\left(1 - \\dfrac{\\lambda_0}{n}\\dfrac{dn}{d\\lambda_0}\\right)^{-1}"
+    label: "Avstanden mellom to nabomoder i en laserresonator, fra $m = 2Ln/\\lambda_0$ med $\\Delta m = -1$. Med $dn/d\\lambda_0 = 0$ er den $\\lambda_0^2/2Ln$, 0,35 nm for en GaAs-laser med $L = 300$ µm og $n = 3{,}6$. En kortere resonator gir større avstand."
 
 glossary:
   - term: Valensbånd
@@ -1229,6 +1273,42 @@ glossary:
   - term: Emitter crowding
     section: Basemotstanden og emitter crowding
     definition: "(<em>emitter crowding</em>) Basestrømmen går sidelengs gjennom den tynne basen under emitteren, og spenningsfallet i basemotstanden gjør spenningen over emitterovergangen størst ved kanten av emitteren. Emitteren injiserer derfor mest der, og injeksjonen kan bli høy ved kanten mens den samlede strømmen er liten. Lange, smale emitterstriper gir lang kant i forhold til arealet."
+  - term: Fotostrøm
+    section: Lys på overgangen
+    definition: "(<em>photocurrent</em>) Strømmen fra par som lys lager i en pn-overgang og som feltet samler opp: par som dannes i sonen, og minoritetsbærere som dannes innenfor en diffusjonslengde fra den. Den går fra n til p gjennom overgangen, $I_\\text{op} = qAg_\\text{op}(L_p + L_n + W)$."
+  - term: Kortslutningsstrøm
+    section: Spenningen fra lyset
+    definition: "(<em>short-circuit current</em>) Strømmen gjennom en belyst pn-overgang med $V = 0$, $I_\\text{sc} = -I_\\text{op}$. Den vokser med lyset og med arealet."
+  - term: Tomgangsspenning
+    section: Spenningen fra lyset
+    definition: "(<em>open-circuit voltage</em>) Spenningen over en belyst pn-overgang med åpen krets, $V_\\text{oc}$. De oppsamlede parene lader overgangen opp i lederetningen til strømmen over barrieren er like stor som fotostrømmen. Den vokser med logaritmen til lyset, avhenger ikke av arealet og er mindre enn $V_0$."
+  - term: Fyllfaktor
+    section: Solcellen
+    definition: "(<em>fill factor</em>) Den største effekten en solcelle leverer, delt på $V_\\text{oc}I_\\text{sc}$. Den er nær 1 når kurven i fjerde kvadrant bøyer brått av nær $V_\\text{oc}$."
+  - term: p-i-n-diode
+    section: Fotodetektoren
+    definition: "(<em>p-i-n photodiode</em>) En fotodiode med et nesten udopet lag mellom p- og n-siden. Laget har høy resistivitet, så nesten hele sperrespenningen faller over det, og sonen blir bred. Parene dannes der og driver ut, så detektoren er rask, og den brede sonen gir liten kapasitans."
+  - term: Skredfotodiode
+    section: Fotodetektoren
+    definition: "(<em>avalanche photodiode</em>, APD) En fotodiode med sperrespenning nær gjennombruddet, der hvert par som lyset lager, starter et skred av nye par ved støtionisasjon. Strømmen ganges opp, og det gjør støyen også."
+  - term: Lysdiode
+    section: Lysdioden
+    definition: "(<em>light-emitting diode</em>, LED) En pn-overgang i en direkte halvleder i lederetningen, der de injiserte bærerne rekombinerer og gir fotoner med $h\\nu \\approx E_g$. Båndgapet bestemmer fargen."
+  - term: Stimulert emisjon
+    section: Laseren
+    definition: "(<em>stimulated emission</em>) Et foton med energien $E_2 - E_1$ får et elektron i $E_2$ til å falle til $E_1$ og sende ut et foton til, med samme energi, retning og fase. Ved spontan emisjon faller elektronet av seg selv, på et tilfeldig tidspunkt og i en tilfeldig retning."
+  - term: Populasjonsinversjon
+    section: Laseren
+    definition: "(<em>population inversion</em>) Flere elektroner i det øverste nivået enn i det nederste, så stimulert emisjon vinner over absorpsjon. Det skjer aldri i likevekt. Mellom båndene i en halvleder er kravet $F_n - F_p > E_g$. Ikke det samme som inversjon i en MOS-kondensator."
+  - term: Resonator
+    section: Resonatoren og terskelen
+    definition: "(<em>optical resonant cavity</em>, Fabry–Perot-resonator) To parallelle speil som holder lyset inne, slik at fotontettheten bygges opp. Bare bølgelengder der et helt antall halve bølgelengder passer mellom speilene, forsterker seg selv. I en halvlederlaser er speilene kløyvde endeflater."
+  - term: Terskelstrøm
+    section: Resonatoren og terskelen
+    definition: "(<em>threshold current</em>) Strømmen der forsterkningen i en laser veier opp for lyset som går tapt, mest gjennom speilet som slipper lyset ut. Under den gir laseren spontan emisjon som en lysdiode, og over den dominerer én mode."
+  - term: Kvantekaskadelaser
+    section: Andre lasere
+    definition: "(<em>quantum cascade laser</em>) En laser av mange tynne lag der elektronet faller mellom energinivåer i kvantebrønner i ledningsbåndet og sender ut et foton for hvert trinn. Fotonenergien er satt av tykkelsen på lagene, ikke av $E_g$, så gapet trenger ikke være direkte. Gir infrarødt lys og terahertzstråling."
 
 features:
   progress: true
@@ -1409,6 +1489,22 @@ symbols:
   - { tex: "BV_{CBO},\\ BV_{CEO}", meaning: "Gjennombruddsspenningen over kollektorovergangen med åpen emitter (felles base) og med åpen base (felles emitter)", unit: "V", section: "Bipolartransistoren", formula: "skred-felles-emitter", id: "bv" }
   - { tex: "I_{CO}", meaning: "Kollektorstrømmen med åpen emitter, $(1 - \\alpha_N\\alpha_I)I_{CS}$", unit: "A", section: "Bipolartransistoren", formula: "skred-felles-emitter", id: "i-co" }
   - { tex: "r_b,\\ r_b'", meaning: "Basemotstanden fra basekontakten inn til emitteren, og langs den tynne basen under emitteren", unit: "Ω", section: "Bipolartransistoren", term: "Emitter crowding", formula: "emitterkant", id: "rb" }
+  # ── Fotodioder, lysdioder og lasere ──
+  - { tex: "I_\\text{op}", meaning: "Fotostrømmen fra n til p gjennom en belyst overgang", unit: "A", section: "Fotodioder, lysdioder og lasere", term: "Fotostrøm", formula: "fotostrom", id: "i-op" }
+  - { tex: "I_\\text{sc}", meaning: "Kortslutningsstrømmen, $-I_\\text{op}$", unit: "A", section: "Fotodioder, lysdioder og lasere", term: "Kortslutningsstrøm", formula: "belyst-diode", id: "i-sc" }
+  - { tex: "V_\\text{oc}", meaning: "Tomgangsspenningen over en belyst overgang med åpen krets", unit: "V", section: "Fotodioder, lysdioder og lasere", term: "Tomgangsspenning", formula: "tomgangsspenning", id: "v-oc" }
+  - { tex: "g_\\text{th}", meaning: "Den termiske generasjonsraten, $p_n/\\tau_p$", unit: "cm⁻³·s⁻¹", section: "Fotodioder, lysdioder og lasere", formula: "tomgangsspenning", id: "g-th", note: "Den samme raten som $g_i$ i likevekt." }
+  - { tex: "V_m,\\ I_m", meaning: "Spenningen og strømmen der en solcelle leverer mest effekt", section: "Fotodioder, lysdioder og lasere", formula: "fyllfaktor", id: "vm-im" }
+  - { tex: "FF", meaning: "Fyllfaktoren til en solcelle", section: "Fotodioder, lysdioder og lasere", term: "Fyllfaktor", formula: "fyllfaktor", id: "ff" }
+  - { tex: "\\tau_r,\\ \\tau_\\text{nr}", meaning: "Levetiden for rekombinasjon med og uten et foton", unit: "s", section: "Fotodioder, lysdioder og lasere", formula: "lysdiode-andel", id: "tau-r-nr" }
+  - { tex: "\\eta", meaning: "Andelen av rekombinasjonen i en lysdiode som gir et foton", section: "Fotodioder, lysdioder og lasere", formula: "lysdiode-andel", id: "eta" }
+  - { tex: "n_1,\\ n_2", meaning: "Antall elektroner i det nederste og det øverste nivået", unit: "cm⁻³", section: "Fotodioder, lysdioder og lasere", formula: "einstein-rater", id: "n1-n2", note: "Ikke elektronkonsentrasjonen $n$ i ledningsbåndet." }
+  - { tex: "\\rho(\\nu_{12})", meaning: "Energitettheten til fotonene med $h\\nu_{12} = E_2 - E_1$", section: "Fotodioder, lysdioder og lasere", formula: "einstein-rater", id: "rho-nu", note: "Ikke resistiviteten $\\rho$ eller romladningstettheten $\\rho(x)$." }
+  - { tex: "A_{21},\\ B_{12},\\ B_{21}", meaning: "Einstein-koeffisientene for spontan emisjon, absorpsjon og stimulert emisjon", section: "Fotodioder, lysdioder og lasere", term: "Stimulert emisjon", formula: "einstein-rater", id: "einstein-koeffisienter", note: "Ikke basetransportfaktoren $B$, konstanten $B$ i Schottky-strømmen eller arealet $A$." }
+  - { tex: "\\lambda,\\ \\lambda_0", meaning: "Bølgelengden i halvlederen og i luft", unit: "nm", section: "Fotodioder, lysdioder og lasere", formula: "resonator", id: "lambda", note: "$\\lambda_0 = n\\lambda$, og $\\lambda_0 \\approx 1240\\ \\text{nm·eV}/h\\nu$." }
+  - { tex: "n", meaning: "Brytningsindeksen i laserresonatoren", section: "Fotodioder, lysdioder og lasere", formula: "resonator", id: "n-brytning", note: "Ikke elektronkonsentrasjonen $n$ eller idealitetsfaktoren $n$. Rundt 3,6 for GaAs." }
+  - { tex: "L", meaning: "Lengden av laserresonatoren, avstanden mellom speilene", unit: "cm", section: "Fotodioder, lysdioder og lasere", formula: "resonator", id: "l-resonator", note: "Ikke diffusjonslengdene $L_n$ og $L_p$, kanallengden $L$ eller avstanden $L$ i Haynes–Shockley-eksperimentet." }
+  - { tex: "m", meaning: "Antall halve bølgelengder mellom speilene, nummeret til en mode", section: "Fotodioder, lysdioder og lasere", formula: "resonator", id: "m-mode" }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
