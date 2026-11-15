@@ -1,0 +1,457 @@
+---
+order: 15
+title: "Svitsjing og andre effekter i bipolartransistoren"
+summary: "Hva som skjer i basen når en bipolartransistor slås av og på, hvorfor ladningen i basen forsinker kollektorstrømmen, og hvordan gradert doping, høy kollektorspenning, strømnivå, temperatur og basemotstand endrer en virkelig transistor."
+importance: core
+tag: "Uke 45 · Streetman §7.6, §7.7.1–7.7.5"
+part: "Del 4: Transistorer"
+updated: 2026-11-15
+---
+
+<LearningGoals>
+
+- Forklare hva som skjer i basen i sperring og i metning, og hvorfor ladningen i metning blir større enn $Q_s$.
+- Følge ladningen $Q_p$ gjennom en svitsjesyklus og forklare tiden $t_s$ før metningen og lagringstiden $t_{sd}$, og hvorfor en stor basestrøm gjør den ene kortere og den andre lengre.
+- Forklare hvordan gradert doping i basen gir et felt som driver hullene over.
+- Forklare Early-effekten og punch-through, og hvorfor skredet gir gjennombrudd ved lavere spenning i felles emitter enn i felles base.
+- Forklare hvordan strømnivået og temperaturen endrer $\beta$, og hvorfor emitteren injiserer mest ved kanten.
+
+</LearningGoals>
+
+En pnp-transistor kan slå en strøm av og på. Emitteren er jordet, og kollektoren går gjennom en
+lastmotstand $R_L$ til et batteri på ${V_{CC} = -4\ \text{V}}$. En kilde $v_s$, som veksler mellom +1 og −1 V,
+styrer basen gjennom motstanden $R_B$. Når kilden gir +1 V, går det nesten ingen strøm gjennom $R_L$. Når den gir −1 V,
+går det 4 mA, og nesten hele batterispenningen ligger over $R_L$. Transistoren følger likevel ikke kilden.
+Etter at kilden er slått på, går det 80 ns før kollektorstrømmen er oppe i 4 mA, og etter at den er slått
+av, går de 4 mA uendret i 10 ns til før strømmen begynner å falle. Begge forsinkelsene kommer av at ladningen
+i basen må bygges opp og tømmes.
+
+## Av og på
+
+<Simulation
+  src={"/sims/transistoren-som-bryter.js"}
+  host={"dom"}
+  title={"Transistoren slås på og av"}
+  height={390}
+  caption={"En pnp-transistor i felles emitter med ${R_B = 10\\ \\text{k}\\Omega}$, ${R_L = 1\\ \\text{k}\\Omega}$, ${\\beta = 200}$ og ${\\tau_p = 100\\ \\text{ns}}$, slått på i 400 ns og av i 60 ns. Den røde flaten i basen er overskuddet av hull, og den stiplede trekanten er profilen der metningen begynner. Under står $Q_p$ og $i_C$ gjennom én periode i en skala der $Q_s$ og 4 mA ligger i samme høyde, med tiden etter «Av» strukket ut fire ganger."}
+/>
+
+I simuleringen slår kilden transistoren på og av, om og om igjen. Når kilden har gitt +1 V en stund, går det
+nesten ingen strøm gjennom $R_B$, så basen ligger på +1 V, og spenningen over emitterovergangen er ${V_{EB} = -1}$ V. Kollektoren ligger på −4 V, fem volt under basen.
+Begge overgangene står i sperreretning, og transistoren er i <Term name="Sperring">sperring</Term>.
+
+Ved begge kantene av basen er overskuddet ${\Delta p = p_n(e^{qV/k_BT} - 1) \approx -p_n}$, så det er
+nesten ingen hull i basen. Et negativt overskudd gir generasjon på samme måte som et positivt gir
+rekombinasjon. Ladningen er ${Q_p = -qAW_bp_n}$, og ladningskontroll gir basestrømmen
+${i_B = Q_p/\tau_p = -qAW_bp_n/\tau_p}$. Den er negativ, så den går inn i basen. Elektronene som
+genereres, går ut gjennom basekontakten, og hullene går til emitteren og kollektoren. Strømmene i emitteren
+og kollektoren følger av <FormulaRef id="ebers-moll">Ebers–Moll-ligningene</FormulaRef>. Begge spenningene
+er negative, så parentesene ${(e^{qV_{EB}/k_BT} - 1)}$ og ${(e^{qV_{CB}/k_BT} - 1)}$ er begge −1, og med
+${\alpha_NI_{ES} = \alpha_II_{CS}}$ blir <FormulaRef id="sperring-strommer">strømmene</FormulaRef>
+
+$$
+\begin{aligned}
+i_E &= -I_{ES} + \alpha_II_{CS} = -(1 - \alpha_N)I_{ES} \\
+i_C &= -\alpha_NI_{ES} + I_{CS} = (1 - \alpha_I)I_{CS}
+\end{aligned}
+$$
+
+Metningsstrømmene $I_{ES}$ og $I_{CS}$ er små, så i sperring er transistoren nesten en åpen bryter.
+
+Når kilden gir −1 V, kommer emitterovergangen i lederetning med rundt 0,6 V. Basen ligger på −0,6 V, så det ligger 0,4 V over $R_B$, og basestrømmen er
+${i_B = 0{,}4\ \text{V}/10\ \text{k}\Omega = 40\ \mu\text{A}}$. I normal modus ville kollektorstrømmen vært
+${\beta i_B = 8}$ mA. Det krever 8 V over $R_L$, og batteriet har bare 4. Strømmen stopper derfor på
+${|V_{CC}|/R_L = 4}$ mA, øverst på <FormulaRef id="lastlinje">lastlinjen</FormulaRef>, og kollektoren stiger
+nesten opp til emitterens 0 V. <Term name="Metning">Metningen</Term> begynner når kollektoren passerer
+basen, ved ${V_{CB} = 0}$. Der metningen begynner, ligger
+kollektoren på basens −0,6 V, og strømmen er 3,4 mA. Resten opp til 4 mA kommer når kollektorovergangen går
+i lederetning, men her og i simuleringen regnes strømmen i metning som 4 mA hele veien.
+
+Mot slutten av «På» ligger profilen i basen over den stiplede trekanten. Trekanten er profilen der
+metningen begynner, fra $\Delta p_E$ til null ved kollektoren. Kollektorstrømmen er $qAD_p$ ganger
+stigningen til profilen, og kretsen holder den på 4 mA, så stigningen ligger fast. Basestrømmen fyller
+likevel basen med mer ladning, og med fast stigning kan profilen bare løfte seg i begge endene. Da blir
+$\Delta p_C$ positiv.
+
+Transistoren regnes med ${\gamma = 1}$, så ${\beta = \tau_p/\tau_t}$ og ${\tau_t = 0{,}5}$ ns. I normal modus
+er ${i_C = Q_p/\tau_t}$, så <FormulaRef id="metning-ladning">ladningen</FormulaRef> der metningen begynner, er
+
+$$
+Q_s = I_C\tau_t = 4\ \text{mA} \cdot 0{,}5\ \text{ns} = 2\ \text{pC}
+$$
+
+Mot slutten av «På» er ladningen nesten oppe i det basestrømmen holder ved like,
+${Q_p = I_B\tau_p = 40\ \mu\text{A} \cdot 100\ \text{ns} = 4}$ pC, dobbelt så mye. Ladningen over $Q_s$ endrer
+ikke kollektorstrømmen, men den må ut før kollektorstrømmen kan falle.
+
+Med dobbelt så mye ladning og samme stigning er $\Delta p_E$ halvannen gang høyden av trekanten og
+$\Delta p_C$ en halv, en tredel av $\Delta p_E$. Overskuddet ved hver kant følger spenningen over overgangen
+eksponentielt, så kollektorovergangen trenger bare ${(k_BT/q)\ln 3 \approx 30}$ mV mindre spenning enn
+emitterovergangen. Spenningen over transistoren, ${v_{CE} = v_{CB} - v_{EB}}$, er derfor bare rundt −30 mV,
+og nesten hele batterispenningen ligger over $R_L$. I metning er transistoren nesten en lukket bryter.
+
+<Callout title="Metning">
+I metning holder kretsen ${i_C \approx |V_{CC}|/R_L}$, og basestrømmen fyller basen ut over ${Q_s = I_C\tau_t}$ til ${Q_p = I_B\tau_p}$. Det krever ${\beta I_B > |V_{CC}|/R_L}$.
+</Callout>
+
+## Ladningen bestemmer tidene
+
+Diagrammet i simuleringen «Transistoren slås på og av» viser hvordan transistoren kom dit. Først skjer det
+nesten ingenting i 14 ns.
+Spenningen over emitterovergangen må fra −1 V opp til rundt 0,5 V før emitteren injiserer hull, og sonen
+lades opp gjennom $R_B$ som en kondensator. Så vokser ladningen i basen. Basestrømmen både erstatter hullene
+som rekombinerer og bygger opp ladningen, som i en diode som slås på:
+
+$$
+i_B = \frac{Q_p}{\tau_p} + \frac{dQ_p}{dt}
+$$
+
+Det er <FormulaRef id="ladning-transient">ligningen for den lagrede ladningen</FormulaRef>. Ladningen vokser
+mot $I_B\tau_p$ med tidskonstanten $\tau_p$, og så lenge transistoren er i normal modus, følger
+kollektorstrømmen ladningen, ${i_C = Q_p/\tau_t}$, og i diagrammet ligger $i_C$ oppå $Q_p$. Ved $t_s$ har ladningen nådd $Q_s$ og kollektorstrømmen
+4 mA, og transistoren går i metning. Ladningen trenger halve veien til $I_B\tau_p$ for å nå $Q_s$, og det tar
+${\tau_p\ln 2 = 69}$ ns, så med forsinkelsen først er ${t_s \approx 80}$ ns. Ladningen vokser videre i flere
+$\tau_p$, men kollektorstrømmen står stille, og $Q_p$ vokser ut over $i_C$.
+
+Så slår kilden om til +1 V, men spenningen over emitterovergangen kan ikke hoppe. Den er bundet til
+overskuddet ved kanten av basen, og overskuddet endrer seg bare når ladning strømmer. $V_{EB}$ er fortsatt
+rundt 0,6 V, så hele hoppet havner over $R_B$, og basestrømmen snur med en gang til
+${(-0{,}6 - 1)\ \text{V}/10\ \text{k}\Omega = -160\ \mu\text{A}}$. Pilen på basen snur. Nå tømmes ladningen både
+av rekombinasjonen og av basestrømmen.
+
+Så lenge ladningen er over $Q_s$, ligger profilen over den stiplede trekanten, kollektorovergangen står i
+lederetning, og kretsen holder kollektorstrømmen på 4 mA. Strømmen begynner først å falle når ladningen er
+nede i $Q_s$. Tiden fram til da er <Term name="Lagringstid">lagringstiden</Term> $t_{sd}$, her 10 ns. Etter
+det er transistoren i normal modus igjen, og $i_C$ faller med ladningen. Når basen er tom, går
+emitterovergangen over i sperreretning, og basestrømmen dør ut.
+
+Dra «$v_s$ på» til −1,2 V. Basestrømmen er nå 60 µA, og ladningen vokser mot 6 pC. Den når $Q_s$ tidligere,
+så $t_s$ er 50 ns. Men nå ligger det nesten tre ganger $Q_s$ i basen, og lagringstiden er 19 ns, nesten dobbelt
+så lang. Dra så til −0,7 V. Med 11,5 µA i basen er ${\beta I_B = 2{,}3}$ mA, mindre enn 4 mA, så transistoren
+kommer aldri i metning. Det er ingen lagringstid, men kollektorstrømmen kryper opp mot 2,3 mA med
+tidskonstanten $\tau_p$. Kort $t_s$ krever stor basestrøm, og lite lagret ladning krever liten
+basestrøm.
+
+<Quiz
+  question={"En transistor står i metning med $I_B\\tau_p = 3Q_s$. Kilden kobles fra, så basestrømmen blir null. Hvor stor del av ladningen i basen må bort før kollektorstrømmen begynner å falle?"}
+  options={["Ingenting", "En tredel", "To tredeler", "Hele ladningen"]}
+  answer={2}
+  explanation={"Kretsen holder kollektorstrømmen fast så lenge ladningen er over $Q_s$, og fra $3Q_s$ ned til $Q_s$ er to tredeler av ladningen. Kollektorstrømmen følger ladningen, ikke basestrømmen, så den faller ikke med en gang, og den begynner å falle lenge før basen er tom."}
+/>
+
+Databladet til en svitsjetransistor gir tre av tidene i en slik syklus. Forsinkelsestiden $t_d$ er tiden
+emitterovergangen bruker på å lades opp, de første 14 ns i simuleringen. Stigetiden $t_r$ er tiden
+kollektorstrømmen bruker fra 10 til 90 prosent av $I_C$, og falltiden $t_f$ tiden den bruker fra 90 til
+10 prosent når transistoren slås av.
+
+<Callout title="Svitsjing">
+Kollektorstrømmen følger ladningen i basen, så den når $I_C$ først ved $t_s$, der ladningen er $Q_s$. Etter at transistoren slås av, står den fast i lagringstiden $t_{sd}$ til ladningen over $Q_s$ er borte, og en stor basestrøm gir kort $t_s$ og lang $t_{sd}$.
+</Callout>
+
+## Gradert doping i basen
+
+Når basen lages ved ionimplantasjon, blir den ikke jevnt dopet. Dopingen er størst ved emitteren og
+faller mot kollektoren. Elektronene er majoritetsbærere i basen, med ${n \approx N_d}$, så de ligger tettest
+ved emitteren og diffunderer mot kollektoren. I likevekt går det ingen elektronstrøm, så et
+<Term name="Innebygd felt">innebygd felt</Term> må holde dem tilbake, som i enhver halvleder der dopingen
+varierer:
+
+$$
+J_n = q\mu_nn\mathcal{E} + qD_n\frac{dn}{dx_n} = 0
+$$
+
+Løs for feltet, og bruk <FormulaRef id="einstein">Einstein-relasjonen</FormulaRef> ${D_n/\mu_n = k_BT/q}$ og
+${n \approx N_d}$:
+
+$$
+\mathcal{E}(x_n) = -\frac{k_BT}{q}\frac{1}{N_d}\frac{dN_d}{dx_n}
+$$
+
+Dopingen faller i retning $x_n$, så <FormulaRef id="gradert-base-felt">feltet</FormulaRef> er positivt og
+peker fra emitteren mot kollektoren. Det holder elektronene tilbake mot emitteren og skyver hullene, som er
+positive, mot kollektoren. Hullene diffunderer altså gjennom basen og driver i tillegg.
+
+Faller dopingen eksponentielt, ${N_d(x_n) = N_d(0)e^{-ax_n/W_b}}$ med ${a = \ln[N_d(0)/N_d(W_b)]}$, er
+${(1/N_d)\,dN_d/dx_n = -a/W_b}$ overalt, og feltet er konstant:
+
+$$
+\mathcal{E} = \frac{k_BT}{q}\frac{a}{W_b}
+$$
+
+En base på 0,5 µm der dopingen faller hundre ganger, har et felt på 2,4 kV/cm. Hull med mobiliteten
+300 cm²/V·s driver da over basen på 70 ps, mens diffusjonen alene bruker ${W_b^2/2D_p = 0{,}16}$ ns.
+Transittiden blir kortere, færre hull rekombinerer i basen, og $B$ og $\alpha$ øker. Transistoren blir også
+raskere.
+
+<Callout title="Gradert base">
+En base som er sterkest dopet ved emitteren, har et innebygd felt ${\mathcal{E} = -(k_BT/q)(1/N_d)\,dN_d/dx_n}$ fra emitteren mot kollektoren, så hullene driver over i tillegg til å diffundere, og transittiden blir kortere.
+</Callout>
+
+## Basen blir smalere
+
+Sonen ved en overgang ligger mest på den svakest dopede siden. Er kollektoren svakest dopet, ligger det
+meste av sonen ved kollektorovergangen i kollektoren, og basen krymper lite med spenningen. Er basen svakere
+dopet enn kollektoren, som i en p⁺np⁺-transistor, vokser sonen inn i basen når sperrespenningen øker.
+Den nøytrale basen er da den metallurgiske bredden $L_b$ minus delen $l$ av sonen
+som ligger i basen. Med sperrespenningen ${V_{BC} = -V_{CB}}$ mye større enn kontaktpotensialet gir
+<FormulaRef id="sonebredde">sonebredden</FormulaRef> på den svakt dopede siden
+
+$$
+W_b = L_b - l, \qquad l = \left(\frac{2\varepsilon V_{BC}}{qN_d}\right)^{1/2}
+$$
+
+<Simulation
+  src={"/sims/early-effekten.js"}
+  host={"dom"}
+  title={"Early-effekten"}
+  height={350}
+  caption={"En p⁺np⁺-transistor med fast spenning over emitterovergangen, med sonen ved kollektorovergangen tonet, grensen mellom basen og kollektoren prikket og overskuddet av hull i den nøytrale basen som rød flate. Under står $I_C$ mot $-V_{CE}$, skalert så kurven starter like høyt for alle $L_b$, med den rette delen forlenget bakover til $-V_A$. Basen er dopet med rundt ${2 \\cdot 10^{17}\\ \\text{cm}^{-3}}$, og i vanlige transistorer, der kollektoren er svakest dopet, er $V_A$ større."}
+/>
+
+Dra $-V_{CE}$ opp i simuleringen. Nesten hele spenningen ligger over kollektorovergangen,
+${V_{BC} = -V_{CE} - V_{EB}}$, så sonen tar mer av basen, profilen blir brattere, og
+${I_C \approx qAD_p\Delta p_E/W_b}$ øker. Simuleringen holder spenningen over emitterovergangen fast, så
+$\Delta p_E$ står stille. Kurven heller derfor oppover, og den rette delen, forlenget bakover, møter
+spenningsaksen i $-V_A$. $V_A$ er Early-spenningen, og effekten heter
+<Term name="Early-effekten">Early-effekten</Term> etter J. M. Early, som forklarte den. Jo større $V_A$ er,
+jo flatere er kurven. Med fast basestrøm i stedet øker også $\beta$, fordi færre hull rekombinerer på veien,
+og kollektorstrømmen stiger enda mer.
+
+Dra $L_b$ ned. Den samme $l$ er en større del av en smal base, så kollektorstrømmen øker mer per volt, og
+den forlengede linjen møter aksen nærmere null. En smal base gir altså en liten $V_A$.
+
+<Example label="Eksamensoppgave" title="Early-spenningen og basebredden">
+<ExamRef id="2020-mai" task="I-14" />
+
+<Quiz
+  question={"Decreasing the base width of a bipolar junction transistor will (assuming the device remains unchanged otherwise),"}
+  options={["Increase the magnitude of the Early voltage, $V_A$", "Leave the magnitude of the Early voltage, $V_A$ , unchanged", "Decrease the magnitude of the Early voltage, $V_A$"]}
+  answer={2}
+  explanation={"Sonen tar den samme $l$ av basen, og i en smal base er det en større del av $W_b$. Kollektorstrømmen øker da mer per volt, kurvene heller brattere, og de møter spenningsaksen nærmere null. $V_A$ blir mindre."}
+/>
+
+</Example>
+
+Med høy nok spenning når sonen helt over basen til sonen ved emitteren, som i simuleringen med
+${L_b = 0{,}5\ \mu\text{m}}$ fra 36 V. Da er det ingen nøytral base igjen,
+hullene feies rett fra emitteren til kollektoren, og basen styrer ikke lenger strømmen. Det heter
+<Term name="Punch-through">punch-through</Term>. I p⁺np⁺-transistoren skjer det når ${l = L_b}$, ved
+${V_{BC} = qN_dL_b^2/2\varepsilon}$, så en bredere og sterkere dopet base tåler mer. I de fleste transistorer
+kommer skredgjennombruddet først.
+
+<Callout title="Early-effekten">
+Sperrespenningen skyver sonen ved kollektoren inn i en svakt dopet base, så $W_b$ krymper og $I_C$ og $\beta$ øker med spenningen, mest i en smal base, som gir liten $V_A$. Når sonen når gjennom hele basen, er det punch-through.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Tre pnp-transistorer">
+<ExamRef id="2021-des" task="11" />
+
+<Figure
+  src="/figures/eksamen-2021-12-oppgave-11.png"
+  alt="Tre pnp-transistorer ved siden av hverandre, BJT-1, BJT-2 og BJT-3, hver tegnet som p, n og p med basebredden W_B1, W_B2 og W_B3 merket under. Basen i BJT-2 er dobbelt så bred som i de to andre."
+  width={515}
+  height={122}
+  caption="Figuren fra oppgavesettet."
+/>
+
+The three p-n-p bipolar junction transistors schematically illustrated above, are identical except that
+BJT-2 has a base region that is twice as wide as that of BJT-1 and BJT-3. We also have that BJT-3 and BJT-2
+have a doping in the base region that is twice as large as that of BJT-1. That is:
+
+$$
+W_{B2} = 2W_{B1} = 2W_{B3} \quad \text{and} \allowbreak \quad N_{B3} = N_{B2} = 2N_{B1}
+$$
+
+We assume that $N_E > N_B > N_C$ for all three transistors. (correct: 1p, wrong: -1p, blank: -1p, minimum
+score 0p)
+
+Which of the three transistors will have the highest value for:
+
+<Quiz
+  question={"\"Punch-through\" voltage"}
+  options={["BJT-2", "BJT-3", "BJT-1"]}
+  answer={0}
+  explanation={"Sonen ved kollektorovergangen må nå gjennom hele basen. Delen av sonen som ligger i basen, er kortere jo sterkere basen er dopet, og i en bred base må den nå lenger. BJT-2 har både dobbel bredde og dobbel doping, og trenger mest spenning."}
+/>
+
+<Quiz
+  question={"Emitter injection efficiency"}
+  options={["BJT-2", "BJT-3", "BJT-1"]}
+  answer={2}
+  explanation={"Leddet som trekker $\\gamma$ ned, er proporsjonalt med $W_bn_n$, basebredden ganger basedopingen. BJT-1 har den svakeste dopingen og den smaleste basen, og den høyeste $\\gamma$."}
+/>
+
+<Quiz
+  question={"Common emitter gain"}
+  options={["BJT-2", "BJT-3", "BJT-1"]}
+  answer={2}
+  explanation={"$\\beta = \\alpha/(1 - \\alpha)$ med $\\alpha = B\\gamma$. BJT-1 har den høyeste $\\gamma$ og den høyeste $B$, og dermed den høyeste $\\beta$."}
+/>
+
+<Quiz
+  question={"Base transport factor"}
+  options={["BJT-2", "BJT-3", "BJT-1"]}
+  answer={2}
+  explanation={"$B = \\operatorname{sech}(W_b/L_p)$ er størst når basen er smal mot diffusjonslengden. BJT-2 har den bredeste basen. BJT-1 og BJT-3 er like brede, men i BJT-3 er basen dobbelt så sterkt dopet, så hullene har lavere mobilitet og kortere levetid og dermed kortere $L_p$. BJT-1 har den høyeste $B$."}
+/>
+
+</Example>
+
+## Skred i kollektorovergangen
+
+Feltet i sonen ved kollektorovergangen kan også bli så sterkt at hullene som feies over, slår løs
+elektron-hull-par ved støtionisasjon, som ved <Term name="Skredgjennombrudd">skredgjennombrudd</Term> i en
+diode. Figur 1 viser hva som skjer i felles emitter. Et hull slår løs et par (1). Begge hullene går videre
+til kollektoren, men elektronet feies motsatt vei, inn i basen (2). Kretsen utenfor holder basestrømmen
+fast, så elektronet kan ikke gå ut gjennom basekontakten. Basen må være nøytral, og emitteren injiserer
+flere hull (3). De nye hullene slår løs flere par. Elektronene fra skredet virker altså som ekstra
+basestrøm, og transistoren forsterker dem.
+
+<Figure
+  src="/figures/skred-i-kollektoren.svg"
+  alt="En pnp-transistor som en liggende stav: p⁺-emitter, n-base med kontakten B på toppen og p-kollektor, med en bred sone ved kollektorovergangen der feltet peker mot kollektoren. Et hull fra basen går inn i sonen og slår løs et par, merket 1. To hull går videre til kollektoren, og et elektron går tilbake inn i basen, merket 2. Fra emitteren går et nytt hull inn i basen, merket 3."
+  width={340}
+  height={150}
+  number={1}
+  caption="Skred i kollektorovergangen i felles emitter: 1 et hull slår løs et par, 2 elektronet feies inn i basen, 3 emitteren injiserer flere hull. Ikke i skala."
+/>
+
+Med <FormulaRef id="skredmultiplikasjon">multiplikasjonen</FormulaRef> $M$ blir alt som kommer inn i sonen ved
+kollektoren, ganget med $M$:
+
+$$
+\begin{aligned}
+I_C &= (\alpha_NI_E + I_{CO})M \\
+M &= \frac{1}{1 - (V_{BC}/BV_{CBO})^n}
+\end{aligned}
+$$
+
+Her er $I_{CO}$ kollektorstrømmen med åpen emitter, den lille strømmen ${(1 - \alpha_N\alpha_I)I_{CS}}$ i
+<FormulaRef id="ebers-moll-kollektor">Ebers–Moll-modellen</FormulaRef>, og
+$BV_{CBO}$ er gjennombruddsspenningen til kollektorovergangen alene.
+
+I felles base med åpen emitter, ${I_E = 0}$, er ${I_C = MI_{CO}}$. Strømmen vokser uten grense først når $M$
+gjør det, ved $BV_{CBO}$. I felles emitter med åpen base, ${I_B = 0}$, er ${I_E = I_C}$. Da blir
+
+$$
+I_C = \frac{MI_{CO}}{1 - M\alpha_N}
+$$
+
+Den vokser uten grense allerede når ${M\alpha_N = 1}$. Med ${\alpha_N = 0{,}995}$ skjer det ved
+${M = 1/\alpha_N = 1{,}005}$, der bare fem av tusen hull slår løs et par. Formelen for $M$ gir
+${M = 1{,}005}$ lenge før $V_{BC}$ kommer nær $BV_{CBO}$, så
+<FormulaRef id="skred-felles-emitter">gjennombruddet i felles emitter</FormulaRef>, $BV_{CEO}$, kommer ved
+mye lavere spenning enn $BV_{CBO}$.
+
+<Callout title="Skred i felles emitter">
+Elektronene fra skredet går inn i basen og virker som ekstra basestrøm, så i felles emitter kommer gjennombruddet allerede ved ${M\alpha_N = 1}$, og $BV_{CEO}$ er mye lavere enn $BV_{CBO}$.
+</Callout>
+
+## Strømnivået og temperaturen
+
+$\alpha$ og $\beta$ er ikke konstante. Ved små strømmer rekombinerer en del av bærerne i sonen ved
+emitteren, som i den <FormulaRef id="idealitetsfaktor">virkelige diodekurven</FormulaRef>. Den strømmen går
+inn i emitteren og ut av basen uten å nå kollektoren, så injeksjonseffektiviteten $\gamma$ og dermed $\beta$
+er lavere ved små strømmer. Ved store strømmer blir injeksjonen <Term name="Høy injeksjon">høy</Term>. Overskuddet
+av hull i basen kommer opp mot donorkonsentrasjonen, og basen trenger like mange ekstra elektroner for å være nøytral. Med
+flere elektroner i basen går flere av dem over i emitteren, og $\gamma$ og $\beta$ faller igjen. $\beta$ er
+derfor størst ved middels strøm, og for like store steg i basestrømmen ligger kurvene i felles emitter
+tettere ved små og store strømmer enn i midten.
+
+Strømmen varmer også transistoren. Hullene får energi i feltet i sonen ved kollektoren og gir den fra seg til
+gitteret i kollisjoner, så effekten ${I_CV_{BC}}$ går til varme der. Varmen endrer to ting i basen. Levetiden
+$\tau_p$ øker, fordi bærere som fanges i rekombinasjonssentre, oftere eksiteres ut igjen før de rekombinerer.
+Diffusjonskonstanten $D_p$ synker, fordi mobiliteten faller når gittersvingningene sprer hullene mer.
+Med ${\beta = \tau_p/\tau_t}$ og ${\tau_t = W_b^2/2D_p}$ gir den første større $\beta$ og den andre mindre.
+Vanligvis vinner levetiden, så $\beta$ øker med temperaturen. Da kan transistoren få termisk løpskhet
+(<i>thermal runaway</i>). Høyere temperatur gir større $\beta$, større $I_C$ med samme basestrøm, mer
+varme og enda høyere temperatur, til transistoren ødelegges. $I_CV_{BC}$ må derfor holdes under den største
+effekten transistoren tåler.
+
+<Callout title="Strømnivå og temperatur">
+$\beta$ faller ved små strømmer, der rekombinasjon i emittersonen trekker ned $\gamma$, og ved store, der høy injeksjon gjør det. Varme øker vanligvis $\beta$, og det kan gi termisk løpskhet.
+</Callout>
+
+## Basemotstanden og emitter crowding
+
+Basestrømmen går fra basen under emitteren sidelengs ut til basekontaktene ved siden av emitteren, og
+elektronene går motsatt vei, inn. Simuleringen under viser veien i snitt. Basen under emitteren er tynn og har stor motstand $r_b'$ langs veien, og veien
+ut til kontakten har motstanden $r_b$. Spenningsfallet langs veien trekkes fra spenningen over
+emitterovergangen. Midt under emitteren, i punktet A, er
+
+$$
+V_{EA} = V_{EB} - I_B(r_b + r_b')
+$$
+
+og ved kanten, i punktet D, er ${V_{ED} = V_{EB} - I_Br_b}$, nærmere den påtrykte $V_{EB}$.
+
+<Simulation
+  src={"/sims/emitterkanten.js"}
+  host={"dom"}
+  title={"Injeksjon langs emitteren"}
+  height={210}
+  caption={"En pnp-transistor i snitt, med p⁺-emitteren i overflaten av n-basen, basekontaktene B ved siden av og p-kollektoren under. Røde ringer er hull som emitteren injiserer, og blå prikker er elektronene basestrømmen fører inn fra kontaktene til der hullene injiseres. Hvor ofte de kommer, følger strømmen, men er ikke i skala."}
+/>
+
+Injeksjonen følger ${e^{qV_{EB}/k_BT}}$, så 60 mV mindre spenning midt under emitteren gir ti ganger færre hull
+der. Dra $I_B$ opp i simuleringen, og hullene samler seg ved kantene, nærmest basekontaktene. Det heter
+<Term name="Emitter crowding">emitter crowding</Term>. Ved kanten kan injeksjonen bli høy lenge før den
+samlede strømmen er stor, og da faller $\gamma$ og $\beta$ der.
+
+Kanten må derfor være lang i forhold til arealet, og emitteren lages
+som en lang, smal stripe med basekontakter på begge sider. Sett $I_B$ til 0,5 mA, og velg «To smale». Hver stripe
+har halve bredden og halve strømmen, så spenningsfallet under den blir en firedel, og hver stripe injiserer
+like jevnt som den brede emitteren ved en firedel av strømmen.
+Effekttransistorer har mange smale emitterstriper med basekontakter imellom.
+
+<Callout title="Emitter crowding">
+Spenningsfallet i basemotstanden gjør spenningen over emitterovergangen størst ved kanten, så emitteren injiserer mest der, og lange, smale emitterstriper gir lang kant og lav strømtetthet.
+</Callout>
+
+<Example label="Eksamensoppgave" title="Svitsjing, gradert base og basemotstand">
+<ExamRef id="2020-mai" task="II-1 (8)–(10)" />
+
+Consider an n⁺-p-n Si bipolar junction transistor (BJT) with dopant concentrations $N_E > N_B > N_C$.
+
+Fill in the blanks (numbered) in the following section of italicized text. Words to insert are suggested for
+each blank/number. Choose the appropriate alternative.
+
+*When used for switching, the following 3 operation regimes are involved – the (8) mode. If the p-type base
+region is ion-implanted so that the dopant concentration $N_B$ decreases from emitter towards collector, the
+carrier transport across the base takes place by (9). Emitter crowding and Early effect in a BJT result from
+(10), respectively.*
+
+<Quiz
+  question={"(8)"}
+  options={["normal active, inverse active, and saturation", "normal active, cutoff, and inverse active", "normal active, cutoff, and saturation"]}
+  answer={2}
+  explanation={"Som bryter er transistoren av i sperring og på i metning, og på vei mellom dem går den gjennom normal modus. Invers modus er ikke med."}
+/>
+
+<Quiz
+  question={"(9)"}
+  options={["diffusion of electrons", "drift of electrons", "both drift and diffusion of electrons"]}
+  answer={2}
+  explanation={"I en npn-transistor er elektronene minoritetsbærere i basen. Dopingen som faller mot kollektoren, gir et innebygd felt som driver dem mot kollektoren, og de diffunderer som før. Begge deler bærer strømmen."}
+/>
+
+<Quiz
+  question={"(10)"}
+  options={["increased emitter efficiency and reduced effective base width", "ohmic losses in the base and reduced effective base width", "increased emitter efficiency and avalanche multiplication in the base"]}
+  answer={1}
+  explanation={"Emitter crowding kommer av spenningsfallet i basemotstanden, og Early-effekten av at sonen ved kollektoren gjør den nøytrale basen smalere."}
+/>
+
+</Example>
+
+<KeyTakeaways>
+
+- I sperring står begge overgangene i sperreretning, basen er tom for hull, og bare små metningsstrømmer går: ${i_E = -(1 - \alpha_N)I_{ES}}$ og ${i_C = (1 - \alpha_I)I_{CS}}$.
+- I metning holder kretsen ${i_C \approx |V_{CC}|/R_L}$, og basestrømmen fyller basen ut over ${Q_s = I_C\tau_t}$ til ${Q_p = I_B\tau_p}$. Metning krever ${\beta I_B > |V_{CC}|/R_L}$, og spenningen over transistoren er bare noen titalls millivolt.
+- Kollektorstrømmen følger ladningen i basen. Når transistoren slås på, stiger den til ladningen når $Q_s$, og når den slås av, står den fast i lagringstiden $t_{sd}$ til ladningen over $Q_s$ er borte. Stor basestrøm gir kort $t_s$ og lang $t_{sd}$.
+- En base som er sterkest dopet ved emitteren, har et innebygd felt ${\mathcal{E} = -(k_BT/q)(1/N_d)\,dN_d/dx_n}$ som driver hullene mot kollektoren og gjør transittiden kortere.
+- Sperrespenningen skyver sonen inn i en svakt dopet base, så $I_C$ og $\beta$ øker med spenningen (Early-effekten), og kurvene peker mot $-V_A$. Når sonen når gjennom basen, er det punch-through.
+- Skredet i kollektorovergangen gir gjennombrudd ved ${M\alpha_N = 1}$ i felles emitter, med $M$ bare litt over 1, så $BV_{CEO}$ er mye lavere enn $BV_{CBO}$.
+- $\beta$ faller ved små og store strømmer og øker med temperaturen, som kan gi termisk løpskhet. Basemotstanden samler injeksjonen ved kanten av emitteren, så emitteren lages som lange, smale striper.
+
+</KeyTakeaways>

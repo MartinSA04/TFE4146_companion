@@ -774,6 +774,38 @@ formulas:
     tex: "I_C = \\alpha_N I_E \\allowbreak - (1 - \\alpha_N\\alpha_I)I_{CS}\\left(e^{qV_{CB}/k_BT} - 1\\right)"
     label: "Kollektorstrømmen uttrykt med emitterstrømmen, med $I_{ES}$ eliminert fra Ebers–Moll-ligningene. Med kollektorovergangen i sperreretning er den $\\alpha_N I_E$ pluss en liten metningsstrøm, uavhengig av $V_{CB}$."
 
+  # Svitsjing og andre effekter i bipolartransistoren (Streetman §7.6, §7.7.1–7.7.5).
+  - id: sperring-strommer
+    section: Av og på
+    onSheet: false
+    tex: "\\begin{aligned} i_E &= -(1 - \\alpha_N)I_{ES} \\\\ i_C &= (1 - \\alpha_I)I_{CS} \\\\ i_B &= -\\dfrac{qAW_bp_n}{\\tau_p} \\end{aligned}"
+    label: "Strømmene i sperring, med begge overgangene i sperreretning. De to første er Ebers–Moll-ligningene med begge parentesene lik $-1$ og $\\alpha_NI_{ES} = \\alpha_II_{CS}$. Den siste er ladningskontroll med basen tom for hull, $Q_p = -qAW_bp_n$: et negativt overskudd gir generasjon, og basestrømmen går inn i basen."
+  - id: metning-ladning
+    section: Av og på
+    onSheet: false
+    tex: "\\begin{aligned} Q_s &= I_C\\tau_t \\\\ Q_p &= I_B\\tau_p \\end{aligned}"
+    label: "Ladningen i basen i metning. $Q_s$ er trekanten under profilen der metningen begynner, med $\\Delta p_C = 0$, og $Q_p$ er det basestrømmen holder ved like i stasjonær tilstand. Transistoren er i metning når $Q_p > Q_s$, altså når $\\beta I_B > I_C$, der kretsen holder $I_C \\approx |V_{CC}|/R_L$."
+  - id: gradert-base-felt
+    section: Gradert doping i basen
+    onSheet: false
+    tex: "\\begin{aligned} \\mathcal{E}(x_n) &= -\\dfrac{k_BT}{q}\\dfrac{1}{N_d}\\dfrac{dN_d}{dx_n} \\\\ \\mathcal{E} &= \\dfrac{k_BT}{q}\\dfrac{a}{W_b} \\end{aligned}"
+    label: "Det innebygde feltet i en base der donordopingen $N_d(x_n)$ varierer, fra $J_n = 0$ i likevekt med Einstein-relasjonen og $n \\approx N_d$. Faller dopingen fra emitteren mot kollektoren, peker feltet mot kollektoren og driver hullene over. Med en eksponentiell profil $N_d = N_d(0)e^{-ax_n/W_b}$, der $a = \\ln[N_d(0)/N_d(W_b)]$, er feltet konstant."
+  - id: basebredde-early
+    section: Basen blir smalere
+    onSheet: false
+    tex: "\\begin{aligned} W_b &= L_b - l \\\\ l &= \\left(\\dfrac{2\\varepsilon V_{BC}}{qN_d}\\right)^{1/2} \\end{aligned}"
+    label: "Den nøytrale basebredden i en p⁺np⁺-transistor, der sonen ved kollektorovergangen ligger i den svakt dopede basen. $L_b$ er den metallurgiske bredden og $l$ delen av sonen som ligger i basen ved den store sperrespenningen $V_{BC} = -V_{CB}$. Når $l$ vokser, krymper $W_b$, og $I_C$ og $\\beta$ øker. Ved $l = L_b$ er det punch-through."
+  - id: skred-felles-emitter
+    section: Skred i kollektorovergangen
+    onSheet: false
+    tex: "\\begin{aligned} I_C &= (\\alpha_NI_E + I_{CO})M \\\\ I_C &= \\dfrac{MI_{CO}}{1 - M\\alpha_N} \\quad (I_B = 0) \\end{aligned}"
+    label: "Skred i kollektorovergangen: alt som kommer inn i sonen, ganges med $M = 1/[1 - (V_{BC}/BV_{CBO})^n]$. Med åpen emitter er $I_C = MI_{CO}$, og gjennombruddet kommer ved $BV_{CBO}$. Med åpen base vokser strømmen uten grense allerede ved $M\\alpha_N = 1$, med $M$ bare litt over 1, så gjennombruddet i felles emitter, $BV_{CEO}$, kommer ved mye lavere spenning."
+  - id: emitterkant
+    section: Basemotstanden og emitter crowding
+    onSheet: false
+    tex: "\\begin{aligned} V_{EA} &= V_{EB} - I_B(r_b + r_b') \\\\ V_{ED} &= V_{EB} - I_Br_b \\end{aligned}"
+    label: "Spenningen over emitterovergangen midt under emitteren (A) og ved kanten (D), med basemotstanden $r_b$ ut til kontakten og $r_b'$ langs den tynne basen under emitteren. Spenningen er størst ved kanten, så emitteren injiserer mest der."
+
   # Resten av formelarket (Streetman kap. 8) står her før modulen er skrevet.
   # Bytt seksjonsnavnet til modulens overskrift når modulen kommer.
   - id: fotostrom
@@ -1003,7 +1035,7 @@ glossary:
     definition: "(<em>quasi-steady state approximation</em>) Antagelsen at profilen av lagrede minoritetsbærere beholder formen $e^{-x_n/L_p}$ mens strømmen endrer seg, så $Q_p = qAL_p\\Delta p_n$ hele tiden. Gir spenningen fra ladningen, men grovt, fordi profilen endrer form nær kanten av sonen. Lagringstiden blir for lang."
   - term: Lagringstid
     section: Lagringstiden
-    definition: "(<em>storage delay time</em>) $t_{sd}$, tiden etter omslag fra lederetning til sperreretning der kanten av sonen fortsatt har et overskudd av minoritetsbærere. Så lenge er spenningen over overgangen liten og positiv, og sperrestrømmen settes av kretsen. Proporsjonal med levetiden, og en vanlig måte å måle den på."
+    definition: "(<em>storage delay time</em>) $t_{sd}$, tiden etter omslag fra lederetning til sperreretning der kanten av sonen fortsatt har et overskudd av minoritetsbærere. Så lenge er spenningen over overgangen liten og positiv, og sperrestrømmen settes av kretsen. Proporsjonal med levetiden, og en vanlig måte å måle den på. I en bipolartransistor i metning er det tiden fra basestrømmen snus til ladningen i basen er nede i $Q_s$ og kollektorstrømmen begynner å falle."
   - term: Svitsjediode
     section: Lagringstiden
     definition: "(<em>switching diode</em>) En diode laget for å slå raskt mellom lederetning og sperreretning. Kort levetid, for eksempel med gull i Si, eller lite lagret ladning i en kort diode gir kort lagringstid."
@@ -1188,6 +1220,15 @@ glossary:
   - term: Ebers–Moll-modellen
     section: Fire moduser og Ebers–Moll-ligningene
     definition: "(<em>Ebers–Moll model</em>, <em>coupled-diode model</em>) Strømmene i en bipolartransistor ved vilkårlige spenninger, som summen av en normalkomponent fra emitteren og en inverskomponent fra kollektoren. Hver strøm er en diodestrøm fra sin egen overgang pluss et ledd fra den andre. Parameterne er $I_{ES}$, $I_{CS}$, $\\alpha_N$ og $\\alpha_I$, med $\\alpha_NI_{ES} = \\alpha_II_{CS}$."
+  - term: Early-effekten
+    section: Basen blir smalere
+    definition: "(<em>Early effect</em>, <em>base narrowing</em>) Sperrespenningen over kollektorovergangen skyver sonen inn i basen, så den nøytrale basen blir smalere, og kollektorstrømmen og $\\beta$ øker med spenningen. Kurvene for $I_C$ i felles emitter heller oppover, og forlenget bakover møter de spenningsaksen i $-V_A$, der $V_A$ er Early-spenningen. En smal base gir liten $V_A$."
+  - term: Punch-through
+    section: Basen blir smalere
+    definition: "(<em>punch-through</em>) Sonen ved kollektorovergangen når gjennom hele basen til sonen ved emitteren. Det er ingen nøytral base igjen, hullene feies rett fra emitteren til kollektoren, og basen styrer ikke strømmen. En bred og sterkt dopet base tåler mest spenning før det skjer."
+  - term: Emitter crowding
+    section: Basemotstanden og emitter crowding
+    definition: "(<em>emitter crowding</em>) Basestrømmen går sidelengs gjennom den tynne basen under emitteren, og spenningsfallet i basemotstanden gjør spenningen over emitterovergangen størst ved kanten av emitteren. Emitteren injiserer derfor mest der, og injeksjonen kan bli høy ved kanten mens den samlede strømmen er liten. Lange, smale emitterstriper gir lang kant i forhold til arealet."
 
 features:
   progress: true
@@ -1356,6 +1397,18 @@ symbols:
   - { tex: "\\tau_t", meaning: "Transittiden, tiden et hull i snitt bruker gjennom basen", unit: "s", section: "Bipolartransistoren", term: "Transittid", formula: bjt-ladning, id: tau-t, note: "Ikke levetiden $\\tau_p$, som er mye lengre." }
   - { tex: "\\alpha_N,\\ \\alpha_I", meaning: "Andelen av den injiserte strømmen som den andre overgangen samler opp, i normal og i invers modus", section: "Bipolartransistoren", term: "Ebers–Moll-modellen", formula: ebers-moll, id: alfa-n-i }
   - { tex: "I_{ES},\\ I_{CS}", meaning: "Metningsstrømmen til emitterovergangen med kollektoren kortsluttet til basen, og omvendt", unit: "A", section: "Bipolartransistoren", term: "Ebers–Moll-modellen", formula: ebers-moll, id: ies-ics }
+  - { tex: "V_{CC}", meaning: "Spenningen fra batteriet på kollektoren i kretsen der transistoren slås av og på", unit: "V", section: "Bipolartransistoren", formula: "metning-ladning", id: "vcc" }
+  - { tex: "R_B", meaning: "Motstanden mellom kilden og basen i kretsen der transistoren slås av og på", unit: "Ω", section: "Bipolartransistoren", id: "rb-kilde" }
+  - { tex: "Q_s", meaning: "Ladningen i basen der metningen begynner, trekanten under profilen med $\\Delta p_C = 0$", unit: "C", section: "Bipolartransistoren", term: "Metning", formula: "metning-ladning", id: "q-s", note: "Ikke ladningen $Q_s$ per areal i halvlederen i en MOS-kondensator." }
+  - { tex: "t_s", meaning: "Tiden fra transistoren slås på til ladningen i basen når $Q_s$ og metningen begynner", unit: "s", section: "Bipolartransistoren", formula: "metning-ladning", id: "t-s", note: "Ikke lagringstiden $t_{sd}$." }
+  - { tex: "t_d,\\ t_r,\\ t_f", meaning: "Forsinkelsestiden mens emitterovergangen lades opp, stigetiden fra 10 til 90 prosent av $I_C$ og falltiden fra 90 til 10 prosent", unit: "s", section: "Bipolartransistoren", id: "td-tr-tf", note: "Ikke drifttiden $t_d$ i Haynes–Shockley-eksperimentet." }
+  - { tex: "a", meaning: "Hvor mye dopingen i en gradert base faller, $\\ln[N_d(0)/N_d(W_b)]$", section: "Bipolartransistoren", formula: "gradert-base-felt", id: "a-gradert", note: "Ikke halvhøyden $a$ i JFET-en." }
+  - { tex: "L_b,\\ l", meaning: "Den metallurgiske basebredden og delen av sonen ved kollektorovergangen som ligger i basen", unit: "cm", section: "Bipolartransistoren", formula: "basebredde-early", id: "lb-l", note: "$W_b = L_b - l$. Ikke den midlere frie veilengden $l$ eller lengden $l$ av en kort diode." }
+  - { tex: "V_{BC}", meaning: "Sperrespenningen over kollektorovergangen, $-V_{CB}$", unit: "V", section: "Bipolartransistoren", formula: "basebredde-early", id: "v-bc" }
+  - { tex: "V_A", meaning: "Early-spenningen: de rette delene av kurvene for $I_C$ i felles emitter, forlenget bakover, møter spenningsaksen i $-V_A$", unit: "V", section: "Bipolartransistoren", term: "Early-effekten", id: "v-a" }
+  - { tex: "BV_{CBO},\\ BV_{CEO}", meaning: "Gjennombruddsspenningen over kollektorovergangen med åpen emitter (felles base) og med åpen base (felles emitter)", unit: "V", section: "Bipolartransistoren", formula: "skred-felles-emitter", id: "bv" }
+  - { tex: "I_{CO}", meaning: "Kollektorstrømmen med åpen emitter, $(1 - \\alpha_N\\alpha_I)I_{CS}$", unit: "A", section: "Bipolartransistoren", formula: "skred-felles-emitter", id: "i-co" }
+  - { tex: "r_b,\\ r_b'", meaning: "Basemotstanden fra basekontakten inn til emitteren, og langs den tynne basen under emitteren", unit: "Ω", section: "Bipolartransistoren", term: "Emitter crowding", formula: "emitterkant", id: "rb" }
   # ── Konstanter ──
   - { tex: "q", meaning: "Elementærladningen", unit: "C", section: "Konstanter", note: "$1{,}602 \\times 10^{-19}$ C. Elektronet har ladning $-q$, hullet $+q$." }
   - { tex: "k_B", meaning: "Boltzmanns konstant", unit: "eV/K", section: "Konstanter", note: "$8{,}62 \\times 10^{-5}$ eV/K." }
