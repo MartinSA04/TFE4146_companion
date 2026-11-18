@@ -37,28 +37,32 @@ exam:
 # vendret i public/exams/ (AUTHORING §7). Datoene er fra forsidene og NTNUs eksamensdata.
 exams:
   - {
-      label: "Ordinær eksamen, november 2025 (med løsningsforslag)",
+      label: "Ordinær eksamen, november 2025",
       id: "2025-nov",
       date: 2025-11-24,
       url: "/exams/2025-nov.pdf",
+      solutionUrl: "/exams/2025-nov-lf.pdf",
     }
   - {
       label: "Ordinær eksamen, november 2024",
       id: "2024-nov",
       date: 2024-11-26,
       url: "/exams/2024-nov.pdf",
+      solutionUrl: "/exams/2024-nov-lf.pdf",
     }
   - {
       label: "Ordinær eksamen, desember 2023",
       id: "2023-des",
       date: 2023-12-13,
       url: "/exams/2023-des.pdf",
+      solutionUrl: "/exams/2023-des-lf.pdf",
     }
   - {
       label: "Ordinær eksamen, desember 2022",
       id: "2022-des",
       date: 2022-12-14,
       url: "/exams/2022-des.pdf",
+      solutionUrl: "/exams/2022-des-lf.pdf",
     }
   - {
       label: "Ordinær eksamen, desember 2021 (med løsningsforslag)",
