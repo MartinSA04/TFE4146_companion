@@ -35,6 +35,13 @@ exam:
 
 # Tidligere eksamener. Settene ligger bare i Blackboard-rommet («Previous exams»), så alle er
 # vendret i public/exams/ (AUTHORING §7). Datoene er fra forsidene og NTNUs eksamensdata.
+#
+# `marks.guide`: oppgaver guiden mener er lite verdt tida i år, ut fra pensumlista foreleseren
+# har lagt ut («Syllabus - TFE4146», med delkapitler strøket over). Strøket og gitt i settene:
+# C–V-analysen av MOS-kondensatoren (§6.4.5) og high-k-gateoksid (§6.6.1). Foreleseren har ikke
+# pekt ut oppgaver selv, så ingen har `lecturer`. Oppgaver om en komponent utenfor pensum som
+# oppgaven selv forklarer (pnpn-dioden i 2025 20, EPROM-en i mai 2020 del III), er ikke merket:
+# de løses med pensum. Formelarket har fortsatt C–V-formlene (C, C_FB, L_D).
 exams:
   - {
       label: "Ordinær eksamen, november 2025",
@@ -42,6 +49,7 @@ exams:
       date: 2025-11-24,
       url: "/exams/2025-nov.pdf",
       solutionUrl: "/exams/2025-nov-lf.pdf",
+      marks: { guide: "12" },
     }
   - {
       label: "Ordinær eksamen, november 2024",
@@ -49,6 +57,7 @@ exams:
       date: 2024-11-26,
       url: "/exams/2024-nov.pdf",
       solutionUrl: "/exams/2024-nov-lf.pdf",
+      marks: { guide: "14" },
     }
   - {
       label: "Ordinær eksamen, desember 2023",
@@ -63,18 +72,21 @@ exams:
       date: 2022-12-14,
       url: "/exams/2022-des.pdf",
       solutionUrl: "/exams/2022-des-lf.pdf",
+      marks: { guide: "10" },
     }
   - {
       label: "Ordinær eksamen, desember 2021 (med løsningsforslag)",
       id: "2021-des",
       date: 2021-12-18,
       url: "/exams/2021-des.pdf",
+      marks: { guide: "15" },
     }
   - {
       label: "Ordinær eksamen, november 2020 (med løsningsforslag)",
       id: "2020-nov",
       date: 2020-11-24,
       url: "/exams/2020-nov.pdf",
+      marks: { guide: "II-1" },
     }
   - {
       label: "Ordinær eksamen, mai 2020",
@@ -82,6 +94,7 @@ exams:
       date: 2020-05-27,
       url: "/exams/2020-mai.pdf",
       solutionUrl: "/exams/2020-mai-lf.pdf",
+      marks: { guide: "I-10" },
     }
   - {
       label: "Eksamen i TFE4164, desember 2018 (lignende pensum)",
@@ -89,6 +102,7 @@ exams:
       date: 2018-12-14,
       url: "/exams/2018-des-tfe4164.pdf",
       solutionUrl: "/exams/2018-des-tfe4164-lf.pdf",
+      marks: { guide: "III-2" },
     }
 
 # Formelsamlingen. `onSheet` følger det offisielle formelarket til eksamen
